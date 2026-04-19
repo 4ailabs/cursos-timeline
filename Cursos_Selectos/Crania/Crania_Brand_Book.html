@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Crania — Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --terracota:#B5604A;
+    --dorado:#E8A857;
+    --salvia:#8FA87A;
+    --cream:#F5EDE0;
+    --dark:#2A1F1A;
+    --gris:#888580;
+    --cream-soft:#FAF5EC;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--cream);
+    color:var(--dark);
+    line-height:1.6;
+  }
+  .serif{font-family:'Cormorant Garamond',Georgia,serif}
+  .italic{font-style:italic}
+
+  /* ═════════════ NAV ═════════════ */
+  .nav{
+    position:fixed;top:0;left:0;right:0;
+    background:rgba(245,237,224,0.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(181,96,74,0.12);
+    padding:18px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+    z-index:100;
+  }
+  .nav-brand{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--dark);letter-spacing:2px}
+  .nav-links{display:flex;gap:28px;font-size:10px;letter-spacing:3px;text-transform:uppercase}
+  .nav-links a{color:var(--dark);text-decoration:none;opacity:0.6;transition:opacity .2s}
+  .nav-links a:hover{opacity:1}
+
+  /* ═════════════ HERO ═════════════ */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:120px 40px 80px;
+    text-align:center;
+    position:relative;
+  }
+  .hero-tag{font-size:10px;letter-spacing:6px;color:var(--terracota);text-transform:uppercase;margin-bottom:40px}
+  .hero-logo{width:280px;margin-bottom:50px}
+  .hero-title{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:400;
+    font-style:italic;
+    font-size:72px;
+    letter-spacing:4px;
+    margin-bottom:20px;
+  }
+  .hero-sub{font-size:11px;letter-spacing:5px;color:var(--terracota);text-transform:uppercase}
+  .hero-divider{width:60px;height:0.8px;background:var(--dorado);margin:30px 0}
+  .hero-meta{font-size:9px;letter-spacing:4px;color:var(--gris);text-transform:uppercase;margin-top:80px}
+
+  /* ═════════════ SECTIONS ═════════════ */
+  section{padding:120px 40px;border-top:1px solid rgba(181,96,74,0.12)}
+  .container{max-width:1200px;margin:0 auto}
+  .section-number{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:14px;
+    color:var(--terracota);
+    margin-bottom:12px;
+    letter-spacing:4px;
+  }
+  .section-title{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:400;
+    font-size:48px;
+    letter-spacing:2px;
+    margin-bottom:60px;
+    color:var(--dark);
+  }
+  .section-title .italic{color:var(--terracota)}
+  .section-intro{
+    font-size:17px;
+    line-height:1.8;
+    max-width:720px;
+    margin-bottom:60px;
+    color:var(--dark);
+  }
+
+  /* ═════════════ ESENCIA ═════════════ */
+  .esencia-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2px;
+    background:rgba(181,96,74,0.15);
+    margin-top:60px;
+  }
+  .esencia-card{
+    background:var(--cream-soft);
+    padding:50px 40px;
+  }
+  .esencia-card h4{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:28px;
+    margin-bottom:20px;
+    color:var(--terracota);
+  }
+  .esencia-card p{font-size:14px;line-height:1.7;color:var(--dark)}
+
+  /* Manifiesto */
+  .manifiesto{
+    background:var(--dark);
+    color:var(--cream);
+    padding:100px 60px;
+    margin-top:80px;
+    border-radius:2px;
+  }
+  .manifiesto p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px;
+    font-weight:300;
+    line-height:1.7;
+    max-width:760px;
+    margin-bottom:22px;
+  }
+  .manifiesto p:first-of-type{font-style:italic;color:var(--dorado)}
+  .manifiesto p:last-of-type{margin-bottom:0}
+  .manifiesto-tag{font-size:10px;letter-spacing:5px;color:var(--dorado);text-transform:uppercase;margin-bottom:40px}
+
+  /* ═════════════ LOGO ═════════════ */
+  .logo-showcase{
+    background:var(--cream-soft);
+    padding:80px;
+    border-radius:2px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:40px;
+  }
+  .logo-showcase img{max-width:320px}
+
+  .logo-variants{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+    margin-bottom:24px;
+  }
+  .logo-variants.three{grid-template-columns:repeat(3,1fr)}
+  .variant{
+    background:var(--cream-soft);
+    padding:40px;
+    border-radius:2px;
+    text-align:center;
+    min-height:240px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+  .variant.dark{background:var(--dark)}
+  .variant img{max-width:100%;max-height:180px}
+  .variant-label{font-size:9px;letter-spacing:3px;color:var(--terracota);text-transform:uppercase;margin-top:24px;font-weight:500}
+  .variant.dark .variant-label{color:var(--dorado)}
+
+  /* Clear space demo */
+  .clearspace{
+    background:var(--cream-soft);
+    padding:60px;
+    border-radius:2px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    margin-bottom:24px;
+  }
+  .clearspace::before,.clearspace::after{
+    content:'';
+    position:absolute;
+    border:1px dashed rgba(181,96,74,0.35);
+    pointer-events:none;
+  }
+  .clearspace::before{
+    inset:30px;
+  }
+  .clearspace img{max-width:260px;position:relative;z-index:1}
+  .clearspace-note{font-size:12px;color:var(--gris);text-align:center;line-height:1.6;letter-spacing:1px}
+
+  /* Misuse */
+  .misuse-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin-top:40px;
+  }
+  .misuse{
+    aspect-ratio:1;
+    background:var(--cream-soft);
+    border-radius:2px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    padding:24px;
+  }
+  .misuse img{max-width:100%;max-height:100%}
+  .misuse::after{
+    content:'×';
+    position:absolute;
+    top:10px;right:12px;
+    font-size:22px;
+    color:#c44;
+    font-weight:300;
+  }
+  .misuse-label{
+    font-size:9px;
+    letter-spacing:2px;
+    color:var(--gris);
+    text-transform:uppercase;
+    text-align:center;
+    margin-top:12px;
+  }
+  .misuse-item{display:flex;flex-direction:column}
+
+  .misuse.stretched img{transform:scaleX(1.4)}
+  .misuse.rotated img{transform:rotate(18deg)}
+  .misuse.tinted{background:#2d5a3a}
+  .misuse.tinted img{filter:hue-rotate(120deg) saturate(0.5)}
+
+  /* ═════════════ COLOR ═════════════ */
+  .color-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2px;
+    background:rgba(181,96,74,0.15);
+  }
+  .color-swatch{
+    aspect-ratio:1;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    font-size:11px;
+    letter-spacing:2px;
+  }
+  .color-swatch .name{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;letter-spacing:1px;margin-bottom:6px;font-weight:400}
+  .color-swatch .hex{font-family:monospace;font-size:12px;opacity:0.7}
+
+  .color-primary{background:var(--terracota);color:var(--cream)}
+  .color-dorado{background:var(--dorado);color:var(--dark)}
+  .color-salvia{background:var(--salvia);color:var(--cream)}
+  .color-cream{background:var(--cream);color:var(--terracota);border:1px solid rgba(181,96,74,0.2)}
+  .color-dark{background:var(--dark);color:var(--cream)}
+  .color-gris{background:var(--gris);color:var(--cream)}
+
+  .color-usage{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    margin-top:60px;
+  }
+  .usage-block{background:var(--cream-soft);padding:40px;border-radius:2px}
+  .usage-block h4{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:22px;
+    margin-bottom:16px;
+    color:var(--terracota);
+  }
+  .usage-block ul{list-style:none;font-size:14px;line-height:2}
+  .usage-block li::before{content:'— ';color:var(--dorado);font-weight:500}
+
+  /* ═════════════ TIPO ═════════════ */
+  .type-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    margin-bottom:60px;
+  }
+  .type-card{
+    background:var(--cream-soft);
+    padding:60px 50px;
+    border-radius:2px;
+  }
+  .type-card.display{background:var(--dark);color:var(--cream)}
+  .type-card .label{font-size:10px;letter-spacing:4px;text-transform:uppercase;margin-bottom:24px;opacity:0.7}
+  .type-card.display .label{color:var(--dorado);opacity:1}
+  .type-specimen{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:96px;line-height:1;margin-bottom:30px;letter-spacing:2px}
+  .type-specimen.sans{font-family:'Inter',sans-serif;font-style:normal;font-weight:300;font-size:56px;letter-spacing:4px;text-transform:uppercase}
+  .type-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;margin-bottom:8px}
+  .type-meta{font-size:12px;letter-spacing:2px;color:var(--gris);text-transform:uppercase;margin-bottom:20px}
+  .type-desc{font-size:13px;line-height:1.7;opacity:0.85}
+
+  .type-scale{background:var(--cream-soft);padding:50px;border-radius:2px}
+  .type-scale-row{padding:18px 0;border-bottom:1px solid rgba(181,96,74,0.1);display:flex;align-items:baseline;gap:30px}
+  .type-scale-row:last-child{border-bottom:none}
+  .scale-meta{font-size:10px;letter-spacing:2px;color:var(--gris);text-transform:uppercase;min-width:200px}
+  .scale-sample{font-family:'Cormorant Garamond',serif;font-style:italic}
+  .scale-sample.h1{font-size:64px}
+  .scale-sample.h2{font-size:42px}
+  .scale-sample.h3{font-size:28px}
+  .scale-sample.body{font-family:'Inter',sans-serif;font-style:normal;font-size:16px;font-weight:400}
+  .scale-sample.small{font-family:'Inter',sans-serif;font-style:normal;font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase}
+
+  /* ═════════════ VOZ ═════════════ */
+  .voice-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .voice-col{background:var(--cream-soft);padding:40px;border-radius:2px}
+  .voice-col.yes{border-left:3px solid var(--salvia)}
+  .voice-col.no{border-left:3px solid #c44;opacity:0.95}
+  .voice-col h4{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:24px;
+    margin-bottom:20px;
+  }
+  .voice-col ul{list-style:none;font-size:14px;line-height:1.9}
+  .voice-col li{padding:4px 0}
+  .voice-col.yes li::before{content:'✓  ';color:var(--salvia);font-weight:500}
+  .voice-col.no li::before{content:'×  ';color:#c44;font-weight:500}
+
+  .voice-sample{
+    background:var(--dark);
+    color:var(--cream);
+    padding:60px;
+    border-radius:2px;
+    margin-top:40px;
+  }
+  .voice-sample-tag{font-size:10px;letter-spacing:4px;color:var(--dorado);text-transform:uppercase;margin-bottom:24px}
+  .voice-sample p{font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.7;margin-bottom:20px;font-weight:300}
+  .voice-sample p:last-child{margin-bottom:0;font-style:italic;color:var(--dorado)}
+
+  /* ═════════════ APLICACIONES ═════════════ */
+  .apps-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+  }
+  .app-card{
+    background:var(--cream-soft);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .app-visual{
+    aspect-ratio:1.6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+    background:var(--cream);
+  }
+  .app-visual.dark{background:var(--dark)}
+  .app-visual img{max-width:70%;max-height:100%}
+  .app-meta{
+    padding:24px 30px;
+    border-top:1px solid rgba(181,96,74,0.12);
+  }
+  .app-meta h4{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:22px;
+    margin-bottom:6px;
+    color:var(--terracota);
+  }
+  .app-meta p{font-size:12px;color:var(--gris);letter-spacing:1px}
+
+  /* Card instagram mockup */
+  .ig-mockup{
+    aspect-ratio:4/5;
+    background:linear-gradient(135deg,#F5EDE0 0%,#E8D5B0 100%);
+    padding:60px 40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    max-width:400px;
+    margin:0 auto;
+  }
+  .ig-mockup .top{font-size:10px;letter-spacing:4px;color:var(--terracota);text-transform:uppercase}
+  .ig-mockup .center{text-align:center}
+  .ig-mockup .center img{max-width:140px;margin-bottom:24px}
+  .ig-mockup .center h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:44px;letter-spacing:3px}
+  .ig-mockup .bottom{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;text-align:center;color:var(--dark);line-height:1.3}
+  .ig-mockup .bottom small{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:10px;letter-spacing:3px;color:var(--terracota);margin-top:14px;text-transform:uppercase}
+
+  /* Webinar slide */
+  .slide-mockup{
+    aspect-ratio:16/9;
+    background:var(--dark);
+    color:var(--cream);
+    padding:50px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    max-width:520px;
+  }
+  .slide-mockup .header{display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:3px;color:var(--dorado);text-transform:uppercase}
+  .slide-mockup .hero-text{text-align:center}
+  .slide-mockup .hero-text h2{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:54px;letter-spacing:3px;margin-bottom:16px}
+  .slide-mockup .hero-text p{font-size:11px;letter-spacing:4px;color:var(--dorado);text-transform:uppercase}
+  .slide-mockup .footer{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;text-align:center;opacity:0.8}
+
+  /* Stationery mockup */
+  .card-mockup{
+    aspect-ratio:1.72;
+    background:var(--cream-soft);
+    padding:34px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    max-width:400px;
+    border:1px solid rgba(181,96,74,0.12);
+  }
+  .card-mockup .top{display:flex;align-items:center;gap:16px}
+  .card-mockup .top img{width:50px}
+  .card-mockup .top .name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;letter-spacing:2px}
+  .card-mockup .top .role{font-size:9px;letter-spacing:3px;color:var(--terracota);text-transform:uppercase;margin-top:2px}
+  .card-mockup .bottom{font-size:10px;letter-spacing:2px;color:var(--gris);line-height:1.8}
+
+  /* ═════════════ CIERRE ═════════════ */
+  .closing{
+    background:var(--dark);
+    color:var(--cream);
+    padding:160px 40px;
+    text-align:center;
+  }
+  .closing-logo{max-width:140px;margin-bottom:40px;opacity:0.9}
+  .closing-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:48px;letter-spacing:2px;margin-bottom:20px}
+  .closing-tag{font-size:10px;letter-spacing:6px;color:var(--dorado);text-transform:uppercase;margin-bottom:60px}
+  .closing-meta{font-size:9px;letter-spacing:4px;color:var(--gris);text-transform:uppercase}
+
+  /* ═════════════ DOCUMENTOS ═════════════ */
+  .doc-intro-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+    margin-top:50px;
+    margin-bottom:60px;
+  }
+  .doc-spec{
+    background:var(--cream-soft);
+    padding:36px;
+    border-radius:2px;
+  }
+  .doc-spec h4{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:22px;
+    color:var(--terracota);
+    margin-bottom:16px;
+  }
+  .doc-spec dl{display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:13px}
+  .doc-spec dt{color:var(--gris);letter-spacing:1px;text-transform:uppercase;font-size:10px;align-self:center}
+  .doc-spec dd{color:var(--dark);font-weight:500}
+
+  .doc-mockup-wrap{
+    background:var(--cream-soft);
+    padding:50px;
+    border-radius:2px;
+    margin-bottom:40px;
+  }
+  .doc-mockup-wrap h3{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:24px;
+    color:var(--terracota);
+    margin-bottom:30px;
+  }
+
+  /* Diploma horizontal */
+  .diploma{
+    aspect-ratio:1.414;
+    background:#FBF7ED;
+    position:relative;
+    padding:60px 80px;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 10px 40px rgba(0,0,0,0.12);
+    margin:0 auto;
+    max-width:920px;
+    border:1px solid rgba(181,96,74,0.15);
+  }
+  .diploma::before{
+    content:'';
+    position:absolute;
+    inset:16px;
+    border:0.5px solid var(--dorado);
+    opacity:0.5;
+    pointer-events:none;
+  }
+  .diploma::after{
+    content:'';
+    position:absolute;
+    inset:22px;
+    border:0.5px solid var(--dorado);
+    opacity:0.25;
+    pointer-events:none;
+  }
+  .diploma-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    z-index:1;
+    position:relative;
+  }
+  .diploma-header-logo img{width:90px}
+  .diploma-header-right{text-align:right;font-size:9px;letter-spacing:3px;color:var(--terracota);text-transform:uppercase;line-height:1.8}
+  .diploma-header-right strong{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:16px;color:var(--dark);letter-spacing:1px;text-transform:none;margin-bottom:4px}
+
+  .diploma-center{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    text-align:center;
+    z-index:1;
+    position:relative;
+  }
+  .diploma-certifies{
+    font-size:10px;
+    letter-spacing:6px;
+    color:var(--terracota);
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .diploma-name{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:54px;
+    letter-spacing:2px;
+    color:var(--dark);
+    margin-bottom:8px;
+  }
+  .diploma-name-underline{
+    width:320px;
+    height:0.6px;
+    background:var(--dorado);
+    margin:0 auto 28px;
+  }
+  .diploma-body{
+    font-family:'Cormorant Garamond',serif;
+    font-size:16px;
+    line-height:1.8;
+    color:var(--dark);
+    max-width:640px;
+    margin:0 auto 20px;
+    font-weight:400;
+  }
+  .diploma-course{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:26px;
+    color:var(--terracota);
+    margin:14px 0;
+  }
+  .diploma-meta{
+    font-size:10px;
+    letter-spacing:3px;
+    color:var(--gris);
+    text-transform:uppercase;
+    margin-top:12px;
+  }
+
+  .diploma-footer{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:end;
+    gap:60px;
+    margin-top:30px;
+    z-index:1;
+    position:relative;
+  }
+  .sig-block{text-align:center}
+  .sig-line{border-top:0.6px solid var(--dark);padding-top:8px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--dark)}
+  .sig-role{font-size:9px;letter-spacing:2px;color:var(--terracota);text-transform:uppercase;margin-top:4px}
+  .sig-cred{font-size:8px;letter-spacing:1px;color:var(--gris);margin-top:2px}
+
+  .diploma-seal{
+    width:70px;
+    height:70px;
+    opacity:0.6;
+  }
+  .diploma-folio{
+    position:absolute;
+    bottom:20px;
+    right:30px;
+    font-family:monospace;
+    font-size:9px;
+    color:var(--gris);
+    letter-spacing:2px;
+  }
+
+  /* Certificado vertical */
+  .certif{
+    aspect-ratio:0.707;
+    background:#FBF7ED;
+    position:relative;
+    padding:60px 50px;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 10px 40px rgba(0,0,0,0.12);
+    max-width:420px;
+    margin:0 auto;
+    border:1px solid rgba(181,96,74,0.15);
+  }
+  .certif::before{
+    content:'';
+    position:absolute;
+    inset:14px;
+    border:0.5px solid var(--dorado);
+    opacity:0.5;
+    pointer-events:none;
+  }
+  .certif-top{text-align:center;z-index:1;position:relative}
+  .certif-top img{width:70px;margin-bottom:14px}
+  .certif-top .inst{font-size:8px;letter-spacing:3px;color:var(--terracota);text-transform:uppercase}
+  .certif-body{flex:1;display:flex;flex-direction:column;justify-content:center;text-align:center;z-index:1;position:relative}
+  .certif-label{font-size:9px;letter-spacing:5px;color:var(--terracota);text-transform:uppercase;margin-bottom:20px}
+  .certif-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:34px;color:var(--dark);margin-bottom:16px;letter-spacing:1px}
+  .certif-divider{width:80px;height:0.6px;background:var(--dorado);margin:0 auto 18px}
+  .certif-text{font-family:'Cormorant Garamond',serif;font-size:13px;line-height:1.7;color:var(--dark);margin-bottom:14px}
+  .certif-course{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--terracota);margin:10px 0}
+  .certif-meta{font-size:8px;letter-spacing:2px;color:var(--gris);text-transform:uppercase;margin-top:10px}
+  .certif-bottom{z-index:1;position:relative;padding-top:30px}
+  .certif-sig{text-align:center}
+  .certif-sig-line{border-top:0.5px solid var(--dark);padding-top:6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px}
+  .certif-sig-role{font-size:7px;letter-spacing:2px;color:var(--terracota);text-transform:uppercase;margin-top:2px}
+  .certif-folio{font-family:monospace;font-size:8px;color:var(--gris);text-align:center;margin-top:10px;letter-spacing:2px}
+
+  /* Carta membretada */
+  .letter{
+    aspect-ratio:0.707;
+    background:#FFFFFF;
+    position:relative;
+    padding:60px 60px 50px;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 10px 40px rgba(0,0,0,0.12);
+    max-width:420px;
+    margin:0 auto;
+    border:1px solid rgba(0,0,0,0.05);
+  }
+  .letter-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:20px;
+    border-bottom:0.5px solid var(--dorado);
+  }
+  .letter-header img{width:50px}
+  .letter-header-right{text-align:right}
+  .letter-header-right .n{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--dark);letter-spacing:1px}
+  .letter-header-right .sub{font-size:7px;letter-spacing:3px;color:var(--terracota);text-transform:uppercase;margin-top:2px}
+  .letter-body{flex:1;padding:30px 0;font-family:'Cormorant Garamond',serif;font-size:11px;line-height:1.7;color:var(--dark)}
+  .letter-body .date{text-align:right;margin-bottom:20px;font-size:10px;color:var(--gris)}
+  .letter-body p{margin-bottom:10px}
+  .letter-sign{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;margin-top:30px}
+  .letter-sign-role{font-size:7px;letter-spacing:2px;color:var(--terracota);text-transform:uppercase;margin-top:2px;font-style:normal}
+  .letter-footer{
+    padding-top:16px;
+    border-top:0.5px solid rgba(181,96,74,0.25);
+    font-size:7px;
+    letter-spacing:2px;
+    color:var(--gris);
+    text-transform:uppercase;
+    text-align:center;
+    line-height:1.8;
+  }
+
+  /* Data block legal */
+  .data-block{
+    background:var(--dark);
+    color:var(--cream);
+    padding:50px 60px;
+    border-radius:2px;
+    margin-top:50px;
+  }
+  .data-block-tag{font-size:10px;letter-spacing:4px;color:var(--dorado);text-transform:uppercase;margin-bottom:30px}
+  .data-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px 50px;
+    font-size:13px;
+    line-height:1.8;
+  }
+  .data-grid dt{font-size:9px;letter-spacing:3px;color:var(--dorado);text-transform:uppercase;margin-bottom:4px}
+  .data-grid dd{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400}
+  .data-grid dd.mono{font-family:monospace;font-size:12px;letter-spacing:1px;color:var(--cream)}
+
+  @media(max-width:900px){
+    .esencia-grid,.misuse-grid,.type-grid,.apps-grid,.voice-grid,.color-usage,.doc-intro-grid,.data-grid{grid-template-columns:1fr}
+    .color-grid{grid-template-columns:repeat(2,1fr)}
+    .section-title{font-size:36px}
+    .hero-title{font-size:48px}
+    .logo-variants,.logo-variants.three{grid-template-columns:1fr}
+    .diploma{padding:30px;aspect-ratio:auto}
+    .diploma-name{font-size:32px}
+    .diploma-footer{grid-template-columns:1fr;gap:30px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="nav">
+  <div class="nav-brand">Crania</div>
+  <div class="nav-links">
+    <a href="#esencia">Esencia</a>
+    <a href="#logo">Logo</a>
+    <a href="#color">Color</a>
+    <a href="#tipo">Tipografía</a>
+    <a href="#voz">Voz</a>
+    <a href="#apps">Aplicaciones</a>
+    <a href="#docs">Documentos</a>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<header class="hero">
+  <div class="hero-tag">Brand Book · Abril 2026 · v1.0</div>
+  <img src="Imagen_Marca/crania_logo_vertical.svg" class="hero-logo" alt="Crania">
+  <div class="hero-divider"></div>
+  <div class="hero-meta">Instituto Centrobioenergetica · Práctica Craneofascial</div>
+</header>
+
+<!-- ═══════════════ 01 — ESENCIA ═══════════════ -->
+<section id="esencia">
+  <div class="container">
+    <div class="section-number">— 01 —</div>
+    <h2 class="section-title">La <span class="italic">esencia</span></h2>
+    <p class="section-intro">
+      Crania es una práctica craneofascial autoaplicada. Una forma de devolver movilidad al cráneo,
+      liberar tensiones acumuladas y restaurar el flujo del sistema nervioso. No es masaje, no es yoga,
+      no es meditación. Es un gesto preciso, aprendible, repetible — que se convierte en ritual diario.
+    </p>
+
+    <div class="esencia-grid">
+      <div class="esencia-card">
+        <h4>Propósito</h4>
+        <p>Devolver el flujo. Reconectar la mujer con su cuerpo a través de un gesto que ella misma puede aplicarse, todos los días, sin depender de un terapeuta.</p>
+      </div>
+      <div class="esencia-card">
+        <h4>Promesa</h4>
+        <p>Herramientas precisas y suaves para liberar la bóveda craneal. Una práctica que cabe en 10 minutos pero cuyos efectos atraviesan el día.</p>
+      </div>
+      <div class="esencia-card">
+        <h4>Público</h4>
+        <p>Mujeres entre 40 y 55 años que buscan prácticas de autocuidado refinadas, somáticas, con fundamento clínico. No buscan wellness genérico — buscan método.</p>
+      </div>
+    </div>
+
+    <div class="manifiesto">
+      <div class="manifiesto-tag">Manifiesto</div>
+      <p>El cráneo no es una caja cerrada.</p>
+      <p>Respira, se expande, se contrae — una microrrespiración que sostiene al sistema nervioso completo. Cuando se bloquea, todo el cuerpo se vuelve más rígido. Cuando se libera, algo se abre.</p>
+      <p>Crania no pretende sanar lo irresoluble. Pretende algo más humilde y más radical: devolverte una práctica diaria, precisa y propia, para que el flujo vuelva.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 02 — LOGO ═══════════════ -->
+<section id="logo">
+  <div class="container">
+    <div class="section-number">— 02 —</div>
+    <h2 class="section-title">El <span class="italic">logo</span></h2>
+    <p class="section-intro">
+      El símbolo de Crania es un rosetón geométrico de doce pétalos en dos capas rotadas —
+      eco visual de las placas craneales que se abren en rotación fisiológica. No es una flor literal:
+      es una geometría sagrada suavizada, que remite a mandala, rosetón gótico y las ilustraciones
+      esotéricas de Hilma af Klint. Centro dorado como punto de origen del movimiento.
+    </p>
+
+    <div class="logo-showcase">
+      <img src="Imagen_Marca/crania_logo_vertical.svg" alt="Logo principal">
+    </div>
+
+    <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;margin:60px 0 24px;color:var(--terracota)">Variantes del sistema</h3>
+
+    <div class="logo-variants">
+      <div class="variant">
+        <img src="Imagen_Marca/crania_logo_vertical.svg" alt="">
+        <div class="variant-label">Vertical · Fondo claro</div>
+      </div>
+      <div class="variant dark">
+        <img src="Imagen_Marca/crania_logo_vertical_dark.svg" alt="">
+        <div class="variant-label">Vertical · Fondo oscuro</div>
+      </div>
+    </div>
+
+    <div class="logo-variants">
+      <div class="variant" style="aspect-ratio:2.6">
+        <img src="Imagen_Marca/crania_logo_horizontal.svg" alt="" style="max-height:140px">
+        <div class="variant-label">Horizontal · Firma institucional</div>
+      </div>
+    </div>
+
+    <div class="logo-variants three">
+      <div class="variant">
+        <img src="Imagen_Marca/crania_isotipo.svg" alt="" style="max-height:140px">
+        <div class="variant-label">Isotipo</div>
+      </div>
+      <div class="variant">
+        <img src="Imagen_Marca/crania_favicon.svg" alt="" style="max-height:64px">
+        <div class="variant-label">Favicon 64px</div>
+      </div>
+      <div class="variant">
+        <img src="Imagen_Marca/crania_favicon.svg" alt="" style="max-height:32px">
+        <div class="variant-label">Favicon 32px</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;margin:80px 0 24px;color:var(--terracota)">Espacio de respiro</h3>
+    <div class="clearspace">
+      <img src="Imagen_Marca/crania_logo_vertical.svg" alt="">
+    </div>
+    <p class="clearspace-note">El logo requiere un margen mínimo equivalente al radio del rosetón. Nunca invadir este espacio con texto, imágenes o bordes.</p>
+
+    <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;margin:80px 0 24px;color:var(--terracota)">Usos incorrectos</h3>
+    <div class="misuse-grid">
+      <div class="misuse-item">
+        <div class="misuse stretched"><img src="Imagen_Marca/crania_isotipo.svg" alt=""></div>
+        <div class="misuse-label">Estirar / deformar</div>
+      </div>
+      <div class="misuse-item">
+        <div class="misuse rotated"><img src="Imagen_Marca/crania_isotipo.svg" alt=""></div>
+        <div class="misuse-label">Rotar</div>
+      </div>
+      <div class="misuse-item">
+        <div class="misuse tinted"><img src="Imagen_Marca/crania_isotipo.svg" alt=""></div>
+        <div class="misuse-label">Cambiar color</div>
+      </div>
+      <div class="misuse-item">
+        <div class="misuse" style="background:linear-gradient(45deg,#ff0,#f0f)"><img src="Imagen_Marca/crania_isotipo.svg" alt=""></div>
+        <div class="misuse-label">Fondos ajenos al sistema</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 03 — COLOR ═══════════════ -->
+<section id="color">
+  <div class="container">
+    <div class="section-number">— 03 —</div>
+    <h2 class="section-title">La <span class="italic">paleta</span></h2>
+    <p class="section-intro">
+      Una paleta cálida y neutra que evita el esoterismo estridente y el wellness azucarado.
+      El terracota es la voz principal — color de tierra, de fascia, de piel bajo luz cálida.
+      El dorado acentúa lo preciso. El crema sostiene. El verde salvia y gris apoyan en contextos secundarios.
+    </p>
+
+    <div class="color-grid">
+      <div class="color-swatch color-primary">
+        <div class="name italic">Terracota</div>
+        <div class="hex">#B5604A</div>
+      </div>
+      <div class="color-swatch color-dorado">
+        <div class="name italic">Dorado</div>
+        <div class="hex">#E8A857</div>
+      </div>
+      <div class="color-swatch color-salvia">
+        <div class="name italic">Salvia</div>
+        <div class="hex">#8FA87A</div>
+      </div>
+      <div class="color-swatch color-cream">
+        <div class="name italic">Crema</div>
+        <div class="hex">#F5EDE0</div>
+      </div>
+      <div class="color-swatch color-dark">
+        <div class="name italic">Bóveda</div>
+        <div class="hex">#2A1F1A</div>
+      </div>
+      <div class="color-swatch color-gris">
+        <div class="name italic">Gris texto</div>
+        <div class="hex">#888580</div>
+      </div>
+    </div>
+
+    <div class="color-usage">
+      <div class="usage-block">
+        <h4>Principal</h4>
+        <ul>
+          <li>Terracota en logo, acentos y títulos destacados</li>
+          <li>Crema como fondo por defecto — nunca blanco puro</li>
+          <li>Bóveda para fondos oscuros y texto en alta jerarquía</li>
+        </ul>
+      </div>
+      <div class="usage-block">
+        <h4>Secundario</h4>
+        <ul>
+          <li>Dorado solo como acento puntual (líneas, núcleo, detalle)</li>
+          <li>Salvia para categorías secundarias y gráficos</li>
+          <li>Gris solo para descriptivos y líneas auxiliares</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 04 — TIPOGRAFÍA ═══════════════ -->
+<section id="tipo">
+  <div class="container">
+    <div class="section-number">— 04 —</div>
+    <h2 class="section-title">La <span class="italic">tipografía</span></h2>
+    <p class="section-intro">
+      Dos familias. Cormorant Garamond en itálica carga la voz poética — títulos, palabras clave,
+      citas. Inter en sus pesos ligeros sostiene el cuerpo de texto y los descriptivos con claridad.
+      La combinación evoca la editorial de revista científica ilustrada: precisión con alma.
+    </p>
+
+    <div class="type-grid">
+      <div class="type-card display">
+        <div class="label">Display</div>
+        <div class="type-specimen">Aa Crania</div>
+        <div class="type-name">Cormorant Garamond</div>
+        <div class="type-meta">Italic · 400 / 500</div>
+        <p class="type-desc">Para títulos, palabras ancla, citas y el wordmark. Su itálica generosa y las terminaciones afiladas dan gravedad poética. Nunca usar en cuerpo largo.</p>
+      </div>
+      <div class="type-card">
+        <div class="label">Texto</div>
+        <div class="type-specimen sans">Crania</div>
+        <div class="type-name">Inter</div>
+        <div class="type-meta">Light 300 · Regular 400 · Medium 500</div>
+        <p class="type-desc">Para cuerpo, descriptivos y todo texto funcional. En descriptivos usar siempre en mayúsculas con tracking amplio (+3 a +5). Claridad total, cero decoración.</p>
+      </div>
+    </div>
+
+    <div class="type-scale">
+      <div class="type-scale-row">
+        <div class="scale-meta">Título principal · Cormorant Italic</div>
+        <div class="scale-sample h1">Devuelve el flujo</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="scale-meta">Título sección · Cormorant Italic</div>
+        <div class="scale-sample h2">La práctica craneofascial</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="scale-meta">Subtítulo · Cormorant Italic</div>
+        <div class="scale-sample h3">Un gesto diario</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="scale-meta">Cuerpo · Inter Regular</div>
+        <div class="scale-sample body">Una práctica que cabe en diez minutos pero cuyos efectos atraviesan el día entero.</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="scale-meta">Descriptivo · Inter Light</div>
+        <div class="scale-sample small">Práctica Craneofascial · Instituto Centrobioenergetica</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 05 — VOZ ═══════════════ -->
+<section id="voz">
+  <div class="container">
+    <div class="section-number">— 05 —</div>
+    <h2 class="section-title">La <span class="italic">voz</span></h2>
+    <p class="section-intro">
+      Crania habla desde la precisión serena. Combina el rigor clínico del Instituto con la
+      suavidad de una práctica íntima. No moraliza, no promete milagros, no se vende como
+      "wellness". Habla de fisiología concreta con palabras de cuerpo.
+    </p>
+
+    <div class="voice-grid">
+      <div class="voice-col yes">
+        <h4>Cómo habla Crania</h4>
+        <ul>
+          <li>Clara, breve, precisa</li>
+          <li>Somática — "tu bóveda craneal", "tu mandíbula"</li>
+          <li>Con fundamento ("el sistema nervioso autónomo...")</li>
+          <li>Poética sin ser vaga</li>
+          <li>Invita sin empujar</li>
+          <li>Usa palabras ancla: flujo, bóveda, rotación, placa</li>
+        </ul>
+      </div>
+      <div class="voice-col no">
+        <h4>Cómo no habla Crania</h4>
+        <ul>
+          <li>Pseudocientífica o esotérica explícita</li>
+          <li>"Sanación", "energía universal", "chakras"</li>
+          <li>Imperativa ("¡Únete!", "¡No te lo pierdas!")</li>
+          <li>Motivacional genérica</li>
+          <li>Clínica fría — no es un hospital</li>
+          <li>Wellness de spa "relájate & ámate"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="voice-sample">
+      <div class="voice-sample-tag">Muestra de voz</div>
+      <p>Durante años te dijeron que el cráneo era una caja fija. No lo es.</p>
+      <p>Cada una de sus placas tiene una microrrespiración propia — un movimiento sutil, rítmico, que sostiene al sistema nervioso entero. Cuando se bloquea, el cuerpo se vuelve rígido por dentro. Cuando se libera, algo vuelve a fluir.</p>
+      <p>Crania es el gesto diario que te devuelve ese flujo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 06 — APLICACIONES ═══════════════ -->
+<section id="apps">
+  <div class="container">
+    <div class="section-number">— 06 —</div>
+    <h2 class="section-title">Las <span class="italic">aplicaciones</span></h2>
+    <p class="section-intro">
+      Cómo se ve Crania en su vida cotidiana. Ejemplos de la marca aplicada sobre
+      los soportes que más usa: redes sociales, webinars, slides, material impreso.
+    </p>
+
+    <div class="apps-grid">
+      <div class="app-card">
+        <div class="app-visual" style="padding:0">
+          <div class="ig-mockup">
+            <div class="top">CRANIA · WEBINAR GRATUITO</div>
+            <div class="center">
+              <img src="Imagen_Marca/crania_isotipo.svg" alt="">
+              <h3>Devuelve<br>el flujo</h3>
+            </div>
+            <div class="bottom">
+              Una práctica diaria<br>para liberar la bóveda craneal
+              <small>16 abril · 18:00 MX</small>
+            </div>
+          </div>
+        </div>
+        <div class="app-meta">
+          <h4>Instagram · Webinar</h4>
+          <p>Formato 4:5 · Cover de lanzamiento</p>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-visual dark" style="padding:0">
+          <div class="slide-mockup">
+            <div class="header">
+              <span>CRANIA</span>
+              <span>INSTITUTO CENTROBIOENERGETICA</span>
+            </div>
+            <div class="hero-text">
+              <h2>Devuelve el flujo</h2>
+              <p>Práctica Craneofascial</p>
+            </div>
+            <div class="footer">— Dr. Miguel Ojeda Rios —</div>
+          </div>
+        </div>
+        <div class="app-meta">
+          <h4>Slide · Webinar / Zoom</h4>
+          <p>Formato 16:9 · Apertura de sesión</p>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-visual" style="padding:40px">
+          <div class="card-mockup">
+            <div class="top">
+              <img src="Imagen_Marca/crania_isotipo.svg" alt="">
+              <div>
+                <div class="name">Crania</div>
+                <div class="role">Práctica Craneofascial</div>
+              </div>
+            </div>
+            <div class="bottom">
+              Instituto Centrobioenergetica<br>
+              contacto@institutocentrobioenergetica.com
+            </div>
+          </div>
+        </div>
+        <div class="app-meta">
+          <h4>Tarjeta · Soporte impreso</h4>
+          <p>85×50 mm · Presentación profesional</p>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-visual" style="padding:0;background:var(--terracota)">
+          <div style="width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px;color:var(--cream);text-align:center">
+            <div style="font-size:10px;letter-spacing:5px;color:var(--dorado);margin-bottom:30px;text-transform:uppercase">— 03 —</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:42px;line-height:1.2;margin-bottom:20px">La placa parietal rota en el eje lateral</div>
+            <div style="font-size:10px;letter-spacing:4px;color:var(--dorado);text-transform:uppercase">Módulo 3 · Secuencia básica</div>
+          </div>
+        </div>
+        <div class="app-meta">
+          <h4>Contenido · Post de técnica</h4>
+          <p>Formato cuadrado · Instagram feed</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 07 — DOCUMENTOS ═══════════════ -->
+<section id="docs">
+  <div class="container">
+    <div class="section-number">— 07 —</div>
+    <h2 class="section-title">Los <span class="italic">documentos</span></h2>
+    <p class="section-intro">
+      Plantillas institucionales del Instituto Centrobioenergetica aplicadas al lenguaje de Crania.
+      Diploma de acreditación, certificado de participación, carta membretada y ficha institucional.
+      Todos los documentos se emiten en formato A4, impresión digital o litográfica, papel 120–180 g.
+    </p>
+
+    <!-- Datos institucionales base -->
+    <div class="data-block">
+      <div class="data-block-tag">Datos institucionales · Base para documentos</div>
+      <dl class="data-grid">
+        <div>
+          <dt>Razón social</dt>
+          <dd>Instituto Centrobioenergetica</dd>
+        </div>
+        <div>
+          <dt>Fundador y Director</dt>
+          <dd>Dr. Miguel Ojeda Rios</dd>
+        </div>
+        <div>
+          <dt>Cédula profesional</dt>
+          <dd class="mono">[Cédula del Dr. Ojeda · completar]</dd>
+        </div>
+        <div>
+          <dt>Especialidad</dt>
+          <dd>Medicina · Bioenergética</dd>
+        </div>
+        <div>
+          <dt>Domicilio fiscal</dt>
+          <dd class="mono">[Dirección completa · completar]</dd>
+        </div>
+        <div>
+          <dt>Contacto</dt>
+          <dd class="mono">contacto@institutocentrobioenergetica.com</dd>
+        </div>
+        <div>
+          <dt>Web</dt>
+          <dd class="mono">institutocentrobioenergetica.com</dd>
+        </div>
+        <div>
+          <dt>Programa</dt>
+          <dd>Crania · Práctica Craneofascial</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Specs técnicas -->
+    <div class="doc-intro-grid">
+      <div class="doc-spec">
+        <h4>Especificaciones de impresión</h4>
+        <dl>
+          <dt>Tamaño</dt><dd>A4 (210 × 297 mm)</dd>
+          <dt>Papel</dt><dd>Opalina 180 g — diploma · 120 g — carta</dd>
+          <dt>Color</dt><dd>Impresión digital CMYK</dd>
+          <dt>Acabado</dt><dd>Mate con laminado opcional</dd>
+          <dt>Márgenes</dt><dd>15 mm mínimo en todos los bordes</dd>
+        </dl>
+      </div>
+      <div class="doc-spec">
+        <h4>Reglas de composición</h4>
+        <dl>
+          <dt>Tipografía</dt><dd>Cormorant Garamond · Inter</dd>
+          <dt>Color base</dt><dd>Terracota #B5604A + Dorado #E8A857</dd>
+          <dt>Firma</dt><dd>Dr. Miguel Ojeda Rios · siempre con título</dd>
+          <dt>Folio</dt><dd>Formato CRN-YYYY-NNN</dd>
+          <dt>Sello</dt><dd>Isotipo en esquina inferior, opacidad 60%</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- DIPLOMA -->
+    <div class="doc-mockup-wrap">
+      <h3>Diploma de acreditación · A4 horizontal</h3>
+      <div class="diploma">
+        <div class="diploma-header">
+          <div class="diploma-header-logo">
+            <img src="Imagen_Marca/crania_isotipo.svg" alt="">
+          </div>
+          <div class="diploma-header-right">
+            <strong>Instituto Centrobioenergetica</strong>
+            Dr. Miguel Ojeda Rios · Director
+          </div>
+        </div>
+
+        <div class="diploma-center">
+          <div class="diploma-certifies">Otorga el presente diploma a</div>
+          <div class="diploma-name">María Fernanda Herrera Castillo</div>
+          <div class="diploma-name-underline"></div>
+          <div class="diploma-body">
+            Por haber completado satisfactoriamente el programa de formación en
+          </div>
+          <div class="diploma-course">Crania · Práctica Craneofascial</div>
+          <div class="diploma-body" style="margin-top:4px">
+            con una carga académica de 40 horas teórico-prácticas y habiendo acreditado<br>
+            la secuencia completa de gestos, protocolos y criterios clínicos del método.
+          </div>
+          <div class="diploma-meta">Monterrey, Nuevo León · 15 de junio de 2026</div>
+        </div>
+
+        <div class="diploma-footer">
+          <div class="sig-block">
+            <div class="sig-line">Dr. Miguel Ojeda Rios</div>
+            <div class="sig-role">Fundador y Director</div>
+            <div class="sig-cred">Instituto Centrobioenergetica</div>
+          </div>
+          <img src="Imagen_Marca/crania_isotipo.svg" class="diploma-seal" alt="">
+          <div class="sig-block">
+            <div class="sig-line">Coordinación Académica</div>
+            <div class="sig-role">Crania · Práctica Craneofascial</div>
+            <div class="sig-cred">Programa 2026</div>
+          </div>
+        </div>
+        <div class="diploma-folio">FOLIO · CRN-2026-001</div>
+      </div>
+    </div>
+
+    <!-- CERTIFICADO + CARTA -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:40px">
+      <div class="doc-mockup-wrap">
+        <h3>Certificado · A4 vertical</h3>
+        <div class="certif">
+          <div class="certif-top">
+            <img src="Imagen_Marca/crania_isotipo.svg" alt="">
+            <div class="inst">Instituto Centrobioenergetica</div>
+          </div>
+          <div class="certif-body">
+            <div class="certif-label">Certificado de participación</div>
+            <div class="certif-name">María Fernanda<br>Herrera Castillo</div>
+            <div class="certif-divider"></div>
+            <div class="certif-text">Por su participación activa en el webinar introductorio</div>
+            <div class="certif-course">Devuelve el flujo</div>
+            <div class="certif-text" style="margin-top:4px">Una práctica diaria para liberar la bóveda craneal</div>
+            <div class="certif-meta">16 de abril de 2026 · 2 horas</div>
+          </div>
+          <div class="certif-bottom">
+            <div class="certif-sig">
+              <div class="certif-sig-line">Dr. Miguel Ojeda Rios</div>
+              <div class="certif-sig-role">Director · Instituto</div>
+            </div>
+            <div class="certif-folio">CRN-WEB-2026-0416-001</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-mockup-wrap">
+        <h3>Carta membretada · A4 vertical</h3>
+        <div class="letter">
+          <div class="letter-header">
+            <img src="Imagen_Marca/crania_isotipo.svg" alt="">
+            <div class="letter-header-right">
+              <div class="n">Crania</div>
+              <div class="sub">Instituto Centrobioenergetica</div>
+            </div>
+          </div>
+          <div class="letter-body">
+            <div class="date">Monterrey, N.L. a 16 de abril de 2026</div>
+            <p><strong>A quien corresponda:</strong></p>
+            <p>Por medio de la presente, se hace constar que la Sra. María Fernanda Herrera Castillo se encuentra inscrita en el programa de formación <em>Crania · Práctica Craneofascial</em> impartido por este Instituto.</p>
+            <p>El programa consta de 40 horas teórico-prácticas distribuidas en ocho módulos y se desarrolla bajo supervisión del Dr. Miguel Ojeda Rios.</p>
+            <p>Se extiende la presente a solicitud del interesado para los fines que a él convengan.</p>
+            <div class="letter-sign">
+              Atentamente,<br><br>
+              Dr. Miguel Ojeda Rios
+              <div class="letter-sign-role">Director · Instituto Centrobioenergetica</div>
+            </div>
+          </div>
+          <div class="letter-footer">
+            contacto@institutocentrobioenergetica.com<br>
+            institutocentrobioenergetica.com
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nomenclatura de folios -->
+    <div class="data-block" style="margin-top:40px">
+      <div class="data-block-tag">Nomenclatura de folios</div>
+      <dl class="data-grid">
+        <div>
+          <dt>Diploma de formación completa</dt>
+          <dd class="mono">CRN-YYYY-NNN</dd>
+        </div>
+        <div>
+          <dt>Certificado de webinar / taller</dt>
+          <dd class="mono">CRN-WEB-YYYY-MMDD-NNN</dd>
+        </div>
+        <div>
+          <dt>Carta / Constancia institucional</dt>
+          <dd class="mono">CRN-CAR-YYYY-NNN</dd>
+        </div>
+        <div>
+          <dt>Material didáctico interno</dt>
+          <dd class="mono">CRN-MAT-YYYY-NN</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CIERRE ═══════════════ -->
+<section class="closing">
+  <img src="Imagen_Marca/crania_logo_vertical_dark.svg" class="closing-logo" alt="Crania">
+  <div class="closing-tag">— Devuelve el flujo —</div>
+  <div class="closing-meta">
+    Instituto Centrobioenergetica · Abril 2026<br>
+    Dr. Miguel Ojeda Rios · Todos los derechos reservados
+  </div>
+</section>
+
+</body>
+</html>

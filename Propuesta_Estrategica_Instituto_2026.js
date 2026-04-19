@@ -562,7 +562,7 @@ children.push(boldBullet("Parte 2 = Causa/Transformacion: ", "La raiz del proble
 children.push(spacer(60));
 
 const pairs = [
-  ["Reset Hormonal", "Setpoint Metabolico", "Aminoacidos Terapeuticos", "Entender por que no bajo de peso", "Restaurar la bioquimica hormonal", "Mujeres 35-55 con resistencia metabolica", "$197 ambos / $127 individual"],
+  ["Reset Hormonal", "Setpoint Metabolico", "Aminoacidos Terapeuticos", "Entender por que no bajo de peso", "Restaurar la bioquimica hormonal", "Mujeres 35-55 con resistencia metabolica", "$4,600 MXN"],
   ["Ninos en Equilibrio", "Neuroaprendizaje", "Biomagnetismo Kids", "Como aprende y se mueve el cerebro", "Como equilibrar al nino energeticamente", "Mamas, maestros, psicologos infantiles", "$197 ambos / $127 individual"],
   ["Tu Casa Sana", "Geobiologia y Radiestesia", "NIG / Campos Morficos", "Detectar geopatias y campos", "Limpiar y corregir el espacio", "Familias, arquitectos, terapeutas", "$197 ambos / $127 individual"],
   ["Por Que Enferme?", "Conflictologia Biologica", "Bioenergetica V4", "Descubrir el conflicto oculto", "Corregir el campo bioenergetico", "Personas con enfermedades cronicas", "$247 ambos / $157 individual"],

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>CRANIA — Webinar Promo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #1C1410;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+      padding: 60px 40px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .label {
+      color: #888580;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    /* ─── SQUARE 1:1 ─── */
+    .card-square {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: #F5EDE0;
+      flex-shrink: 0;
+    }
+
+    .card-square .photo {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 68%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* gradient bridge between photo and cream */
+    .card-square .bridge {
+      position: absolute;
+      top: 60%;
+      left: 0;
+      width: 100%;
+      height: 14%;
+      background: linear-gradient(to bottom, transparent, #F5EDE0);
+      z-index: 1;
+    }
+
+    .card-square .text-zone {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 38%;
+      background: #F5EDE0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 64px 40px;
+    }
+
+    .card-square .tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 5px;
+      color: #B5604A;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .card-square .title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 130px;
+      font-weight: 300;
+      letter-spacing: 22px;
+      color: #2A1F1A;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .card-square .rule {
+      width: 64px;
+      height: 1px;
+      background: #E8A857;
+      margin: 20px auto;
+    }
+
+    .card-square .slogan {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 300;
+      font-style: italic;
+      color: #8B4A2A;
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+    }
+
+    .card-square .details {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .card-square .details span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      color: #888580;
+      text-transform: uppercase;
+    }
+
+    .card-square .details .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #E8A857;
+      flex-shrink: 0;
+    }
+
+    .card-square .footer {
+      position: absolute;
+      bottom: 20px;
+      left: 0; right: 0;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: #C4956A;
+      text-transform: uppercase;
+      z-index: 3;
+    }
+
+    /* top badge on photo */
+    .card-square .badge {
+      position: absolute;
+      top: 32px;
+      right: 40px;
+      z-index: 3;
+      text-align: right;
+    }
+
+    .card-square .badge .badge-top {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      color: #E8A857;
+      text-transform: uppercase;
+    }
+
+    .card-square .badge .badge-bottom {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      color: rgba(245,237,224,0.7);
+      text-transform: uppercase;
+    }
+
+    /* ─── WIDE 16:9 ─── */
+    .card-wide {
+      width: 1920px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: #F5EDE0;
+      flex-shrink: 0;
+      display: flex;
+    }
+
+    .card-wide .photo-side {
+      width: 55%;
+      height: 100%;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .card-wide .photo-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* gradient fade to cream on right edge of photo */
+    .card-wide .photo-side::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 30%;
+      height: 100%;
+      background: linear-gradient(to right, transparent, #F5EDE0);
+    }
+
+    .card-wide .text-side {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 100px 80px 60px;
+      background: #F5EDE0;
+      position: relative;
+    }
+
+    .card-wide .text-side .tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 6px;
+      color: #B5604A;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .card-wide .text-side .title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 160px;
+      font-weight: 300;
+      letter-spacing: 20px;
+      color: #2A1F1A;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .card-wide .text-side .rule {
+      width: 56px;
+      height: 1px;
+      background: #E8A857;
+      margin: 28px 0;
+    }
+
+    .card-wide .text-side .slogan {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 300;
+      font-style: italic;
+      color: #8B4A2A;
+      letter-spacing: 2px;
+      margin-bottom: 48px;
+    }
+
+    .card-wide .text-side .detail-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-wide .text-side .detail-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .card-wide .text-side .detail-row .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #E8A857;
+      flex-shrink: 0;
+    }
+
+    .card-wide .text-side .detail-row span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      color: #888580;
+      text-transform: uppercase;
+    }
+
+    .card-wide .text-side .instituto {
+      position: absolute;
+      bottom: 48px;
+      left: 60px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: #C4956A;
+      text-transform: uppercase;
+    }
+
+    /* vertical accent line wide */
+    .card-wide .accent-line {
+      position: absolute;
+      left: 0;
+      top: 80px;
+      bottom: 80px;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, #E8A857 30%, #E8A857 70%, transparent);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="label">Formato cuadrado — 1080 × 1080 px</div>
+
+  <!-- ─── SQUARE ─── -->
+  <div class="card-square">
+
+    <img class="photo"
+      src="Imagenes_Promo/crania_conexion_emocional_1776360944611.png"
+      alt="Crania">
+
+    <div class="bridge"></div>
+
+    <div class="badge">
+      <div class="badge-top">Webinar gratuito</div>
+      <div class="badge-bottom">Zoom · 16 de abril</div>
+    </div>
+
+    <div class="text-zone">
+      <div class="tag">Práctica craneofascial</div>
+      <div class="title">Crania</div>
+      <div class="rule"></div>
+      <div class="slogan">Devuelve el flujo.</div>
+      <div class="details">
+        <span>16 abril</span>
+        <div class="dot"></div>
+        <span>Zoom gratuito</span>
+        <div class="dot"></div>
+        <span>Dr. Miguel Ojeda Rios</span>
+      </div>
+    </div>
+
+    <div class="footer">Instituto Centrobioenergetica</div>
+
+  </div>
+
+  <div class="label">Formato horizontal — 1920 × 1080 px</div>
+
+  <!-- ─── WIDE 16:9 ─── -->
+  <div class="card-wide">
+
+    <div class="photo-side">
+      <img src="Imagenes_Promo/crania_conexion_emocional_1776360944611.png" alt="Crania">
+    </div>
+
+    <div class="text-side">
+      <div class="accent-line"></div>
+
+      <div class="tag">Práctica craneofascial</div>
+      <div class="title">Crania</div>
+      <div class="rule"></div>
+      <div class="slogan">Devuelve el flujo.</div>
+
+      <div class="detail-block">
+        <div class="detail-row">
+          <div class="dot"></div>
+          <span>16 de abril · 2026</span>
+        </div>
+        <div class="detail-row">
+          <div class="dot"></div>
+          <span>Zoom · Gratuito</span>
+        </div>
+        <div class="detail-row">
+          <div class="dot"></div>
+          <span>Dr. Miguel Ojeda Rios</span>
+        </div>
+        <div class="detail-row">
+          <div class="dot"></div>
+          <span>Taller 25 de abril · $950</span>
+        </div>
+      </div>
+
+      <div class="instituto">Instituto Centrobioenergetica</div>
+    </div>
+
+  </div>
+
+</body>
+</html>

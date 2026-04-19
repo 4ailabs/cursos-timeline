@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portada YouTube — Cáncer Metabólico</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #050510;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .thumbnail {
+    position: relative;
+    width: 1280px;
+    height: 720px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #020b1a 0%, #061540 30%, #0a1e5c 55%, #081245 80%, #040d2a 100%);
+  }
+
+  .thumbnail::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .glow-teal {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    left: -120px;
+    top: -80px;
+    background: radial-gradient(circle, rgba(0,102,255,0.35) 0%, rgba(0,136,255,0.15) 35%, rgba(30,64,175,0.06) 60%, transparent 75%);
+    filter: blur(50px);
+    z-index: 1;
+  }
+
+  .glow-blue-center {
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    left: 30%;
+    bottom: -100px;
+    background: radial-gradient(circle, rgba(59,130,246,0.2) 0%, rgba(37,99,235,0.08) 50%, transparent 70%);
+    filter: blur(60px);
+    z-index: 1;
+  }
+
+  .glow-amber {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    right: 30px;
+    bottom: -80px;
+    background: radial-gradient(circle, rgba(239,68,68,0.18) 0%, rgba(249,115,22,0.1) 35%, rgba(234,88,12,0.04) 60%, transparent 75%);
+    filter: blur(70px);
+    z-index: 1;
+  }
+
+  .grid-bg {
+    display: none;
+  }
+
+  .dna-container {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 220px;
+    height: 520px;
+    opacity: 0.18;
+    z-index: 3;
+  }
+
+  .dna-container svg { width: 100%; height: 100%; filter: blur(0.8px); }
+
+  .mito-container {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 380px;
+    height: 380px;
+    z-index: 5;
+  }
+
+  .mito-glow {
+    position: absolute;
+    inset: -50px;
+    background: radial-gradient(circle, rgba(59,130,246,0.35) 0%, rgba(37,99,235,0.18) 40%, rgba(29,78,216,0.06) 65%, transparent 80%);
+    border-radius: 50%;
+    animation: mitoBreath 4s ease-in-out infinite;
+  }
+
+  @keyframes mitoBreath {
+    0%, 100% { transform: scale(1); opacity: 0.85; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+
+  .mito-svg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+    filter: drop-shadow(0 0 40px rgba(59,130,246,0.5)) drop-shadow(0 0 80px rgba(37,99,235,0.2));
+  }
+
+  .fracture {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, rgba(249,115,22,0) 8%, rgba(249,115,22,0.7) 25%, rgba(239,68,68,1) 50%, rgba(249,115,22,0.7) 75%, rgba(249,115,22,0) 92%, transparent 100%);
+    z-index: 4;
+    filter: blur(1px);
+  }
+
+  .fracture::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 0;
+    width: 44px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, rgba(249,115,22,0) 8%, rgba(249,115,22,0.12) 25%, rgba(239,68,68,0.2) 50%, rgba(249,115,22,0.12) 75%, rgba(249,115,22,0) 92%, transparent 100%);
+    filter: blur(10px);
+  }
+
+  .text-block {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 520px;
+    z-index: 8;
+    text-align: right;
+  }
+
+  .tag-line {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(251,146,60,0.95);
+    margin-bottom: 16px;
+  }
+
+  .title-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 82px;
+    line-height: 0.92;
+    color: #f8fafc;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 40px rgba(59,130,246,0.25), 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .title-accent {
+    color: #60a5fa;
+    text-shadow: 0 0 30px rgba(59,130,246,0.6), 0 0 60px rgba(37,99,235,0.3);
+  }
+
+  .title-warn {
+    color: #ef4444;
+    text-shadow: 0 0 30px rgba(239,68,68,0.5), 0 0 60px rgba(220,38,38,0.25);
+  }
+
+  .subtitle {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: rgba(191,219,254,0.8);
+    line-height: 1.4;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(59,130,246,0.3);
+  }
+
+  .speaker-badge {
+    position: absolute;
+    left: 60px;
+    bottom: 40px;
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .speaker-line { width: 40px; height: 2px; background: linear-gradient(90deg, #3b82f6, transparent); }
+
+  .speaker-name {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: rgba(248,250,252,0.8);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .speaker-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: rgba(147,197,253,0.5);
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  .live-badge {
+    position: absolute;
+    top: 35px;
+    right: 80px;
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(239,68,68,0.2);
+    border: 1px solid rgba(239,68,68,0.5);
+    border-radius: 4px;
+  }
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(239,68,68,0.6);
+    animation: livePulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(239,68,68,0.6); }
+    50% { opacity: 0.6; box-shadow: 0 0 16px rgba(239,68,68,0); }
+  }
+
+  .live-text {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #ef4444;
+    text-transform: uppercase;
+  }
+
+  .brand {
+    position: absolute;
+    right: 80px;
+    bottom: 40px;
+    z-index: 8;
+  }
+
+  .brand-name {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(147,197,253,0.4);
+  }
+
+  .particles {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(96,165,250,0.5);
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(59,130,246,0.4);
+    animation: drift 8s ease-in-out infinite;
+  }
+
+  .particle:nth-child(1) { left: 15%; top: 20%; animation-duration: 10s; }
+  .particle:nth-child(2) { left: 25%; top: 60%; animation-delay: 2s; animation-duration: 12s; width: 2px; height: 2px; }
+  .particle:nth-child(3) { left: 35%; top: 35%; animation-delay: 4s; animation-duration: 9s; background: rgba(251,146,60,0.45); box-shadow: 0 0 6px rgba(249,115,22,0.4); }
+  .particle:nth-child(4) { left: 55%; top: 75%; animation-delay: 1s; animation-duration: 11s; width: 4px; height: 4px; background: rgba(59,130,246,0.35); }
+  .particle:nth-child(5) { left: 70%; top: 15%; animation-delay: 3s; animation-duration: 13s; background: rgba(239,68,68,0.35); box-shadow: 0 0 6px rgba(239,68,68,0.3); width: 2px; height: 2px; }
+  .particle:nth-child(6) { left: 45%; top: 50%; animation-delay: 5s; animation-duration: 8s; width: 4px; height: 4px; }
+  .particle:nth-child(7) { left: 80%; top: 45%; animation-delay: 2.5s; animation-duration: 10s; width: 2px; height: 2px; }
+  .particle:nth-child(8) { left: 10%; top: 80%; animation-delay: 6s; animation-duration: 14s; }
+  .particle:nth-child(9) { left: 60%; top: 30%; animation-delay: 1.5s; animation-duration: 9s; }
+  .particle:nth-child(10) { left: 40%; top: 85%; animation-delay: 3.5s; animation-duration: 11s; width: 2px; height: 2px; background: rgba(251,146,60,0.3); }
+
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    25% { transform: translate(12px, -18px) scale(1.3); opacity: 0.8; }
+    50% { transform: translate(-6px, -28px) scale(0.9); opacity: 0.5; }
+    75% { transform: translate(18px, -12px) scale(1.15); opacity: 0.7; }
+  }
+
+  .accent-line-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #2563eb, #3b82f6 20%, #60a5fa 40%, transparent 65%);
+    z-index: 9;
+    box-shadow: 0 0 15px rgba(37,99,235,0.5);
+  }
+
+  .accent-line-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(270deg, #dc2626, #ef4444 20%, #f97316 40%, transparent 65%);
+    z-index: 9;
+    box-shadow: 0 0 15px rgba(220,38,38,0.4);
+  }
+</style>
+</head>
+<body>
+
+<div class="thumbnail">
+  <div class="glow-teal"></div>
+  <div class="glow-blue-center"></div>
+  <div class="glow-amber"></div>
+  <div class="grid-bg"></div>
+  <div class="accent-line-top"></div>
+  <div class="accent-line-bottom"></div>
+
+  <div class="particles">
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <!-- Mitochondrion -->
+  <div class="mito-container">
+    <div class="mito-glow"></div>
+    <svg class="mito-svg" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="mitoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1"/>
+          <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:0.85"/>
+          <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:0.65"/>
+        </linearGradient>
+        <linearGradient id="cristaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1"/>
+          <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:0.8"/>
+          <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:0.5"/>
+        </linearGradient>
+        <linearGradient id="damageGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:0.7"/>
+          <stop offset="35%" style="stop-color:#f97316;stop-opacity:0.6"/>
+          <stop offset="100%" style="stop-color:#ef4444;stop-opacity:0.9"/>
+        </linearGradient>
+        <filter id="glow"><feGaussianBlur stdDeviation="3.5" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+        <filter id="strongGlow"><feGaussianBlur stdDeviation="8" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+        <filter id="intensGlow">
+          <feGaussianBlur stdDeviation="5" result="blur"/>
+          <feFlood flood-color="#3b82f6" flood-opacity="0.3" result="color"/>
+          <feComposite in="color" in2="blur" operator="in" result="cb"/>
+          <feMerge><feMergeNode in="cb"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <ellipse cx="190" cy="190" rx="165" ry="105" fill="none" stroke="url(#mitoGrad)" stroke-width="3.5" opacity="0.85" filter="url(#intensGlow)"/>
+      <ellipse cx="190" cy="190" rx="148" ry="90" fill="none" stroke="url(#mitoGrad)" stroke-width="2.5" opacity="0.6"/>
+      <ellipse cx="190" cy="190" rx="145" ry="87" fill="rgba(37,99,235,0.04)"/>
+
+      <!-- Cristae intact -->
+      <path d="M80,160 Q110,130 110,190 Q110,250 80,220" fill="none" stroke="url(#cristaGrad)" stroke-width="3" filter="url(#glow)"/>
+      <path d="M100,150 Q135,120 135,190 Q135,260 100,230" fill="none" stroke="url(#cristaGrad)" stroke-width="2.5" filter="url(#glow)" opacity="0.9"/>
+      <path d="M125,145 Q160,115 160,190 Q160,265 125,235" fill="none" stroke="url(#cristaGrad)" stroke-width="2.5" filter="url(#glow)" opacity="0.8"/>
+      <path d="M150,148 Q180,125 180,190 Q180,255 150,232" fill="none" stroke="url(#cristaGrad)" stroke-width="2" filter="url(#glow)" opacity="0.7"/>
+
+      <!-- Cristae damaged -->
+      <path d="M210,155 Q230,140 232,170" fill="none" stroke="url(#damageGrad)" stroke-width="2.5" opacity="0.6" stroke-dasharray="4,6"/>
+      <path d="M215,210 Q235,230 230,250" fill="none" stroke="url(#damageGrad)" stroke-width="2" opacity="0.5" stroke-dasharray="3,8"/>
+      <path d="M240,160 Q255,150 250,175" fill="none" stroke="#ef4444" stroke-width="2" opacity="0.45" stroke-dasharray="2,7"/>
+      <path d="M245,200 Q260,215 255,230" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.35" stroke-dasharray="3,9"/>
+      <path d="M225,175 Q240,168 238,185" fill="none" stroke="#f97316" stroke-width="1.5" opacity="0.4" stroke-dasharray="3,5"/>
+
+      <!-- Damage particles -->
+      <circle cx="270" cy="165" r="2.5" fill="#ef4444" opacity="0.65" filter="url(#glow)">
+        <animate attributeName="cx" values="270;290;270" dur="6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.65;0.25;0.65" dur="6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="280" cy="195" r="2" fill="#f97316" opacity="0.55" filter="url(#glow)">
+        <animate attributeName="cx" values="280;302;280" dur="8s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="195;186;195" dur="8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="260" cy="220" r="2.2" fill="#ef4444" opacity="0.45" filter="url(#glow)">
+        <animate attributeName="cx" values="260;282;260" dur="7s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="290" cy="175" r="1.5" fill="#fb923c" opacity="0.4" filter="url(#glow)">
+        <animate attributeName="cx" values="290;315;290" dur="9s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="275" cy="210" r="1.5" fill="#ef4444" opacity="0.35" filter="url(#glow)">
+        <animate attributeName="cx" values="275;300;275" dur="10s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="255" cy="150" r="1.8" fill="#f97316" opacity="0.3" filter="url(#glow)">
+        <animate attributeName="cy" values="150;140;150" dur="7s" repeatCount="indefinite"/>
+      </circle>
+
+      <ellipse cx="260" cy="190" rx="40" ry="55" fill="url(#damageGrad)" opacity="0.12" filter="url(#strongGlow)"/>
+
+      <!-- Matrix dots -->
+      <circle cx="130" cy="175" r="2" fill="#60a5fa" opacity="0.45" filter="url(#glow)"/>
+      <circle cx="145" cy="200" r="1.5" fill="#3b82f6" opacity="0.35" filter="url(#glow)"/>
+      <circle cx="115" cy="195" r="1.5" fill="#2563eb" opacity="0.3" filter="url(#glow)"/>
+      <circle cx="160" cy="180" r="1.2" fill="#60a5fa" opacity="0.3"/>
+      <circle cx="140" cy="165" r="1.5" fill="#3b82f6" opacity="0.35" filter="url(#glow)"/>
+    </svg>
+  </div>
+
+  <!-- DNA fading -->
+  <div class="dna-container">
+    <svg viewBox="0 0 200 500" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="dnaFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" style="stop-color:#94a3b8;stop-opacity:0.35"/>
+          <stop offset="40%" style="stop-color:#94a3b8;stop-opacity:0.18"/>
+          <stop offset="70%" style="stop-color:#94a3b8;stop-opacity:0.07"/>
+          <stop offset="100%" style="stop-color:#94a3b8;stop-opacity:0"/>
+        </linearGradient>
+      </defs>
+      <path d="M60,0 Q140,40 60,80 Q-20,120 60,160 Q140,200 60,240 Q-20,280 60,320 Q140,360 60,400 Q-20,440 60,480" fill="none" stroke="url(#dnaFade)" stroke-width="2.5"/>
+      <path d="M140,0 Q60,40 140,80 Q220,120 140,160 Q60,200 140,240 Q220,280 140,320 Q60,360 140,400 Q220,440 140,480" fill="none" stroke="url(#dnaFade)" stroke-width="2.5"/>
+      <line x1="75" y1="20" x2="125" y2="20" stroke="url(#dnaFade)" stroke-width="1.2" opacity="0.45"/>
+      <line x1="55" y1="60" x2="145" y2="60" stroke="url(#dnaFade)" stroke-width="1.2" opacity="0.35"/>
+      <line x1="75" y1="100" x2="125" y2="100" stroke="url(#dnaFade)" stroke-width="1.2" opacity="0.28"/>
+      <line x1="55" y1="140" x2="145" y2="140" stroke="url(#dnaFade)" stroke-width="1.2" opacity="0.22"/>
+      <line x1="75" y1="180" x2="125" y2="180" stroke="url(#dnaFade)" stroke-width="1" opacity="0.16"/>
+      <line x1="55" y1="220" x2="145" y2="220" stroke="url(#dnaFade)" stroke-width="1" opacity="0.1"/>
+    </svg>
+  </div>
+
+  <div class="fracture"></div>
+
+  <div class="text-block">
+    <div class="tag-line">La revolución metabólica</div>
+    <div class="title-main">
+      ¿Y SI EL<br>
+      <span class="title-accent">CÁNCER</span><br>
+      NO ES<br>
+      <span class="title-warn">GENÉTICO</span>?
+    </div>
+    <div class="subtitle">
+      Warburg · Seyfried · D'Agostino<br>
+      La teoría mitocondrial que desafía todo
+    </div>
+  </div>
+
+  <div class="live-badge">
+    <div class="live-dot"></div>
+    <span class="live-text">En vivo</span>
+  </div>
+
+  <div class="speaker-badge">
+    <div class="speaker-line"></div>
+    <div>
+      <div class="speaker-name">Dr. Miguel Ojeda Rios</div>
+      <div class="speaker-title">Medicina Funcional · Bioenergética</div>
+    </div>
+  </div>
+
+  <div class="brand">
+    <div class="brand-name">WellVibe</div>
+  </div>
+</div>
+
+</body>
+</html>

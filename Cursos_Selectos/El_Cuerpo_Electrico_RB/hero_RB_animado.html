@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RB — Hero Animado</title>
+<style>
+@keyframes nodeIn {
+  0% { r: 0; opacity: 0; }
+  60% { r: 7; opacity: 1; }
+  100% { r: 6; opacity: 1; }
+}
+@keyframes nodeInFaint {
+  0% { r: 0; opacity: 0; }
+  60% { r: 7; opacity: 0.35; }
+  100% { r: 6; opacity: 0.35; }
+}
+@keyframes lineGrow {
+  0% { stroke-dashoffset: 100; opacity: 0; }
+  30% { opacity: 0.6; }
+  100% { stroke-dashoffset: 0; opacity: 0.6; }
+}
+@keyframes pulseNode {
+  0%, 100% { r: 6; }
+  50% { r: 6.8; }
+}
+@keyframes pulseFaint {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.45; }
+}
+@keyframes textUp {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes networkFade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+.hero {
+  width: 100%;
+  min-height: 480px;
+  background: #FAF9F6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* Background network — subtle scattered nodes */
+.bg-network {
+  position: absolute;
+  inset: 0;
+  animation: networkFade 3s ease-out 0.5s both;
+}
+
+.bg-node {
+  fill: #0F6E56;
+}
+
+.bg-line {
+  stroke: #0F6E56;
+  stroke-width: 0.5;
+}
+
+/* Center content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px;
+}
+
+/* Main dipole */
+.dipole-main .node-dense {
+  fill: #0F6E56;
+  animation: nodeIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both,
+             pulseNode 4s ease-in-out 2s infinite;
+}
+.dipole-main .node-faint {
+  fill: #0F6E56;
+  animation: nodeInFaint 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both,
+             pulseFaint 4s ease-in-out 2s infinite;
+}
+.dipole-main .conn-line {
+  stroke: #0F6E56;
+  stroke-width: 1.2;
+  stroke-dasharray: 100;
+  animation: lineGrow 0.6s ease-out 0.9s both;
+}
+
+/* Text */
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.title-reg {
+  font-size: 32px;
+  font-weight: 400;
+  color: #2C2C2A;
+  letter-spacing: 1.5px;
+  animation: textUp 0.7s ease-out 1.3s both;
+}
+
+.title-bio {
+  font-size: 32px;
+  font-weight: 400;
+  color: #0F6E56;
+  letter-spacing: 1.5px;
+  animation: textUp 0.7s ease-out 1.5s both;
+}
+
+.hero-sub {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px;
+  color: #888780;
+  letter-spacing: 0.3px;
+  text-align: center;
+  max-width: 420px;
+  line-height: 1.6;
+  animation: textUp 0.7s ease-out 1.8s both;
+}
+
+.hero-endorse {
+  font-size: 9px;
+  color: #888780;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: fadeIn 0.7s ease-out 2.2s both;
+}
+
+/* Divider line */
+.hero-line {
+  width: 48px;
+  height: 1px;
+  background: #0F6E56;
+  opacity: 0.3;
+  animation: fadeIn 0.5s ease-out 2s both;
+}
+
+/* CTA */
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  animation: textUp 0.6s ease-out 2.4s both;
+}
+
+.btn-primary {
+  font-family: -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
+  background: #0F6E56;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+.btn-primary:hover { opacity: 0.85; }
+
+.btn-secondary {
+  font-family: -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: 1px solid #C8C4BE;
+  background: transparent;
+  color: #2C2C2A;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  text-decoration: none;
+}
+.btn-secondary:hover { border-color: #0F6E56; color: #0F6E56; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+
+  <!-- Background network: scattered nodes and connections -->
+  <svg class="bg-network" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- Scattered nodes at various opacities -->
+    <circle class="bg-node" cx="80" cy="60" r="2.5" opacity="0.06"/>
+    <circle class="bg-node" cx="150" cy="140" r="3" opacity="0.08"/>
+    <circle class="bg-node" cx="95" cy="200" r="2" opacity="0.05"/>
+    <circle class="bg-node" cx="200" cy="80" r="1.8" opacity="0.04"/>
+    <circle class="bg-node" cx="170" cy="350" r="2.5" opacity="0.07"/>
+    <circle class="bg-node" cx="60" cy="380" r="2" opacity="0.05"/>
+    <circle class="bg-node" cx="250" cy="420" r="3" opacity="0.06"/>
+    <circle class="bg-node" cx="120" cy="440" r="1.5" opacity="0.04"/>
+
+    <circle class="bg-node" cx="1020" cy="50" r="2" opacity="0.05"/>
+    <circle class="bg-node" cx="1100" cy="120" r="2.8" opacity="0.07"/>
+    <circle class="bg-node" cx="1050" cy="200" r="2" opacity="0.04"/>
+    <circle class="bg-node" cx="1140" cy="280" r="3" opacity="0.08"/>
+    <circle class="bg-node" cx="980" cy="150" r="1.8" opacity="0.05"/>
+    <circle class="bg-node" cx="1080" cy="380" r="2.5" opacity="0.06"/>
+    <circle class="bg-node" cx="1000" cy="420" r="2" opacity="0.04"/>
+    <circle class="bg-node" cx="1150" cy="440" r="1.5" opacity="0.05"/>
+    <circle class="bg-node" cx="950" cy="350" r="2.2" opacity="0.06"/>
+
+    <!-- Connections between some nodes -->
+    <line class="bg-line" x1="80" y1="60" x2="150" y2="140" opacity="0.04"/>
+    <line class="bg-line" x1="150" y1="140" x2="95" y2="200" opacity="0.03"/>
+    <line class="bg-line" x1="150" y1="140" x2="200" y2="80" opacity="0.04"/>
+    <line class="bg-line" x1="170" y1="350" x2="60" y2="380" opacity="0.03"/>
+    <line class="bg-line" x1="170" y1="350" x2="250" y2="420" opacity="0.04"/>
+
+    <line class="bg-line" x1="1020" y1="50" x2="1100" y2="120" opacity="0.04"/>
+    <line class="bg-line" x1="1100" y1="120" x2="1050" y2="200" opacity="0.03"/>
+    <line class="bg-line" x1="1100" y1="120" x2="980" y2="150" opacity="0.04"/>
+    <line class="bg-line" x1="1140" y1="280" x2="1080" y2="380" opacity="0.04"/>
+    <line class="bg-line" x1="1080" y1="380" x2="1000" y2="420" opacity="0.03"/>
+    <line class="bg-line" x1="950" y1="350" x2="1080" y2="380" opacity="0.03"/>
+
+    <!-- A few mid-ground nodes -->
+    <circle class="bg-node" cx="350" cy="40" r="1.5" opacity="0.03"/>
+    <circle class="bg-node" cx="850" cy="30" r="1.8" opacity="0.03"/>
+    <circle class="bg-node" cx="400" cy="450" r="1.5" opacity="0.03"/>
+    <circle class="bg-node" cx="800" cy="460" r="2" opacity="0.03"/>
+  </svg>
+
+  <!-- Center content -->
+  <div class="hero-content">
+
+    <!-- Animated dipole -->
+    <svg class="dipole-main" width="72" height="16" viewBox="0 0 72 16" xmlns="http://www.w3.org/2000/svg">
+      <circle class="node-dense" cx="8" cy="8" r="0"/>
+      <line class="conn-line" x1="18" y1="8" x2="46" y2="8"/>
+      <circle class="node-faint" cx="56" cy="8" r="0"/>
+    </svg>
+
+    <!-- Title -->
+    <div class="hero-title">
+      <span class="title-reg">regulación</span>
+      <span class="title-bio">bioeléctrica</span>
+    </div>
+
+    <!-- Subtitle -->
+    <p class="hero-sub">
+      Evaluación y regulación del estado bioeléctrico de los tejidos del cuerpo humano con campos magnéticos estáticos.
+    </p>
+
+    <!-- Divider -->
+    <div class="hero-line"></div>
+
+    <!-- CTA -->
+    <div class="hero-cta">
+      <a href="#programa" class="btn-primary">Formación en RB</a>
+      <a href="#metodo" class="btn-secondary">Conocer el método</a>
+    </div>
+
+    <!-- Endorsement -->
+    <span class="hero-endorse">Instituto Centrobioenergetica</span>
+
+  </div>
+
+</div>
+
+</body>
+</html>

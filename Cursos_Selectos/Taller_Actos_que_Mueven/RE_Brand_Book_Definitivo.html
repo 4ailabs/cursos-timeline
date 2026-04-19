@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ritual Experiencing — Brand Book Definitivo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+:root{
+--si:#8B4513;--si6:#A86B3E;--sil:#C4926A;--si-pill:#F2E8DC;--si-bg:#F7F0E8;
+--n:#2C2C2A;--cr:#E8E6DE;--g:#888780;--g2:#B4B2A9;--gc:#F1EFE8;--ww:#FAF9F6;
+--tl:#0F6E56;--tm:#5DCAA5;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--ww);color:var(--n);overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.022;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes drawVortex{from{stroke-dashoffset:600}to{stroke-dashoffset:0}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:.55}50%{opacity:.35}}
+
+/* HERO */
+.hero{background:var(--n);min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 40% 50%,rgba(139,69,19,.06) 0%,transparent 70%)}
+.hi{display:flex;align-items:center;gap:40px;padding:40px}
+.hero svg path{stroke-dasharray:600;animation:drawVortex 2.8s ease both}
+.hero svg circle{animation:fadeIn .6s ease 2.6s both}
+.ht{display:flex;flex-direction:column;gap:2px}
+.ht .r{font-size:clamp(38px,6vw,60px);font-weight:300;color:var(--cr);letter-spacing:2px;line-height:1.05;animation:fadeUp .8s ease .8s both}
+.ht .e{font-size:clamp(38px,6vw,60px);font-weight:300;color:var(--sil);letter-spacing:2px;line-height:1.05;animation:fadeUp .8s ease 1s both}
+.hf{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-family:Georgia,serif;font-size:9px;letter-spacing:4px;color:var(--g);text-transform:uppercase;animation:fadeIn 1s ease 1.4s both}
+.hl{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--si6),transparent)}
+
+/* SECTIONS */
+.sec{padding:80px 64px;max-width:1100px;margin:0 auto}
+.sn{font-family:'Courier New',monospace;font-size:10px;letter-spacing:4px;color:var(--g);margin-bottom:6px}
+.st{font-size:clamp(24px,3vw,32px);font-weight:300;color:var(--n);line-height:1.25;margin-bottom:12px}
+.ss{font-size:16px;font-weight:400;color:var(--g);line-height:1.7;max-width:580px;margin-bottom:40px}
+.ss em{color:var(--si);font-style:italic}
+.dv{height:1px;background:var(--gc);margin:0 64px}
+
+/* ANATOMY */
+.anat{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+.anat-vis{background:var(--gc);border-radius:16px;padding:52px;display:flex;align-items:center;justify-content:center}
+.anat-sp{display:flex;flex-direction:column;gap:18px}
+.sp-r{display:flex;gap:12px;align-items:flex-start}
+.sp-d{width:7px;height:7px;border-radius:50%;background:var(--si);margin-top:7px;flex-shrink:0}
+.sp-t{font-size:14px;color:var(--n);line-height:1.6}
+.sp-t strong{font-weight:500;color:var(--si)}
+
+/* LOGO GRID */
+.lg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.lc{border:1px solid var(--gc);border-radius:14px;overflow:hidden;transition:transform .3s}
+.lc:hover{transform:translateY(-2px)}
+.pv{padding:48px 32px;display:flex;align-items:center;justify-content:center;gap:18px;min-height:140px}
+.pv.lt{background:var(--ww)}.pv.dk{background:var(--n)}.pv.si{background:var(--si)}.pv.gr{background:#8B4513}
+.inf{padding:12px 16px;background:var(--gc);display:flex;justify-content:space-between;align-items:center}
+.inf span{font-family:'Courier New',monospace;font-size:10px;color:var(--g)}
+.lt2{display:flex;flex-direction:column}.lt2 span{font-size:21px;letter-spacing:1px;line-height:1.1;font-weight:300}
+
+/* ICONS */
+.icr{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px}
+.ici{text-align:center}
+.icb{width:60px;height:60px;border-radius:14px;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.icb:hover{transform:scale(1.06)}
+.icl{font-family:'Courier New',monospace;font-size:9px;color:var(--g);margin-top:5px}
+
+/* COLORS */
+.clb{font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;color:var(--g);text-transform:uppercase;margin-bottom:8px}
+.clr{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.ch{width:128px}.ch .sw{width:128px;height:68px;border-radius:12px;margin-bottom:8px;border:1px solid rgba(0,0,0,.04);transition:transform .2s}
+.ch .sw:hover{transform:scale(1.04)}.ch .cn{font-size:14px;color:var(--n)}.ch .cx{font-family:'Courier New',monospace;font-size:11px;color:var(--g)}
+
+/* TYPOGRAPHY */
+.tr{display:flex;align-items:baseline;gap:32px;padding:18px 0;border-bottom:1px solid var(--gc)}
+.tr .tu{font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;color:var(--g);text-transform:uppercase;width:130px;flex-shrink:0}
+.tr .ts{color:var(--n)}.tr .tp{font-family:'Courier New',monospace;font-size:11px;color:var(--g);margin-left:auto;white-space:nowrap}
+
+/* RULES */
+.rl{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ru{padding:28px;border-radius:14px;border:1px solid var(--gc)}
+.ru.ok{background:#F7FBF9;border-color:#D4E8DF}.ru.no{background:#FDF7F4;border-color:#F0D8C8}
+.ru h4{font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.ru.ok h4{color:var(--tl)}.ru.no h4{color:#C25A2A}
+.ru ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.ru li{font-size:14px;color:var(--n);padding-left:18px;position:relative;line-height:1.5}
+.ru.ok li::before{content:'✓';position:absolute;left:0;color:var(--tl);font-weight:600}
+.ru.no li::before{content:'✕';position:absolute;left:0;color:#C25A2A;font-weight:600}
+
+/* APPS */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ap{border:1px solid var(--gc);border-radius:14px;overflow:hidden;transition:transform .3s}
+.ap:hover{transform:translateY(-2px)}
+.aph{padding:14px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--gc)}
+.apb{padding:24px 18px;min-height:110px}
+.apf{padding:10px 18px;text-align:center;font-family:Georgia,serif;font-size:9px;letter-spacing:2.5px;color:var(--g);border-top:1px solid var(--gc);text-transform:uppercase}
+.apt{font-family:'Courier New',monospace;font-size:10px;color:var(--g);text-align:center;margin-top:8px;letter-spacing:1px}
+.pill{display:inline-block;background:var(--si-pill);color:var(--si);font-size:10px;padding:3px 12px;border-radius:20px}
+
+/* HIERARCHY */
+.hier{display:flex;flex-direction:column;gap:0}
+.hr{display:flex;align-items:center;padding:18px 24px;border-left:3px solid var(--si);gap:20px}
+.hr:nth-child(2){border-color:var(--si6);padding-left:44px}
+.hr:nth-child(3){border-color:var(--sil);padding-left:64px}
+.hr:nth-child(4){border-color:var(--g);padding-left:84px}
+.hlv{font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;color:var(--g);text-transform:uppercase;width:70px;flex-shrink:0}
+.hn{font-size:18px;color:var(--n)}.hu{font-size:13px;color:var(--g);margin-left:auto}
+
+/* COMPARISON */
+.comp{border:1px solid var(--gc);border-radius:14px;overflow:hidden}
+.cb{display:flex;justify-content:center;align-items:center;gap:56px;padding:44px 24px;flex-wrap:wrap}
+.ci{display:flex;align-items:center;gap:16px}
+.cs{width:1px;height:60px;background:var(--gc)}
+.endo{text-align:center;padding:14px;font-family:Georgia,serif;font-size:9px;letter-spacing:2.5px;color:var(--g);border-top:1px solid var(--gc);text-transform:uppercase}
+
+.bt{width:100%;border-collapse:collapse;font-size:14px;margin-top:28px}
+.bt td{padding:12px 16px;border-bottom:1px solid var(--gc);vertical-align:top}
+.bt td:first-child{color:var(--g);width:26%;font-size:13px}
+.bt .hrb{color:var(--tl);font-weight:500;font-size:13px}.bt .hre{color:var(--si);font-weight:500;font-size:13px}
+
+.footer{background:var(--n);padding:64px;text-align:center}
+.footer p{font-size:11px;letter-spacing:4px;color:var(--g);text-transform:uppercase}
+
+@media(max-width:768px){
+.sec{padding:48px 24px}.dv{margin:0 24px}.hi{flex-direction:column;gap:24px;text-align:center}
+.anat,.lg,.rl,.ag{grid-template-columns:1fr}.tr{flex-direction:column;gap:6px}.tr .tu{width:auto}.tr .tp{margin-left:0}
+.cb{flex-direction:column;gap:28px}.cs{width:60px;height:1px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hi">
+<svg width="72" height="72" viewBox="-1 -19 138 155">
+<path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#C4926A" stroke-width="2.5" stroke-linecap="round" opacity="0.82"/>
+<circle cx="72" cy="124" r="2.8" fill="#C4926A" opacity="0.55"/>
+</svg>
+<div class="ht"><span class="r">Ritual</span><span class="e">Experiencing</span></div>
+</div>
+<div class="hf">Brand Book Definitivo · 2026</div>
+<div class="hl"></div>
+</section>
+
+<!-- 01 SYMBOL -->
+<section class="sec">
+<div class="sn">01</div>
+<div class="st">El remolino arcaico</div>
+<div class="ss">Cinco vueltas que nacen de un punto y ascienden — de menos a más, crecimiento gradual. Lo que el cuerpo dibuja antes de que la mente nombre. <em>Preparar. Hacer. Integrar.</em></div>
+<div class="anat">
+<div class="anat-vis">
+<svg width="140" height="140" viewBox="-1 -19 138 155">
+<path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#8B4513" stroke-width="2.5" stroke-linecap="round" opacity="0.82"/>
+<circle cx="72" cy="124" r="2.8" fill="#8B4513" opacity="0.55"/>
+</svg>
+</div>
+<div class="anat-sp">
+<div class="sp-r"><div class="sp-d"></div><div class="sp-t"><strong>Punto (base):</strong> Origen del acto. La semilla del movimiento. Opacidad 55%.</div></div>
+<div class="sp-r"><div class="sp-d"></div><div class="sp-t"><strong>Vuelta 1:</strong> Diminuta, casi un giro sobre sí misma. Lo atrapado, el patrón cerrado.</div></div>
+<div class="sp-r"><div class="sp-d" style="opacity:.7"></div><div class="sp-t"><strong>Vueltas 2-3:</strong> Crecimiento gradual. El acto moviliza, el sistema nervioso responde.</div></div>
+<div class="sp-r"><div class="sp-d" style="opacity:.5"></div><div class="sp-t"><strong>Vueltas 4-5:</strong> Amplias, abiertas. Lo que emerge — "algo se movió dentro".</div></div>
+<div class="sp-r"><div class="sp-d" style="background:var(--g)"></div><div class="sp-t"><strong>Dirección:</strong> Siempre ascendente. Trazo continuo, sin cortes. El remolino sube.</div></div>
+<div class="sp-r"><div class="sp-d" style="background:var(--g)"></div><div class="sp-t"><strong>Trazo:</strong> Grosor uniforme 2.5u, stroke-linecap round, opacidad 82%.</div></div>
+</div>
+</div>
+</section>
+<div class="dv"></div>
+
+<!-- 02 LOGO -->
+<section class="sec">
+<div class="sn">02</div>
+<div class="st">Versiones del logo</div>
+<div class="ss">Cuatro versiones principales. Un color a la vez. Nunca gradiente. El símbolo siempre a la izquierda del texto.</div>
+<div class="lg">
+<div class="lc"><div class="pv lt"><div style="display:flex;align-items:center;gap:16px"><svg width="32" height="32" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#8B4513" stroke-width="2.5" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="2.8" fill="#8B4513" opacity="0.55"/></svg><div class="lt2"><span style="color:var(--n)">Ritual</span><span style="color:var(--si)">Experiencing</span></div></div></div><div class="inf"><span>Principal — Light</span><span>logo_light.svg</span></div></div>
+<div class="lc"><div class="pv dk"><div style="display:flex;align-items:center;gap:16px"><svg width="32" height="32" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#C4926A" stroke-width="2.5" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="2.8" fill="#C4926A" opacity="0.55"/></svg><div class="lt2"><span style="color:var(--cr)">Ritual</span><span style="color:var(--sil)">Experiencing</span></div></div></div><div class="inf"><span>Principal — Dark</span><span>logo_dark.svg</span></div></div>
+<div class="lc"><div class="pv lt"><div style="display:flex;align-items:center;gap:16px"><svg width="32" height="32" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#2C2C2A" stroke-width="2.5" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="2.8" fill="#2C2C2A" opacity="0.55"/></svg><div class="lt2"><span style="color:var(--n)">Ritual</span><span style="color:var(--n)">Experiencing</span></div></div></div><div class="inf"><span>Monocromo negro</span><span>logo_mono.svg</span></div></div>
+<div class="lc"><div class="pv gr"><div style="display:flex;align-items:center;gap:16px"><svg width="32" height="32" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#FFF" stroke-width="2.5" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="2.8" fill="#FFF" opacity="0.55"/></svg><div class="lt2"><span style="color:#FFF">Ritual</span><span style="color:#FFF">Experiencing</span></div></div></div><div class="inf"><span>Monocromo blanco</span><span>logo_white.svg</span></div></div>
+</div>
+<div style="margin-top:28px"><div class="clb">Íconos y variantes</div>
+<div class="icr">
+<div class="ici"><div class="icb" style="background:var(--ww);border:1px solid var(--gc)"><svg width="26" height="26" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#8B4513" stroke-width="4.5" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="5" fill="#8B4513" opacity="0.55"/></svg></div><div class="icl">Ícono</div></div>
+<div class="ici"><div class="icb" style="background:var(--n)"><svg width="26" height="26" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#C4926A" stroke-width="4.5" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="5" fill="#C4926A" opacity="0.55"/></svg></div><div class="icl">Dark</div></div>
+<div class="ici"><div class="icb" style="background:var(--si)"><svg width="26" height="26" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#FFF" stroke-width="4.5" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="5" fill="#FFF" opacity="0.55"/></svg></div><div class="icl">Favicon</div></div>
+<div class="ici"><div class="icb" style="background:var(--ww);border:1px solid var(--gc)"><svg width="26" height="26" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#2C2C2A" stroke-width="4.5" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="5" fill="#2C2C2A" opacity="0.55"/></svg></div><div class="icl">Mono</div></div>
+<div class="ici"><div class="icb" style="background:var(--ww);border:1px solid var(--gc);gap:5px"><svg width="16" height="16" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#8B4513" stroke-width="5" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="5.5" fill="#8B4513" opacity="0.55"/></svg><span style="font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--si);font-weight:400;letter-spacing:1px">RE</span></div><div class="icl">Monograma</div></div>
+</div></div>
+</section>
+<div class="dv"></div>
+
+<!-- 03 COLOR -->
+<section class="sec">
+<div class="sn">03</div><div class="st">Paleta de color</div><div class="ss">Tierra cálida para RE. Lo compartido con RB como sistema del Instituto.</div>
+<div class="clb">Propios de RE</div>
+<div class="clr">
+<div class="ch"><div class="sw" style="background:#8B4513"></div><div class="cn">Siena</div><div class="cx">#8B4513</div></div>
+<div class="ch"><div class="sw" style="background:#C4926A"></div><div class="cn">Siena claro</div><div class="cx">#C4926A</div></div>
+<div class="ch"><div class="sw" style="background:#F2E8DC"></div><div class="cn">Arena</div><div class="cx">#F2E8DC</div></div>
+<div class="ch"><div class="sw" style="background:#F7F0E8"></div><div class="cn">Arena claro</div><div class="cx">#F7F0E8</div></div>
+</div>
+<div class="clb">Compartidos con RB · sistema Instituto</div>
+<div class="clr">
+<div class="ch"><div class="sw" style="background:#2C2C2A"></div><div class="cn">Negro cálido</div><div class="cx">#2C2C2A</div></div>
+<div class="ch"><div class="sw" style="background:#E8E6DE"></div><div class="cn">Crema</div><div class="cx">#E8E6DE</div></div>
+<div class="ch"><div class="sw" style="background:#888780"></div><div class="cn">Gris cálido</div><div class="cx">#888780</div></div>
+<div class="ch"><div class="sw" style="background:#FAF9F6"></div><div class="cn">Warm white</div><div class="cx">#FAF9F6</div></div>
+</div>
+</section>
+<div class="dv"></div>
+
+<!-- 04 TYPE -->
+<section class="sec">
+<div class="sn">04</div><div class="st">Tipografía</div><div class="ss">Cormorant Garamond — serif con movimiento. Georgia solo para el endorsement del Instituto.</div>
+<div class="tr"><div class="tu">Logo</div><div class="ts" style="font-size:22px;letter-spacing:1px;font-weight:300">Ritual Experiencing</div><div class="tp">Cormorant 300 · 22px</div></div>
+<div class="tr"><div class="tu">Títulos</div><div class="ts" style="font-size:20px">El acto que el cuerpo registra</div><div class="tp">Cormorant 400 · 20px</div></div>
+<div class="tr"><div class="tu">Cuerpo</div><div class="ts" style="font-size:15px;line-height:1.6">El sistema nervioso no distingue entre una experiencia real y una experiencia ritual con suficiente carga sensorial.</div><div class="tp">Cormorant 400 · 15px</div></div>
+<div class="tr"><div class="tu">Endorsement</div><div class="ts" style="font-family:Georgia,serif;font-size:9px;letter-spacing:2.5px;color:var(--g);text-transform:uppercase">Instituto Centrobioenergetica</div><div class="tp">Georgia 400 · 9px · +2.5</div></div>
+</section>
+<div class="dv"></div>
+
+<!-- 05 RULES -->
+<section class="sec">
+<div class="sn">05</div><div class="st">Usos correctos e incorrectos</div>
+<div class="rl">
+<div class="ru ok"><h4>Correcto</h4><ul>
+<li>Símbolo siempre a la izquierda del texto</li>
+<li>Dirección del remolino siempre ascendente</li>
+<li>Fondos limpios: warm white, negro, gris neutro</li>
+<li>Espacio de exclusión: 1× ancho del símbolo</li>
+<li>Un solo color a la vez — nunca bicolor</li>
+<li>Endorsement del Instituto centrado al pie</li>
+</ul></div>
+<div class="ru no"><h4>Incorrecto</h4><ul>
+<li>Invertir el remolino (descendente)</li>
+<li>Rotar el símbolo horizontal o diagonal</li>
+<li>Agregar sombra, resplandor, bisel, 3D</li>
+<li>Alterar el grosor o la opacidad del trazo</li>
+<li>Fondos con textura o fotografía sin contraste</li>
+<li>Confundir con el dipolo de RB — son independientes</li>
+</ul></div>
+</div>
+</section>
+<div class="dv"></div>
+
+<!-- 06 APPS -->
+<section class="sec">
+<div class="sn">06</div><div class="st">Aplicaciones</div>
+<div class="ag">
+<div><div class="ap"><div class="aph" style="background:var(--ww)"><svg width="14" height="14" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#8B4513" stroke-width="5" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="5.5" fill="#8B4513" opacity="0.55"/></svg><span style="font-size:12px"><span style="color:var(--n)">Ritual </span><span style="color:var(--si)">Experiencing</span></span></div><div class="apb" style="background:var(--ww)"><div style="font-size:18px;color:var(--n);margin-bottom:8px">Actos que Mueven</div><div style="margin-bottom:12px"><span class="pill">Módulo 1</span> <span class="pill">Presencial</span></div><div style="font-size:12px;color:var(--g);line-height:1.6">Duración: 16 horas · Vivencial + teoría<br>Instituto Centrobioenergetica, CDMX</div></div><div class="apf">Instituto Centrobioenergetica</div></div><div class="apt">Ficha de curso</div></div>
+
+<div><div class="ap"><div class="aph" style="background:var(--n);border-color:#444"><svg width="12" height="12" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#C4926A" stroke-width="6" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="6" fill="#C4926A" opacity="0.55"/></svg></div><div class="apb" style="background:var(--n);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:120px"><div style="font-size:24px;color:var(--cr);letter-spacing:1px;font-weight:300">Ritual</div><div style="font-size:24px;color:var(--sil);letter-spacing:1px;font-weight:300;margin-bottom:14px">Experiencing</div><div style="font-family:Georgia,serif;font-size:9px;color:var(--g);letter-spacing:2.5px;text-transform:uppercase">Instituto Centrobioenergetica</div></div><div class="apf" style="background:var(--n);border-color:#444;color:var(--g)">Diapositiva de título</div></div><div class="apt">Presentación</div></div>
+
+<div><div class="ap"><div class="apb" style="background:var(--ww);display:flex;align-items:center;gap:14px;padding:24px 18px"><div style="width:52px;height:52px;background:var(--si);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#FFF" stroke-width="5.5" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="6" fill="#FFF" opacity="0.55"/></svg></div><div><div style="font-size:16px;color:var(--n)">Ritual Experiencing</div><div style="font-size:12px;color:var(--g)">@ritual.experiencing</div></div></div></div><div class="apt">Redes sociales</div></div>
+
+<div><div class="ap"><div class="aph" style="background:var(--ww);justify-content:center"><svg width="16" height="16" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#8B4513" stroke-width="5" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="6" fill="#8B4513" opacity="0.55"/></svg></div><div class="apb" style="background:var(--ww);text-align:center;display:flex;flex-direction:column;justify-content:center"><div style="font-size:10px;color:var(--g);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">Certifica que</div><div style="font-size:20px;color:var(--n);font-weight:400;margin-bottom:4px">María González López</div><div style="font-size:13px;color:var(--g)">completó el programa Actos que Mueven</div><div style="width:48px;height:1px;background:var(--si);margin:14px auto 0;opacity:.35"></div></div><div class="apf">Instituto Centrobioenergetica</div></div><div class="apt">Certificado</div></div>
+</div>
+</section>
+<div class="dv"></div>
+
+<!-- 07 HIERARCHY -->
+<section class="sec">
+<div class="sn">07</div><div class="st">Jerarquía de marcas</div>
+<div class="hier">
+<div class="hr"><div class="hlv">Nivel 1</div><div class="hn" style="color:var(--si)">Ritual Experiencing</div><div class="hu">Método · Logo principal</div></div>
+<div class="hr"><div class="hlv">Nivel 2</div><div class="hn">Actos que Mueven</div><div class="hu">Taller vivencial · N1</div></div>
+<div class="hr"><div class="hlv">Nivel 3</div><div class="hn">Cuando las Palabras</div><div class="hu">Formación profesional · N2</div></div>
+<div class="hr"><div class="hlv">Nivel 4</div><div class="hn" style="color:var(--g)">Instituto Centrobioenergetica</div><div class="hu">Casa madre · Endorsement</div></div>
+</div>
+</section>
+<div class="dv"></div>
+
+<!-- 08 SYSTEM -->
+<section class="sec">
+<div class="sn">08</div><div class="st">Sistema de Instituto</div><div class="ss">RB y RE son identidades independientes que comparten casa. Nunca deben verse como la misma marca con diferente color.</div>
+<div class="comp">
+<div class="cb" style="background:var(--ww)">
+<div class="ci">
+<svg width="42" height="14" viewBox="0 0 48 14"><circle cx="7" cy="7" r="6" fill="#0F6E56"/><line x1="13" y1="7" x2="27" y2="7" stroke="#0F6E56" stroke-width="1"/><circle cx="33" cy="7" r="6" fill="#0F6E56" opacity="0.35"/></svg>
+<div class="lt2"><span style="font-family:Georgia,serif;font-size:17px;color:var(--n);letter-spacing:1px">Regulación</span><span style="font-family:Georgia,serif;font-size:17px;color:var(--tl);letter-spacing:1px">Bioeléctrica</span></div>
+</div>
+<div class="cs"></div>
+<div class="ci">
+<svg width="36" height="36" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#8B4513" stroke-width="3" stroke-linecap="round" opacity="0.82"/><circle cx="72" cy="124" r="3.5" fill="#8B4513" opacity="0.55"/></svg>
+<div class="lt2"><span style="font-size:17px;color:var(--n)">Ritual</span><span style="font-size:17px;color:var(--si)">Experiencing</span></div>
+</div>
+</div>
+<div class="endo">Instituto Centrobioenergetica</div>
+</div>
+<table class="bt">
+<tr><td></td><td class="hrb">RB</td><td class="hre">RE</td></tr>
+<tr><td>Símbolo</td><td>Dipolo — horizontal, geométrico</td><td>Remolino — vertical, arcaico</td></tr>
+<tr><td>Color</td><td>Teal frío #0F6E56</td><td>Siena cálido #8B4513</td></tr>
+<tr><td>Tipografía</td><td>Georgia — clásica, serena</td><td>Cormorant — con movimiento</td></tr>
+<tr><td>Dirección</td><td>Horizontal — mide el estado</td><td>Vertical — mueve lo atrapado</td></tr>
+<tr><td>Sensación</td><td>"Esto es ciencia"</td><td>"Esto se siente"</td></tr>
+<tr><td>Comparten</td><td colspan="2">Negro cálido · Crema · Gris cálido · Warm white · Endorsement del Instituto</td></tr>
+</table>
+</section>
+
+<footer class="footer"><p>Ritual Experiencing — Instituto Centrobioenergetica · 2026</p></footer>
+</body>
+</html>

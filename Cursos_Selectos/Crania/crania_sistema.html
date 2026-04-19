@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Crania — Sistema de Marca</title>
+<style>
+  body { background:#F5EDE0; font-family:'Inter',sans-serif; margin:0; padding:60px 40px; color:#2A1F1A; }
+  h1 { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-weight:400; font-size:42px; letter-spacing:2px; margin:0 0 60px; text-align:center; }
+  .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:40px; max-width:1400px; margin:0 auto; }
+  .card { background:#fff; border-radius:4px; padding:30px; box-shadow:0 2px 12px rgba(0,0,0,0.05); }
+  .card.dark { background:#2A1F1A; }
+  .card-label { font-size:10px; letter-spacing:4px; color:#B5604A; text-transform:uppercase; margin-bottom:20px; font-weight:500; }
+  .card.dark .card-label { color:#E8A857; }
+  .card img { width:100%; display:block; }
+  .small-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:center; }
+  .small-grid .mini { background:#fff; padding:20px; border-radius:4px; text-align:center; }
+  .small-grid .mini img { max-width:100%; height:auto; }
+  .mini-label { font-size:9px; letter-spacing:3px; color:#888580; margin-top:10px; text-transform:uppercase; }
+</style>
+</head>
+<body>
+  <h1>Crania — Sistema de Marca</h1>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-label">Logo principal — Vertical</div>
+      <img src="Imagen_Marca/crania_logo_vertical.svg" alt="Logo vertical">
+    </div>
+    <div class="card dark">
+      <div class="card-label">Logo vertical — Fondo oscuro</div>
+      <img src="Imagen_Marca/crania_logo_vertical_dark.svg" alt="Logo vertical dark">
+    </div>
+  </div>
+
+  <div style="height:40px"></div>
+
+  <div class="card" style="max-width:1400px;margin:0 auto;">
+    <div class="card-label">Logo horizontal</div>
+    <img src="Imagen_Marca/crania_logo_horizontal.svg" alt="Logo horizontal" style="max-width:800px;margin:0 auto;display:block;">
+  </div>
+
+  <div style="height:40px"></div>
+
+  <div class="small-grid" style="max-width:1400px;margin:0 auto;">
+    <div class="mini">
+      <img src="Imagen_Marca/crania_isotipo.svg" alt="Isotipo" style="max-width:200px;">
+      <div class="mini-label">Isotipo</div>
+    </div>
+    <div class="mini">
+      <img src="Imagen_Marca/crania_favicon.svg" alt="Favicon" style="max-width:64px;">
+      <div class="mini-label">Favicon 64×64</div>
+    </div>
+    <div class="mini">
+      <img src="Imagen_Marca/crania_favicon.svg" alt="Favicon" style="max-width:32px;">
+      <div class="mini-label">Favicon 32×32</div>
+    </div>
+  </div>
+</body>
+</html>

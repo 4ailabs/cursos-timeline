@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" width="340" height="80">
+  <!-- Instituto Centrobioenergetica — Logo Horizontal V3 -->
+  <g transform="translate(40,40)">
+    <circle cx="0"     cy="-28"   r="4.5" fill="#B5604A"/>
+    <circle cx="14"    cy="-24.2" r="4.5" fill="#8FA87A"/>
+    <circle cx="24.2"  cy="-14"   r="4.5" fill="#B5604A"/>
+    <circle cx="28"    cy="0"     r="4.5" fill="#8FA87A"/>
+    <circle cx="24.2"  cy="14"    r="4.5" fill="#B5604A"/>
+    <circle cx="14"    cy="24.2"  r="4.5" fill="#8FA87A"/>
+    <circle cx="0"     cy="28"    r="4.5" fill="#B5604A"/>
+    <circle cx="-14"   cy="24.2"  r="4.5" fill="#8FA87A"/>
+    <circle cx="-24.2" cy="14"    r="4.5" fill="#B5604A"/>
+    <circle cx="-28"   cy="0"     r="4.5" fill="#8FA87A"/>
+    <circle cx="-24.2" cy="-14"   r="4.5" fill="#B5604A"/>
+    <circle cx="-14"   cy="-24.2" r="4.5" fill="#8FA87A"/>
+    <circle cx="0" cy="0" r="2.8" fill="#E8A857" opacity="0.5"/>
+    <circle cx="0" cy="0" r="1.8" fill="#E8A857"/>
+  </g>
+  <text x="82" y="34" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8" font-weight="500" letter-spacing="3" fill="#888580">INSTITUTO</text>
+  <text x="82" y="50" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" letter-spacing="1.2" fill="#B5604A">CENTROBIOENERGETICA</text>
+</svg>

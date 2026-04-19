@@ -137,6 +137,9 @@ input, select, textarea { font-family:inherit; }
 .sub-section h4 { font-size:14px; margin-bottom:10px; display:flex; align-items:center; justify-content:space-between; }
 .add-btn { background:none; border:1px dashed var(--border); border-radius:6px; padding:8px; width:100%; color:var(--text2); font-size:13px; cursor:pointer; transition:all .2s; margin-top:8px; }
 .add-btn:hover { border-color:var(--accent); color:var(--accent); }
+.task-notes { font-size:12px; color:var(--text2); margin-top:6px; padding:8px 12px; background:var(--bg); border-radius:6px; white-space:pre-wrap; line-height:1.5; display:none; }
+.task-item.show-notes .task-notes { display:block; }
+.task-name { cursor:pointer; }
 </style>
 </head>
 <body>
@@ -193,44 +196,304 @@ const SEED_DATA = {
       { id:'m5', name:'Dia 2: El Metodo', date:'2026-05-30', time:'10:00-18:00' }
     ],
     tasks: [
-      { id:'t01', name:'Publicar contenido educativo climaterio', phaseId:'p1', date:'2026-03-03', time:null, status:'not_started' },
-      { id:'t02', name:'Crear primer reel informativo', phaseId:'p1', date:'2026-03-05', time:null, status:'not_started' },
-      { id:'t03', name:'Enviar email nurturing #1', phaseId:'p1', date:'2026-03-07', time:'10:00', status:'not_started' },
-      { id:'t04', name:'Disenar materiales graficos campana', phaseId:'p1', date:'2026-03-10', time:null, status:'not_started' },
-      { id:'t05', name:'Publicar segundo reel educativo', phaseId:'p1', date:'2026-03-12', time:null, status:'not_started' },
-      { id:'t06', name:'Preparar landing page del curso', phaseId:'p1', date:'2026-03-14', time:null, status:'not_started' },
-      { id:'t07', name:'Enviar email nurturing #2', phaseId:'p1', date:'2026-03-17', time:'10:00', status:'not_started' },
-      { id:'t08', name:'Publicar tercer reel informativo', phaseId:'p1', date:'2026-03-19', time:null, status:'not_started' },
-      { id:'t09', name:'Enviar email nurturing #3', phaseId:'p1', date:'2026-03-21', time:'10:00', status:'not_started' },
-      { id:'t10', name:'Promocionar Webinar 1 en redes', phaseId:'p1', date:'2026-03-24', time:null, status:'not_started' },
-      { id:'t11', name:'Preparar slides Webinar 1', phaseId:'p1', date:'2026-03-25', time:null, status:'not_started' },
-      { id:'t12', name:'Dar Webinar 1 en vivo', phaseId:'p2', date:'2026-03-26', time:'18:00', status:'not_started' },
-      { id:'t13', name:'Publicar replay Webinar 1', phaseId:'p2', date:'2026-03-27', time:null, status:'not_started' },
-      { id:'t14', name:'Enviar email apertura inscripciones', phaseId:'p2', date:'2026-03-28', time:'10:00', status:'not_started' },
-      { id:'t15', name:'Publicar testimonios ediciones anteriores', phaseId:'p2', date:'2026-03-31', time:null, status:'not_started' },
-      { id:'t16', name:'Email secuencia venta #1', phaseId:'p2', date:'2026-04-03', time:'10:00', status:'not_started' },
-      { id:'t17', name:'Reel testimonial participante', phaseId:'p2', date:'2026-04-07', time:null, status:'not_started' },
-      { id:'t18', name:'Email secuencia venta #2', phaseId:'p2', date:'2026-04-10', time:'10:00', status:'not_started' },
-      { id:'t19', name:'Publicar contenido educativo adicional', phaseId:'p2', date:'2026-04-14', time:null, status:'not_started' },
-      { id:'t20', name:'Email recordatorio Webinar 2', phaseId:'p2', date:'2026-04-28', time:'10:00', status:'not_started' },
-      { id:'t21', name:'Preparar slides Webinar 2', phaseId:'p2', date:'2026-04-29', time:null, status:'not_started' },
-      { id:'t22', name:'Dar Webinar 2 en vivo', phaseId:'p2', date:'2026-04-30', time:'18:00', status:'not_started' },
-      { id:'t23', name:'Publicar replay Webinar 2', phaseId:'p2', date:'2026-05-01', time:null, status:'not_started' },
-      { id:'t24', name:'Email secuencia venta #3', phaseId:'p2', date:'2026-05-03', time:'10:00', status:'not_started' },
-      { id:'t25', name:'Campana Dia de la Madre (pronto pago)', phaseId:'p2', date:'2026-05-08', time:null, status:'not_started' },
-      { id:'t26', name:'Recordatorio cierre pronto pago', phaseId:'p2', date:'2026-05-09', time:'10:00', status:'not_started' },
-      { id:'t27', name:'Cierre inscripcion pronto pago', phaseId:'p2', date:'2026-05-10', time:null, status:'not_started' },
-      { id:'t28', name:'Preparar materiales Dia 1', phaseId:'p3', date:'2026-05-14', time:null, status:'not_started' },
-      { id:'t29', name:'Enviar instrucciones a participantes', phaseId:'p3', date:'2026-05-15', time:'10:00', status:'not_started' },
-      { id:'t30', name:'Curso Dia 1: El Mapa', phaseId:'p3', date:'2026-05-16', time:'10:00', status:'not_started' },
-      { id:'t31', name:'Seguimiento post-Dia 1', phaseId:'p3', date:'2026-05-18', time:null, status:'not_started' },
-      { id:'t32', name:'Preparar materiales Dia 2', phaseId:'p3', date:'2026-05-28', time:null, status:'not_started' },
-      { id:'t33', name:'Recordatorio Dia 2 a participantes', phaseId:'p3', date:'2026-05-29', time:'10:00', status:'not_started' },
-      { id:'t34', name:'Curso Dia 2: El Metodo', phaseId:'p3', date:'2026-05-30', time:'10:00', status:'not_started' },
-      { id:'t35', name:'Recopilar testimonios participantes', phaseId:'p4', date:'2026-06-02', time:null, status:'not_started' },
-      { id:'t36', name:'Enviar certificados', phaseId:'p4', date:'2026-06-05', time:null, status:'not_started' },
-      { id:'t37', name:'Email de siguiente curso', phaseId:'p4', date:'2026-06-09', time:'10:00', status:'not_started' },
-      { id:'t38', name:'Analisis de resultados campana', phaseId:'p4', date:'2026-06-12', time:null, status:'not_started' }
+      { id:'t01', name:'Publicar contenido educativo climaterio', phaseId:'p1', date:'2026-03-03', time:null, status:'not_started', notes:null },
+      { id:'t02', name:'Crear primer reel informativo', phaseId:'p1', date:'2026-03-05', time:null, status:'not_started', notes:null },
+      { id:'t03', name:'Enviar email nurturing #1', phaseId:'p1', date:'2026-03-07', time:'10:00', status:'not_started', notes:null },
+      { id:'t04', name:'Disenar materiales graficos campana', phaseId:'p1', date:'2026-03-10', time:null, status:'not_started', notes:null },
+      { id:'t05', name:'Publicar segundo reel educativo', phaseId:'p1', date:'2026-03-12', time:null, status:'not_started', notes:null },
+      { id:'t06', name:'Preparar landing page del curso', phaseId:'p1', date:'2026-03-14', time:null, status:'not_started', notes:null },
+      { id:'t07', name:'Enviar email nurturing #2', phaseId:'p1', date:'2026-03-17', time:'10:00', status:'not_started', notes:null },
+      { id:'t08', name:'Publicar tercer reel informativo', phaseId:'p1', date:'2026-03-19', time:null, status:'not_started', notes:null },
+      { id:'t09', name:'Enviar email nurturing #3', phaseId:'p1', date:'2026-03-21', time:'10:00', status:'not_started', notes:null },
+      { id:'t10', name:'Promocionar Webinar 1 en redes', phaseId:'p1', date:'2026-03-24', time:null, status:'not_started', notes:null },
+      { id:'t11', name:'Preparar slides Webinar 1', phaseId:'p1', date:'2026-03-25', time:null, status:'not_started', notes:null },
+      { id:'t12', name:'Dar Webinar 1 en vivo', phaseId:'p2', date:'2026-03-26', time:'18:00', status:'not_started', notes:null },
+      { id:'t13', name:'Publicar replay Webinar 1', phaseId:'p2', date:'2026-03-27', time:null, status:'not_started', notes:null },
+      { id:'t14', name:'Enviar email apertura inscripciones', phaseId:'p2', date:'2026-03-28', time:'10:00', status:'not_started', notes:null },
+      { id:'t15', name:'Publicar testimonios ediciones anteriores', phaseId:'p2', date:'2026-03-31', time:null, status:'not_started', notes:null },
+      { id:'t16', name:'Email secuencia venta #1', phaseId:'p2', date:'2026-04-03', time:'10:00', status:'not_started', notes:null },
+      { id:'t17', name:'Reel testimonial participante', phaseId:'p2', date:'2026-04-07', time:null, status:'not_started', notes:null },
+      { id:'t18', name:'Email secuencia venta #2', phaseId:'p2', date:'2026-04-10', time:'10:00', status:'not_started', notes:null },
+      { id:'t19', name:'Publicar contenido educativo adicional', phaseId:'p2', date:'2026-04-14', time:null, status:'not_started', notes:null },
+      { id:'t20', name:'Email recordatorio Webinar 2', phaseId:'p2', date:'2026-04-28', time:'10:00', status:'not_started', notes:null },
+      { id:'t21', name:'Preparar slides Webinar 2', phaseId:'p2', date:'2026-04-29', time:null, status:'not_started', notes:null },
+      { id:'t22', name:'Dar Webinar 2 en vivo', phaseId:'p2', date:'2026-04-30', time:'18:00', status:'not_started', notes:null },
+      { id:'t23', name:'Publicar replay Webinar 2', phaseId:'p2', date:'2026-05-01', time:null, status:'not_started', notes:null },
+      { id:'t24', name:'Email secuencia venta #3', phaseId:'p2', date:'2026-05-03', time:'10:00', status:'not_started', notes:null },
+      { id:'t25', name:'Campana Dia de la Madre (pronto pago)', phaseId:'p2', date:'2026-05-08', time:null, status:'not_started', notes:null },
+      { id:'t26', name:'Recordatorio cierre pronto pago', phaseId:'p2', date:'2026-05-09', time:'10:00', status:'not_started', notes:null },
+      { id:'t27', name:'Cierre inscripcion pronto pago', phaseId:'p2', date:'2026-05-10', time:null, status:'not_started', notes:null },
+      { id:'t28', name:'Preparar materiales Dia 1', phaseId:'p3', date:'2026-05-14', time:null, status:'not_started', notes:null },
+      { id:'t29', name:'Enviar instrucciones a participantes', phaseId:'p3', date:'2026-05-15', time:'10:00', status:'not_started', notes:null },
+      { id:'t30', name:'Curso Dia 1: El Mapa', phaseId:'p3', date:'2026-05-16', time:'10:00', status:'not_started', notes:null },
+      { id:'t31', name:'Seguimiento post-Dia 1', phaseId:'p3', date:'2026-05-18', time:null, status:'not_started', notes:null },
+      { id:'t32', name:'Preparar materiales Dia 2', phaseId:'p3', date:'2026-05-28', time:null, status:'not_started', notes:null },
+      { id:'t33', name:'Recordatorio Dia 2 a participantes', phaseId:'p3', date:'2026-05-29', time:'10:00', status:'not_started', notes:null },
+      { id:'t34', name:'Curso Dia 2: El Metodo', phaseId:'p3', date:'2026-05-30', time:'10:00', status:'not_started', notes:null },
+      { id:'t35', name:'Recopilar testimonios participantes', phaseId:'p4', date:'2026-06-02', time:null, status:'not_started', notes:null },
+      { id:'t36', name:'Enviar certificados', phaseId:'p4', date:'2026-06-05', time:null, status:'not_started', notes:null },
+      { id:'t37', name:'Email de siguiente curso', phaseId:'p4', date:'2026-06-09', time:'10:00', status:'not_started', notes:null },
+      { id:'t38', name:'Analisis de resultados campana', phaseId:'p4', date:'2026-06-12', time:null, status:'not_started', notes:null }
+    ]
+  },
+  {
+    id: 'mascotas-espejo',
+    name: 'Lo Que Tu Mascota Quiere Decirte',
+    color: '#4ade80',
+    startDate: '2026-03-14',
+    endDate: '2026-04-15',
+    phases: [
+      { id:'pm1', name:'Siembra', startDate:'2026-03-14', endDate:'2026-03-18' },
+      { id:'pm2', name:'Enganche', startDate:'2026-03-19', endDate:'2026-03-26' },
+      { id:'pm3', name:'Modulo 1', startDate:'2026-03-27', endDate:'2026-03-27' },
+      { id:'pm4', name:'Entre modulos', startDate:'2026-03-28', endDate:'2026-04-09' },
+      { id:'pm5', name:'Modulo 2', startDate:'2026-04-10', endDate:'2026-04-10' },
+      { id:'pm6', name:'Post-curso', startDate:'2026-04-11', endDate:'2026-04-15' }
+    ],
+    milestones: [
+      { id:'mm1', name:'YouTube Live #1', date:'2026-03-19', time:'20:15' },
+      { id:'mm2', name:'YouTube Live #2', date:'2026-03-26', time:'20:15' },
+      { id:'mm3', name:'Modulo 1: Tu Mascota Es Tu Espejo', date:'2026-03-27', time:'15:00-19:00' },
+      { id:'mm4', name:'Modulo 2: Sana el Vinculo', date:'2026-04-10', time:'15:00-19:00' }
+    ],
+    tasks: [
+      { id:'tm01', name:'Post curiosidad: "Tu perro no esta loco..."', phaseId:'pm1', date:'2026-03-14', time:null, status:'not_started', notes:"Imagen: foto de perro/gato mirando fijamente al due\u00f1o.\n\nTexto:\n\"Tu perro no est\u00e1 loco. Est\u00e1 absorbiendo lo que t\u00fa no est\u00e1s procesando.\n\nUn estudio de la Universidad de Link\u00f6ping (Suecia, 2019) demostr\u00f3 que los niveles de cortisol de tu perro est\u00e1n sincronizados con los tuyos.\n\nTu estr\u00e9s es su estr\u00e9s. No es met\u00e1fora \u2014 es biolog\u00eda.\"\n\nSin vender nada. Solo el dato. Que comenten y compartan." },
+      { id:'tm02', name:'Reel 30-60 seg: caso real sin final', phaseId:'pm1', date:'2026-03-16', time:null, status:'not_started', notes:"Gui\u00f3n para el Dr. Ojeda (30-60 seg):\n\n\"Lleg\u00f3 una se\u00f1ora con un perro que vomitaba todos los d\u00edas. Ya lo hab\u00edan llevado a 3 veterinarios. Estudios normales. Medicamento, no funcion\u00f3. Dieta especial, tampoco. Le hice una sola pregunta a la due\u00f1a... y ah\u00ed cambi\u00f3 todo. El jueves en vivo les cuento qu\u00e9 le pregunt\u00e9 y qu\u00e9 pas\u00f3 con el perro.\"\n\nCortar ah\u00ed. No dar el final." },
+      { id:'tm03', name:'Post pregunta interactiva: sintomas de mascotas', phaseId:'pm1', date:'2026-03-18', time:null, status:'not_started', notes:"Texto:\n\"\u00bfTu mascota tiene alguno de estos?\n\u2192 Ansiedad de separaci\u00f3n\n\u2192 Se rasca sin parar\n\u2192 Vomita sin causa m\u00e9dica\n\u2192 Est\u00e1 ap\u00e1tica o no come\n\u2192 Problemas urinarios (gatos)\n\nSi marcaste alguno, ma\u00f1ana a las 8:15pm en vivo te explico por qu\u00e9 pasa. No es lo que piensas.\"" },
+      { id:'tm04', name:'Preparar estructura del YouTube Live #1', phaseId:'pm2', date:'2026-03-18', time:null, status:'not_started', notes:"Estructura del Live #1:\n\nMin 0-3: Gancho \u2014 \"Hoy les voy a contar por qu\u00e9 su mascota se enferma de lo mismo que ustedes.\"\nMin 3-10: Estudio Link\u00f6ping + mascota como hijo simb\u00f3lico + caso del perro que vomitaba (completo)\nMin 10-18: 5 de los 10 conflictos (v\u00f3mitos, piel, ansiedad, urinario, apat\u00eda). \"Los otros 5 los doy en el taller.\"\nMin 18-23: Herramienta gratis: Rescue Remedy \u2014 qu\u00e9 es, c\u00f3mo darlo, dosis\nMin 23-30: Invitaci\u00f3n al taller + link en descripci\u00f3n y comentario fijado" },
+      { id:'tm05', name:'YouTube Live #1: Lo Que Tu Mascota Quiere Decirte', phaseId:'pm2', date:'2026-03-19', time:'20:15', status:'not_started', notes:"YouTube Live #1: \"Lo Que Tu Mascota Quiere Decirte\"\n8:15 PM\n\nLink de inscripci\u00f3n en: descripci\u00f3n del video + comentario fijado.\n\nRECORDAR: dar correlaciones generales de los 5 conflictos, NO personalizar. Ense\u00f1ar solo Rescue Remedy como herramienta gratis." },
+      { id:'tm06', name:'Publicar clip 60 seg del live + link inscripcion', phaseId:'pm2', date:'2026-03-21', time:null, status:'not_started', notes:"Cortar el mejor momento del live (60 seg). Agregar texto:\n\n\"Esto fue solo una parte. El taller completo es el viernes 27 de marzo.\n\nLo Que Tu Mascota Quiere Decirte\n2 m\u00f3dulos: 27 marzo + 10 abril, 3 a 7pm\nFlores de Bach, imanes y el v\u00ednculo entre t\u00fa y tu animal.\n\n[link de inscripci\u00f3n]\"" },
+      { id:'tm07', name:'Post "Lo que te llevas" + link inscripcion', phaseId:'pm2', date:'2026-03-24', time:null, status:'not_started', notes:"Texto:\n\"Lo que te llevas del taller Lo Que Tu Mascota Quiere Decirte:\n\n\u2192 Tabla de 10 conflictos que tu mascota absorbe de ti\n\u2192 7 Flores de Bach esenciales para animales\n\u2192 5 f\u00f3rmulas predise\u00f1adas listas para usar\n\u2192 5 pares biomag\u00e9ticos adaptados a mascotas\n\u2192 Protocolo de 5 pasos para usar en casa\n\u2192 Hoja resumen para pegar en tu refri\n\u2192 Rutina diaria y semanal para cuidar a tu animal\n\nNo necesitas ser terapeuta. Solo necesitas tener mascota.\n\n2 viernes: 27 de marzo + 10 de abril, 3-7pm\n[link de inscripci\u00f3n]\"" },
+      { id:'tm08', name:'YouTube Live #2: Dime que tiene tu mascota (correlaciones generales)', phaseId:'pm2', date:'2026-03-26', time:'20:15', status:'not_started', notes:"YouTube Live #2: \"Dime Qu\u00e9 Tiene Tu Mascota y Te Digo Qu\u00e9 Cargas T\u00fa\"\n8:15 PM\n\nMin 0-3: Caso nuevo distinto al live anterior\nMin 3-15: Interacci\u00f3n en vivo \u2014 leer chat y dar correlaciones GENERALES, NO personalizadas\nMin 15-20: Herramienta gratis #2: observaci\u00f3n diaria de 2 minutos\nMin 20-25: Qu\u00e9 pasa ma\u00f1ana en el taller\nMin 25-30: \u00daltimas inscripciones\n\nREGLA CLAVE: No decir \"tu gato tiene cistitis porque t\u00fa no pones l\u00edmites\". S\u00ed decir \"los problemas urinarios en gatos suelen conectarse con conflictos de l\u00edmites del due\u00f1o. En el taller vemos c\u00f3mo identificar cu\u00e1l es TU conflicto.\"" },
+      { id:'tm09', name:'Historia en redes: "Hoy a las 3pm. Trae foto de tu mascota."', phaseId:'pm3', date:'2026-03-27', time:'09:00', status:'not_started', notes:"Historia/story en redes:\n\"Hoy a las 3pm. Trae la foto de tu mascota. Nos vemos.\"" },
+      { id:'tm10', name:'Recordatorio por WhatsApp a inscritos', phaseId:'pm3', date:'2026-03-27', time:'10:00', status:'not_started', notes:"Enviar mensaje al grupo/lista de inscritos:\n\"Nos vemos hoy a las 3pm. Recuerda traer foto de tu mascota. \u00a1Te esperamos!\"" },
+      { id:'tm11', name:'MODULO 1: Tu Mascota Es Tu Espejo (3-7pm)', phaseId:'pm3', date:'2026-03-27', time:'15:00', status:'not_started', notes:"M\u00d3DULO 1: Tu Mascota Es Tu Espejo\n3:00-7:00pm\n\nBloque 1 (3:00-3:45): Regla #1 veterinario primero + caso del perro + estudio Link\u00f6ping + mecanismos de transferencia\nBloque 2 (3:45-4:45): 10 conflictos m\u00e1s comunes\nReceso (4:45-5:00)\nBloque 4 (5:00-5:45): 7 Flores de Bach esenciales + ejercicio de selecci\u00f3n\nBloque 5 (5:45-6:30): Lectura del campo m\u00f3rfico + ejercicio de las 3 preguntas\nBloque 6 (6:30-6:50): Botiqu\u00edn diario + refrigerator sheet\nBloque 7 (6:50-7:00): Cierre y tarea para 2 semanas" },
+      { id:'tm12', name:'Crear grupo de WhatsApp con asistentes', phaseId:'pm3', date:'2026-03-27', time:'19:30', status:'not_started', notes:"Crear grupo de WhatsApp con todos los asistentes del M\u00f3dulo 1.\nNombre sugerido: \"Tu Mascota Quiere Decirte \ud83d\udc3e\"\nPrimer mensaje: bienvenida + recordar la tarea de las 2 semanas (registro de observaci\u00f3n + diario personal + aplicar flores)" },
+      { id:'tm13', name:'Post highlight del Modulo 1 (sin spoilear)', phaseId:'pm4', date:'2026-03-29', time:null, status:'not_started', notes:"Post en redes con alg\u00fan insight del M\u00f3dulo 1 sin revelar todo:\n\"Lo que descubrimos el viernes pasado nos dej\u00f3 a todos con la boca abierta.\"\n\nSi hay foto grupal (con permiso), publicarla." },
+      { id:'tm14', name:'Audio Dr. Ojeda al WhatsApp: Como van con las flores?', phaseId:'pm4', date:'2026-04-03', time:null, status:'not_started', notes:"Audio del Dr. Ojeda al grupo de WhatsApp (1-2 min):\n\"Hola a todos. \u00bfC\u00f3mo van con las flores? \u00bfHan hecho la observaci\u00f3n diaria? \u00bfQu\u00e9 han notado en su mascota esta semana? Compartan aqu\u00ed. El viernes 10 arrancamos el M\u00f3dulo 2 y quiero escuchar sus experiencias.\"" },
+      { id:'tm15', name:'Recordatorio Modulo 2 por WhatsApp', phaseId:'pm4', date:'2026-04-09', time:'10:00', status:'not_started', notes:"Mensaje al grupo de WhatsApp:\n\"Este viernes es el M\u00f3dulo 2: Sana el V\u00ednculo con Tu Animal. Traigan su registro de observaci\u00f3n, el diario personal, y la foto de su mascota. 3:00pm. \u00a1Los espero!\"" },
+      { id:'tm16', name:'MODULO 2: Sana el Vinculo con Tu Animal (3-7pm)', phaseId:'pm5', date:'2026-04-10', time:'15:00', status:'not_started', notes:"M\u00d3DULO 2: Sana el V\u00ednculo con Tu Animal\n3:00-7:00pm\n\nBloque 1 (3:00-3:45): Testimonios vivenciales (20 min) + revisi\u00f3n de registros (25 min)\nBloque 2 (3:45-4:45): 5 pares de regulaci\u00f3n general (demo del Dr. Ojeda) + 5 pares referencia\nReceso (4:45-5:00)\nBloque 4 (5:00-5:45): 5 f\u00f3rmulas avanzadas de Flores de Bach\nBloque 5 (5:45-6:40): Protocolo integrado de 5 pasos + ejercicio final\nBloque 6 (6:40-7:00): Cierre + embudo hacia octubre + lista de espera" },
+      { id:'tm17', name:'Recopilar testimonios de participantes', phaseId:'pm6', date:'2026-04-12', time:null, status:'not_started', notes:"Pedir a los asistentes por WhatsApp:\n- Testimonio escrito breve (qu\u00e9 aprendieron, qu\u00e9 cambi\u00f3)\n- Permiso para usar su testimonio en redes\n- Foto con su mascota (opcional)" },
+      { id:'tm18', name:'Post con testimonios + abrir lista de espera octubre', phaseId:'pm6', date:'2026-04-14', time:null, status:'not_started', notes:"Post en redes con 1-2 testimonios + CTA:\n\"Estos son los resultados de nuestro taller Lo Que Tu Mascota Quiere Decirte.\n\nEl programa avanzado Terapeuta Animal Integrativo arranca en octubre. Si quieres la certificaci\u00f3n completa, inscr\u00edbete a la lista de espera.\"\n\n[link lista de espera]" }
+    ]
+  },
+  {
+    id: 'actos-que-mueven',
+    name: 'Actos que Mueven',
+    color: '#fbbf24',
+    startDate: '2026-04-02',
+    endDate: '2026-06-25',
+    phases: [
+      { id:'pa1', name:'Pre-siembra', startDate:'2026-04-02', endDate:'2026-04-14' },
+      { id:'pa2', name:'Siembra', startDate:'2026-04-15', endDate:'2026-04-22' },
+      { id:'pa3', name:'Cultivo', startDate:'2026-04-23', endDate:'2026-05-13' },
+      { id:'pa4', name:'Cosecha', startDate:'2026-05-14', endDate:'2026-06-05' },
+      { id:'pa5', name:'Taller', startDate:'2026-06-06', endDate:'2026-06-20' },
+      { id:'pa6', name:'Post-taller', startDate:'2026-06-21', endDate:'2026-06-25' }
+    ],
+    milestones: [
+      { id:'ma1', name:'Webinar 1: Por que entender no resuelve', date:'2026-04-23', time:'18:00' },
+      { id:'ma2', name:'Webinar 2: Tu cuerpo guarda', date:'2026-05-14', time:'18:00' },
+      { id:'ma3', name:'Ritual en clinica: Por Que Siempre Debo', date:'2026-05-22', time:'17:00-19:00' },
+      { id:'ma4', name:'Webinar 3: 3 actos para esta semana', date:'2026-05-28', time:'18:00' },
+      { id:'ma5', name:'Modulo 1: Los 5 Actos Fundamentales', date:'2026-06-06', time:'10:00-17:00' },
+      { id:'ma6', name:'Modulo 2: La Secuencia que Transforma', date:'2026-06-20', time:'10:00-18:00' }
+    ],
+    tasks: [
+      { id:'ta01', name:'YouTube Live: sembrar "entender no es transformar"', phaseId:'pa1', date:'2026-04-02', time:'20:15', status:'not_started', notes:null },
+      { id:'ta02', name:'YouTube Live: "tu cuerpo guarda lo que tu mente no proceso"', phaseId:'pa1', date:'2026-04-09', time:'20:15', status:'not_started', notes:null },
+      { id:'ta03', name:'Post siembra: "Hay cosas que no se hablan. Se hacen."', phaseId:'pa2', date:'2026-04-15', time:null, status:'not_started', notes:null },
+      { id:'ta04', name:'YouTube Live: anticipar webinar 23 abril', phaseId:'pa2', date:'2026-04-17', time:'20:15', status:'not_started', notes:null },
+      { id:'ta05', name:'Post: anticipar webinar del 23 abril', phaseId:'pa2', date:'2026-04-21', time:null, status:'not_started', notes:null },
+      { id:'ta06', name:'WEBINAR 1: "Por que entender tu problema no lo resuelve"', phaseId:'pa3', date:'2026-04-23', time:'18:00', status:'not_started', notes:"0-5 min: Presentacion + encuesta\n5-20 min: La brecha entre entender y transformar\n20-35 min: Que es un acto ritual\n35-45 min: Lo que no se mueve no se transforma\n45-55 min: Preguntas\n55-60 min: ANUNCIO DEL TALLER" },
+      { id:'ta07', name:'Post resumen webinar 1 + anuncio oficial del taller', phaseId:'pa3', date:'2026-04-25', time:null, status:'not_started', notes:null },
+      { id:'ta08', name:'Post contenido de profundizacion', phaseId:'pa3', date:'2026-04-28', time:null, status:'not_started', notes:null },
+      { id:'ta09', name:'YouTube Live: profundizacion sobre rituales', phaseId:'pa3', date:'2026-05-01', time:'20:15', status:'not_started', notes:null },
+      { id:'ta10', name:'Post "antes/despues" conceptual', phaseId:'pa3', date:'2026-05-05', time:null, status:'not_started', notes:null },
+      { id:'ta11', name:'YouTube Live: anticipar webinar 2', phaseId:'pa3', date:'2026-05-08', time:'20:15', status:'not_started', notes:null },
+      { id:'ta12', name:'Post promocion webinar 2', phaseId:'pa3', date:'2026-05-12', time:null, status:'not_started', notes:null },
+      { id:'ta13', name:'WEBINAR 2: "Tu cuerpo guarda lo que tu mente no pudo procesar"', phaseId:'pa4', date:'2026-05-14', time:'18:00', status:'not_started', notes:"0-5 min: Recapitulacion Webinar 1\n5-25 min: Donde guarda el cuerpo la experiencia\n25-40 min: Escaneo corporal guiado en vivo\n40-50 min: Como un acto ritual le habla al cuerpo\n50-55 min: Preguntas\n55-60 min: Recordatorio taller + testimonios" },
+      { id:'ta14', name:'Post resumen webinar 2 + testimonios', phaseId:'pa4', date:'2026-05-16', time:null, status:'not_started', notes:null },
+      { id:'ta15', name:'Post objecion: "eso suena a esoterismo"', phaseId:'pa4', date:'2026-05-19', time:null, status:'not_started', notes:"Responder: Un ritual bien disenado tiene mas en comun con un protocolo de neurociencia que con un hechizo." },
+      { id:'ta16', name:'EVENTO PRESENCIAL: Por Que Siempre Debo? (ritual en clinica)', phaseId:'pa4', date:'2026-05-22', time:'17:00', status:'not_started', notes:"Ritual: La Deuda que No es Mia\n2 horas presencial en la clinica\n15 personas max\nMaterial: monedas, platos, sal, sobres, velas, agua" },
+      { id:'ta17', name:'Post objecion: "ya hice terapia y no funciono"', phaseId:'pa4', date:'2026-05-26', time:null, status:'not_started', notes:null },
+      { id:'ta18', name:'WEBINAR 3: "3 actos que puedes hacer esta semana"', phaseId:'pa4', date:'2026-05-28', time:'18:00', status:'not_started', notes:"0-5 min: El webinar mas practico\n5-15 min: 3 principios de un ritual efectivo\n15-45 min: 3 micro-rituales guiados\n45-55 min: Preguntas\n55-60 min: Ultimas fechas" },
+      { id:'ta19', name:'Post: "Lo que vimos ayer fue una muestra"', phaseId:'pa4', date:'2026-05-29', time:null, status:'not_started', notes:null },
+      { id:'ta20', name:'Post conteo regresivo: "5 dias"', phaseId:'pa4', date:'2026-06-01', time:null, status:'not_started', notes:null },
+      { id:'ta21', name:'Post: "ultimos lugares"', phaseId:'pa4', date:'2026-06-03', time:null, status:'not_started', notes:null },
+      { id:'ta22', name:'Post cierre: "Las inscripciones cierran hoy"', phaseId:'pa4', date:'2026-06-05', time:null, status:'not_started', notes:null },
+      { id:'ta23', name:'TALLER MODULO 1: Los 5 Actos Fundamentales (10am-5pm)', phaseId:'pa5', date:'2026-06-06', time:'10:00', status:'not_started', notes:"10:00-10:45 Apertura\n10:45-11:35 Acto 1: Romper y Reparar\n11:35-12:25 Acto 2: Lo que Nunca se Dijo\n12:25-1:15 Acto 3: Ponerse de Pie\n1:15-2:15 Comida\n2:15-3:05 Acto 4: La Cara que Construi\n3:05-3:55 Acto 5: El Primer Bocado\n3:55-5:00 Cierre + tarea" },
+      { id:'ta24', name:'Post highlight Modulo 1 + grupo WhatsApp', phaseId:'pa5', date:'2026-06-08', time:null, status:'not_started', notes:null },
+      { id:'ta25', name:'Audio Dr. Ojeda al WhatsApp: Como van con la tarea?', phaseId:'pa5', date:'2026-06-12', time:null, status:'not_started', notes:null },
+      { id:'ta26', name:'Recordatorio Modulo 2 por WhatsApp', phaseId:'pa5', date:'2026-06-18', time:null, status:'not_started', notes:null },
+      { id:'ta27', name:'TALLER MODULO 2: La Secuencia que Transforma (10am-6pm)', phaseId:'pa5', date:'2026-06-20', time:'10:00', status:'not_started', notes:"10:00-11:00 Reencuentro\n11:00-11:50 Acto 1: El Peso (DESCENSO)\n11:50-12:40 Acto 2: La Herida que Habla (DESCENSO)\n12:40-1:40 Comida\n1:40-2:30 Acto 3: El Espejo (ENCUENTRO)\n2:30-3:20 Acto 4: Dialogo con las Partes (ENCUENTRO)\n3:20-4:10 Acto 5: La Entrega a la Tierra (ASCENSO)\n4:10-5:00 Acto 6: El Nuevo Paso (ASCENSO)\n5:00-6:00 Cierre" }
+    ]
+  },
+  {
+    id: 'cuando-palabras',
+    name: 'Cuando las Palabras No Alcanzan',
+    color: '#a78bfa',
+    startDate: '2026-03-17',
+    endDate: '2026-10-23',
+    phases: [
+      { id:'pc0', name:'Siembra larga', startDate:'2026-03-17', endDate:'2026-07-31' },
+      { id:'pc1', name:'Cultivo', startDate:'2026-08-04', endDate:'2026-08-25' },
+      { id:'pc2', name:'Cosecha', startDate:'2026-08-28', endDate:'2026-09-04' },
+      { id:'pc3', name:'Modulo 1', startDate:'2026-09-05', endDate:'2026-09-05' },
+      { id:'pc4', name:'Entre modulos 1-2', startDate:'2026-09-06', endDate:'2026-09-18' },
+      { id:'pc5', name:'Modulo 2', startDate:'2026-09-19', endDate:'2026-09-19' },
+      { id:'pc6', name:'Entre modulos 2-3', startDate:'2026-09-20', endDate:'2026-10-02' },
+      { id:'pc7', name:'Modulo 3', startDate:'2026-10-03', endDate:'2026-10-03' },
+      { id:'pc8', name:'Entre modulos 3-4', startDate:'2026-10-04', endDate:'2026-10-16' },
+      { id:'pc9', name:'Modulo 4 + Certificacion', startDate:'2026-10-17', endDate:'2026-10-17' },
+      { id:'pc10', name:'Post-curso', startDate:'2026-10-18', endDate:'2026-10-23' }
+    ],
+    milestones: [
+      { id:'mc0', name:'Webinar: Cuando las Palabras No Alcanzan', date:'2026-08-07', time:'18:00' },
+      { id:'mc1', name:'Modulo 1: La Ciencia del Acto', date:'2026-09-05', time:'10:00-18:00' },
+      { id:'mc2', name:'Modulo 2: Leer el Patron', date:'2026-09-19', time:'10:00-18:00' },
+      { id:'mc3', name:'Modulo 3: Disenar el Ritual', date:'2026-10-03', time:'10:00-18:00' },
+      { id:'mc4', name:'Modulo 4: Facilitar sin Danar + Certificacion', date:'2026-10-17', time:'10:00-18:00' }
+    ],
+    tasks: [
+      { id:'tc01', name:'Post terapeutas: "Tus pacientes entienden todo y siguen igual"', phaseId:'pc0', date:'2026-03-17', time:null, status:'not_started', notes:null },
+      { id:'tc02', name:'Post: "La terapia verbal tiene un techo"', phaseId:'pc0', date:'2026-03-31', time:null, status:'not_started', notes:null },
+      { id:'tc03', name:'Post: "Que herramienta le falta a tu caja?"', phaseId:'pc0', date:'2026-04-14', time:null, status:'not_started', notes:null },
+      { id:'tc04', name:'Post: "Un acto ritual no es magia. Es protocolo."', phaseId:'pc0', date:'2026-05-01', time:null, status:'not_started', notes:null },
+      { id:'tc05', name:'Post: "Objetos cotidianos como herramientas de cambio"', phaseId:'pc0', date:'2026-05-15', time:null, status:'not_started', notes:null },
+      { id:'tc06', name:'Post teaser: "Los rituales llegan al Instituto"', phaseId:'pc0', date:'2026-06-01', time:null, status:'not_started', notes:null },
+      { id:'tc07', name:'Post testimonios Actos que Mueven + teaser septiembre', phaseId:'pc0', date:'2026-06-22', time:null, status:'not_started', notes:null },
+      { id:'tc08', name:'YouTube Live: "Que haces cuando tu paciente entiende todo?"', phaseId:'pc0', date:'2026-07-03', time:'20:15', status:'not_started', notes:null },
+      { id:'tc09', name:'Post: "Hay un momento donde las palabras se agotan"', phaseId:'pc0', date:'2026-07-10', time:null, status:'not_started', notes:null },
+      { id:'tc10', name:'YouTube Live: "El cuerpo del paciente sabe algo que su mente no dice"', phaseId:'pc0', date:'2026-07-17', time:'20:15', status:'not_started', notes:null },
+      { id:'tc11', name:'Post: "Paciente atascado. Levanten la mano."', phaseId:'pc0', date:'2026-07-24', time:null, status:'not_started', notes:null },
+      { id:'tc12', name:'YouTube Live: "Como un acto ritual mueve lo que la terapia no" + anticipar webinar', phaseId:'pc0', date:'2026-07-31', time:'20:15', status:'not_started', notes:null },
+      { id:'tc13', name:'Post: anticipar webinar del 7 agosto', phaseId:'pc1', date:'2026-08-04', time:null, status:'not_started', notes:null },
+      { id:'tc14', name:'WEBINAR: "Cuando las Palabras No Alcanzan" + ANUNCIO CURSO', phaseId:'pc1', date:'2026-08-07', time:'18:00', status:'not_started', notes:"60 min. Caso clinico + anuncio del curso al final." },
+      { id:'tc15', name:'Post resumen webinar + anuncio oficial curso', phaseId:'pc1', date:'2026-08-09', time:null, status:'not_started', notes:null },
+      { id:'tc16', name:'Email/WhatsApp a egresados Actos que Mueven', phaseId:'pc1', date:'2026-08-11', time:null, status:'not_started', notes:null },
+      { id:'tc17', name:'YouTube Live: "Lo que incluye el curso + preguntas"', phaseId:'pc1', date:'2026-08-14', time:'20:15', status:'not_started', notes:null },
+      { id:'tc18', name:'Post: "Lo que te llevas" - lista completa entregables', phaseId:'pc1', date:'2026-08-18', time:null, status:'not_started', notes:null },
+      { id:'tc19', name:'YouTube Live: "Los 2 tracks: terapeuta y facilitador"', phaseId:'pc1', date:'2026-08-21', time:'20:15', status:'not_started', notes:null },
+      { id:'tc20', name:'Post objecion: "No soy terapeuta, puedo tomarlo?"', phaseId:'pc1', date:'2026-08-25', time:null, status:'not_started', notes:null },
+      { id:'tc21', name:'YouTube Live: "Ultimas preguntas antes del curso"', phaseId:'pc2', date:'2026-08-28', time:'20:15', status:'not_started', notes:null },
+      { id:'tc22', name:'Post: "Quedan X lugares. El sabado 5 arrancamos."', phaseId:'pc2', date:'2026-09-01', time:null, status:'not_started', notes:null },
+      { id:'tc23', name:'Post cierre: "Las inscripciones cierran manana"', phaseId:'pc2', date:'2026-09-03', time:null, status:'not_started', notes:null },
+      { id:'tc24', name:'Recordatorio WhatsApp a inscritos', phaseId:'pc2', date:'2026-09-04', time:null, status:'not_started', notes:null },
+      { id:'tc25', name:'MODULO 1: La Ciencia del Acto', phaseId:'pc3', date:'2026-09-05', time:'10:00', status:'not_started', notes:"Apertura + TAME + 13 Actos + vivir 3 actos + tabla impronta-acto" },
+      { id:'tc26', name:'Audio WhatsApp: Como les fue con los 2 actos?', phaseId:'pc4', date:'2026-09-08', time:null, status:'not_started', notes:null },
+      { id:'tc27', name:'Recordatorio Modulo 2 por WhatsApp', phaseId:'pc4', date:'2026-09-17', time:null, status:'not_started', notes:null },
+      { id:'tc28', name:'MODULO 2: Leer el Patron', phaseId:'pc5', date:'2026-09-19', time:'10:00', status:'not_started', notes:"13 improntas + lectura corporal en vivo + practica en trios + casos clinicos" },
+      { id:'tc29', name:'Audio WhatsApp: Ya tienen el caso para el Modulo 3?', phaseId:'pc6', date:'2026-09-25', time:null, status:'not_started', notes:null },
+      { id:'tc30', name:'Recordatorio Modulo 3 por WhatsApp', phaseId:'pc6', date:'2026-10-01', time:null, status:'not_started', notes:null },
+      { id:'tc31', name:'MODULO 3: Disenar el Ritual', phaseId:'pc7', date:'2026-10-03', time:'10:00', status:'not_started', notes:"12 principios + taller manual + diseno con IA + critica grupal" },
+      { id:'tc32', name:'Audio WhatsApp: Quien ya ejecuto su ritual?', phaseId:'pc8', date:'2026-10-09', time:null, status:'not_started', notes:null },
+      { id:'tc33', name:'Recordatorio Modulo 4 + Certificacion por WhatsApp', phaseId:'pc8', date:'2026-10-15', time:null, status:'not_started', notes:null },
+      { id:'tc34', name:'MODULO 4: Facilitar sin Danar + CERTIFICACION', phaseId:'pc9', date:'2026-10-17', time:'10:00', status:'not_started', notes:"Protocolos contencion + supervision en vivo + flujo con IA + etica + certificacion" },
+      { id:'tc35', name:'Post: testimonios + foto grupal + Primera generacion certificada', phaseId:'pc10', date:'2026-10-20', time:null, status:'not_started', notes:null },
+      { id:'tc36', name:'Post: abrir grupo de supervision mensual', phaseId:'pc10', date:'2026-10-23', time:null, status:'not_started', notes:null }
+    ]
+  },
+  {
+    id: 'actos-monterrey',
+    name: 'Actos que Mueven — Monterrey',
+    color: '#D4956B',
+    startDate: '2026-06-22',
+    endDate: '2026-08-22',
+    phases: [
+      { id:'pm1', name:'Siembra (testimonios CDMX)', startDate:'2026-06-22', endDate:'2026-07-06' },
+      { id:'pm2', name:'Cultivo', startDate:'2026-07-07', endDate:'2026-07-31' },
+      { id:'pm3', name:'Cosecha', startDate:'2026-08-01', endDate:'2026-08-14' },
+      { id:'pm4', name:'Taller', startDate:'2026-08-15', endDate:'2026-08-16' },
+      { id:'pm5', name:'Post-taller', startDate:'2026-08-17', endDate:'2026-08-22' }
+    ],
+    milestones: [
+      { id:'mm1', name:'Anuncio Monterrey', date:'2026-07-02', time:null },
+      { id:'mm2', name:'Webinar: El cuerpo no cambia con lo que entiendes', date:'2026-07-17', time:'18:00' },
+      { id:'mm3', name:'Cierre Early Bird', date:'2026-07-31', time:null },
+      { id:'mm4', name:'Dia 1: Los 5 Actos Fundamentales', date:'2026-08-15', time:'10:00-18:00' },
+      { id:'mm5', name:'Dia 2: La Secuencia que Transforma', date:'2026-08-16', time:'10:00-18:00' }
+    ],
+    tasks: [
+      { id:'tm01', name:'Post testimonios CDMX: "Esto paso el sabado"', phaseId:'pm1', date:'2026-06-22', time:null, status:'not_started', notes:null },
+      { id:'tm02', name:'Reel 60 seg: compilacion frases participantes CDMX', phaseId:'pm1', date:'2026-06-25', time:null, status:'not_started', notes:null },
+      { id:'tm03', name:'Post: "Algo se movio dentro"', phaseId:'pm1', date:'2026-06-28', time:null, status:'not_started', notes:null },
+      { id:'tm04', name:'Anuncio: Actos que Mueven llega a Monterrey', phaseId:'pm1', date:'2026-07-02', time:null, status:'not_started', notes:null },
+      { id:'tm05', name:'Post educativo: "Por que entender no resuelve"', phaseId:'pm2', date:'2026-07-07', time:null, status:'not_started', notes:null },
+      { id:'tm06', name:'Email a base del Instituto: anuncio MTY + early bird', phaseId:'pm2', date:'2026-07-10', time:null, status:'not_started', notes:null },
+      { id:'tm07', name:'Post: "Tu cuerpo guarda lo que tu mente no proceso"', phaseId:'pm2', date:'2026-07-14', time:null, status:'not_started', notes:null },
+      { id:'tm08', name:'WEBINAR: "El cuerpo no cambia con lo que entiendes"', phaseId:'pm2', date:'2026-07-17', time:'18:00', status:'not_started', notes:'Con testimonios CDMX en vivo. 30 min. Zoom.' },
+      { id:'tm09', name:'Publicar clip webinar + link inscripcion', phaseId:'pm2', date:'2026-07-21', time:null, status:'not_started', notes:null },
+      { id:'tm10', name:'Post: caso anonimo edicion CDMX', phaseId:'pm2', date:'2026-07-24', time:null, status:'not_started', notes:null },
+      { id:'tm11', name:'Email recordatorio: ultimos dias early bird', phaseId:'pm2', date:'2026-07-28', time:null, status:'not_started', notes:null },
+      { id:'tm12', name:'CIERRE EARLY BIRD ($3,500)', phaseId:'pm2', date:'2026-07-31', time:null, status:'not_started', notes:null },
+      { id:'tm13', name:'Post: precio regular activado $4,200', phaseId:'pm3', date:'2026-08-01', time:null, status:'not_started', notes:null },
+      { id:'tm14', name:'Reel Dr. Ojeda: "Lo que vi en la primera generacion"', phaseId:'pm3', date:'2026-08-04', time:null, status:'not_started', notes:null },
+      { id:'tm15', name:'Post objecion: "Eso suena a esoterismo"', phaseId:'pm3', date:'2026-08-07', time:null, status:'not_started', notes:null },
+      { id:'tm16', name:'Post cierre: "El sabado arrancamos"', phaseId:'pm3', date:'2026-08-10', time:null, status:'not_started', notes:null },
+      { id:'tm17', name:'Enviar instrucciones a participantes', phaseId:'pm3', date:'2026-08-13', time:null, status:'not_started', notes:null },
+      { id:'tm18', name:'Viaje Dr. Ojeda a Monterrey', phaseId:'pm3', date:'2026-08-14', time:null, status:'not_started', notes:null },
+      { id:'tm19', name:'TALLER DIA 1: Los 5 Actos Fundamentales', phaseId:'pm4', date:'2026-08-15', time:'10:00', status:'not_started', notes:null },
+      { id:'tm20', name:'TALLER DIA 2: La Secuencia que Transforma', phaseId:'pm4', date:'2026-08-16', time:'10:00', status:'not_started', notes:null },
+      { id:'tm21', name:'Post testimonios Monterrey + foto grupal', phaseId:'pm5', date:'2026-08-18', time:null, status:'not_started', notes:null },
+      { id:'tm22', name:'Crear grupo WhatsApp seguimiento MTY', phaseId:'pm5', date:'2026-08-20', time:null, status:'not_started', notes:null },
+      { id:'tm23', name:'Post teaser: formacion profesional arranca en septiembre', phaseId:'pm5', date:'2026-08-22', time:null, status:'not_started', notes:null }
+    ]
+  },
+  {
+    id: 'crania',
+    name: 'CRANIA — Practica Craneofascial',
+    color: '#C4926A',
+    startDate: '2026-04-07',
+    endDate: '2026-04-30',
+    phases: [
+      { id:'pcr1', name:'Promocion', startDate:'2026-04-07', endDate:'2026-04-24' },
+      { id:'pcr2', name:'Taller', startDate:'2026-04-25', endDate:'2026-04-25' },
+      { id:'pcr3', name:'Post-taller', startDate:'2026-04-26', endDate:'2026-04-30' }
+    ],
+    milestones: [
+      { id:'mcr1', name:'CRANIA — Taller', date:'2026-04-25', time:'10:00-14:00' }
+    ],
+    tasks: [
+      { id:'tcr01', name:'Post: "Aprietas los dientes mientras lees esto"', phaseId:'pcr1', date:'2026-04-07', time:null, status:'not_started', notes:null },
+      { id:'tcr02', name:'Post: "Tu cara carga lo que no dices"', phaseId:'pcr1', date:'2026-04-10', time:null, status:'not_started', notes:null },
+      { id:'tcr03', name:'Reel Dr. Ojeda: demostracion de 1 ejercicio de Crania', phaseId:'pcr1', date:'2026-04-14', time:null, status:'not_started', notes:null },
+      { id:'tcr04', name:'Post: "Donde ninguna crema llega"', phaseId:'pcr1', date:'2026-04-17', time:null, status:'not_started', notes:null },
+      { id:'tcr05', name:'Post: inscripciones abiertas + descripcion + precio $950', phaseId:'pcr1', date:'2026-04-19', time:null, status:'not_started', notes:null },
+      { id:'tcr06', name:'Post: "No es yoga facial. No es masaje. No es spa."', phaseId:'pcr1', date:'2026-04-21', time:null, status:'not_started', notes:null },
+      { id:'tcr07', name:'Recordatorio: "Este sabado. Crania. 10am."', phaseId:'pcr1', date:'2026-04-23', time:null, status:'not_started', notes:null },
+      { id:'tcr08', name:'CRANIA — Taller (10:00 - 14:00)', phaseId:'pcr2', date:'2026-04-25', time:'10:00', status:'not_started', notes:'Practica craneofascial. $950 MXN. 15 ejercicios. Autoaplicado.' },
+      { id:'tcr09', name:'Post: foto grupal + "Devuelve el flujo"', phaseId:'pcr3', date:'2026-04-27', time:null, status:'not_started', notes:null },
+      { id:'tcr10', name:'Post: testimonios de participantes', phaseId:'pcr3', date:'2026-04-30', time:null, status:'not_started', notes:null }
+    ]
+  },
+  {
+    id: 'resonantia',
+    name: 'RESONANTIA — Diapasones Terapeuticos',
+    color: '#A86B3E',
+    startDate: '2026-03-25',
+    endDate: '2026-04-15',
+    phases: [
+      { id:'prs1', name:'Promocion', startDate:'2026-03-25', endDate:'2026-04-10' },
+      { id:'prs2', name:'Taller', startDate:'2026-04-11', endDate:'2026-04-11' },
+      { id:'prs3', name:'Post-taller', startDate:'2026-04-12', endDate:'2026-04-15' }
+    ],
+    milestones: [
+      { id:'mrs1', name:'RESONANTIA — Taller', date:'2026-04-11', time:'10:00-18:00' }
+    ],
+    tasks: [
+      { id:'trs01', name:'Post: "Tu cuerpo es un instrumento. Hace tiempo que no lo afinas."', phaseId:'prs1', date:'2026-03-25', time:null, status:'not_started', notes:null },
+      { id:'trs02', name:'Reel: Dr. Ojeda activa diapason en esternon — 30 seg sin hablar', phaseId:'prs1', date:'2026-03-28', time:null, status:'not_started', notes:null },
+      { id:'trs03', name:'Post: "Un diapason entra por el hueso. No pasa por la mente."', phaseId:'prs1', date:'2026-03-31', time:null, status:'not_started', notes:null },
+      { id:'trs04', name:'Email a base de datos: anuncio Resonantia + precios', phaseId:'prs1', date:'2026-04-02', time:null, status:'not_started', notes:null },
+      { id:'trs05', name:'Post: "128 Hz. La frecuencia del hueso."', phaseId:'prs1', date:'2026-04-04', time:null, status:'not_started', notes:null },
+      { id:'trs06', name:'WhatsApp a lista de difusion: Resonantia 11 abril', phaseId:'prs1', date:'2026-04-05', time:null, status:'not_started', notes:null },
+      { id:'trs07', name:'Reel: bano de sonido con campanas + diapasones — 45 seg', phaseId:'prs1', date:'2026-04-07', time:null, status:'not_started', notes:null },
+      { id:'trs08', name:'Post: inscripciones + "Te llevas tu diapason a casa"', phaseId:'prs1', date:'2026-04-08', time:null, status:'not_started', notes:null },
+      { id:'trs09', name:'Story recordatorio: "Este sabado. Resonantia. 10am."', phaseId:'prs1', date:'2026-04-09', time:null, status:'not_started', notes:null },
+      { id:'trs10', name:'RESONANTIA — Taller (10:00-18:00)', phaseId:'prs2', date:'2026-04-11', time:'10:00', status:'not_started', notes:'Presencial $1,500/$1,800 con diapason. Online $1,500.' },
+      { id:'trs11', name:'Post: foto grupal + "Lo que sigue vibrando"', phaseId:'prs3', date:'2026-04-13', time:null, status:'not_started', notes:null },
+      { id:'trs12', name:'Post: testimonios + "El 25 viene Crania"', phaseId:'prs3', date:'2026-04-15', time:null, status:'not_started', notes:null }
     ]
   }]
 };
@@ -338,13 +601,14 @@ function renderToday() {
         </div>
         <div class="course-body">
           ${g.tasks.map(t => `
-            <div class="task-item">
+            <div class="task-item" id="task-${t.id}">
               <div class="task-status ${t.status}" onclick="cycleStatus('${g.course.id}','${t.id}')" title="Clic para cambiar estado">
                 ${t.status==='not_started' ? '' : t.status==='in_progress' ? '🔄' : '✓'}
               </div>
               <div class="task-info">
-                <div class="task-name ${t.status==='done'?'done':''}">${t.name}</div>
+                <div class="task-name ${t.status==='done'?'done':''}" onclick="toggleNotes('task-${t.id}')">${t.name}</div>
                 ${t.time ? `<div class="task-time">${t.time}</div>` : ''}
+                ${t.notes ? `<div class="task-notes">${t.notes}</div>` : ''}
               </div>
             </div>
           `).join('')}
@@ -366,6 +630,8 @@ function cycleStatus(courseId, taskId) {
   saveData();
   renderToday();
 }
+
+function toggleNotes(id) { document.getElementById(id).classList.toggle('show-notes'); }
 
 // ==================== GANTT VIEW ====================
 function renderGantt() {
@@ -566,6 +832,7 @@ function renderEditor() {
       </div>
       <div class="form-group"><label>Fecha</label><input type="date" id="ed-tdate" value="${t?t.date:''}"></div>
       <div class="form-group"><label>Hora (opcional)</label><input id="ed-ttime" placeholder="10:00" value="${t?t.time||'':''}"></div>
+      <div class="form-group"><label>Notas / Contenido</label><textarea id="ed-tnotes" rows="8" placeholder="Contenido, copy, instrucciones...">${t?t.notes||'':''}</textarea></div>
       <button class="btn-primary" onclick="saveTask()">${t?'Guardar':'Crear tarea'}</button>`;
   }
 }
@@ -636,9 +903,10 @@ function saveTask() {
   const phaseId = document.getElementById('ed-tphase').value;
   const date = document.getElementById('ed-tdate').value;
   const time = document.getElementById('ed-ttime').value.trim()||null;
+  const notes = document.getElementById('ed-tnotes').value.trim()||null;
   if (!name||!date) return alert('Completa nombre y fecha');
-  if (editItemId) { const t=c.tasks.find(x=>x.id===editItemId); t.name=name; t.phaseId=phaseId; t.date=date; t.time=time; }
-  else { c.tasks.push({ id:uid(), name, phaseId, date, time, status:'not_started' }); }
+  if (editItemId) { const t=c.tasks.find(x=>x.id===editItemId); t.name=name; t.phaseId=phaseId; t.date=date; t.time=time; t.notes=notes; }
+  else { c.tasks.push({ id:uid(), name, phaseId, date, time, status:'not_started', notes }); }
   saveData(); editorMode='course'; renderEditor(); refresh();
 }
 function delTask(id) { const c=data.courses.find(x=>x.id===editCourseId); c.tasks=c.tasks.filter(t=>t.id!==id); saveData(); renderEditor(); refresh(); }

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RB — Regulación Bioeléctrica — Identidad Visual Oficial</title>
+<style>
+:root {
+  --teal: #0F6E56;
+  --teal-mid: #5DCAA5;
+  --teal-light: #E1F5EE;
+  --black: #2C2C2A;
+  --cream: #E8E6DE;
+  --grey: #888780;
+  --grey-light: #F1EFE8;
+  --coral: #D85A30;
+  --purple: #534AB7;
+  --amber: #BA7517;
+  --bg: #FAF9F6;
+  --dark-bg: #1A1A18;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg); color: var(--black); min-height:100vh; padding:60px 32px; }
+.page { max-width:1000px; margin:0 auto; display:flex; flex-direction:column; gap:72px; }
+
+.label { font-family: -apple-system, sans-serif; font-size:10px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--grey); margin-bottom:24px; }
+
+/* Grid */
+.g2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.g4 { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+
+/* Cards */
+.c { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:44px 28px; border-radius:12px; position:relative; min-height:180px; }
+.c.wh { background:#fff; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.025); }
+.c.dk { background:var(--dark-bg); }
+.c.tl { background:var(--teal); }
+.c.gl { background:var(--grey-light); }
+.tag { position:absolute; top:12px; left:16px; font-family:-apple-system,sans-serif; font-size:8px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#bbb; }
+.c.dk .tag, .c.tl .tag { color:rgba(255,255,255,0.2); }
+
+/* Hero */
+.hero { display:flex; flex-direction:column; align-items:center; padding:48px 0 16px; gap:16px; }
+
+/* Smalls */
+.smalls { display:flex; gap:40px; align-items:flex-end; justify-content:center; flex-wrap:wrap; }
+.sm { display:flex; flex-direction:column; align-items:center; gap:10px; }
+.sm-tag { font-family:-apple-system,sans-serif; font-size:8px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#bbb; }
+.box { display:flex; align-items:center; justify-content:center; }
+.box-fav { width:32px; height:32px; border-radius:7px; }
+.box-ava { width:48px; height:48px; border-radius:50%; }
+.box-app { width:56px; height:56px; border-radius:14px; }
+
+/* Palette */
+.pal { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.sw { display:flex; flex-direction:column; align-items:center; gap:8px; }
+.sw-b { width:64px; height:64px; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
+.sw-n { font-family:-apple-system,sans-serif; font-size:9px; color:var(--grey); }
+.sw-h { font-family:'SF Mono','Fira Code',monospace; font-size:10px; font-weight:700; color:var(--black); }
+
+/* Meaning */
+.mean { display:flex; gap:48px; align-items:center; justify-content:center; flex-wrap:wrap; }
+.mean-txt { max-width:380px; }
+.mean-txt h3 { font-size:18px; font-weight:400; color:var(--black); margin-bottom:12px; }
+.mean-txt p { font-family:-apple-system,sans-serif; font-size:13px; line-height:1.7; color:var(--grey); margin-bottom:8px; }
+
+/* Rules */
+.rules { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.rule { padding:20px; background:#fff; border-radius:10px; box-shadow:0 1px 2px rgba(0,0,0,0.03); }
+.rule h4 { font-family:-apple-system,sans-serif; font-size:11px; font-weight:700; color:var(--black); margin-bottom:8px; letter-spacing:1px; text-transform:uppercase; }
+.rule p { font-family:-apple-system,sans-serif; font-size:12px; line-height:1.6; color:var(--grey); }
+
+/* Type */
+.type { display:flex; flex-direction:column; align-items:center; gap:8px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HERO -->
+<section>
+  <div class="hero">
+    <svg width="380" height="56" viewBox="0 0 380 56" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="14" cy="28" r="6" fill="#0F6E56"/>
+      <line x1="22" y1="28" x2="36" y2="28" stroke="#0F6E56" stroke-width="1"/>
+      <circle cx="44" cy="28" r="6" fill="#0F6E56" opacity="0.35"/>
+      <text x="64" y="24" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="400" fill="#2C2C2A" letter-spacing="1">regulación</text>
+      <text x="64" y="48" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="400" fill="#0F6E56" letter-spacing="1">bioeléctrica</text>
+    </svg>
+    <div style="font-family:-apple-system,sans-serif; font-size:10px; color:#888780; letter-spacing:3px; text-transform:uppercase;">Instituto Centrobioenergetica · Dr. Miguel Ojeda Rios</div>
+  </div>
+</section>
+
+<!-- VERSIONES PRINCIPALES -->
+<section>
+  <div class="label">Versiones principales</div>
+  <div class="g2">
+    <div class="c wh">
+      <span class="tag">Light</span>
+      <svg width="300" height="44" viewBox="0 0 380 56" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="28" r="6" fill="#0F6E56"/>
+        <line x1="22" y1="28" x2="36" y2="28" stroke="#0F6E56" stroke-width="1"/>
+        <circle cx="44" cy="28" r="6" fill="#0F6E56" opacity="0.35"/>
+        <text x="64" y="24" font-family="Georgia, serif" font-size="22" fill="#2C2C2A" letter-spacing="1">regulación</text>
+        <text x="64" y="48" font-family="Georgia, serif" font-size="22" fill="#0F6E56" letter-spacing="1">bioeléctrica</text>
+      </svg>
+    </div>
+    <div class="c dk">
+      <span class="tag">Dark</span>
+      <svg width="300" height="44" viewBox="0 0 380 56" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="28" r="6" fill="#5DCAA5"/>
+        <line x1="22" y1="28" x2="36" y2="28" stroke="#5DCAA5" stroke-width="1"/>
+        <circle cx="44" cy="28" r="6" fill="#5DCAA5" opacity="0.35"/>
+        <text x="64" y="24" font-family="Georgia, serif" font-size="22" fill="#E8E6DE" letter-spacing="1">regulación</text>
+        <text x="64" y="48" font-family="Georgia, serif" font-size="22" fill="#5DCAA5" letter-spacing="1">bioeléctrica</text>
+      </svg>
+    </div>
+    <div class="c wh">
+      <span class="tag">Monocromo</span>
+      <svg width="300" height="44" viewBox="0 0 380 56" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="28" r="6" fill="#2C2C2A"/>
+        <line x1="22" y1="28" x2="36" y2="28" stroke="#2C2C2A" stroke-width="1"/>
+        <circle cx="44" cy="28" r="6" fill="#2C2C2A" opacity="0.35"/>
+        <text x="64" y="24" font-family="Georgia, serif" font-size="22" fill="#2C2C2A" letter-spacing="1">regulación</text>
+        <text x="64" y="48" font-family="Georgia, serif" font-size="22" fill="#2C2C2A" opacity="0.6" letter-spacing="1">bioeléctrica</text>
+      </svg>
+    </div>
+    <div class="c dk">
+      <span class="tag">Monocromo blanco</span>
+      <svg width="300" height="44" viewBox="0 0 380 56" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="28" r="6" fill="#fff"/>
+        <line x1="22" y1="28" x2="36" y2="28" stroke="#fff" stroke-width="1"/>
+        <circle cx="44" cy="28" r="6" fill="#fff" opacity="0.35"/>
+        <text x="64" y="24" font-family="Georgia, serif" font-size="22" fill="#fff" letter-spacing="1">regulación</text>
+        <text x="64" y="48" font-family="Georgia, serif" font-size="22" fill="#fff" opacity="0.6" letter-spacing="1">bioeléctrica</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- MONOGRAMA RB -->
+<section>
+  <div class="label">Monograma RB</div>
+  <div class="g3">
+    <div class="c wh">
+      <span class="tag">Light</span>
+      <svg width="80" height="32" viewBox="0 0 80 32" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="16" r="5" fill="#0F6E56"/>
+        <line x1="15" y1="16" x2="25" y2="16" stroke="#0F6E56" stroke-width="0.8"/>
+        <circle cx="32" cy="16" r="5" fill="#0F6E56" opacity="0.35"/>
+        <text x="46" y="20" font-family="Georgia, serif" font-size="18" fill="#0F6E56" letter-spacing="1">RB</text>
+      </svg>
+    </div>
+    <div class="c dk">
+      <span class="tag">Dark</span>
+      <svg width="80" height="32" viewBox="0 0 80 32" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="16" r="5" fill="#5DCAA5"/>
+        <line x1="15" y1="16" x2="25" y2="16" stroke="#5DCAA5" stroke-width="0.8"/>
+        <circle cx="32" cy="16" r="5" fill="#5DCAA5" opacity="0.35"/>
+        <text x="46" y="20" font-family="Georgia, serif" font-size="18" fill="#5DCAA5" letter-spacing="1">RB</text>
+      </svg>
+    </div>
+    <div class="c wh">
+      <span class="tag">Monocromo</span>
+      <svg width="80" height="32" viewBox="0 0 80 32" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="16" r="5" fill="#2C2C2A"/>
+        <line x1="15" y1="16" x2="25" y2="16" stroke="#2C2C2A" stroke-width="0.8"/>
+        <circle cx="32" cy="16" r="5" fill="#2C2C2A" opacity="0.35"/>
+        <text x="46" y="20" font-family="Georgia, serif" font-size="18" fill="#2C2C2A" letter-spacing="1">RB</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMA EL CUERPO ELÉCTRICO -->
+<section>
+  <div class="label">Programa — El Cuerpo Eléctrico</div>
+  <div class="g2">
+    <div class="c wh">
+      <span class="tag">Light</span>
+      <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="20" r="5" fill="#0F6E56"/>
+        <line x1="17" y1="20" x2="27" y2="20" stroke="#0F6E56" stroke-width="0.8"/>
+        <circle cx="34" cy="20" r="5" fill="#0F6E56" opacity="0.35"/>
+        <text x="50" y="17" font-family="Georgia, serif" font-size="11" fill="#2C2C2A" letter-spacing="0.5">el cuerpo</text>
+        <text x="50" y="31" font-family="Georgia, serif" font-size="11" fill="#0F6E56" letter-spacing="0.5">eléctrico</text>
+      </svg>
+    </div>
+    <div class="c dk">
+      <span class="tag">Dark</span>
+      <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="20" r="5" fill="#5DCAA5"/>
+        <line x1="17" y1="20" x2="27" y2="20" stroke="#5DCAA5" stroke-width="0.8"/>
+        <circle cx="34" cy="20" r="5" fill="#5DCAA5" opacity="0.35"/>
+        <text x="50" y="17" font-family="Georgia, serif" font-size="11" fill="#E8E6DE" letter-spacing="0.5">el cuerpo</text>
+        <text x="50" y="31" font-family="Georgia, serif" font-size="11" fill="#5DCAA5" letter-spacing="0.5">eléctrico</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ÍCONO DIPOLO -->
+<section>
+  <div class="label">Ícono dipolo</div>
+  <div class="g4">
+    <div class="c wh">
+      <span class="tag">Light</span>
+      <svg width="58" height="24" viewBox="0 0 58 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="12" r="6" fill="#0F6E56"/>
+        <line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/>
+        <circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/>
+      </svg>
+    </div>
+    <div class="c dk">
+      <span class="tag">Dark</span>
+      <svg width="58" height="24" viewBox="0 0 58 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="12" r="6" fill="#5DCAA5"/>
+        <line x1="16" y1="12" x2="28" y2="12" stroke="#5DCAA5" stroke-width="1"/>
+        <circle cx="36" cy="12" r="6" fill="#5DCAA5" opacity="0.35"/>
+      </svg>
+    </div>
+    <div class="c wh">
+      <span class="tag">Mono</span>
+      <svg width="58" height="24" viewBox="0 0 58 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="12" r="6" fill="#2C2C2A"/>
+        <line x1="16" y1="12" x2="28" y2="12" stroke="#2C2C2A" stroke-width="1"/>
+        <circle cx="36" cy="12" r="6" fill="#2C2C2A" opacity="0.35"/>
+      </svg>
+    </div>
+    <div class="c tl">
+      <span class="tag">Sobre marca</span>
+      <svg width="58" height="24" viewBox="0 0 58 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="12" r="6" fill="#fff"/>
+        <line x1="16" y1="12" x2="28" y2="12" stroke="#fff" stroke-width="1"/>
+        <circle cx="36" cy="12" r="6" fill="#fff" opacity="0.35"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATOS REDUCIDOS -->
+<section>
+  <div class="label">Formatos reducidos</div>
+  <div class="smalls">
+    <div class="sm">
+      <div class="sm-tag">Favicon</div>
+      <div class="box box-fav" style="background:var(--teal); border-radius:6px;">
+        <svg width="18" height="12" viewBox="0 0 58 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="12" r="6" fill="#fff"/>
+          <line x1="16" y1="12" x2="28" y2="12" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="36" cy="12" r="6" fill="#fff" opacity="0.35"/>
+        </svg>
+      </div>
+    </div>
+    <div class="sm">
+      <div class="sm-tag">Avatar</div>
+      <div class="box box-ava" style="background:var(--teal);">
+        <svg width="28" height="14" viewBox="0 0 58 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="12" r="6" fill="#fff"/>
+          <line x1="16" y1="12" x2="28" y2="12" stroke="#fff" stroke-width="1"/>
+          <circle cx="36" cy="12" r="6" fill="#fff" opacity="0.35"/>
+        </svg>
+      </div>
+    </div>
+    <div class="sm">
+      <div class="sm-tag">App</div>
+      <div class="box box-app" style="background:var(--teal);">
+        <svg width="32" height="16" viewBox="0 0 58 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="12" r="6" fill="#fff"/>
+          <line x1="16" y1="12" x2="28" y2="12" stroke="#fff" stroke-width="1"/>
+          <circle cx="36" cy="12" r="6" fill="#fff" opacity="0.35"/>
+        </svg>
+      </div>
+    </div>
+    <div class="sm">
+      <div class="sm-tag">Sello</div>
+      <svg width="44" height="18" viewBox="0 0 58 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="12" r="6" fill="#2C2C2A"/>
+        <line x1="16" y1="12" x2="28" y2="12" stroke="#2C2C2A" stroke-width="1"/>
+        <circle cx="36" cy="12" r="6" fill="#2C2C2A" opacity="0.35"/>
+      </svg>
+    </div>
+    <div class="sm">
+      <div class="sm-tag">Marca de agua</div>
+      <svg width="200" height="36" viewBox="0 0 380 56" xmlns="http://www.w3.org/2000/svg" opacity="0.12">
+        <circle cx="14" cy="28" r="6" fill="#2C2C2A"/>
+        <line x1="22" y1="28" x2="36" y2="28" stroke="#2C2C2A" stroke-width="1"/>
+        <circle cx="44" cy="28" r="6" fill="#2C2C2A" opacity="0.35"/>
+        <text x="64" y="24" font-family="Georgia, serif" font-size="22" fill="#2C2C2A" letter-spacing="1">regulación</text>
+        <text x="64" y="48" font-family="Georgia, serif" font-size="22" fill="#2C2C2A" letter-spacing="1">bioeléctrica</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- VERSIÓN HORIZONTAL COMPACTA (navbar / header web) -->
+<section>
+  <div class="label">Versión horizontal compacta — para navbar y headers</div>
+  <div style="display:flex; flex-direction:column; gap:20px;">
+
+    <div class="c wh" style="min-height:80px; padding:28px 32px;">
+      <span class="tag">Light — una línea</span>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <svg width="44" height="12" viewBox="0 0 44 12" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="6" r="5" fill="#0F6E56"/>
+          <line x1="13" y1="6" x2="25" y2="6" stroke="#0F6E56" stroke-width="0.8"/>
+          <circle cx="32" cy="6" r="5" fill="#0F6E56" opacity="0.35"/>
+        </svg>
+        <span style="font-family:Georgia,serif; font-size:18px; color:#2C2C2A; letter-spacing:0.8px;">regulación</span>
+        <span style="font-family:Georgia,serif; font-size:18px; color:#0F6E56; letter-spacing:0.8px;">bioeléctrica</span>
+      </div>
+    </div>
+
+    <div class="c dk" style="min-height:80px; padding:28px 32px;">
+      <span class="tag">Dark — una línea</span>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <svg width="44" height="12" viewBox="0 0 44 12" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="6" r="5" fill="#5DCAA5"/>
+          <line x1="13" y1="6" x2="25" y2="6" stroke="#5DCAA5" stroke-width="0.8"/>
+          <circle cx="32" cy="6" r="5" fill="#5DCAA5" opacity="0.35"/>
+        </svg>
+        <span style="font-family:Georgia,serif; font-size:18px; color:#E8E6DE; letter-spacing:0.8px;">regulación</span>
+        <span style="font-family:Georgia,serif; font-size:18px; color:#5DCAA5; letter-spacing:0.8px;">bioeléctrica</span>
+      </div>
+    </div>
+
+    <div class="c wh" style="min-height:80px; padding:28px 32px;">
+      <span class="tag">Mono — una línea</span>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <svg width="44" height="12" viewBox="0 0 44 12" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="6" r="5" fill="#2C2C2A"/>
+          <line x1="13" y1="6" x2="25" y2="6" stroke="#2C2C2A" stroke-width="0.8"/>
+          <circle cx="32" cy="6" r="5" fill="#2C2C2A" opacity="0.35"/>
+        </svg>
+        <span style="font-family:Georgia,serif; font-size:18px; color:#2C2C2A; letter-spacing:0.8px;">regulación</span>
+        <span style="font-family:Georgia,serif; font-size:18px; color:#2C2C2A; opacity:0.5; letter-spacing:0.8px;">bioeléctrica</span>
+      </div>
+    </div>
+
+    <div class="c gl" style="min-height:80px; padding:28px 32px;">
+      <span class="tag">Programa — una línea</span>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <svg width="38" height="10" viewBox="0 0 38 10" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="5" cy="5" r="4.5" fill="#0F6E56"/>
+          <line x1="11" y1="5" x2="21" y2="5" stroke="#0F6E56" stroke-width="0.8"/>
+          <circle cx="27" cy="5" r="4.5" fill="#0F6E56" opacity="0.35"/>
+        </svg>
+        <span style="font-family:Georgia,serif; font-size:15px; color:#2C2C2A; letter-spacing:0.5px;">el cuerpo</span>
+        <span style="font-family:Georgia,serif; font-size:15px; color:#0F6E56; letter-spacing:0.5px;">eléctrico</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VARIANTE TIPOGRÁFICA: Serif moderna -->
+<section>
+  <div class="label">Variante tipográfica — Serif moderna (para comparar con Georgia)</div>
+  <p style="font-family:-apple-system,sans-serif; font-size:12px; color:#888780; margin-bottom:24px; line-height:1.6;">
+    Georgia comunica estabilidad y clasicismo. Si en algún momento se quiere que la marca se sienta más contemporánea sin perder la personalidad serif, estas son dos alternativas. La decisión es estética — Georgia funciona perfectamente.
+  </p>
+  <div style="display:flex; flex-direction:column; gap:20px;">
+
+    <!-- Con Playfair Display (serif moderna gratuita, disponible en Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+
+    <div class="c wh" style="min-height:100px; padding:32px;">
+      <span class="tag">Playfair Display — moderna, alto contraste</span>
+      <div style="display:flex; flex-direction:column; align-items:flex-start; gap:4px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <svg width="44" height="12" viewBox="0 0 44 12" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="5" fill="#0F6E56"/>
+            <line x1="13" y1="6" x2="25" y2="6" stroke="#0F6E56" stroke-width="0.8"/>
+            <circle cx="32" cy="6" r="5" fill="#0F6E56" opacity="0.35"/>
+          </svg>
+          <span style="font-family:'Playfair Display',serif; font-size:20px; font-weight:400; color:#2C2C2A; letter-spacing:0.5px;">regulación</span>
+          <span style="font-family:'Playfair Display',serif; font-size:20px; font-weight:400; color:#0F6E56; letter-spacing:0.5px;">bioeléctrica</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c wh" style="min-height:100px; padding:32px;">
+      <span class="tag">Cormorant Garamond — elegante, editorial científica</span>
+      <div style="display:flex; flex-direction:column; align-items:flex-start; gap:4px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <svg width="44" height="12" viewBox="0 0 44 12" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="5" fill="#0F6E56"/>
+            <line x1="13" y1="6" x2="25" y2="6" stroke="#0F6E56" stroke-width="0.8"/>
+            <circle cx="32" cy="6" r="5" fill="#0F6E56" opacity="0.35"/>
+          </svg>
+          <span style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:#2C2C2A; letter-spacing:0.5px;">regulación</span>
+          <span style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:#0F6E56; letter-spacing:0.5px;">bioeléctrica</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparativa directa -->
+    <div class="c gl" style="min-height:auto; padding:32px;">
+      <span class="tag">Comparativa directa</span>
+      <div style="display:flex; flex-direction:column; gap:20px; width:100%;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <svg width="44" height="12" viewBox="0 0 44 12" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="5" fill="#0F6E56"/>
+            <line x1="13" y1="6" x2="25" y2="6" stroke="#0F6E56" stroke-width="0.8"/>
+            <circle cx="32" cy="6" r="5" fill="#0F6E56" opacity="0.35"/>
+          </svg>
+          <span style="font-family:Georgia,serif; font-size:20px; color:#2C2C2A; letter-spacing:1px;">regulación</span>
+          <span style="font-family:Georgia,serif; font-size:20px; color:#0F6E56; letter-spacing:1px;">bioeléctrica</span>
+          <span style="font-family:-apple-system,sans-serif; font-size:9px; color:#aaa; margin-left:8px;">← Georgia (actual)</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+          <svg width="44" height="12" viewBox="0 0 44 12" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="5" fill="#0F6E56"/>
+            <line x1="13" y1="6" x2="25" y2="6" stroke="#0F6E56" stroke-width="0.8"/>
+            <circle cx="32" cy="6" r="5" fill="#0F6E56" opacity="0.35"/>
+          </svg>
+          <span style="font-family:'Playfair Display',serif; font-size:20px; color:#2C2C2A; letter-spacing:0.5px;">regulación</span>
+          <span style="font-family:'Playfair Display',serif; font-size:20px; color:#0F6E56; letter-spacing:0.5px;">bioeléctrica</span>
+          <span style="font-family:-apple-system,sans-serif; font-size:9px; color:#aaa; margin-left:8px;">← Playfair Display</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+          <svg width="44" height="12" viewBox="0 0 44 12" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="5" fill="#0F6E56"/>
+            <line x1="13" y1="6" x2="25" y2="6" stroke="#0F6E56" stroke-width="0.8"/>
+            <circle cx="32" cy="6" r="5" fill="#0F6E56" opacity="0.35"/>
+          </svg>
+          <span style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:#2C2C2A; letter-spacing:0.5px;">regulación</span>
+          <span style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:#0F6E56; letter-spacing:0.5px;">bioeléctrica</span>
+          <span style="font-family:-apple-system,sans-serif; font-size:9px; color:#aaa; margin-left:8px;">← Cormorant Garamond</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- NOTA DE IMPRESIÓN -->
+<section>
+  <div class="label">Nota para impresión</div>
+  <div class="rules" style="grid-template-columns:1fr;">
+    <div class="rule">
+      <h4>Contraste en papel</h4>
+      <p>El teal #0F6E56 es oscuro y puede perder legibilidad en papeles texturizados, reciclados o no blancos. Para impresión sobre papel que no sea blanco puro, usar el monocromo negro (#2C2C2A) o verificar una prueba de impresión antes de la producción final. En certificados y tarjetas de presentación, confirmar contraste con el papel específico.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNIFICADO -->
+<section>
+  <div class="label">El símbolo</div>
+  <div class="mean">
+    <svg width="120" height="48" viewBox="0 0 58 24" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="8" cy="12" r="6" fill="#0F6E56"/>
+      <line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/>
+      <circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/>
+    </svg>
+    <div class="mean-txt">
+      <h3>Dos puntos. Un diferencial. Una red.</h3>
+      <p><strong>Nodo denso (100%)</strong> — la desregulación detectada. El punto donde el estado bioeléctrico se desvió de su rango.</p>
+      <p><strong>Nodo tenue (35%)</strong> — el punto complementario. El par que completa el dipolo.</p>
+      <p><strong>La línea</strong> — la red bioeléctrica tisular que los conecta. La señal que viaja entre nodos.</p>
+      <p>El diferencial de opacidad ES el concepto: dos estados bioeléctricos distintos conectados por una red continua. Es lo que el terapeuta detecta. Es lo que RB regula.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PALETA -->
+<section>
+  <div class="label">Paleta de colores</div>
+  <div class="pal">
+    <div class="sw"><div class="sw-b" style="background:#0F6E56"></div><div class="sw-n">Teal oscuro</div><div class="sw-h">#0F6E56</div></div>
+    <div class="sw"><div class="sw-b" style="background:#5DCAA5"></div><div class="sw-n">Teal medio</div><div class="sw-h">#5DCAA5</div></div>
+    <div class="sw"><div class="sw-b" style="background:#E1F5EE"></div><div class="sw-n">Teal claro</div><div class="sw-h">#E1F5EE</div></div>
+    <div class="sw"><div class="sw-b" style="background:#2C2C2A"></div><div class="sw-n">Negro cálido</div><div class="sw-h">#2C2C2A</div></div>
+    <div class="sw"><div class="sw-b" style="background:#E8E6DE"></div><div class="sw-n">Crema</div><div class="sw-h">#E8E6DE</div></div>
+    <div class="sw"><div class="sw-b" style="background:#888780"></div><div class="sw-n">Gris cálido</div><div class="sw-h">#888780</div></div>
+    <div class="sw"><div class="sw-b" style="background:#D85A30"></div><div class="sw-n">Coral</div><div class="sw-h">#D85A30</div></div>
+    <div class="sw"><div class="sw-b" style="background:#534AB7"></div><div class="sw-n">Púrpura</div><div class="sw-h">#534AB7</div></div>
+    <div class="sw"><div class="sw-b" style="background:#BA7517"></div><div class="sw-n">Ámbar</div><div class="sw-h">#BA7517</div></div>
+  </div>
+</section>
+
+<!-- TIPOGRAFÍA -->
+<section>
+  <div class="label">Tipografía</div>
+  <div class="type">
+    <div style="font-size:28px; color:#2C2C2A; letter-spacing:1px;">regulación <span style="color:#0F6E56;">bioeléctrica</span></div>
+    <div style="font-size:18px; color:#0F6E56; letter-spacing:1px;">RB</div>
+    <div style="font-size:11px; color:#2C2C2A; letter-spacing:0.5px;">el cuerpo <span style="color:#0F6E56;">eléctrico</span></div>
+    <div style="font-family:-apple-system,sans-serif; font-size:9px; color:#888780; letter-spacing:2.5px; text-transform:uppercase; margin-top:4px;">Instituto Centrobioenergetica</div>
+    <div style="font-family:-apple-system,sans-serif; font-size:11px; color:#bbb; margin-top:12px;">Georgia — Regular 400 · Solo un peso · Tracking +1px en logo</div>
+  </div>
+</section>
+
+<!-- REGLAS -->
+<section>
+  <div class="label">Reglas de uso</div>
+  <div class="rules">
+    <div class="rule">
+      <h4>Espacio de exclusión</h4>
+      <p>Mínimo 1 diámetro de nodo alrededor del símbolo completo. Ningún elemento invade esta zona.</p>
+    </div>
+    <div class="rule">
+      <h4>Tamaño mínimo</h4>
+      <p>Logo completo: 120px ancho en pantalla / 30mm impresión. Ícono: 24px. Favicon: 16px y 32px.</p>
+    </div>
+    <div class="rule">
+      <h4>Correcto</h4>
+      <p>Un solo color a la vez. Teal en normal, negro en monocromo, blanco en inversión. Nunca bicolor. Nunca gradiente. El segundo nodo siempre al 35%.</p>
+    </div>
+    <div class="rule">
+      <h4>Incorrecto</h4>
+      <p>No alterar opacidades. No rotar el símbolo. No agregar sombras, resplandor, bisel ni 3D. No usar tipografías alternativas. Solo Georgia.</p>
+    </div>
+  </div>
+</section>
+
+</div>
+</body>
+</html>

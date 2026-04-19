@@ -1,0 +1,67 @@
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Resonantia — La Resonancia">
+  <!--
+    RESONANTIA — La Resonancia
+    Logo oficial del curso de diapasones terapeuticos
+    Instituto Centrobioenergetica · Dr. Miguel Ojeda Rios · 2026
+
+    COLORES PROPIOS DE RESONANTIA:
+      Terracota profundo:  #8B3A1A  (diapason izquierdo, tallo)
+      Siena calido:        #C4956A  (diapason derecho, espejo)
+      Dorado diferencial:  #E8A857  (lineas punteadas + punto central 128 Hz)
+      Oscuro base:         #1A1410  (fondo)
+      Crema texto:         #D4C4B0  (wordmark)
+
+    LECTURA DEL SIMBOLO:
+      Dos diapasones en espejo = el intervalo de quinta (C + G)
+      Lineas punteadas entre ellos = el tono diferencial que generan juntos
+      Punto dorado central = el 128 Hz — la frecuencia resultante
+      Arco sutil en la base = la resonancia que une las dos vias
+  -->
+
+  <!-- === SIMBOLO === -->
+  <g id="simbolo" transform="translate(10, 10)">
+
+    <!--
+      UN SOLO DIAPASON — centrado, proporcion aurea
+      φ=1.618 | Ramas=99px (y=18→117) | Curva r=19 (base y=136) | Tallo=61px (y=136→178 visual)
+      Ancho interno = 38px | ramas x=81–119, centro x=100
+      Punto dorado: fin del tallo = el contacto con el hueso
+    -->
+
+    <!-- Diapason -->
+    <path d="M81 18 L81 117 Q81 136 100 136 Q119 136 119 117 L119 18 M100 136 L100 178"
+          fill="none" stroke="#8B3A1A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Punto de contacto: el 128 Hz en el hueso -->
+    <circle cx="100" cy="178" r="6" fill="none" stroke="#E8A857" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="100" cy="178" r="3" fill="#E8A857"/>
+
+  </g>
+
+  <!-- === WORDMARK === -->
+  <g id="wordmark" transform="translate(210, 75)">
+    <text
+      font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+      font-size="22"
+      font-weight="300"
+      letter-spacing="6"
+      fill="#D4C4B0"
+      x="0" y="0">RESONANTIA</text>
+    <text
+      font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+      font-size="9"
+      font-weight="400"
+      letter-spacing="3"
+      fill="#8B3A1A"
+      x="0" y="20">DIAPASONES TERAPEUTICOS</text>
+    <line x1="0" y1="32" x2="175" y2="32" stroke="#3A2A1A" stroke-width="0.8"/>
+    <text
+      font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+      font-size="8"
+      font-weight="300"
+      letter-spacing="2"
+      fill="#555"
+      x="0" y="47">INSTITUTO CENTROBIOENERGETICA</text>
+  </g>
+
+</svg>
