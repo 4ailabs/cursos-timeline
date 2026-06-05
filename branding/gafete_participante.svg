@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 105 148"
+     width="105mm" height="148mm">
+  <!--
+    ═══════════════════════════════════════════════════
+    GAFETE · Instituto Centrobioenergetica
+    Versión: Participante / Alumno  ·  v3 — A6
+    Tamaño físico: 105 × 148 mm  (formato A6 estándar)
+    ───────────────────────────────────────────────────
+    INSTRUCCIONES CRICUT — vinilo imprimible:
+    1. Importar en Cricut Design Space
+    2. Verificar tamaño: 105 mm × 148 mm
+    3. Grupo "diseno"  → operación: Print Then Cut
+    4. Grupo "corte"   → operación: Cut
+    5. Agujero (trazo punteado): cortar con Cricut
+       o usar perforadora manual de 7 mm
+    ───────────────────────────────────────────────────
+    LAYOUT (todos los valores en mm):
+    · Banda superior:        0 – 24 mm
+    · Agujero cordón:        (52.5, 12)  r = 3.5 mm
+    · Respiro banda→logo:    10.5 mm
+    · Isotipo:               34.5 – 85.5 mm  (Ø 51 mm)
+    · Respiro logo→texto:    14.5 mm
+    · Margen lateral texto:  12 mm
+    ═══════════════════════════════════════════════════
+  -->
+
+  <defs>
+    <clipPath id="clip-a6">
+      <rect x="0" y="0" width="105" height="148" rx="6"/>
+    </clipPath>
+  </defs>
+
+
+  <!-- ══════════════════════════════════════
+       DISEÑO  (Print Then Cut)
+       ══════════════════════════════════════ -->
+  <g id="diseno" clip-path="url(#clip-a6)">
+
+    <!-- Fondo crema -->
+    <rect x="0" y="0" width="105" height="148" fill="#F5F0EB"/>
+
+    <!-- Banda superior terracota -->
+    <rect x="0" y="0" width="105" height="24" fill="#B5604A"/>
+
+    <!-- Cierre sutil de banda -->
+    <rect x="0" y="23.4" width="105" height="0.9" fill="#8B4A2A" opacity="0.3"/>
+
+    <!-- Agujero cordón: área blanca impresa  ⌀ 7 mm -->
+    <circle cx="52.5" cy="12" r="3.6" fill="#F5F0EB"/>
+    <circle cx="52.5" cy="12" r="3.6"
+            fill="none" stroke="#D4B89A" stroke-width="0.4"/>
+
+
+    <!-- ══════════════════════════════════════
+         ISOTIPO
+         Centro (52.5, 60) · órbita 22 mm · r punto 3.5 mm
+         Ángulo: −90° + i×30° (horario desde arriba)
+         ══════════════════════════════════════ -->
+    <circle cx="52.5"  cy="38.0"   r="3.5" fill="#B5604A"/>
+    <circle cx="63.5"  cy="40.947" r="3.5" fill="#8FA87A"/>
+    <circle cx="71.553" cy="49.0"  r="3.5" fill="#B5604A"/>
+    <circle cx="74.5"  cy="60.0"   r="3.5" fill="#8FA87A"/>
+    <circle cx="71.553" cy="71.0"  r="3.5" fill="#B5604A"/>
+    <circle cx="63.5"  cy="79.053" r="3.5" fill="#8FA87A"/>
+    <circle cx="52.5"  cy="82.0"   r="3.5" fill="#B5604A"/>
+    <circle cx="41.5"  cy="79.053" r="3.5" fill="#8FA87A"/>
+    <circle cx="33.447" cy="71.0"  r="3.5" fill="#B5604A"/>
+    <circle cx="30.5"  cy="60.0"   r="3.5" fill="#8FA87A"/>
+    <circle cx="33.447" cy="49.0"  r="3.5" fill="#B5604A"/>
+    <circle cx="41.5"  cy="40.947" r="3.5" fill="#8FA87A"/>
+
+    <!-- Punto dorado central -->
+    <circle cx="52.5" cy="60.0" r="2.8" fill="#E8A857" opacity="0.4"/>
+    <circle cx="52.5" cy="60.0" r="1.6" fill="#E8A857"/>
+
+
+    <!-- ══════════════════════════════════════
+         TEXTO LOGO
+         Respiro 14.5 mm desde logo bottom (85.5)
+         ══════════════════════════════════════ -->
+
+    <!-- "INSTITUTO"  y=100 -->
+    <text x="52.5" y="100"
+          text-anchor="middle"
+          font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="5" font-weight="500" letter-spacing="4"
+          fill="#888580">INSTITUTO</text>
+
+    <!-- "CENTROBIOENERGETICA"  y=111  (gap 11mm) -->
+    <text x="52.5" y="111"
+          text-anchor="middle"
+          font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="6.2" font-weight="500" letter-spacing="0.8"
+          fill="#B5604A">CENTROBIOENERGETICA</text>
+
+
+    <!-- ══════════════════════════════════════
+         DIVISOR  y=122  (gap 11mm desde marca)
+         ══════════════════════════════════════ -->
+    <line x1="12" y1="122" x2="93" y2="122"
+          stroke="#B5604A" stroke-width="0.35" opacity="0.25"/>
+
+
+    <!-- ══════════════════════════════════════
+         PÍLDORA ROL  top=129  (gap 7mm)
+         ══════════════════════════════════════ -->
+    <rect x="27" y="129" width="51" height="10" rx="5"
+          fill="#8FA87A" opacity="0.2"/>
+    <text x="52.5" y="135.8"
+          text-anchor="middle"
+          font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="4" font-weight="500" letter-spacing="2"
+          fill="#4A7040">PARTICIPANTE</text>
+
+
+    <!-- ══════════════════════════════════════
+         ÁREA DE NOMBRE  (gap 6mm desde pill bottom=139)
+         ══════════════════════════════════════ -->
+
+    <!-- Etiqueta "nombre" muy sutil -->
+    <text x="12" y="143"
+          font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="3.2" fill="#C8BAB0" letter-spacing="1">NOMBRE</text>
+
+    <!-- Línea de firma  y=147 -->
+    <line x1="12" y1="147" x2="93" y2="147"
+          stroke="#C4956A" stroke-width="0.6" opacity="0.55"/>
+
+
+    <!-- Franja decorativa inferior verde salvia -->
+    <rect x="0" y="147.2" width="105" height="0.8" fill="#8FA87A" opacity="0.6"/>
+
+  </g>
+
+
+  <!-- ══════════════════════════════════════
+       LÍNEAS DE CORTE  (Cut)
+       Sin relleno — solo trazo guía
+       ══════════════════════════════════════ -->
+  <g id="corte">
+
+    <!-- Contorno exterior del gafete -->
+    <rect x="0" y="0" width="105" height="148" rx="6"
+          fill="none" stroke="#B5604A" stroke-width="0.3"/>
+
+    <!-- Agujero cordón  ⌀ 7 mm -->
+    <circle cx="52.5" cy="12" r="3.5"
+            fill="none" stroke="#333333" stroke-width="0.3"
+            stroke-dasharray="1.5,0.7"/>
+
+  </g>
+
+</svg>
