@@ -6,17 +6,16 @@
 ## POR ACTO
 
 ### A01 — La Firma que no Pedía Permiso (Confianza)
-- [ ] Hojas A3 — 1 por persona (o 2 hojas A4 pegadas)
+- [ ] Hojas A3 — 1 por persona 
 - [ ] Marcadores negros gruesos — 1 por persona
 - [ ] Cojín de tinta para huella digital — 1-2 para el grupo (o marcador negro para colorear el pulgar)
 
 ---
 
 ### A02 — Lo que se Quedó en la Garganta (Emociones)
-- [ ] Botellas pequeñas de vidrio con tapa — 1 por persona (tipo especias o medicina)
+- [ ] Sobre — 1 por persona
 - [ ] Papelitos 3×5 cm — 5-6 por persona (cortar hojas normales)
 - [ ] Bolígrafos
-- [ ] Flores pequeñas, hojas verdes o brotes para el cierre — 1 por persona
 
 ---
 

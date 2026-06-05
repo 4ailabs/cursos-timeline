@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonantia - Portada de Video</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #F5F0E8; /* Light background per brandbook */
+            --color-terracota: #8B3A1A;
+            --color-siena: #C4956A;
+            --color-gold: #E8A857;
+            --color-dark: #2A1810; /* Dark text for light background */
+            --color-text-gray: #888580;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--color-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Jost', sans-serif;
+        }
+
+        /* 16:9 Container */
+        .viewport {
+            position: relative;
+            width: 100vw;
+            height: 56.25vw; /* 16:9 ratio */
+            max-height: 100vh;
+            max-width: 177.78vh; /* 16:9 ratio */
+            background: radial-gradient(circle at center, #ffffff 0%, var(--color-bg) 70%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+            animation: bgPulse 8s infinite ease-in-out;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { background: radial-gradient(circle at center, #ffffff 0%, var(--color-bg) 70%); }
+            50% { background: radial-gradient(circle at center, #fcfaf7 0%, var(--color-bg) 80%); }
+        }
+
+        /* Background Resonance Waves */
+        .waves {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .wave {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid rgba(139, 58, 26, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: waveExpand 6s infinite ease-out;
+        }
+
+        .wave:nth-child(2) { animation-delay: 2s; }
+        .wave:nth-child(3) { animation-delay: 4s; }
+
+        @keyframes waveExpand {
+            0% { width: 0%; height: 0%; opacity: 0.3; }
+            100% { width: 120%; height: 120%; opacity: 0; }
+        }
+
+        /* Content Wrapper */
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Logo Styling */
+        .logo-container {
+            width: 140px;
+            height: 140px;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 5px rgba(139, 58, 26, 0.15));
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 6rem;
+            font-weight: 300;
+            color: var(--color-dark);
+            letter-spacing: 0.15em;
+            text-transform: capitalize;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-family: 'Jost', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 200;
+            color: var(--color-terracota);
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        footer {
+            position: absolute;
+            bottom: 5%;
+            width: 100%;
+            text-align: center;
+            color: var(--color-text-gray);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            font-weight: 300;
+            z-index: 10;
+        }
+
+        .line {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-terracota), transparent);
+            margin: 1.5rem auto;
+            opacity: 0.3;
+        }
+
+        /* Animation for the gold point */
+        .gold-point {
+            animation: pulsePoint 3s infinite ease-in-out;
+        }
+
+        @keyframes pulsePoint {
+            0%, 100% { r: 3; opacity: 1; }
+            50% { r: 4.5; opacity: 0.8; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="viewport">
+        <!-- Resonance waves background -->
+        <div class="waves">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+
+        <div class="content">
+            <div class="logo-container">
+                <svg class="logo-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Base Diapason -->
+                    <path d="M81 18 L81 117 Q81 136 100 136 Q119 136 119 117 L119 18 M100 136 L100 178"
+                          stroke="#8B3A1A" stroke-width="6"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    
+                    <!-- Gold Contact Point -->
+                    <circle cx="100" cy="178" r="8" fill="none" stroke="#E8A857" stroke-width="1.5" opacity="0.4">
+                        <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="0.4;0.1;0.4" dur="3s" repeatCount="indefinite" />
+                    </circle>
+                    <circle class="gold-point" cx="100" cy="178" r="4" fill="#E8A857"/>
+                </svg>
+            </div>
+
+            <div class="text-group">
+                <h1>Resonantia</h1>
+                <div class="subtitle">Diapasones Terapéuticos</div>
+            </div>
+
+            <div class="line"></div>
+        </div>
+
+        <footer>
+            INSTITUTO CENTROBIOENERGETICA &middot; DR. MIGUEL OJEDA RIOS &middot; 2026
+        </footer>
+    </div>
+
+</body>
+</html>
