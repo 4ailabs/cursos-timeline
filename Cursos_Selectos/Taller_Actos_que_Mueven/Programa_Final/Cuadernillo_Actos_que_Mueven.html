@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actos que Mueven — Cuadernillo del Participante</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#1c1815; font-family:'Cormorant Garamond',Georgia,serif; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+// ═══════════════════════════════════════════════════════════
+// DESIGN CANVAS — pan/zoom viewer (Figma-style)
+// ═══════════════════════════════════════════════════════════
+const DC = {
+  bg:'#f0ede8', grid:'rgba(0,0,0,0.055)', label:'rgba(60,50,40,0.7)',
+  title:'rgba(40,30,20,0.85)', font:'-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif',
+};
+if (typeof document !== 'undefined' && !document.getElementById('dc-styles')) {
+  const s = document.createElement('style'); s.id='dc-styles';
+  s.textContent = [
+    '.dc-edit{cursor:text;outline:none;white-space:nowrap;border-radius:3px;padding:0 2px}',
+    '.dc-edit:focus{background:#fff;box-shadow:0 0 0 1.5px #c96442}',
+    '[data-dc-slot]{transition:transform .18s cubic-bezier(.2,.7,.3,1)}',
+    '.dc-card{transition:box-shadow .15s}',
+    '.dc-card *{scrollbar-width:none} .dc-card *::-webkit-scrollbar{display:none}',
+    '.dc-lr{display:flex;align-items:center;gap:4px;height:24px}',
+    '.dc-grip{cursor:grab;display:flex;align-items:center;padding:5px 4px;border-radius:4px;transition:background .12s}',
+    '.dc-grip:hover{background:rgba(0,0,0,.08)} .dc-grip:active{cursor:grabbing}',
+    '.dc-lt{cursor:pointer;border-radius:4px;padding:3px 6px;transition:background .12s}',
+    '.dc-lt:hover{background:rgba(0,0,0,.05)}',
+    '.dc-exp{position:absolute;bottom:100%;right:0;margin-bottom:5px;z-index:2;opacity:0;transition:opacity .12s;width:22px;height:22px;border-radius:5px;border:none;cursor:pointer;padding:0;background:transparent;color:rgba(60,50,40,.7);display:flex;align-items:center;justify-content:center}',
+    '.dc-exp:hover{background:rgba(0,0,0,.06)}',
+    '[data-dc-slot]:hover .dc-exp{opacity:1}',
+  ].join('\n');
+  document.head.appendChild(s);
+}
+
+const DCCtx = React.createContext(null);
+
+function DesignCanvas({ children, minScale=0.1, maxScale=8 }) {
+  const [state, setState] = React.useState({ sections:{}, focus:null });
+  const [ready, setReady] = React.useState(false);
+  React.useEffect(() => { setTimeout(() => setReady(true), 50); }, []);
+  const api = React.useMemo(() => ({
+    state,
+    section: id => state.sections[id] || {},
+    patchSection: (id,p) => setState(s => ({ ...s, sections:{ ...s.sections, [id]:{ ...(s.sections[id]||{}), ...(typeof p==='function'?p(s.sections[id]||{}):p) } } })),
+    setFocus: id => setState(s => ({ ...s, focus:id })),
+  }), [state]);
+  const registry = {};
+  const sectionMeta = {};
+  const sectionOrder = [];
+  React.Children.forEach(children, sec => {
+    if (!sec || sec.type !== DCSection) return;
+    const sid = sec.props.id ?? sec.props.title;
+    if (!sid) return;
+    sectionOrder.push(sid);
+    const srcIds = [];
+    React.Children.forEach(sec.props.children, ab => {
+      if (!ab || ab.type !== DCArtboard) return;
+      const aid = ab.props.id ?? ab.props.label;
+      if (!aid) return;
+      registry[`${sid}/${aid}`] = { sectionId:sid, artboard:ab };
+      srcIds.push(aid);
+    });
+    sectionMeta[sid] = { title: sec.props.title, slotIds: srcIds };
+  });
+  React.useEffect(() => {
+    const k = e => { if (e.key==='Escape') api.setFocus(null); };
+    document.addEventListener('keydown', k);
+    return () => document.removeEventListener('keydown', k);
+  }, [api]);
+  return (
+    <DCCtx.Provider value={api}>
+      <DCViewport minScale={minScale} maxScale={maxScale}>{ready && children}</DCViewport>
+      {state.focus && registry[state.focus] && (
+        <DCFocusOverlay entry={registry[state.focus]} sectionMeta={sectionMeta} sectionOrder={sectionOrder}/>
+      )}
+    </DCCtx.Provider>
+  );
+}
+
+function DCViewport({ children, minScale=0.1, maxScale=8 }) {
+  const vpRef = React.useRef(null);
+  const worldRef = React.useRef(null);
+  const tf = React.useRef({ x:0, y:0, scale:1 });
+  const apply = React.useCallback(() => {
+    const {x,y,scale} = tf.current;
+    if (worldRef.current) worldRef.current.style.transform = `translate3d(${x}px,${y}px,0) scale(${scale})`;
+  }, []);
+  React.useEffect(() => {
+    const vp = vpRef.current; if (!vp) return;
+    const zoomAt = (cx,cy,factor) => {
+      const r = vp.getBoundingClientRect();
+      const t = tf.current;
+      const next = Math.min(maxScale, Math.max(minScale, t.scale*factor));
+      const k = next/t.scale;
+      t.x = (cx-r.left) - ((cx-r.left)-t.x)*k;
+      t.y = (cy-r.top)  - ((cy-r.top) -t.y)*k;
+      t.scale = next; apply();
+    };
+    const isWheel = e => e.deltaMode!==0||(e.deltaX===0&&Number.isInteger(e.deltaY)&&Math.abs(e.deltaY)>=40);
+    let gsBase=1, isGest=false;
+    const onWheel = e => { e.preventDefault(); if(isGest)return; if(e.ctrlKey){zoomAt(e.clientX,e.clientY,Math.exp(-e.deltaY*0.01))} else if(isWheel(e)){zoomAt(e.clientX,e.clientY,Math.exp(-Math.sign(e.deltaY)*0.18))} else{tf.current.x-=e.deltaX;tf.current.y-=e.deltaY;apply()} };
+    const onGS = e => { e.preventDefault(); isGest=true; gsBase=tf.current.scale; };
+    const onGC = e => { e.preventDefault(); zoomAt(e.clientX,e.clientY,(gsBase*e.scale)/tf.current.scale); };
+    const onGE = e => { e.preventDefault(); isGest=false; };
+    let drag=null;
+    const onPD = e => { const onBg=!e.target.closest('[data-dc-slot],.dc-edit'); if(!(e.button===1||(e.button===0&&onBg)))return; e.preventDefault(); vp.setPointerCapture(e.pointerId); drag={id:e.pointerId,lx:e.clientX,ly:e.clientY}; vp.style.cursor='grabbing'; };
+    const onPM = e => { if(!drag||e.pointerId!==drag.id)return; tf.current.x+=e.clientX-drag.lx; tf.current.y+=e.clientY-drag.ly; drag.lx=e.clientX; drag.ly=e.clientY; apply(); };
+    const onPU = e => { if(!drag||e.pointerId!==drag.id)return; vp.releasePointerCapture(e.pointerId); drag=null; vp.style.cursor=''; };
+    vp.addEventListener('wheel',onWheel,{passive:false});
+    vp.addEventListener('gesturestart',onGS,{passive:false});
+    vp.addEventListener('gesturechange',onGC,{passive:false});
+    vp.addEventListener('gestureend',onGE,{passive:false});
+    vp.addEventListener('pointerdown',onPD);
+    vp.addEventListener('pointermove',onPM);
+    vp.addEventListener('pointerup',onPU);
+    vp.addEventListener('pointercancel',onPU);
+    return () => { vp.removeEventListener('wheel',onWheel); vp.removeEventListener('gesturestart',onGS); vp.removeEventListener('gesturechange',onGC); vp.removeEventListener('gestureend',onGE); vp.removeEventListener('pointerdown',onPD); vp.removeEventListener('pointermove',onPM); vp.removeEventListener('pointerup',onPU); vp.removeEventListener('pointercancel',onPU); };
+  }, [apply,minScale,maxScale]);
+  const gridSvg = `url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M120 0H0v120' fill='none' stroke='${encodeURIComponent(DC.grid)}' stroke-width='1'/%3E%3C/svg%3E")`;
+  return (
+    <div ref={vpRef} style={{ height:'100vh', width:'100vw', background:DC.bg, overflow:'hidden', overscrollBehavior:'none', touchAction:'none', position:'relative', fontFamily:DC.font, boxSizing:'border-box' }}>
+      <div ref={worldRef} style={{ position:'absolute', top:0, left:0, transformOrigin:'0 0', willChange:'transform', width:'max-content', minWidth:'100%', minHeight:'100%', padding:'60px 0 80px' }}>
+        <div style={{ position:'absolute', inset:-6000, backgroundImage:gridSvg, backgroundSize:'120px 120px', pointerEvents:'none', zIndex:-1 }}/>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function DCSection({ id, title, children, gap=40 }) {
+  const ctx = React.useContext(DCCtx);
+  const sid = id ?? title;
+  const artboards = React.Children.toArray(children).filter(c => c && c.type===DCArtboard);
+  return (
+    <div data-dc-section={sid} style={{ marginBottom:72 }}>
+      <div style={{ padding:'0 60px 40px', fontSize:22, fontWeight:600, color:DC.title, letterSpacing:-0.3 }}>{title}</div>
+      <div style={{ display:'flex', gap, padding:'0 60px', alignItems:'flex-start', width:'max-content' }}>
+        {artboards.map(ab => {
+          const aid = ab.props.id ?? ab.props.label;
+          return (
+            <div key={aid} data-dc-slot={aid} style={{ position:'relative', flexShrink:0 }}>
+              <div className="dc-lr" style={{ position:'absolute', bottom:'100%', left:-4, marginBottom:4, color:DC.label }}>
+                <div className="dc-lt" style={{ fontSize:13, fontWeight:500, color:DC.label }}>{ab.props.label}</div>
+              </div>
+              <button className="dc-exp" onClick={() => ctx && ctx.setFocus(`${sid}/${aid}`)}>
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M7 1h4v4M5 11H1V7M11 1L7.5 4.5M1 11l3.5-3.5"/></svg>
+              </button>
+              <div className="dc-card" style={{ borderRadius:2, boxShadow:'0 1px 3px rgba(0,0,0,.09),0 4px 16px rgba(0,0,0,.07)', overflow:'hidden', width:ab.props.width||390+60, height:ab.props.height||630+60, background:'#fff' }}>
+                {ab.props.children}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function DCArtboard() { return null; }
+
+function DCFocusOverlay({ entry, sectionMeta, sectionOrder }) {
+  const ctx = React.useContext(DCCtx);
+  const { sectionId, artboard } = entry;
+  const meta = sectionMeta[sectionId];
+  const aid = artboard.props.id ?? artboard.props.label;
+  const peers = meta.slotIds;
+  const idx = peers.indexOf(aid);
+  const go = d => { const n = peers[(idx+d+peers.length)%peers.length]; if(n) ctx.setFocus(`${sectionId}/${n}`); };
+  React.useEffect(() => {
+    const k = e => { if(e.key==='ArrowLeft'){e.preventDefault();go(-1)} if(e.key==='ArrowRight'){e.preventDefault();go(1)} };
+    document.addEventListener('keydown',k); return () => document.removeEventListener('keydown',k);
+  });
+  const { width=450, height=690 } = artboard.props;
+  const [vp,setVp] = React.useState({w:window.innerWidth,h:window.innerHeight});
+  React.useEffect(() => { const r=()=>setVp({w:window.innerWidth,h:window.innerHeight}); window.addEventListener('resize',r); return ()=>window.removeEventListener('resize',r); },[]);
+  const scale = Math.max(0.1, Math.min((vp.w-160)/width, (vp.h-220)/height, 2));
+  const Arrow = ({ dir, onClick }) => (
+    <button onClick={e=>{e.stopPropagation();onClick()}} style={{ position:'absolute', top:'50%', [dir]:24, transform:'translateY(-50%)', border:'none', background:'rgba(255,255,255,.08)', color:'rgba(255,255,255,.9)', width:40, height:40, borderRadius:20, fontSize:18, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', transition:'background .15s' }} onMouseEnter={e=>e.currentTarget.style.background='rgba(255,255,255,.18)'} onMouseLeave={e=>e.currentTarget.style.background='rgba(255,255,255,.08)'}>
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d={dir==='left'?'M11 3L5 9l6 6':'M7 3l6 6-6 6'}/></svg>
+    </button>
+  );
+  return ReactDOM.createPortal(
+    <div onClick={()=>ctx.setFocus(null)} onWheel={e=>e.preventDefault()} style={{ position:'fixed', inset:0, zIndex:100, background:'rgba(20,15,10,.65)', backdropFilter:'blur(16px)', fontFamily:DC.font, color:'#fff' }}>
+      <div onClick={e=>e.stopPropagation()} style={{ position:'absolute', top:0, right:0, padding:16 }}>
+        <button onClick={()=>ctx.setFocus(null)} style={{ border:'none', background:'transparent', color:'rgba(255,255,255,.6)', width:32, height:32, borderRadius:16, fontSize:22, cursor:'pointer', lineHeight:1 }}>×</button>
+      </div>
+      <div style={{ position:'absolute', top:60, bottom:48, left:80, right:80, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:14 }}>
+        <div onClick={e=>e.stopPropagation()} style={{ width:width*scale, height:height*scale, position:'relative' }}>
+          <div style={{ width, height, transform:`scale(${scale})`, transformOrigin:'top left', background:'#fff', borderRadius:2, overflow:'hidden', boxShadow:'0 20px 80px rgba(0,0,0,.45)' }}>
+            {artboard.props.children}
+          </div>
+        </div>
+        <div style={{ fontSize:13, opacity:.8 }}>{(ctx.section(sectionId).labels||{})[aid] ?? artboard.props.label} <span style={{opacity:.5}}>{idx+1}/{peers.length}</span></div>
+      </div>
+      <Arrow dir="left" onClick={()=>go(-1)}/>
+      <Arrow dir="right" onClick={()=>go(1)}/>
+      <div onClick={e=>e.stopPropagation()} style={{ position:'absolute', bottom:16, left:'50%', transform:'translateX(-50%)', display:'flex', gap:7 }}>
+        {peers.map((p,i) => <button key={p} onClick={()=>ctx.setFocus(`${sectionId}/${p}`)} style={{ border:'none', padding:0, cursor:'pointer', width:6, height:6, borderRadius:3, background:i===idx?'#fff':'rgba(255,255,255,.3)' }}/>)}
+      </div>
+    </div>,
+    document.body
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
+// TOKENS — Ritual Experiencing · 13 × 21 cm
+// ═══════════════════════════════════════════════════════════
+const MM = 3;
+const W  = 130 * MM; // 390
+const H  = 210 * MM; // 630
+const MX = 13 * MM;  // 39
+const MT = 14 * MM;  // 42
+const MB = 12 * MM;  // 36
+const CW = W - MX * 2; // 312
+
+const SERIF = "'Cormorant Garamond', Georgia, serif";
+const MONO  = "'Courier New', monospace";
+
+const C = {
+  siena:  '#8B4513', sienaL: '#C4926A',
+  arena:  '#F2E8DC', arenaL: '#F7F0E8',
+  ink:    '#2C2C2A', cream:  '#E8E6DE',
+  grey:   '#888780', grey2:  '#B4B2A9',
+  warm:   '#FAF9F6', rule:   '#DDD7CE',
+};
+
+// ─── SHARED COMPONENTS ───────────────────────────────────
+const Vortex = ({ size=24, color='#8B4513' }) => (
+  <svg width={size} height={size} viewBox="-1 -19 138 155" fill="none">
+    <path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48"
+      stroke={color} strokeWidth="2.5" strokeLinecap="round" opacity="0.82"/>
+    <circle cx="72" cy="124" r="2.8" fill={color} opacity="0.55"/>
+  </svg>
+);
+
+const Pg = ({ bg=C.warm, dark=false, children }) => (
+  <div style={{ width:W, height:H, background:bg, position:'relative', overflow:'hidden', fontFamily:SERIF, userSelect:'none' }}>
+    <div style={{ position:'absolute', top:0, left:0, right:0, height:2.5, background: dark ? C.sienaL : C.siena, zIndex:3 }}/>
+    {children}
+  </div>
+);
+
+const Ct = ({ children, style={} }) => (
+  <div style={{ position:'absolute', left:MX, right:MX, top:MT, bottom:MB, display:'flex', flexDirection:'column', overflow:'hidden', zIndex:2, ...style }}>
+    {children}
+  </div>
+);
+
+const Lbl = ({ children, color=C.grey }) => (
+  <div style={{ fontFamily:MONO, fontSize:6.5, letterSpacing:'0.14em', textTransform:'uppercase', color, lineHeight:1.35, flexShrink:0 }}>{children}</div>
+);
+
+const Rule = ({ color=C.rule, my=0, style={} }) => (
+  <div style={{ height:1, background:color, flexShrink:0, marginTop:my, marginBottom:my, ...style }}/>
+);
+
+const PgN = ({ n, dark=false }) => (
+  <div style={{ position:'absolute', bottom:MB*0.55, right:MX, fontFamily:SERIF, fontSize:9, fontWeight:300, color: dark ? `${C.grey2}60` : `${C.grey}60`, lineHeight:1 }}>{n}</div>
+);
+
+const NoteLines = () => (
+  <div style={{ flex:1, backgroundImage:`repeating-linear-gradient(to bottom, transparent 0px, transparent 21px, ${C.rule} 21px, ${C.rule} 22px)` }}/>
+);
+
+const Phrase = ({ text }) => (
+  <div style={{ borderLeft:`2.5px solid ${C.siena}55`, paddingLeft:9, marginTop:5, fontFamily:SERIF, fontSize:12.5, fontWeight:300, fontStyle:'italic', color:C.ink, lineHeight:1.5, flexShrink:0 }}>
+    "{text}"
+  </div>
+);
+
+const MatRow = ({ text }) => (
+  <div style={{ display:'flex', alignItems:'flex-start', gap:6, marginTop:3.5, flexShrink:0 }}>
+    <div style={{ width:3, height:3, borderRadius:'50%', background:C.sienaL, marginTop:5, flexShrink:0 }}/>
+    <span style={{ fontFamily:SERIF, fontSize:9.5, color:C.grey, lineHeight:1.5 }}>{text}</span>
+  </div>
+);
+
+// Wrapper for canvas display (warm dark bg)
+const BG = '#26201c';
+const Slot = ({ children }) => (
+  <div style={{ width:W+60, height:H+60, background:BG, display:'flex', alignItems:'center', justifyContent:'center', padding:30 }}>
+    {children}
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════
+// P01 — PORTADA
+// ═══════════════════════════════════════════════════════════
+const P01 = () => (
+  <Pg bg={C.ink} dark>
+    <Ct>
+      <div style={{ display:'flex', alignItems:'center', gap:8, flexShrink:0 }}>
+        <Vortex size={16} color={C.sienaL}/>
+        <div>
+          <div style={{ fontFamily:MONO, fontSize:6, letterSpacing:'0.15em', textTransform:'uppercase', color:C.grey, lineHeight:1.3 }}>Instituto</div>
+          <div style={{ fontFamily:MONO, fontSize:6, letterSpacing:'0.15em', textTransform:'uppercase', color:`${C.grey}70`, lineHeight:1.3 }}>Centrobioenergetica</div>
+        </div>
+      </div>
+      <div style={{ marginTop:24, fontFamily:MONO, fontSize:7, letterSpacing:'0.14em', textTransform:'uppercase', color:C.sienaL, flexShrink:0 }}>
+        Sábado 1 · Actos que Mueven
+      </div>
+      <div style={{ marginTop:10, flexShrink:0 }}>
+        <div style={{ fontFamily:SERIF, fontSize:44, fontWeight:300, lineHeight:0.9, color:C.cream, letterSpacing:'-0.025em' }}>
+          Actos<br/>
+          <em style={{ fontStyle:'italic', color:C.sienaL }}>que</em><br/>
+          Mueven
+        </div>
+      </div>
+      <div style={{ marginTop:14, width:36, height:1, background:C.siena, flexShrink:0 }}/>
+      <div style={{ marginTop:10, fontFamily:SERIF, fontSize:12, fontWeight:300, fontStyle:'italic', color:C.grey, lineHeight:1.5, flexShrink:0 }}>
+        Cuadernillo del Participante
+      </div>
+      <div style={{ flex:1 }}/>
+      <div style={{ border:`1px solid ${C.siena}40`, padding:'11px 13px', flexShrink:0 }}>
+        <Lbl color={C.grey}>Nombre</Lbl>
+        <div style={{ height:1, background:`${C.sienaL}25`, marginTop:6, marginBottom:10 }}/>
+        <Lbl color={C.grey}>Fecha</Lbl>
+        <div style={{ height:1, background:`${C.sienaL}25`, marginTop:6 }}/>
+      </div>
+      <div style={{ marginTop:11, paddingTop:8, borderTop:`1px solid ${C.grey}22`, flexShrink:0, display:'flex', justifyContent:'space-between', alignItems:'flex-end' }}>
+        <div>
+          <div style={{ fontFamily:MONO, fontSize:6.5, letterSpacing:'0.12em', textTransform:'uppercase', color:C.grey2 }}>Dr. Miguel Ojeda Rios</div>
+          <div style={{ fontFamily:MONO, fontSize:5.5, letterSpacing:'0.08em', color:`${C.grey}75`, marginTop:2 }}>Ritual Experiencing · Bioenergética V4</div>
+        </div>
+        <div style={{ fontFamily:SERIF, fontSize:10, fontWeight:300, color:`${C.sienaL}45` }}>2026</div>
+      </div>
+    </Ct>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// P02 — EL PROGRAMA DEL DÍA
+// ═══════════════════════════════════════════════════════════
+const sched = [
+  { t:'10:00', a:'Apertura y Teoría', s:'' },
+  { t:'10:45', a:'La Firma que no Pedía Permiso', s:'Confianza', n:'01' },
+  { t:'11:35', a:'Lo que se Quedó en la Garganta', s:'Emociones', n:'02' },
+  { t:'12:25', a:'La Mochila y el Libro', s:'Soltar la carga', n:'03' },
+  { t:'13:15', a:'Comida', s:'', brk:true },
+  { t:'14:45', a:'El Peso Exacto', s:'Deudas', n:'04' },
+  { t:'15:35', a:'Lo que me Enseñaron que Vale', s:'Dinero', n:'05' },
+  { t:'16:25', a:'Receso', s:'', brk:true },
+  { t:'16:35', a:'Lo que Llegó sin que lo Pidiera', s:'Transgeneracional', n:'06' },
+  { t:'17:25', a:'El Plato Roto y la Reverencia', s:'Integración', n:'07' },
+  { t:'18:00', a:'Cierre', s:'', brk:true },
+];
+
+const P02 = () => (
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>El Programa · Sábado 1</Lbl>
+      <div style={{ marginTop:7, fontFamily:SERIF, fontSize:19, fontWeight:300, color:C.ink, letterSpacing:'-0.01em', lineHeight:1.1, flexShrink:0 }}>Actos que Mueven</div>
+      <Rule my={10}/>
+      {sched.map((item,i) => (
+        <div key={i} style={{ display:'flex', alignItems:'flex-start', gap:9, paddingBottom:item.brk?7:5.5, marginBottom:item.brk?4:0, borderBottom:item.brk?`1px solid ${C.rule}`:'none', flexShrink:0 }}>
+          <div style={{ fontFamily:MONO, fontSize:7.5, color: item.brk ? C.grey2 : C.sienaL, letterSpacing:'0.04em', lineHeight:1.4, width:34, flexShrink:0, paddingTop:1 }}>{item.t}</div>
+          <div style={{ flex:1 }}>
+            {item.n && <span style={{ fontFamily:MONO, fontSize:6.5, color:`${C.siena}90`, letterSpacing:'0.1em', marginRight:4 }}>{item.n}·</span>}
+            <span style={{ fontFamily:SERIF, fontSize: item.brk?9.5:11, color: item.brk?C.grey:C.ink, lineHeight:1.4 }}>{item.a}</span>
+            {item.s && <div style={{ fontFamily:MONO, fontSize:6, color:C.grey, letterSpacing:'0.12em', textTransform:'uppercase', marginTop:1 }}>{item.s}</div>}
+          </div>
+        </div>
+      ))}
+      <div style={{ flex:1 }}/>
+      <div style={{ display:'flex', justifyContent:'flex-end', alignItems:'center', gap:8, flexShrink:0 }}>
+        <Vortex size={12} color={`${C.sienaL}60`}/>
+        <span style={{ fontFamily:MONO, fontSize:6, color:`${C.grey}60`, letterSpacing:'0.1em', textTransform:'uppercase' }}>Ritual Experiencing</span>
+      </div>
+      <PgN n={2}/>
+    </Ct>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// P03 — MANUAL I: QUÉ ES RE
+// ═══════════════════════════════════════════════════════════
+const P03 = () => (
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Manual del Participante · I</Lbl>
+      <div style={{ marginTop:7, fontFamily:SERIF, fontSize:19, fontWeight:300, color:C.ink, lineHeight:1.05, flexShrink:0 }}>Qué es Ritual<br/>Experiencing</div>
+      <Rule my={10}/>
+
+      <div style={{ fontFamily:SERIF, fontSize:10.5, color:C.ink, lineHeight:1.65, flexShrink:0 }}>
+        Ritual Experiencing (RE) es un sistema de intervención somática que utiliza actos físicos irreversibles con objetos cotidianos para producir cambio real en el sistema nervioso. No es relajación ni manejo del estrés — es transformación.
+      </div>
+
+      <div style={{ marginTop:10, borderLeft:`2.5px solid ${C.siena}45`, paddingLeft:9, flexShrink:0 }}>
+        <div style={{ fontFamily:SERIF, fontSize:11.5, fontWeight:300, fontStyle:'italic', color:C.ink, lineHeight:1.55 }}>
+          "El cuerpo no distingue entre una experiencia real y una experiencia ritual con suficiente carga sensorial."
+        </div>
+      </div>
+
+      <div style={{ marginTop:11, fontFamily:SERIF, fontSize:10.5, color:C.ink, lineHeight:1.65, flexShrink:0 }}>
+        Un acto bien diseñado — con tacto, temperatura, peso, sonido — produce cambio real. El ritual <em style={{ fontStyle:'italic' }}>es</em> la intervención, no una metáfora de una.
+      </div>
+
+      <Rule my={11}/>
+
+      <Lbl>Por qué el entendimiento no alcanza</Lbl>
+      <div style={{ marginTop:7, fontFamily:SERIF, fontSize:10.5, color:C.ink, lineHeight:1.65, flexShrink:0 }}>
+        La mayoría de las personas que llegan a un espacio así no llegan porque no saben qué les pasa. Llegan porque lo saben — y aun así no cambia. Eso no es falta de voluntad. Es la arquitectura del sistema nervioso.
+      </div>
+      <div style={{ marginTop:8, fontFamily:SERIF, fontSize:10.5, color:C.ink, lineHeight:1.65, flexShrink:0 }}>
+        El cerebro opera con dos sistemas: uno procesa información (entiende, analiza). El otro procesa <em style={{ fontStyle:'italic' }}>experiencia</em> — registra lo que el cuerpo vivió y genera respuestas automáticas a partir de eso. El segundo no se actualiza con comprensión intelectual. Se actualiza con experiencia corporal.
+      </div>
+
+      <div style={{ flex:1 }}/>
+      <PgN n={3}/>
+    </Ct>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// P04 — MANUAL II: PATRONES Y ACTO RITUAL
+// ═══════════════════════════════════════════════════════════
+const P04 = () => (
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Manual del Participante · II</Lbl>
+      <div style={{ marginTop:7, fontFamily:SERIF, fontSize:19, fontWeight:300, color:C.ink, lineHeight:1.05, flexShrink:0 }}>Cómo se forman<br/>los patrones</div>
+      <Rule my={10}/>
+      <div style={{ fontFamily:SERIF, fontSize:10.5, color:C.ink, lineHeight:1.65, flexShrink:0 }}>
+        Los patrones no se formaron con ideas — se formaron con experiencias que el cuerpo registró como reglas de supervivencia. Una experiencia intensa o repetida queda grabada en la memoria implícita. No está en la narrativa consciente — está en la tensión del hombro, en la contracción del estómago, en el reflejo de hacerse pequeño antes de que nadie lo pida.
+      </div>
+      <div style={{ marginTop:8, fontFamily:SERIF, fontSize:10.5, color:C.grey, lineHeight:1.65, fontStyle:'italic', flexShrink:0 }}>
+        Si me muestro → me rechazan. Si suelto el control → todo se derrumba. Si cobro lo que valgo → pierdo el vínculo.
+      </div>
+      <div style={{ marginTop:8, fontFamily:SERIF, fontSize:10.5, color:C.ink, lineHeight:1.65, flexShrink:0 }}>
+        Estas predicciones corren solas, sin que la persona las decida. No responden a la psicoeducación. Responden a <em style={{ fontStyle:'italic' }}>experiencia nueva</em> que contradiga la regla que aprendieron.
+      </div>
+
+      <Rule my={11}/>
+
+      <Lbl>Qué es un acto ritual</Lbl>
+      <div style={{ marginTop:7, fontFamily:SERIF, fontSize:10.5, color:C.ink, lineHeight:1.65, flexShrink:0 }}>
+        Una secuencia de acciones físicas diseñada para producir en el sistema nervioso una experiencia diferente a la que el patrón predice. Todo acto tiene cuatro componentes:
+      </div>
+      {[
+        ['Acción física','el cuerpo hace algo, no solo piensa ni siente'],
+        ['Carga simbólica','el objeto representa el patrón con especificidad sensorial'],
+        ['Secuencia','los pasos en orden garantizan que el acto llegue al lugar correcto'],
+        ['Irreversibilidad','el núcleo del mecanismo — lo hecho no se puede des-hacer'],
+      ].map(([k,v]) => (
+        <div key={k} style={{ display:'flex', gap:7, marginTop:5, flexShrink:0 }}>
+          <div style={{ width:4, height:4, borderRadius:'50%', background:C.siena, marginTop:6, flexShrink:0 }}/>
+          <div style={{ fontFamily:SERIF, fontSize:10, lineHeight:1.6, color:C.ink }}>
+            <strong style={{ fontWeight:500, color:C.siena }}>{k} — </strong>{v}
+          </div>
+        </div>
+      ))}
+
+      <div style={{ flex:1 }}/>
+      <PgN n={4}/>
+    </Ct>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// P05 — LA SECUENCIA DE RITUAL EXPERIENCING
+// ═══════════════════════════════════════════════════════════
+const steps = [
+  { n:'01', name:'Activar el Patrón', desc:'El cuerpo hace intencionalmente lo que normalmente hace en automático. Nombrarlo en voz alta lo interrumpe.' },
+  { n:'02', name:'Regular el Sistema Nervioso', desc:'Respiración 4-4-6 activa el nervio vago. Sin regulación previa, el acto no produce cambio — produce defensa.' },
+  { n:'03', name:'Confirmar Recursos', desc:'Pies en el suelo. Declarar lo que se tiene — no lo que falta. El cuerpo necesita reserva para procesar lo que viene.' },
+  { n:'04', name:'Abrir el Acceso', desc:'Una pregunta dirigida al cuerpo, no a la mente. Lo que emerge aquí no viene de la cabeza — viene de la memoria somática.' },
+  { n:'05', name:'El Acto Irreversible', desc:'Hacer lo que el cuerpo creía imposible. La catástrofe esperada no llega. La memoria se reescribe en la raíz.' },
+];
+
+const P05 = () => (
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Manual del Participante · III</Lbl>
+      <div style={{ marginTop:7, fontFamily:SERIF, fontSize:19, fontWeight:300, color:C.ink, lineHeight:1.05, flexShrink:0 }}>La Secuencia de<br/>Ritual Experiencing</div>
+      <Rule my={10}/>
+      <div style={{ fontFamily:SERIF, fontSize:9.5, color:C.grey, lineHeight:1.6, fontStyle:'italic', flexShrink:0 }}>
+        Cada acto del día sigue estos cinco pasos en orden. La secuencia es la columna vertebral — sin ella, el acto se queda en el nivel consciente y no alcanza donde vive el patrón.
+      </div>
+      <div style={{ marginTop:11, display:'flex', flexDirection:'column', gap:9, flexShrink:0 }}>
+        {steps.map(s => (
+          <div key={s.n} style={{ display:'flex', gap:10, alignItems:'flex-start' }}>
+            <div style={{ fontFamily:SERIF, fontSize:17, fontWeight:300, color:`${C.sienaL}70`, lineHeight:1, width:22, flexShrink:0, paddingTop:2 }}>{s.n}</div>
+            <div style={{ borderLeft:`1.5px solid ${C.arena}`, paddingLeft:9, flex:1 }}>
+              <div style={{ fontFamily:SERIF, fontSize:11, fontWeight:500, color:C.siena, lineHeight:1.2 }}>{s.name}</div>
+              <div style={{ fontFamily:SERIF, fontSize:9.5, color:C.grey, lineHeight:1.6, marginTop:2 }}>{s.desc}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ flex:1 }}/>
+      <div style={{ display:'flex', justifyContent:'center', flexShrink:0 }}>
+        <Vortex size={20} color={`${C.sienaL}50`}/>
+      </div>
+      <PgN n={5}/>
+    </Ct>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// RITUAL PAGES — template
+// ═══════════════════════════════════════════════════════════
+const ActPage = ({ num, time, title, tagline, para, phrases, mats, pgN }) => (
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', flexShrink:0 }}>
+        <Lbl color={C.siena}>Acto {num}</Lbl>
+        <Lbl color={C.grey}>{time}</Lbl>
+      </div>
+      <div style={{ marginTop:7, fontFamily:SERIF, fontSize:20, fontWeight:300, fontStyle:'italic', color:C.ink, lineHeight:1.05, letterSpacing:'-0.01em', flexShrink:0 }}>{title}</div>
+      <div style={{ marginTop:5, fontFamily:SERIF, fontSize:10.5, fontWeight:300, fontStyle:'italic', color:C.grey, lineHeight:1.5, flexShrink:0 }}>{tagline}</div>
+      <Rule my={10} color={`${C.siena}35`}/>
+      <div style={{ fontFamily:SERIF, fontSize:10, color:C.ink, lineHeight:1.65, flexShrink:0 }}>{para}</div>
+      <div style={{ marginTop:10, flexShrink:0 }}>
+        <Lbl color={`${C.siena}90`}>Frases del acto</Lbl>
+        {phrases.map((p,i) => <Phrase key={i} text={p}/>)}
+      </div>
+      <div style={{ marginTop:10, flexShrink:0 }}>
+        <Lbl>Materiales</Lbl>
+        {mats.map((m,i) => <MatRow key={i} text={m}/>)}
+      </div>
+      <div style={{ flex:1 }}/>
+      <PgN n={pgN}/>
+    </Ct>
+  </Pg>
+);
+
+const NotesPage = ({ num, title, pgN }) => (
+  <Pg>
+    <Ct>
+      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', flexShrink:0 }}>
+        <Lbl color={C.siena}>Notas · Acto {num}</Lbl>
+        <Lbl color={`${C.grey}80`}>{title}</Lbl>
+      </div>
+      <div style={{ marginTop:10, flexShrink:0, height:1, background:C.rule }}/>
+      <NoteLines/>
+      <div style={{ display:'flex', justifyContent:'center', paddingBottom:2, flexShrink:0 }}>
+        <Vortex size={14} color={`${C.arena}`}/>
+      </div>
+      <PgN n={pgN}/>
+    </Ct>
+  </Pg>
+);
+
+// ─── ACTO 01 ─────────────────────────────────────────────
+const P06 = () => (
+  <ActPage
+    num="01" time="10:45–11:35"
+    title="La Firma que no Pedía Permiso"
+    tagline="Para cuando el cuerpo aprendió a ocupar menos espacio del que le corresponde."
+    para="Para ti, que se encoge cuando siente que está siendo demasiado. Que espera permiso para opinar, para existir, para ser visto. El cuerpo aprendió que hacerse pequeño era más seguro — y lo ejecuta en automático, antes de que ninguna decisión consciente lo ordene. Este acto interrumpe ese automático desde el cuerpo."
+    phrases={[
+      'Así me hice para que no me vieran.',
+      'Este espacio es mío. Lo tomo. No pido permiso.',
+      'Esta es mi firma. Este es mi espacio. Lo tomé.',
+    ]}
+    mats={['Hoja A3 (o dos A4 pegadas)','Marcador negro grueso','Cojín de tinta o marcador para huella']}
+    pgN={6}
+  />
+);
+const P07 = () => <NotesPage num="01" title="La Firma" pgN={7}/>;
+
+// ─── ACTO 02 ─────────────────────────────────────────────
+const P08 = () => (
+  <ActPage
+    num="02" time="11:35–12:25"
+    title="Lo que se Quedó en la Garganta"
+    tagline="Para cuando lo que no se dijo vive en el cuerpo como presión."
+    para="Para ti, que tragó lo que quería decir. Que siente un nudo en la garganta cuando hay algo importante. Que aprendió a guardar en lugar de soltar — y la garganta lo recuerda. Los papelitos van dentro del sobre. El sobre va contra el cuello. Y luego — se abre."
+    phrases={[
+      'Esto es lo que guardé en la garganta: ___.',
+      'Esto nunca se dijo. Hoy lo digo yo.',
+      'Donde guardaba lo que no pudo salir, ahora hay espacio para esto.',
+    ]}
+    mats={['Sobre — 1 por persona','Papelitos 3×5 cm — 5 a 6 por persona','Bolígrafo']}
+    pgN={8}
+  />
+);
+const P09 = () => <NotesPage num="02" title="La Garganta" pgN={9}/>;
+
+// ─── ACTO 03 ─────────────────────────────────────────────
+const P10 = () => (
+  <ActPage
+    num="03" time="12:25–13:15"
+    title="La Mochila y el Libro"
+    tagline="Para cuando cargas más de lo que elegiste cargar."
+    para="Para ti, que lleva el peso de los demás sin que nadie lo pidiera. Que cargo con lo que no es suyo — por costumbre, por miedo, por identidad. La mochila con los libros es ese peso. Cada libro recibe un nombre. Y luego — uno por uno — se sueltan. Al final, el cuerpo elige qué sí quiere cargar."
+    phrases={[
+      'Esto es lo que hago: cargo todo sin preguntar si es mío.',
+      '___ : te suelto. Ya no te cargo.',
+      'Esto lo elijo. Esto sí lo cargo. El resto se queda en el suelo.',
+    ]}
+    mats={['Mochila o bolsa — traes la tuya','5 libros dentro de la mochila — traes los tuyos','Masking tape y plumón (lo provee el taller)','Toalla o tela (lo provee el taller)']}
+    pgN={10}
+  />
+);
+const P11 = () => <NotesPage num="03" title="La Mochila" pgN={11}/>;
+
+// ─── ACTO 04 ─────────────────────────────────────────────
+const P12 = () => (
+  <ActPage
+    num="04" time="14:45–15:35"
+    title="El Peso Exacto"
+    tagline="Para cuando la deuda vive en tu cabeza como un peso sin forma — más grande de lo que realmente es."
+    para="La deuda vaga es la más pesada. Lo que no tiene número exacto llena todo el espacio disponible. Este acto hace una sola cosa que la mayoría evita: escribir el número completo, mirarlo durante 60 segundos, y descubrir que el cuerpo puede sostenerlo. Las manos quedan libres. El número sigue siendo real."
+    phrases={[
+      'Esta deuda me ha costado, además del dinero: ___.',
+      'El número es real. Puedo mirarlo.',
+      'Este es el número exacto. Lo sé. Y sigo aquí.',
+    ]}
+    mats={['Objeto pesado — libro grueso o botella llena (traes el tuyo)','2 hojas de papel','Sobre — 1 por persona','Bolígrafo']}
+    pgN={12}
+  />
+);
+const P13 = () => <NotesPage num="04" title="El Peso Exacto" pgN={13}/>;
+
+// ─── ACTO 05 ─────────────────────────────────────────────
+const P14 = () => (
+  <ActPage
+    num="05" time="15:35–16:25"
+    title="Lo que me Enseñaron que Vale"
+    tagline="Para cuando tu cuerpo y el dinero tienen una relación tensa que no elegiste."
+    para="Esta relación no la construiste tú — te la construyeron. La aprendiste de los gestos de tu familia frente a las facturas, de las peleas escuchadas, de los silencios cuando el tema era dinero. La piedra es esa historia. El billete es lo que das. El acto: soltar la historia, rasgar el papel, y decir el número en voz alta — de pie, sin disculparse."
+    phrases={[
+      'Esto es lo que aprendí que el dinero significa: ___.',
+      'Esta historia no es mía. La rompo.',
+      'Esto es lo que vale lo que hago. Lo digo sin pedir permiso.',
+    ]}
+    mats={['Piedra pequeña que quepa en la mano — traes la tuya','Billete de cualquier denominación — traes uno en la cartera','2 hojas de papel','Sobre — 1 por persona']}
+    pgN={14}
+  />
+);
+const P15 = () => <NotesPage num="05" title="Lo que me Enseñaron" pgN={15}/>;
+
+// ─── ACTO 06 ─────────────────────────────────────────────
+const P16 = () => (
+  <ActPage
+    num="06" time="16:35–17:25"
+    title="Lo que Llegó sin que lo Pidiera"
+    tagline="Para cuando cargas patrones de tu familia que nunca elegiste y ya no distingues cuáles son tuyos."
+    para="No es un juicio a la familia. La familia te pasó lo que a ella le pasaron. Esto es una distinción: ¿qué es mío, qué elegí? El papel tissue va pegado en la espalda — ahí, sin poder verlo, como viven esos patrones. Luego se desprende lentamente con las manos. Y se disuelve en agua."
+    phrases={[
+      'Esto es lo que heredé que ya no me sirve: ___.',
+      'Esto llegó antes que yo. Lo reconozco. Ya no lo cargo en el cuerpo.',
+      'Esto sí es mío. Lo elegí. Lo cargo porque quiero.',
+    ]}
+    mats={['Papel tissue — 1 hoja (lo provee el taller)','Hoja normal de papel (lo provee el taller)','Masking tape (lo provee el taller)','Tazón con agua (lo provee el taller)']}
+    pgN={16}
+  />
+);
+const P17 = () => <NotesPage num="06" title="Lo Heredado" pgN={17}/>;
+
+// ─── ACTO 07 ─────────────────────────────────────────────
+const P18 = () => (
+  <ActPage
+    num="07" time="17:25–18:00"
+    title="El Plato Roto y la Reverencia"
+    tagline="Para cuando lo que se fragmentó puede volverse más valioso que lo que estaba entero."
+    para="El kintsugi japonés lleva siglos reparando con oro lo que se rompió — las grietas no se esconden, se hacen visibles. Este es el cierre del día: romper, reconocer cada pedazo, reverenciar lo que se separó, y reparar de una forma que el cuerpo pueda ver todos los días. Las grietas son la prueba de que se rompió y siguió."
+    phrases={[
+      'Cada parte de mí que se separó tenía una razón. Hoy las reconozco a todas.',
+      'Estoy entero. Las grietas son mías y son hermosas.',
+      'Lo que se rompió se reconectó — no como antes, sino mejor.',
+    ]}
+    mats={['Plato de cerámica o barro — 1 (lo provee el taller)','Pegamento dorado o brillantina (lo provee el taller)','Toalla para romper (lo provee el taller)']}
+    pgN={18}
+  />
+);
+
+// ═══════════════════════════════════════════════════════════
+// P19 — GLOSARIO
+// ═══════════════════════════════════════════════════════════
+const gloss = [
+  { t:'N3 — Inconsciente Somático', d:'Sistema de memoria implícita donde viven los patrones. No procesa lenguaje — procesa experiencia sensorial. Es donde el acto ritual produce cambio.' },
+  { t:'N4 — Conciencia Narrativa', d:'El nivel consciente donde entendemos e interpretamos. Actualizar N4 con información no actualiza N3.' },
+  { t:'Memoria Implícita', d:'Memoria del cuerpo — tensiones, reflejos, predicciones automáticas — sin narrativa consciente. Se actualiza con experiencia, no con comprensión.' },
+  { t:'Reconsolidación de Memoria', d:'Cuando una memoria se reactiva, entra en un estado donde puede ser modificada. La ventana de reconsolidación es donde el acto irreversible produce cambio duradero. (Nader, 2000)' },
+  { t:'Error de Predicción', d:'Lo que ocurre cuando el cuerpo hace lo que creía imposible o peligroso, y la catástrofe esperada no llega. Señal que actualiza la memoria somática.' },
+  { t:'Carga Alostática', d:'El costo acumulado de la adaptación crónica al estrés, grabado en el cuerpo como patrón somático. (McEwen)' },
+  { t:'Vagal Ventral', d:'Estado del sistema nervioso autónomo donde el cuerpo está presente, regulado y con capacidad de procesar. Condición necesaria para que el acto central funcione.' },
+  { t:'Irreversibilidad Experiencial', d:'Una vez que el cuerpo vivió la contradicción, ese dato no puede des-ocurrir. Lo dicho no se puede desdecir. Lo hecho no se puede des-hacer.' },
+];
+
+const P19 = () => (
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Glosario</Lbl>
+      <div style={{ marginTop:7, fontFamily:SERIF, fontSize:19, fontWeight:300, color:C.ink, lineHeight:1.05, flexShrink:0 }}>Términos del Método</div>
+      <Rule my={9}/>
+      <div style={{ display:'flex', flexDirection:'column', gap:8, overflow:'hidden', flex:1 }}>
+        {gloss.map((g,i) => (
+          <div key={i} style={{ flexShrink:0 }}>
+            <div style={{ fontFamily:SERIF, fontSize:10, fontWeight:500, color:C.siena, lineHeight:1.3 }}>{g.t}</div>
+            <div style={{ fontFamily:SERIF, fontSize:9.5, color:C.grey, lineHeight:1.6, marginTop:1 }}>{g.d}</div>
+          </div>
+        ))}
+      </div>
+      <PgN n={19}/>
+    </Ct>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// P20 — CONTRAPORTADA
+// ═══════════════════════════════════════════════════════════
+const P20 = () => (
+  <Pg bg={C.ink} dark>
+    <Ct>
+      <div style={{ flex:1, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:16 }}>
+        <Vortex size={52} color={C.sienaL}/>
+        <div style={{ textAlign:'center' }}>
+          <div style={{ fontFamily:SERIF, fontSize:22, fontWeight:300, color:C.cream, letterSpacing:'0.5px', lineHeight:1.1 }}>Ritual</div>
+          <div style={{ fontFamily:SERIF, fontSize:22, fontWeight:300, color:C.sienaL, letterSpacing:'0.5px', lineHeight:1.1 }}>Experiencing</div>
+        </div>
+        <div style={{ width:28, height:1, background:`${C.siena}60` }}/>
+        <div style={{ fontFamily:MONO, fontSize:6.5, letterSpacing:'0.18em', textTransform:'uppercase', color:C.grey, textAlign:'center', lineHeight:1.8 }}>
+          Actos que Mueven<br/>Sábado 1
+        </div>
+      </div>
+      <div style={{ textAlign:'center', paddingBottom:4, flexShrink:0 }}>
+        <div style={{ fontFamily:'Georgia, serif', fontSize:7.5, letterSpacing:'0.2em', textTransform:'uppercase', color:`${C.grey}70` }}>
+          Instituto Centrobioenergetica
+        </div>
+        <div style={{ fontFamily:MONO, fontSize:6, color:`${C.grey}45`, marginTop:3 }}>
+          Dr. Miguel Ojeda Rios · 2026
+        </div>
+      </div>
+    </Ct>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// APP
+// ═══════════════════════════════════════════════════════════
+function App() {
+  const aw = W + 60, ah = H + 60;
+  const S = ({ children }) => (
+    <div style={{ width:aw, height:ah, background:BG, display:'flex', alignItems:'center', justifyContent:'center', padding:30 }}>
+      {children}
+    </div>
+  );
+  return (
+    <DesignCanvas>
+
+      <DCSection id="cubierta" title="Cubierta">
+        <DCArtboard id="p01" label="01 · Portada" width={aw} height={ah}><S><P01/></S></DCArtboard>
+        <DCArtboard id="p02" label="02 · El Programa" width={aw} height={ah}><S><P02/></S></DCArtboard>
+      </DCSection>
+
+      <DCSection id="manual" title="Manual Teórico">
+        <DCArtboard id="p03" label="03 · Qué es RE" width={aw} height={ah}><S><P03/></S></DCArtboard>
+        <DCArtboard id="p04" label="04 · Patrones y Acto Ritual" width={aw} height={ah}><S><P04/></S></DCArtboard>
+        <DCArtboard id="p05" label="05 · La Secuencia RE" width={aw} height={ah}><S><P05/></S></DCArtboard>
+      </DCSection>
+
+      <DCSection id="actos" title="Los Siete Actos">
+        <DCArtboard id="p06" label="06 · A01 La Firma" width={aw} height={ah}><S><P06/></S></DCArtboard>
+        <DCArtboard id="p07" label="07 · Notas A01" width={aw} height={ah}><S><P07/></S></DCArtboard>
+        <DCArtboard id="p08" label="08 · A02 La Garganta" width={aw} height={ah}><S><P08/></S></DCArtboard>
+        <DCArtboard id="p09" label="09 · Notas A02" width={aw} height={ah}><S><P09/></S></DCArtboard>
+        <DCArtboard id="p10" label="10 · A03 La Mochila" width={aw} height={ah}><S><P10/></S></DCArtboard>
+        <DCArtboard id="p11" label="11 · Notas A03" width={aw} height={ah}><S><P11/></S></DCArtboard>
+        <DCArtboard id="p12" label="12 · A04 El Peso Exacto" width={aw} height={ah}><S><P12/></S></DCArtboard>
+        <DCArtboard id="p13" label="13 · Notas A04" width={aw} height={ah}><S><P13/></S></DCArtboard>
+        <DCArtboard id="p14" label="14 · A05 Lo que me Enseñaron" width={aw} height={ah}><S><P14/></S></DCArtboard>
+        <DCArtboard id="p15" label="15 · Notas A05" width={aw} height={ah}><S><P15/></S></DCArtboard>
+        <DCArtboard id="p16" label="16 · A06 Lo Heredado" width={aw} height={ah}><S><P16/></S></DCArtboard>
+        <DCArtboard id="p17" label="17 · Notas A06" width={aw} height={ah}><S><P17/></S></DCArtboard>
+        <DCArtboard id="p18" label="18 · A07 El Plato Roto" width={aw} height={ah}><S><P18/></S></DCArtboard>
+      </DCSection>
+
+      <DCSection id="cierre" title="Cierre">
+        <DCArtboard id="p19" label="19 · Glosario" width={aw} height={ah}><S><P19/></S></DCArtboard>
+        <DCArtboard id="p20" label="20 · Contraportada" width={aw} height={ah}><S><P20/></S></DCArtboard>
+      </DCSection>
+
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
