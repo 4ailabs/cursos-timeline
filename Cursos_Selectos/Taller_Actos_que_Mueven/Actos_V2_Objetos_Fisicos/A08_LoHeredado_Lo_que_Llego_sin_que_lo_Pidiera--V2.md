@@ -10,7 +10,7 @@ Estos no son tus miedos ni tus creencias originales. Llegaron antes de que pudie
 
 No se trata de culpar a la familia. La familia te pasó lo que a ella le pasaron — y ellos hicieron lo que pudieron con lo que tenían. Esto no es un juicio. Es una distinción: ¿qué es mío, qué elegí, qué construí yo? ¿Y qué llegó antes de que yo pudiera elegir?
 
-Este acto empieza por ponerte los patrones heredados en la espalda — literalmente. Sentirlos ahí durante la mayor parte del acto. Y luego despegarlos, uno por uno, con las manos.
+Este acto empieza por ponerte los patrones heredados en la espalda — literalmente. Sentirlos ahí durante la mayor parte del acto. Y luego despegarlos con las manos y disolverlos en agua.
 
 ________________
 
@@ -20,16 +20,17 @@ Los patrones heredados son eficientes — el cuerpo los ejecuta sin preguntar po
 
 Cargar el papel heredado pegado en la espalda — sentirlo contra la ropa, sin poder verlo, siempre ahí — es cómo viven esos patrones en el cuerpo: presentes, constantes, invisibles, cargados sin saber que se cargan. Cuando el papel está en la espalda, el cuerpo lo siente. Cuando el cuerpo lo siente, puede elegir.
 
-El gesto de despegar el papel — lentamente, con las manos — es el gesto de separación que nadie hizo antes: no rechazarlo, no borrarlo, sacarlo de la espalda. El rasgado después de haberlo despegado le da al sistema nervioso la señal irreversible: lo que estaba pegado ya no está entero.
+El gesto de despegar el papel — lentamente, con las manos — es el gesto de separación que nadie hizo antes: no rechazarlo, no borrarlo, sacarlo de la espalda. Disolverlo en agua le da al sistema nervioso una señal diferente al rasgado: no es rechazo. Es transformación. Lo heredado no desaparece — cambia de forma. El papel que estaba en la espalda se deshace en agua, y el agua se va. El patrón no se niega — se suelta.
 
 ________________
 
 QUÉ NECESITAS
 
-- Dos hojas de papel (si tienes dos colores diferentes, mejor — si no, escribe FAMILIA en una y YO en la otra)
+- Una hoja de papel tissue (para la hoja FAMILIA — debe ser delgada para que se disuelva en agua)
+- Una hoja normal de papel (para la hoja YO)
 - Un bolígrafo
 - Masking tape (cinta de papel — suficiente para pegar una hoja a la ropa de la espalda)
-- Un sobre pequeño
+- Un tazón con agua a temperatura ambiente
 
 ________________
 
@@ -43,7 +44,7 @@ ________________
 
 PREPARAR EL ESPACIO
 
-Pon las dos hojas frente a ti — una marcada FAMILIA, una marcada YO. El masking tape al lado.
+Pon las dos hojas frente a ti — la hoja tissue marcada FAMILIA, la hoja normal marcada YO. El masking tape al lado. El tazón con agua ya preparado, pero fuera de la vista hasta el Paso 5.
 Cierra los ojos 30 segundos. Mano en el pecho.
 Siente que este cuerpo viene de algún lugar. Y también puede decidir hacia dónde va.
 Las dos cosas son ciertas al mismo tiempo.
@@ -119,7 +120,7 @@ Di en voz alta:
 
 Abre los ojos. Toma la hoja YO. Separar: ¿qué de lo que heredaste sí quieres conservar? ¿Qué hay de la familia que sí fue tuyo, que sí te sirvió, que sí quieres llevar? Escríbelo en la hoja YO.
 
-**5 — Despegar y rasgar** (12 minutos)
+**5 — Despegar y disolver** (12 minutos)
 
 La hoja FAMILIA todavía está en tu espalda.
 
@@ -131,22 +132,20 @@ Cuando el papel esté en tus manos — cuando lo tengas frente a ti y puedas ver
 
 Esto es lo que estaba en tu espalda. Lo que cargabas sin poder verlo.
 
-**Rásgarla en dos.** Con fuerza, de arriba abajo. Que se escuche.
+Acerca el tazón con agua.
 
-Mientras rasgas, di en voz alta:
-> "Honro de dónde vengo. Y elijo qué me llevo."
+**Sumerge el papel en el agua y deshazlo con las manos.** El papel tissue se disuelve — déjalo deshacerse entre los dedos. Las manos adentro del agua, el papel que se va.
 
-Escucha el sonido. Siente las dos mitades en las manos.
+Mientras las manos entran al agua, di en voz alta:
+> "Esto llegó antes que yo. Lo reconozco. Ya no lo cargo en el cuerpo."
 
-Mira los pedazos. Eso es la historia heredada — real, visible, partida en dos.
+Quédate con las manos en el agua hasta que el papel se haya disuelto por completo.
 
-Mete los pedazos dentro del sobre. Sella el sobre.
-
-Coloca el sobre en la mesa — lejos de tu cuerpo.
-
-Quédate 60 segundos quieto. El sobre lejos con los pedazos adentro. La hoja YO cerca, intacta.
-Nota la diferencia entre los dos objetos — el sobre sellado lejos, la hoja YO cerca.
+**Silencio. 60 segundos.** El agua con lo disuelto frente a ti. La hoja YO cerca, intacta.
+Nota la diferencia — el agua turbia lejos, la hoja YO cerca.
 Deja que el cuerpo termine.
+
+Cuando estés listo: tira el agua por el desagüe. Lo que se disolvió, se va.
 
 **6 — Lo que es tuyo** (5 minutos)
 
@@ -167,7 +166,7 @@ ________________
 EL OBJETO QUE TE LLEVAS
 
 La hoja YO — intacta, doblada, cerca del cuerpo.
-El sobre con los pedazos rasgados — lo guardas, lo tiras, lo dejas. Tú decides. Ya no está en tu espalda y ya no está entero.
+El agua ya fue por el desagüe. Lo que se disolvió, se fue. Ya no está en tu espalda y ya no está entero.
 
 ________________
 
