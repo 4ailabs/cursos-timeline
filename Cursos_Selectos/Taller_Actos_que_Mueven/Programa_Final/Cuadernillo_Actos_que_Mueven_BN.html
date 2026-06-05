@@ -185,7 +185,7 @@ const Rule=({color=C.rule,my=0})=>(
 );
 
 const PgN=({n,dark=false})=>(
-  <div style={{position:'absolute',bottom:MB*0.55,right:MX,fontFamily:SERIF,fontSize:11,fontWeight:300,color:dark?`${C.grey2}60`:`${C.grey}60`,lineHeight:1}}>{n}</div>
+  <div style={{position:'absolute',top:14,right:MX,fontFamily:SERIF,fontSize:11,fontWeight:300,color:dark?`${C.grey2}60`:`${C.grey}60`,lineHeight:1}}>{n}</div>
 );
 
 const NoteLines=()=>(
@@ -244,8 +244,8 @@ const NotePage=({num,title,pgN})=>(
       <div style={{marginTop:10,height:1,background:C.rule,flexShrink:0}}/>
       <NoteLines/>
       <div style={{display:'flex',justifyContent:'center',paddingBottom:2,flexShrink:0}}><Vortex size={14} color={C.arena}/></div>
-      <PgN n={pgN}/>
     </Ct>
+    <PgN n={pgN}/>
   </Pg>
 );
 
@@ -317,8 +317,8 @@ const P03=()=>(
         El cerebro opera con dos sistemas: uno procesa información. El otro procesa <em>experiencia</em> — registra lo que el cuerpo vivió y genera respuestas automáticas. El segundo no se actualiza con comprensión intelectual. Se actualiza con experiencia corporal.
       </div>
       <div style={{flex:1}}/>
-      <PgN n={2}/>
     </Ct>
+    <PgN n={2}/>
   </Pg>
 );
 
@@ -349,8 +349,8 @@ const P04=()=>(
         </div>
       ))}
       <div style={{flex:1}}/>
-      <PgN n={3}/>
     </Ct>
+    <PgN n={3}/>
   </Pg>
 );
 
@@ -382,8 +382,8 @@ const P05=()=>(
       </div>
       <div style={{flex:1}}/>
       <div style={{display:'flex',justifyContent:'center',flexShrink:0}}><Vortex size={20} color={`${C.sienaL}45`}/></div>
-      <PgN n={4}/>
     </Ct>
+    <PgN n={4}/>
   </Pg>
 );
 
@@ -404,8 +404,8 @@ const A01a=()=>(
         inst="Pies en el suelo, columna erguida. Recuerda un momento en que ocupaste espacio sin pedir permiso a nadie. Siente dónde lo registra el cuerpo."
         phrases={['Ya sé cómo se siente ocupar el espacio. Lo hice.']}/>
       <div style={{flex:1}}/>
-      <PgN n={5}/>
     </Ct>
+    <PgN n={5}/>
   </Pg>
 );
 const A01b=()=>(
@@ -427,8 +427,8 @@ const A01b=()=>(
       <MatItem text="Marcador negro grueso"/>
       <MatItem text="Cojín de tinta para huella (o marcador para colorear el pulgar)"/>
       <div style={{flex:1}}/>
-      <PgN n={6}/>
     </Ct>
+    <PgN n={6}/>
   </Pg>
 );
 
@@ -449,8 +449,8 @@ const A02a=()=>(
         inst="Mano en la garganta. Recuerda un momento en que la voz salió — aunque haya dado miedo. Quizás algo pequeño: decir lo que querías, poner un límite, nombrar algo que sentías."
         phrases={['Mi voz ha salido antes. Puede volver a salir.']}/>
       <div style={{flex:1}}/>
-      <PgN n={7}/>
     </Ct>
+    <PgN n={7}/>
   </Pg>
 );
 const A02b=()=>(
@@ -472,8 +472,8 @@ const A02b=()=>(
       <MatItem text="Papelitos 3×5 cm — 5 a 6 por persona"/>
       <MatItem text="Bolígrafo"/>
       <div style={{flex:1}}/>
-      <PgN n={8}/>
     </Ct>
+    <PgN n={8}/>
   </Pg>
 );
 
@@ -494,8 +494,8 @@ const A03a=()=>(
         inst="Bolsa todavía en brazos. Pies en el suelo. Piensa en algo de tu vida que se sostiene sin que lo cargues — una persona, una relación, algo que construiste. Algo que sigue siendo real aunque no estés encima de ello. ¿Dónde lo sientes en el cuerpo?"
         phrases={['Hay cosas que se sostienen solas. No todo depende de que yo cargue.']}/>
       <div style={{flex:1}}/>
-      <PgN n={9}/>
     </Ct>
+    <PgN n={9}/>
   </Pg>
 );
 const A03b=()=>(
@@ -517,8 +517,8 @@ const A03b=()=>(
       <MatItem text="Piedra pequeña — el facilitador la entrega al final"/>
       <MatItem text="Toalla en el suelo"/>
       <div style={{flex:1}}/>
-      <PgN n={10}/>
     </Ct>
+    <PgN n={10}/>
   </Pg>
 );
 
@@ -539,8 +539,8 @@ const A04a=()=>(
         inst="Pies en el suelo. Monedas todavía en el puño. Recuerda algo concreto que hayas sacado adelante aunque parecía imposible — no tiene que ver con la deuda. Cualquier cosa difícil que hayas resuelto antes."
         phrases={['He resuelto cosas difíciles antes. Tengo lo que necesito para ver esto.']}/>
       <div style={{flex:1}}/>
-      <PgN n={11}/>
     </Ct>
+    <PgN n={11}/>
   </Pg>
 );
 const A04b=()=>(
@@ -561,8 +561,8 @@ const A04b=()=>(
       <MatItem text="Monedas — las que traes en el bolsillo o la cartera"/>
       <MatItem text="2 hojas de papel (HISTORIA y NÚMERO) · Bolígrafo"/>
       <div style={{flex:1}}/>
-      <PgN n={12}/>
     </Ct>
+    <PgN n={12}/>
   </Pg>
 );
 
@@ -583,8 +583,8 @@ const A05a=()=>(
         inst="Pies en el suelo. Piedra todavía en el puño. Piensa en algo concreto de valor que das o haces — un servicio, una habilidad, tiempo, cuidado. ¿Dónde sientes ese valor en el cuerpo?"
         phrases={['Lo que doy tiene valor real. Eso no cambia con lo que aprendí.']}/>
       <div style={{flex:1}}/>
-      <PgN n={13}/>
     </Ct>
+    <PgN n={13}/>
   </Pg>
 );
 const A05b=()=>(
@@ -606,8 +606,8 @@ const A05b=()=>(
       <MatItem text="Billete de cualquier denominación (traes uno en la cartera)"/>
       <MatItem text="2 hojas de papel · Sobre · Bolígrafo"/>
       <div style={{flex:1}}/>
-      <PgN n={14}/>
     </Ct>
+    <PgN n={14}/>
   </Pg>
 );
 
@@ -628,8 +628,8 @@ const A06a=()=>(
         inst="Pies en el suelo. Hoja todavía en la espalda. Piensa en algo que es tuyo — que construiste, que elegiste, que no vino de la familia sino de tu propia experiencia. ¿Dónde lo sientes en el cuerpo?"
         phrases={['Soy más que lo que heredé. Puedo mirarlo sin que me defina.']}/>
       <div style={{flex:1}}/>
-      <PgN n={15}/>
     </Ct>
+    <PgN n={15}/>
   </Pg>
 );
 const A06b=()=>(
@@ -650,8 +650,8 @@ const A06b=()=>(
       <MatItem text="Papel tissue — hoja FAMILIA · Hoja normal — hoja YO"/>
       <MatItem text="Masking tape · Tazón con agua · Bolígrafo"/>
       <div style={{flex:1}}/>
-      <PgN n={16}/>
     </Ct>
+    <PgN n={16}/>
   </Pg>
 );
 
@@ -672,8 +672,8 @@ const A07a=()=>(
         inst="Arrodíllate frente a los pedazos. Si no puedes arrodillarte, inclínate profundamente. Mira cada pedazo — cada uno es una parte que se separó para proteger algo: una que aprendió a callar para que hubiera paz, una que aprendió a cargar para que otros no cargaran, una que aprendió a desaparecer para que el sistema sobreviviera. Esas partes hicieron lo que tenían que hacer. Y funcionó — estás aquí. Mantén 30 segundos."
         phrases={['Cada parte de mí que se separó tenía una razón. Se separaron para que yo sobreviviera. Hoy las reconozco a todas.']}/>
       <div style={{flex:1}}/>
-      <PgN n={17}/>
     </Ct>
+    <PgN n={17}/>
   </Pg>
 );
 const A07b=()=>(
@@ -694,8 +694,8 @@ const A07b=()=>(
       <MatItem text="Plato de cerámica o barro — 1 por persona"/>
       <MatItem text="Pegamento dorado · Toalla para romper · Guantes opcionales"/>
       <div style={{flex:1}}/>
-      <PgN n={18}/>
     </Ct>
+    <PgN n={18}/>
   </Pg>
 );
 
@@ -708,7 +708,7 @@ const PGlosario=({pgN})=>(
       <Lbl color={C.siena}>Glosario</Lbl>
       <div style={{marginTop:7,fontFamily:SERIF,fontSize:23,fontWeight:300,color:C.ink,lineHeight:1.05,flexShrink:0}}>Términos del Método</div>
       <Rule my={9}/>
-      <div style={{display:'flex',flexDirection:'column',gap:8,overflow:'hidden',flex:1}}>
+      <div style={{display:'flex',flexDirection:'column',gap:6,overflow:'hidden',flex:1}}>
         {[
           ['N3 — Inconsciente Somático','Sistema de memoria implícita donde viven los patrones. No procesa lenguaje — procesa experiencia sensorial. Es donde el acto ritual produce cambio.'],
           ['N4 — Conciencia Narrativa','El nivel consciente donde entendemos e interpretamos. Actualizar N4 con información no actualiza N3.'],
@@ -720,13 +720,13 @@ const PGlosario=({pgN})=>(
           ['Irreversibilidad Experiencial','Una vez que el cuerpo vivió la contradicción, ese dato no puede des-ocurrir. Lo dicho no se puede desdecir. Lo hecho no se puede des-hacer.'],
         ].map(([t,d])=>(
           <div key={t} style={{flexShrink:0}}>
-            <div style={{fontFamily:SERIF,fontSize:12,fontWeight:500,color:C.siena,lineHeight:1.3}}>{t}</div>
-            <div style={{fontFamily:SERIF,fontSize:11.5,color:C.grey,lineHeight:1.6,marginTop:1}}>{d}</div>
+            <div style={{fontFamily:SERIF,fontSize:10,fontWeight:500,color:C.siena,lineHeight:1.3}}>{t}</div>
+            <div style={{fontFamily:SERIF,fontSize:9.5,color:C.grey,lineHeight:1.6,marginTop:1}}>{d}</div>
           </div>
         ))}
       </div>
-      <PgN n={pgN}/>
     </Ct>
+    <PgN n={pgN}/>
   </Pg>
 );
 
