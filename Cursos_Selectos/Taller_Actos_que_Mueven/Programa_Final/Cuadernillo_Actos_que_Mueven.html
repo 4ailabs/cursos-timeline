@@ -462,9 +462,9 @@ const A02b=()=>(
       <Step n="05" name="La apertura"
         inst="Abre el sobre. Saca el primer papelito, desdobla y léelo en voz alta — con volumen, no susurrado, que el sonido viaje. Rásguelo en dos. El siguiente. Uno por uno hasta que el sobre quede vacío."
         phrases={['Esto nunca se dijo. Hoy lo digo yo.']}/>
-      <Step n="06" name="Llenar el espacio"
-        inst="Toma un papelito en blanco. Escribe la palabra que quieres que ocupe el espacio que quedó libre. Una sola palabra. Métela dentro del sobre vacío. Ciérralo. Llévatelo a casa."
-        phrases={['Donde guardaba lo que no pudo salir, ahora hay espacio para esto.']}/>
+      <Step n="06" name="Cierre"
+        inst="Toma el sobre vacío con ambas manos. Siéntelo — pesa diferente ahora. El sobre se lleva a casa abierto, con los pedazos adentro. Ya no sella nada."
+        phrases={['Lo que guardé en silencio, hoy lo dije. Y sigo aquí.','La voz salió. El mundo siguió girando.','Lo que estaba adentro, salió. Ya no lo cargo en la garganta.']}/>
       <Rule my={9} color={`${C.siena}20`}/>
       <Lbl>Materiales</Lbl>
       <MatItem text="Sobre — 1 por persona"/>
@@ -482,16 +482,16 @@ const A02b=()=>(
 const A03a=()=>(
   <Pg bg={C.arenaL}>
     <Ct>
-      <ActHeader num="03" title="La Mochila y el Libro" tagline="Para cuando cargas más de lo que elegiste cargar."/>
-      <Step n="01" name="Cargar"
-        inst="De pie con la mochila puesta o abrazada contra el pecho. Caminen en círculo amplio, todos en la misma dirección, despacio — sientan cada paso con el peso encima, cómo los hombros responden. Deténganse."
-        phrases={['Esto es lo que hago: cargo todo sin preguntar si es mío.']}/>
+      <ActHeader num="03" title="La Bolsa y la Piedra" tagline="Para cuando cargas más de lo que elegiste cargar."/>
+      <Step n="01" name="Sentir el peso"
+        inst="Toma la bolsa con ambos brazos. Abrázala contra el pecho — que el peso quede pegado al cuerpo. Cierra los ojos. Quédate quieto, de pie, con el peso encima. ¿Dónde lo sientes en el cuerpo? ¿Los hombros, el pecho, la respiración que se acorta? Ubica la zona exacta."
+        phrases={['Lo siento en ___. Así se siente en mi cuerpo cargar lo que cargo.']}/>
       <Step n="02" name="Respirar con el peso"
-        inst="Con la mochila encima. Mano en el pecho. Inhala 4 — aguanta 4 — exhala 6. Cuatro ciclos. El cuerpo respira aunque cargue — eso es lo que ha hecho siempre."
-        phrases={['Mi cuerpo está aquí. Respira aunque cargue. Puedo hacer lo que viene.']}/>
-      <Step n="03" name="Lo que sostiene"
-        inst="Pies en el suelo, mochila encima. Presiona las plantas contra el piso. Siente las piernas. El suelo no se mueve, no se cansa. El cuerpo ha cargado esto durante mucho tiempo y sigue de pie."
-        phrases={['Tengo fuerza. La he usado para cargar. Hoy la uso para soltar.']}/>
+        inst="Bolsa abrazada — sin soltarla. Inhala por la nariz 4 — siente el pecho empujar contra el peso al inhalar. Aguanta 4. Exhala por la boca 6. Cuatro ciclos."
+        phrases={['Mi cuerpo respira aunque cargue. Estoy aquí.']}/>
+      <Step n="03" name="Lo que se sostiene solo"
+        inst="Bolsa todavía en brazos. Pies en el suelo. Piensa en algo de tu vida que se sostiene sin que lo cargues — una persona, una relación, algo que construiste. Algo que sigue siendo real aunque no estés encima de ello. ¿Dónde lo sientes en el cuerpo?"
+        phrases={['Hay cosas que se sostienen solas. No todo depende de que yo cargue.']}/>
       <div style={{flex:1}}/>
       <PgN n={11}/>
     </Ct>
@@ -501,20 +501,20 @@ const A03b=()=>(
   <Pg bg={C.arenaL}>
     <Ct>
       <ActHeader num="03" cont/>
-      <Step n="04" name="Nombrar los libros"
-        inst="Siéntate. Saca los libros uno por uno. Pon una etiqueta de masking tape a cada uno — una sola palabra: lo que representa. Lo primero que venga. Cuando todos estén nombrados, sostenlos con las dos manos frente al pecho."
-        phrases={['¿Cuántos de estos son realmente míos?','Esto es real. Lo he cargado. Lo reconozco.']}/>
+      <Step n="04" name="Lo que la zona necesita"
+        inst="Vuelve a la zona donde sentiste el peso en el Paso 1. Pon la atención ahí — con el peso todavía encima. Pregúntale directo, como si la zona pudiera responder, durante 60 segundos. Deja que llegue algo — una imagen, una palabra, un impulso."
+        phrases={['¿Qué necesitas para sentirte mejor?','Me pides ___. Lo escucho.']}/>
       <Step n="05" name="Soltar"
-        inst="De pie. Mochila contra el pecho. Saca cada libro, lee su etiqueta en voz alta, deposítalo en la tela del suelo. Lo que se suelta no se recoge. Cuando la mochila quede vacía, suéltala al suelo."
-        phrases={['[Nombre del libro]: te suelto. Ya no te cargo.']}/>
-      <Step n="06" name="Elegir"
-        inst="Mira los libros en la tela. Elige UNO que sí quieras cargar por elección — no por obligación. Quítale la etiqueta. Pon una nueva con el nombre que le das ahora. Sostenlo contra el pecho. Los demás se quedan en el suelo."
-        phrases={['Esto lo elijo. Esto sí lo cargo. El resto se queda en el suelo.']}/>
+        inst="De pie. Abraza la bolsa por última vez. A la cuenta de tres: uno — inhalas. Dos — sostienes. Tres — suelta la bolsa al suelo, sobre la toalla. El peso completo. Que caiga, que se escuche."
+        phrases={['Suelto. Y sigo de pie.']}/>
+      <Step n="06" name="La piedra"
+        inst="El facilitador te entrega una piedra pequeña — poniéndola en tu palma abierta. Cierra la mano sobre ella. Siente su peso exacto, la temperatura, la superficie. Eso es lo que te toca cargar hoy. La piedra se lleva a casa. La bolsa se queda aquí con todo su peso."
+        phrases={['Esto es lo que cargo hoy. Solo esto. El peso se queda aquí.']}/>
       <Rule my={9} color={`${C.siena}20`}/>
-      <Lbl>Materiales</Lbl>
-      <MatItem text="Mochila o bolsa — traes la tuya"/>
-      <MatItem text="5 libros dentro — traes los tuyos"/>
-      <MatItem text="Masking tape y plumón · Toalla en el suelo (del taller)"/>
+      <Lbl>Materiales (del taller)</Lbl>
+      <MatItem text="Bolsa de tela cargada con libros — la prepara el taller"/>
+      <MatItem text="Piedra pequeña — el facilitador la entrega al final"/>
+      <MatItem text="Toalla en el suelo"/>
       <div style={{flex:1}}/>
       <PgN n={12}/>
     </Ct>
@@ -527,16 +527,16 @@ const A03b=()=>(
 const A04a=()=>(
   <Pg bg={C.arenaL}>
     <Ct>
-      <ActHeader num="04" title="El Peso Exacto" tagline="Para cuando la deuda vive en tu cabeza como un peso sin forma — más grande de lo que realmente es."/>
-      <Step n="01" name="Lo que cuesta más allá del dinero"
-        inst="Toma el objeto pesado con las dos manos. Sostenlo. Sin soltarlo, piensa: ¿qué te ha costado esta deuda además del número? Sueño, decisiones que no tomaste, relaciones, energía. Siente en el pecho y en el estómago."
-        phrases={['Esta deuda me ha costado, además del dinero: ___.']}/>
+      <ActHeader num="04" title="El Número Limpio" tagline="Para cuando la deuda y la historia de lo que dice sobre ti viajan pegadas — y el cuerpo no puede ver una sin que llegue la otra."/>
+      <Step n="01" name="El peso que no es solo dinero"
+        inst="Saca las monedas que traes — del bolsillo, de la cartera, donde sea. Cierra el puño sobre ellas. Siente el metal, el peso, el sonido si las aprietas. Lleva la atención al cuerpo — pecho, estómago, mandíbula. ¿Qué hace el cuerpo cuando aprieta el dinero y piensa en la deuda?"
+        phrases={['Esto es lo que hago: evito ver el número porque me confirma que ___.']}/>
       <Step n="02" name="Regulación"
-        inst="Peso en las manos — no lo sueltes todavía. Mano libre en el pecho. Inhala 4 — aguanta 4 — exhala 6. Cuatro ciclos. El cuerpo aprende que puede respirar aunque cargue."
-        phrases={['El número es real. Puedo mirarlo.']}/>
-      <Step n="03" name="Lo que ya tienes"
-        inst="Pies en el suelo. Peso todavía en las manos. Piensa en algo concreto que has resuelto — algo que pagaste aunque parecía imposible en su momento. Siente dónde lo sientes en el cuerpo."
-        phrases={['He cargado esto y seguí funcionando. Tengo lo que necesito para mirarlo.']}/>
+        inst="Puño cerrado sobre las monedas. Mano libre en el pecho. Inhala 4 — aguanta 4 — exhala 6. Cuatro ciclos."
+        phrases={['Puedo respirar aunque cargue esto. Puedo mirarlo.']}/>
+      <Step n="03" name="Lo que ya resolviste"
+        inst="Pies en el suelo. Monedas todavía en el puño. Recuerda algo concreto que hayas sacado adelante aunque parecía imposible — no tiene que ver con la deuda. Cualquier cosa difícil que hayas resuelto antes."
+        phrases={['He resuelto cosas difíciles antes. Tengo lo que necesito para ver esto.']}/>
       <div style={{flex:1}}/>
       <PgN n={14}/>
     </Ct>
@@ -546,19 +546,19 @@ const A04b=()=>(
   <Pg bg={C.arenaL}>
     <Ct>
       <ActHeader num="04" cont/>
-      <Step n="04" name="Dónde vive en el cuerpo"
-        inst="Ojos cerrados. Peso en las manos. Pregúntale al cuerpo durante 60 segundos. Luego la segunda pregunta, 30 segundos."
-        phrases={['¿Dónde cargo esta deuda en el cuerpo? ¿Pecho, estómago, mandíbula, hombros?','¿Qué me pesa más: el número, la vergüenza, o la sensación de que no tiene salida?','Lo veo. Lleva tiempo aquí.']}/>
-      <Step n="05" name="El número exacto"
-        inst="Peso en las manos. Escribe en la primera hoja todas tus deudas — una por línea, con el número exacto. No la versión aproximada. Suma. Escribe el total. Mira el número durante 60 segundos completos sin apartar los ojos — peso todavía en las manos. Luego deposita el peso sobre la mesa con calma."
-        phrases={['Este es el número exacto. Lo sé. Y sigo aquí.','Esto es lo que puedo hacer esta semana. Solo esto. Es suficiente para empezar.']}/>
-      <Step n="06" name="Contener y caminar"
-        inst="Dobla la primera hoja y métela en el sobre. Escribe en el sobre: 'Lo que debo. Lo sé exactamente.' Guárdalo en tu bolsa. La segunda hoja (el primer paso que escribiste) va doblada en el bolsillo, cerca del cuerpo."
-        phrases={['La deuda es real y tiene un número. Yo soy más que ese número. Y tengo un primer paso.']}/>
+      <Step n="04" name="Separar la historia del número"
+        inst="Abre el puño. Deposita las monedas sobre la mesa — escucha el sonido del metal. Toma las dos hojas. En la hoja HISTORIA escribe todo lo que el cuerpo cuenta sobre lo que la deuda dice de ti: 'Soy irresponsable', 'Nunca voy a salir', lo que llegue. En la hoja NÚMERO escribe solo las cifras: todas tus deudas una por línea, con el número exacto. Suma. Escribe el total. Mira las dos hojas juntas."
+        phrases={['Esto es la historia. Esto es el número. No son lo mismo.']}/>
+      <Step n="05" name="Romper la historia. Ver el número."
+        inst="Toma la hoja HISTORIA con las dos manos. Rásguala — el sonido es parte del acto. Los pedazos van al centro de la mesa. Ahora toma la hoja NÚMERO — solo el número, sin la historia encima. Mira el total durante 60 segundos completos sin apartar los ojos."
+        phrases={['Esta historia no es el número. La rompo.','Este es el número. Solo el número. Y sigo aquí.']}/>
+      <Step n="06" name="El primer paso"
+        inst="Da vuelta la hoja NÚMERO. En el reverso escribe UNA acción concreta que puedas hacer esta semana en dirección a la deuda — una sola cosa que quepa en los próximos siete días. Dobla la hoja y guárdala en el bolsillo. Toma las monedas y ponlas en el mismo bolsillo — el dinero y el número juntos, sin la historia encima."
+        phrases={['Tengo el número. Tengo un paso. Es suficiente para empezar.']}/>
       <Rule my={9} color={`${C.siena}20`}/>
       <Lbl>Materiales</Lbl>
-      <MatItem text="Objeto pesado — libro grueso o botella llena (traes el tuyo)"/>
-      <MatItem text="2 hojas de papel · Sobre · Bolígrafo"/>
+      <MatItem text="Monedas — las que traes en el bolsillo o la cartera"/>
+      <MatItem text="2 hojas de papel (HISTORIA y NÚMERO) · Bolígrafo"/>
       <div style={{flex:1}}/>
       <PgN n={15}/>
     </Ct>
@@ -573,7 +573,7 @@ const A05a=()=>(
     <Ct>
       <ActHeader num="05" title="Lo que me Enseñaron que Vale" tagline="Para cuando tu cuerpo y el dinero tienen una relación tensa que no elegiste."/>
       <Step n="01" name="Lo que aprendiste"
-        inst="Toma la piedra con la mano derecha — puño cerrado. Sostén el billete con la mano izquierda. Mira el billete. ¿Qué hace el cuerpo ahora? ¿Tensión, incomodidad, alivio? ¿Dónde lo sientes — garganta, pecho, estómago?"
+        inst="Toma la piedra que recibiste en el Acto 3 con la mano derecha — puño cerrado. Sostén el billete con la mano izquierda. Mira el billete. ¿Qué hace el cuerpo ahora? ¿Tensión, incomodidad, alivio? ¿Dónde lo sientes — garganta, pecho, estómago?"
         phrases={['Esto es lo que aprendí que el dinero significa: ___.']}/>
       <Step n="02" name="Regulación"
         inst="Billete en la mano izquierda. Piedra en el puño derecho. Mano libre en el pecho. Inhala 4 — aguanta 4 — exhala 6. Tres ciclos. Las dos manos activas durante toda la respiración."
@@ -593,15 +593,15 @@ const A05b=()=>(
       <Step n="04" name="Lo que el cuerpo protege"
         inst="Ojos cerrados. Piedra en el puño. Pregúntale al cuerpo durante 60 segundos. Luego la segunda pregunta, 30 segundos."
         phrases={['¿Qué aprendió mi cuerpo que el dinero pone en peligro?','¿Qué pasaría si recibiera lo que vale lo que hago?','Eso es lo que mi cuerpo protege. Lo veo.']}/>
-      <Step n="05" name="Soltar la historia. Decir el número."
-        inst="Escribe en la primera hoja todo lo que aprendiste que el dinero significa. En la segunda hoja, escribe UN número: lo que cobras o mereces recibir. Deposita la piedra sobre la mesa — con calma, no con rechazo. Toma la primera hoja. Rásguala en dos con fuerza — de arriba abajo, que se escuche. Los pedazos van al sobre. Toma la segunda hoja. De pie. Lee el número en voz alta — con volumen, sin disculparte, sin relativizarlo."
-        phrases={['Esta historia no es mía. La rompo.','Esto es lo que vale lo que hago. Lo digo sin pedir permiso.']}/>
+      <Step n="05" name="Depositar. Decir el número."
+        inst="Escribe en la primera hoja todo lo que aprendiste que el dinero significa. En la segunda hoja escribe UN número: lo que cobras o mereces recibir. Deposita la piedra sobre la mesa — fue lo que elegiste cargar esta mañana, aquí tiene su lugar. Dobla la primera hoja y guárdala en el sobre. Cierra el sobre — ahí se queda, no en las manos. Toma la segunda hoja. De pie. Lee el número en voz alta — con volumen, sin disculparte, sin relativizarlo."
+        phrases={['La dejo aquí. Ya no la cargo en la mano.','Esto fue lo que aprendí. Ya no me dirige.','Esto es lo que vale lo que hago. Lo digo sin pedir permiso.']}/>
       <Step n="06" name="Lo nuevo"
-        inst="Dobla la hoja con el número y métela en el bolsillo. El sobre va en la bolsa. Toma el billete una vez más. Guárdalo en la cartera. La piedra se queda en el espacio del taller."
+        inst="Dobla la hoja con el número y métela en el bolsillo. El sobre con la historia se queda en la mesa del taller — ya no viaja contigo. Toma el billete una vez más. Guárdalo en la cartera. La piedra también se queda en el taller."
         phrases={['Recibir está bien. Cobrar está bien. Lo que doy tiene valor y puedo decirlo.']}/>
       <Rule my={9} color={`${C.siena}20`}/>
       <Lbl>Materiales</Lbl>
-      <MatItem text="Piedra pequeña (traes la tuya)"/>
+      <MatItem text="Piedra del Acto 3 — la que recibiste esta mañana"/>
       <MatItem text="Billete de cualquier denominación (traes uno en la cartera)"/>
       <MatItem text="2 hojas de papel · Sobre · Bolígrafo"/>
       <div style={{flex:1}}/>
@@ -663,12 +663,12 @@ const A07a=()=>(
       <ActHeader num="07" title="El Plato Roto y la Reverencia" tagline="Para cuando lo que se fragmentó puede volverse más valioso que lo que estaba entero."/>
       <Step n="01" name="Romper"
         inst="Sostén el plato con ambas manos. Siente el plato entero — así estaba el sistema antes de lo que pasó. Ponlo sobre la toalla. Rómpelo contra la toalla. Puede dejarse caer o golpearse suavemente. Lo que importa es que se rompa. Escucha el sonido."
-        phrases={['Esto es lo que pasó.']}/>
-      <Step n="02" name="Recoger y reconocer"
-        inst="Recoge cada pedazo con cuidado — guantes disponibles si los necesitas. Colócalos en fila frente a ti sobre la mesa o la toalla. Mira los pedazos durante 60 segundos completos. Cada uno es una parte que se separó. El cuerpo ya sabe qué es cada uno."
-        phrases={[]}/>
+        phrases={['Esto es lo que pasó en mi sistema: se fragmentó para ___.']}/>
+      <Step n="02" name="Recoger y respirar"
+        inst="Recoge cada pedazo con cuidado — guantes disponibles si los necesitas. Colócalos en fila frente a ti. Manos en el pecho. Inhala 4 — aguanta 4 — exhala 6. Tres ciclos. Los pedazos frente a ti durante toda la respiración."
+        phrases={['Estoy aquí. Tengo todo lo que necesito para seguir.']}/>
       <Step n="03" name="La reverencia"
-        inst="Arrodíllate frente a los pedazos. Si no puedes arrodillarte, inclínate profundamente. Mantén 30 segundos."
+        inst="Arrodíllate frente a los pedazos. Si no puedes arrodillarte, inclínate profundamente. Mira cada pedazo — cada uno es una parte que se separó para proteger algo. Mantén 30 segundos."
         phrases={['Cada parte de mí que se separó tenía una razón. Se separaron para que yo sobreviviera. Hoy las reconozco a todas.']}/>
       <div style={{flex:1}}/>
       <PgN n={23}/>
@@ -777,13 +777,13 @@ function App() {
         <DCArtboard id="a02b" label="09 · A02 La Garganta — pasos 4–6" width={AW} height={AH}><S><A02b/></S></DCArtboard>
         <DCArtboard id="n02"  label="10 · Notas A02" width={AW} height={AH}><S><NotePage num="02" title="La Garganta" pgN={10}/></S></DCArtboard>
 
-        <DCArtboard id="a03a" label="11 · A03 La Mochila — pasos 1–3" width={AW} height={AH}><S><A03a/></S></DCArtboard>
-        <DCArtboard id="a03b" label="12 · A03 La Mochila — pasos 4–6" width={AW} height={AH}><S><A03b/></S></DCArtboard>
-        <DCArtboard id="n03"  label="13 · Notas A03" width={AW} height={AH}><S><NotePage num="03" title="La Mochila" pgN={13}/></S></DCArtboard>
+        <DCArtboard id="a03a" label="11 · A03 La Bolsa — pasos 1–3" width={AW} height={AH}><S><A03a/></S></DCArtboard>
+        <DCArtboard id="a03b" label="12 · A03 La Bolsa — pasos 4–6" width={AW} height={AH}><S><A03b/></S></DCArtboard>
+        <DCArtboard id="n03"  label="13 · Notas A03" width={AW} height={AH}><S><NotePage num="03" title="La Bolsa" pgN={13}/></S></DCArtboard>
 
-        <DCArtboard id="a04a" label="14 · A04 El Peso Exacto — pasos 1–3" width={AW} height={AH}><S><A04a/></S></DCArtboard>
-        <DCArtboard id="a04b" label="15 · A04 El Peso Exacto — pasos 4–6" width={AW} height={AH}><S><A04b/></S></DCArtboard>
-        <DCArtboard id="n04"  label="16 · Notas A04" width={AW} height={AH}><S><NotePage num="04" title="El Peso Exacto" pgN={16}/></S></DCArtboard>
+        <DCArtboard id="a04a" label="14 · A04 El Número Limpio — pasos 1–3" width={AW} height={AH}><S><A04a/></S></DCArtboard>
+        <DCArtboard id="a04b" label="15 · A04 El Número Limpio — pasos 4–6" width={AW} height={AH}><S><A04b/></S></DCArtboard>
+        <DCArtboard id="n04"  label="16 · Notas A04" width={AW} height={AH}><S><NotePage num="04" title="El Número Limpio" pgN={16}/></S></DCArtboard>
 
         <DCArtboard id="a05a" label="17 · A05 Lo que me Enseñaron — pasos 1–3" width={AW} height={AH}><S><A05a/></S></DCArtboard>
         <DCArtboard id="a05b" label="18 · A05 Lo que me Enseñaron — pasos 4–6" width={AW} height={AH}><S><A05b/></S></DCArtboard>
