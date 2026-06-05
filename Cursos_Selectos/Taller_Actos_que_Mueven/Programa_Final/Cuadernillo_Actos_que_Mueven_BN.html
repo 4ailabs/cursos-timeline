@@ -252,36 +252,36 @@ const NotePage=({num,title,pgN})=>(
 // P01 — PORTADA
 // ═══════════════════════════════════════════════════════════
 const P01=()=>(
-  <Pg bg={C.ink}>
+  <Pg bg={C.warm}>
     <Ct>
       <div style={{display:'flex',alignItems:'center',gap:8,flexShrink:0}}>
-        <Vortex size={16} color={C.sienaL}/>
+        <Vortex size={16} color={C.siena}/>
         <div>
           <div style={{fontFamily:MONO,fontSize:6,letterSpacing:'0.15em',textTransform:'uppercase',color:C.grey,lineHeight:1.3}}>Instituto</div>
-          <div style={{fontFamily:MONO,fontSize:6,letterSpacing:'0.15em',textTransform:'uppercase',color:`${C.grey}70`,lineHeight:1.3}}>Centrobioenergetica</div>
+          <div style={{fontFamily:MONO,fontSize:6,letterSpacing:'0.15em',textTransform:'uppercase',color:C.grey2,lineHeight:1.3}}>Centrobioenergetica</div>
         </div>
       </div>
       <div style={{marginTop:24,fontFamily:MONO,fontSize:7,letterSpacing:'0.14em',textTransform:'uppercase',color:C.sienaL,flexShrink:0}}>Sábado 1 · Actos que Mueven</div>
       <div style={{marginTop:10,flexShrink:0}}>
-        <div style={{fontFamily:SERIF,fontSize:44,fontWeight:300,lineHeight:0.9,color:C.cream,letterSpacing:'-0.025em'}}>
+        <div style={{fontFamily:SERIF,fontSize:44,fontWeight:300,lineHeight:0.9,color:C.ink,letterSpacing:'-0.025em'}}>
           Actos<br/><em style={{fontStyle:'italic',color:C.sienaL}}>que</em><br/>Mueven
         </div>
       </div>
       <div style={{marginTop:14,width:36,height:1,background:C.siena,flexShrink:0}}/>
       <div style={{marginTop:10,fontFamily:SERIF,fontSize:12,fontWeight:300,fontStyle:'italic',color:C.grey,lineHeight:1.5,flexShrink:0}}>Cuadernillo del Participante</div>
       <div style={{flex:1}}/>
-      <div style={{border:`1px solid ${C.siena}40`,padding:'11px 13px',flexShrink:0}}>
+      <div style={{border:`1px solid ${C.rule}`,padding:'11px 13px',flexShrink:0}}>
         <Lbl color={C.grey}>Nombre</Lbl>
-        <div style={{height:1,background:`${C.sienaL}25`,marginTop:6,marginBottom:10}}/>
+        <div style={{height:1,background:C.rule,marginTop:6,marginBottom:10}}/>
         <Lbl color={C.grey}>Fecha</Lbl>
-        <div style={{height:1,background:`${C.sienaL}25`,marginTop:6}}/>
+        <div style={{height:1,background:C.rule,marginTop:6}}/>
       </div>
-      <div style={{marginTop:11,paddingTop:8,borderTop:`1px solid ${C.grey}22`,flexShrink:0,display:'flex',justifyContent:'space-between',alignItems:'flex-end'}}>
+      <div style={{marginTop:11,paddingTop:8,borderTop:`1px solid ${C.rule}`,flexShrink:0,display:'flex',justifyContent:'space-between',alignItems:'flex-end'}}>
         <div>
-          <div style={{fontFamily:MONO,fontSize:6.5,letterSpacing:'0.12em',textTransform:'uppercase',color:C.grey2}}>Dr. Miguel Ojeda Rios</div>
-          <div style={{fontFamily:MONO,fontSize:5.5,letterSpacing:'0.08em',color:`${C.grey}75`,marginTop:2}}>Ritual Experiencing · Bioenergética V4</div>
+          <div style={{fontFamily:MONO,fontSize:6.5,letterSpacing:'0.12em',textTransform:'uppercase',color:C.grey}}>Dr. Miguel Ojeda Rios</div>
+          <div style={{fontFamily:MONO,fontSize:5.5,letterSpacing:'0.08em',color:C.grey2,marginTop:2}}>Ritual Experiencing · Bioenergética V4</div>
         </div>
-        <div style={{fontFamily:SERIF,fontSize:10,fontWeight:300,color:`${C.sienaL}45`}}>2026</div>
+        <div style={{fontFamily:SERIF,fontSize:10,fontWeight:300,color:C.grey2}}>2026</div>
       </div>
     </Ct>
   </Pg>
