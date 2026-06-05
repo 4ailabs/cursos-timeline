@@ -731,22 +731,40 @@ const PGlosario=({pgN})=>(
 );
 
 const Contraportada=()=>(
-  <Pg bg={C.ink}>
+  <Pg bg={C.warm}>
     <Ct>
       <div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:16}}>
-        <Vortex size={52} color={C.sienaL}/>
+        <svg viewBox="0 0 260 210" width="170" style={{display:'block'}}>
+          <g transform="translate(130,75)">
+            <circle cx="0"     cy="-50"   r="8" fill="#333" opacity="0.7"/>
+            <circle cx="25"    cy="-43.3" r="8" fill="#333" opacity="0.45"/>
+            <circle cx="43.3"  cy="-25"   r="8" fill="#333" opacity="0.7"/>
+            <circle cx="50"    cy="0"     r="8" fill="#333" opacity="0.45"/>
+            <circle cx="43.3"  cy="25"    r="8" fill="#333" opacity="0.7"/>
+            <circle cx="25"    cy="43.3"  r="8" fill="#333" opacity="0.45"/>
+            <circle cx="0"     cy="50"    r="8" fill="#333" opacity="0.7"/>
+            <circle cx="-25"   cy="43.3"  r="8" fill="#333" opacity="0.45"/>
+            <circle cx="-43.3" cy="25"    r="8" fill="#333" opacity="0.7"/>
+            <circle cx="-50"   cy="0"     r="8" fill="#333" opacity="0.45"/>
+            <circle cx="-43.3" cy="-25"   r="8" fill="#333" opacity="0.7"/>
+            <circle cx="-25"   cy="-43.3" r="8" fill="#333" opacity="0.45"/>
+            <circle cx="0" cy="0" r="5" fill="#333" opacity="0.25"/>
+            <circle cx="0" cy="0" r="3" fill="#333" opacity="0.9"/>
+          </g>
+          <text x="130" y="155" textAnchor="middle" fontFamily="'Helvetica Neue',Helvetica,Arial,sans-serif" fontSize="9" fontWeight="500" letterSpacing="3.5" fill="#888">INSTITUTO</text>
+          <text x="130" y="172" textAnchor="middle" fontFamily="'Helvetica Neue',Helvetica,Arial,sans-serif" fontSize="13" fontWeight="500" letterSpacing="1.5" fill="#333">CENTROBIOENERGETICA</text>
+        </svg>
+        <div style={{width:32,height:1,background:`${C.siena}35`}}/>
+        <Vortex size={34} color={`${C.siena}AA`}/>
         <div style={{textAlign:'center'}}>
-          <div style={{fontFamily:SERIF,fontSize:22,fontWeight:300,color:C.cream,letterSpacing:'0.5px',lineHeight:1.1}}>Ritual</div>
-          <div style={{fontFamily:SERIF,fontSize:22,fontWeight:300,color:C.sienaL,letterSpacing:'0.5px',lineHeight:1.1}}>Experiencing</div>
-        </div>
-        <div style={{width:28,height:1,background:`${C.siena}60`}}/>
-        <div style={{fontFamily:MONO,fontSize:8,letterSpacing:'0.18em',textTransform:'uppercase',color:C.grey,textAlign:'center',lineHeight:1.8}}>
-          Actos que Mueven<br/>Sábado 1
+          <div style={{fontFamily:SERIF,fontSize:17,fontWeight:300,fontStyle:'italic',color:C.ink,letterSpacing:'0.3px',lineHeight:1.2}}>Ritual Experiencing</div>
+          <div style={{fontFamily:MONO,fontSize:8,letterSpacing:'0.18em',textTransform:'uppercase',color:C.grey2,marginTop:6,lineHeight:1.6,textAlign:'center'}}>
+            Actos que Mueven · Sábado 1
+          </div>
         </div>
       </div>
       <div style={{textAlign:'center',paddingBottom:4,flexShrink:0}}>
-        <div style={{fontFamily:'Georgia,serif',fontSize:7.5,letterSpacing:'0.2em',textTransform:'uppercase',color:`${C.grey}70`}}>Instituto Centrobioenergetica</div>
-        <div style={{fontFamily:MONO,fontSize:7,color:`${C.grey}45`,marginTop:3}}>Dr. Miguel Ojeda Rios · 2026</div>
+        <div style={{fontFamily:MONO,fontSize:7,color:C.grey2}}>Dr. Miguel Ojeda Rios · 2026</div>
       </div>
     </Ct>
   </Pg>
