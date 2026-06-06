@@ -31,37 +31,22 @@
       background: linear-gradient(135deg, #F7F0E8 0%, #f5f5f5 100%);
       border: 2px solid #8B4513;
       border-radius: 3px;
-      padding: 16px 20px;
+      padding: 14px 20px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
       position: relative;
       overflow: hidden;
     }
 
-    /* Logo circular simplificado */
+    /* Vortex logo */
     .logo-container {
       display: flex;
       justify-content: center;
-      margin-bottom: 4px;
+      align-items: center;
     }
-    .logo-circles {
-      width: 36px;
-      height: 36px;
-      position: relative;
-    }
-    .circle {
-      position: absolute;
-      border-radius: 50%;
-      width: 8px;
-      height: 8px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .circle-1 { background: #B5604A; transform: translate(-50%, -50%) translateX(-14px); }
-    .circle-2 { background: #8FA87A; transform: translate(-50%, -50%) translateX(14px); }
-    .circle-3 { background: #E8A857; width: 5px; height: 5px; }
 
     .header {
       text-align: center;
@@ -134,23 +119,15 @@
       <div class="corner corner-br"></div>
 
       <div class="logo-container">
-        <div class="logo-circles">
-          <div class="circle circle-1"></div>
-          <div class="circle circle-2"></div>
-          <div class="circle circle-3"></div>
-        </div>
+        <svg width="32" height="32" viewBox="-1 -19 138 155" fill="none">
+          <path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" stroke="#8B4513" stroke-width="2.5" stroke-linecap="round" opacity="0.82"/>
+          <circle cx="72" cy="124" r="2.8" fill="#8B4513" opacity="0.55"/>
+        </svg>
       </div>
-
-      <div class="header">
-        <div class="institution">Instituto</div>
-        <div class="institution-name">CentroBioenergética</div>
-      </div>
-
-      <div class="divider"></div>
 
       <div class="content">
         <div class="ritual-title">Ritual Experiencing</div>
-        <div class="course-name">Actos que Mueven</div>
+        <div class="course-name">Actos que Mueven · Instituto</div>
       </div>
     </div>
   </div>
