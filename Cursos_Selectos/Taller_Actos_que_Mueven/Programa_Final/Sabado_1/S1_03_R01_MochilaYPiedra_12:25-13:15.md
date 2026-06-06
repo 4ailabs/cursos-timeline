@@ -1,142 +1,154 @@
 # SÁBADO 1 — ACTO 3
 ## 12:25 – 13:15 (50 min)
-### La Mochila y el Libro · Soltar la Carga
-#### Fuente: Nivel_1/R01_La_Mochila_y_la_Piedra.md — adaptación con libros
+### La Bolsa y la Piedra · Soltar la Carga
 
 ---
 
 ## MATERIALES
 
-- Mochila o bolsa — 1 por persona (traen la suya)
-- 5 libros por persona dentro de la mochila (traen los suyos)
-- Masking tape y plumones — para escribir etiquetas en los libros
-- Toalla o tela en el suelo — 1 por persona (donde depositar los libros)
+- Bolsa de tela o mandado cargada con libros — 1 por persona *(el taller las prepara; los libros son del taller)*
+- Piedra pequeña que quepa en la palma — 1 por persona *(el facilitador las prepara y las entrega al final)*
+- Toalla o tela en el suelo — 1 por persona *(donde cae la bolsa al soltar)*
 
 ---
 
 ## INTRODUCCIÓN AL ACTO (2 min)
 **12:25 – 12:27**
 
-*"Este acto trabaja lo que llevan en los hombros — no metafóricamente, literalmente. La mochila que trajeron tiene peso real. Ese peso va a decirle algo al cuerpo que las palabras no pueden. Saquen su mochila y pongan los cinco libros adentro si no los tienen ya."*
-
-Pedir que pongan la toalla extendida en el suelo frente a su lugar.
+*"Este acto trabaja lo que llevan en el cuerpo — no como metáfora, literalmente. La bolsa que trajeron tiene peso real. Ese peso va a decirle algo al cuerpo que las palabras no pueden. Pongan la toalla extendida en el suelo frente a su lugar."*
 
 ---
 
-## PASO 1 — CARGAR (8 min)
-**12:27 – 12:35**
+## PASO 1 — SENTIR EL PESO (10 min)
+**12:27 – 12:37**
+*(Inducir el cambio)*
 
-*"Tomen la mochila. Sin abrirla. Sientan su peso en las manos. Ahora pónganla — en la espalda si tiene tirantes, contra el pecho si es bolsa. Abrácenla. Sientan cómo los hombros responden al peso."*
+*"Tomen la bolsa con ambos brazos. Abrácenla contra el pecho — que el peso quede pegado al cuerpo."*
 
-*"Todos de pie. Vamos a caminar con la mochila — en un círculo amplio, todos en la misma dirección, despacio. Sientan cada paso con el peso encima. Los pies que pisan más fuerte. La espalda que se ajusta."*
+El facilitador abraza la suya con el grupo.
 
-El facilitador camina con el grupo cargando su propia mochila.
+*"Cierren los ojos. Quédense quietos, de pie, con el peso encima."*
 
-*"Deténganse. De pie. Con la mochila encima."*
+**Silencio — 40 segundos.**
 
-*"Di en voz alta:"*
+*"¿Dónde lo sienten en el cuerpo? No en la bolsa — en el cuerpo. ¿Los hombros? ¿El pecho? ¿La respiración que se acorta? ¿Los brazos que empiezan a cansarse? Ubiquen la zona exacta."*
 
-> **"Esto es lo que hago: cargo todo sin preguntar si es mío."**
+**Silencio — 30 segundos.**
 
-**Sostener 30 segundos. Sentir el peso.**
+*"Di en voz alta, completando:"*
+
+> **"Lo siento en ___. Así se siente en mi cuerpo cargar lo que cargo."**
 
 ---
 
 ## PASO 2 — RESPIRAR CON EL PESO (5 min)
-**12:35 – 12:40**
+**12:37 – 12:42**
+*(Generar regulación)*
 
-Con la mochila encima. Mano en el pecho.
+La bolsa abrazada contra el pecho — sin soltarla.
 
-*"Inhalen por la nariz — 4 tiempos. Aguanten — 4. Exhalen por la boca — 6 despacio. Cuatro ciclos. Sientan cómo el aire entra a pesar del peso. El cuerpo respira aunque esté cargado. Eso es lo que ha hecho siempre."*
+*"Inhalen por la nariz — 4 tiempos. Sientan el pecho empujar contra el peso al inhalar. Aguanten — 4. Exhalen por la boca — 6, despacio. Cuatro ciclos."*
 
 El facilitador guía los ciclos en voz alta.
 
 *"Di en voz alta:"*
 
-> **"Mi cuerpo está aquí. Respira aunque cargue. Puedo hacer lo que viene."**
+> **"Mi cuerpo respira aunque cargue. Estoy aquí."**
 
 ---
 
-## PASO 3 — LO QUE SOSTIENE (5 min)
-**12:40 – 12:45**
+## PASO 3 — LO QUE SE SOSTIENE SOLO (7 min)
+**12:42 – 12:49**
+*(Colocar en estado de recursos)*
 
-Con la mochila encima. Pies en el suelo.
+La bolsa todavía en brazos. Pies en el suelo.
 
-*"Presionen las plantas contra el piso. El suelo no se mueve, no se cansa, no pide nada a cambio. Sientan las piernas. Sientan que el cuerpo ha cargado esto durante mucho tiempo y sigue de pie."*
+*"Hay algo en su vida que se sostiene sin que ustedes tengan que cargarlo. Algo que existe y sigue de pie aunque no estén encima de ello. Puede ser una persona, una relación, una capacidad, algo que construyeron. Algo que no necesita que lo sostengan para seguir siendo real."*
+
+**Silencio — 30 segundos.**
+
+*"¿Lo tienen? ¿Dónde lo sienten en el cuerpo cuando lo recuerdan?"*
+
+**Silencio — 20 segundos.**
 
 *"Di en voz alta:"*
 
-> **"Tengo fuerza. La he usado para cargar. Hoy la uso para soltar."**
+> **"Hay cosas que se sostienen solas. No todo depende de que yo cargue."**
 
 ---
 
-## PASO 4 — NOMBRAR LOS LIBROS (10 min)
-**12:45 – 12:55**
+## PASO 4 — LO QUE LA ZONA NECESITA (8 min)
+**12:49 – 12:57**
+*(Ampliar la conciencia)*
 
-Sentarse. Abrir la mochila. Sacar los libros uno por uno.
+*"Vuelvan a la zona donde sintieron el peso en el Paso 1 — el hombro, el pecho, los brazos, donde sea que lo ubicaron."*
 
-*"Con el masking tape y el plumón, pongan una etiqueta en cada libro — una sola palabra que diga qué representa. No piensen demasiado: lo primero que venga. 'Trabajo', 'mamá', 'culpa', 'dinero', 'control', 'perfección', 'el otro'. Cada libro recibe su nombre."*
+*"Pongan la atención ahí. Sientan esa zona con el peso todavía encima."*
 
-Dar tiempo real de escritura.
+**Silencio — 30 segundos.**
 
-*"Cuando todos los libros estén nombrados: sostengan los cinco con las dos manos frente al pecho."*
+*"Pregúntenle en voz alta — directo, como si la zona pudiera responder:"*
 
-*"Pregúntenle al cuerpo en voz alta:"*
+> **"¿Qué necesitas para sentirte mejor?"**
 
-> **"¿Cuántos de estos son realmente míos?"**
+**Silencio — 60 segundos. Dejar que llegue algo — una imagen, una palabra, una sensación, un impulso.**
 
-**Silencio — 30 segundos.** El facilitador observa. Puede que los brazos tiemblen con el peso.
+*"Di en voz alta lo que llegó, completando:"*
 
-*"Di en voz alta:"*
-
-> **"Esto es real. Lo he cargado. Lo reconozco."**
+> **"Me pides ___. Lo escucho."**
 
 ---
 
 ## PASO 5 — SOLTAR (10 min)
-**12:55 – 13:05**
+**12:57 – 13:07**
+*(Influir sobre N3)*
 
-De pie. Todos los libros de vuelta en la mochila. La mochila contra el pecho.
+*"La bolsa con todo el peso. De pie. Abrácenla por última vez."*
 
-*"Van a soltar los libros uno por uno. Cada uno que suelten va a la tela en el suelo. Y cuando lo suelten, no lo recogen. Lo que se suelta, se soltó."*
+*"El cuerpo cree que si sueltan esto, algo se cae. Vamos a descubrir qué pasa cuando lo sueltan de verdad."*
 
-*"Saquen el primer libro. Lean su nombre en la etiqueta. Sosténganlo frente al pecho."*
+*"A la cuenta de tres. Uno — inhalan. Dos — sostienen. Tres:"*
 
-*"MIENTRAS lo depositan en la tela, digan en voz alta:"*
+Dejan caer la bolsa al suelo, sobre la toalla. El peso completo. Que caiga, que se escuche.
 
-> **"[Nombre del libro]: te suelto. Ya no te cargo."**
+El facilitador suelta la suya con el grupo. El sonido colectivo de las bolsas cayendo es parte del acto.
 
-*"El siguiente. Leer. Sostener. Soltar. Frase. Con cada libro que va al suelo, la mochila pesa menos. Los hombros bajan. Hasta que la mochila quede vacía."*
+**Mientras cae, decir en voz alta:**
 
-*"Dejen caer la mochila vacía al suelo."*
+> **"Suelto. Y sigo de pie."**
 
-**Silencio — 60 segundos completos. De pie. Manos vacías. Mochila en el suelo.**
+**Silencio — 60 segundos completos. De pie. Manos vacías. Bolsa en el suelo.**
 
 El facilitador no habla. Observar: hombros que bajan, respiraciones que se profundizan, llanto, sorpresa. No interrumpir.
 
+Si el cuerpo no responde — sin suspiro, sin cambio, sin nada — una ronda de respiración (Paso 2) y volver a abrazar la bolsa para soltarla de nuevo, esta vez con más fuerza.
+
 ---
 
-## PASO 6 — ELEGIR (7 min)
-**13:05 – 13:12**
+## PASO 6 — LA PIEDRA (5 min)
+**13:07 – 13:12**
+*(Anclar lo nuevo)*
 
-*"Miren los libros en la tela. Ahora viene lo que cambia todo: elijan UNO. Solo uno. El que sí quieren cargar — no por obligación sino por elección. El que, cuando lo sostienen, el peso se siente elegido."*
+El facilitador recorre el espacio y entrega una piedra pequeña a cada persona — poniéndola en la palma abierta.
 
-*"Tomen ese libro. Quítenle la etiqueta con el nombre que le pusieron. Pongan una etiqueta nueva — y escriban el nombre que quieren darle ahora. Lo que sí eligieron llevar."*
+*"Cierren la mano sobre la piedra. Siéntanla — el peso exacto, la temperatura, la superficie."*
 
-*"Sostengan el libro contra el pecho."*
+**Silencio — 20 segundos.**
+
+*"Eso es lo que les toca cargar hoy. No la bolsa — esto. Solo esto."*
 
 *"Di en voz alta:"*
 
-> **"Esto lo elijo. Esto sí lo cargo. El resto se queda en el suelo."**
+> **"Esto es lo que cargo hoy. Solo esto. El peso se queda aquí."**
 
-*"Los demás libros se quedan en la tela, doblada contra la pared. Al final del día salen del espacio. Lo que se soltó no regresa."*
+*"La piedra se llevan a casa. La bolsa se queda aquí — con todo su peso."*
 
 ---
 
 ## TRANSICIÓN A LA COMIDA (3 min)
 **13:12 – 13:15**
 
-*"El libro que eligieron se lleva a la comida — en las manos, en la mesa, cerca. El cuerpo necesita sentir durante el descanso lo que es cargar solo lo que eligió."*
+*"La piedra va en la mano o en el bolsillo durante la comida. El cuerpo necesita sentir durante el descanso lo que es cargar solo esto — no la bolsa, no los libros. Solo la piedra."*
 
 *"Tienen 90 minutos. El cuerpo va a estar procesando. Si en la comida sienten algo que quieren nombrar — bien. Si quieren silencio — también bien."*
 

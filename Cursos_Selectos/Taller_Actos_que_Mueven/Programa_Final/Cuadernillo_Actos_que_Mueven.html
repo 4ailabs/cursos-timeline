@@ -185,7 +185,7 @@ const Rule=({color=C.rule,my=0})=>(
 );
 
 const PgN=({n,dark=false})=>(
-  <div style={{position:'absolute',top:14,right:MX,fontFamily:SERIF,fontSize:11,fontWeight:300,color:dark?`${C.grey2}60`:`${C.grey}60`,lineHeight:1}}>{n}</div>
+  <div style={{position:'absolute',left:'50%',bottom:MB*0.48,transform:'translateX(-50%)',fontFamily:MONO,fontSize:7.5,letterSpacing:'0.14em',fontWeight:400,color:dark?C.grey2:C.grey,lineHeight:1,background:'transparent',zIndex:3}}>{n}</div>
 );
 
 const NoteLines=()=>(
@@ -328,24 +328,24 @@ const P04=()=>(
       <Lbl color={C.siena}>Manual del Participante · II</Lbl>
       <div style={{marginTop:7,fontFamily:SERIF,fontSize:23,fontWeight:300,color:C.ink,lineHeight:1.05,flexShrink:0}}>Cómo se forman<br/>los patrones</div>
       <Rule my={10}/>
-      <div style={{fontFamily:SERIF,fontSize:13,color:C.ink,lineHeight:1.65,flexShrink:0}}>
-        Los patrones no se formaron con ideas — se formaron con experiencias que el cuerpo registró como reglas de supervivencia. Una experiencia intensa o repetida queda grabada en la memoria implícita. No está en la narrativa consciente — está en la tensión del hombro, en la contracción del estómago, en el reflejo de hacerse pequeño antes de que nadie lo pida.
+      <div style={{fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.52,flexShrink:0}}>
+        Los patrones no se formaron con ideas: se formaron con experiencias que el cuerpo registró como reglas de supervivencia. No viven solo en la narrativa consciente; viven en la tensión, la contracción y el reflejo automático.
       </div>
-      <div style={{marginTop:8,fontFamily:SERIF,fontSize:13,color:C.grey,lineHeight:1.65,fontStyle:'italic',flexShrink:0}}>
-        Si me muestro → me rechazan. Si suelto el control → todo se derrumba. Si cobro lo que valgo → pierdo el vínculo.
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:12.2,color:C.grey,lineHeight:1.5,fontStyle:'italic',flexShrink:0}}>
+        El cuerpo aprende reglas IF/THEN: si me muestro → me rechazan. Si suelto el control → todo se derrumba. Si cobro lo que valgo → pierdo el vínculo.
       </div>
-      <div style={{marginTop:8,fontFamily:SERIF,fontSize:13,color:C.ink,lineHeight:1.65,flexShrink:0}}>
-        Estas predicciones corren solas, sin que la persona las decida. Responden a <em>experiencia nueva</em> que contradiga la regla que aprendieron.
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.52,flexShrink:0}}>
+        Estas reglas corren solas, sin que la persona las decida. Un acto ritual crea una experiencia nueva que contradice el THEN esperado: el cuerpo hace algo distinto y la catástrofe no llega.
       </div>
-      <Rule my={11}/>
+      <Rule my={8}/>
       <Lbl>Qué es un acto ritual</Lbl>
-      <div style={{marginTop:7,fontFamily:SERIF,fontSize:13,color:C.ink,lineHeight:1.65,flexShrink:0}}>
-        Una secuencia de acciones físicas diseñada para producir en el sistema nervioso una experiencia diferente a la que el patrón predice. Cuatro componentes:
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.52,flexShrink:0}}>
+        Una secuencia física diseñada para producir en el sistema nervioso una experiencia diferente a la que el patrón predice:
       </div>
       {[['Acción física','el cuerpo hace algo, no solo piensa'],['Carga simbólica','el objeto representa el patrón con especificidad sensorial'],['Secuencia','los pasos en orden garantizan que el acto llegue al lugar correcto'],['Irreversibilidad','lo hecho no se puede des-hacer']].map(([k,v])=>(
-        <div key={k} style={{display:'flex',gap:7,marginTop:5,flexShrink:0}}>
+        <div key={k} style={{display:'flex',gap:7,marginTop:4,flexShrink:0}}>
           <div style={{width:3.5,height:3.5,borderRadius:'50%',background:C.siena,marginTop:5.5,flexShrink:0}}/>
-          <div style={{fontFamily:SERIF,fontSize:12,lineHeight:1.6,color:C.ink}}><strong style={{fontWeight:500,color:C.siena}}>{k} — </strong>{v}</div>
+          <div style={{fontFamily:SERIF,fontSize:11.2,lineHeight:1.42,color:C.ink}}><strong style={{fontWeight:500,color:C.siena}}>{k} — </strong>{v}</div>
         </div>
       ))}
       <div style={{flex:1}}/>
@@ -381,7 +381,11 @@ const P05=()=>(
         ))}
       </div>
       <div style={{flex:1}}/>
-      <div style={{display:'flex',justifyContent:'center',flexShrink:0}}><Vortex size={20} color={`${C.sienaL}45`}/></div>
+      <Rule my={8}/>
+      <Lbl>Cómo leer cada acto</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:10.5,color:C.grey,lineHeight:1.55,flexShrink:0}}>
+        Lee cada paso completo antes de hacerlo. Respeta los silencios: son parte del ritual, no pausas vacías. Si el cuerpo se abruma, detente, mira alrededor, siente los pies, respira 4-4-6 y pide apoyo.
+      </div>
     </Ct>
     <PgN n={4}/>
   </Pg>
@@ -440,7 +444,7 @@ const A02a=()=>(
     <Ct>
       <ActHeader num="02" title="Lo que se Quedó en la Garganta" tagline="Para cuando lo que no se dijo vive en el cuerpo como presión."/>
       <Step n="01" name="Lo que guardaste"
-        inst="Escribe — uno por papelito — todo lo que no dijiste: una frase, un nombre, una palabra. Todo lo que la garganta guardó. Dóblalos y mételos en el sobre. Sella el sobre. Agítalo suavemente — escucha el sonido de los papeles adentro. Sostenlo contra el cuello, donde el sonido se forma. Veinte segundos."
+        inst="Antes de escribir, toma el sobre vacío con ambas manos y siente su peso 30 segundos. Escribe — uno por papelito — todo lo que no dijiste: una frase, un nombre, una palabra. Dóblalos y mételos en el sobre. Sella el sobre. Agítalo suavemente — escucha el sonido de los papeles adentro. Sostenlo contra el cuello, donde el sonido se forma. Veinte segundos."
         phrases={['Esto es lo que guardé en la garganta: ___.']}/>
       <Step n="02" name="Regulación"
         inst="Sobre en una mano, mano libre en el pecho. Inhala por la nariz 4 — aguanta 4 — exhala por la boca 6. Tres ciclos. Deja que el aire pase despacio por la garganta."
@@ -458,10 +462,10 @@ const A02b=()=>(
     <Ct>
       <ActHeader num="02" cont/>
       <Step n="04" name="Lo que más pesa"
-        inst="Ojos cerrados. Sobre contra el pecho. Pregúntale a la garganta — no a la mente — durante 60 segundos. Luego la segunda pregunta, 30 segundos."
+        inst="Ojos cerrados. Sobre contra el pecho. Pregúntale a la garganta — no a la mente — durante 60 segundos. Luego la segunda pregunta, 30 segundos. Antes de abrir el sobre, si aparece algo más, escríbelo en otro papelito y mételo dentro."
         phrases={['¿Qué es lo que más necesitaba ser dicho y nunca salió?','¿Qué pasaría si lo dijera ahora — aunque no esté quien lo tiene que escuchar?','Lo veo. Ha estado aquí mucho tiempo.']}/>
       <Step n="05" name="La apertura"
-        inst="Abre el sobre. Saca el primer papelito, desdobla y léelo en voz alta — con volumen, no susurrado, que el sonido viaje. Rásguelo en dos. El siguiente. Uno por uno hasta que el sobre quede vacío."
+        inst="Abre el sobre. Saca el primer papelito, desdobla y léelo en voz alta — con volumen, no susurrado, que el sonido viaje. Di la frase con cada papel antes de rasgarlo. Rasga uno por uno hasta que el sobre quede vacío. Al terminar, mira el sobre y los pedazos durante 60 segundos en silencio."
         phrases={['Esto nunca se dijo. Hoy lo digo yo.']}/>
       <Step n="06" name="Cierre"
         inst="Toma el sobre vacío con ambas manos. Siéntelo — pesa diferente ahora. El sobre se lleva a casa abierto, con los pedazos adentro. Ya no sella nada."
@@ -506,7 +510,7 @@ const A03b=()=>(
         inst="Vuelve a la zona donde sentiste el peso en el Paso 1. Pon la atención ahí — con el peso todavía encima. Pregúntale directo, como si la zona pudiera responder, durante 60 segundos. Deja que llegue algo — una imagen, una palabra, un impulso."
         phrases={['¿Qué necesitas para sentirte mejor?','Me pides ___. Lo escucho.']}/>
       <Step n="05" name="Soltar"
-        inst="De pie. Abraza la bolsa por última vez. A la cuenta de tres: uno — inhalas. Dos — sostienes. Tres — suelta la bolsa al suelo, sobre la toalla. El peso completo. Que caiga, que se escuche."
+        inst="De pie. Abraza la bolsa por última vez. A la cuenta de tres: uno — inhalas. Dos — sostienes. Tres — suelta la bolsa al suelo, sobre la toalla. El peso completo. Que caiga, que se escuche. Quédate de pie, manos vacías, bolsa en el suelo, 60 segundos en silencio. Si no notas nada, vuelve a respirar 4-4-6 y repite el soltar una vez."
         phrases={['Suelto. Y sigo de pie.']}/>
       <Step n="06" name="La piedra"
         inst="El facilitador te entrega una piedra pequeña — poniéndola en tu palma abierta. Cierra la mano sobre ella. Siente su peso exacto, la temperatura, la superficie. Eso es lo que te toca cargar hoy. La piedra se lleva a casa. La bolsa se queda aquí con todo su peso."
@@ -515,7 +519,6 @@ const A03b=()=>(
       <Lbl>Materiales</Lbl>
       <MatItem text="Bolsa de tela cargada con libros"/>
       <MatItem text="Piedra pequeña — el facilitador la entrega al final"/>
-      <MatItem text="Toalla en el suelo"/>
       <div style={{flex:1}}/>
     </Ct>
     <PgN n={10}/>
@@ -548,10 +551,10 @@ const A04b=()=>(
     <Ct>
       <ActHeader num="04" cont/>
       <Step n="04" name="Separar la historia del número"
-        inst="Abre el puño. Deposita las monedas sobre la mesa — escucha el sonido del metal. Toma las dos hojas. En la hoja HISTORIA escribe todo lo que el cuerpo cuenta sobre lo que la deuda dice de ti: 'Soy irresponsable', 'Nunca voy a salir', lo que llegue. En la hoja NÚMERO escribe solo las cifras: todas tus deudas una por línea, con el número exacto. Suma. Escribe el total. Mira las dos hojas juntas."
+        inst="Abre el puño. Deposita las monedas sobre la mesa — escucha el sonido del metal. Toma las dos hojas. En la hoja HISTORIA escribe todo lo que el cuerpo cuenta sobre lo que la deuda dice de ti. En la hoja NÚMERO escribe solo las cifras: tus deudas una por línea, con el número exacto. No necesitas compartirlas con nadie. Suma. Escribe el total. Mira las dos hojas juntas."
         phrases={['Esto es la historia. Esto es el número. No son lo mismo.']}/>
       <Step n="05" name="Romper la historia. Ver el número."
-        inst="Toma la hoja HISTORIA con las dos manos. Rásguala — el sonido es parte del acto. Los pedazos van al centro de la mesa. Ahora toma la hoja NÚMERO — solo el número, sin la historia encima. Mira el total durante 60 segundos completos sin apartar los ojos."
+        inst="Toma la hoja HISTORIA con las dos manos. Rásguala — el sonido es parte del acto. Los pedazos van al centro. Toma la hoja NÚMERO — solo el número, sin la historia encima. Mira el total 60 segundos sin apartar los ojos. Después de decir la frase, deja las manos sobre la mesa otros 60 segundos. Si te activas demasiado, vuelve al Paso 2."
         phrases={['Esta historia no es el número. La rompo.','Este es el número. Solo el número. Y sigo aquí.']}/>
       <Step n="06" name="El primer paso"
         inst="Da vuelta la hoja NÚMERO. En el reverso escribe UNA acción concreta que puedas hacer esta semana en dirección a la deuda — una sola cosa que quepa en los próximos siete días. Dobla la hoja y guárdala en el bolsillo. Toma las monedas y ponlas en el mismo bolsillo — el dinero y el número juntos, sin la historia encima."
@@ -595,7 +598,7 @@ const A05b=()=>(
         inst="Ojos cerrados. Piedra en el puño. Pregúntale al cuerpo durante 60 segundos. Luego la segunda pregunta, 30 segundos."
         phrases={['¿Qué aprendió mi cuerpo que el dinero pone en peligro?','¿Qué pasaría si recibiera lo que vale lo que hago?','Eso es lo que mi cuerpo protege. Lo veo.']}/>
       <Step n="05" name="Depositar. Decir el número."
-        inst="Escribe en la primera hoja todo lo que aprendiste que el dinero significa. En la segunda hoja escribe UN número: lo que cobras o mereces recibir. Deposita la piedra sobre la mesa — fue lo que elegiste cargar esta mañana, aquí tiene su lugar. Dobla la primera hoja y guárdala en el sobre. Cierra el sobre — ahí se queda, no en las manos. Toma la segunda hoja. De pie. Lee el número en voz alta — con volumen, sin disculparte, sin relativizarlo."
+        inst="Primera hoja: lo que aprendiste que el dinero significa. Segunda hoja: UN número — lo que cobras, lo que vale tu servicio o lo que mereces recibir. Deposita la piedra sobre la mesa. Dobla la primera hoja y guárdala en el sobre: ahí se queda, no en tus manos. Toma la segunda hoja. De pie, lee el número en voz alta, sin disculparte. Quédate 60 segundos: el número salió y el mundo sigue."
         phrases={['La dejo aquí. Ya no la cargo en la mano.','Esto fue lo que aprendí. Ya no me dirige.','Esto es lo que vale lo que hago. Lo digo sin pedir permiso.']}/>
       <Step n="06" name="Lo nuevo"
         inst="Dobla la hoja con el número y métela en el bolsillo. El sobre con la historia se queda en la mesa del taller — ya no viaja contigo. Toma el billete una vez más. Guárdalo en la cartera. La piedra también se queda en el taller."
@@ -619,7 +622,7 @@ const A06a=()=>(
     <Ct>
       <ActHeader num="06" title="Lo que Llegó sin que lo Pidiera" tagline="Para cuando cargas patrones de tu familia que nunca elegiste."/>
       <Step n="01" name="Lo que llegó"
-        inst="Toma la hoja FAMILIA — la delgada. Escribe todo lo que llegó sin pedirlo: mandatos, miedos, creencias, formas de relacionarse, patrones que reconoces de alguien de tu familia. Cuando termines, mira lo que escribiste. Pide ayuda para pegarla en tu espalda con masking tape — que quede fija. Veinte segundos con el papel en la espalda, sin poder verlo."
+        inst="Toma la hoja FAMILIA — la delgada, la que puede disolverse en agua. Escribe todo lo que llegó sin pedirlo: mandatos, miedos, creencias, formas de relacionarse, patrones que reconoces de alguien de tu familia. Cuando termines, mira lo que escribiste. Pide ayuda para pegarla en tu espalda con masking tape — que quede fija. Veinte segundos con el papel en la espalda, sin poder verlo."
         phrases={['Esto es lo que heredé que ya no me sirve: ___.']}/>
       <Step n="02" name="Regulación"
         inst="Hoja en la espalda. Mano en el pecho. Siente el papel detrás y el calor de la palma al frente. Inhala 4 — aguanta 4 — exhala 6. Tres ciclos."
@@ -637,10 +640,10 @@ const A06b=()=>(
     <Ct>
       <ActHeader num="06" cont/>
       <Step n="04" name="El patrón en el cuerpo"
-        inst="Ojos cerrados. Mano en el pecho. Hoja todavía en la espalda. Pregúntale al cuerpo — no a la mente — 60 segundos. Luego la segunda pregunta, 30 segundos. Abre los ojos. Toma la hoja YO — la normal. Escribe qué de lo heredado sí quieres conservar."
+        inst="Ojos cerrados. Mano en el pecho. Hoja todavía en la espalda. Pregúntale al cuerpo — no a la mente — 60 segundos. Luego la segunda pregunta, 30 segundos. Abre los ojos. En la hoja YO escribe qué de lo heredado sí quieres conservar: recursos, valores, fuerzas o formas de amar."
         phrases={['¿Qué patrón de mi familia vive en mi cuerpo que no elegí pero sigo repitiendo?','¿Dónde lo siento en el cuerpo cuando ese patrón aparece?','Esto llegó antes de que yo pudiera elegir. No es culpa — es historia.']}/>
       <Step n="05" name="Despegar y disolver"
-        inst="Lleva las manos hacia atrás. Busca los bordes del papel con los dedos. Despégalo lentamente — escucha el sonido de la cinta que cede, del papel que se separa. Cuando lo tengas en las manos, míralo: esto es lo que estaba en tu espalda. Sumerge el papel tissue en el tazón de agua y desházlo con las manos — dedos dentro del agua, 60 segundos en silencio, hasta que se disuelva por completo. Tira el agua por el desagüe."
+        inst="Busca los bordes del papel en tu espalda. Despégalo lentamente — escucha la cinta y el papel separarse. Míralo en tus manos: eso estaba en tu espalda. Sumerge el tissue en el tazón y desházlo con las manos, 60 segundos en silencio, hasta que se disuelva. Nota el agua turbia lejos de ti y la hoja YO cerca, intacta. Tira el agua. Si se vuelve intenso, respira y despega solo un pedazo de cinta del antebrazo."
         phrases={['Esto llegó antes que yo. Lo reconozco. Ya no lo cargo en el cuerpo.']}/>
       <Step n="06" name="Lo que es tuyo"
         inst="Toma la hoja YO — intacta, entera. Léela en voz alta. Dóblala y guárdala cerca del cuerpo — en el bolsillo o la bolsa."
@@ -663,7 +666,7 @@ const A07a=()=>(
     <Ct>
       <ActHeader num="07" title="El Plato Roto y la Reverencia" tagline="Para cuando lo que se fragmentó puede volverse más valioso que lo que estaba entero."/>
       <Step n="01" name="Romper"
-        inst="Sostén el plato con ambas manos. Siente el plato entero — así estaba el sistema antes de lo que pasó. Ponlo sobre la toalla. Rómpelo contra la toalla. Puede dejarse caer o golpearse suavemente. Lo que importa es que se rompa. Escucha el sonido."
+        inst="Usa solo cerámica o barro, nunca vidrio ni plástico. Sostén el plato con ambas manos. Siente el plato entero — así estaba el sistema antes de lo que pasó. Ponlo sobre la toalla. Rómpelo contra la toalla. Puede dejarse caer o golpearse suavemente. Lo que importa es que se rompa. Escucha el sonido y guarda 20 segundos de silencio."
         phrases={['Esto es lo que pasó en mi sistema: se fragmentó para ___.']}/>
       <Step n="02" name="Recoger y respirar"
         inst="Recoge cada pedazo con cuidado — guantes disponibles si los necesitas. Colócalos en fila frente a ti. Manos en el pecho. Inhala 4 — aguanta 4 — exhala 6. Tres ciclos. Los pedazos frente a ti durante toda la respiración."
@@ -681,7 +684,7 @@ const A07b=()=>(
     <Ct>
       <ActHeader num="07" cont/>
       <Step n="04" name="Reparar"
-        inst="Toma el pegamento. Pega los pedazos uno por uno — con calma, sin apuro. Con cada pedazo que unas, di en voz baja la frase de abajo. El plato no va a quedar como nuevo y ese es el punto: las grietas quedarán visibles con el pegamento dorado. Si falta un pedazo, deja el espacio vacío — no todos los fragmentos se recuperan. 10 a 12 minutos."
+        inst="Toma el pegamento. Pega los pedazos uno por uno — con calma, sin apuro. Con cada pedazo que unas, di en voz baja la frase de abajo. El plato no va a quedar como nuevo y ese es el punto: las grietas quedarán visibles con el pegamento dorado. Si falta un pedazo, deja el espacio vacío — no todos los fragmentos se recuperan. 10 a 12 minutos. Si el pegamento no seca de inmediato, basta con acomodar las piezas y marcar las grietas."
         phrases={['Esto se reconecta.']}/>
       <Step n="05" name="Ponerse de pie"
         inst="Cuando el plato esté reparado, ponte de pie. Sostenlo a la altura del pecho con las dos manos. Veinte segundos de pie con el plato."

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actos que Mueven - Tarjetas de Frases BN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#e9e7e2;color:#111;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  .toolbar{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid #d5d5d5;padding:14px 24px;display:flex;justify-content:space-between;gap:18px;align-items:center}
+  .toolbar h1{margin:0;font-size:17px;font-weight:650;letter-spacing:.01em}
+  .toolbar p{margin:2px 0 0;color:#555;font-size:12px}
+  .print-note{font-size:12px;color:#555;text-align:right;line-height:1.35}
+  .sheet{width:29.7cm;min-height:21cm;margin:24px auto;background:#fff;padding:1.1cm;display:grid;grid-template-columns:14cm 14cm;grid-auto-rows:9cm;gap:.65cm;box-shadow:0 18px 50px rgba(0,0,0,.15)}
+  .card{width:14cm;height:9cm;border:1px solid #111;background:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:9mm 11mm 8mm}
+  .card::before{content:"";position:absolute;inset:3mm;border:1px solid #d9d9d9;pointer-events:none}
+  .meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-family:"Courier New",monospace;font-size:8.4pt;letter-spacing:.12em;text-transform:uppercase;color:#222;line-height:1.2;position:relative;z-index:1}
+  .meta span:nth-child(2){text-align:center}
+  .meta span:nth-child(3){text-align:right}
+  .kind{align-self:center;margin-top:4.4mm;font-family:"Courier New",monospace;font-size:7.4pt;letter-spacing:.14em;text-transform:uppercase;color:#333;text-align:center;position:relative;z-index:1;border:1px solid #d0d0d0;padding:1.2mm 3mm;background:#fff}
+  .phrase{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;font-family:"Cormorant Garamond",Georgia,serif;font-size:25pt;font-weight:500;line-height:.98;letter-spacing:0;position:relative;z-index:1;padding:0 2mm}
+  .phrase.long{font-size:20.5pt;line-height:1.02}
+  .phrase.xlong{font-size:17.2pt;line-height:1.05}
+  .footer{font-family:"Courier New",monospace;font-size:7.2pt;letter-spacing:.14em;text-transform:uppercase;color:#555;text-align:center;position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:2.6mm}
+  .mark{width:4.8mm;height:4.8mm;display:block;flex:0 0 auto}
+  .central{border-width:1.6px}
+  .central::before{border-color:#111}
+  @page{size:A4 landscape;margin:0}
+  @media print{
+    body{background:#fff}
+    .toolbar{display:none}
+    .sheet{box-shadow:none;margin:0;page-break-after:always}
+    .sheet:last-child{page-break-after:auto}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <div>
+    <h1>Tarjetas de frases - Actos que Mueven</h1>
+    <p>Formato 14 x 9 cm horizontal. Vista para cortar. Blanco y negro.</p>
+  </div>
+  <div class="print-note">Impresion sugerida: A4 horizontal, escala 100%.<br>En carta puede requerir 1 tarjeta por fila.</div>
+</div>
+<main id="app"></main>
+<script>
+const cards = [
+  ["01","La Firma","01","1/2","Patron","Así me hice para que no me vieran.","patron"],
+  ["01","La Firma","01","2/2","Patron","Esto es lo que me pasa cuando ocupo espacio: ___.","patron"],
+  ["01","La Firma","02","1/1","Regulacion","Puedo ocupar este espacio. El cuerpo lo sabe hacer.","regulacion"],
+  ["01","La Firma","03","1/1","Recurso","Ya sé cómo se siente ocupar el espacio. Lo hice.","recurso"],
+  ["01","La Firma","04","1/3","Pregunta","¿Qué espera mi cuerpo que pase si me ven demasiado?","pregunta"],
+  ["01","La Firma","04","2/3","Pregunta","¿Cuándo aprendí que era más seguro ser pequeño?","pregunta"],
+  ["01","La Firma","04","3/3","Integracion","Lo veo. Lo aprendí cuando lo necesitaba. Ya no lo necesito igual.","cierre"],
+  ["01","La Firma","05","1/1","Acto central","Este espacio es mío. Lo tomo. No pido permiso.","central"],
+  ["01","La Firma","06","1/1","Cierre","Esta es mi firma. Este es mi espacio. Lo tomé.","cierre"],
+
+  ["02","La Garganta","01","1/1","Patron","Esto es lo que guardé en la garganta: ___.","patron"],
+  ["02","La Garganta","02","1/1","Regulacion","Mi voz existe. Lo que guardé puede salir.","regulacion"],
+  ["02","La Garganta","03","1/1","Recurso","Mi voz ha salido antes. Puede volver a salir.","recurso"],
+  ["02","La Garganta","04","1/3","Pregunta","¿Qué es lo que más necesitaba ser dicho y nunca salió?","pregunta"],
+  ["02","La Garganta","04","2/3","Pregunta","¿Qué pasaría si lo dijera ahora, aunque no esté quien lo tiene que escuchar?","pregunta"],
+  ["02","La Garganta","04","3/3","Integracion","Lo veo. Ha estado aquí mucho tiempo.","cierre"],
+  ["02","La Garganta","05","1/1","Acto central","Esto nunca se dijo. Hoy lo digo yo.","central"],
+  ["02","La Garganta","06","1/3","Cierre","Lo que guardé en silencio, hoy lo dije. Y sigo aquí.","cierre"],
+  ["02","La Garganta","06","2/3","Cierre","La voz salió. El mundo siguió girando.","cierre"],
+  ["02","La Garganta","06","3/3","Cierre","Lo que estaba adentro, salió. Ya no lo cargo en la garganta.","cierre"],
+
+  ["03","Bolsa y Piedra","01","1/1","Patron","Lo siento en ___. Así se siente en mi cuerpo cargar lo que cargo.","patron"],
+  ["03","Bolsa y Piedra","02","1/1","Regulacion","Mi cuerpo respira aunque cargue. Estoy aquí.","regulacion"],
+  ["03","Bolsa y Piedra","03","1/1","Recurso","Hay cosas que se sostienen solas. No todo depende de que yo cargue.","recurso"],
+  ["03","Bolsa y Piedra","04","1/2","Pregunta","¿Qué necesitas para sentirte mejor?","pregunta"],
+  ["03","Bolsa y Piedra","04","2/2","Integracion","Me pides ___. Lo escucho.","cierre"],
+  ["03","Bolsa y Piedra","05","1/1","Acto central","Suelto. Y sigo de pie.","central"],
+  ["03","Bolsa y Piedra","06","1/1","Cierre","Esto es lo que cargo hoy. Solo esto. El peso se queda aquí.","cierre"],
+
+  ["04","Número Limpio","01","1/1","Patron","Esto es lo que hago: evito ver el número porque me confirma que ___.","patron"],
+  ["04","Número Limpio","02","1/1","Regulacion","Puedo respirar aunque cargue esto. Puedo mirarlo.","regulacion"],
+  ["04","Número Limpio","03","1/1","Recurso","He resuelto cosas difíciles antes. Tengo lo que necesito para ver esto.","recurso"],
+  ["04","Número Limpio","04","1/1","Integracion","Esto es la historia. Esto es el número. No son lo mismo.","cierre"],
+  ["04","Número Limpio","05","1/2","Acto central","Esta historia no es el número. La rompo.","central"],
+  ["04","Número Limpio","05","2/2","Acto central","Este es el número. Solo el número. Y sigo aquí.","central"],
+  ["04","Número Limpio","06","1/1","Cierre","Tengo el número. Tengo un paso. Es suficiente para empezar.","cierre"],
+
+  ["05","Lo que Vale","01","1/1","Patron","Esto es lo que aprendí que el dinero significa: ___.","patron"],
+  ["05","Lo que Vale","02","1/1","Regulacion","Mi cuerpo puede sostener una relación nueva con esto.","regulacion"],
+  ["05","Lo que Vale","03","1/1","Recurso","Lo que doy tiene valor real. Eso no cambia con lo que aprendí.","recurso"],
+  ["05","Lo que Vale","04","1/3","Pregunta","¿Qué aprendió mi cuerpo que el dinero pone en peligro?","pregunta"],
+  ["05","Lo que Vale","04","2/3","Pregunta","¿Qué pasaría si recibiera lo que vale lo que hago?","pregunta"],
+  ["05","Lo que Vale","04","3/3","Integracion","Eso es lo que mi cuerpo protege. Lo veo.","cierre"],
+  ["05","Lo que Vale","05","1/3","Acto central","La dejo aquí. Ya no la cargo en la mano.","central"],
+  ["05","Lo que Vale","05","2/3","Acto central","Esto fue lo que aprendí. Ya no me dirige.","central"],
+  ["05","Lo que Vale","05","3/3","Acto central","Esto es lo que vale lo que hago. Lo digo sin pedir permiso.","central"],
+  ["05","Lo que Vale","06","1/1","Cierre","Recibir está bien. Cobrar está bien. Lo que doy tiene valor y puedo decirlo.","cierre"],
+
+  ["06","Lo Heredado","01","1/1","Patron","Esto es lo que heredé que ya no me sirve: ___.","patron"],
+  ["06","Lo Heredado","02","1/1","Regulacion","Puedo honrar de dónde vengo y elegir qué me llevo. Las dos cosas son posibles.","regulacion"],
+  ["06","Lo Heredado","03","1/1","Recurso","Soy más que lo que heredé. Puedo mirarlo sin que me defina.","recurso"],
+  ["06","Lo Heredado","04","1/3","Pregunta","¿Qué patrón de mi familia vive en mi cuerpo que no elegí pero sigo repitiendo?","pregunta"],
+  ["06","Lo Heredado","04","2/3","Pregunta","¿Dónde lo siento en el cuerpo cuando ese patrón aparece?","pregunta"],
+  ["06","Lo Heredado","04","3/3","Integracion","Esto llegó antes de que yo pudiera elegir. No es culpa, es historia.","cierre"],
+  ["06","Lo Heredado","05","1/1","Acto central","Esto llegó antes que yo. Lo reconozco. Ya no lo cargo en el cuerpo.","central"],
+  ["06","Lo Heredado","06","1/2","Cierre","Esto sí es mío. Lo elegí. Lo cargo porque quiero.","cierre"],
+  ["06","Lo Heredado","06","2/2","Cierre","Vengo de ahí. Y también soy esto.","cierre"],
+
+  ["07","Plato Roto","01","1/1","Patron","Esto es lo que pasó en mi sistema: se fragmentó para ___.","patron"],
+  ["07","Plato Roto","02","1/1","Regulacion","Estoy aquí. Tengo todo lo que necesito para seguir.","regulacion"],
+  ["07","Plato Roto","03","1/1","Recurso","Cada parte de mí que se separó tenía una razón. Se separaron para que yo sobreviviera. Hoy las reconozco a todas.","recurso"],
+  ["07","Plato Roto","04","1/1","Acto central","Esto se reconecta.","central"],
+  ["07","Plato Roto","05","1/1","Cierre","Estoy entero. Las grietas son mías y son hermosas. Lo que se rompió se reconectó, no como antes, sino mejor.","cierre"]
+];
+
+function sizeClass(text){
+  if(text.length > 112) return "xlong";
+  if(text.length > 78) return "long";
+  return "";
+}
+
+function logoMark(){
+  return `<svg class="mark" viewBox="-1 -19 138 155" fill="none" aria-hidden="true">
+    <path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" stroke="#111" stroke-width="5" stroke-linecap="round" opacity=".82"/>
+    <circle cx="72" cy="124" r="6" fill="#111" opacity=".55"/>
+  </svg>`;
+}
+
+function displayKind(kind){
+  return {
+    Patron: "Patrón",
+    Regulacion: "Regulación",
+    Integracion: "Integración"
+  }[kind] || kind;
+}
+
+const app = document.getElementById("app");
+for(let i=0;i<cards.length;i+=4){
+  const sheet = document.createElement("section");
+  sheet.className = "sheet";
+  cards.slice(i,i+4).forEach(([num,act,step,seq,kind,phrase,type]) => {
+    const card = document.createElement("article");
+    card.className = `card ${type}`;
+    card.innerHTML = `
+      <div class="meta"><span>Acto ${num}</span><span>Paso ${step}</span><span>Frase ${seq}</span></div>
+      <div class="kind">${displayKind(kind)}</div>
+      <div class="phrase ${sizeClass(phrase)}">${phrase}</div>
+      <div class="footer">${logoMark()}<span>${act} · Actos que Mueven</span></div>
+    `;
+    sheet.appendChild(card);
+  });
+  app.appendChild(sheet);
+}
+</script>
+</body>
+</html>

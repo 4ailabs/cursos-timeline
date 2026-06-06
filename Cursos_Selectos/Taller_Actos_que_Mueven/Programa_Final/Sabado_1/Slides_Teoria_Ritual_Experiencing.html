@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actos que Mueven - Ritual Experiencing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --siena:#8B4513;
+    --siena-soft:#C4926A;
+    --black:#2C2C2A;
+    --warm:#FAF9F6;
+    --cream:#E8E6DE;
+    --gray:#888780;
+    --line:#D9D3C8;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#d8d2c8;color:var(--black);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  body{padding:24px}
+  .deck{display:grid;gap:24px;justify-items:center}
+  .slide{
+    width:min(1280px, calc(100vw - 48px));
+    aspect-ratio:16/9;
+    background:var(--warm);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 18px 48px rgba(44,44,42,.22);
+    padding:58px 74px;
+    page-break-after:always;
+  }
+  .slide.dark{background:var(--black);color:var(--cream)}
+  .brand{position:absolute;top:30px;left:46px;display:flex;align-items:center;gap:12px}
+  .brand svg{width:30px;height:30px;flex:0 0 auto}
+  .brand .name{font-family:"Cormorant Garamond",Georgia,serif;font-size:23px;line-height:.86;font-weight:300}
+  .brand .name em{font-style:italic;color:var(--siena)}
+  .dark .brand .name em{color:var(--siena-soft)}
+  .kicker{font-family:"Courier New",monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--siena);margin:0 0 18px}
+  .dark .kicker{color:var(--siena-soft)}
+  h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:300;margin:0;color:inherit}
+  h1{font-size:82px;line-height:.86;max-width:840px}
+  h1 em,h2 em{font-style:italic;color:var(--siena)}
+  .dark h1 em,.dark h2 em{color:var(--siena-soft)}
+  h2{font-size:58px;line-height:.9;max-width:820px}
+  h3{font-size:34px;line-height:1.02}
+  p{font-size:25px;line-height:1.28;margin:0;color:#3e3d39;max-width:880px}
+  .dark p{color:#ded8ce}
+  .lead{font-size:31px;line-height:1.22;max-width:940px}
+  .small{font-size:18px;color:var(--gray);line-height:1.35}
+  .dark .small{color:#bbb3a8}
+  .rule{width:90px;height:2px;background:var(--siena);margin:28px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center;height:100%}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+  .card{border:1px solid var(--line);padding:26px 26px 24px;background:rgba(255,255,255,.24)}
+  .card b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:34px;font-weight:400;line-height:1;margin-bottom:12px}
+  .card p{font-size:20px;line-height:1.26}
+  .pill{display:inline-block;border:1px solid var(--siena);color:var(--siena);padding:8px 12px;font-family:"Courier New",monospace;font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin:4px 6px 4px 0}
+  .quote{font-family:"Cormorant Garamond",Georgia,serif;font-size:47px;line-height:1.04;font-style:italic;color:var(--black);max-width:880px}
+  .dark .quote{color:var(--cream)}
+  .quote:before{content:"";display:block;width:86px;height:2px;background:var(--siena);margin-bottom:26px}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:13px;margin-top:34px}
+  .step{border-top:2px solid var(--siena);padding-top:14px;min-height:168px}
+  .step .num{font-family:"Courier New",monospace;font-size:13px;color:var(--gray);letter-spacing:.12em;margin-bottom:10px}
+  .step b{font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;line-height:.98;font-weight:400;display:block;margin-bottom:10px}
+  .step span{font-size:17px;line-height:1.22;color:#55524d;display:block}
+  .diagram{display:flex;align-items:center;gap:18px;margin-top:38px}
+  .node{border:1px solid var(--line);padding:20px 22px;min-width:150px;text-align:center;font-family:"Cormorant Garamond",Georgia,serif;font-size:31px;line-height:1}
+  .arrow{font-family:"Cormorant Garamond",Georgia,serif;font-size:48px;color:var(--siena)}
+  .footer{position:absolute;bottom:28px;left:46px;right:46px;display:flex;justify-content:space-between;align-items:center;font-family:"Courier New",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+  .slideNo{color:var(--siena)}
+  .watermark{position:absolute;right:22px;bottom:22px;width:170px;height:170px;opacity:.08}
+  .dark .watermark{opacity:.16}
+  .titleBlock{position:absolute;left:74px;bottom:82px}
+  .titleBlock .meta{font-family:"Courier New",monospace;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-top:28px}
+  .courseCover{background:var(--warm);color:var(--black)}
+  .courseCover .brand{top:42px;left:58px}
+  .courseCover .brand svg{width:42px;height:42px}
+  .courseCover .brand .name{font-size:31px}
+  .courseCover .coverMark{position:absolute;right:88px;top:84px;width:310px;height:310px;opacity:.10}
+  .courseCover .courseTitle{position:absolute;left:74px;bottom:128px;max-width:900px}
+  .courseCover h1{font-size:96px;line-height:.84;max-width:880px}
+  .courseCover .courseLine{width:148px;height:2px;background:var(--siena);margin:34px 0 24px}
+  .courseCover .courseMeta{font-family:"Courier New",monospace;font-size:15px;line-height:1.7;letter-spacing:.14em;text-transform:uppercase;color:#55524d}
+  .courseCover .courseMeta strong{font-weight:400;color:var(--black)}
+  .courseCover .bottomBand{position:absolute;left:74px;right:74px;bottom:48px;display:flex;justify-content:space-between;align-items:end;border-top:1px solid rgba(139,69,19,.32);padding-top:18px;font-family:"Courier New",monospace;font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--gray)}
+  .actSlide{display:flex;flex-direction:column;justify-content:center}
+  .actTop{position:absolute;top:46px;left:74px;right:74px;display:flex;justify-content:space-between;align-items:center;font-family:"Courier New",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--siena)}
+  .actSlide h2{font-size:64px;max-width:880px}
+  .actTag{font-size:27px;line-height:1.22;max-width:850px;margin-top:22px;color:#4b4944}
+  .actFacts{display:grid;grid-template-columns:1.08fr 1fr 1fr;gap:18px;margin-top:34px}
+  .fact{border-top:2px solid var(--siena);padding-top:14px}
+  .fact b{display:block;font-family:"Courier New",monospace;font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--siena);font-weight:400;margin-bottom:10px}
+  .fact span{display:block;font-size:21px;line-height:1.22;color:#3f3d39}
+  .phraseSlide{display:flex;align-items:center;justify-content:center;text-align:center}
+  .phraseWrap{max-width:980px}
+  .phraseSlide .kicker{margin-bottom:34px}
+  .bigPhrase{font-family:"Cormorant Garamond",Georgia,serif;font-size:66px;line-height:1.02;font-style:italic;color:var(--black)}
+  .bigPhrase.smallFit{font-size:58px}
+  .bigPhrase.tightFit{font-size:50px;line-height:1.04}
+  .dark .bigPhrase{color:var(--cream)}
+  .phraseSource{margin:36px auto 0;font-family:"Courier New",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+  @page{size:16in 9in;margin:0}
+  @media print{
+    body{padding:0;background:#fff}
+    .deck{display:block}
+    .slide{width:16in;height:9in;box-shadow:none;margin:0}
+  }
+</style>
+</head>
+<body>
+<main class="deck">
+
+<section class="slide courseCover">
+  <div class="brand"><svg viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#8B4513" stroke-width="5" stroke-linecap="round" opacity=".82"/><circle cx="72" cy="124" r="6" fill="#8B4513" opacity=".55"/></svg><div class="name">Ritual<br><em>Experiencing</em></div></div>
+  <svg class="coverMark" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#8B4513" stroke-width="5" stroke-linecap="round"/><circle cx="72" cy="124" r="6" fill="#8B4513"/></svg>
+  <div class="courseTitle">
+    <p class="kicker">Curso · Taller vivencial</p>
+    <h1>Actos que<br><em>Mueven.</em></h1>
+    <div class="courseLine"></div>
+    <div class="courseMeta"><strong>Rituales somáticos</strong><br>para transformar patrones corporales con acción, objeto y presencia.</div>
+  </div>
+  <div class="bottomBand"><span>Preparar · Hacer · Integrar</span><span>Dr. Miguel Ojeda Rios · Instituto Centrobioenergetica</span></div>
+  <div class="footer"><span></span><span class="slideNo">01</span></div>
+</section>
+
+<section class="slide dark">
+  <div class="brand"><svg viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#C4926A" stroke-width="5" stroke-linecap="round" opacity=".82"/><circle cx="72" cy="124" r="6" fill="#C4926A" opacity=".55"/></svg><div class="name">Ritual<br><em>Experiencing</em></div></div>
+  <svg class="watermark" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#C4926A" stroke-width="5" stroke-linecap="round"/><circle cx="72" cy="124" r="6" fill="#C4926A"/></svg>
+  <div class="titleBlock">
+    <p class="kicker">Actos que Mueven · Teoría</p>
+    <h1>Cuando entender<br><em>no alcanza.</em></h1>
+    <div class="meta">Dr. Miguel Ojeda Rios · Bioenergética V4</div>
+  </div>
+  <div class="footer"><span>Instituto Centrobioenergetica</span><span class="slideNo">01</span></div>
+</section>
+
+<section class="slide">
+  <div class="brand"><svg viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#8B4513" stroke-width="5" stroke-linecap="round" opacity=".82"/><circle cx="72" cy="124" r="6" fill="#8B4513" opacity=".55"/></svg><div class="name">Ritual<br><em>Experiencing</em></div></div>
+  <div class="grid2">
+    <div>
+      <p class="kicker">Qué es RE</p>
+      <h2>Una intervención<br><em>somática.</em></h2>
+      <div class="rule"></div>
+      <p>Usa actos físicos irreversibles con objetos cotidianos para producir cambio real en el sistema nervioso.</p>
+    </div>
+    <div>
+      <div class="card"><b>No es relajación.</b><p>No busca bajar estrés temporalmente.</p></div>
+      <div class="card" style="margin-top:18px"><b>No es metáfora.</b><p>El ritual es la intervención, no la representación de una intervención.</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>Manual de teoría</span><span class="slideNo">02</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Principio central</p>
+  <div class="quote">El cuerpo no distingue entre una experiencia real y una experiencia ritual con suficiente carga sensorial.</div>
+  <div class="grid3">
+    <div class="card"><b>Tacto</b><p>Textura, contacto, presión, borde.</p></div>
+    <div class="card"><b>Peso</b><p>Lo que se sostiene, cae, se suelta o se mueve.</p></div>
+    <div class="card"><b>Sonido</b><p>La acción deja una huella audible en el cuerpo.</p></div>
+  </div>
+  <div class="footer"><span>El ritual ES la intervención</span><span class="slideNo">03</span></div>
+</section>
+
+<section class="slide">
+  <div class="grid2">
+    <div>
+      <p class="kicker">La brecha</p>
+      <h2>La persona sabe.<br><em>Pero el cuerpo repite.</em></h2>
+    </div>
+    <div>
+      <p class="lead">El nivel consciente entiende, analiza y concluye. El nivel somático registra experiencia y genera respuestas automáticas.</p>
+      <div class="rule"></div>
+      <p>El nivel somático no escucha explicaciones. Escucha experiencia sensorial.</p>
+    </div>
+  </div>
+  <div class="footer"><span>N4 hablando de N3 no basta</span><span class="slideNo">04</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Tratado BV4 · Cuatro niveles</p>
+  <h2>No son lugares.<br><em>Son idiomas de cambio.</em></h2>
+  <div class="grid2" style="height:auto;margin-top:34px">
+    <div class="card"><b>N1 · Bioelectricidad celular</b><p>Voltaje de membrana, canales iónicos y señales eléctricas que organizan la vida celular.</p></div>
+    <div class="card"><b>N2 · Regulación autonómica</b><p>Homeostasis, respiración, tono vagal, estrés, activación, calma y carga alostática.</p></div>
+    <div class="card"><b>N3 · Inconsciente somático</b><p>Sensaciones, impulsos de acción, neurocepción, memoria implícita e improntas de supervivencia.</p></div>
+    <div class="card"><b>N4 · Consciente explícito</b><p>Lenguaje, narrativa, lógica, planificación, significado, valores y metacognición.</p></div>
+  </div>
+  <div class="footer"><span>Levin / TAME aplicado a BV4</span><span class="slideNo">05</span></div>
+</section>
+
+<section class="slide dark">
+  <p class="kicker">El error de nivel</p>
+  <h2>Tratar N3<br><em>con herramientas de N4.</em></h2>
+  <div class="grid2" style="height:auto;margin-top:42px">
+    <div class="card"><b>N4 puede entender</b><p>Puede nombrar el patrón, construir sentido, tomar una decisión y sostener una dirección.</p></div>
+    <div class="card"><b>N3 necesita experiencia</b><p>Necesita sensación, acción física, estado autonómico y una contradicción corporal suficientemente clara.</p></div>
+  </div>
+  <p style="margin-top:34px">Decir “deja ir” es lenguaje. El cuerpo cambia cuando vive, con seguridad, lo que antes registró como imposible.</p>
+  <div class="footer"><span>Comprender no equivale a actualizar</span><span class="slideNo">06</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Qué sí hace N4</p>
+  <h2>La conciencia<br><em>también tiene trabajo.</em></h2>
+  <div class="steps">
+    <div class="step"><div class="num">01</div><b>Contener</b><span>Sostiene el marco para que el cuerpo no se desorganice.</span></div>
+    <div class="step"><div class="num">02</div><b>Atestiguar</b><span>Permanece presente mientras el sistema atraviesa la experiencia.</span></div>
+    <div class="step"><div class="num">03</div><b>Validar</b><span>Reconoce que la respuesta corporal tuvo una lógica de supervivencia.</span></div>
+    <div class="step"><div class="num">04</div><b>Ejecutar</b><span>Elige hacer el acto aunque el patrón antiguo prediga peligro.</span></div>
+    <div class="step"><div class="num">05</div><b>Integrar</b><span>Después del silencio, organiza lo vivido en una nueva narrativa.</span></div>
+  </div>
+  <div class="footer"><span>N4 no reemplaza a N3: lo acompaña</span><span class="slideNo">07</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Cómo trabaja Ritual Experiencing</p>
+  <h2>Bajar al cuerpo.<br><em>Volver con integración.</em></h2>
+  <div class="diagram">
+    <div class="node">N4<br><span class="small">nombra y elige</span></div>
+    <div class="arrow">→</div>
+    <div class="node">N2<br><span class="small">regula el estado</span></div>
+    <div class="arrow">→</div>
+    <div class="node">N3<br><span class="small">vive el acto</span></div>
+    <div class="arrow">→</div>
+    <div class="node">N4<br><span class="small">integra sentido</span></div>
+  </div>
+  <p style="margin-top:34px">El ritual no le explica al cuerpo. Le ofrece una experiencia concreta para que el sistema registre una predicción nueva.</p>
+  <div class="footer"><span>Del insight a la actualización somática</span><span class="slideNo">08</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Cómo se forman los patrones</p>
+  <h2>Reglas somáticas<br><em>IF → THEN</em></h2>
+  <div class="diagram">
+    <div class="node">IF<br><span class="small">me muestro</span></div>
+    <div class="arrow">→</div>
+    <div class="node">THEN<br><span class="small">me rechazan</span></div>
+    <div class="arrow">/</div>
+    <div class="node">IF<br><span class="small">suelto</span></div>
+    <div class="arrow">→</div>
+    <div class="node">THEN<br><span class="small">todo cae</span></div>
+  </div>
+  <p style="margin-top:34px">Estas predicciones no son pensamientos. Corren solas en el cuerpo.</p>
+  <div class="footer"><span>Predicción implícita</span><span class="slideNo">05</span></div>
+</section>
+
+<section class="slide dark">
+  <p class="kicker">Qué es un acto ritual</p>
+  <h2>Una secuencia diseñada<br><em>para contradecir una predicción.</em></h2>
+  <div class="grid3">
+    <div class="card"><b>Acción física</b><p>El cuerpo hace algo.</p></div>
+    <div class="card"><b>Carga simbólica</b><p>El objeto representa el patrón.</p></div>
+    <div class="card"><b>Irreversibilidad</b><p>Lo hecho no puede des-hacerse.</p></div>
+  </div>
+  <div class="footer"><span>Sin acción física es visualización</span><span class="slideNo">06</span></div>
+</section>
+
+<section class="slide">
+  <div class="grid2">
+    <div>
+      <p class="kicker">Descarga vs actualización</p>
+      <h2>No solo vaciar.<br><em>Reescribir.</em></h2>
+    </div>
+    <div>
+      <div class="card"><b>Descarga</b><p>Libera tensión temporalmente. El patrón puede volver completo.</p></div>
+      <div class="card" style="margin-top:18px"><b>Actualización</b><p>El acto irreversible introduce un error de predicción. El cuerpo registra que la catástrofe no llegó.</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>Una vez vivido, no puede des-ocurrir</span><span class="slideNo">07</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Los cambios que produce RE</p>
+  <h2>No ocurre en un solo nivel.</h2>
+  <div class="grid3">
+    <div class="card"><b>Neurológico</b><p>La memoria somática que sostenía el patrón se actualiza.</p></div>
+    <div class="card"><b>Corporal</b><p>La postura, la tensión y la respiración se reorganizan.</p></div>
+    <div class="card"><b>Conductual</b><p>Se interrumpe lo automático: el cuerpo ya no predice el mismo peligro.</p></div>
+  </div>
+  <div class="grid2" style="height:auto;margin-top:18px">
+    <div class="card"><b>Relacional</b><p>Cambia cómo la persona carga, responde, pide, se retira o se muestra.</p></div>
+    <div class="card"><b>Bioeléctrico</b><p>El acto sensorial interviene en el campo de organización del cuerpo completo.</p></div>
+  </div>
+  <div class="footer"><span>Nada de esto requiere creerlo: requiere hacerlo</span><span class="slideNo">08</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Memoria implícita</p>
+  <h2>El patrón no vive<br><em>en la explicación.</em></h2>
+  <div class="rule"></div>
+  <p class="lead">Está en la tensión del hombro, en la contracción del estómago, en la garganta cerrada, en el reflejo de hacerse pequeño antes de que nadie lo pida.</p>
+  <div class="grid2" style="height:auto;margin-top:34px">
+    <div class="card"><b>Narrativa consciente</b><p>Lo que la persona puede contar sobre sí misma.</p></div>
+    <div class="card"><b>Memoria somática</b><p>Lo que el cuerpo hace antes de que la persona lo decida.</p></div>
+  </div>
+  <div class="footer"><span>El cuerpo aprendió reglas de supervivencia</span><span class="slideNo">09</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Cuatro componentes obligatorios</p>
+  <h2>Sin alguno de estos,<br><em>no es un acto ritual.</em></h2>
+  <div class="grid2" style="height:auto;margin-top:34px">
+    <div class="card"><b>Acción física</b><p>Si el cuerpo no hace algo, se queda en visualización o reflexión.</p></div>
+    <div class="card"><b>Carga simbólica</b><p>El objeto debe representar el patrón con especificidad sensorial.</p></div>
+    <div class="card"><b>Secuencia</b><p>El orden evita que el acto sea catarsis sin integración.</p></div>
+    <div class="card"><b>Irreversibilidad</b><p>El núcleo del mecanismo: lo hecho no puede des-hacerse.</p></div>
+  </div>
+  <div class="footer"><span>Objeto + cuerpo + orden + cambio irreversible</span><span class="slideNo">10</span></div>
+</section>
+
+<section class="slide dark">
+  <p class="kicker">La irreversibilidad</p>
+  <h2>El dato corporal<br><em>no puede des-ocurrir.</em></h2>
+  <div class="rule"></div>
+  <p class="lead">Una vez que el cuerpo hizo algo que creía imposible — y no pasó nada malo — ese registro queda. No en la cabeza. En el cuerpo entero.</p>
+  <div class="diagram">
+    <div class="node">Lo dicho</div>
+    <div class="arrow">→</div>
+    <div class="node">No se desdice</div>
+    <div class="arrow">/</div>
+    <div class="node">Lo hecho</div>
+    <div class="arrow">→</div>
+    <div class="node">No se des-hace</div>
+  </div>
+  <div class="footer"><span>Irreversibilidad experiencial</span><span class="slideNo">11</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">El mismatch</p>
+  <h2>El cuerpo espera una catástrofe.<br><em>Y no llega.</em></h2>
+  <div class="grid3">
+    <div class="card"><b>1. Activar</b><p>La memoria debe estar despierta. No se cambia lo que no está activo.</p></div>
+    <div class="card"><b>2. Contradecir</b><p>Ocurre algo distinto a lo que el cuerpo predijo.</p></div>
+    <div class="card"><b>3. Sostener</b><p>El silencio permite registrar que la consecuencia temida no apareció.</p></div>
+  </div>
+  <div class="footer"><span>La discrepancia abre la actualización</span><span class="slideNo">12</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">La voz</p>
+  <h2>Hablar también<br><em>es un acto físico.</em></h2>
+  <div class="rule"></div>
+  <p class="lead">La frase no es decoración. Cuando la persona habla, el cuerpo vibra. Esa vibración laríngea se vuelve parte de la carga sensorial del ritual.</p>
+  <div class="grid2" style="height:auto;margin-top:34px">
+    <div class="card"><b>Antes o después</b><p>Se vuelve explicación, comentario o reflexión.</p></div>
+    <div class="card"><b>Durante el acto</b><p>Acción corporal y voz crean una huella simultánea.</p></div>
+  </div>
+  <div class="footer"><span>La frase debe aterrizar en el cuerpo</span><span class="slideNo">13</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">El silencio</p>
+  <h2>La pausa no es descanso.<br><em>Es procesamiento.</em></h2>
+  <div class="grid2" style="height:auto;margin-top:30px">
+    <div>
+      <p class="lead">Después del acto irreversible, no se explica, no se toca, no se apura.</p>
+      <div class="rule"></div>
+      <p>El cuerpo necesita completar su ciclo de respuesta.</p>
+    </div>
+    <div>
+      <span class="pill">Temblor</span>
+      <span class="pill">Lágrimas</span>
+      <span class="pill">Suspiro</span>
+      <span class="pill">Bostezo</span>
+      <span class="pill">Calor</span>
+      <span class="pill">Cambio de postura</span>
+    </div>
+  </div>
+  <div class="footer"><span>30 a 60 segundos mínimos</span><span class="slideNo">14</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">La acción nueva</p>
+  <h2>Después de soltar,<br><em>algo debe abrir.</em></h2>
+  <div class="rule"></div>
+  <p class="lead">Un cuerpo que solo destruye se queda en vacío. Un cuerpo que destruye y construye sabe hacia dónde ir.</p>
+  <div class="diagram">
+    <div class="node">Cerrar</div><div class="arrow">→</div>
+    <div class="node">Pausa</div><div class="arrow">→</div>
+    <div class="node">Acción nueva</div><div class="arrow">→</div>
+    <div class="node">Ancla</div>
+  </div>
+  <div class="footer"><span>El ritual no termina en destrucción</span><span class="slideNo">15</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">La secuencia</p>
+  <h2>TAME</h2>
+  <div class="steps">
+    <div class="step"><div class="num">01</div><b>Activar</b><span>Encarnar el patrón y nombrarlo.</span></div>
+    <div class="step"><div class="num">02</div><b>Regular</b><span>Respiración 4-4-6 y manos en el cuerpo.</span></div>
+    <div class="step"><div class="num">03</div><b>Recursos</b><span>Suelo, peso, capacidad disponible.</span></div>
+    <div class="step"><div class="num">04</div><b>Abrir</b><span>Pregunta al cuerpo u objeto.</span></div>
+    <div class="step"><div class="num">05</div><b>Influir</b><span>Acto irreversible, pausa y acción nueva.</span></div>
+  </div>
+  <div class="footer"><span>Sin secuencia, el acto no aterriza</span><span class="slideNo">08</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Paso 1</p>
+  <h2>Activar el patrón</h2>
+  <div class="rule"></div>
+  <p class="lead">Cuando el cuerpo hace intencionalmente lo que normalmente hace en automático, el automatismo se interrumpe.</p>
+  <div style="margin-top:34px"><span class="pill">Frase</span><p class="quote" style="font-size:38px;margin-top:14px">Esto es lo que hago: ______.</p></div>
+  <div class="footer"><span>La voz hace visible el patrón</span><span class="slideNo">09</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Pasos 2 y 3</p>
+  <h2>Regular antes<br><em>de mover.</em></h2>
+  <div class="grid2" style="height:auto;margin-top:34px">
+    <div class="card"><b>Regular el sistema</b><p>La exhalación prolongada abre una condición de seguridad para procesar.</p></div>
+    <div class="card"><b>Confirmar recursos</b><p>El cuerpo necesita suelo, peso y capacidad antes del acto central.</p></div>
+  </div>
+  <div class="footer"><span>Seguridad antes de intensidad</span><span class="slideNo">10</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Paso 4</p>
+  <h2>Abrir acceso<br><em>a lo que el cuerpo guarda.</em></h2>
+  <div class="rule"></div>
+  <p class="lead">La pregunta no es: “¿qué piensas?” La pregunta es: “¿qué siente tu cuerpo?”, “¿qué guarda esta zona?”, “¿qué necesita cerrarse?”</p>
+  <div class="footer"><span>Algo emerge que no estaba planeado</span><span class="slideNo">11</span></div>
+</section>
+
+<section class="slide dark">
+  <p class="kicker">Paso 5</p>
+  <h2>El acto irreversible</h2>
+  <div class="grid3">
+    <div class="card"><b>Durante</b><p>La frase se dice al mismo tiempo que la acción.</p></div>
+    <div class="card"><b>Después</b><p>60 segundos de silencio para que el cuerpo registre.</p></div>
+    <div class="card"><b>Luego</b><p>Una acción nueva muestra qué viene después de soltar.</p></div>
+  </div>
+  <div class="footer"><span>El silencio no es descanso, es procesamiento</span><span class="slideNo">12</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Las cuatro líneas</p>
+  <h2>Base científica<br><em>del protocolo.</em></h2>
+  <div class="grid3">
+    <div class="card"><b>Levin</b><p>Bioelectricidad celular.</p></div>
+    <div class="card"><b>Barrett</b><p>Predicción interoceptiva.</p></div>
+    <div class="card"><b>McEwen</b><p>Carga alostática.</p></div>
+  </div>
+  <div class="card" style="margin-top:18px;max-width:360px"><b>Ecker</b><p>Reconsolidación de memoria.</p></div>
+  <div class="footer"><span>La teoría explica por qué funciona</span><span class="slideNo">13</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">El origen</p>
+  <h2>No nació de una teoría.<br><em>Nació de observar qué cambiaba.</em></h2>
+  <div class="rule"></div>
+  <p class="lead">Durante años de práctica clínica, los cambios permanentes no aparecían en quienes más entendían su patrón, sino en quienes hacían algo con el cuerpo que contradecía lo que el cuerpo creía que iba a pasar.</p>
+  <div class="footer"><span>La neurociencia explicó después lo que ya funcionaba</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Lo que se lleva el participante</p>
+  <h2>Un mapa para mirar<br><em>lo que el cuerpo repite.</em></h2>
+  <div class="grid3">
+    <div class="card"><b>Patrón</b><p>Qué hace el cuerpo en automático.</p></div>
+    <div class="card"><b>Predicción</b><p>Qué catástrofe espera si cambia.</p></div>
+    <div class="card"><b>Acto</b><p>Qué experiencia nueva puede registrar.</p></div>
+  </div>
+  <div class="footer"><span>Del insight a la experiencia</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide dark">
+  <div class="brand"><svg viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#C4926A" stroke-width="5" stroke-linecap="round" opacity=".82"/><circle cx="72" cy="124" r="6" fill="#C4926A" opacity=".55"/></svg><div class="name">Ritual<br><em>Experiencing</em></div></div>
+  <div class="titleBlock">
+    <p class="kicker">Sábado 1 · Guía de facilitación</p>
+    <h1>Los siete<br><em>actos del día.</em></h1>
+    <div class="meta">Detalles clave + frases y preguntas para proyectar</div>
+  </div>
+  <div class="footer"><span>Basado en el cuadernillo del participante</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide actSlide">
+  <div class="actTop"><span>Acto 01</span><span>Confianza</span></div>
+  <p class="kicker">La Firma que no Pedía Permiso</p>
+  <h2>Ocupar espacio<br><em>sin pedir permiso.</em></h2>
+  <p class="actTag">Para cuando el cuerpo aprendió a ocupar menos espacio del que le corresponde.</p>
+  <div class="actFacts">
+    <div class="fact"><b>Objeto</b><span>Hoja grande, marcador grueso y huella del pulgar.</span></div>
+    <div class="fact"><b>Acción</b><span>Pasar de hacerse pequeño a firmar grande, de pie.</span></div>
+    <div class="fact"><b>Clave</b><span>La firma queda como evidencia corporal: el espacio fue tomado.</span></div>
+  </div>
+  <div class="footer"><span>La Firma que no Pedía Permiso</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 01 · Activación</p>
+    <div class="bigPhrase ">“Así me hice para que no me vieran.”</div>
+    <div class="phraseSource">Postura pequeña</div>
+  </div>
+  <div class="footer"><span>La Firma que no Pedía Permiso</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 01 · Activación</p>
+    <div class="bigPhrase ">“Esto es lo que me pasa cuando ocupo espacio: ___.”</div>
+    <div class="phraseSource">Al empezar a erguirse</div>
+  </div>
+  <div class="footer"><span>La Firma que no Pedía Permiso</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 01 · Regulación</p>
+    <div class="bigPhrase ">“Puedo ocupar este espacio. El cuerpo lo sabe hacer.”</div>
+    <div class="phraseSource">Respiración 4-4-6</div>
+  </div>
+  <div class="footer"><span>La Firma que no Pedía Permiso</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 01 · Recurso</p>
+    <div class="bigPhrase ">“Ya sé cómo se siente ocupar el espacio. Lo hice.”</div>
+    <div class="phraseSource">Antes de firmar</div>
+  </div>
+  <div class="footer"><span>La Firma que no Pedía Permiso</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 01 · Pregunta</p>
+    <div class="bigPhrase ">“¿Qué espera mi cuerpo que pase si me ven demasiado?”</div>
+    <div class="phraseSource">Lo que el cuerpo protege</div>
+  </div>
+  <div class="footer"><span>La Firma que no Pedía Permiso</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 01 · Pregunta</p>
+    <div class="bigPhrase ">“¿Cuándo aprendí que era más seguro ser pequeño?”</div>
+    <div class="phraseSource">Lo que el cuerpo protege</div>
+  </div>
+  <div class="footer"><span>La Firma que no Pedía Permiso</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 01 · Reconocimiento</p>
+    <div class="bigPhrase smallFit">“Lo veo. Lo aprendí cuando lo necesitaba. Ya no lo necesito igual.”</div>
+    <div class="phraseSource">Antes de la firma</div>
+  </div>
+  <div class="footer"><span>La Firma que no Pedía Permiso</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 01 · Acto central</p>
+    <div class="bigPhrase ">“Este espacio es mío. Lo tomo. No pido permiso.”</div>
+    <div class="phraseSource">Mientras escribe la firma</div>
+  </div>
+  <div class="footer"><span>La Firma que no Pedía Permiso</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 01 · Cierre</p>
+    <div class="bigPhrase ">“Esta es mi firma. Este es mi espacio. Lo tomé.”</div>
+    <div class="phraseSource">Después de doblar la hoja</div>
+  </div>
+  <div class="footer"><span>La Firma que no Pedía Permiso</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide actSlide">
+  <div class="actTop"><span>Acto 02</span><span>Emociones</span></div>
+  <p class="kicker">Lo que se Quedó en la Garganta</p>
+  <h2>Abrir lo que<br><em>se quedó sellado.</em></h2>
+  <p class="actTag">Para cuando lo que no se dijo vive en el cuerpo como presión.</p>
+  <div class="actFacts">
+    <div class="fact"><b>Objeto</b><span>Sobre, papelitos y la propia voz.</span></div>
+    <div class="fact"><b>Acción</b><span>Escribir lo no dicho, abrir el sobre, leer y rasgar.</span></div>
+    <div class="fact"><b>Clave</b><span>No se susurra: la voz debe viajar y el sobre queda abierto.</span></div>
+  </div>
+  <div class="footer"><span>Lo que se Quedó en la Garganta</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 02 · Activación</p>
+    <div class="bigPhrase ">“Esto es lo que guardé en la garganta: ___.”</div>
+    <div class="phraseSource">Antes de sellar el sobre</div>
+  </div>
+  <div class="footer"><span>Lo que se Quedó en la Garganta</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 02 · Regulación</p>
+    <div class="bigPhrase ">“Mi voz existe. Lo que guardé puede salir.”</div>
+    <div class="phraseSource">Respiración con la garganta</div>
+  </div>
+  <div class="footer"><span>Lo que se Quedó en la Garganta</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 02 · Recurso</p>
+    <div class="bigPhrase ">“Mi voz ha salido antes. Puede volver a salir.”</div>
+    <div class="phraseSource">Antes de abrir</div>
+  </div>
+  <div class="footer"><span>Lo que se Quedó en la Garganta</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 02 · Pregunta</p>
+    <div class="bigPhrase ">“¿Qué es lo que más necesitaba ser dicho y nunca salió?”</div>
+    <div class="phraseSource">Sobre contra el pecho</div>
+  </div>
+  <div class="footer"><span>Lo que se Quedó en la Garganta</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 02 · Pregunta</p>
+    <div class="bigPhrase smallFit">“¿Qué pasaría si lo dijera ahora — aunque no esté quien lo tiene que escuchar?”</div>
+    <div class="phraseSource">Sobre contra el pecho</div>
+  </div>
+  <div class="footer"><span>Lo que se Quedó en la Garganta</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 02 · Reconocimiento</p>
+    <div class="bigPhrase ">“Lo veo. Ha estado aquí mucho tiempo.”</div>
+    <div class="phraseSource">Antes de abrir</div>
+  </div>
+  <div class="footer"><span>Lo que se Quedó en la Garganta</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 02 · Acto central</p>
+    <div class="bigPhrase ">“Esto nunca se dijo. Hoy lo digo yo.”</div>
+    <div class="phraseSource">Con cada papelito</div>
+  </div>
+  <div class="footer"><span>Lo que se Quedó en la Garganta</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 02 · Cierre</p>
+    <div class="bigPhrase ">“Lo que guardé en silencio, hoy lo dije. Y sigo aquí.”</div>
+    <div class="phraseSource">Sobre abierto</div>
+  </div>
+  <div class="footer"><span>Lo que se Quedó en la Garganta</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 02 · Cierre</p>
+    <div class="bigPhrase ">“La voz salió. El mundo siguió girando.”</div>
+    <div class="phraseSource">Después de rasgar</div>
+  </div>
+  <div class="footer"><span>Lo que se Quedó en la Garganta</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 02 · Cierre</p>
+    <div class="bigPhrase smallFit">“Lo que estaba adentro, salió. Ya no lo cargo en la garganta.”</div>
+    <div class="phraseSource">Final del acto</div>
+  </div>
+  <div class="footer"><span>Lo que se Quedó en la Garganta</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide actSlide">
+  <div class="actTop"><span>Acto 03</span><span>Soltar</span></div>
+  <p class="kicker">La Bolsa y la Piedra</p>
+  <h2>Sentir el peso.<br><em>Soltar el exceso.</em></h2>
+  <p class="actTag">Para cuando cargas más de lo que elegiste cargar.</p>
+  <div class="actFacts">
+    <div class="fact"><b>Objeto</b><span>Bolsa pesada, toalla y piedra pequeña.</span></div>
+    <div class="fact"><b>Acción</b><span>Abrazar el peso, respirar con él y soltarlo al suelo.</span></div>
+    <div class="fact"><b>Clave</b><span>La piedra representa lo que sí toca cargar hoy: sólo esto.</span></div>
+  </div>
+  <div class="footer"><span>La Bolsa y la Piedra</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 03 · Activación</p>
+    <div class="bigPhrase smallFit">“Lo siento en ___. Así se siente en mi cuerpo cargar lo que cargo.”</div>
+    <div class="phraseSource">Con la bolsa abrazada</div>
+  </div>
+  <div class="footer"><span>La Bolsa y la Piedra</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 03 · Regulación</p>
+    <div class="bigPhrase ">“Mi cuerpo respira aunque cargue. Estoy aquí.”</div>
+    <div class="phraseSource">Respirar con el peso</div>
+  </div>
+  <div class="footer"><span>La Bolsa y la Piedra</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 03 · Recurso</p>
+    <div class="bigPhrase smallFit">“Hay cosas que se sostienen solas. No todo depende de que yo cargue.”</div>
+    <div class="phraseSource">Antes de soltar</div>
+  </div>
+  <div class="footer"><span>La Bolsa y la Piedra</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 03 · Pregunta</p>
+    <div class="bigPhrase ">“¿Qué necesitas para sentirte mejor?”</div>
+    <div class="phraseSource">Lo que la zona necesita</div>
+  </div>
+  <div class="footer"><span>La Bolsa y la Piedra</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 03 · Reconocimiento</p>
+    <div class="bigPhrase ">“Me pides ___. Lo escucho.”</div>
+    <div class="phraseSource">Respuesta del cuerpo</div>
+  </div>
+  <div class="footer"><span>La Bolsa y la Piedra</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 03 · Acto central</p>
+    <div class="bigPhrase ">“Suelto. Y sigo de pie.”</div>
+    <div class="phraseSource">Al soltar la bolsa</div>
+  </div>
+  <div class="footer"><span>La Bolsa y la Piedra</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 03 · Cierre</p>
+    <div class="bigPhrase smallFit">“Esto es lo que cargo hoy. Solo esto. El peso se queda aquí.”</div>
+    <div class="phraseSource">Con la piedra en la mano</div>
+  </div>
+  <div class="footer"><span>La Bolsa y la Piedra</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide actSlide">
+  <div class="actTop"><span>Acto 04</span><span>Deudas</span></div>
+  <p class="kicker">El Número Limpio</p>
+  <h2>Separar el número<br><em>de la historia.</em></h2>
+  <p class="actTag">Para cuando la deuda y lo que dice de ti viajan pegados en el cuerpo.</p>
+  <div class="actFacts">
+    <div class="fact"><b>Objeto</b><span>Monedas, hoja HISTORIA y hoja NÚMERO.</span></div>
+    <div class="fact"><b>Acción</b><span>Escribir la historia, ver el número y romper la historia.</span></div>
+    <div class="fact"><b>Clave</b><span>El número queda solo: visible, concreto, sin vergüenza encima.</span></div>
+  </div>
+  <div class="footer"><span>El Número Limpio</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 04 · Activación</p>
+    <div class="bigPhrase smallFit">“Esto es lo que hago: evito ver el número porque me confirma que ___.”</div>
+    <div class="phraseSource">Con monedas en el puño</div>
+  </div>
+  <div class="footer"><span>El Número Limpio</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 04 · Regulación</p>
+    <div class="bigPhrase ">“Puedo respirar aunque cargue esto. Puedo mirarlo.”</div>
+    <div class="phraseSource">Respiración con monedas</div>
+  </div>
+  <div class="footer"><span>El Número Limpio</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 04 · Recurso</p>
+    <div class="bigPhrase smallFit">“He resuelto cosas difíciles antes. Tengo lo que necesito para ver esto.”</div>
+    <div class="phraseSource">Antes de escribir</div>
+  </div>
+  <div class="footer"><span>El Número Limpio</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 04 · Separar</p>
+    <div class="bigPhrase ">“Esto es la historia. Esto es el número. No son lo mismo.”</div>
+    <div class="phraseSource">Dos hojas sobre la mesa</div>
+  </div>
+  <div class="footer"><span>El Número Limpio</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 04 · Romper</p>
+    <div class="bigPhrase ">“Esta historia no es el número. La rompo.”</div>
+    <div class="phraseSource">Durante el rasgado</div>
+  </div>
+  <div class="footer"><span>El Número Limpio</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 04 · Acto central</p>
+    <div class="bigPhrase ">“Este es el número. Solo el número. Y sigo aquí.”</div>
+    <div class="phraseSource">Mirar el total</div>
+  </div>
+  <div class="footer"><span>El Número Limpio</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 04 · Cierre</p>
+    <div class="bigPhrase smallFit">“Tengo el número. Tengo un paso. Es suficiente para empezar.”</div>
+    <div class="phraseSource">Después de escribir una acción</div>
+  </div>
+  <div class="footer"><span>El Número Limpio</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide actSlide">
+  <div class="actTop"><span>Acto 05</span><span>Dinero</span></div>
+  <p class="kicker">Lo que me Enseñaron que Vale</p>
+  <h2>Nombrar valor<br><em>sin disculparse.</em></h2>
+  <p class="actTag">Para cuando tu cuerpo y el dinero tienen una relación tensa que no elegiste.</p>
+  <div class="actFacts">
+    <div class="fact"><b>Objeto</b><span>Piedra del acto 3, billete, sobre y dos hojas.</span></div>
+    <div class="fact"><b>Acción</b><span>Depositar la historia aprendida y decir el número de pie.</span></div>
+    <div class="fact"><b>Clave</b><span>El valor se dice con voz: no se justifica, no se achica.</span></div>
+  </div>
+  <div class="footer"><span>Lo que me Enseñaron que Vale</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 05 · Activación</p>
+    <div class="bigPhrase ">“Esto es lo que aprendí que el dinero significa: ___.”</div>
+    <div class="phraseSource">Con piedra y billete</div>
+  </div>
+  <div class="footer"><span>Lo que me Enseñaron que Vale</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 05 · Regulación</p>
+    <div class="bigPhrase ">“Mi cuerpo puede sostener una relación nueva con esto.”</div>
+    <div class="phraseSource">Respiración con ambas manos</div>
+  </div>
+  <div class="footer"><span>Lo que me Enseñaron que Vale</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 05 · Recurso</p>
+    <div class="bigPhrase smallFit">“Lo que doy tiene valor real. Eso no cambia con lo que aprendí.”</div>
+    <div class="phraseSource">Antes de escribir</div>
+  </div>
+  <div class="footer"><span>Lo que me Enseñaron que Vale</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 05 · Pregunta</p>
+    <div class="bigPhrase ">“¿Qué aprendió mi cuerpo que el dinero pone en peligro?”</div>
+    <div class="phraseSource">Lo que el cuerpo protege</div>
+  </div>
+  <div class="footer"><span>Lo que me Enseñaron que Vale</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 05 · Pregunta</p>
+    <div class="bigPhrase ">“¿Qué pasaría si recibiera lo que vale lo que hago?”</div>
+    <div class="phraseSource">Lo que el cuerpo protege</div>
+  </div>
+  <div class="footer"><span>Lo que me Enseñaron que Vale</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 05 · Reconocimiento</p>
+    <div class="bigPhrase ">“Eso es lo que mi cuerpo protege. Lo veo.”</div>
+    <div class="phraseSource">Antes de depositar</div>
+  </div>
+  <div class="footer"><span>Lo que me Enseñaron que Vale</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 05 · Depositar</p>
+    <div class="bigPhrase ">“La dejo aquí. Ya no la cargo en la mano.”</div>
+    <div class="phraseSource">Al dejar la piedra</div>
+  </div>
+  <div class="footer"><span>Lo que me Enseñaron que Vale</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 05 · Depositar</p>
+    <div class="bigPhrase ">“Esto fue lo que aprendí. Ya no me dirige.”</div>
+    <div class="phraseSource">Sobre la historia aprendida</div>
+  </div>
+  <div class="footer"><span>Lo que me Enseñaron que Vale</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 05 · Acto central</p>
+    <div class="bigPhrase smallFit">“Esto es lo que vale lo que hago. Lo digo sin pedir permiso.”</div>
+    <div class="phraseSource">De pie, con voz clara</div>
+  </div>
+  <div class="footer"><span>Lo que me Enseñaron que Vale</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 05 · Cierre</p>
+    <div class="bigPhrase smallFit">“Recibir está bien. Cobrar está bien. Lo que doy tiene valor y puedo decirlo.”</div>
+    <div class="phraseSource">Lo nuevo</div>
+  </div>
+  <div class="footer"><span>Lo que me Enseñaron que Vale</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide actSlide">
+  <div class="actTop"><span>Acto 06</span><span>Transgeneracional</span></div>
+  <p class="kicker">Lo que Llegó sin que lo Pidiera</p>
+  <h2>Honrar el origen.<br><em>Elegir qué cargo.</em></h2>
+  <p class="actTag">Para cuando cargas patrones de tu familia que nunca elegiste.</p>
+  <div class="actFacts">
+    <div class="fact"><b>Objeto</b><span>Hoja FAMILIA, hoja YO, cinta y tazón con agua.</span></div>
+    <div class="fact"><b>Acción</b><span>Pegar lo heredado en la espalda, despegarlo y disolverlo.</span></div>
+    <div class="fact"><b>Clave</b><span>No se rechaza la familia: se distingue historia de elección.</span></div>
+  </div>
+  <div class="footer"><span>Lo que Llegó sin que lo Pidiera</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 06 · Activación</p>
+    <div class="bigPhrase ">“Esto es lo que heredé que ya no me sirve: ___.”</div>
+    <div class="phraseSource">Hoja FAMILIA</div>
+  </div>
+  <div class="footer"><span>Lo que Llegó sin que lo Pidiera</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 06 · Regulación</p>
+    <div class="bigPhrase smallFit">“Puedo honrar de dónde vengo y elegir qué me llevo. Las dos cosas son posibles.”</div>
+    <div class="phraseSource">Con hoja en la espalda</div>
+  </div>
+  <div class="footer"><span>Lo que Llegó sin que lo Pidiera</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 06 · Recurso</p>
+    <div class="bigPhrase smallFit">“Soy más que lo que heredé. Puedo mirarlo sin que me defina.”</div>
+    <div class="phraseSource">Antes de preguntar</div>
+  </div>
+  <div class="footer"><span>Lo que Llegó sin que lo Pidiera</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 06 · Pregunta</p>
+    <div class="bigPhrase smallFit">“¿Qué patrón de mi familia vive en mi cuerpo que no elegí pero sigo repitiendo?”</div>
+    <div class="phraseSource">El patrón en el cuerpo</div>
+  </div>
+  <div class="footer"><span>Lo que Llegó sin que lo Pidiera</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 06 · Pregunta</p>
+    <div class="bigPhrase ">“¿Dónde lo siento en el cuerpo cuando ese patrón aparece?”</div>
+    <div class="phraseSource">El patrón en el cuerpo</div>
+  </div>
+  <div class="footer"><span>Lo que Llegó sin que lo Pidiera</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 06 · Reconocimiento</p>
+    <div class="bigPhrase smallFit">“Esto llegó antes de que yo pudiera elegir. No es culpa — es historia.”</div>
+    <div class="phraseSource">Antes de despegar</div>
+  </div>
+  <div class="footer"><span>Lo que Llegó sin que lo Pidiera</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 06 · Acto central</p>
+    <div class="bigPhrase smallFit">“Esto llegó antes que yo. Lo reconozco. Ya no lo cargo en el cuerpo.”</div>
+    <div class="phraseSource">Despegar y disolver</div>
+  </div>
+  <div class="footer"><span>Lo que Llegó sin que lo Pidiera</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 06 · Cierre</p>
+    <div class="bigPhrase ">“Esto sí es mío. Lo elegí. Lo cargo porque quiero.”</div>
+    <div class="phraseSource">Hoja YO</div>
+  </div>
+  <div class="footer"><span>Lo que Llegó sin que lo Pidiera</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 06 · Cierre</p>
+    <div class="bigPhrase ">“Vengo de ahí. Y también soy esto.”</div>
+    <div class="phraseSource">Final del acto</div>
+  </div>
+  <div class="footer"><span>Lo que Llegó sin que lo Pidiera</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide actSlide">
+  <div class="actTop"><span>Acto 07</span><span>Integración</span></div>
+  <p class="kicker">El Plato Roto y la Reverencia</p>
+  <h2>Romper.<br><em>Reconocer. Reparar.</em></h2>
+  <p class="actTag">Para cuando lo que se fragmentó puede volverse más valioso que lo que estaba entero.</p>
+  <div class="actFacts">
+    <div class="fact"><b>Objeto</b><span>Plato de cerámica o barro, toalla y pegamento dorado.</span></div>
+    <div class="fact"><b>Acción</b><span>Romper, recoger, reverenciar, unir y sostener el plato.</span></div>
+    <div class="fact"><b>Clave</b><span>Las grietas quedan visibles: lo reparado no necesita fingir que no se rompió.</span></div>
+  </div>
+  <div class="footer"><span>El Plato Roto y la Reverencia</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 07 · Romper</p>
+    <div class="bigPhrase ">“Esto es lo que pasó en mi sistema: se fragmentó para ___.”</div>
+    <div class="phraseSource">Después del sonido del plato</div>
+  </div>
+  <div class="footer"><span>El Plato Roto y la Reverencia</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 07 · Regulación</p>
+    <div class="bigPhrase ">“Estoy aquí. Tengo todo lo que necesito para seguir.”</div>
+    <div class="phraseSource">Con los pedazos al frente</div>
+  </div>
+  <div class="footer"><span>El Plato Roto y la Reverencia</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 07 · Reverencia</p>
+    <div class="bigPhrase ">“Cada parte de mí que se separó tenía una razón.”</div>
+    <div class="phraseSource">Frente a los pedazos</div>
+  </div>
+  <div class="footer"><span>El Plato Roto y la Reverencia</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 07 · Reverencia</p>
+    <div class="bigPhrase smallFit">“Se separaron para que yo sobreviviera. Hoy las reconozco a todas.”</div>
+    <div class="phraseSource">Frente a los pedazos</div>
+  </div>
+  <div class="footer"><span>El Plato Roto y la Reverencia</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 07 · Reparar</p>
+    <div class="bigPhrase ">“Esto se reconecta.”</div>
+    <div class="phraseSource">Con cada pedazo que se une</div>
+  </div>
+  <div class="footer"><span>El Plato Roto y la Reverencia</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide dark">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 07 · Acto central</p>
+    <div class="bigPhrase ">“Estoy entero. Las grietas son mías y son hermosas.”</div>
+    <div class="phraseSource">Sosteniendo el plato</div>
+  </div>
+  <div class="footer"><span>El Plato Roto y la Reverencia</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">Acto 07 · Cierre</p>
+    <div class="bigPhrase ">“Lo que se rompió se reconectó — no como antes, sino mejor.”</div>
+    <div class="phraseSource">Final del acto</div>
+  </div>
+  <div class="footer"><span>El Plato Roto y la Reverencia</span><span class="slideNo">00</span></div>
+</section>
+
+<section class="slide dark">
+  <div class="brand"><svg viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#C4926A" stroke-width="5" stroke-linecap="round" opacity=".82"/><circle cx="72" cy="124" r="6" fill="#C4926A" opacity=".55"/></svg><div class="name">Ritual<br><em>Experiencing</em></div></div>
+  <div class="titleBlock">
+    <p class="kicker">Cierre</p>
+    <h1>Preparar.<br>Hacer.<br><em>Integrar.</em></h1>
+    <div class="meta">Dr. Miguel Ojeda Rios · Instituto Centrobioenergetica · 2026</div>
+  </div>
+  <div class="footer"><span>Actos que Mueven</span><span class="slideNo">14</span></div>
+</section>
+
+</main>
+<script>
+  document.querySelectorAll('.slideNo').forEach((node, index) => {
+    node.textContent = String(index + 1).padStart(2, '0');
+  });
+</script>
+</body>
+</html>

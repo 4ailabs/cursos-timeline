@@ -1,0 +1,14 @@
+{
+  "name": "actos-que-mueven-export",
+  "version": "1.0.0",
+  "description": "Exportación PNG del Cuadernillo Actos que Mueven",
+  "main": "exportar_cuadernillo.js",
+  "type": "commonjs",
+  "scripts": {
+    "serve": "npx -y serve . -p 3010",
+    "export": "node exportar_cuadernillo.js"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.0.0"
+  }
+}

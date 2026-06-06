@@ -20,7 +20,7 @@ Las palabras no dichas no desaparecen. El cuerpo las guarda en tensión muscular
 
 Cuando escribes lo que nunca salió y lo dices en voz alta — aunque sea aquí, aunque nadie que necesitaba escucharlo esté presente — tu sistema nervioso recibe la descarga que esas frases siempre necesitaron. No es catarsis de grito. Es simplemente que la voz sale, el cuerpo vibra, y la frase completa su ciclo.
 
-El papel húmedo que se abre y se rompe no puede volver a ser un sobre sellado. Eso es lo que el cuerpo registra: lo que estaba adentro ya salió. Y el mundo siguió girando.
+El sobre empapado que se abre no puede volver a sellarse. Eso es lo que el cuerpo registra: lo que estaba adentro ya salió. Y el mundo siguió girando.
 
 ________________
 
@@ -136,16 +136,16 @@ Mientras lo sostienes bajo el agua, di en voz alta:
 
 Saca el sobre empapado. Ábrelo con las manos — el papel húmedo cede diferente al seco. Saca cada papelito.
 
-Lee cada uno EN VOZ ALTA — con volumen real. No en susurro — que la voz ocupe el cuarto.
-
-Después de leer cada uno, di:
+Lee cada uno EN VOZ ALTA — con volumen real, no en susurro — y mientras lo lees, di:
 > "Esto nunca se dijo. Hoy lo digo yo."
 
-Rómpelo después de leerlo.
+Ponlo boca abajo sobre la mesa. El siguiente. Uno por uno hasta que el sobre esté vacío.
 
 Cuando hayas leído y roto todos:
 Quédate 60 segundos. Manos abiertas sobre la mesa con los pedazos rotos frente a ti. Silencio. Deja que el cuerpo termine.
 Nota lo que pasa en la garganta ahora. En el pecho.
+
+Si después de los 60 segundos el cuerpo sigue tenso y quieto, regresa al Paso 2. Mano en la garganta, tres respiraciones, y repite la lectura de uno de los papelitos en voz alta.
 
 **6 — El sobre que ya no cierra** (5 minutos)
 
@@ -158,8 +158,9 @@ ________________
 
 EL OBJETO QUE TE LLEVAS
 
-El sobre abierto — o lo tiras. Ya cumplió.
-Lo que llevas es la experiencia: la voz salió. El mundo siguió girando.
+El sobre aplastado y abierto — ya no puede cerrarse. Déjalo secar así, abierto, en algún lugar visible: tu escritorio, el buró, la mesa. No en un cajón.
+
+Cada vez que lo veas, el cuerpo recibe la misma señal: lo que guardaba ahí ya salió. Y el mundo siguió girando.
 
 ________________
 

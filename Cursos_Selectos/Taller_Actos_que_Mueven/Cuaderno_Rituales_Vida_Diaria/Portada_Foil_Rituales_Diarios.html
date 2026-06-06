@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portada Foil - Rituales para la Vida Diaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2C2C2A;
+    --paper:#FAF9F6;
+    --cream:#E8E6DE;
+    --copper:#C4926A;
+    --siena:#8B4513;
+    --gray:#888780;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#ded9d0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  .toolbar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #d8d8d8;padding:12px 22px;display:flex;justify-content:space-between;gap:20px;align-items:center}
+  .toolbar h1{font-size:16px;margin:0;color:#111}
+  .toolbar p{font-size:12px;margin:2px 0 0;color:#555;line-height:1.35}
+  .note{text-align:right;font-size:12px;color:#555;line-height:1.35}
+  .deck{padding:24px 0 60px;display:grid;gap:24px;justify-items:center}
+  .cover{
+    width:26cm;
+    height:21cm;
+    position:relative;
+    overflow:hidden;
+    page-break-after:always;
+    box-shadow:0 18px 54px rgba(0,0,0,.22);
+    font-family:"Cormorant Garamond",Georgia,serif;
+  }
+  .cover:last-child{page-break-after:auto}
+  .matteBlack{background:#20201f;color:var(--cream)}
+  .warmWhite{background:var(--paper);color:var(--ink)}
+  .plate{background:#fff;color:#000}
+  .spineSafe{position:absolute;left:0;top:0;bottom:0;width:2cm;border-right:1px solid rgba(196,146,106,.22)}
+  .warmWhite .spineSafe{border-right-color:rgba(44,44,42,.16)}
+  .plate .spineSafe{border-right:1px dashed #aaa}
+  .markMain{position:absolute;left:50%;top:37mm;transform:translateX(-50%);width:35mm;height:35mm}
+  .center{position:absolute;left:3.2cm;right:2.1cm;top:112mm;transform:translateY(-50%);text-align:center}
+  .title{font-size:58pt;line-height:.86;font-weight:300;letter-spacing:0;margin:0 auto;max-width:15.8cm}
+  .title em{font-style:italic;color:var(--copper)}
+  .warmWhite .title em{color:var(--siena)}
+  .plate .title em{color:#000}
+  .variantLabel{position:absolute;right:9mm;top:9mm;font-family:"Courier New",monospace;font-size:6.5pt;letter-spacing:.14em;text-transform:uppercase;color:rgba(232,230,222,.34)}
+  .warmWhite .variantLabel{color:#999}
+  .plate .variantLabel{color:#777}
+  @page{size:26cm 21cm;margin:0}
+  @media print{
+    body{background:#fff}
+    .toolbar{display:none}
+    .deck{display:block;padding:0}
+    .cover{box-shadow:none;margin:0}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <div>
+    <h1>Portada premium con foil - Rituales para la Vida Diaria</h1>
+    <p>Formato 26 x 21 cm horizontal. La primera es la recomendada: cartulina negro mate con foil cobre.</p>
+  </div>
+  <div class="note">Incluye mockups y placa de foil.<br>Exporta al 100%.</div>
+</div>
+
+<main class="deck">
+  <section class="cover matteBlack">
+    <div class="variantLabel">Recomendada · negro mate + foil cobre</div>
+    <div class="spineSafe"></div>
+    <svg class="markMain" viewBox="-1 -19 138 155" fill="none"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" stroke="#C4926A" stroke-width="4.2" stroke-linecap="round"/><circle cx="72" cy="124" r="5.5" fill="#C4926A"/></svg>
+    <div class="center">
+      <div class="title">Rituales<br><em>para la</em><br>Vida Diaria</div>
+    </div>
+  </section>
+
+  <section class="cover warmWhite">
+    <div class="variantLabel">Alternativa · marfil + foil cobre</div>
+    <div class="spineSafe"></div>
+    <svg class="markMain" viewBox="-1 -19 138 155" fill="none"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" stroke="#8B4513" stroke-width="4.2" stroke-linecap="round"/><circle cx="72" cy="124" r="5.5" fill="#8B4513"/></svg>
+    <div class="center">
+      <div class="title">Rituales<br><em>para la</em><br>Vida Diaria</div>
+    </div>
+  </section>
+
+  <section class="cover plate">
+    <div class="variantLabel">Placa de foil · arte 100%</div>
+    <div class="spineSafe"></div>
+    <svg class="markMain" viewBox="-1 -19 138 155" fill="none"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" stroke="#000" stroke-width="4.2" stroke-linecap="round"/><circle cx="72" cy="124" r="5.5" fill="#000"/></svg>
+    <div class="center">
+      <div class="title">Rituales<br><em>para la</em><br>Vida Diaria</div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
