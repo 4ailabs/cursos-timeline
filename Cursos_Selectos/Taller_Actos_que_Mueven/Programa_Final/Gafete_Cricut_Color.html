@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gafete Instituto CentroBioenergética — Cricut</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      padding: 20px;
+    }
+    .container {
+      width: 377px;
+      height: 226px;
+      background: white;
+      border: 1px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .gafete {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #F7F0E8 0%, #f5f5f5 100%);
+      border: 2px solid #8B4513;
+      border-radius: 3px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Logo circular simplificado */
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+    .logo-circles {
+      width: 36px;
+      height: 36px;
+      position: relative;
+    }
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .circle-1 { background: #B5604A; transform: translate(-50%, -50%) translateX(-14px); }
+    .circle-2 { background: #8FA87A; transform: translate(-50%, -50%) translateX(14px); }
+    .circle-3 { background: #E8A857; width: 5px; height: 5px; }
+
+    .header {
+      text-align: center;
+      line-height: 1.1;
+    }
+    .institution {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2C2C2A;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .institution-name {
+      font-size: 9px;
+      color: #8B4513;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-top: 1px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #8B4513 30%, #8B4513 70%, transparent);
+      margin: 6px 0;
+    }
+
+    .content {
+      text-align: center;
+      line-height: 1.2;
+    }
+    .ritual-title {
+      font-size: 9px;
+      font-weight: 500;
+      color: #2C2C2A;
+      letter-spacing: 0.4px;
+    }
+    .course-name {
+      font-size: 8px;
+      color: #8FA87A;
+      letter-spacing: 0.3px;
+      margin-top: 1px;
+      font-style: italic;
+    }
+
+    /* Esquinas decorativas sutiles */
+    .corner {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border: 1px solid #8B451340;
+    }
+    .corner-tl { top: 4px; left: 4px; border-right: none; border-bottom: none; }
+    .corner-tr { top: 4px; right: 4px; border-left: none; border-bottom: none; }
+    .corner-bl { bottom: 4px; left: 4px; border-right: none; border-top: none; }
+    .corner-br { bottom: 4px; right: 4px; border-left: none; border-top: none; }
+
+    /* Para impresión/exportación */
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; border: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="gafete">
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+
+      <div class="logo-container">
+        <div class="logo-circles">
+          <div class="circle circle-1"></div>
+          <div class="circle circle-2"></div>
+          <div class="circle circle-3"></div>
+        </div>
+      </div>
+
+      <div class="header">
+        <div class="institution">Instituto</div>
+        <div class="institution-name">CentroBioenergética</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="content">
+        <div class="ritual-title">Ritual Experiencing</div>
+        <div class="course-name">Actos que Mueven</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
