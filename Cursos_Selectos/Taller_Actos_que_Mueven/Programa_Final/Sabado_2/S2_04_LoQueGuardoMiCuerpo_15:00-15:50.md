@@ -23,7 +23,7 @@
 
 **Patrón:** supresión emocional crónica — guardar lo que se siente para no molestar, para no ser carga, para mantener la paz. El cuerpo almacena lo no dicho como tensión, dolor articular, inflamación, opresión. Lo que nunca sale por la boca sale por el cuerpo.
 
-**Preparar antes del acto:** Los tazones con agua tibia + sal disuelta. Tener un termo o hervidor para agua caliente. Los trapos ya deben estar anudados con el cordón — tantos nudos como se pueda. Si no hay tiempo, las participantes los anudan al inicio.
+**Preparar antes del acto:** Tener tazones vacíos, agua tibia (en jarras o termos), sal en recipientes pequeños, trapos sin anudar, cordón cortado. Cada participante prepara su agua salada al inicio del acto (parte ritual) y anuda su propio trapo.
 
 **Mismatch:** "Lo que guardé en mi cuerpo ya tiene lugar. Lo solté y el cuerpo se abrió."
 
@@ -31,7 +31,12 @@
 
 ## PREPARACIÓN ANTES DE COMENZAR
 
-Preparar los tazones con agua tibia y sal disuelta. Dejarlos sobre la mesa. Tener los trapos sin anudar, cordón cortado en piezas de 30-40 cm.
+- Tener tazones vacíos (1 por persona) sobre la mesa
+- Tener 2-3 jarras o termos con agua tibia
+- Tener recipientes o cucharaditas pequeñas con sal (1 por persona)
+- Trapos sin anudar (1 por persona)
+- Cordón cortado en piezas de 30-40 cm (1 por persona)
+- Papel tissue, plumas, vasos de agua tibia
 
 ---
 
@@ -40,7 +45,17 @@ Preparar los tazones con agua tibia y sal disuelta. Dejarlos sobre la mesa. Tene
 
 *"Venimos de un acto intenso antes de la comida. Ahora el cuerpo está más abierto. Este acto trabaja algo que muchas conocen: guardar lo que sienten para no molestar a nadie. El cansancio que no mencionan. La tristeza que esconden. El miedo que no cuentan con todas sus palabras. Todo eso se queda en el cuerpo — como nudos."*
 
-Repartir materiales. Cada persona recibe: su trapo sin anudar, 1 pedazo de cordón, papel tissue, pluma, tazón con agua+sal, vaso de agua tibia.
+Repartir materiales. Cada persona recibe: trapo sin anudar, cordón, papel tissue, pluma, tazón vacío, recipiente con sal, vaso de agua tibia.
+
+**PRIMERO — Preparar el agua transformadora (2 min):**
+
+*"Cada una va a preparar su propia agua. Esta es el agua donde van a disolver lo que guardaron — ustedes la crean."*
+
+*"Viertan el agua tibia en el tazón. Agreguen la sal. Revuelvan."*
+
+Observar mientras lo hacen — es parte del ritual.
+
+**SEGUNDO — Anudar el trapo (3 min):**
 
 *"Ahora vamos a anudar el trapo. Cada nudo que hagan representa algo que guardaron. Anúdenlo lo más apretado que puedan — tantos nudos como sientan que necesitan. No hay número fijo — lo que salga."*
 
