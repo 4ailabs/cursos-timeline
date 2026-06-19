@@ -134,7 +134,9 @@ Observar: si tiemblan, si sienten calor, si les llegan imágenes. Dejarlo pasar.
 
 Todas apagan sus velas. El cuarto se queda sin llamas.
 
-*"La vela se va con ustedes. Esta noche, en su casa, la van a encender en un lugar seguro — lejos de su cuarto. Y se van a dormir. La vela hace su trabajo mientras ustedes descansan."*
+*"Miren la vela apagada. Huele a cera, a mecha quemada. Está caliente todavía. Hace un momento estaba encendida — ustedes la encendieron y ustedes la apagaron. Las dos cosas las hicieron ustedes."*
+
+*"La vela se va con ustedes a casa. No la van a dejar prendida — la van a usar como símbolo."*
 
 ---
 
@@ -143,15 +145,15 @@ Todas apagan sus velas. El cuarto se queda sin llamas.
 
 Repartir hoja impresa con instrucciones. El facilitador lee en voz alta:
 
-*"Esta noche, antes de acostarse:"*
+*"Cada noche, antes de acostarse:"*
 
-1. *Escojan un lugar seguro para la vela: lavabo de cocina, mesa de metal, azulejo del baño. NUNCA cerca de cortinas ni de su habitación*
-2. *Pongan la veladora en el plato con agua*
-3. *Enciéndanla y digan: 'Esta vela vela por mí esta noche. Yo me voy a dormir. Ella se encarga.'*
-4. *Dense la vuelta. Caminen a su cama sin voltear a ver la vela*
-5. *Al acostarse digan: 'Me duermo ahora. Lo que tenga que estar encendido, lo está.'*
-6. *A la mañana siguiente, antes de levantarse: 'La vela se consumió. Yo dormí. Los dos hicimos lo nuestro.'*
-7. *Vayan al lugar de la vela. Tómenla entre las manos, ya fría. Guárdenla. Es el testimonio de que la noche pasó sin su vigilancia*
+1. *Tomen la vela. Sosténganla entre las dos manos. Sientan su peso, su textura*
+2. *Digan: 'Esta vela vela por mí esta noche. Yo me voy a dormir.'*
+3. *Pónganla en su mesa de noche o en un lugar visible de su cuarto*
+4. *Al acostarse digan: 'Me duermo ahora. Lo que tenga que estar encendido, lo está. Lo que tenga que pasar, pasa sin mí.'*
+5. *A la mañana siguiente, antes de levantarse, miren la vela y digan: 'La noche pasó. Yo dormí. No hacía falta mi vigilancia.'*
+
+*"No necesitan encenderla cada noche — solo sostenerla y decir la frase. La vela es el recordatorio físico de que el mundo sigue sin que lo vigilen. El cuerpo ya vivió la experiencia de encenderla y apagarla aquí — eso es lo que cuenta. En casa, el símbolo basta."*
 
 ---
 
