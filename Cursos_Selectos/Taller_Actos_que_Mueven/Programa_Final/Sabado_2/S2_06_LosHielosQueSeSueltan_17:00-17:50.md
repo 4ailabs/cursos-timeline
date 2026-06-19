@@ -46,15 +46,13 @@ Repartir tazones y toallas. Traer los hielos en la hielera. Repartir 3-5 cubos p
 
 ---
 
-## PASO 1 — SOSTENER (5 min)
-**17:03 – 17:08**
+## PASO 1 — SOSTENER (3 min)
+**17:03 – 17:06**
 *(Inducir el cambio)*
 
 *"Puños cerrados. Los hielos adentro. Sientan el frío entrar en las palmas, en los dedos, en las muñecas."*
 
-*"Brazos extendidos al frente. Sostengan."*
-
-**Silencio — 60 segundos.** Que sientan el frío. El cuerpo va a acusar: tensión, mueca, respiración que cambia.
+**Silencio — 30 segundos.** Que sientan el frío. El cuerpo va a acusar: tensión, mueca, respiración que cambia.
 
 *"Ese frío que sienten en las manos — así se siente cargar predicciones. Duele. Aprieta. Y mientras más tiempo lo sostienes, más duele. Pero no lo sueltas — porque crees que si lo sueltas, algo peor pasa."*
 
@@ -64,13 +62,13 @@ Repartir tazones y toallas. Traer los hielos en la hielera. Repartir 3-5 cubos p
 
 ---
 
-## PASO 2 — RESPIRAR CON EL FRÍO (4 min)
-**17:08 – 17:12**
+## PASO 2 — RESPIRAR CON EL FRÍO (3 min)
+**17:06 – 17:09**
 *(Generar regulación)*
 
 *"Sigan sosteniendo los hielos. No los suelten todavía."*
 
-*"Inhalen 4 — sostengan 4 — exhalen 6. Cuatro veces. Con los puños cerrados y el frío en las manos."*
+*"Inhalen 4 — sostengan 4 — exhalen 6. Tres veces. Con los puños cerrados y el frío en las manos."*
 
 El facilitador guía las respiraciones. El frío hace la regulación más intensa — el cuerpo tiene que trabajar para mantener la calma mientras algo duele.
 
@@ -78,31 +76,39 @@ El facilitador guía las respiraciones. El frío hace la regulación más intens
 
 > **"Aquí estoy. Con todo esto. Y sigo aquí."**
 
+⚠️ **IMPORTANTE:** No sostener hielo más de 4-5 minutos en total. Si alguien muestra dolor intenso o las manos se ponen blancas, indicar que depositen los hielos en el tazón inmediatamente.
+
 ---
 
-## PASO 3 — LOS PIES QUE SOSTIENEN (3 min)
-**17:12 – 17:15**
+## PASO 3 — DEPOSITAR Y SENTIR (5 min)
+**17:09 – 17:14**
 *(Colocar en estado de recursos)*
 
-*"Pies en el suelo. Descalzas. Sientan la temperatura del piso — es diferente al frío del hielo. El piso no quema. El piso sostiene."*
+*"Ahora — depositen los hielos en el tazón. Abran los puños y déjenlos caer."*
 
-*"Sientan las dos cosas al mismo tiempo: el frío en las manos y la tibieza del piso bajo los pies. El cuerpo puede estar con las dos."*
+El sonido del hielo contra el plato. Las manos mojadas, frías, abiertas.
+
+*"Pies descalzos en el suelo. Sientan la temperatura del piso — es diferente al frío del hielo. El piso no quema. El piso sostiene."*
+
+*"Froten las manos entre sí. Fuerte. 10 segundos. Sientan cómo el calor regresa. Ustedes generan ese calor."*
+
+*"Pongan las palmas calientes sobre los muslos. Sientan la diferencia entre el frío de hace un momento y el calor de ahora."*
 
 *"Digan en voz alta:"*
 
-> **"Mis pies me sostienen. Mis manos pueden soltar."**
+> **"Mis pies me sostienen. Mis manos pueden soltar. El calor regresa solo."**
 
 ---
 
 ## PASO 4 — LA PREDICCIÓN (5 min)
-**17:15 – 17:20**
+**17:14 – 17:19**
 *(Ampliar la conciencia)*
 
-*"Miren sus puños cerrados. El hielo ya empezó a derretirse — sientan el agua escurriendo entre los dedos. Lo que parecía sólido está cambiando de forma sin que hagan nada."*
+*"Miren el tazón. Los hielos ya empezaron a derretirse. Lo que hace un momento era sólido y dolía — está cambiando de forma sin que hagan nada. No lo pueden detener. No lo pueden recongelar."*
 
 *"Pregúntenle al cuerpo — no a la cabeza:"*
 
-> **"¿Qué predice mi cuerpo que va a pasar si abro las manos?"**
+> **"¿Qué predice mi cuerpo que va a pasar si dejo de vigilar?"**
 
 **Silencio — 30 segundos.** Dejar que venga: "todo se cae", "nadie va a estar", "me quedo vacía", "pierdo el control".
 
@@ -112,37 +118,31 @@ El facilitador guía las respiraciones. El frío hace la regulación más intens
 
 ---
 
-## PASO 5 — ABRIR LAS MANOS (12 min)
-**17:20 – 17:32**
+## PASO 5 — LO QUE SE DERRITE SOLO (12 min)
+**17:19 – 17:31**
 *(Influir sobre N3 — acto irreversible)*
 
-*"Este es el momento central."*
+*"Este es el momento central. Pero no van a hacer nada."*
 
-*"Respiren hondo. Los hielos están en los puños — ya más pequeños, ya derritiéndose."*
+*"Solo miren. Miren cómo los hielos se derriten. Sin que los toquen. Sin que los empujen. Sin que los vigilen. El hielo se convierte en agua solo."*
 
-*"Cuando estén listas — abran las manos."*
+**Silencio — 3 a 5 minutos.** Dejar que miren los hielos derretirse. Este silencio sostenido ES el mismatch: "solté el control y las cosas siguen su curso sin mí."
 
-**El facilitador abre las suyas primero.** Los hielos caen al tazón. El sonido del hielo contra el plato.
+Cuando la mayoría del hielo se haya derretido o sea visiblemente más pequeño:
 
-*"Abran. Dejen caer todo."*
+*"Miren el tazón. Lo que era sólido, rígido y doloroso ahora es agua. Cambió de forma sin que ustedes hicieran nada. No necesitó su vigilancia. No necesitó su control. Se transformó solo."*
 
-*"MIENTRAS abren las manos y los hielos caen, digan en voz alta:"*
+*"El mundo sigue aquí. Ustedes siguen aquí. La catástrofe que el cuerpo predijo NO LLEGÓ."*
 
-> **"Suelto esto. Estoy aquí. Nada se cayó."**
+*"Digan en voz alta:"*
 
-*"Miren sus manos — abiertas, mojadas, frías. Miren el tazón — los hielos cayeron. El mundo sigue aquí. Ustedes siguen aquí. La catástrofe que el cuerpo predijo NO LLEGÓ."*
+> **"Solté. No vigilé. Y nada se cayó."**
 
-**PAUSA — 60 segundos. Silencio completo. Manos abiertas sobre la mesa. No hacer nada.**
+**PAUSA — 45 segundos. Silencio completo. Manos abiertas sobre la mesa.**
 
-Observar: suspiro profundo, calor que sube por los brazos, temblor, llanto de alivio. El cuerpo está procesando que soltar fue seguro.
+Observar: suspiro profundo, calor que sube por los brazos, llanto de alivio. El cuerpo está procesando que soltar fue seguro.
 
-*"Ahora: froten las manos entre sí. Fuerte. 15 segundos. Sientan cómo el calor regresa. Las manos que estaban frías y cerradas ahora están calientes y abiertas. Ustedes generaron ese calor."*
-
-*"Quédense mirando los hielos derretirse en el tazón. No hay prisa. El hielo se convierte en agua solo. No lo pueden detener. No lo pueden recongelar. Lo que era sólido, rígido y doloroso ahora es líquido."*
-
-Esperar hasta que la mayoría del hielo se haya derretido o esté visiblemente más pequeño (3-5 minutos).
-
-*"Cuando el hielo sea agua — tomen el tazón. Llévenlo a la maceta. Viertan el agua sobre la tierra."*
+*"Tomen el tazón con el agua derretida. Llévenlo a la maceta. Viertan el agua sobre la tierra."*
 
 *"Mientras vierten, digan:"*
 
