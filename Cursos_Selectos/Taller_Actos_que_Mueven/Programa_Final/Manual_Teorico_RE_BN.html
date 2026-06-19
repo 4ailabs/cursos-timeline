@@ -289,74 +289,494 @@ const P01=()=>(
 );
 
 // ═══════════════════════════════════════════════════════════
-// MANUAL TEORICO
+// MANUAL
 // ═══════════════════════════════════════════════════════════
-const P1=()=>(
-  <Pg><Ct>
-    <Lbl color={C.siena}>Manual · Parte 1</Lbl>
-    <div style={marginTop:10,fontFamily:SERIF,fontSize:16,fontWeight:300,color:C.ink,lineHeight:1.2}>
-      I — EL PROBLEMA CLÍNICO
-    </div>
-    <Rule my={8}/>
-    <div style={fontFamily:SERIF,fontSize:10,color:C.grey,lineHeight:1.55,marginTop:10,flex:1,overflow:'auto'}>
-      ---  ## Capítulo 1 — ¿Por qué el entendimiento no alcanza?  La mayoría de las personas que llegan a un espacio terapéutico no llegan porque no saben qué les pasa. Llegan porque lo saben — y aun así no cambia. Saben qué patrón repiten. Saben de dónde viene. Pueden explicarlo con precisión. Y al día siguiente lo vuelven a hacer.  Eso no es falta de voluntad ni de inteligencia. Es la arquitectura del sistema nervioso.  El cerebro opera con dos sistemas que no se comunican del mismo modo. Uno proces...
-    </div>
-    <div style={flex:1}/>
-  </Ct><PgN n={1}/></Pg>
-);
-const P2=()=>(
-  <Pg><Ct>
-    <Lbl color={C.siena}>Manual · Parte 2</Lbl>
-    <div style={marginTop:10,fontFamily:SERIF,fontSize:16,fontWeight:300,color:C.ink,lineHeight:1.2}>
-      II — FUNDAMENTOS DE RITUAL EXPERIENCING
-    </div>
-    <Rule my={8}/>
-    <div style={fontFamily:SERIF,fontSize:10,color:C.grey,lineHeight:1.55,marginTop:10,flex:1,overflow:'auto'}>
-      ---  ## Capítulo 4 — Qué es Ritual Experiencing  Ritual Experiencing (RE) es un sistema de intervención somato-simbólica que utiliza actos físicos irreversibles con objetos cotidianos para producir cambio real y duradero. No es un sistema de relajación ni de manejo del estrés. Es un sistema de transformación — diseñado para mover lo que no se ha movido con terapia verbal, con comprensión intelectual, ni con voluntad.  ### Qué es y qué no es  **QUÉ ES:** - Un sistema de intervención clínica basad...
-    </div>
-    <div style={flex:1}/>
-  </Ct><PgN n={2}/></Pg>
-);
-const P3=()=>(
-  <Pg><Ct>
-    <Lbl color={C.siena}>Manual · Parte 3</Lbl>
-    <div style={marginTop:10,fontFamily:SERIF,fontSize:16,fontWeight:300,color:C.ink,lineHeight:1.2}>
-      III — LAS BASES CIENTÍFICAS
-    </div>
-    <Rule my={8}/>
-    <div style={fontFamily:SERIF,fontSize:10,color:C.grey,lineHeight:1.55,marginTop:10,flex:1,overflow:'auto'}>
-      ---  ## Capítulo 8 — Michael Levin: bioelectricidad celular e inteligencia distribuida  Michael Levin ha demostrado que la inteligencia del cuerpo no reside solo en el cerebro — cada célula, cada tejido, cada órgano tiene capacidad de procesar información y ajustar su comportamiento. Los patrones bioeléctricos que organizan el desarrollo y la regeneración celular constituyen una red de procesamiento distribuida que opera independientemente del sistema nervioso central.  ### La inteligencia que n...
-    </div>
-    <div style={flex:1}/>
-  </Ct><PgN n={3}/></Pg>
-);
-const P4=()=>(
-  <Pg><Ct>
-    <Lbl color={C.siena}>Manual · Parte 4</Lbl>
-    <div style={marginTop:10,fontFamily:SERIF,fontSize:16,fontWeight:300,color:C.ink,lineHeight:1.2}>
-      IV — LA SECUENCIA RE: PROTOCOLO CLÍNICO
-    </div>
-    <Rule my={8}/>
-    <div style={fontFamily:SERIF,fontSize:10,color:C.grey,lineHeight:1.55,marginTop:10,flex:1,overflow:'auto'}>
-      ---  ## Capítulo 12 — Visión general de la secuencia TAME  La secuencia de 5 pasos fue diseñada por el Dr. Miguel Ojeda Rios como protocolo clínico reproducible. No es arbitraria — cada paso tiene una función específica dentro de la cadena de cambio. Sin esta secuencia, el acto se queda en el nivel consciente (N4) y no alcanza la memoria somática (N3) donde vive el patrón.  ``` PASO 1 — Activar el patrón (Inducir el cambio) PASO 2 — Regular el sistema nervioso (Generar regulación) PASO 3 — Confi...
-    </div>
-    <div style={flex:1}/>
-  </Ct><PgN n={4}/></Pg>
-);
-const P5=()=>(
-  <Pg><Ct>
-    <Lbl color={C.siena}>Manual · Parte 5</Lbl>
-    <div style={marginTop:10,fontFamily:SERIF,fontSize:16,fontWeight:300,color:C.ink,lineHeight:1.2}>
-      V — LOS NIVELES DE CAMBIO
-    </div>
-    <Rule my={8}/>
-    <div style={fontFamily:SERIF,fontSize:10,color:C.grey,lineHeight:1.55,marginTop:10,flex:1,overflow:'auto'}>
-      Los cambios que produce Ritual Experiencing no ocurren solo en el sistema nervioso. Ocurren en múltiples niveles simultáneamente:  ---  ## Capítulo 18 — Nivel neurológico  La memoria somática que sostenía el patrón se actualiza. El sistema nervioso deja de predecir la catástrofe que aprendió a esperar. No se trata de \"olvidar\" la experiencia original — se trata de que la predicción automática que generaba deja de ejecutarse. El patrón no se suprime — se reescribe en su origen mediante reconsol...
-    </div>
-    <div style={flex:1}/>
-  </Ct><PgN n={5}/></Pg>
+const P03=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Manual del Participante · I</Lbl>
+      <div style={{marginTop:7,fontFamily:SERIF,fontSize:23,fontWeight:300,color:C.ink,lineHeight:1.05,flexShrink:0}}>Qué es Ritual<br/>Experiencing</div>
+      <Rule my={10}/>
+      <div style={{fontFamily:SERIF,fontSize:13,color:C.ink,lineHeight:1.65,flexShrink:0}}>
+        Ritual Experiencing (RE) es un sistema de intervención somática que utiliza actos físicos irreversibles con objetos cotidianos para producir cambio real en el sistema nervioso. No es relajación ni manejo del estrés — es transformación.
+      </div>
+      <div style={{marginTop:10,borderLeft:`2.5px solid ${C.siena}45`,paddingLeft:9,flexShrink:0}}>
+        <div style={{fontFamily:SERIF,fontSize:14,fontWeight:300,fontStyle:'italic',color:C.ink,lineHeight:1.55}}>
+          "El cuerpo no distingue entre una experiencia real y una experiencia ritual con suficiente carga sensorial."
+        </div>
+      </div>
+      <div style={{marginTop:11,fontFamily:SERIF,fontSize:13,color:C.ink,lineHeight:1.65,flexShrink:0}}>
+        Un acto bien diseñado — con tacto, temperatura, peso, sonido — produce cambio real. El ritual <em>es</em> la intervención, no una metáfora de una.
+      </div>
+      <Rule my={11}/>
+      <Lbl>Por qué el entendimiento no alcanza</Lbl>
+      <div style={{marginTop:7,fontFamily:SERIF,fontSize:13,color:C.ink,lineHeight:1.65,flexShrink:0}}>
+        La mayoría llega porque ya sabe qué le pasa — y aun así no cambia. Eso no es falta de voluntad. Es la arquitectura del sistema nervioso.
+      </div>
+      <div style={{marginTop:8,fontFamily:SERIF,fontSize:13,color:C.ink,lineHeight:1.65,flexShrink:0}}>
+        El cerebro opera con dos sistemas: uno procesa información. El otro procesa <em>experiencia</em> — registra lo que el cuerpo vivió y genera respuestas automáticas. El segundo no se actualiza con comprensión intelectual. Se actualiza con experiencia corporal.
+      </div>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={2}/>
+  </Pg>
 );
 
+const P04=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Manual del Participante · II</Lbl>
+      <div style={{marginTop:7,fontFamily:SERIF,fontSize:23,fontWeight:300,color:C.ink,lineHeight:1.05,flexShrink:0}}>Cómo se forman<br/>los patrones</div>
+      <Rule my={10}/>
+      <div style={{fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.52,flexShrink:0}}>
+        Los patrones no se formaron con ideas: se formaron con experiencias que el cuerpo registró como reglas de supervivencia. No viven solo en la narrativa consciente; viven en la tensión, la contracción y el reflejo automático.
+      </div>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:12.2,color:C.grey,lineHeight:1.5,fontStyle:'italic',flexShrink:0}}>
+        El cuerpo aprende reglas IF/THEN: si me muestro → me rechazan. Si suelto el control → todo se derrumba. Si cobro lo que valgo → pierdo el vínculo.
+      </div>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.52,flexShrink:0}}>
+        Estas reglas corren solas, sin que la persona las decida. Un acto ritual crea una experiencia nueva que contradice el THEN esperado: el cuerpo hace algo distinto y la catástrofe no llega.
+      </div>
+      <Rule my={8}/>
+      <Lbl>Qué es un acto ritual</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.52,flexShrink:0}}>
+        Una secuencia física diseñada para producir en el sistema nervioso una experiencia diferente a la que el patrón predice:
+      </div>
+      {[['Acción física','el cuerpo hace algo, no solo piensa'],['Carga simbólica','el objeto representa el patrón con especificidad sensorial'],['Secuencia','los pasos en orden garantizan que el acto llegue al lugar correcto'],['Irreversibilidad','lo hecho no se puede des-hacer']].map(([k,v])=>(
+        <div key={k} style={{display:'flex',gap:7,marginTop:4,flexShrink:0}}>
+          <div style={{width:3.5,height:3.5,borderRadius:'50%',background:C.siena,marginTop:5.5,flexShrink:0}}/>
+          <div style={{fontFamily:SERIF,fontSize:11.2,lineHeight:1.42,color:C.ink}}><strong style={{fontWeight:500,color:C.siena}}>{k} — </strong>{v}</div>
+        </div>
+      ))}
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={3}/>
+  </Pg>
+);
+
+const P05=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Manual del Participante · III</Lbl>
+      <div style={{marginTop:7,fontFamily:SERIF,fontSize:23,fontWeight:300,color:C.ink,lineHeight:1.05,flexShrink:0}}>La Secuencia de<br/>Ritual Experiencing</div>
+      <Rule my={10}/>
+      <div style={{fontFamily:SERIF,fontSize:11.5,color:C.grey,lineHeight:1.6,fontStyle:'italic',flexShrink:0}}>
+        Cada acto del día sigue estos cinco pasos en orden. La secuencia es la columna vertebral — sin ella, el acto se queda en el nivel consciente y no alcanza donde vive el patrón.
+      </div>
+      <div style={{marginTop:12,display:'flex',flexDirection:'column',gap:10}}>
+        {[
+          ['01','Activar el Patrón','El cuerpo hace intencionalmente lo que normalmente hace en automático. Nombrarlo en voz alta lo interrumpe.'],
+          ['02','Regular el Sistema Nervioso','Respiración 4-4-6 activa el nervio vago. Sin regulación, el acto produce defensa, no cambio.'],
+          ['03','Confirmar Recursos','Pies en el suelo. Declarar lo que se tiene. El cuerpo necesita reserva para procesar lo que viene.'],
+          ['04','Abrir el Acceso','Una pregunta dirigida al cuerpo, no a la mente. Lo que emerge viene de la memoria somática.'],
+          ['05','El Acto Irreversible','Hacer lo que el cuerpo creía imposible. La catástrofe esperada no llega. La memoria se reescribe en la raíz.'],
+        ].map(([n,name,desc])=>(
+          <div key={n} style={{display:'flex',gap:10,alignItems:'flex-start',flexShrink:0}}>
+            <div style={{fontFamily:SERIF,fontSize:20,fontWeight:300,color:`${C.sienaL}70`,lineHeight:1,width:22,flexShrink:0,paddingTop:2}}>{n}</div>
+            <div style={{borderLeft:`1.5px solid ${C.arena}`,paddingLeft:9,flex:1}}>
+              <div style={{fontFamily:SERIF,fontSize:13,fontWeight:500,color:C.siena,lineHeight:1.2}}>{name}</div>
+              <div style={{fontFamily:SERIF,fontSize:11.5,color:C.grey,lineHeight:1.6,marginTop:2}}>{desc}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{flex:1}}/>
+      <Rule my={8}/>
+      <Lbl>Cómo leer cada acto</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:10.5,color:C.grey,lineHeight:1.55,flexShrink:0}}>
+        Lee cada paso completo antes de hacerlo. Respeta los silencios: son parte del ritual, no pausas vacías. Si el cuerpo se abruma, detente, mira alrededor, siente los pies, respira 4-4-6 y pide apoyo.
+      </div>
+    </Ct>
+    <PgN n={4}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 01 — LA FIRMA · CONFIANZA
+// ═══════════════════════════════════════════════════════════
+const A01a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="01" title="La Firma que no Pedía Permiso" tagline="Para cuando el cuerpo aprendió a ocupar menos espacio del que le corresponde."/>
+      <Step n="01" name="Lo que el cuerpo aprendió"
+        inst="De pie. Adopta la postura de hacerse pequeño: hombros al frente, pecho comprimido, rodillas ligeramente dobladas. Sostén 60 segundos — di la primera frase en voz alta mientras todavía estás encogido. Luego levántate despacio: desde los pies, las rodillas se enderezan, la columna sube vértebra por vértebra, los hombros bajan y se abren. El proceso toma al menos 30 segundos. Di la segunda frase cuando estés completamente erguido."
+        phrases={['Así me hice para que no me vieran.','Esto es lo que me pasa cuando ocupo espacio: ___.']}/>
+      <Step n="02" name="Regulación"
+        inst="De pie, erguido. Mano en el pecho. Inhala por la nariz 4 — aguanta 4 — exhala por la boca 6. Tres ciclos."
+        phrases={['Puedo ocupar este espacio. El cuerpo lo sabe hacer.']}/>
+      <Step n="03" name="Recursos"
+        inst="Pies en el suelo, columna erguida. Recuerda un momento en que ocupaste espacio sin pedir permiso a nadie. Siente dónde lo registra el cuerpo."
+        phrases={['Ya sé cómo se siente ocupar el espacio. Lo hice.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={5}/>
+  </Pg>
+);
+const A01b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="01" cont/>
+      <Step n="04" name="Lo que el cuerpo protege"
+        inst="Ojos cerrados. Mano en el pecho. Pregúntale al cuerpo — no a la mente — durante 60 segundos. Luego la segunda pregunta durante 30 segundos."
+        phrases={['¿Qué espera mi cuerpo que pase si me ven demasiado?','¿Cuándo aprendí que era más seguro ser pequeño?','Lo veo. Lo aprendí cuando lo necesitaba. Ya no lo necesito igual.']}/>
+      <Step n="05" name="La firma"
+        inst="De pie, completamente erguido. Voltea la hoja. Escribe tu nombre en el centro — grande, con toda la extensión del brazo, que se vea desde lejos. No en una esquina. Di la frase en voz alta mientras escribes. Luego colorea el pulgar con la tinta y presiónalo firme sobre la hoja, cerca de la firma. Escucha el sonido de la palma contra el papel. Levanta el pulgar. Mira tu hoja durante 60 segundos en silencio."
+        phrases={['Este espacio es mío. Lo tomo. No pido permiso.']}/>
+      <Step n="06" name="Cierre"
+        inst="Sostén la hoja frente a ti con las dos manos — nombre y huella mirando hacia afuera. Dóblala y guárdala. El nombre grande no desaparece porque la doblen."
+        phrases={['Esta es mi firma. Este es mi espacio. Lo tomé.']}/>
+      <Rule my={9} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="Hoja A3 o dos A4 pegadas"/>
+      <MatItem text="Marcador negro grueso"/>
+      <MatItem text="Cojín de tinta para huella (o marcador para colorear el pulgar)"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={6}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 02 — LA GARGANTA · EMOCIONES
+// ═══════════════════════════════════════════════════════════
+const A02a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="02" title="Lo que se Quedó en la Garganta" tagline="Para cuando lo que no se dijo vive en el cuerpo como presión."/>
+      <Step n="01" name="Lo que guardaste"
+        inst="Antes de escribir, toma el sobre vacío con ambas manos y siente su peso 30 segundos. Escribe — uno por papelito — todo lo que no dijiste: una frase, un nombre, una palabra. Dóblalos y mételos en el sobre. Sella el sobre. Agítalo suavemente — escucha el sonido de los papeles adentro. Sostenlo contra el cuello, donde el sonido se forma. Veinte segundos."
+        phrases={['Esto es lo que guardé en la garganta: ___.']}/>
+      <Step n="02" name="Regulación"
+        inst="Sobre en una mano, mano libre en el pecho. Inhala por la nariz 4 — aguanta 4 — exhala por la boca 6. Tres ciclos. Deja que el aire pase despacio por la garganta."
+        phrases={['Mi voz existe. Lo que guardé puede salir.']}/>
+      <Step n="03" name="Recursos"
+        inst="Mano en la garganta. Recuerda un momento en que la voz salió — aunque haya dado miedo. Quizás algo pequeño: decir lo que querías, poner un límite, nombrar algo que sentías."
+        phrases={['Mi voz ha salido antes. Puede volver a salir.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={7}/>
+  </Pg>
+);
+const A02b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="02" cont/>
+      <Step n="04" name="Lo que más pesa"
+        inst="Ojos cerrados. Sobre contra el pecho. Pregúntale a la garganta — no a la mente — durante 60 segundos. Luego la segunda pregunta, 30 segundos. Antes de abrir el sobre, si aparece algo más, escríbelo en otro papelito y mételo dentro."
+        phrases={['¿Qué es lo que más necesitaba ser dicho y nunca salió?','¿Qué pasaría si lo dijera ahora — aunque no esté quien lo tiene que escuchar?','Lo veo. Ha estado aquí mucho tiempo.']}/>
+      <Step n="05" name="La apertura"
+        inst="Abre el sobre. Saca el primer papelito, desdobla y léelo en voz alta — con volumen, no susurrado, que el sonido viaje. Di la frase con cada papel antes de rasgarlo. Rasga uno por uno hasta que el sobre quede vacío. Al terminar, mira el sobre y los pedazos durante 60 segundos en silencio."
+        phrases={['Esto nunca se dijo. Hoy lo digo yo.']}/>
+      <Step n="06" name="Cierre"
+        inst="Toma el sobre vacío con ambas manos. Siéntelo — pesa diferente ahora. El sobre se lleva a casa abierto, con los pedazos adentro. Ya no sella nada."
+        phrases={['Lo que guardé en silencio, hoy lo dije. Y sigo aquí.','La voz salió. El mundo siguió girando.','Lo que estaba adentro, salió. Ya no lo cargo en la garganta.']}/>
+      <Rule my={9} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="Sobre — 1 por persona"/>
+      <MatItem text="Papelitos 3×5 cm — 5 a 6 por persona"/>
+      <MatItem text="Bolígrafo"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={8}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 03 — LA MOCHILA · SOLTAR
+// ═══════════════════════════════════════════════════════════
+const A03a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="03" title="La Bolsa y la Piedra" tagline="Para cuando cargas más de lo que elegiste cargar."/>
+      <Step n="01" name="Sentir el peso"
+        inst="Toma la bolsa con ambos brazos. Abrázala contra el pecho — que el peso quede pegado al cuerpo. Cierra los ojos. Quédate quieto, de pie, con el peso encima. ¿Dónde lo sientes en el cuerpo? ¿Los hombros, el pecho, la respiración que se acorta? Ubica la zona exacta."
+        phrases={['Lo siento en ___. Así se siente en mi cuerpo cargar lo que cargo.']}/>
+      <Step n="02" name="Respirar con el peso"
+        inst="Bolsa abrazada — sin soltarla. Inhala por la nariz 4 — siente el pecho empujar contra el peso al inhalar. Aguanta 4. Exhala por la boca 6. Cuatro ciclos."
+        phrases={['Mi cuerpo respira aunque cargue. Estoy aquí.']}/>
+      <Step n="03" name="Lo que se sostiene solo"
+        inst="Bolsa todavía en brazos. Pies en el suelo. Piensa en algo de tu vida que se sostiene sin que lo cargues — una persona, una relación, algo que construiste. Algo que sigue siendo real aunque no estés encima de ello. ¿Dónde lo sientes en el cuerpo?"
+        phrases={['Hay cosas que se sostienen solas. No todo depende de que yo cargue.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={9}/>
+  </Pg>
+);
+const A03b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="03" cont/>
+      <Step n="04" name="Lo que la zona necesita"
+        inst="Vuelve a la zona donde sentiste el peso en el Paso 1. Pon la atención ahí — con el peso todavía encima. Pregúntale directo, como si la zona pudiera responder, durante 60 segundos. Deja que llegue algo — una imagen, una palabra, un impulso."
+        phrases={['¿Qué necesitas para sentirte mejor?','Me pides ___. Lo escucho.']}/>
+      <Step n="05" name="Soltar"
+        inst="De pie. Abraza la bolsa por última vez. A la cuenta de tres: uno — inhalas. Dos — sostienes. Tres — suelta la bolsa al suelo, sobre la toalla. El peso completo. Que caiga, que se escuche. Quédate de pie, manos vacías, bolsa en el suelo, 60 segundos en silencio. Si no notas nada, vuelve a respirar 4-4-6 y repite el soltar una vez."
+        phrases={['Suelto. Y sigo de pie.']}/>
+      <Step n="06" name="La piedra"
+        inst="El facilitador te entrega una piedra pequeña — poniéndola en tu palma abierta. Cierra la mano sobre ella. Siente su peso exacto, la temperatura, la superficie. Eso es lo que te toca cargar hoy. La piedra se lleva a casa. La bolsa se queda aquí con todo su peso."
+        phrases={['Esto es lo que cargo hoy. Solo esto. El peso se queda aquí.']}/>
+      <Rule my={9} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="Bolsa de tela cargada con libros"/>
+      <MatItem text="Piedra pequeña — el facilitador la entrega al final"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={10}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 04 — EL PESO EXACTO · DEUDAS
+// ═══════════════════════════════════════════════════════════
+const A04a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="04" title="El Número Limpio" tagline="Para cuando la deuda y la historia de lo que dice sobre ti viajan pegadas — y el cuerpo no puede ver una sin que llegue la otra."/>
+      <Step n="01" name="El peso que no es solo dinero"
+        inst="Saca las monedas que traes — del bolsillo, de la cartera, donde sea. Cierra el puño sobre ellas. Siente el metal, el peso, el sonido si las aprietas. Lleva la atención al cuerpo — pecho, estómago, mandíbula. ¿Qué hace el cuerpo cuando aprieta el dinero y piensa en la deuda? Silencio 40 segundos. Luego aprieta las monedas 20 segundos más antes de decir la frase."
+        phrases={['Esto es lo que hago: evito ver el número porque me confirma que ___.']}/>
+      <Step n="02" name="Regulación"
+        inst="Puño cerrado sobre las monedas. Mano libre en el pecho. Inhala 4 — aguanta 4 — exhala 6. Cuatro ciclos."
+        phrases={['Puedo respirar aunque cargue esto. Puedo mirarlo.']}/>
+      <Step n="03" name="Lo que ya resolviste"
+        inst="Pies en el suelo. Monedas todavía en el puño. Recuerda algo concreto que hayas sacado adelante aunque parecía imposible — no tiene que ver con la deuda. Cualquier cosa difícil que hayas resuelto antes."
+        phrases={['He resuelto cosas difíciles antes. Tengo lo que necesito para ver esto.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={11}/>
+  </Pg>
+);
+const A04b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="04" cont/>
+      <Step n="04" name="Separar la historia del número"
+        inst="Abre el puño. Deposita las monedas sobre la mesa — escucha el sonido del metal. Toma las dos hojas. En la hoja HISTORIA escribe todo lo que el cuerpo cuenta sobre lo que la deuda dice de ti. En la hoja NÚMERO escribe solo las cifras: tus deudas una por línea, con el número exacto. No necesitas compartirlas con nadie. Suma. Escribe el total. Mira las dos hojas juntas."
+        phrases={['Esto es la historia. Esto es el número. No son lo mismo.']}/>
+      <Step n="05" name="Romper la historia. Ver el número."
+        inst="Toma la hoja HISTORIA con las dos manos. Rásguala — el sonido es parte del acto. Los pedazos van al centro. Toma la hoja NÚMERO — solo el número, sin la historia encima. Mira el total 60 segundos sin apartar los ojos. Después de decir la frase, deja las manos sobre la mesa otros 60 segundos. Si te activas demasiado, vuelve al Paso 2."
+        phrases={['Esta historia no es el número. La rompo.','Este es el número. Solo el número. Y sigo aquí.']}/>
+      <Step n="06" name="El primer paso"
+        inst="Da vuelta la hoja NÚMERO. En el reverso escribe UNA acción concreta que puedas hacer esta semana en dirección a la deuda — una sola cosa que quepa en los próximos siete días. Dobla la hoja y guárdala en el bolsillo. Toma las monedas y ponlas en el mismo bolsillo — el dinero y el número juntos, sin la historia encima."
+        phrases={['Tengo el número. Tengo un paso. Es suficiente para empezar.']}/>
+      <Rule my={9} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="Monedas — las que traes en el bolsillo o la cartera"/>
+      <MatItem text="2 hojas de papel (HISTORIA y NÚMERO) · Bolígrafo"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={12}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 05 — LO QUE ME ENSEÑARON · DINERO
+// ═══════════════════════════════════════════════════════════
+const A05a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="05" title="Lo que me Enseñaron que Vale" tagline="Para cuando tu cuerpo y el dinero tienen una relación tensa que no elegiste."/>
+      <Step n="01" name="Lo que aprendiste"
+        inst="Toma la piedra que recibiste en el Acto 3 con la mano derecha — puño cerrado. Siente la piedra: dura, fría, pesada. La llevas en el puño durante todo el acto. Sostén el billete con la mano izquierda. Mira el billete. ¿Qué hace el cuerpo? ¿Tensión, incomodidad, alivio? ¿Dónde lo sientes — garganta, pecho, estómago? Silencio 30 segundos."
+        phrases={['Esto es lo que aprendí que el dinero significa: ___.']}/>
+      <Step n="02" name="Regulación"
+        inst="Billete en la mano izquierda. Piedra en el puño derecho. Mano libre en el pecho. Inhala 4 — aguanta 4 — exhala 6. Tres ciclos. Las dos manos activas durante toda la respiración."
+        phrases={['Mi cuerpo puede sostener una relación nueva con esto.']}/>
+      <Step n="03" name="Lo que ya tienes"
+        inst="Pies en el suelo. Piedra todavía en el puño. Piensa en algo concreto de valor que das o haces — un servicio, una habilidad, tiempo, cuidado. ¿Dónde sientes ese valor en el cuerpo?"
+        phrases={['Lo que doy tiene valor real. Eso no cambia con lo que aprendí.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={13}/>
+  </Pg>
+);
+const A05b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="05" cont/>
+      <Step n="04" name="Lo que el cuerpo protege"
+        inst="Ojos cerrados. Piedra en el puño. Pregúntale al cuerpo durante 60 segundos. Luego la segunda pregunta, 30 segundos."
+        phrases={['¿Qué aprendió mi cuerpo que el dinero pone en peligro?','¿Qué pasaría si recibiera lo que vale lo que hago?','Eso es lo que mi cuerpo protege. Lo veo.']}/>
+      <Step n="05" name="Depositar. Decir el número."
+        inst="Primera hoja: lo que aprendiste que el dinero significa. Segunda hoja: UN número — lo que cobras, lo que vale tu servicio o lo que mereces recibir. Deposita la piedra sobre la mesa. Dobla la primera hoja y guárdala en el sobre: ahí se queda, no en tus manos. Toma la segunda hoja. De pie, lee el número en voz alta, sin disculparte. Quédate 60 segundos: el número salió y el mundo sigue."
+        phrases={['La dejo aquí. Ya no la cargo en la mano.','Esto fue lo que aprendí. Ya no me dirige.','Esto es lo que vale lo que hago. Lo digo sin pedir permiso.']}/>
+      <Step n="06" name="Lo nuevo"
+        inst="Dobla la hoja con el número y métela en el bolsillo. El sobre con la historia se queda en la mesa del taller — ya no viaja contigo. Toma el billete una vez más. Guárdalo en la cartera. La piedra también se queda en el taller."
+        phrases={['Recibir está bien. Cobrar está bien. Lo que doy tiene valor y puedo decirlo.']}/>
+      <Rule my={9} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="Piedra del Acto 3 — la que recibiste esta mañana"/>
+      <MatItem text="Billete de cualquier denominación (traes uno en la cartera)"/>
+      <MatItem text="2 hojas de papel · Sobre · Bolígrafo"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={14}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 06 — LO HEREDADO · TRANSGENERACIONAL
+// ═══════════════════════════════════════════════════════════
+const A06a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="06" title="Lo que Llegó sin que lo Pidiera" tagline="Para cuando cargas patrones de tu familia que nunca elegiste."/>
+      <Step n="01" name="Lo que llegó"
+        inst="Toma la hoja FAMILIA — la delgada, la que puede disolverse en agua. Escribe todo lo que llegó sin pedirlo: mandatos, miedos, creencias, formas de relacionarse, patrones que reconoces de alguien de tu familia. Cuando termines, mira lo que escribiste. Pide ayuda para pegarla en tu espalda con masking tape — que quede fija. Veinte segundos con el papel en la espalda, sin poder verlo."
+        phrases={['Esto es lo que heredé que ya no me sirve: ___.']}/>
+      <Step n="02" name="Regulación"
+        inst="Hoja en la espalda. Mano en el pecho. Siente el papel detrás y el calor de la palma al frente. Inhala 4 — aguanta 4 — exhala 6. Tres ciclos."
+        phrases={['Puedo honrar de dónde vengo y elegir qué me llevo. Las dos cosas son posibles.']}/>
+      <Step n="03" name="Lo que ya tienes"
+        inst="Pies en el suelo. Hoja todavía en la espalda. Piensa en algo que es tuyo — que construiste, que elegiste, que no vino de la familia sino de tu propia experiencia. ¿Dónde lo sientes en el cuerpo?"
+        phrases={['Soy más que lo que heredé. Puedo mirarlo sin que me defina.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={15}/>
+  </Pg>
+);
+const A06b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="06" cont/>
+      <Step n="04" name="El patrón en el cuerpo"
+        inst="Ojos cerrados. Mano en el pecho. Hoja todavía en la espalda. Pregúntale al cuerpo — no a la mente — 60 segundos. Luego la segunda pregunta, 30 segundos. Abre los ojos. En la hoja YO escribe qué de lo heredado sí quieres conservar: recursos, valores, fuerzas o formas de amar."
+        phrases={['¿Qué patrón de mi familia vive en mi cuerpo que no elegí pero sigo repitiendo?','¿Dónde lo siento en el cuerpo cuando ese patrón aparece?','Esto llegó antes de que yo pudiera elegir. No es culpa — es historia.']}/>
+      <Step n="05" name="Despegar y disolver"
+        inst="Busca los bordes del papel en tu espalda. Despégalo lentamente — escucha la cinta y el papel separarse. Míralo en tus manos: eso estaba en tu espalda. Sumerge el tissue en el tazón y desházlo con las manos, 60 segundos en silencio, hasta que se disuelva. Nota el agua turbia lejos de ti y la hoja YO cerca, intacta. Tira el agua. Si se vuelve intenso, respira y despega solo un pedazo de cinta del antebrazo."
+        phrases={['Esto llegó antes que yo. Lo reconozco. Ya no lo cargo en el cuerpo.']}/>
+      <Step n="06" name="Lo que es tuyo"
+        inst="Toma la hoja YO — intacta, entera. Léela en voz alta. Dóblala y guárdala cerca del cuerpo — en el bolsillo o la bolsa."
+        phrases={['Esto sí es mío. Lo elegí. Lo cargo porque quiero.','Vengo de ahí. Y también soy esto.']}/>
+      <Rule my={9} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="Papel tissue — hoja FAMILIA · Hoja normal — hoja YO"/>
+      <MatItem text="Masking tape · Tazón con agua · Bolígrafo"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={16}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 07 — EL PLATO ROTO · INTEGRACIÓN
+// ═══════════════════════════════════════════════════════════
+const A07a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="07" title="El Plato Roto y la Reverencia" tagline="Para cuando lo que se fragmentó puede volverse más valioso que lo que estaba entero."/>
+      <Step n="01" name="Romper"
+        inst="Usa solo cerámica o barro, nunca vidrio ni plástico. Sostén el plato con ambas manos. Siente el plato entero — así estaba el sistema antes de lo que pasó. Ponlo sobre la toalla. Rómpelo contra la toalla. Puede dejarse caer o golpearse suavemente. Lo que importa es que se rompa. Escucha el sonido y guarda 20 segundos de silencio."
+        phrases={['Esto es lo que pasó en mi sistema: se fragmentó para ___.']}/>
+      <Step n="02" name="Recoger y respirar"
+        inst="Recoge cada pedazo con cuidado — guantes disponibles si los necesitas. Colócalos en fila frente a ti. Manos en el pecho. Inhala 4 — aguanta 4 — exhala 6. Tres ciclos. Los pedazos frente a ti durante toda la respiración."
+        phrases={['Estoy aquí. Tengo todo lo que necesito para seguir.']}/>
+      <Step n="03" name="La reverencia"
+        inst="Arrodíllate frente a los pedazos. Si no puedes arrodillarte, inclínate profundamente. Mira cada pedazo — cada uno es una parte que se separó para proteger algo: una que aprendió a callar para que hubiera paz, una que aprendió a cargar para que otros no cargaran, una que aprendió a desaparecer para que el sistema sobreviviera. Esas partes hicieron lo que tenían que hacer. Y funcionó — estás aquí. Mantén 30 segundos."
+        phrases={['Cada parte de mí que se separó tenía una razón. Se separaron para que yo sobreviviera. Hoy las reconozco a todas.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={17}/>
+  </Pg>
+);
+const A07b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="07" cont/>
+      <Step n="04" name="Reparar"
+        inst="Toma el pegamento. Pega los pedazos uno por uno — con calma, sin apuro. Con cada pedazo que unas, di en voz baja la frase de abajo. El plato no va a quedar como nuevo y ese es el punto: las grietas quedarán visibles con el pegamento dorado. Si falta un pedazo, deja el espacio vacío — no todos los fragmentos se recuperan. 10 a 12 minutos. Si el pegamento no seca de inmediato, basta con acomodar las piezas y marcar las grietas."
+        phrases={['Esto se reconecta.']}/>
+      <Step n="05" name="Ponerse de pie"
+        inst="Cuando el plato esté reparado, ponte de pie. Sostenlo a la altura del pecho con las dos manos. Veinte segundos de pie con el plato."
+        phrases={['Estoy entero. Las grietas son mías y son hermosas. Lo que se rompió se reconectó — no como antes, sino mejor.']}/>
+      <Step n="06" name="Llevarlo a casa"
+        inst="El plato se lleva a casa — no al cajón, a un lugar visible. Las grietas doradas a la vista. Cada vez que lo veas, el sistema recibe la señal: lo fragmentado puede ser una sola pieza."
+        phrases={[]}/>
+      <Rule my={9} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="Plato de cerámica o barro — 1 por persona"/>
+      <MatItem text="Pegamento dorado · Toalla para romper · Guantes opcionales"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={18}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// GLOSARIO Y CONTRAPORTADA
+// ═══════════════════════════════════════════════════════════
+const PGlosario=({pgN})=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Glosario</Lbl>
+      <div style={{marginTop:7,fontFamily:SERIF,fontSize:23,fontWeight:300,color:C.ink,lineHeight:1.05,flexShrink:0}}>Términos del Método</div>
+      <Rule my={9}/>
+      <div style={{display:'flex',flexDirection:'column',gap:6,overflow:'hidden',flex:1}}>
+        {[
+          ['N3 — Inconsciente Somático','Sistema de memoria implícita donde viven los patrones. No procesa lenguaje — procesa experiencia sensorial. Es donde el acto ritual produce cambio.'],
+          ['N4 — Conciencia Narrativa','El nivel consciente donde entendemos e interpretamos. Actualizar N4 con información no actualiza N3.'],
+          ['Memoria Implícita','Memoria del cuerpo — tensiones, reflejos, predicciones automáticas — sin narrativa consciente. Se actualiza con experiencia, no con comprensión.'],
+          ['Reconsolidación de Memoria','Cuando una memoria se reactiva, entra en un estado donde puede ser modificada. La ventana de reconsolidación es donde el acto irreversible produce cambio duradero.'],
+          ['Error de Predicción','Lo que ocurre cuando el cuerpo hace lo que creía imposible y la catástrofe esperada no llega. Señal que actualiza la memoria somática.'],
+          ['Carga Alostática','El costo acumulado de la adaptación crónica al estrés, grabado en el cuerpo como patrón somático.'],
+          ['Vagal Ventral','Estado del sistema nervioso autónomo donde el cuerpo está presente y regulado. Condición necesaria para que el acto central funcione.'],
+          ['Irreversibilidad Experiencial','Una vez que el cuerpo vivió la contradicción, ese dato no puede des-ocurrir. Lo dicho no se puede desdecir. Lo hecho no se puede des-hacer.'],
+        ].map(([t,d])=>(
+          <div key={t} style={{flexShrink:0}}>
+            <div style={{fontFamily:SERIF,fontSize:10,fontWeight:500,color:C.siena,lineHeight:1.3}}>{t}</div>
+            <div style={{fontFamily:SERIF,fontSize:9.5,color:C.grey,lineHeight:1.6,marginTop:1}}>{d}</div>
+          </div>
+        ))}
+      </div>
+    </Ct>
+    <PgN n={pgN}/>
+  </Pg>
+);
+
+const Contraportada=()=>(
+  <Pg bg={C.warm}>
+    <Ct>
+      <div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:16}}>
+        <svg viewBox="0 0 260 210" width="170" style={{display:'block'}}>
+          <g transform="translate(130,75)">
+            <circle cx="0"     cy="-50"   r="8" fill="#333" opacity="0.7"/>
+            <circle cx="25"    cy="-43.3" r="8" fill="#333" opacity="0.45"/>
+            <circle cx="43.3"  cy="-25"   r="8" fill="#333" opacity="0.7"/>
+            <circle cx="50"    cy="0"     r="8" fill="#333" opacity="0.45"/>
+            <circle cx="43.3"  cy="25"    r="8" fill="#333" opacity="0.7"/>
+            <circle cx="25"    cy="43.3"  r="8" fill="#333" opacity="0.45"/>
+            <circle cx="0"     cy="50"    r="8" fill="#333" opacity="0.7"/>
+            <circle cx="-25"   cy="43.3"  r="8" fill="#333" opacity="0.45"/>
+            <circle cx="-43.3" cy="25"    r="8" fill="#333" opacity="0.7"/>
+            <circle cx="-50"   cy="0"     r="8" fill="#333" opacity="0.45"/>
+            <circle cx="-43.3" cy="-25"   r="8" fill="#333" opacity="0.7"/>
+            <circle cx="-25"   cy="-43.3" r="8" fill="#333" opacity="0.45"/>
+            <circle cx="0" cy="0" r="5" fill="#333" opacity="0.25"/>
+            <circle cx="0" cy="0" r="3" fill="#333" opacity="0.9"/>
+          </g>
+          <text x="130" y="155" textAnchor="middle" fontFamily="'Helvetica Neue',Helvetica,Arial,sans-serif" fontSize="9" fontWeight="500" letterSpacing="3.5" fill="#888">INSTITUTO</text>
+          <text x="130" y="172" textAnchor="middle" fontFamily="'Helvetica Neue',Helvetica,Arial,sans-serif" fontSize="13" fontWeight="500" letterSpacing="1.5" fill="#333">CENTROBIOENERGETICA</text>
+        </svg>
+        <div style={{width:32,height:1,background:`${C.siena}35`}}/>
+        <Vortex size={34} color={`${C.siena}AA`}/>
+        <div style={{textAlign:'center'}}>
+          <div style={{fontFamily:SERIF,fontSize:17,fontWeight:300,fontStyle:'italic',color:C.ink,letterSpacing:'0.3px',lineHeight:1.2}}>Ritual Experiencing</div>
+          <div style={{fontFamily:MONO,fontSize:8,letterSpacing:'0.18em',textTransform:'uppercase',color:C.grey2,marginTop:6,lineHeight:1.6,textAlign:'center'}}>
+            Actos que Mueven · Sábado 1
+          </div>
+        </div>
+      </div>
+      <div style={{textAlign:'center',paddingBottom:4,flexShrink:0}}>
+        <div style={{fontFamily:MONO,fontSize:7,color:C.grey2}}>Dr. Miguel Ojeda Rios · 2026</div>
+      </div>
+    </Ct>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// APP — 27 páginas
+// ═══════════════════════════════════════════════════════════
+const AW=W+60, AH=H+60;
 function App() {
   return (
     <DesignCanvas>
