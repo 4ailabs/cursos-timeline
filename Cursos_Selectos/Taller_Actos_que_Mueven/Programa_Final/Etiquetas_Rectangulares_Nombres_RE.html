@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Etiquetas Rectangulares - Ritual Experiencing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --siena:#8B4513;
+    --siena-soft:#C4926A;
+    --ink:#2C2C2A;
+    --paper:#FAF9F6;
+    --line:#D9D3C8;
+    --gray:#888780;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#e6e1d8;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  .toolbar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #d7d1c8;padding:12px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px}
+  .toolbar h1{font-size:16px;margin:0}
+  .toolbar p{font-size:12px;margin:2px 0 0;color:#555;line-height:1.35}
+  .note{text-align:right;font-size:12px;color:#555;line-height:1.35}
+  .sheet{width:21cm;min-height:29.7cm;margin:18px auto;background:#fff;padding:10mm;display:grid;grid-template-columns:repeat(2,90mm);grid-auto-rows:50mm;gap:6mm 8mm;align-content:start;justify-content:center;box-shadow:0 18px 46px rgba(0,0,0,.18);page-break-after:always}
+  .sheet:last-child{page-break-after:auto}
+  .tag{width:90mm;height:50mm;background:var(--paper);border:1px solid var(--line);position:relative;overflow:hidden;display:grid;grid-template-columns:22mm 1fr;align-items:center;padding:0 7mm 0 5.5mm;font-family:"Cormorant Garamond",Georgia,serif}
+  .tag::before{content:"";position:absolute;inset:2.2mm;border:1px solid rgba(139,69,19,.18);pointer-events:none}
+  .logoBox{display:flex;align-items:center;justify-content:center;z-index:1}
+  .logo{width:13mm;height:13mm}
+  .content{z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0}
+  .brand{font-family:"Courier New",monospace;font-size:6.4pt;letter-spacing:.18em;text-transform:uppercase;color:var(--siena);margin-bottom:2.8mm}
+  .name{font-size:33pt;line-height:.9;font-weight:500;color:var(--ink);max-width:56mm;white-space:nowrap}
+  .name.long{font-size:27pt}
+  .name.xlong{font-size:23pt}
+  .course{font-family:"Cormorant Garamond",Georgia,serif;font-size:10.5pt;line-height:1;color:var(--siena);font-style:italic;margin-top:2.4mm}
+  .role{font-family:"Courier New",monospace;font-size:6.2pt;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-top:1.8mm}
+  .tag.instructor{background:#2C2C2A;color:#FAF9F6;border-color:#2C2C2A}
+  .tag.instructor::before{border-color:rgba(196,146,106,.36)}
+  .tag.instructor .name{color:#FAF9F6}
+  .tag.instructor .brand{color:var(--siena-soft)}
+  .tag.instructor .course{color:var(--siena-soft)}
+  .tag.instructor .role{color:#cfc8bd}
+  .cutNote{grid-column:1 / -1;font-size:8pt;color:#777;font-family:"Courier New",monospace;letter-spacing:.08em;text-transform:uppercase;text-align:center;align-self:end;padding-top:2mm}
+  @page{size:A4;margin:0}
+  @media print{
+    body{background:#fff}
+    .toolbar{display:none}
+    .sheet{box-shadow:none;margin:0}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <div>
+    <h1>Etiquetas rectangulares - Ritual Experiencing</h1>
+    <p>90 x 50 mm horizontal. Logo a la izquierda, nombre grande al centro, guía tenue de corte.</p>
+  </div>
+  <div class="note">13 etiquetas.<br>Imprimir al 100%.</div>
+</div>
+
+<main id="pages"></main>
+
+<script>
+const names = [
+  {name:'Gabriela'},
+  {name:'Gladys'},
+  {name:'Maria Juana'},
+  {name:'Georgina'},
+  {name:'Gaby'},
+  {name:'Yoloxochitl'},
+  {name:'Adriana'},
+  {name:'Marcela'},
+  {name:'Guadalupe'},
+  {name:'Melissa'},
+  {name:'Aasith'},
+  {name:'Liz'},
+  {name:'Dr. Miguel', role:'Instructor', instructor:true}
+];
+
+function esc(s){
+  return String(s || '').replace(/[&<>]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));
+}
+function logo(color){
+  return '<svg class="logo" viewBox="-1 -19 138 155" fill="none"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" stroke="'+color+'" stroke-width="4.2" stroke-linecap="round" opacity=".86"/><circle cx="72" cy="124" r="5.5" fill="'+color+'" opacity=".62"/></svg>';
+}
+function nameClass(name){
+  if (name.length > 10) return 'xlong';
+  if (name.length > 8) return 'long';
+  return '';
+}
+function tag(item){
+  const color = item.instructor ? '#C4926A' : '#8B4513';
+  const role = item.role || 'Participante';
+  return '<section class="tag '+(item.instructor ? 'instructor' : '')+'"><div class="logoBox">'+logo(color)+'</div><div class="content"><div class="brand">Ritual Experiencing</div><div class="name '+nameClass(item.name)+'">'+esc(item.name)+'</div><div class="course">Actos que Mueven</div><div class="role">'+esc(role)+'</div></div></section>';
+}
+
+const perPage = 10;
+const pages = [];
+for (let i = 0; i < names.length; i += perPage) pages.push(names.slice(i, i + perPage));
+document.getElementById('pages').innerHTML = pages.map((group, index) => '<div class="sheet">'+group.map(tag).join('')+(index === pages.length - 1 ? '<div class="cutNote">Formato etiqueta horizontal · 90 x 50 mm</div>' : '')+'</div>').join('');
+</script>
+</body>
+</html>
