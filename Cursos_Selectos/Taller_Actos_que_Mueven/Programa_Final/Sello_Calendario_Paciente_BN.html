@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sello calendario paciente BN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #111;
+      --soft-ink: #2a2a2a;
+      --muted: #555;
+      --rule: #8a8a8a;
+      --pale: #d8d8d8;
+      --paper: #fff;
+      --desk: #e9e7e2;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --mono: "Courier New", Courier, monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    @page {
+      size: 9cm 14cm;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--desk);
+      color: var(--ink);
+      font-family: var(--sans);
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: end;
+      padding: 14px 18px;
+      background: #fff;
+      border-bottom: 1px solid #d5d5d5;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .field {
+      display: grid;
+      gap: 5px;
+      min-width: 132px;
+      font-size: 12px;
+      color: #444;
+    }
+
+    input,
+    button {
+      height: 36px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      padding: 0 10px;
+    }
+
+    button {
+      cursor: pointer;
+      border-color: #111;
+      background: #111;
+      color: #fff;
+      font-weight: 650;
+    }
+
+    .sheet-wrap {
+      display: grid;
+      place-items: start center;
+      padding: 24px;
+    }
+
+    .papelito {
+      width: 9cm;
+      height: 14cm;
+      position: relative;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.15);
+      font-family: var(--serif);
+      user-select: none;
+    }
+
+    .content {
+      position: absolute;
+      inset: 0.48cm 0.62cm 0.42cm;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex: 0 0 auto;
+    }
+
+    .vortex {
+      width: 0.58cm;
+      height: 0.58cm;
+      flex: 0 0 auto;
+    }
+
+    .brand-text {
+      display: none;
+      font-family: var(--mono);
+      font-size: 5.8pt;
+      line-height: 1.25;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .eyebrow {
+      margin-top: 0.28cm;
+      font-family: var(--mono);
+      font-size: 6.1pt;
+      line-height: 1;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--soft-ink);
+      flex: 0 0 auto;
+    }
+
+    .title {
+      margin: 0.12cm 0 0;
+      font-family: var(--serif);
+      font-size: 24pt;
+      font-weight: 300;
+      line-height: 0.86;
+      letter-spacing: 0;
+      color: var(--ink);
+      flex: 0 0 auto;
+    }
+
+    .title em {
+      font-style: italic;
+      color: var(--soft-ink);
+    }
+
+    .intro-rule {
+      width: 0.9cm;
+      height: 1px;
+      margin-top: 0.18cm;
+      background: var(--ink);
+      flex: 0 0 auto;
+    }
+
+    .subtitle {
+      margin: 0.14cm 0 0;
+      width: 6.55cm;
+      font-family: var(--serif);
+      font-size: 9.6pt;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.25;
+      color: var(--muted);
+      flex: 0 0 auto;
+    }
+
+    .meta-box {
+      margin-top: 0.22cm;
+      border: 1px solid var(--rule);
+      padding: 0.18cm 0.24cm 0.17cm;
+      display: grid;
+      gap: 0.11cm;
+      flex: 0 0 auto;
+    }
+
+    .meta-line {
+      display: grid;
+      grid-template-columns: 1.42cm 1fr;
+      gap: 0.18cm;
+      align-items: end;
+      min-height: 0.26cm;
+    }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 6.2pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1;
+    }
+
+    .value {
+      min-height: 0.22cm;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--serif);
+      font-size: 10pt;
+      line-height: 1;
+      color: var(--ink);
+      padding-left: 0.05cm;
+    }
+
+    .stamp-space {
+      width: 6.1cm;
+      height: 6.1cm;
+      margin: 0.24cm auto 0;
+      flex: 0 0 auto;
+    }
+
+    .instructions {
+      margin-top: 0.18cm;
+      padding-top: 0.16cm;
+      border-top: 1px solid var(--pale);
+      flex: 0 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 6.2pt;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--soft-ink);
+      line-height: 1;
+    }
+
+    .instruction-text {
+      margin-top: 0.1cm;
+      font-family: var(--serif);
+      font-size: 9pt;
+      line-height: 1.22;
+      color: var(--ink);
+    }
+
+    .note-lines {
+      margin-top: 0.14cm;
+      display: grid;
+      gap: 0.08cm;
+      flex: 0 0 auto;
+    }
+
+    .note-line {
+      display: grid;
+      grid-template-columns: 1.55cm 1fr;
+      gap: 0.14cm;
+      align-items: end;
+    }
+
+    .note-line .value {
+      min-height: 0.2cm;
+    }
+
+    .footer {
+      display: none;
+      margin-top: auto;
+      padding-top: 0.14cm;
+      border-top: 1px solid var(--pale);
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.25cm;
+      flex: 0 0 auto;
+    }
+
+    .footer span {
+      font-family: var(--mono);
+      font-size: 5.6pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.25;
+    }
+
+    .footer .mark {
+      width: 0.38cm;
+      height: 0.38cm;
+      color: var(--pale);
+      flex: 0 0 auto;
+    }
+
+    @media print {
+      html,
+      body {
+        width: 9cm;
+        height: 14cm;
+        background: #fff;
+      }
+
+      .toolbar {
+        display: none;
+      }
+
+      .sheet-wrap {
+        display: block;
+        padding: 0;
+      }
+
+      .papelito {
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+  <form class="toolbar" aria-label="Controles de impresion">
+    <label class="field">
+      Nombre
+      <input id="patientInput" type="text" placeholder="Nombre">
+    </label>
+    <button type="button" id="printButton">Imprimir</button>
+  </form>
+
+  <main class="sheet-wrap">
+    <section class="papelito" aria-label="Hoja de seguimiento mensual 9 por 14 centimetros">
+      <div class="content">
+        <header class="brand">
+          <svg class="vortex" viewBox="-1 -19 138 155" fill="none" aria-hidden="true">
+            <path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.82"/>
+            <circle cx="72" cy="124" r="3" fill="currentColor" opacity="0.55"/>
+          </svg>
+        </header>
+
+        <div class="eyebrow">Seguimiento del paciente</div>
+        <h1 class="title">Registro<br><em>mensual</em></h1>
+        <div class="intro-rule"></div>
+        <p class="subtitle">Marca cada dia realizado. Trae esta hoja a tu siguiente consulta.</p>
+
+        <section class="meta-box" aria-label="Datos del seguimiento">
+          <div class="meta-line">
+            <span class="label">Nombre</span>
+            <span class="value" id="patientText"></span>
+          </div>
+          <div class="meta-line">
+            <span class="label">Mes / ano</span>
+            <span class="value"></span>
+          </div>
+        </section>
+
+        <div class="stamp-space" aria-label="Espacio reservado para sello calendario"></div>
+
+        <section class="instructions">
+          <div class="section-label">Uso</div>
+          <div class="instruction-text">Marca el dia en el calendario cuando completes la indicacion.</div>
+        </section>
+
+        <section class="note-lines" aria-label="Notas de seguimiento">
+          <div class="note-line">
+            <span class="label">Notas</span>
+            <span class="value"></span>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <span>Ritual Experiencing</span>
+          <svg class="mark" viewBox="-1 -19 138 155" fill="none" aria-hidden="true">
+            <path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.82"/>
+            <circle cx="72" cy="124" r="3" fill="currentColor" opacity="0.55"/>
+          </svg>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const patientInput = document.getElementById("patientInput");
+    const patientText = document.getElementById("patientText");
+
+    function renderSheet() {
+      patientText.textContent = patientInput.value.trim();
+    }
+
+    [patientInput].forEach((control) => {
+      control.addEventListener("input", renderSheet);
+      control.addEventListener("change", renderSheet);
+    });
+
+    document.getElementById("printButton").addEventListener("click", () => {
+      window.print();
+    });
+
+    renderSheet();
+  </script>
+</body>
+</html>
