@@ -31,21 +31,25 @@
 
 ## PREPARACIÓN ANTES DE COMENZAR
 
-Preparar los tazones con agua tibia y sal disuelta. Dejarlos sobre la mesa. Anudar los trapos con cordón — nudos apretados. Si las participantes no tienen el trapo anudado, darles 2 minutos al inicio para hacerlo.
+Preparar los tazones con agua tibia y sal disuelta. Dejarlos sobre la mesa. Tener los trapos sin anudar, cordón cortado en piezas de 30-40 cm.
 
 ---
 
-## INTRODUCCIÓN AL ACTO (2 min)
-**15:00 – 15:02**
+## INTRODUCCIÓN AL ACTO (5 min)
+**15:00 – 15:05**
 
 *"Venimos de un acto intenso antes de la comida. Ahora el cuerpo está más abierto. Este acto trabaja algo que muchas conocen: guardar lo que sienten para no molestar a nadie. El cansancio que no mencionan. La tristeza que esconden. El miedo que no cuentan con todas sus palabras. Todo eso se queda en el cuerpo — como nudos."*
 
-Repartir materiales. Cada persona recibe su trapo anudado, papel tissue, pluma, tazón con agua+sal, vaso de agua tibia.
+Repartir materiales. Cada persona recibe: su trapo sin anudar, 1 pedazo de cordón, papel tissue, pluma, tazón con agua+sal, vaso de agua tibia.
+
+*"Ahora vamos a anudar el trapo. Cada nudo que hagan representa algo que guardaron. Anúdenlo lo más apretado que puedan — tantos nudos como sientan que necesitan. No hay número fijo — lo que salga."*
+
+Dar 3 minutos para que cada persona anude su trapo. El facilitador anuda el suyo también, visible.
 
 ---
 
 ## PASO 1 — DECIR LO QUE HAGO (5 min)
-**15:02 – 15:07**
+**15:05 – 15:10**
 *(Inducir el cambio)*
 
 *"Tomen el trapo anudado entre las dos manos. Siéntanlo: los nudos, el volumen, el peso. Cierren los dedos alrededor de él con fuerza."*
@@ -61,7 +65,7 @@ Repartir materiales. Cada persona recibe su trapo anudado, papel tissue, pluma, 
 ---
 
 ## PASO 2 — VOLVER AL CUERPO (5 min)
-**15:07 – 15:12**
+**15:10 – 15:15**
 *(Generar regulación)*
 
 *"Pongan el trapo sobre la mesa. Una mano sobre el pecho, la otra sobre el vientre."*
@@ -77,7 +81,7 @@ El facilitador guía las respiraciones.
 ---
 
 ## PASO 3 — LA FUERZA QUE YA TIENEN (3 min)
-**15:12 – 15:15**
+**15:15 – 15:18**
 *(Colocar en estado de recursos)*
 
 *"Levántense. Quítense los zapatos. Pies en el suelo."*
@@ -89,7 +93,7 @@ El facilitador guía las respiraciones.
 ---
 
 ## PASO 4 — LO QUE GUARDA EL CUERPO (10 min)
-**15:15 – 15:25**
+**15:18 – 15:28**
 *(Ampliar la conciencia)*
 
 *"Siéntense. Tomen el papel tissue y la pluma."*
@@ -111,7 +115,7 @@ Dar 5-6 minutos de escritura real. El facilitador escribe en su propio papel.
 ---
 
 ## PASO 5 — SOLTAR (10 min)
-**15:25 – 15:35**
+**15:28 – 15:38**
 *(Influir sobre N3 — acto irreversible)*
 
 *"Tomen el papel tissue. Párense frente al tazón con agua y sal."*
@@ -131,7 +135,7 @@ Observar: temblor, suspiro profundo, llanto. Todo es descarga. No interrumpir.
 ---
 
 ## PASO 6 — EL CUERPO QUE SE ABRE (7 min)
-**15:35 – 15:42**
+**15:38 – 15:45**
 *(Influir sobre N3 — lo nuevo)*
 
 *"Tomen el trapo anudado. Siéntense."*
@@ -146,8 +150,8 @@ Observar: temblor, suspiro profundo, llanto. Todo es descarga. No interrumpir.
 
 ---
 
-## CIERRE Y TRANSICIÓN (8 min)
-**15:42 – 15:50**
+## CIERRE Y TRANSICIÓN (5 min)
+**15:45 – 15:50**
 
 *"El agua del tazón — vamos a vaciarla en la tierra de la maceta. Que la tierra absorba lo que soltaron."*
 
