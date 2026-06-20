@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Etiqueta UMBRAL</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #E8E6DE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.etiqueta {
+  width: 340px;
+  height: 163px;
+  background: #FAF9F6;
+  border: 1px solid #E8E6DE;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  position: relative;
+}
+
+/* LATERAL IZQUIERDO — conservación */
+.lateral-izq {
+  width: 18px;
+  background: #FAF9F6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-right: 1px solid rgba(196,146,106,0.15);
+}
+
+.lateral-izq .texto-vertical {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: Georgia, serif;
+  font-size: 5.5px;
+  letter-spacing: 0.8px;
+  color: #B4B2A9;
+  white-space: nowrap;
+}
+
+/* CENTRO — contenido principal */
+.centro {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.lado-izq {
+  width: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 8px;
+  position: relative;
+}
+
+.lado-izq::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, #C4926A, transparent);
+  opacity: 0.35;
+}
+
+.remolino {
+  opacity: 0.82;
+}
+
+.lado-der {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 14px 12px 14px;
+}
+
+.marca {
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: #2C2C2A;
+  margin-bottom: 5px;
+}
+
+.nombre {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: #8B4513;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.subtitulo {
+  font-size: 10px;
+  font-weight: 400;
+  color: #C4926A;
+  letter-spacing: 0.5px;
+  margin-bottom: 7px;
+  font-style: italic;
+}
+
+.fases {
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 2.5px;
+  text-transform: lowercase;
+  color: #888780;
+  margin-bottom: 7px;
+}
+
+.fases span {
+  color: #B4B2A9;
+  margin: 0 3px;
+}
+
+.linea {
+  width: 28px;
+  height: 1px;
+  background: #8B4513;
+  opacity: 0.25;
+  margin-bottom: 6px;
+}
+
+.info-pie {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flores {
+  font-family: Georgia, serif;
+  font-size: 5.5px;
+  color: #B4B2A9;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+}
+
+.contenido {
+  font-family: Georgia, serif;
+  font-size: 7px;
+  color: #888780;
+  font-weight: 700;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* LATERAL DERECHO — dirección */
+.lateral-der {
+  width: 18px;
+  background: #FAF9F6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-left: 1px solid rgba(196,146,106,0.15);
+}
+
+.lateral-der .texto-vertical {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: Georgia, serif;
+  font-size: 5.5px;
+  letter-spacing: 0.8px;
+  color: #B4B2A9;
+  white-space: nowrap;
+}
+
+/* Impresion a tamaño real */
+@media print {
+  body { background: white; }
+  .etiqueta {
+    width: 9cm;
+    height: 4.3cm;
+    border: 0.5pt solid #ccc;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="etiqueta">
+
+  <!-- LATERAL IZQUIERDO -->
+  <div class="lateral-izq">
+    <div class="texto-vertical">Consérvese en lugar fresco y seco</div>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="centro">
+    <div class="lado-izq">
+      <svg class="remolino" width="32" height="32" viewBox="-1 -19 138 155">
+        <path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#8B4513" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="72" cy="124" r="2.8" fill="#8B4513" opacity="0.55"/>
+      </svg>
+    </div>
+    <div class="lado-der">
+      <div class="marca">Ritual Experiencing</div>
+      <div class="nombre">UMBRAL</div>
+      <div class="subtitulo">Mezcla floral de acompañamiento</div>
+      <div class="fases">preparar<span>·</span>hacer<span>·</span>integrar</div>
+      <div class="linea"></div>
+      <div class="info-pie">
+        <div class="flores">Star of Bethlehem · Cherry Plum<br>Rock Rose · Walnut · Olive</div>
+        <div class="contenido">20 ml</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LATERAL DERECHO -->
+  <div class="lateral-der">
+    <div class="texto-vertical">contacto@institutocentrobioenergetica.com</div>
+  </div>
+
+</div>
+
+</body>
+</html>

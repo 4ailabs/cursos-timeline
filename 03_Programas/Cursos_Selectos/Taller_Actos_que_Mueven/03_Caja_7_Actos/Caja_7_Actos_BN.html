@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7 Actos para Volver a Ti — Tarjetas (B&N)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<style>* { margin:0; padding:0; box-sizing:border-box; } body { background:#1c1815; }</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+// ─── DESIGN CANVAS (mismo sistema) ───────────────────────
+if (typeof document !== 'undefined' && !document.getElementById('dc-styles')) {
+  const s = document.createElement('style'); s.id='dc-styles';
+  s.textContent = '.dc-exp{position:absolute;bottom:100%;right:0;margin-bottom:5px;z-index:2;opacity:0;transition:opacity .12s;width:22px;height:22px;border-radius:5px;border:none;cursor:pointer;padding:0;background:transparent;color:rgba(60,50,40,.7);display:flex;align-items:center;justify-content:center}[data-dc-slot]:hover .dc-exp{opacity:1}.dc-exp:hover{background:rgba(0,0,0,.06)}';
+  document.head.appendChild(s);
+}
+const DCCtx = React.createContext(null);
+function DesignCanvas({ children }) {
+  const [focus, setFocus] = React.useState(null);
+  const api = React.useMemo(() => ({ focus, setFocus }), [focus]);
+  const registry = {}, sectionMeta = {};
+  React.Children.forEach(children, sec => {
+    if (!sec || sec.type !== DCSection) return;
+    const sid = sec.props.id ?? sec.props.title;
+    const ids = [];
+    React.Children.forEach(sec.props.children, ab => {
+      if (!ab || ab.type !== DCArtboard) return;
+      const aid = ab.props.id ?? ab.props.label;
+      registry[`${sid}/${aid}`] = { sectionId:sid, artboard:ab };
+      ids.push(aid);
+    });
+    sectionMeta[sid] = { slotIds:ids };
+  });
+  React.useEffect(() => { const k = e => { if (e.key==='Escape') setFocus(null); }; document.addEventListener('keydown', k); return () => document.removeEventListener('keydown', k); }, []);
+  return (<DCCtx.Provider value={api}><DCViewport>{children}</DCViewport>{focus && registry[focus] && <DCFocusOverlay entry={registry[focus]} sectionMeta={sectionMeta}/>}</DCCtx.Provider>);
+}
+function DCViewport({ children }) {
+  const vpRef = React.useRef(null), worldRef = React.useRef(null);
+  const tf = React.useRef({ x:0, y:0, scale:1 });
+  const apply = React.useCallback(() => { const {x,y,scale}=tf.current; if(worldRef.current) worldRef.current.style.transform=`translate3d(${x}px,${y}px,0) scale(${scale})`; },[]);
+  React.useEffect(() => {
+    const vp = vpRef.current; if(!vp) return;
+    const zoomAt=(cx,cy,f)=>{const r=vp.getBoundingClientRect(),t=tf.current,n=Math.min(8,Math.max(0.1,t.scale*f)),k=n/t.scale;t.x=(cx-r.left)-((cx-r.left)-t.x)*k;t.y=(cy-r.top)-((cy-r.top)-t.y)*k;t.scale=n;apply();};
+    let drag=null;
+    const onW=e=>{e.preventDefault();if(e.ctrlKey){zoomAt(e.clientX,e.clientY,Math.exp(-e.deltaY*0.01))}else{tf.current.x-=e.deltaX;tf.current.y-=e.deltaY;apply();}};
+    const onPD=e=>{if(!(e.button===1||(e.button===0&&!e.target.closest('[data-dc-slot]'))))return;e.preventDefault();vp.setPointerCapture(e.pointerId);drag={id:e.pointerId,lx:e.clientX,ly:e.clientY};vp.style.cursor='grabbing';};
+    const onPM=e=>{if(!drag||e.pointerId!==drag.id)return;tf.current.x+=e.clientX-drag.lx;tf.current.y+=e.clientY-drag.ly;drag.lx=e.clientX;drag.ly=e.clientY;apply();};
+    const onPU=e=>{if(!drag||e.pointerId!==drag.id)return;vp.releasePointerCapture(e.pointerId);drag=null;vp.style.cursor='';};
+    vp.addEventListener('wheel',onW,{passive:false}); vp.addEventListener('pointerdown',onPD); vp.addEventListener('pointermove',onPM); vp.addEventListener('pointerup',onPU);
+    return()=>{vp.removeEventListener('wheel',onW);vp.removeEventListener('pointerdown',onPD);vp.removeEventListener('pointermove',onPM);vp.removeEventListener('pointerup',onPU);};
+  },[apply]);
+  const grid=`url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M120 0H0v120' fill='none' stroke='rgba(0,0,0,0.055)' stroke-width='1'/%3E%3C/svg%3E")`;
+  return (<div ref={vpRef} style={{height:'100vh',width:'100vw',background:'#f0ede8',overflow:'hidden',overscrollBehavior:'none',touchAction:'none',position:'relative'}}><div ref={worldRef} style={{position:'absolute',top:0,left:0,transformOrigin:'0 0',willChange:'transform',width:'max-content',minWidth:'100%',minHeight:'100%',padding:'60px 0 80px'}}><div style={{position:'absolute',inset:-6000,backgroundImage:grid,backgroundSize:'120px 120px',pointerEvents:'none',zIndex:-1}}/>{children}</div></div>);
+}
+function DCSection({ id, title, children, gap=30 }) {
+  const ctx = React.useContext(DCCtx); const sid = id ?? title;
+  const abs = React.Children.toArray(children).filter(c=>c&&c.type===DCArtboard);
+  return (<div style={{marginBottom:191.1}}><div style={{padding:'0 60px 40px',fontSize:50.6,fontWeight:600,color:'rgba(40,30,20,0.85)',fontFamily:'-apple-system,sans-serif'}}>{title}</div><div style={{display:'flex',gap,padding:'0 60px',alignItems:'flex-start',width:'max-content',flexWrap:'wrap'}}>{abs.map(ab=>{const aid=ab.props.id??ab.props.label;return(<div key={aid} data-dc-slot={aid} style={{position:'relative',flexShrink:0}}><div style={{position:'absolute',bottom:'100%',left:-4,marginBottom:10.5,fontSize:25.2,fontWeight:500,color:'rgba(60,50,40,0.7)',fontFamily:'-apple-system,sans-serif',padding:'0 6px 3px',userSelect:'none'}}>{ab.props.label}</div><button className="dc-exp" onClick={()=>ctx&&ctx.setFocus(`${sid}/${aid}`)}><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M7 1h4v4M5 11H1V7M11 1L7.5 4.5M1 11l3.5-3.5"/></svg></button><div style={{borderRadius:2,boxShadow:'0 1px 3px rgba(0,0,0,.09),0 4px 16px rgba(0,0,0,.07)',overflow:'hidden',width:ab.props.width||310,height:ab.props.height||480}}>{ab.props.children}</div></div>);})}</div></div>);
+}
+function DCArtboard() { return null; }
+function DCFocusOverlay({ entry, sectionMeta }) {
+  const ctx = React.useContext(DCCtx); const { sectionId, artboard } = entry; const aid = artboard.props.id ?? artboard.props.label;
+  const peers = sectionMeta[sectionId]?.slotIds||[]; const idx = peers.indexOf(aid);
+  const go = d => { const n=peers[(idx+d+peers.length)%peers.length]; if(n) ctx.setFocus(`${sectionId}/${n}`); };
+  React.useEffect(()=>{const k=e=>{if(e.key==='ArrowLeft'){e.preventDefault();go(-1);}if(e.key==='ArrowRight'){e.preventDefault();go(1);}};document.addEventListener('keydown',k);return()=>document.removeEventListener('keydown',k);});
+  const [vp,setVp]=React.useState({w:window.innerWidth,h:window.innerHeight});
+  React.useEffect(()=>{const r=()=>setVp({w:window.innerWidth,h:window.innerHeight});window.addEventListener('resize',r);return()=>window.removeEventListener('resize',r);},[]);
+  const {width=310,height=480}=artboard.props; const scale=Math.max(0.1,Math.min((vp.w-160)/width,(vp.h-220)/height,2));
+  return ReactDOM.createPortal(
+    <div onClick={()=>ctx.setFocus(null)} style={{position:'fixed',inset:0,zIndex:100,background:'rgba(20,15,10,.65)',backdropFilter:'blur(16px)'}}>
+      <div onClick={e=>e.stopPropagation()} style={{position:'absolute',top:0,right:0,padding:24}}><button onClick={()=>ctx.setFocus(null)} style={{border:'none',background:'transparent',color:'rgba(255,255,255,.6)',width:32,height:32,borderRadius:16,fontSize:50.6,cursor:'pointer',lineHeight:1}}>×</button></div>
+      <div style={{position:'absolute',top:60,bottom:48,left:80,right:80,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:27.9}}>
+        <div onClick={e=>e.stopPropagation()} style={{width:width*scale,height:height*scale,position:'relative'}}><div style={{width,height,transform:`scale(${scale})`,transformOrigin:'top left',background:'#fff',overflow:'hidden',boxShadow:'0 20px 80px rgba(0,0,0,.45)'}}>{artboard.props.children}</div></div>
+        <div style={{fontSize:29.9,opacity:.8,color:'#fff',fontFamily:'-apple-system,sans-serif'}}>{artboard.props.label} <span style={{opacity:.5}}>{idx+1}/{peers.length}</span></div>
+      </div>
+      {[[-1,'left'],[1,'right']].map(([d,dir])=>(<button key={dir} onClick={e=>{e.stopPropagation();go(d);}} style={{position:'absolute',top:'50%',[dir]:24,transform:'translateY(-50%)',border:'none',background:'rgba(255,255,255,.08)',color:'rgba(255,255,255,.9)',width:40,height:40,borderRadius:20,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center'}}><svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d={dir==='left'?'M11 3L5 9l6 6':'M7 3l6 6-6 6'}/></svg></button>))}
+      <div onClick={e=>e.stopPropagation()} style={{position:'absolute',bottom:16,left:'50%',transform:'translateX(-50%)',display:'flex',gap:14}}>{peers.map((p,i)=><button key={p} onClick={()=>ctx.setFocus(`${sectionId}/${p}`)} style={{border:'none',padding:0,cursor:'pointer',width:6,height:6,borderRadius:3,background:i===idx?'#fff':'rgba(255,255,255,.3)'}}/>)}</div>
+    </div>, document.body);
+}
+
+// ─── TOKENS — 9 × 14 cm ──────────────────────────────────
+const MM=6, W=90*MM, H=140*MM, MX=10*MM, MT=8.5*MM, MB=7*MM;
+const SERIF="'Cormorant Garamond',Georgia,serif", MONO="'Courier New',monospace";
+const C={siena:'#111111',sienaL:'#2A2A2A',arena:'#D8D8D8',arenaL:'#FFFFFF',ink:'#000000',grey:'#2E2E2E',grey2:'#555555',warm:'#FFFFFF',rule:'#888888'};
+
+// ─── PRIMITIVES ──────────────────────────────────────────
+const Vortex=({size=24,color='#8B4513'})=>(<svg width={size} height={size} viewBox="-1 -19 138 155" fill="none"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" stroke={color} strokeWidth="2.5" strokeLinecap="round" opacity="0.82"/><circle cx="72" cy="124" r="2.8" fill={color} opacity="0.55"/></svg>);
+const Pg=({bg=C.warm,children})=>(<div style={{width:W,height:H,background:bg,position:'relative',overflow:'hidden',fontFamily:SERIF,userSelect:'none'}}>{children}</div>);
+const Ct=({children})=>(<div style={{position:'absolute',left:MX,right:MX,top:MT,bottom:MB,display:'flex',flexDirection:'column',overflow:'hidden',zIndex:2}}>{children}</div>);
+const Lbl=({children,color=C.grey})=>(<div style={{fontFamily:MONO,fontSize:14.8,letterSpacing:'0.14em',textTransform:'uppercase',color,lineHeight:1.35,flexShrink:0}}>{children}</div>);
+const Rule=({color=C.rule,my=0})=>(<div style={{height:1,background:color,flexShrink:0,marginTop:my,marginBottom:my}}/>);
+const PgN=({n})=>(<div style={{position:'absolute',left:'50%',bottom:MB*0.4,transform:'translateX(-50%)',fontFamily:MONO,fontSize:14.8,letterSpacing:'0.14em',fontWeight:400,color:C.grey,lineHeight:1,zIndex:3}}>{n}</div>);
+const PgFoot=({acto,p,of})=>(<div style={{position:'absolute',left:MX,right:MX,bottom:MB*0.35,display:'flex',justifyContent:'space-between',alignItems:'baseline',zIndex:3}}><div style={{fontFamily:MONO,fontSize:16.1,letterSpacing:'0.12em',textTransform:'uppercase',fontWeight:700,color:C.ink}}>Acto {acto}</div><div style={{fontFamily:MONO,fontSize:14.8,letterSpacing:'0.1em',color:C.grey}}>{p} / {of}</div></div>);
+const Ph=({text})=>(<div style={{borderLeft:`3px solid ${C.siena}45`,paddingLeft:12,marginTop:6,fontFamily:SERIF,fontSize:19.5,fontStyle:'italic',color:C.ink,lineHeight:1.45,flexShrink:0}}>"{text}"</div>);
+const Bul=({text})=>(<div style={{display:'flex',gap:7.9,marginTop:4.1,flexShrink:0}}><div style={{width:4,height:4,borderRadius:'50%',background:C.sienaL,marginTop:9,flexShrink:0}}/><span style={{fontFamily:SERIF,fontSize:19.5,color:C.grey,lineHeight:1.5}}>{text}</span></div>);
+const S=({children})=>(<div style={{width:W+70,height:H+70,background:'#FFFFFF',display:'flex',alignItems:'center',justifyContent:'center',padding:37.5}}>{children}</div>);
+
+const RitualStep=({n,name,inst,phrases=[]})=>(
+  <div style={{display:'flex',gap:10.1,marginBottom:13,flexShrink:0}}>
+    <div style={{fontFamily:MONO,fontSize:12,color:C.sienaL,lineHeight:1,paddingTop:4.9,width:28,flexShrink:0}}>{n}</div>
+    <div style={{flex:1}}>
+      <div style={{fontFamily:SERIF,fontSize:21,fontWeight:500,color:C.siena,lineHeight:1.2}}>{name}</div>
+      {inst&&<div style={{fontFamily:SERIF,fontSize:18,color:C.grey,lineHeight:1.45,marginTop:3}}>{inst}</div>}
+      {phrases.length>0&&<div style={{fontFamily:MONO,fontSize:12.9,letterSpacing:'0.1em',textTransform:'uppercase',color:C.sienaL,marginTop:8,marginBottom:4.1,flexShrink:0}}>Di en voz alta</div>}
+      {phrases.map((p,i)=><Ph key={i} text={p}/>)}
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════
+// PORTADA
+// ═══════════════════════════════════════════════════════════
+const Portada=()=>(
+  <Pg>
+    <Ct>
+      <div style={{display:'flex',alignItems:'center',gap:15.9,flexShrink:0}}>
+        <Vortex size={40} color={C.siena}/>
+        <div>
+          <div style={{fontFamily:MONO,fontSize:16.1,letterSpacing:'0.15em',textTransform:'uppercase',color:C.grey,lineHeight:1.3}}>Instituto</div>
+          <div style={{fontFamily:MONO,fontSize:16.1,letterSpacing:'0.15em',textTransform:'uppercase',color:C.grey2,lineHeight:1.3}}>Centrobioenergetica</div>
+        </div>
+      </div>
+      <div style={{flex:1,display:'flex',flexDirection:'column',justifyContent:'center'}}>
+        <div style={{fontFamily:MONO,fontSize:16.1,letterSpacing:'0.14em',textTransform:'uppercase',color:C.sienaL}}>Ritual Experiencing</div>
+        <div style={{marginTop:15.9,fontFamily:SERIF,fontSize:82.6,fontWeight:300,lineHeight:0.92,color:C.ink,letterSpacing:'-0.02em'}}>
+          7 Actos<br/><em style={{fontStyle:'italic',color:C.sienaL}}>para Volver</em><br/>a Ti
+        </div>
+        <div style={{marginTop:20,width:28,height:1,background:C.siena}}/>
+        <div style={{marginTop:15.9,fontFamily:SERIF,fontSize:25.2,fontWeight:300,fontStyle:'italic',color:C.grey,lineHeight:1.5}}>Guía de rituales autoaplicables</div>
+      </div>
+      <div style={{paddingTop:12,borderTop:`1px solid ${C.rule}`,flexShrink:0,display:'flex',justifyContent:'space-between',alignItems:'flex-end'}}>
+        <div>
+          <div style={{fontFamily:MONO,fontSize:14.8,letterSpacing:'0.12em',textTransform:'uppercase',color:C.grey}}>Dr. Miguel Ojeda Rios</div>
+          <div style={{fontFamily:MONO,fontSize:12.5,letterSpacing:'0.08em',color:C.grey2,marginTop:3}}>Bioenergética V4</div>
+        </div>
+        <div style={{fontFamily:SERIF,fontSize:23.0,fontWeight:300,color:C.grey2}}>2026</div>
+      </div>
+    </Ct>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// INTRO — QUÉ ES UN ACTO RITUAL
+// ═══════════════════════════════════════════════════════════
+const Intro=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Antes de empezar</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:39.0,fontWeight:300,color:C.ink,lineHeight:1.1,flexShrink:0}}>Qué es un<br/>acto ritual</div>
+      <Rule my={4}/>
+      <div style={{fontFamily:SERIF,fontSize:17.5,color:C.ink,lineHeight:1.45,flexShrink:0}}>
+        Un acto ritual no es meditación ni relajación. Es una secuencia física con objetos cotidianos diseñada para que tu sistema nervioso registre una experiencia nueva como real.
+      </div>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:17.5,color:C.ink,lineHeight:1.45,flexShrink:0}}>
+        Cada acto tiene una acción irreversible — algo que no se puede deshacer. El cuerpo hace lo que creía imposible y la catástrofe esperada no llega.
+      </div>
+      <Rule my={4}/>
+      <Lbl>Cómo prepararte</Lbl>
+      <Bul text="Elige un momento sola y sin interrupciones (15–20 min)"/>
+      <Bul text="Lee el ritual completo antes de hacerlo"/>
+      <Bul text="Respeta los silencios — son parte del acto"/>
+      <Bul text="Si el cuerpo se abruma: detente, siente los pies, respira 4-4-6"/>
+      <Rule my={4}/>
+      <Lbl>La respiración 4-4-6</Lbl>
+      <div style={{marginTop:5,fontFamily:SERIF,fontSize:17.5,color:C.ink,lineHeight:1.4,flexShrink:0}}>
+        Inhala 4 seg. Sostén 4. Exhala por la boca 6. Activa el nervio vago. Aparece en cada ritual.
+      </div>
+      <Rule my={4}/>
+      <Lbl>Los 7 actos</Lbl>
+      <div style={{marginTop:4,fontFamily:SERIF,fontSize:16.5,color:C.ink,lineHeight:1.5,flexShrink:0}}>
+        01 El Espejo sin Permiso · 02 La Mesa de Uno · 03 El Nudo Heredado · 04 La Voz Enterrada · 05 El Peso Prestado · 06 El Permiso Roto · 07 La Vela que Vuelve
+      </div>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={2}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ÍNDICE DE ACTOS
+// ═══════════════════════════════════════════════════════════
+const Indice=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>7 Actos para Volver a Ti</Lbl>
+      <div style={{marginTop:7,fontFamily:SERIF,fontSize:39.0,fontWeight:300,color:C.ink,lineHeight:1.1,flexShrink:0}}>Índice de actos</div>
+      <Rule my={4}/>
+      <div style={{fontFamily:SERIF,fontSize:16,color:C.grey,fontStyle:'italic',lineHeight:1.4,flexShrink:0,marginBottom:7}}>Elige el que resuene con tu momento. No hay orden obligatorio.</div>
+      {[
+        ['01','El Espejo sin Permiso','Cuando muestras una cara que no es la tuya','Editar la imagen propia para ser aceptado'],
+        ['02','La Mesa de Uno','Cuando alimentas a todos menos a ti','Servir a todos primero; lo que sobra es para mí'],
+        ['03','El Nudo Heredado','Cuando cumples un mandato que no elegiste','Seguir reglas heredadas que no funcionan'],
+        ['04','La Voz Enterrada','Cuando callaste algo importante','Callar lo que importa por miedo al rechazo'],
+        ['05','El Peso Prestado','Cuando cargas emociones que no son tuyas','Absorber la carga emocional de otros'],
+        ['06','El Permiso Roto','Cuando necesitas autorización para existir','Esperar aprobación antes de actuar'],
+        ['07','La Vela que Vuelve','Cuando algo se apagó por dentro','Creer que lo que se apagó ya no vuelve'],
+      ].map(([n,name,cuando,patron])=>(
+        <div key={n} style={{marginBottom:9,flexShrink:0}}>
+          <div style={{display:'flex',gap:10.1,alignItems:'baseline'}}>
+            <div style={{fontFamily:MONO,fontSize:14.8,fontWeight:700,color:C.ink,width:30,flexShrink:0}}>{n}</div>
+            <div style={{fontFamily:SERIF,fontSize:20,fontWeight:500,color:C.ink,lineHeight:1.2}}>{name}</div>
+          </div>
+          <div style={{marginLeft:38,marginTop:2}}>
+            <div style={{fontFamily:SERIF,fontSize:16,color:C.grey,fontStyle:'italic',lineHeight:1.3}}>{cuando}</div>
+            <div style={{fontFamily:MONO,fontSize:12.5,letterSpacing:'0.08em',textTransform:'uppercase',color:C.sienaL,lineHeight:1.3,marginTop:1}}>Patrón: {patron}</div>
+          </div>
+        </div>
+      ))}
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={3}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 01 — EL ESPEJO SIN PERMISO
+// ═══════════════════════════════════════════════════════════
+const R01_1=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Acto 01</Lbl>
+      <div style={{marginTop:10.1,fontFamily:SERIF,fontSize:43.7,fontWeight:300,fontStyle:'italic',color:C.ink,lineHeight:1.05,flexShrink:0}}>El Espejo<br/>sin Permiso</div>
+      <div style={{marginTop:7.9,fontFamily:SERIF,fontSize:20.7,color:C.grey,fontStyle:'italic',lineHeight:1.45,flexShrink:0}}>Para cuando muestras una cara que no es la tuya.</div>
+      <Rule my={5} color={`${C.siena}30`}/>
+      <Lbl>Para quién es</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>
+        Para cuando sonríes aunque estés triste. Cuando corriges tu postura antes de que te miren. Cuando ajustas tu expresión antes de entrar a una habitación. Cuando llevas tanto tiempo editando lo que muestras que ya no sabes cómo es tu cara sin filtro.
+      </div>
+      <div style={{marginTop:7.9,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>
+        Tu cuerpo aprendió que ser visto tal cual eres es peligroso. Entonces construyó una versión editada: la que sonríe cuando hay que sonreír, la que no muestra lo que realmente pasa adentro.
+      </div>
+      <Rule my={5} color={`${C.siena}30`}/>
+      <Lbl>Principio</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>
+        Cada vez que te ajustas antes de ser vista, el cuerpo confirma la regla: "mi cara real no es segura". Para actualizarla necesita una experiencia diferente: mirarte sin corregir y que no pase nada malo.
+      </div>
+      <Rule my={5} color={`${C.siena}30`}/>
+      <Lbl>Materiales</Lbl>
+      <Bul text="Espejo donde veas tu cara completa"/>
+      <Bul text="Pañuelo o tela que cubra el espejo"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgFoot acto="01" p={1} of={4}/>
+  </Pg>
+);
+
+const R01_2=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>El Espejo sin Permiso</Lbl>
+      <Rule my={6} color={`${C.siena}30`}/>
+      <RitualStep n="01" name="Nombrar lo que haces"
+        inst="Cubre el espejo con la tela. Párate frente al espejo cubierto. Mira la tela. Siente cómo es estar frente a un espejo que no te devuelve imagen. Nota lo que pasa en tu cuerpo: ¿se relaja? ¿se tensa? Quédate 15 segundos. Pies en el suelo."
+        phrases={['Esto es lo que hago: me cubro antes de que me vean.']}/>
+      <RitualStep n="02" name="Volver al cuerpo"
+        inst="Una mano en el pecho, otra en el abdomen. Inhala 4 — sostén 4 — exhala 6. Cinco veces. Con cada exhalación, suelta la mandíbula. Deja caer los hombros. No corrijas nada."
+        phrases={['Mi cuerpo está aquí. No necesito prepararme para ser vista.']}/>
+      <RitualStep n="03" name="Reconocer lo que tienes"
+        inst="Pies firmes en el suelo. Siente tu peso completo — el que realmente tienes. Toca tu cara con las dos manos. Despacio. Frente, mejillas, mandíbula, boca. Sin mirarte — solo sintiendo."
+        phrases={['Esta cara es mía. Ha estado aquí todo el tiempo.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgFoot acto="01" p={2} of={4}/>
+  </Pg>
+);
+
+const R01_3=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>El Espejo sin Permiso</Lbl>
+      <Rule my={6} color={`${C.siena}30`}/>
+      <RitualStep n="04" name="Escuchar al cuerpo"
+        inst="Pon ambas manos sobre la tela que cubre el espejo. Siente la textura. Siente la superficie fría del espejo detrás — tu reflejo está ahí, debajo de tus manos. Pregúntale al cuerpo en voz alta. Espera 60 segundos. Deja que aparezca lo que aparezca."
+        phrases={['¿Qué pasaría si me ven como realmente soy?','Eso es lo que mi cuerpo espera. Lo reconozco.']}/>
+      <RitualStep n="05" name="El acto"
+        inst="Mira la tela. Tómala con ambas manos. Respira profundo. Jala la tela y rásgala — con fuerza, que se rompa. Si es gruesa, córtala con tijeras por la mitad. Lo importante es que quede rota — ya no puede cubrir nada. Tu cara está en el espejo. Mírate. No ajustes la sonrisa. No corrijas la postura. Lo que hay es lo que hay. Quédate mirándote 60 segundos en silencio."
+        phrases={['Me miro sin permiso. Esta cara es suficiente.']}/>
+      <div style={{marginTop:7.9,fontFamily:SERIF,fontSize:18.3,color:C.grey,lineHeight:1.5,fontStyle:'italic',flexShrink:0}}>
+        Observa qué pasa: calor en los ojos, nudo en la garganta, alivio, extrañeza, ternura. Déjalo pasar. El espejo no se alejó. No te juzgó. Te devolvió lo que eres.
+      </div>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgFoot acto="01" p={3} of={4}/>
+  </Pg>
+);
+
+const R01_4=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>El Espejo sin Permiso</Lbl>
+      <Rule my={5} color={`${C.siena}30`}/>
+      <Lbl>Acción nueva</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>
+        Recoge un trozo de la tela rasgada. Dóblalo y guárdalo donde lo veas seguido.
+      </div>
+      <Ph text="Lo que cubre ya no me protege. Lo que muestra, sí."/>
+      <div style={{marginTop:7.9,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>
+        Mírate una vez más en el espejo. Asiente con la cabeza. Solo eso.
+      </div>
+      <Rule my={5} color={`${C.siena}30`}/>
+      <Lbl>Cierre</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>
+        Guarda un trozo pequeño donde lo veas. El resto puede irse — ya cumplió su función. Si quieres repetirlo, hazlo una vez por semana. Cada vez usa una tela diferente. La tela siempre se rompe. El espejo siempre se queda.
+      </div>
+      <Rule my={5} color={`${C.siena}30`}/>
+      <Lbl>Qué observar después</Lbl>
+      <Bul text="Si te sorprendiste al ver tu cara sin preparación"/>
+      <Bul text="Si el cuerpo quiso ajustar algo y pudiste notarlo"/>
+      <Bul text="Si te miras diferente en los espejos los días siguientes"/>
+      <Bul text="Si aparece menos necesidad de 'preparar la cara'"/>
+      <Bul text="Si el trozo de tela te produce algo al tocarlo"/>
+      <div style={{flex:1}}/>
+      <div style={{fontFamily:SERIF,fontSize:16.1,color:C.grey2,lineHeight:1.45,fontStyle:'italic',flexShrink:0}}>
+        Si tienes un diagnóstico relacionado con imagen corporal, haz este ritual acompañada por un profesional. Si aparece angustia intensa, cubre el espejo, siéntate y respira 4-4-6.
+      </div>
+    </Ct>
+    <PgFoot acto="01" p={4} of={4}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 02 — LA MESA DE UNO
+// ═══════════════════════════════════════════════════════════
+const R02_1=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>Acto 02</Lbl>
+  <div style={{marginTop:10.1,fontFamily:SERIF,fontSize:43.7,fontWeight:300,fontStyle:'italic',color:C.ink,lineHeight:1.05,flexShrink:0}}>La Mesa<br/>de Uno</div>
+  <div style={{marginTop:7.9,fontFamily:SERIF,fontSize:20.7,color:C.grey,fontStyle:'italic',lineHeight:1.45,flexShrink:0}}>Para cuando alimentas a todos menos a ti.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Para quién es</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Para cuando sirves, atiendes, cuidas, resuelves — y al final del día no queda nada para tu cuerpo. Comes de pie. Comes rápido. Comes lo que sobró. Tu cuerpo aprendió que primero son los demás. Que sentarte a comer con calma, sola, es un lujo que no te corresponde.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Principio</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Si de niña recibiste el mensaje de que atenderte primero era egoísmo, el sistema nervioso grabó esa regla. Cuando te sientas sola frente a un plato que tú misma te serviste y comes despacio, el cuerpo recibe una experiencia que contradice la regla vieja.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Materiales</Lbl>
+  <Bul text="Un plato · Una fruta que te guste · Cuchillo"/>
+  <Bul text="Servilleta de tela · Mesa despejada · Silla"/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="02" p={1} of={4}/></Pg>);
+
+const R02_2=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>La Mesa de Uno</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <RitualStep n="01" name="Nombrar lo que haces" inst="De pie frente a la mesa vacía. Sin plato, sin comida. Solo la mesa y tú. Siente lo que aparece cuando ves una mesa vacía que es solo para ti. 15 segundos mirando. Pies en el suelo." phrases={['Esto es lo que hago: alimento a todos y me dejo al final.']}/>
+  <RitualStep n="02" name="Volver al cuerpo" inst="Una mano en el pecho, otra en el abdomen. Inhala 4 — sostén 4 — exhala 6. Cinco veces. Con cada exhalación, siente el peso de tu cuerpo de pie frente a la mesa." phrases={['Mi cuerpo está aquí. Puedo sentarme sin pedir permiso.']}/>
+  <RitualStep n="03" name="Reconocer lo que tienes" inst="Pies firmes en el suelo. Mira tus manos — las mismas que sirven, cocinan, resuelven, sostienen. Hoy van a hacer algo diferente: van a servirte a ti." phrases={['Estas manos saben dar. Hoy saben recibir.']}/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="02" p={2} of={4}/></Pg>);
+
+const R02_3=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>La Mesa de Uno</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <RitualStep n="04" name="Escuchar al cuerpo" inst="Coloca la servilleta de tela sobre la mesa. Pon el plato encima. Pon la fruta en el plato. Mira el plato servido. Es uno solo. Es para ti. Pregúntale al cuerpo. Espera 60 segundos." phrases={['¿Qué se siente ver un plato que es solo para mí?','Esto es real. Lo reconozco.']}/>
+  <RitualStep n="05" name="El acto" inst="Siéntate frente a la mesa. Completa. No en la orilla. Corta la fruta despacio. Escucha el sonido del corte. Huele la fruta. Toma el primer trozo. Come despacio. Siente la textura, el sabor, el jugo. La fruta que comiste no puede deshacerse. Lo que te diste ya es tuyo. Cuando termines, quédate sentada. 60 segundos. No te levantes. No recojas." phrases={['Me sirvo primero. Esto es mío.']}/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="02" p={3} of={4}/></Pg>);
+
+const R02_4=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>La Mesa de Uno</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Acción nueva</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Toma la servilleta. Dóblala despacio — como cerrando algo con cuidado. Guárdala donde la veas cada día: un cajón de la cocina, junto a tu taza.</div>
+  <Ph text="Puedo cuidar sin vaciarme. Lo que me doy no le quita a nadie."/>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Cierre</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>La servilleta doblada es tu recordatorio. Si quieres repetirlo, hazlo una vez por semana. Puedes cambiar la fruta. La servilleta es la misma.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Qué observar después</Lbl>
+  <Bul text="Si apareció culpa al sentarte sola — y si fue disminuyendo"/>
+  <Bul text="Si el cuerpo se relajó al comer despacio"/>
+  <Bul text="Si en los días siguientes comes más sentada, más despacio"/>
+  <Bul text="Si cuando sirves a otros, recuerdas que tu plato también cuenta"/>
+  <div style={{flex:1}}/>
+  <div style={{fontFamily:SERIF,fontSize:16.1,color:C.grey2,lineHeight:1.45,fontStyle:'italic',flexShrink:0}}>Si tienes un diagnóstico relacionado con alimentación, consulta con tu profesional antes de hacer este ritual.</div>
+</Ct><PgFoot acto="02" p={4} of={4}/></Pg>);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 03 — EL NUDO HEREDADO
+// ═══════════════════════════════════════════════════════════
+const R03_1=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>Acto 03</Lbl>
+  <div style={{marginTop:10.1,fontFamily:SERIF,fontSize:43.7,fontWeight:300,fontStyle:'italic',color:C.ink,lineHeight:1.05,flexShrink:0}}>El Nudo<br/>Heredado</div>
+  <div style={{marginTop:7.9,fontFamily:SERIF,fontSize:20.7,color:C.grey,fontStyle:'italic',lineHeight:1.45,flexShrink:0}}>Para cuando cumples un mandato que no elegiste.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Para quién es</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Para cuando hay una regla dentro de ti que no escribiste tú. "Sé fuerte." "No llores." "Primero la familia." "Las mujeres aguantan." Sabes que ya no te sirve. Puedes explicar por qué no tiene sentido. Pero tu cuerpo la sigue obedeciendo.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Principio</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Las reglas familiares se aprenden con el cuerpo: con el tono de voz, con la expresión de la cara cuando las desobedeciste. Cuando cortas físicamente algo que representa ese mandato, el cuerpo recibe una experiencia nueva: la regla se rompió y sigues aquí.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Materiales</Lbl>
+  <Bul text="Cordón o hilo grueso (~50 cm) · Tijeras"/>
+  <Bul text="Papel pequeño · Pluma"/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="03" p={1} of={4}/></Pg>);
+
+const R03_2=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>El Nudo Heredado</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <RitualStep n="01" name="Nombrar lo que cargas" inst="Siéntate frente a la mesa. Cordón estirado frente a ti. Piensa en la regla heredada que más pesa hoy. Escríbela en el papel. Ata el papel al cordón con un nudo. Apriétalo. Sostén el cordón con ambas manos frente al pecho. Lee la regla en voz alta. 15 segundos sosteniendo." phrases={['Esto es lo que cargo: [la regla]. Mi cuerpo la sigue obedeciendo.']}/>
+  <RitualStep n="02" name="Volver al cuerpo" inst="Cordón sobre la mesa. Una mano en el pecho, otra en el abdomen. Inhala 4 — sostén 4 — exhala 6. Cinco veces. Afloja hombros, suelta mandíbula." phrases={['Mi cuerpo está aquí. Puedo soltar una regla sin soltar mi historia.']}/>
+  <RitualStep n="03" name="Reconocer lo que tienes" inst="Pies en el suelo. Piensa en algo que hayas logrado por ti misma — no por la regla, sino a pesar de ella." phrases={['Tengo lo que construí. Eso no depende de esta regla.']}/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="03" p={2} of={4}/></Pg>);
+
+const R03_3=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>El Nudo Heredado</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <RitualStep n="04" name="Escuchar al cuerpo" inst="Toma el cordón con el papel atado. Toca el nudo. Siente su textura, su temperatura. Pregúntale al cuerpo. Espera 60 segundos." phrases={['¿Qué me costaría soltar esto?','Eso es lo que guarda el nudo. Lo reconozco.']}/>
+  <RitualStep n="05" name="El acto" inst="Toma las tijeras. Sostén el cordón tenso frente al pecho. Respira profundo. Nombra lo que el cuerpo teme. Abre las tijeras. Colócalas junto al nudo. Corta. Escucha el sonido. Siente las dos mitades separarse. El cordón cortado no se puede reconectar. Deja caer ambos trozos. 60 segundos en silencio. Manos abiertas." phrases={['Si suelto esto, mi cuerpo cree que...','Corto esta regla. Mi cuerpo ya no la obedece.','La corté y sigo aquí. Nada se perdió.']}/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="03" p={3} of={4}/></Pg>);
+
+const R03_4=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>El Nudo Heredado</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Acción nueva</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Elige un trozo del cordón — ese es tu historia. El otro trozo y el papel van a la basura ahora.</div>
+  <Ph text="Me quedo con la historia. La regla ya no viene conmigo."/>
+  <div style={{marginTop:7.9,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Enrolla el trozo guardado. Ponlo donde lo veas los próximos días.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Cierre</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>El trozo guardado no recuerda la regla — recuerda que la cortaste. Si quieres repetirlo con otro mandato, usa un cordón nuevo cada vez.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Qué observar después</Lbl>
+  <Bul text="Si aparece culpa en los días siguientes — y si va cambiando"/>
+  <Bul text="Si el cuerpo se siente más ligero al recordar la regla"/>
+  <Bul text="Si notas cuando la regla vieja intenta activarse"/>
+  <Bul text="Si piensas en quien te la dio con más distancia"/>
+  <div style={{flex:1}}/>
+  <div style={{fontFamily:SERIF,fontSize:16.1,color:C.grey2,lineHeight:1.45,fontStyle:'italic',flexShrink:0}}>Si las emociones te desbordan, detente. Manos en el pecho, respira lento, busca apoyo profesional.</div>
+</Ct><PgFoot acto="03" p={4} of={4}/></Pg>);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 04 — LA VOZ ENTERRADA
+// ═══════════════════════════════════════════════════════════
+const R04_1=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>Acto 04</Lbl>
+  <div style={{marginTop:10.1,fontFamily:SERIF,fontSize:43.7,fontWeight:300,fontStyle:'italic',color:C.ink,lineHeight:1.05,flexShrink:0}}>La Voz<br/>Enterrada</div>
+  <div style={{marginTop:7.9,fontFamily:SERIF,fontSize:20.7,color:C.grey,fontStyle:'italic',lineHeight:1.45,flexShrink:0}}>Para cuando callaste algo importante y se quedó adentro.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Para quién es</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Para cuando hay algo que nunca dijiste. Una verdad que conoces pero que nunca ha salido por tu boca. Tu cuerpo aprendió que hablar era peligroso: que si decías lo que sentías, alguien se iba, alguien se enojaba, algo se rompía. La garganta se cierra, el pecho se aprieta.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Principio</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Cuando escribes lo callado, lo dices en voz alta y descubres que el mundo sigue igual, el cuerpo registra una experiencia nueva: la voz salió y no hubo catástrofe. Esa experiencia concreta es lo que permite que la garganta aprenda algo diferente.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Materiales</Lbl>
+  <Bul text="Hoja de papel · Pluma o lápiz"/>
+  <Bul text="Vaso con agua · Sobre · Cinta adhesiva"/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="04" p={1} of={4}/></Pg>);
+
+const R04_2=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>La Voz Enterrada</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <RitualStep n="01" name="Nombrar lo que callas" inst="Siéntate con la espalda recta. Pon una mano en la garganta — suavemente. Siente la piel, el calor, el pulso. Nota si hay tensión. Baja la mano y toma la pluma. Escribe lo que callaste: lo que tu boca nunca dijo. Sin filtro, sin orden." phrases={['Esto es lo que hago: callo lo que necesito decir.']}/>
+  <RitualStep n="02" name="Volver al cuerpo" inst="Una mano en el pecho, otra en el abdomen. Inhala 4 — sostén 4 — exhala 6. Seis ciclos. Si la respiración se siente difícil, solo alarga la exhalación." phrases={['Mi cuerpo está aquí. Puedo decir lo que necesito decir.']}/>
+  <RitualStep n="03" name="Reconocer que sigues entero" inst="Pies firmes en el suelo. Nombra en voz alta tres cosas que están contigo en la habitación. Mira la hoja — lo que escribiste no desapareció. Tú sigues aquí." phrases={['Tengo voz. Funciona. Esta noche la uso.']}/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="04" p={2} of={4}/></Pg>);
+
+const R04_3=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>La Voz Enterrada</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <RitualStep n="04" name="Abrir lo que la garganta guarda" inst="Toma la hoja con ambas manos frente al pecho. Pregúntale al papel en voz alta. Espera. Deja que el cuerpo responda." phrases={['¿Qué guardo en la garganta además de esto?','Esto es real. Lo reconozco. Lleva mucho tiempo adentro.']}/>
+  <RitualStep n="05" name="Decir lo callado y soltar" inst="De pie. Sostén la hoja. Lee en voz alta lo que escribiste — al espacio vacío. No susurres. Si la voz tiembla, déjala temblar. Nota: nadie se fue. Nada se rompió. Ahora rasga el papel despacio, deliberado. Escucha el sonido. Quédate de pie 60 segundos con las manos vacías." phrases={['Mi voz ya salió. Lo que callé ya fue dicho. Suelto este papel.']}/>
+  <div style={{marginTop:7.9,fontFamily:SERIF,fontSize:18.3,color:C.grey,lineHeight:1.45,fontStyle:'italic',flexShrink:0}}>Observa: suspiro profundo, calor en el pecho, temblor, ganas de llorar, bostezo, alivio. El cuerpo está terminando algo.</div>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="04" p={3} of={4}/></Pg>);
+
+const R04_4=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>La Voz Enterrada</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Acción nueva</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Mete los pedazos en el sobre. No los releas. Cierra el sobre. Séllalo con cinta — que quede cerrado de verdad. Toma el vaso con agua. Bebe tres tragos lentos. Siente el agua bajar por la garganta — la misma que acaba de hablar.</div>
+  <Ph text="Mi garganta tiene espacio. Lo que viene, sale."/>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Cierre</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>El sobre se queda cerrado. Lo que importaba ya salió por tu boca. Guárdalo donde lo veas. Si la garganta se cierra otra vez, míralo o tócalo: ya hablaste una vez. Puedes volver a hacerlo.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Qué observar después</Lbl>
+  <Bul text="Si la garganta se siente más abierta, más suelta"/>
+  <Bul text="Si aparecen ganas de decir cosas que normalmente callarías"/>
+  <Bul text="Si el cuerpo suelta algo inesperado: suspiros, bostezos, calor"/>
+  <Bul text="Si sientes alivio, tristeza, enojo o una mezcla — todo es parte"/>
+  <div style={{flex:1}}/>
+  <div style={{fontFamily:SERIF,fontSize:16.1,color:C.grey2,lineHeight:1.45,fontStyle:'italic',flexShrink:0}}>Si la emoción es demasiado intensa o sostenida, busca apoyo: una persona de confianza o un profesional.</div>
+</Ct><PgFoot acto="04" p={4} of={4}/></Pg>);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 05 — EL PESO PRESTADO
+// ═══════════════════════════════════════════════════════════
+const R05_1=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>Acto 05</Lbl>
+  <div style={{marginTop:7,fontFamily:SERIF,fontSize:43.7,fontWeight:300,fontStyle:'italic',color:C.ink,lineHeight:1.05,flexShrink:0}}>El Peso<br/>Prestado</div>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:20.7,color:C.grey,fontStyle:'italic',lineHeight:1.4,flexShrink:0}}>Para cuando cargas emociones que no son tuyas.</div>
+  <Rule my={4} color={`${C.siena}30`}/>
+  <Lbl>Para quién es</Lbl>
+  <div style={{marginTop:5,fontFamily:SERIF,fontSize:17.5,color:C.ink,lineHeight:1.42,flexShrink:0}}>Para cuando los hombros pesan, la espalda duele y la mitad de lo que cargas no es tuyo. La tristeza de tu mamá. La frustración de tu pareja. El miedo de tu hijo. Tu cuerpo aprendió a absorber lo que les pasa a otros y cargarlo como propio — no por debilidad, por lealtad.</div>
+  <Rule my={4} color={`${C.siena}30`}/>
+  <Lbl>Principio</Lbl>
+  <div style={{marginTop:5,fontFamily:SERIF,fontSize:17.5,color:C.ink,lineHeight:1.42,flexShrink:0}}>Cuando sacas esos pesos del cuerpo físicamente — los nombras, los sostienes, los depositas fuera — el cuerpo recibe un mensaje nuevo: puedo cuidar sin cargar. Puedo amar sin absorber. Lo que suelto no abandona a nadie.</div>
+  <Rule my={4} color={`${C.siena}30`}/>
+  <Lbl>Materiales</Lbl>
+  <Bul text="Mochila o bolsa resistente"/>
+  <Bul text="3-5 objetos pesados (libros, botellas, latas)"/>
+  <Bul text="3 etiquetas adhesivas · Pluma o marcador"/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="05" p={1} of={4}/></Pg>);
+
+const R05_2=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>El Peso Prestado</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <RitualStep n="01" name="Nombrar lo que cargas" inst="Mochila abierta en el suelo. En cada etiqueta escribe un peso prestado: 'La tristeza de mamá', 'La presión de mi jefe'. Pega cada etiqueta en un objeto pesado. Uno por uno, mételos en la mochila. Ciérrala. Levántala con las dos manos. Siente cuánto pesa. 15 segundos." phrases={['Esto es lo que cargo: peso que no es mío y que mi cuerpo sostiene como si lo fuera.']}/>
+  <RitualStep n="02" name="Volver al cuerpo" inst="Mochila en el suelo. Una mano en el pecho, otra en el abdomen. Inhala 4 — sostén 4 — exhala 6. Cinco veces. Nota la diferencia entre tenerla cargada y en el piso." phrases={['Mi cuerpo está aquí. Puedo soltar sin abandonar.']}/>
+  <RitualStep n="03" name="Reconocer lo que tienes" inst="Pies firmes. Columna erguida. Brazos sueltos. Tu cuerpo está de pie sin la mochila. Así se siente cuando cargas solo lo tuyo." phrases={['Sin este peso, mi cuerpo sigue de pie. Eso basta.']}/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="05" p={2} of={4}/></Pg>);
+
+const R05_3=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>El Peso Prestado</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <RitualStep n="04" name="Escuchar al cuerpo" inst="Ponte la mochila sobre los hombros. Siente cómo cambia tu postura: la presión en los hombros, la tensión en la espalda. Pregúntale al cuerpo. 60 segundos." phrases={['¿Qué pasaría si dejo de cargar esto?','Eso es lo que mi cuerpo teme al soltar. Lo reconozco.']}/>
+  <RitualStep n="05" name="El acto" inst="Camina despacio hacia la puerta de tu cuarto. Detente en el umbral. Baja la mochila lentamente. Ábrela. Saca cada objeto. Despega cada etiqueta. Mientras despegas y rompes cada etiqueta, di la frase. Las etiquetas rotas no pueden volver a pegarse. Deja los objetos fuera. Vuelve con la mochila vacía. 60 segundos en silencio de pie." phrases={['Esto no es mío. Lo devuelvo.']}/>
+  <div style={{marginTop:7.9,fontFamily:SERIF,fontSize:18.3,color:C.grey,lineHeight:1.45,fontStyle:'italic',flexShrink:0}}>Las personas que nombraste siguen ahí. No las perdiste al soltar lo que cargabas. Soltaste el peso, no el vínculo.</div>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="05" p={3} of={4}/></Pg>);
+
+const R05_4=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>El Peso Prestado</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Acción nueva</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Toma la mochila vacía. Ábrela de par en par. Déjala abierta en un lugar visible de tu cuarto durante 7 días.</div>
+  <Ph text="Puedo cuidar sin cargar. Lo que no es mío, no entra aquí."/>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Cierre</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Los objetos puedes regresarlos a su lugar después de 24 horas — ya no tienen etiqueta. Si vuelves a absorber carga ajena, pon las manos frente a ti con las palmas hacia afuera y di: "Esto no es mío."</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Qué observar después</Lbl>
+  <Bul text="Si hombros y espalda se sienten diferentes"/>
+  <Bul text="Si aparece culpa por haber soltado — y si va cambiando"/>
+  <Bul text="Si notas con más claridad cuando absorbes algo ajeno"/>
+  <Bul text="Si cambia algo con las personas que nombraste"/>
+  <div style={{flex:1}}/>
+  <div style={{fontFamily:SERIF,fontSize:16.1,color:C.grey2,lineHeight:1.45,fontStyle:'italic',flexShrink:0}}>Si aparece malestar que no baja — angustia intensa, llanto que no para — busca apoyo profesional.</div>
+</Ct><PgFoot acto="05" p={4} of={4}/></Pg>);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 06 — EL PERMISO ROTO
+// ═══════════════════════════════════════════════════════════
+const R06_1=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>Acto 06</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:43.7,fontWeight:300,fontStyle:'italic',color:C.ink,lineHeight:1.05,flexShrink:0}}>El Permiso<br/>Roto</div>
+  <div style={{marginTop:5,fontFamily:SERIF,fontSize:19.5,color:C.grey,fontStyle:'italic',lineHeight:1.4,flexShrink:0}}>Para cuando necesitas autorización para existir.</div>
+  <Rule my={3} color={`${C.siena}30`}/>
+  <Lbl>Para quién es</Lbl>
+  <div style={{marginTop:4,fontFamily:SERIF,fontSize:17,color:C.ink,lineHeight:1.42,flexShrink:0}}>Para cuando antes de hablar miras a los lados. Antes de decidir preguntas si está bien. Tu cuerpo aprendió que actuar sin autorización es peligroso — que si haces algo sin que te lo aprueben, molestas, sobras, invades. Sientes que tu presencia incomoda, que ocupar espacio es arrogancia.</div>
+  <Rule my={3} color={`${C.siena}30`}/>
+  <Lbl>Principio</Lbl>
+  <div style={{marginTop:4,fontFamily:SERIF,fontSize:17,color:C.ink,lineHeight:1.42,flexShrink:0}}>Cuando rompes físicamente el papel que dice "permiso" y después actúas sin autorización — y nada malo pasa — el cuerpo recibe una experiencia que contradice la regla vieja. Actuaste sin permiso y el mundo sigue igual. El espacio no se cerró.</div>
+  <Rule my={3} color={`${C.siena}30`}/>
+  <Lbl>Materiales</Lbl>
+  <Bul text="Hoja de papel · Pluma o marcador"/>
+  <Bul text="Silla · Espacio donde puedas estar de pie con brazos abiertos"/>
+  <Bul text="Un objeto pequeño que te guste (taza, fruta, libro)"/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="06" p={1} of={4}/></Pg>);
+
+const R06_2=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>El Permiso Roto</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <RitualStep n="01" name="Nombrar lo que haces" inst="Siéntate en la orilla de la silla. Encogida: hombros arriba, brazos pegados, piernas juntas. La postura de quien pide permiso para estar. Escribe en el centro de la hoja con letras grandes: PERMISO. Mira esa palabra. 15 segundos." phrases={['Esto es lo que hago: espero que alguien me autorice antes de actuar.']}/>
+  <RitualStep n="02" name="Volver al cuerpo" inst="Hoja en el regazo. Una mano en el pecho, otra en el abdomen. Inhala 4 — sostén 4 — exhala 6. Cinco veces. Con cada exhalación, baja los hombros. Suelta la mandíbula. Ocupa más espacio en la silla sin que nadie te lo pida." phrases={['Mi cuerpo está aquí. Puedo moverme sin que nadie me lo permita.']}/>
+  <RitualStep n="03" name="Reconocer lo que tienes" inst="De pie. Pies firmes. Siente tu peso real. Estira los brazos a los costados — ese es tu tamaño real. No el que muestras para no molestar." phrases={['Tengo cuerpo. Tiene tamaño. Cabe en este espacio.']}/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="06" p={2} of={4}/></Pg>);
+
+const R06_3=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>El Permiso Roto</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <RitualStep n="04" name="Escuchar al cuerpo" inst="Siéntate. Sostén la hoja con PERMISO frente al pecho. Siente el peso de toda una vida esperando autorización. Pregúntale al cuerpo. 60 segundos." phrases={['¿Qué me ha costado esperar este permiso?','Eso es real. Todo lo que no hice mientras esperaba. Lo reconozco.']}/>
+  <RitualStep n="05" name="El acto" inst="De pie. Sostén la hoja. Nombra lo que el cuerpo teme. Mira PERMISO una última vez. Rasga la hoja por la mitad — lento, deliberado, que pase por en medio de la palabra. Suelta los pedazos. Ahora: camina al centro de la habitación. Abre los brazos completos. Levanta la barbilla. Respira profundo. Nadie te dijo que podías hacer esto. 60 segundos así. Sin encogerte. Sin mirar a los lados." phrases={['Si hago algo sin permiso, mi cuerpo cree que...','Rompo este permiso. Ya no lo necesito para actuar.']}/>
+  <div style={{marginTop:7.9,fontFamily:SERIF,fontSize:18.3,color:C.grey,lineHeight:1.45,fontStyle:'italic',flexShrink:0}}>Nadie te castigó. Nadie se fue. El espacio te cabe.</div>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="06" p={3} of={4}/></Pg>);
+
+const R06_4=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>El Permiso Roto</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Acción nueva</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Camina hacia el objeto que elegiste. Tómalo sin pedir permiso. Sosténlo con las dos manos. Siéntate completa — al fondo de la silla, espalda contra el respaldo.</div>
+  <Ph text="Esto es lo nuevo. Tomo lo que quiero. Mi mano no pide permiso."/>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Cierre</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Guarda un pedazo del papel donde lo veas — tu cartera, tu escritorio. El otro va a la basura ahora. El objeto que tomaste déjalo donde lo pusiste hasta mañana: prueba de que actuaste sin autorización y nada se rompió.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Qué observar después</Lbl>
+  <Bul text="Si notas el impulso de pedir permiso y ahora lo ves más rápido"/>
+  <Bul text="Si los hombros están más bajos o la postura cambia"/>
+  <Bul text="Si aparecen ganas de hacer cosas sin preguntar primero"/>
+  <Bul text="Si cambió algo en cómo entras a una habitación o te sientas"/>
+  <div style={{flex:1}}/>
+  <div style={{fontFamily:SERIF,fontSize:16.1,color:C.grey2,lineHeight:1.45,fontStyle:'italic',flexShrink:0}}>Si aparece angustia intensa o sensación de no merecer estar, detente. Manos en el pecho, respira lento, busca apoyo profesional.</div>
+</Ct><PgFoot acto="06" p={4} of={4}/></Pg>);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 07 — LA VELA QUE VUELVE
+// ═══════════════════════════════════════════════════════════
+const R07_1=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>Acto 07</Lbl>
+  <div style={{marginTop:8,fontFamily:SERIF,fontSize:43.7,fontWeight:300,fontStyle:'italic',color:C.ink,lineHeight:1.05,flexShrink:0}}>La Vela<br/>que Vuelve</div>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:20.7,color:C.grey,fontStyle:'italic',lineHeight:1.4,flexShrink:0}}>Para cuando algo se apagó por dentro.</div>
+  <Rule my={4} color={`${C.siena}30`}/>
+  <Lbl>Para quién es</Lbl>
+  <div style={{marginTop:5,fontFamily:SERIF,fontSize:17.8,color:C.ink,lineHeight:1.45,flexShrink:0}}>Para cuando algo que antes estaba encendido ya no está. La motivación, las ganas, la curiosidad, la energía. El cuerpo bajó la energía como medida de protección y se quedó ahí, en modo ahorro, más tiempo del necesario.</div>
+  <Rule my={4} color={`${C.siena}30`}/>
+  <Lbl>Principio</Lbl>
+  <div style={{marginTop:5,fontFamily:SERIF,fontSize:17.8,color:C.ink,lineHeight:1.45,flexShrink:0}}>El cuerpo confunde haberse apagado con no poder encenderse. Cuando estás en la oscuridad real y enciendes un cerillo con tus propias manos, el cuerpo recibe una experiencia directa: la oscuridad no era permanente. La capacidad de producir luz seguía ahí.</div>
+  <Rule my={4} color={`${C.siena}30`}/>
+  <Lbl>Materiales</Lbl>
+  <Bul text="Vela pequeña · 3 cerillos o encendedor"/>
+  <Bul text="Plato resistente al calor · Vaso con agua (seguridad)"/>
+  <Bul text="Espacio que puedas oscurecer bien"/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="07" p={1} of={4}/></Pg>);
+
+const R07_2=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>La Vela que Vuelve</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <RitualStep n="01" name="Nombrar lo que se apagó" inst="Entra al espacio. Apaga todas las luces. Quédate de pie en la oscuridad. Siente la temperatura del aire, el piso, el silencio. Piensa en lo que se apagó: las ganas, la energía, lo que ya no buscas." phrases={['Esto es lo que hago: me quedo en la oscuridad y creo que ya no puedo encender.']}/>
+  <RitualStep n="02" name="Encontrar el cuerpo" inst="Una mano en el pecho, otra en el vientre. Inhala 4 — sostén 4 — exhala 6. Seis ciclos. Siente el peso de tu cuerpo hacia abajo." phrases={['Mi cuerpo está aquí. La oscuridad no me borró.']}/>
+  <RitualStep n="03" name="Tocar lo que tienes" inst="Busca la vela y los cerillos a tientas — con las manos, no con la luz. Siente el peso de la vela. Siente la caja de cerillos. Tus manos ya tienen lo que necesitan. Coloca la vela sobre el plato." phrases={['Tengo manos. Tengo fuego. La capacidad sigue aquí.']}/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="07" p={2} of={4}/></Pg>);
+
+const R07_3=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>La Vela que Vuelve</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <RitualStep n="04" name="Preguntarle al cuerpo" inst="De pie frente a la vela sin encender, en la oscuridad. Mano en el pecho. Pregunta. Dale 30 segundos al silencio." phrases={['¿Qué se apagó en mí y desde cuándo?','Eso es real. No tengo que entenderlo. Solo reconocerlo.']}/>
+  <RitualStep n="05" name="Encender" inst="Toma un cerillo. Quédate 30 segundos más en la oscuridad con el cerillo en la mano, sin rasparlo. Siente que la oscuridad es todo lo que hay. Luego raspa el cerillo. Prende la vela. Mira la llama. Mira cómo la oscuridad retrocede. Mira tu mano iluminada. El cerillo quemado no puede volver a ser lo que era — produjo fuego. Eso es irreversible. 60 segundos mirando la llama." phrases={['Estoy en la oscuridad. Mi cuerpo cree que esto ya no cambia.','Enciendo. La luz vuelve porque yo la enciendo.']}/>
+  <div style={{flex:1}}/>
+</Ct><PgFoot acto="07" p={3} of={4}/></Pg>);
+
+const R07_4=()=>(<Pg><Ct>
+  <Lbl color={C.siena}>La Vela que Vuelve</Lbl>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Acción nueva</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Acerca las manos a la llama (sin quemarte). Siente el calor en las palmas. Toma el cerillo quemado. Guárdalo junto a la vela donde los veas los próximos días.</div>
+  <Ph text="Esto es lo nuevo. Hay calor en mis manos y yo lo hice."/>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Cierre</Lbl>
+  <div style={{marginTop:6,fontFamily:SERIF,fontSize:18.3,color:C.ink,lineHeight:1.5,flexShrink:0}}>Deja la vela encendida mientras estés ahí. Al irte, apágala de un soplo suave. El cerillo quemado no se tira — es la prueba de que la capacidad de encender seguía en tus manos. Tienes 3 cerillos. Cuando se acaben, observa si necesitas más.</div>
+  <Rule my={5} color={`${C.siena}30`}/>
+  <Lbl>Qué observar después</Lbl>
+  <Bul text="Si al día siguiente apareció alguna gana pequeña"/>
+  <Bul text="Si 'la capacidad sigue aquí' aparece en tu cabeza"/>
+  <Bul text="Si tu energía subió o el cuerpo se siente menos pesado"/>
+  <Bul text="Si soñaste algo con luz, fuego o calor"/>
+  <div style={{flex:1}}/>
+  <div style={{fontFamily:SERIF,fontSize:16.1,color:C.grey2,lineHeight:1.45,fontStyle:'italic',flexShrink:0}}>Si después de repetir 3 veces la oscuridad no se mueve, busca a alguien: un terapeuta, un médico. Pedir ayuda también es una forma de encender.</div>
+</Ct><PgFoot acto="07" p={4} of={4}/></Pg>);
+
+// ═══════════════════════════════════════════════════════════
+// APP
+// ═══════════════════════════════════════════════════════════
+const AW=W+70, AH=H+70;
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection id="general" title="Portada e Introducción">
+        <DCArtboard id="portada" label="01 · Portada" width={AW} height={AH}><S><Portada/></S></DCArtboard>
+        <DCArtboard id="intro"   label="02 · Intro" width={AW} height={AH}><S><Intro/></S></DCArtboard>
+        <DCArtboard id="indice"  label="03 · Índice" width={AW} height={AH}><S><Indice/></S></DCArtboard>
+      </DCSection>
+
+      <DCSection id="acto01" title="Acto 01 — El Espejo sin Permiso">
+        <DCArtboard id="r01_1" label="A01 · 1/4" width={AW} height={AH}><S><R01_1/></S></DCArtboard>
+        <DCArtboard id="r01_2" label="A01 · 2/4" width={AW} height={AH}><S><R01_2/></S></DCArtboard>
+        <DCArtboard id="r01_3" label="A01 · 3/4" width={AW} height={AH}><S><R01_3/></S></DCArtboard>
+        <DCArtboard id="r01_4" label="A01 · 4/4" width={AW} height={AH}><S><R01_4/></S></DCArtboard>
+      </DCSection>
+
+      <DCSection id="acto02" title="Acto 02 — La Mesa de Uno">
+        <DCArtboard id="r02_1" label="A02 · 1/4" width={AW} height={AH}><S><R02_1/></S></DCArtboard>
+        <DCArtboard id="r02_2" label="A02 · 2/4" width={AW} height={AH}><S><R02_2/></S></DCArtboard>
+        <DCArtboard id="r02_3" label="A02 · 3/4" width={AW} height={AH}><S><R02_3/></S></DCArtboard>
+        <DCArtboard id="r02_4" label="A02 · 4/4" width={AW} height={AH}><S><R02_4/></S></DCArtboard>
+      </DCSection>
+
+      <DCSection id="acto03" title="Acto 03 — El Nudo Heredado">
+        <DCArtboard id="r03_1" label="A03 · 1/4" width={AW} height={AH}><S><R03_1/></S></DCArtboard>
+        <DCArtboard id="r03_2" label="A03 · 2/4" width={AW} height={AH}><S><R03_2/></S></DCArtboard>
+        <DCArtboard id="r03_3" label="A03 · 3/4" width={AW} height={AH}><S><R03_3/></S></DCArtboard>
+        <DCArtboard id="r03_4" label="A03 · 4/4" width={AW} height={AH}><S><R03_4/></S></DCArtboard>
+      </DCSection>
+
+      <DCSection id="acto04" title="Acto 04 — La Voz Enterrada">
+        <DCArtboard id="r04_1" label="A04 · 1/4" width={AW} height={AH}><S><R04_1/></S></DCArtboard>
+        <DCArtboard id="r04_2" label="A04 · 2/4" width={AW} height={AH}><S><R04_2/></S></DCArtboard>
+        <DCArtboard id="r04_3" label="A04 · 3/4" width={AW} height={AH}><S><R04_3/></S></DCArtboard>
+        <DCArtboard id="r04_4" label="A04 · 4/4" width={AW} height={AH}><S><R04_4/></S></DCArtboard>
+      </DCSection>
+
+      <DCSection id="acto05" title="Acto 05 — El Peso Prestado">
+        <DCArtboard id="r05_1" label="A05 · 1/4" width={AW} height={AH}><S><R05_1/></S></DCArtboard>
+        <DCArtboard id="r05_2" label="A05 · 2/4" width={AW} height={AH}><S><R05_2/></S></DCArtboard>
+        <DCArtboard id="r05_3" label="A05 · 3/4" width={AW} height={AH}><S><R05_3/></S></DCArtboard>
+        <DCArtboard id="r05_4" label="A05 · 4/4" width={AW} height={AH}><S><R05_4/></S></DCArtboard>
+      </DCSection>
+
+      <DCSection id="acto06" title="Acto 06 — El Permiso Roto">
+        <DCArtboard id="r06_1" label="A06 · 1/4" width={AW} height={AH}><S><R06_1/></S></DCArtboard>
+        <DCArtboard id="r06_2" label="A06 · 2/4" width={AW} height={AH}><S><R06_2/></S></DCArtboard>
+        <DCArtboard id="r06_3" label="A06 · 3/4" width={AW} height={AH}><S><R06_3/></S></DCArtboard>
+        <DCArtboard id="r06_4" label="A06 · 4/4" width={AW} height={AH}><S><R06_4/></S></DCArtboard>
+      </DCSection>
+
+      <DCSection id="acto07" title="Acto 07 — La Vela que Vuelve">
+        <DCArtboard id="r07_1" label="A07 · 1/4" width={AW} height={AH}><S><R07_1/></S></DCArtboard>
+        <DCArtboard id="r07_2" label="A07 · 2/4" width={AW} height={AH}><S><R07_2/></S></DCArtboard>
+        <DCArtboard id="r07_3" label="A07 · 3/4" width={AW} height={AH}><S><R07_3/></S></DCArtboard>
+        <DCArtboard id="r07_4" label="A07 · 4/4" width={AW} height={AH}><S><R07_4/></S></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

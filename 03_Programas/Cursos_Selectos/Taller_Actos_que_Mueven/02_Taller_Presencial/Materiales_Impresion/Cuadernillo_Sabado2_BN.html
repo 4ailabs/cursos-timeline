@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actos que Mueven — Cuadernillo Sábado 2 (B&N)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<style>* { margin:0; padding:0; box-sizing:border-box; } body { background:#1c1815; }</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+// ─── DESIGN CANVAS ────────────────────────────────────────
+if (typeof document !== 'undefined' && !document.getElementById('dc-styles')) {
+  const s = document.createElement('style'); s.id='dc-styles';
+  s.textContent = '.dc-exp{position:absolute;bottom:100%;right:0;margin-bottom:5px;z-index:2;opacity:0;transition:opacity .12s;width:22px;height:22px;border-radius:5px;border:none;cursor:pointer;padding:0;background:transparent;color:rgba(60,50,40,.7);display:flex;align-items:center;justify-content:center}[data-dc-slot]:hover .dc-exp{opacity:1}.dc-exp:hover{background:rgba(0,0,0,.06)}';
+  document.head.appendChild(s);
+}
+const DCCtx = React.createContext(null);
+
+function DesignCanvas({ children }) {
+  const [focus, setFocus] = React.useState(null);
+  const api = React.useMemo(() => ({ focus, setFocus }), [focus]);
+  const registry = {}, sectionMeta = {};
+  React.Children.forEach(children, sec => {
+    if (!sec || sec.type !== DCSection) return;
+    const sid = sec.props.id ?? sec.props.title;
+    const ids = [];
+    React.Children.forEach(sec.props.children, ab => {
+      if (!ab || ab.type !== DCArtboard) return;
+      const aid = ab.props.id ?? ab.props.label;
+      registry[`${sid}/${aid}`] = { sectionId:sid, artboard:ab };
+      ids.push(aid);
+    });
+    sectionMeta[sid] = { slotIds:ids };
+  });
+  React.useEffect(() => {
+    const k = e => { if (e.key==='Escape') setFocus(null); };
+    document.addEventListener('keydown', k);
+    return () => document.removeEventListener('keydown', k);
+  }, []);
+  return (
+    <DCCtx.Provider value={api}>
+      <DCViewport>{children}</DCViewport>
+      {focus && registry[focus] && <DCFocusOverlay entry={registry[focus]} sectionMeta={sectionMeta}/>}
+    </DCCtx.Provider>
+  );
+}
+
+function DCViewport({ children }) {
+  const vpRef = React.useRef(null), worldRef = React.useRef(null);
+  const tf = React.useRef({ x:0, y:0, scale:1 });
+  const apply = React.useCallback(() => {
+    const {x,y,scale}=tf.current;
+    if(worldRef.current) worldRef.current.style.transform=`translate3d(${x}px,${y}px,0) scale(${scale})`;
+  },[]);
+  React.useEffect(() => {
+    const vp = vpRef.current; if(!vp) return;
+    const zoomAt=(cx,cy,f)=>{const r=vp.getBoundingClientRect(),t=tf.current,n=Math.min(8,Math.max(0.1,t.scale*f)),k=n/t.scale;t.x=(cx-r.left)-((cx-r.left)-t.x)*k;t.y=(cy-r.top)-((cy-r.top)-t.y)*k;t.scale=n;apply();};
+    let drag=null;
+    const onW=e=>{e.preventDefault();if(e.ctrlKey){zoomAt(e.clientX,e.clientY,Math.exp(-e.deltaY*0.01))}else{tf.current.x-=e.deltaX;tf.current.y-=e.deltaY;apply();}};
+    const onPD=e=>{if(!(e.button===1||(e.button===0&&!e.target.closest('[data-dc-slot]'))))return;e.preventDefault();vp.setPointerCapture(e.pointerId);drag={id:e.pointerId,lx:e.clientX,ly:e.clientY};vp.style.cursor='grabbing';};
+    const onPM=e=>{if(!drag||e.pointerId!==drag.id)return;tf.current.x+=e.clientX-drag.lx;tf.current.y+=e.clientY-drag.ly;drag.lx=e.clientX;drag.ly=e.clientY;apply();};
+    const onPU=e=>{if(!drag||e.pointerId!==drag.id)return;vp.releasePointerCapture(e.pointerId);drag=null;vp.style.cursor='';};
+    vp.addEventListener('wheel',onW,{passive:false});
+    vp.addEventListener('pointerdown',onPD);
+    vp.addEventListener('pointermove',onPM);
+    vp.addEventListener('pointerup',onPU);
+    return()=>{vp.removeEventListener('wheel',onW);vp.removeEventListener('pointerdown',onPD);vp.removeEventListener('pointermove',onPM);vp.removeEventListener('pointerup',onPU);};
+  },[apply]);
+  const grid=`url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M120 0H0v120' fill='none' stroke='rgba(0,0,0,0.055)' stroke-width='1'/%3E%3C/svg%3E")`;
+  return (
+    <div ref={vpRef} style={{height:'100vh',width:'100vw',background:'#f0ede8',overflow:'hidden',overscrollBehavior:'none',touchAction:'none',position:'relative'}}>
+      <div ref={worldRef} style={{position:'absolute',top:0,left:0,transformOrigin:'0 0',willChange:'transform',width:'max-content',minWidth:'100%',minHeight:'100%',padding:'60px 0 80px'}}>
+        <div style={{position:'absolute',inset:-6000,backgroundImage:grid,backgroundSize:'120px 120px',pointerEvents:'none',zIndex:-1}}/>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function DCSection({ id, title, children, gap=40 }) {
+  const ctx = React.useContext(DCCtx);
+  const sid = id ?? title;
+  const abs = React.Children.toArray(children).filter(c=>c&&c.type===DCArtboard);
+  return (
+    <div style={{marginBottom:72}}>
+      <div style={{padding:'0 60px 40px',fontSize:22,fontWeight:600,color:'rgba(40,30,20,0.85)',fontFamily:'-apple-system,sans-serif'}}>{title}</div>
+      <div style={{display:'flex',gap,padding:'0 60px',alignItems:'flex-start',width:'max-content'}}>
+        {abs.map(ab=>{
+          const aid=ab.props.id??ab.props.label;
+          return (
+            <div key={aid} data-dc-slot={aid} style={{position:'relative',flexShrink:0}}>
+              <div style={{position:'absolute',bottom:'100%',left:-4,marginBottom:4,fontSize:13,fontWeight:500,color:'rgba(60,50,40,0.7)',fontFamily:'-apple-system,sans-serif',padding:'0 6px 3px',userSelect:'none'}}>{ab.props.label}</div>
+              <button className="dc-exp" onClick={()=>ctx&&ctx.setFocus(`${sid}/${aid}`)}>
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M7 1h4v4M5 11H1V7M11 1L7.5 4.5M1 11l3.5-3.5"/></svg>
+              </button>
+              <div style={{borderRadius:2,boxShadow:'0 1px 3px rgba(0,0,0,.09),0 4px 16px rgba(0,0,0,.07)',overflow:'hidden',width:ab.props.width||450,height:ab.props.height||690}}>
+                {ab.props.children}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+function DCArtboard() { return null; }
+
+function DCFocusOverlay({ entry, sectionMeta }) {
+  const ctx = React.useContext(DCCtx);
+  const { sectionId, artboard } = entry;
+  const aid = artboard.props.id ?? artboard.props.label;
+  const peers = sectionMeta[sectionId]?.slotIds||[];
+  const idx = peers.indexOf(aid);
+  const go = d => { const n=peers[(idx+d+peers.length)%peers.length]; if(n) ctx.setFocus(`${sectionId}/${n}`); };
+  React.useEffect(()=>{const k=e=>{if(e.key==='ArrowLeft'){e.preventDefault();go(-1);}if(e.key==='ArrowRight'){e.preventDefault();go(1);}};document.addEventListener('keydown',k);return()=>document.removeEventListener('keydown',k);});
+  const [vp,setVp]=React.useState({w:window.innerWidth,h:window.innerHeight});
+  React.useEffect(()=>{const r=()=>setVp({w:window.innerWidth,h:window.innerHeight});window.addEventListener('resize',r);return()=>window.removeEventListener('resize',r);},[]);
+  const {width=450,height=690}=artboard.props;
+  const scale=Math.max(0.1,Math.min((vp.w-160)/width,(vp.h-220)/height,2));
+  return ReactDOM.createPortal(
+    <div onClick={()=>ctx.setFocus(null)} style={{position:'fixed',inset:0,zIndex:100,background:'rgba(20,15,10,.65)',backdropFilter:'blur(16px)'}}>
+      <div onClick={e=>e.stopPropagation()} style={{position:'absolute',top:0,right:0,padding:16}}>
+        <button onClick={()=>ctx.setFocus(null)} style={{border:'none',background:'transparent',color:'rgba(255,255,255,.6)',width:32,height:32,borderRadius:16,fontSize:22,cursor:'pointer',lineHeight:1}}>×</button>
+      </div>
+      <div style={{position:'absolute',top:60,bottom:48,left:80,right:80,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:14}}>
+        <div onClick={e=>e.stopPropagation()} style={{width:width*scale,height:height*scale,position:'relative'}}>
+          <div style={{width,height,transform:`scale(${scale})`,transformOrigin:'top left',background:'#fff',overflow:'hidden',boxShadow:'0 20px 80px rgba(0,0,0,.45)'}}>
+            {artboard.props.children}
+          </div>
+        </div>
+        <div style={{fontSize:13,opacity:.8,color:'#fff',fontFamily:'-apple-system,sans-serif'}}>{artboard.props.label} <span style={{opacity:.5}}>{idx+1}/{peers.length}</span></div>
+      </div>
+      {[[-1,'left'],[1,'right']].map(([d,dir])=>(
+        <button key={dir} onClick={e=>{e.stopPropagation();go(d);}} style={{position:'absolute',top:'50%',[dir]:24,transform:'translateY(-50%)',border:'none',background:'rgba(255,255,255,.08)',color:'rgba(255,255,255,.9)',width:40,height:40,borderRadius:20,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center'}}>
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d={dir==='left'?'M11 3L5 9l6 6':'M7 3l6 6-6 6'}/></svg>
+        </button>
+      ))}
+      <div onClick={e=>e.stopPropagation()} style={{position:'absolute',bottom:16,left:'50%',transform:'translateX(-50%)',display:'flex',gap:7}}>
+        {peers.map((p,i)=><button key={p} onClick={()=>ctx.setFocus(`${sectionId}/${p}`)} style={{border:'none',padding:0,cursor:'pointer',width:6,height:6,borderRadius:3,background:i===idx?'#fff':'rgba(255,255,255,.3)'}}/>)}
+      </div>
+    </div>,
+    document.body
+  );
+}
+
+// ─── TOKENS ───────────────────────────────────────────────
+const MM=3, W=130*MM, H=210*MM, MX=13*MM, MT=14*MM, MB=12*MM;
+const SERIF="'Cormorant Garamond',Georgia,serif", MONO="'Courier New',monospace";
+const C={siena:'#111111',sienaL:'#2A2A2A',arena:'#D8D8D8',arenaL:'#FFFFFF',ink:'#000000',cream:'#BBBBBB',grey:'#2E2E2E',grey2:'#555555',warm:'#FFFFFF',rule:'#888888'};
+const BG='#FFFFFF';
+
+// ─── PRIMITIVES ───────────────────────────────────────────
+const Vortex=({size=24,color='#8B4513'})=>(
+  <svg width={size} height={size} viewBox="-1 -19 138 155" fill="none">
+    <path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" stroke={color} strokeWidth="2.5" strokeLinecap="round" opacity="0.82"/>
+    <circle cx="72" cy="124" r="2.8" fill={color} opacity="0.55"/>
+  </svg>
+);
+
+const Pg=({bg=C.warm,children})=>(
+  <div style={{width:W,height:H,background:bg,position:'relative',overflow:'hidden',fontFamily:SERIF,userSelect:'none'}}>
+    {children}
+  </div>
+);
+
+const Ct=({children,style={}})=>(
+  <div style={{position:'absolute',left:MX,right:MX,top:MT,bottom:MB,display:'flex',flexDirection:'column',overflow:'hidden',zIndex:2,...style}}>
+    {children}
+  </div>
+);
+
+const Lbl=({children,color=C.grey})=>(
+  <div style={{fontFamily:MONO,fontSize:8,letterSpacing:'0.14em',textTransform:'uppercase',color,lineHeight:1.35,flexShrink:0}}>{children}</div>
+);
+
+const Rule=({color=C.rule,my=0})=>(
+  <div style={{height:1,background:color,flexShrink:0,marginTop:my,marginBottom:my}}/>
+);
+
+const PgN=({n,dark=false})=>(
+  <div style={{position:'absolute',left:'50%',bottom:MB*0.48,transform:'translateX(-50%)',fontFamily:MONO,fontSize:7.5,letterSpacing:'0.14em',fontWeight:400,color:dark?C.grey2:C.grey,lineHeight:1,background:'transparent',zIndex:3}}>{n}</div>
+);
+
+const Ph=({text})=>(
+  <div style={{borderLeft:`2px solid ${C.siena}45`,paddingLeft:7,marginTop:4,fontFamily:SERIF,fontSize:10,fontStyle:'italic',color:C.ink,lineHeight:1.45,flexShrink:0}}>
+    "{text}"
+  </div>
+);
+
+const Step=({n,name,inst,phrases=[]})=>(
+  <div style={{display:'flex',gap:7,marginBottom:8.5,flexShrink:0}}>
+    <div style={{fontFamily:MONO,fontSize:7,color:C.sienaL,lineHeight:1,paddingTop:3,width:14,flexShrink:0}}>{n}</div>
+    <div style={{flex:1}}>
+      <div style={{fontFamily:SERIF,fontSize:11.5,fontWeight:500,color:C.siena,lineHeight:1.2}}>{name}</div>
+      {inst&&<div style={{fontFamily:SERIF,fontSize:10,color:C.grey,lineHeight:1.55,marginTop:2}}>{inst}</div>}
+      {phrases.length>0&&<div style={{fontFamily:MONO,fontSize:8,letterSpacing:'0.1em',textTransform:'uppercase',color:C.sienaL,marginTop:7,marginBottom:2,flexShrink:0}}>Di en voz alta</div>}
+      {phrases.map((p,i)=><Ph key={i} text={p}/>)}
+    </div>
+  </div>
+);
+
+const MatItem=({text})=>(
+  <div style={{display:'flex',alignItems:'flex-start',gap:5,marginTop:3,flexShrink:0}}>
+    <div style={{width:2.5,height:2.5,borderRadius:'50%',background:C.sienaL,marginTop:5,flexShrink:0}}/>
+    <span style={{fontFamily:SERIF,fontSize:10,color:C.grey,lineHeight:1.5}}>{text}</span>
+  </div>
+);
+
+const S=({children})=>(
+  <div style={{width:W+60,height:H+60,background:BG,display:'flex',alignItems:'center',justifyContent:'center',padding:30}}>
+    {children}
+  </div>
+);
+
+const ActHeader=({num,title,tagline,cont=false})=>(
+  <>
+    <Lbl color={C.siena}>Acto {num}{cont?' · continuación':''}</Lbl>
+    {!cont&&<>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:23,fontWeight:300,fontStyle:'italic',color:C.ink,lineHeight:1.05,letterSpacing:'-0.01em',flexShrink:0}}>{title}</div>
+      {tagline&&<div style={{marginTop:4,fontFamily:SERIF,fontSize:11,color:C.grey,fontStyle:'italic',lineHeight:1.5,flexShrink:0}}>{tagline}</div>}
+    </>}
+    <Rule my={9} color={`${C.siena}30`}/>
+  </>
+);
+
+// ═══════════════════════════════════════════════════════════
+// P01 — PORTADA
+// ═══════════════════════════════════════════════════════════
+const P01=()=>(
+  <Pg bg={C.warm}>
+    <Ct>
+      <div style={{display:'flex',alignItems:'center',gap:8,flexShrink:0}}>
+        <Vortex size={16} color={C.siena}/>
+        <div>
+          <div style={{fontFamily:MONO,fontSize:7,letterSpacing:'0.15em',textTransform:'uppercase',color:C.grey,lineHeight:1.3}}>Instituto</div>
+          <div style={{fontFamily:MONO,fontSize:7,letterSpacing:'0.15em',textTransform:'uppercase',color:C.grey2,lineHeight:1.3}}>Centrobioenergetica</div>
+        </div>
+      </div>
+      <div style={{marginTop:24,fontFamily:MONO,fontSize:8.5,letterSpacing:'0.14em',textTransform:'uppercase',color:C.sienaL,flexShrink:0}}>Sábado 2 · Actos que Mueven</div>
+      <div style={{marginTop:10,flexShrink:0}}>
+        <div style={{fontFamily:SERIF,fontSize:53,fontWeight:300,lineHeight:0.9,color:C.ink,letterSpacing:'-0.025em'}}>
+          Actos<br/><em style={{fontStyle:'italic',color:C.sienaL}}>que</em><br/>Mueven
+        </div>
+      </div>
+      <div style={{marginTop:14,width:36,height:1,background:C.siena,flexShrink:0}}/>
+      <div style={{marginTop:10,fontFamily:SERIF,fontSize:14.5,fontWeight:300,fontStyle:'italic',color:C.grey,lineHeight:1.5,flexShrink:0}}>Cuadernillo del Participante</div>
+      <div style={{flex:1}}/>
+      <div style={{border:`1px solid ${C.rule}`,padding:'11px 13px',flexShrink:0}}>
+        <Lbl color={C.grey}>Nombre</Lbl>
+        <div style={{height:1,background:C.rule,marginTop:6,marginBottom:10}}/>
+        <Lbl color={C.grey}>Fecha</Lbl>
+        <div style={{height:1,background:C.rule,marginTop:6}}/>
+      </div>
+      <div style={{marginTop:11,paddingTop:8,borderTop:`1px solid ${C.rule}`,flexShrink:0,display:'flex',justifyContent:'space-between',alignItems:'flex-end'}}>
+        <div>
+          <div style={{fontFamily:MONO,fontSize:8,letterSpacing:'0.12em',textTransform:'uppercase',color:C.grey}}>Dr. Miguel Ojeda Rios</div>
+          <div style={{fontFamily:MONO,fontSize:7,letterSpacing:'0.08em',color:C.grey2,marginTop:2}}>Ritual Experiencing · Bioenergética V4</div>
+        </div>
+        <div style={{fontFamily:SERIF,fontSize:12,fontWeight:300,color:C.grey2}}>2026</div>
+      </div>
+    </Ct>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// MANUAL — PÁGINAS TEÓRICAS
+// ═══════════════════════════════════════════════════════════
+const M01a=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Manual del Participante · IV</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:23,fontWeight:300,color:C.ink,lineHeight:1.05,flexShrink:0}}>El cerebro predice,<br/>no percibe</div>
+      <Rule my={8}/>
+      <div style={{fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        El cerebro no espera a que algo pase para responder. Genera predicciones constantes sobre lo que va a ocurrir — y solo corrige cuando hay un error suficientemente grande.
+      </div>
+      <div style={{marginTop:7,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        Lo que sientes no es una reacción al mundo. Es una <em>predicción</em> sobre el mundo, construida con todo lo que tu cuerpo vivió antes. Dos personas en la misma situación — un silencio, una mirada, una espera — construyen experiencias completamente distintas porque sus cuerpos predicen cosas distintas.
+      </div>
+      <Rule my={8}/>
+      <Lbl>Las predicciones IF → THEN</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.5,flexShrink:0}}>
+        El sistema nervioso genera reglas automáticas a partir de lo que vivió:
+      </div>
+      {[
+        'Si dejo de vigilar → algo catastrófico ocurre.',
+        'Si me abro → me destruyen.',
+        'Si descanso → todo se cae.',
+        'Si empiezo algo → va a salir mal.',
+        'Si confío → me traicionan.',
+      ].map((p,i)=>(
+        <div key={i} style={{display:'flex',gap:6,marginTop:3,flexShrink:0}}>
+          <div style={{fontFamily:SERIF,fontSize:11,color:C.grey,fontStyle:'italic',lineHeight:1.45}}>— {p}</div>
+        </div>
+      ))}
+      <div style={{marginTop:8,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        Estas predicciones corren solas — sin que las decidas. No son pensamientos: son programas del cuerpo que se ejecutan antes de que la mente pueda intervenir.
+      </div>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={2}/>
+  </Pg>
+);
+
+const M01b=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Manual del Participante · IV · continuación</Lbl>
+      <div style={{marginTop:7,fontFamily:SERIF,fontSize:23,fontWeight:300,color:C.ink,lineHeight:1.05,flexShrink:0}}>La predicción que<br/>se confirma sola</div>
+      <Rule my={10}/>
+      <div style={{fontFamily:SERIF,fontSize:13,color:C.ink,lineHeight:1.65,flexShrink:0}}>
+        Las predicciones no solo anticipan — generan conducta. El sistema nervioso no espera pasivamente a que ocurra lo temido: produce comportamientos que previenen la catástrofe predicha.
+      </div>
+      <div style={{marginTop:10,fontFamily:SERIF,fontSize:13,color:C.ink,lineHeight:1.65,flexShrink:0}}>
+        El que predice <em>"si no doy, me abandonan"</em> da sin parar. Al dar sin parar, nunca recoge el dato de que podría no dar y quedarse acompañado — porque su conducta impide que ese dato exista. La predicción se confirma a sí misma.
+      </div>
+      <div style={{marginTop:10,fontFamily:SERIF,fontSize:13,color:C.ink,lineHeight:1.65,flexShrink:0}}>
+        La que predice <em>"si dejo de vigilar, algo se cae"</em> vigila sin parar. Nunca descubre que las cosas se sostienen solas — porque nunca deja de sostenerlas.
+      </div>
+      <Rule my={11}/>
+      <Lbl>Cómo se rompe el circuito</Lbl>
+      <div style={{marginTop:8,fontFamily:SERIF,fontSize:13,color:C.ink,lineHeight:1.65,flexShrink:0}}>
+        La predicción no se corrige con información — "no tienes que preocuparte" no actualiza nada. Se corrige con un <em>error de predicción</em>: un momento donde el cuerpo hace lo que creía imposible y la catástrofe esperada no llega.
+      </div>
+      <div style={{marginTop:12,borderLeft:`2.5px solid ${C.siena}45`,paddingLeft:9,flexShrink:0}}>
+        <div style={{fontFamily:SERIF,fontSize:14,fontWeight:300,fontStyle:'italic',color:C.ink,lineHeight:1.55}}>
+          "Un acto bien diseñado le da al cuerpo la experiencia que la predicción hacía imposible. Lo vivido pesa más que lo pensado."
+        </div>
+      </div>
+      <div style={{marginTop:12,fontFamily:SERIF,fontSize:13,color:C.ink,lineHeight:1.65,flexShrink:0}}>
+        Cada acto de hoy está diseñado para producir exactamente eso: un error de predicción lo suficientemente grande para que el cuerpo actualice lo que creía saber.
+      </div>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={3}/>
+  </Pg>
+);
+
+const M02=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Manual del Participante · V</Lbl>
+      <div style={{marginTop:7,fontFamily:SERIF,fontSize:23,fontWeight:300,color:C.ink,lineHeight:1.05,flexShrink:0}}>Descarga vs.<br/>Actualización</div>
+      <Rule my={10}/>
+      <div style={{fontFamily:SERIF,fontSize:12.5,color:C.ink,lineHeight:1.6,flexShrink:0}}>
+        Hay una diferencia entre vaciar tensión y reescribir un patrón. No es diferencia de intensidad — es diferencia de mecanismo.
+      </div>
+      <Rule my={8}/>
+      <Lbl>Descarga</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:12,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        El llanto, el temblor, el suspiro liberan la tensión acumulada. El patrón queda menos cargado. Pero el código que lo sostiene sigue intacto. Cuando el estímulo vuelve, el patrón vuelve completo. Vaciar el caché no cambia el programa.
+      </div>
+      <Rule my={8}/>
+      <Lbl>Actualización</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:12,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        El acto irreversible introduce un error de predicción: el cuerpo hace lo que creía imposible y la catástrofe esperada no llega. La memoria que sostenía esa predicción se abre y se edita en su origen. El patrón no se suprime — se reescribe.
+      </div>
+      <div style={{marginTop:10,border:`1px solid ${C.rule}`,padding:'9px 11px',flexShrink:0}}>
+        <div style={{display:'flex',gap:4,flexShrink:0}}>
+          <div style={{flex:1}}>
+            <div style={{fontFamily:MONO,fontSize:7,letterSpacing:'0.12em',textTransform:'uppercase',color:C.siena,marginBottom:4}}>Contrarregulación</div>
+            <div style={{fontFamily:SERIF,fontSize:9.5,color:C.grey,lineHeight:1.5}}>Crea una memoria nueva que compite con la antigua. Bajo estrés, la vieja reaparece. Requiere práctica continua.</div>
+          </div>
+          <div style={{width:1,background:C.rule,flexShrink:0}}/>
+          <div style={{flex:1}}>
+            <div style={{fontFamily:MONO,fontSize:7,letterSpacing:'0.12em',textTransform:'uppercase',color:C.siena,marginBottom:4}}>Reconsolidación</div>
+            <div style={{fontFamily:SERIF,fontSize:9.5,color:C.grey,lineHeight:1.5}}>Reescribe la memoria antigua. Bajo estrés, no recae — ya no existe en su forma anterior. No requiere mantenimiento.</div>
+          </div>
+        </div>
+      </div>
+      <div style={{marginTop:10,fontFamily:SERIF,fontSize:12,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        Los actos de hoy están diseñados para reconsolidación: no buscamos que te sientas mejor un rato — buscamos que el patrón deje de generarse.
+      </div>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={4}/>
+  </Pg>
+);
+
+const M03a=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Manual del Participante · VI</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:23,fontWeight:300,color:C.ink,lineHeight:1.05,flexShrink:0}}>El presupuesto<br/>del cuerpo</div>
+      <Rule my={8}/>
+      <div style={{fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        El cerebro no espera a que el cuerpo necesite recursos — los asigna por adelantado según lo que <em>predice</em> que va a pasar. Si predice peligro, libera cortisol y glucosa antes de que haya peligro real. Si predice calma, reduce la activación.
+      </div>
+      <div style={{marginTop:7,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        Un patrón crónico de predicción negativa — "algo malo va a pasar", "si me relajo pierdo el control", "si confío me traicionan" — mantiene al cuerpo asignando recursos de emergencia permanentemente. El cuerpo vive en alerta aunque no haya peligro real.
+      </div>
+      <Rule my={8}/>
+      <Lbl>El costo real de anticipar catástrofe</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.5,flexShrink:0}}>
+        Cuando el presupuesto se gasta en emergencias que nunca llegan, el cuerpo paga con:
+      </div>
+      {[
+        'Cansancio crónico que no se resuelve con dormir',
+        'Tensión muscular que no cede con masaje',
+        'Problemas digestivos sin causa orgánica',
+        'Insomnio o despertar con urgencia',
+        'Inflamación de bajo grado constante',
+      ].map((p,i)=>(
+        <div key={i} style={{display:'flex',gap:5,marginTop:3,flexShrink:0}}>
+          <div style={{width:2.5,height:2.5,borderRadius:'50%',background:C.sienaL,marginTop:5.5,flexShrink:0}}/>
+          <div style={{fontFamily:SERIF,fontSize:11,color:C.grey,lineHeight:1.45}}>{p}</div>
+        </div>
+      ))}
+      <div style={{marginTop:8,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        Estos no son síntomas "psicosomáticos" en el sentido de que sean imaginarios. Son el costo biológico real de un sistema predictivo que no para de anticipar lo peor.
+      </div>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={5}/>
+  </Pg>
+);
+
+const M03b=()=>(
+  <Pg>
+    <Ct>
+      <Lbl color={C.siena}>Manual del Participante · VI · continuación</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:23,fontWeight:300,color:C.ink,lineHeight:1.05,flexShrink:0}}>Recalibrar el<br/>presupuesto</div>
+      <Rule my={8}/>
+      <div style={{fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        Si el costo viene de lo que el cerebro <em>predice</em>, el alivio viene de actualizar esa predicción. No basta con relajarse — la relajación es un parche temporal que no toca la predicción que genera la alerta.
+      </div>
+      <div style={{marginTop:7,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        Lo que recalibra el presupuesto es que el cuerpo viva la experiencia directa de que soltar es seguro. Que la catástrofe no llega. Que el mundo sigue entero cuando dejas de vigilarlo.
+      </div>
+      <div style={{marginTop:9,borderLeft:`2.5px solid ${C.siena}45`,paddingLeft:9,flexShrink:0}}>
+        <div style={{fontFamily:SERIF,fontSize:13,fontWeight:300,fontStyle:'italic',color:C.ink,lineHeight:1.5}}>
+          "Cuando el acto ritual le muestra al cuerpo que soltar es seguro, los recursos dejan de gastarse en emergencias imaginarias y vuelven a estar disponibles para vivir."
+        </div>
+      </div>
+      <Rule my={8}/>
+      <Lbl>Por qué lo vivido pesa más que lo pensado</Lbl>
+      <div style={{marginTop:6,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        Una explicación racional — "no hay peligro, estás en tu casa" — llega al cerebro como información de baja precisión. El sistema la recibe pero la pondera poco.
+      </div>
+      <div style={{marginTop:7,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        Una experiencia corporal contradictoria — "hiciste lo que temías y tu cuerpo sigue entero" — llega como dato de alta precisión. El sistema la pondera fuertemente y actualiza el modelo.
+      </div>
+      <div style={{marginTop:7,fontFamily:SERIF,fontSize:12.2,color:C.ink,lineHeight:1.55,flexShrink:0}}>
+        Por eso cada acto de hoy involucra el cuerpo completo: tacto, temperatura, peso, sonido, posición. La señal tiene que ser lo suficientemente rica para que el sistema la tome en serio.
+      </div>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={6}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 01 — EL VASO PROPIO · AMOR
+// ═══════════════════════════════════════════════════════════
+const A01a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="01" title="El Vaso Propio" tagline="Para cuando tu día depende de si esa persona escribió, miró o llegó."/>
+      <Step n="01" name="El vaso vacío"
+        inst="Siéntate frente a la mesa. Mira el vaso vacío. Piensa en esa persona — la que cuando escribe, el corazón brinca; la que cuando no escribe, el día se apaga. Pon el teléfono junto al vaso vacío. Míralos juntos: el vaso vacío y el teléfono. Así es cada día. Silencio 30 segundos."
+        phrases={['Esto es lo que hago: le doy a otro la llave de mi vaso. Si esa persona aparece, se llena. Si no aparece, me quedo vacía.']}/>
+      <Step n="02" name="Las manos en el corazón"
+        inst="Pon el teléfono boca abajo. Ambas manos sobre el pecho, directamente sobre el corazón. Siente el latido bajo las palmas. Inhala 4 — aguanta 4 — exhala 6, despacio. Ocho ciclos. Siente el calor entre tus palmas y el pecho."
+        phrases={['Mi corazón late porque está vivo. No porque esté esperando.']}/>
+      <Step n="03" name="Lo que lleno yo"
+        inst="Párate. Descálzate. Siente el piso. Toma la jarra y sírvete agua — escucha el agua caer. Siente el peso de la jarra. De pie, mira el vaso vacío sobre la mesa y la jarra llena en tus manos."
+        phrases={['Tengo con qué llenarme. Siempre lo tuve.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={7}/>
+  </Pg>
+);
+const A01b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="01" cont/>
+      <Step n="04" name="La predicción"
+        inst="Siéntate. Escribe la predicción: la frase que el cuerpo repite cada vez que esa persona tarda. No la versión amable — la cruda. Mano en el pecho. Pregúntale al cuerpo. Silencio 60 segundos."
+        phrases={['¿Cuándo aprendí esto? ¿Quién fue la primera persona que se fue?','Esa predicción es vieja. La reconozco. Pero no es de hoy.']}/>
+      <Step n="05" name="Disolver"
+        inst="Pon agua en el plato hondo. Sostén el papel sobre el plato. Léelo una última vez. Sumérgelo con las dos manos. Mira cómo la tinta se corre. Mueve el papel hasta que la tinta se suelte. Silencio 45 segundos. Saca el papel deshecho y mételo en la tierra de la maceta."
+        phrases={['Esto se disuelve. No es la verdad. Es lo que mi cuerpo aprendió a predecir.','Lo que fue miedo ahora alimenta algo vivo.']}/>
+      <Step n="06" name="Llenar el vaso"
+        inst="Sirve agua en el vaso — lentamente, tres cuartos. Escucha el sonido. Tómalo con las dos manos. Bebe un trago largo. Ojos cerrados 30 segundos. Saca la piedra del bolsillo — es tu ancla. Come la fruta despacio."
+        phrases={['Mi vaso se llena desde adentro. Lo que venga de afuera es bienvenido, pero yo no estoy vacía.','Cuando el corazón brinque, mi mano va a la piedra. No al teléfono.']}/>
+      <Rule my={7} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="Vaso transparente · Jarra con agua · Plato hondo"/>
+      <MatItem text="Hoja + pluma de tinta soluble · Piedra lisa pequeña · Fruta"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={8}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 02 — EL FIN DEL PARTE DE NOTICIAS · MIEDOS
+// ═══════════════════════════════════════════════════════════
+const A02a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="02" title="El Fin del Parte de Noticias" tagline="Para cuando el noticiero interno de predicciones catastróficas nunca cierra."/>
+      <Step n="01" name="Encender el noticiero"
+        inst="Toma la hoja y la pluma. Escribe sin parar todo lo que tu cuerpo está anticipando: lo que puede salir mal, los síntomas que preocupan, lo que podría pasar. 3 minutos sin editar. Pon la pluma sobre la mesa. Toma la hoja con las dos manos. Léela en silencio. Silencio 20 segundos."
+        phrases={['Esto es lo que hago: anticipo lo que va a salir mal.']}/>
+      <Step n="02" name="Bajar el volumen"
+        inst="Pon la hoja boca abajo. Una mano en el pecho, la otra en el vientre. Inhala 4 — aguanta 4 — exhala 6. Seis ciclos."
+        phrases={['Mi cuerpo está aquí. Este momento está quieto.']}/>
+      <Step n="03" name="Lo que sí está"
+        inst="Párate. Pies descalzos en el suelo. Siente la temperatura del piso. Siente tu propio peso. Mira alrededor del cuarto. Nota tres cosas que ves, que están ahí, que no están amenazadas."
+        phrases={['Tengo mis pies. Tengo este cuerpo. Hoy estoy de pie.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={9}/>
+  </Pg>
+);
+const A02b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="02" cont/>
+      <Step n="04" name="Lo que guarda el papel"
+        inst="Siéntate. Toma la hoja con las dos manos — sostenla como si tuviera peso. Mira el papel en silencio. Siente su textura entre los dedos. Silencio 30 segundos. Nota qué se siente en el cuerpo: mandíbula, pecho, estómago."
+        phrases={['¿Qué guarda mi cuerpo en este parte de noticias?','Eso es real. Lo reconozco.']}/>
+      <Step n="05" name="Cerrar la transmisión"
+        inst="Toma la hoja con las dos manos. Empieza a romperla en pedazos — despacio, deliberado. Un pedazo a la vez. Siente el sonido del papel al romperse. Di la frase mientras rompes el último pedazo. Deja caer los pedazos dentro del vaso con agua. Mira cómo la tinta se disuelve, cómo las predicciones desaparecen. Silencio 45 segundos. Vierte el agua despacio sobre la tierra de la maceta."
+        phrases={['Esto ya no me protege. Lo suelto.','De lo que suelto, crece algo que no predije.']}/>
+      <Step n="06" name="La transmisión cerró"
+        inst="Párate frente a la maceta. Pies en el suelo. Mira la planta — ahí está el papel disuelto, ahí están las predicciones que soltaste. Afloja la mandíbula intencionalmente."
+        phrases={['El noticiero cerró. Sigo aquí.']}/>
+      <Rule my={9} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="Hoja de papel en blanco · Pluma o bolígrafo"/>
+      <MatItem text="Vaso con agua · Maceta con tierra"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={10}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 03 — LA SENTENCIA QUE NADIE DICTÓ · INFANCIA
+// ═══════════════════════════════════════════════════════════
+const A03a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="03" title="La Sentencia que Nadie Dictó" tagline="Para cuando una niña decidió que algo fue su culpa — y el adulto sigue cumpliendo la condena."/>
+      <Step n="01" name="La sentencia"
+        inst="Mira a la niña frente a ti — la foto o el papel con tu nombre y edad. En la hoja grande, escribe una sentencia como un documento legal: 'Por la presente se declara que [nombre], a la edad de [edad], es culpable de [el evento].' Continúa con 'La condena consiste en:' y escribe todo lo que tu cuerpo se niega desde entonces. Termina con: 'Esta sentencia no tiene fecha de vencimiento.' Lee la sentencia completa en voz alta."
+        phrases={['Esta sentencia la escribió una niña de [edad]. La he cumplido [número] años. Nunca la leí en voz alta hasta hoy.']}/>
+      <Step n="02" name="Respirar con la sentencia"
+        inst="La sentencia en el regazo. Una mano en el pecho, la otra sobre el papel. Inhala 4 — aguanta 4 — exhala 6. Cinco ciclos."
+        phrases={['Puedo respirar con la sentencia en las manos. Ya no está escondida. La estoy mirando.']}/>
+      <Step n="03" name="La niña que la escribió"
+        inst="Mira a la niña. Tómala — la foto, el papel. Ponla en el regazo, sobre la sentencia. La niña encima de la condena. Dile en voz alta, a ella. Silencio 20 segundos."
+        phrases={['Tenías [edad] años. No tenías la culpa. Lo que pasó no fue por ti. No pudiste haberlo evitado. Eras una niña.','No fue tu culpa. No fue tu culpa. No fue tu culpa.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={11}/>
+  </Pg>
+);
+const A03b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="03" cont/>
+      <Step n="04" name="Evaluar la sentencia"
+        inst="Pon a la niña a un lado con cuidado. Toma la sentencia. Léela otra vez. Pregúntale al cuerpo — no a la cabeza. Silencio 30 segundos. Espera lo que venga del pecho, del estómago."
+        phrases={['¿Esta sentencia es justa?','La sentencia [lo que el cuerpo dice]. Lo reconozco.']}/>
+      <Step n="05" name="Cortar la sentencia"
+        inst="Toma las tijeras. Lee la sentencia una última vez — la última vez que estas palabras van a existir. Empieza a cortar. Pedazos pequeños. Que las palabras se vuelvan irreconocibles. Corta 'culpable', 'la condena consiste en', 'no tiene fecha de vencimiento'. Que no quede nada legible. Mete todos los pedazos en la bolsa. Ciérrala. Silencio 60 segundos. Manos vacías."
+        phrases={['Esta sentencia la escribió una niña que no tenía la culpa. La cumplí [número] años. Hoy la corto. Se acabó la condena.']}/>
+      <Step n="06" name="Levantar la condena"
+        inst="Come el chocolate despacio. Siente el sabor. El placer. Tu cuerpo se ha negado el placer como pago por la culpa. El pago se terminó. Toma a la niña — la foto, el papel. Ponla en el regazo. Quédate así unos minutos. Con el sabor del chocolate y la niña en el regazo."
+        phrases={['La condena se levantó. Mi cuerpo puede recibir. Puedo estar bien sin traicionar a nadie.','Ya no estás en condena. Puedes descansar. Puedes estar bien. Lo que pasó no fue por ti.']}/>
+      <Rule my={9} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="Hoja grande + bolígrafo · Tijeras · Bolsa de basura"/>
+      <MatItem text="Foto de niña o papel con nombre + edad · Chocolate"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={12}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 04 — LO QUE GUARDÓ MI CUERPO · LO NO DICHO
+// ═══════════════════════════════════════════════════════════
+const A04a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="04" title="Lo que Guardó mi Cuerpo" tagline="Para cuando guardas lo que sientes para no molestar a nadie — y el cuerpo lo carga como nudos."/>
+      <Step n="01" name="Decir lo que hago"
+        inst="Primero, prepara tu agua: vierte el agua tibia en el tazón y agrega la sal. Revuelve. Luego, anuda el trapo — cada nudo que hagas representa algo que guardaste. Anúdalo lo más apretado que puedas. Toma el trapo anudado con las dos manos. Siéntelo: los nudos, el volumen, el peso. Silencio 20 segundos."
+        phrases={['Esto es lo que hago: guardo lo que siento para no molestar a nadie.']}/>
+      <Step n="02" name="Volver al cuerpo"
+        inst="Pon el trapo sobre la mesa. Una mano sobre el pecho, la otra sobre el vientre. Inhala 4 — aguanta 4 — exhala 6. Seis ciclos."
+        phrases={['Mi cuerpo está aquí. Puedo soltar lo que traigo.']}/>
+      <Step n="03" name="La fuerza que ya tienes"
+        inst="Levántate. Quítate los zapatos. Pies en el suelo. Piensa en algo que has sostenido sola. Que sigues de pie. Que cuidas a las personas que quieres."
+        phrases={['He cargado mucho. Y todavía estoy aquí. Eso es mío.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={13}/>
+  </Pg>
+);
+const A04b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="04" cont/>
+      <Step n="04" name="Lo que guarda el cuerpo"
+        inst="Siéntate. Toma el papel tissue y la pluma. Pregúntale al cuerpo en voz alta. Escribe todo lo que aparezca: lo que no has dicho, el cansancio, la tristeza, el miedo que no le has contado a nadie. Sin filtro, sin orden. 5 minutos. Lee lo que escribiste en voz muy baja."
+        phrases={['¿Qué has estado cargando tú por mí?','Esto es lo que guardé. Es real. Lo veo.']}/>
+      <Step n="05" name="Soltar"
+        inst="Toma el papel tissue. Párate frente al tazón con agua y sal. Rompe el papel en pedazos pequeños. Con las dos manos. Escucha el sonido. Suelta los pedazos en el agua. Mira cómo se disuelven. Silencio 45 a 60 segundos. Solo mira el agua."
+        phrases={['Lo que guardé en mi cuerpo ya tiene lugar. Lo suelto aquí.']}/>
+      <Step n="06" name="El cuerpo que se abre"
+        inst="Toma el trapo anudado. Desanúdalo despacio. Un nudo a la vez. Siente cómo cada nudo cede. Cuando el último nudo esté suelto, extiende el trapo abierto entre las dos manos. Toma el vaso de agua tibia. Bébelo despacio. Siente el agua adentro. Vacía el agua del tazón en la tierra de la maceta."
+        phrases={['Mi cuerpo ya no necesita cargarlo. Ya hay espacio.']}/>
+      <Rule my={9} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="Trapo o tela pequeña · Cordón o estambre"/>
+      <MatItem text="Papel tissue · Pluma · Tazón · Sal · Agua tibia"/>
+      <MatItem text="Vaso de agua tibia para tomar"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={14}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 05 — EL PRIMER GOLPE DE MARTILLO · PROYECTOS
+// ═══════════════════════════════════════════════════════════
+const A05a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="05" title="El Primer Golpe de Martillo" tagline="Para cuando todo está listo para empezar — y el cuerpo no se mueve."/>
+      <Step n="01" name="La parálisis"
+        inst="Siéntate frente a la mesa. La plastilina está frente a ti. Todo está listo para empezar. No empieces. Quédate mirando la plastilina. Siente la pesadez en las piernas, los brazos que no se levantan, la voz que dice 'ahorita', 'al rato'. Silencio 30 segundos mirando la plastilina sin tocarla."
+        phrases={['Esto es lo que hago: me quedo antes de empezar. Todo está listo y yo no me muevo. Mi cuerpo frena lo que mis manos quieren hacer.']}/>
+      <Step n="02" name="Respirar en la parálisis"
+        inst="Sin moverte. Una mano en el muslo, otra en el pecho. Inhala 4 — aguanta 4 — exhala 6 con un sonido de 'fuuuuu' — como soplando una brasa para que se encienda. Cinco ciclos."
+        phrases={['Estoy aquí, parada antes de empezar. Puedo respirar en este lugar aunque no me mueva todavía.']}/>
+      <Step n="03" name="Las manos que hacen"
+        inst="Levanta las manos. Ábrelas. Ciérralas. Ábrelas. Ciérralas en puño. Golpea los puños uno contra otro — suave primero, más fuerte. Siente el impacto. Frota las palmas rápido 10 segundos. Siente el calor. Pon las palmas calientes sobre la plastilina."
+        phrases={['Mis manos producen efecto. Cuando golpean, algo cambia. Cuando tocan, algo se calienta.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={15}/>
+  </Pg>
+);
+const A05b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="05" cont/>
+      <Step n="04" name="Antes del primer golpe"
+        inst="Escribe en la hoja lo que te enseñaron sobre iniciar cosas: '¿Quién te dijo que hicieras eso?' / 'Para qué intentas si siempre te sale mal' / 'Mejor no empieces lo que no vas a terminar.' Las que reconozcas. Dobla el papel y ponlo debajo de la plastilina. Toma la plastilina con las dos manos. No la golpees todavía. Silencio 20 segundos."
+        phrases={['¿Qué predice mi cuerpo que va a pasar si golpeo?','Mi cuerpo predice que [lo que apareció]. Lo reconozco.']}/>
+      <Step n="05" name="Golpear"
+        inst="Respira hondo. Golpea la plastilina contra la mesa. Con fuerza REAL. Que el impacto se sienta en el brazo, en el hombro, en todo el cuerpo. Sigue golpeando — aplástala, estírala, rómpela, vuélvela a juntar. 2 a 3 minutos. Cuando sientas que ya está — para. Manos sobre la mesa. Silencio 60 segundos. Saca el papel de debajo de la plastilina. Rómpelo."
+        phrases={['¡ESTO LO HAGO YO!','Esto ya no decide por mí. Mis manos acaban de golpear. Funcionó.']}/>
+      <Step n="06" name="Construir"
+        inst="Toma la plastilina. Haz algo con ella — una figura, un animal, una forma abstracta. Con las manos calientes de golpear. 5 minutos. Lo importante es que cuando termines, exista algo que no existía. Ponlo frente a ti. Llévatelo."
+        phrases={['Esto no existía. Ahora existe. Lo hice yo. Empecé y terminé.']}/>
+      <Rule my={9} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="Plastilina — porción grande"/>
+      <MatItem text="Hoja de papel · Bolígrafo"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={16}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 06 — LOS HIELOS QUE SE SUELTAN · PREDICCIONES
+// ═══════════════════════════════════════════════════════════
+const A06a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="06" title="Los Hielos que se Sueltan" tagline="Para cuando el cuerpo no puede soltar la vigilancia — y las manos viven cerradas agarrando predicciones."/>
+      <Step n="01" name="Sostener"
+        inst="Toma los hielos. Sostenlos en las dos manos. Cierra los puños. Siente el frío entrar en las palmas, en los dedos, en las muñecas. Silencio 30 segundos. Ese frío — así se siente cargar predicciones. Duele. Aprieta. Y mientras más tiempo lo sostienes, más duele."
+        phrases={['Esto es lo que hago: sostengo sin soltar. Cargo lo que me duele porque temo que soltarlo duele más.']}/>
+      <Step n="02" name="Respirar con el frío"
+        inst="Sigue sosteniendo los hielos. No los sueltes todavía. Inhala 4 — aguanta 4 — exhala 6. Tres ciclos. Con los puños cerrados y el frío en las manos."
+        phrases={['Aquí estoy. Con todo esto. Y sigo aquí.']}/>
+      <Step n="03" name="Depositar y sentir"
+        inst="Deposita los hielos en el tazón. Abre los puños y déjalos caer. Pies descalzos en el suelo — el piso no quema, el piso sostiene. Frota las manos entre sí, fuerte, 10 segundos. Siente cómo el calor regresa. Pon las palmas calientes sobre los muslos."
+        phrases={['Mis pies me sostienen. Mis manos pueden soltar. El calor regresa solo.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={17}/>
+  </Pg>
+);
+const A06b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="06" cont/>
+      <Step n="04" name="La predicción"
+        inst="Mira el tazón. Los hielos ya empezaron a derretirse. Lo que era sólido está cambiando de forma sin que hagas nada. Pregúntale al cuerpo. Silencio 30 segundos."
+        phrases={['¿Qué predice mi cuerpo que va a pasar si dejo de vigilar?','Mi cuerpo predice que [lo que apareció]. Lo reconozco. Voy a comprobar si es cierto.']}/>
+      <Step n="05" name="Lo que se derrite solo"
+        inst="Solo mira. Mira cómo los hielos se derriten. Sin que los toques. Sin que los empujes. Sin que los vigiles. 3 a 5 minutos en silencio. Lo que era sólido, rígido y doloroso ahora es agua. Cambió de forma sin que hicieras nada. La catástrofe que el cuerpo predijo no llegó. Silencio 45 segundos. Toma el tazón. Vierte el agua sobre la tierra de la maceta."
+        phrases={['Solté. No vigilé. Y nada se cayó.','Lo que era miedo ahora alimenta algo que crece.']}/>
+      <Step n="06" name="Las manos que confían"
+        inst="Sécate las manos. Pon las dos manos abiertas — palmas hacia arriba — sobre la mesa. Mira tus manos. Están abiertas, secas, calientes. Estas manos acaban de soltar lo que llevaban sosteniendo. Y nada se destruyó. Pon ambas manos sobre el pecho. Siente el latido."
+        phrases={['Mis manos pueden sostener y pueden soltar. Las dos cosas son seguras.']}/>
+      <Rule my={9} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="3 a 5 cubos de hielo"/>
+      <MatItem text="Tazón o plato hondo · Toalla pequeña"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={18}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// ACTO 07 — LA VELA QUE VELA POR MÍ · CIERRE
+// ═══════════════════════════════════════════════════════════
+const A07a=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="07" title="La Vela que Vela por Mí" tagline="Para cuando el cuerpo no sabe descansar sin vigilar — y despierta antes del día por miedo a que algo se apague."/>
+      <Step n="01" name="Nombrar lo que hago"
+        inst="Siéntate. Una mano sobre el pecho. Piensa en lo que pasa cada mañana — la urgencia de levantarte, la sensación de estar tarde para algo que no existe, el cuerpo en alerta antes de que el día empiece."
+        phrases={['Esto es lo que hago: despierto antes que el día, por miedo a que algo se apague sin mí.']}/>
+      <Step n="02" name="Volver al cuerpo"
+        inst="Una mano sobre el pecho, la otra sobre el vientre. Inhala 4 — aguanta 4 — exhala 6. Seis ciclos."
+        phrases={['Mi cuerpo está aquí. La noche está afuera. Las dos cosas son ciertas.']}/>
+      <Step n="03" name="Lo que se sostiene sin mí"
+        inst="Quítate los zapatos. Pies descalzos en el piso. Di tres cosas que existen y funcionan sin que las vigiles. Despacio, sintiendo cada una."
+        phrases={['Mi familia descansa sin mí.','La casa respira sin mí.','El sol sale sin mí.']}/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={19}/>
+  </Pg>
+);
+const A07b=()=>(
+  <Pg bg={C.arenaL}>
+    <Ct>
+      <ActHeader num="07" cont/>
+      <Step n="04" name="Escuchar al cuerpo"
+        inst="Pon tu mano sobre la vela apagada. Siente su textura, su temperatura, la cera fría. Pregúntale al cuerpo en voz alta. Silencio 30 segundos."
+        phrases={['¿Qué pasa cuando no vigilo?','Esto que siento es real. Lo reconozco.']}/>
+      <Step n="05" name="Encender la vela"
+        inst="Toma el cerillo. Enciende la vela. Quédate mirando la llama 45 segundos sin moverte. Pon una mano sobre el corazón. Siente el calor de la llama cerca. Siente el latido. Luego apaga la vela — sopla. Mírala apagada: huele a cera, a mecha quemada. Tú la encendiste y tú la apagaste."
+        phrases={['Esta vela vela por mí. Yo puedo descansar. Ella se encarga.','Cuando el cansancio llegue — la vela se encarga. Yo me duermo.']}/>
+      <Step n="06" name="Para casa — cada noche"
+        inst="1. Sostén la vela entre las dos manos. Siente su peso. 2. Di: 'Esta vela vela por mí esta noche.' 3. Ponla en tu mesa de noche. 4. Al acostarte di: 'Me duermo ahora. Lo que tenga que estar encendido, lo está.' 5. Al despertar di: 'La noche pasó. Yo dormí. No hacía falta mi vigilancia.'"
+        phrases={['Yo duermo. El mundo sigue encendido. No soy yo quien lo sostiene.']}/>
+      <Rule my={9} color={`${C.siena}20`}/>
+      <Lbl>Materiales</Lbl>
+      <MatItem text="Veladora de vaso (tipo iglesia) — se la llevan a casa"/>
+      <MatItem text="Plato hondo con agua (seguridad) · Cerillos"/>
+      <div style={{flex:1}}/>
+    </Ct>
+    <PgN n={20}/>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// CONTRAPORTADA
+// ═══════════════════════════════════════════════════════════
+const Contraportada=()=>(
+  <Pg bg={C.warm}>
+    <Ct>
+      <div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:16}}>
+        <svg viewBox="0 0 260 210" width="170" style={{display:'block'}}>
+          <g transform="translate(130,75)">
+            <circle cx="0"     cy="-50"   r="8" fill="#333" opacity="0.7"/>
+            <circle cx="25"    cy="-43.3" r="8" fill="#333" opacity="0.45"/>
+            <circle cx="43.3"  cy="-25"   r="8" fill="#333" opacity="0.7"/>
+            <circle cx="50"    cy="0"     r="8" fill="#333" opacity="0.45"/>
+            <circle cx="43.3"  cy="25"    r="8" fill="#333" opacity="0.7"/>
+            <circle cx="25"    cy="43.3"  r="8" fill="#333" opacity="0.45"/>
+            <circle cx="0"     cy="50"    r="8" fill="#333" opacity="0.7"/>
+            <circle cx="-25"   cy="43.3"  r="8" fill="#333" opacity="0.45"/>
+            <circle cx="-43.3" cy="25"    r="8" fill="#333" opacity="0.7"/>
+            <circle cx="-50"   cy="0"     r="8" fill="#333" opacity="0.45"/>
+            <circle cx="-43.3" cy="-25"   r="8" fill="#333" opacity="0.7"/>
+            <circle cx="-25"   cy="-43.3" r="8" fill="#333" opacity="0.45"/>
+            <circle cx="0" cy="0" r="5" fill="#333" opacity="0.25"/>
+            <circle cx="0" cy="0" r="3" fill="#333" opacity="0.9"/>
+          </g>
+          <text x="130" y="155" textAnchor="middle" fontFamily="'Helvetica Neue',Helvetica,Arial,sans-serif" fontSize="9" fontWeight="500" letterSpacing="3.5" fill="#888">INSTITUTO</text>
+          <text x="130" y="172" textAnchor="middle" fontFamily="'Helvetica Neue',Helvetica,Arial,sans-serif" fontSize="13" fontWeight="500" letterSpacing="1.5" fill="#333">CENTROBIOENERGETICA</text>
+        </svg>
+        <div style={{width:32,height:1,background:`${C.siena}35`}}/>
+        <Vortex size={34} color={`${C.siena}AA`}/>
+        <div style={{textAlign:'center'}}>
+          <div style={{fontFamily:SERIF,fontSize:17,fontWeight:300,fontStyle:'italic',color:C.ink,letterSpacing:'0.3px',lineHeight:1.2}}>Ritual Experiencing</div>
+          <div style={{fontFamily:MONO,fontSize:8,letterSpacing:'0.18em',textTransform:'uppercase',color:C.grey2,marginTop:6,lineHeight:1.6,textAlign:'center'}}>
+            Actos que Mueven · Sábado 2
+          </div>
+        </div>
+      </div>
+      <div style={{textAlign:'center',paddingBottom:4,flexShrink:0}}>
+        <div style={{fontFamily:MONO,fontSize:7,color:C.grey2}}>Dr. Miguel Ojeda Rios · 2026</div>
+      </div>
+    </Ct>
+  </Pg>
+);
+
+// ═══════════════════════════════════════════════════════════
+// APP — 21 páginas
+// ═══════════════════════════════════════════════════════════
+const AW=W+60, AH=H+60;
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection id="cubierta" title="Cubierta">
+        <DCArtboard id="p01" label="01 · Portada" width={AW} height={AH}><S><P01/></S></DCArtboard>
+      </DCSection>
+
+      <DCSection id="manual" title="Manual Teórico">
+        <DCArtboard id="m01a" label="02 · Predicciones" width={AW} height={AH}><S><M01a/></S></DCArtboard>
+        <DCArtboard id="m01b" label="03 · Predicciones (cont.)" width={AW} height={AH}><S><M01b/></S></DCArtboard>
+        <DCArtboard id="m02"  label="04 · Descarga vs. Actualización" width={AW} height={AH}><S><M02/></S></DCArtboard>
+        <DCArtboard id="m03a" label="05 · Presupuesto del Cuerpo" width={AW} height={AH}><S><M03a/></S></DCArtboard>
+        <DCArtboard id="m03b" label="06 · Presupuesto (cont.)" width={AW} height={AH}><S><M03b/></S></DCArtboard>
+      </DCSection>
+
+      <DCSection id="actos" title="Los Siete Actos">
+        <DCArtboard id="a01a" label="07 · A01 El Vaso Propio — pasos 1–3" width={AW} height={AH}><S><A01a/></S></DCArtboard>
+        <DCArtboard id="a01b" label="08 · A01 El Vaso Propio — pasos 4–6" width={AW} height={AH}><S><A01b/></S></DCArtboard>
+
+        <DCArtboard id="a02a" label="09 · A02 Parte de Noticias — pasos 1–3" width={AW} height={AH}><S><A02a/></S></DCArtboard>
+        <DCArtboard id="a02b" label="10 · A02 Parte de Noticias — pasos 4–6" width={AW} height={AH}><S><A02b/></S></DCArtboard>
+
+        <DCArtboard id="a03a" label="11 · A03 La Sentencia — pasos 1–3" width={AW} height={AH}><S><A03a/></S></DCArtboard>
+        <DCArtboard id="a03b" label="12 · A03 La Sentencia — pasos 4–6" width={AW} height={AH}><S><A03b/></S></DCArtboard>
+
+        <DCArtboard id="a04a" label="13 · A04 Lo que Guardó mi Cuerpo — pasos 1–3" width={AW} height={AH}><S><A04a/></S></DCArtboard>
+        <DCArtboard id="a04b" label="14 · A04 Lo que Guardó mi Cuerpo — pasos 4–6" width={AW} height={AH}><S><A04b/></S></DCArtboard>
+
+        <DCArtboard id="a05a" label="15 · A05 Primer Golpe — pasos 1–3" width={AW} height={AH}><S><A05a/></S></DCArtboard>
+        <DCArtboard id="a05b" label="16 · A05 Primer Golpe — pasos 4–6" width={AW} height={AH}><S><A05b/></S></DCArtboard>
+
+        <DCArtboard id="a06a" label="17 · A06 Los Hielos — pasos 1–3" width={AW} height={AH}><S><A06a/></S></DCArtboard>
+        <DCArtboard id="a06b" label="18 · A06 Los Hielos — pasos 4–6" width={AW} height={AH}><S><A06b/></S></DCArtboard>
+
+        <DCArtboard id="a07a" label="19 · A07 La Vela — pasos 1–3" width={AW} height={AH}><S><A07a/></S></DCArtboard>
+        <DCArtboard id="a07b" label="20 · A07 La Vela — pasos 4–6" width={AW} height={AH}><S><A07b/></S></DCArtboard>
+      </DCSection>
+
+      <DCSection id="cierre" title="Cierre">
+        <DCArtboard id="contra" label="21 · Contraportada" width={AW} height={AH}><S><Contraportada/></S></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Inserto UMBRAL — 9×14cm</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.inserto {
+  width: 340px;
+  height: 529px;
+  background: #fff;
+  border: 1px solid #000;
+  padding: 14px 16px 10px;
+  position: relative;
+}
+
+/* CABECERA — compacta, una línea */
+.cabecera {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #000;
+  margin-bottom: 8px;
+}
+
+.cab-remolino svg {
+  display: block;
+}
+
+.cab-textos {
+  display: flex;
+  flex-direction: column;
+}
+
+.cab-marca {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #000;
+  line-height: 1.3;
+}
+
+.cab-nombre {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #000;
+  line-height: 1;
+}
+
+.cab-sub {
+  font-size: 10px;
+  font-weight: 400;
+  color: #333;
+  font-style: italic;
+  line-height: 1.4;
+  margin-top: 1px;
+}
+
+/* CONTENIDO — dos columnas */
+.contenido {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-content: start;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bloque-titulo {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 2px;
+  padding-bottom: 2px;
+  border-bottom: 0.5px solid #444;
+}
+
+.bloque-texto {
+  font-size: 11px;
+  font-weight: 400;
+  color: #222;
+  line-height: 1.45;
+}
+
+/* MODO DE USO */
+.uso-item {
+  display: flex;
+  gap: 5px;
+  align-items: baseline;
+  margin-bottom: 3px;
+}
+
+.uso-num {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  min-width: 12px;
+}
+
+.uso-desc {
+  font-size: 11px;
+  color: #222;
+  line-height: 1.4;
+}
+
+.uso-desc strong {
+  font-weight: 600;
+  color: #000;
+}
+
+/* COMPOSICION */
+.comp-lista {
+  list-style: none;
+}
+
+.comp-lista li {
+  font-size: 10.5px;
+  color: #222;
+  line-height: 1.4;
+  padding: 1.5px 0 1.5px 8px;
+  position: relative;
+}
+
+.comp-lista li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: #000;
+  font-weight: 700;
+}
+
+.comp-nombre {
+  font-weight: 600;
+  color: #000;
+}
+
+/* USOS */
+.usos-lista {
+  list-style: none;
+}
+
+.usos-lista li {
+  font-size: 10.5px;
+  color: #333;
+  line-height: 1.35;
+  padding: 1px 0 1px 8px;
+  position: relative;
+}
+
+.usos-lista li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #444;
+  font-size: 7px;
+}
+
+/* PIE */
+.pie {
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 1px solid #000;
+  position: absolute;
+  bottom: 10px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.pie-legal {
+  font-family: Georgia, serif;
+  font-size: 7.5px;
+  color: #444;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.pie-derecha {
+  font-family: Georgia, serif;
+  font-size: 7.5px;
+  color: #444;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+@media print {
+  body { background: white; }
+  .inserto {
+    width: 9cm;
+    height: 14cm;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="inserto">
+
+  <!-- CABECERA -->
+  <div class="cabecera">
+    <div class="cab-remolino">
+      <svg width="22" height="22" viewBox="-1 -19 138 155">
+        <path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="72" cy="124" r="2.8" fill="#000" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="cab-textos">
+      <div class="cab-marca">Ritual Experiencing</div>
+      <div class="cab-nombre">UMBRAL</div>
+      <div class="cab-sub">Mezcla floral de acompañamiento · 20 ml</div>
+    </div>
+  </div>
+
+  <!-- CONTENIDO EN DOS COLUMNAS -->
+  <div class="contenido">
+
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="col">
+
+      <div>
+        <div class="bloque-titulo">Modo de uso</div>
+        <div class="uso-item">
+          <div class="uso-num">1</div>
+          <div class="uso-desc"><strong>Antes</strong> — 4 gotas bajo la lengua, 10 minutos antes.</div>
+        </div>
+        <div class="uso-item">
+          <div class="uso-num">2</div>
+          <div class="uso-desc"><strong>Después</strong> — 4 gotas bajo la lengua, al terminar.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="bloque-titulo">Composición</div>
+        <ul class="comp-lista">
+          <li><span class="comp-nombre">Star of Bethlehem</span> — abre acceso a lo guardado</li>
+          <li><span class="comp-nombre">Cherry Plum</span> — permite soltar el control</li>
+          <li><span class="comp-nombre">Rock Rose</span> — sostiene ante el miedo</li>
+          <li><span class="comp-nombre">Walnut</span> — protege la transición</li>
+          <li><span class="comp-nombre">Olive</span> — restaura después del proceso</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="bloque-titulo">Conservación</div>
+        <div class="bloque-texto">Lugar fresco y seco, alejado de luz directa y aparatos electrónicos. Vehículo: agua mineral y brandy.</div>
+      </div>
+
+    </div>
+
+    <!-- COLUMNA DERECHA -->
+    <div class="col">
+
+      <div>
+        <div class="bloque-titulo">Qué es</div>
+        <div class="bloque-texto">Mezcla de cinco Flores de Bach diseñada para acompañar momentos donde el cuerpo va a atravesar algo intenso. Prepara el terreno emocional antes, sostiene durante el proceso y facilita la integración después.</div>
+      </div>
+
+      <div>
+        <div class="bloque-titulo">Para qué momentos</div>
+        <ul class="usos-lista">
+          <li>Actos rituales y procesos somáticos</li>
+          <li>Sesiones de psicoterapia intensas</li>
+          <li>Constelaciones familiares</li>
+          <li>Duelos y despedidas</li>
+          <li>Transiciones vitales</li>
+          <li>Conversaciones difíciles</li>
+          <li>Talleres vivenciales y retiros</li>
+          <li>Antes y después de cirugía</li>
+          <li>Poner un límite por primera vez</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PIE -->
+  <div class="pie">
+    <div class="pie-legal">Flores de Bach: complemento de bienestar emocional. No sustituye tratamiento médico ni psicológico.</div>
+    <div class="pie-derecha">
+      <span>contacto@institutocentrobioenergetica.com</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
