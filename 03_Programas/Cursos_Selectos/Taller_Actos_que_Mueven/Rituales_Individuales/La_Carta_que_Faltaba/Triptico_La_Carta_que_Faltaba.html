@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tríptico — La Carta que Faltaba</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  @page { size: 260mm 210mm; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: 'Cormorant Garamond', Georgia, serif; }
+
+  .sheet {
+    width: 260mm;
+    height: 105mm;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    box-shadow: 0 4px 24px rgba(0,0,0,.12);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .panel {
+    width: calc(260mm / 3);
+    height: 105mm;
+    padding: 5mm 5mm 4mm;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .panel + .panel { border-left: 0.3mm dashed #ccc; }
+
+  /* — Tipografía — */
+  .mono { font-family: 'Courier New', monospace; }
+  .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+  .kicker {
+    font-family: 'Courier New', monospace;
+    font-size: 6.5pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #222;
+    line-height: 1.3;
+  }
+
+  .panel-title {
+    font-size: 15pt;
+    font-weight: 300;
+    line-height: 1.05;
+    color: #1a1a18;
+    margin-top: 1.5mm;
+  }
+  .panel-title em { font-style: italic; color: #222; }
+
+  .rule {
+    width: 16mm;
+    height: 0.3mm;
+    background: #333;
+    margin: 2mm 0;
+    flex-shrink: 0;
+  }
+
+  .body-text {
+    font-size: 8pt;
+    line-height: 1.4;
+    color: #111;
+  }
+
+  .step-num {
+    font-family: 'Courier New', monospace;
+    font-size: 6pt;
+    letter-spacing: 0.12em;
+    color: #111;
+    margin-bottom: 0.3mm;
+  }
+
+  .step-name {
+    font-size: 12pt;
+    font-weight: 500;
+    color: #222;
+    line-height: 1.1;
+    margin-bottom: 0.8mm;
+  }
+
+  .step-inst {
+    font-size: 8pt;
+    line-height: 1.4;
+    color: #111;
+  }
+
+  .phrase {
+    border-left: 1px solid rgba(0,0,0,.25);
+    padding-left: 1.5mm;
+    margin-top: 1mm;
+    font-size: 8pt;
+    font-style: italic;
+    color: #1a1a18;
+    line-height: 1.4;
+  }
+
+  .step-block { margin-bottom: 2mm; flex-shrink: 0; }
+  .step-block:last-child { margin-bottom: 0; }
+
+  .spacer { flex: 1; }
+
+  .mat-label {
+    font-family: 'Courier New', monospace;
+    font-size: 5.5pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #222;
+    margin-bottom: 0.8mm;
+  }
+
+  .mat-item {
+    font-size: 8pt;
+    line-height: 1.38;
+    color: #111;
+    padding-left: 2mm;
+    position: relative;
+  }
+  .mat-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2pt;
+    width: 1mm;
+    height: 1mm;
+    border-radius: 50%;
+    background: #333;
+    opacity: .5;
+  }
+
+  .footer-line {
+    border-top: 0.2mm solid rgba(0,0,0,.15);
+    padding-top: 1mm;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .footer-line span {
+    font-family: 'Courier New', monospace;
+    font-size: 4.5pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #222;
+  }
+  .footer-line .pg { color: #222; }
+
+  /* Portada panel */
+  .cover-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 6mm;
+  }
+
+  .vortex-small { opacity: .12; position: absolute; top: 5mm; right: 5mm; }
+
+  .obs-title {
+    font-family: 'Courier New', monospace;
+    font-size: 5.5pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #222;
+    margin-bottom: 1mm;
+  }
+  .obs-item {
+    font-size: 7pt;
+    line-height: 1.38;
+    color: #111;
+    margin-bottom: 0.8mm;
+    padding-left: 2mm;
+    position: relative;
+  }
+  .obs-item::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #222;
+    opacity: .5;
+  }
+
+  .note-box {
+    border: 0.2mm solid rgba(0,0,0,.18);
+    padding: 1.5mm 2mm;
+    margin-top: 1.5mm;
+  }
+  .note-box .note-label {
+    font-family: 'Courier New', monospace;
+    font-size: 5pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #222;
+    margin-bottom: 0.5mm;
+  }
+  .note-box p {
+    font-size: 7.5pt;
+    line-height: 1.35;
+    color: #111;
+  }
+
+  .label-side {
+    font-family: 'Courier New', monospace;
+    font-size: 5pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #222;
+    text-align: center;
+    margin: 8px auto;
+    width: 260mm;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .sheet { box-shadow: none; margin: 0; }
+    .label-side { display: none; }
+    .sheet + .label-side + .sheet { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ CARA A — FRENTE ═══════════ -->
+<div class="label-side">CARA A — FRENTE (se imprime primero)</div>
+<div class="sheet">
+
+  <!-- Panel 1: Portada -->
+  <div class="panel cover-panel">
+    <svg class="vortex-small" width="42" height="42" viewBox="-1 -19 138 155" fill="none">
+      <path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="72" cy="124" r="3.5" fill="#333"/>
+    </svg>
+
+    <div class="kicker">Ritual Experiencing · TAME</div>
+    <div class="panel-title" style="font-size:17pt;margin-top:2mm;">La Carta<br><em>que Faltaba.</em></div>
+    <div class="rule"></div>
+    <p class="body-text" style="font-size:9pt;font-style:italic;color:#111;margin-bottom:3mm;">Para cuando crees que ya no queda amor para ti.</p>
+
+    <p class="body-text" style="font-size:8.5pt;color:#111;margin-bottom:2mm;">
+      Para cuando llevas anos buscando en la cara de otros una senal de que estas bien. Y esa senal no llega. O llega a medias. O llega y no la crees.
+    </p>
+    <p class="body-text" style="font-size:8.5pt;color:#111;margin-bottom:3mm;">
+      Este ritual existe porque hay una carta que lleva toda tu vida esperando ser escrita. Y la persona que tenia que escribirla siempre fuiste tu.
+    </p>
+
+    <div class="spacer"></div>
+
+    <div class="mat-label">Materiales</div>
+    <div class="mat-item">Dos hojas de papel</div>
+    <div class="mat-item">Boligrafo o pluma</div>
+    <div class="mat-item">Un sobre</div>
+    <div class="mat-item">Cinta adhesiva o pegamento</div>
+    <div class="mat-item">Espejo donde veas tu cara completa</div>
+
+    <div class="footer-line" style="margin-top:3mm;">
+      <span>Dr. Miguel Ojeda Rios</span>
+      <span class="pg">01</span>
+    </div>
+  </div>
+
+  <!-- Panel 2: Paso 1 + Paso 2 -->
+  <div class="panel">
+    <div class="step-block">
+      <div class="step-num">PASO 01</div>
+      <div class="step-name">Nombrar lo que haces</div>
+      <div class="step-inst">
+        Parate frente al espejo. Brazos caidos a los lados. No sonrias. No acomodes nada. Mirate.
+      </div>
+      <div class="step-inst" style="margin-top:1mm;">
+        Esa persona del espejo lleva mucho tiempo esperando. Mira sus ojos — hay algo ahi que todavia busca. Siente la postura de la espera en tu cuerpo. Los hombros ligeramente encogidos. El pecho un poco hundido.
+      </div>
+      <div class="phrase">"Esto es lo que hago: espero a que alguien me diga que valgo."</div>
+      <div class="step-inst" style="margin-top:1mm;font-size:7.5pt;color:#222;">
+        Quedate 20 segundos mirandote a los ojos. Siente donde aprieta esa frase.
+      </div>
+    </div>
+
+    <div style="height:0.3mm;background:rgba(0,0,0,.1);margin:2mm 0;flex-shrink:0"></div>
+
+    <div class="step-block">
+      <div class="step-num">PASO 02</div>
+      <div class="step-name">Volver al cuerpo</div>
+      <div class="step-inst">
+        Cierra los ojos. Una mano en el pecho, otra en el abdomen. Siente la temperatura de tus propias manos. Siente como el pecho sube y baja — eso lo hace tu cuerpo solo, sin que nadie lo apruebe.
+      </div>
+      <div class="step-inst" style="margin-top:1mm;">
+        Respira lento: inhala 4 — sosten 4 — exhala 6. Repite 5 veces. Con cada exhalacion, suelta la mandibula. Deja caer los hombros. Siente como los pies presionan el suelo.
+      </div>
+      <div class="phrase">"Mi cuerpo esta aqui. Puedo hacer lo que viene."</div>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="footer-line">
+      <span>La Carta que Faltaba</span>
+      <span class="pg">02</span>
+    </div>
+  </div>
+
+  <!-- Panel 3: Paso 3 + Paso 4 -->
+  <div class="panel">
+    <div class="step-block">
+      <div class="step-num">PASO 03</div>
+      <div class="step-name">Reconocer lo que tienes</div>
+      <div class="step-inst">
+        Pies firmes en el suelo. Sin zapatos si puedes. Presiona los dedos contra el piso. Pon ambas manos en tu pecho, una sobre otra. Siente el latido. Ese golpe suave, repetido, constante. Eso que late no necesita que nadie lo valide para seguir latiendo.
+      </div>
+      <div class="phrase">"Este corazon sigue latiendo. Siempre ha latido para mi."</div>
+    </div>
+
+    <div style="height:0.3mm;background:rgba(0,0,0,.1);margin:2mm 0;flex-shrink:0"></div>
+
+    <div class="step-block">
+      <div class="step-num">PASO 04</div>
+      <div class="step-name">Escuchar al cuerpo</div>
+      <div class="step-inst">
+        Sientate. Palmas hacia arriba sobre tus muslos. Siente el aire en las palmas. Estan vacias.
+      </div>
+      <div class="phrase">"¿Que palabras llevas esperando?"</div>
+      <div class="step-inst" style="margin-top:1mm;">
+        Cierra los ojos. Espera 30 segundos. Cuando algo llegue, toma la primera hoja. Escribe arriba: <strong>"Estoy esperando que me digan:"</strong> y abajo, escribe lo que llego. Las palabras que tu cuerpo ha estado esperando. Todas.
+      </div>
+      <div class="step-inst" style="margin-top:1mm;">
+        Toma la segunda hoja. Escribe tu nombre arriba. Escribete esas mismas cosas — de ti para ti. Sin pedir permiso. Esta es la carta que faltaba.
+      </div>
+      <div class="phrase">"Esto es lo que mi cuerpo lleva esperando. Todo esto. Lo reconozco."</div>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="footer-line">
+      <span>La Carta que Faltaba</span>
+      <span class="pg">03</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════ CARA B — REVERSO ═══════════ -->
+<div class="label-side">CARA B — REVERSO (voltear por el borde largo)</div>
+<div class="sheet">
+
+  <!-- Panel 4: Paso 5 — El acto (romper) -->
+  <div class="panel">
+    <div class="step-block">
+      <div class="step-num">PASO 05</div>
+      <div class="step-name">El acto</div>
+      <div class="step-inst">
+        Ponte de pie. Toma la primera hoja — la lista de todo lo que esperabas de otros. Sostenla frente a ti con ambas manos. Mirala. Cada palabra ahi es una puerta que dejaste cerrada porque la llave la tenia alguien mas.
+      </div>
+      <div class="phrase">"Si dejo de esperar, mi cuerpo cree que me quedo sin nada."</div>
+      <div class="step-inst" style="margin-top:1.5mm;">
+        Toma la hoja con las dos manos. Rompela. Despacio. Siente como el papel resiste y luego cede. Escucha el sonido. Sigue rompiendo. Pedazo por pedazo.
+      </div>
+      <div class="phrase">"Dejo de esperar. Ya nadie tiene que decirmelo."</div>
+      <div class="step-inst" style="margin-top:1.5mm;">
+        Deja caer los pedazos al suelo. Abre las manos. Miralas vacias.
+      </div>
+      <div class="step-inst" style="margin-top:1.5mm;font-weight:500;color:#222;font-size:9pt;">
+        60 segundos en silencio absoluto. No recojas nada. Solo siente. Lo que venga es correcto. No lo detengas.
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="footer-line">
+      <span>La Carta que Faltaba</span>
+      <span class="pg">04</span>
+    </div>
+  </div>
+
+  <!-- Panel 5: La carta (leer frente al espejo) -->
+  <div class="panel">
+    <div class="step-block">
+      <div class="step-num">LA CARTA</div>
+      <div class="step-name">Leer frente al espejo</div>
+      <div class="step-inst">
+        Toma la segunda hoja — tu carta. Parate frente al espejo. Sostenla a la altura del pecho.
+      </div>
+      <div class="step-inst" style="margin-top:1mm;">
+        Mira a la persona del espejo. Mirale los ojos. Esa persona lleva toda la vida esperando esta carta. Y hoy llego.
+      </div>
+      <div class="step-inst" style="margin-top:1mm;">
+        Lee palabra por palabra. Despacio. Mirando tus propios ojos. Si la voz tiembla, dejala temblar. Si se quiebra, dejala quebrarse. Sigue leyendo.
+      </div>
+      <div class="step-inst" style="margin-top:1mm;">
+        Nota si algo se mueve en el pecho — una tibieza, una apertura. Eso que sientes es lo mismo que sentirias si lo dijera alguien mas.
+      </div>
+      <div class="step-inst" style="margin-top:1.5mm;">
+        Baja la carta. Quedate mirando tus ojos 30 segundos. En silencio.
+      </div>
+      <div class="step-inst" style="margin-top:1.5mm;">
+        Dobla la carta con cuidado. Metela en el sobre. Sellalo con cinta — que no se pueda abrir sin romperlo. Escribe en el exterior:
+      </div>
+      <div style="text-align:center;margin:2mm 0;font-size:14pt;font-weight:600;letter-spacing:0.15em;color:#222;">VALIDO</div>
+      <div class="phrase">"Esta carta la escribi yo. Y llego."</div>
+      <div class="step-inst" style="margin-top:1.5mm;font-size:7.5pt;color:#222;">
+        Pon el sobre donde lo veas todos los dias. Mesa de noche. Escritorio. Junto al espejo.
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+    <div class="footer-line">
+      <span>La Carta que Faltaba</span>
+      <span class="pg">05</span>
+    </div>
+  </div>
+
+  <!-- Panel 6: Cierre + Observar después + Notas -->
+  <div class="panel">
+    <div class="step-block">
+      <div class="step-num">CIERRE</div>
+      <div class="step-name">Lo que sigue</div>
+      <div class="step-inst">
+        Recoge los pedazos del suelo. Tiralos a la basura — con calma. La espera cumplio su funcion. Pero ya no la necesitas. Lo que esperabas ya llego — y vino de ti.
+      </div>
+    </div>
+
+    <div style="height:0.3mm;background:rgba(0,0,0,.1);margin:1.5mm 0;flex-shrink:0"></div>
+
+    <div class="obs-title">Que observar despues</div>
+    <div class="obs-item">Si al leer la carta hubo un momento donde las palabras llegaron — calor en el pecho, algo que se abrio.</div>
+    <div class="obs-item">Si en los dias siguientes buscas menos aprobacion antes de tomar una decision.</div>
+    <div class="obs-item">Si al ver el sobre aparece tranquilidad, orgullo, ternura hacia ti misma.</div>
+    <div class="obs-item">Si aparecen ganas de llorar sin motivo. Eso es el cuerpo terminando de procesar. Dejalo.</div>
+
+    <div style="height:0.3mm;background:rgba(0,0,0,.1);margin:1.5mm 0;flex-shrink:0"></div>
+
+    <div class="note-box">
+      <div class="note-label">Ruta de vuelta</div>
+      <p>Si el cuerpo pide parar — para. Sientate. Respira 4-4-6 hasta estabilizarte. Puedes retomar manana.</p>
+    </div>
+
+    <div class="note-box">
+      <div class="note-label">Calibracion</div>
+      <p>Si romper la hoja es muy intenso, doblala y metela en una caja cerrada. Si leer mirando tus ojos es demasiado, empieza con ojos cerrados.</p>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="footer-line">
+      <span style="display:flex;align-items:center;gap:1mm;">
+        <svg width="8" height="8" viewBox="-1 -19 138 155" fill="none"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" stroke="#333" stroke-width="4" stroke-linecap="round" opacity=".6"/><circle cx="72" cy="124" r="4" fill="#333" opacity=".4"/></svg>
+        Ritual Experiencing
+      </span>
+      <span class="pg">06</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

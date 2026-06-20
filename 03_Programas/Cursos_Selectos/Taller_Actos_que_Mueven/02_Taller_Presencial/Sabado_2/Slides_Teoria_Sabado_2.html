@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actos que Mueven - Teoría Sábado 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --siena:#8B4513;
+    --siena-soft:#C4926A;
+    --black:#2C2C2A;
+    --warm:#FAF9F6;
+    --cream:#E8E6DE;
+    --gray:#888780;
+    --line:#D9D3C8;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#d8d2c8;color:var(--black);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  body{padding:24px}
+  .deck{display:grid;gap:24px;justify-items:center}
+  .slide{
+    width:min(1280px, calc(100vw - 48px));
+    aspect-ratio:16/9;
+    background:var(--warm);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 18px 48px rgba(44,44,42,.22);
+    padding:58px 74px;
+    page-break-after:always;
+  }
+  .slide.dark{background:var(--black);color:var(--cream)}
+  .brand{position:absolute;top:30px;left:46px;display:flex;align-items:center;gap:12px}
+  .brand svg{width:30px;height:30px;flex:0 0 auto}
+  .brand .name{font-family:"Cormorant Garamond",Georgia,serif;font-size:23px;line-height:.86;font-weight:300}
+  .brand .name em{font-style:italic;color:var(--siena)}
+  .dark .brand .name em{color:var(--siena-soft)}
+  .kicker{font-family:"Courier New",monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--siena);margin:0 0 18px}
+  .dark .kicker{color:var(--siena-soft)}
+  h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:300;margin:0;color:inherit}
+  h1{font-size:82px;line-height:.86;max-width:840px}
+  h1 em,h2 em{font-style:italic;color:var(--siena)}
+  .dark h1 em,.dark h2 em{color:var(--siena-soft)}
+  h2{font-size:58px;line-height:.9;max-width:820px}
+  h3{font-size:34px;line-height:1.02}
+  p{font-size:25px;line-height:1.28;margin:0;color:#3e3d39;max-width:880px}
+  .dark p{color:#ded8ce}
+  .lead{font-size:31px;line-height:1.22;max-width:940px}
+  .small{font-size:18px;color:var(--gray);line-height:1.35}
+  .dark .small{color:#bbb3a8}
+  .rule{width:90px;height:2px;background:var(--siena);margin:28px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center;height:100%}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+  .card{border:1px solid var(--line);padding:26px 26px 24px;background:rgba(255,255,255,.24)}
+  .card b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:34px;font-weight:400;line-height:1;margin-bottom:12px}
+  .card p{font-size:20px;line-height:1.26}
+  .pill{display:inline-block;border:1px solid var(--siena);color:var(--siena);padding:8px 12px;font-family:"Courier New",monospace;font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin:4px 6px 4px 0}
+  .quote{font-family:"Cormorant Garamond",Georgia,serif;font-size:47px;line-height:1.04;font-style:italic;color:var(--black);max-width:880px}
+  .dark .quote{color:var(--cream)}
+  .quote:before{content:"";display:block;width:86px;height:2px;background:var(--siena);margin-bottom:26px}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:13px;margin-top:34px}
+  .step{border-top:2px solid var(--siena);padding-top:14px;min-height:168px}
+  .step .num{font-family:"Courier New",monospace;font-size:13px;color:var(--gray);letter-spacing:.12em;margin-bottom:10px}
+  .step b{font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;line-height:.98;font-weight:400;display:block;margin-bottom:10px}
+  .step span{font-size:17px;line-height:1.22;color:#55524d;display:block}
+  .diagram{display:flex;align-items:center;gap:18px;margin-top:38px}
+  .node{border:1px solid var(--line);padding:20px 22px;min-width:150px;text-align:center;font-family:"Cormorant Garamond",Georgia,serif;font-size:31px;line-height:1}
+  .arrow{font-family:"Cormorant Garamond",Georgia,serif;font-size:48px;color:var(--siena)}
+  .footer{position:absolute;bottom:28px;left:46px;right:46px;display:flex;justify-content:space-between;align-items:center;font-family:"Courier New",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+  .slideNo{color:var(--siena)}
+  .watermark{position:absolute;right:22px;bottom:22px;width:170px;height:170px;opacity:.08}
+  .dark .watermark{opacity:.16}
+  .titleBlock{position:absolute;left:74px;bottom:82px}
+  .titleBlock .meta{font-family:"Courier New",monospace;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-top:28px}
+  .courseCover{background:var(--warm);color:var(--black)}
+  .courseCover .brand{top:42px;left:58px}
+  .courseCover .brand svg{width:42px;height:42px}
+  .courseCover .brand .name{font-size:31px}
+  .courseCover .coverMark{position:absolute;right:88px;top:84px;width:310px;height:310px;opacity:.10}
+  .courseCover .courseTitle{position:absolute;left:74px;bottom:128px;max-width:900px}
+  .courseCover h1{font-size:96px;line-height:.84;max-width:880px}
+  .courseCover .courseLine{width:148px;height:2px;background:var(--siena);margin:34px 0 24px}
+  .courseCover .courseMeta{font-family:"Courier New",monospace;font-size:15px;line-height:1.7;letter-spacing:.14em;text-transform:uppercase;color:#55524d}
+  .courseCover .courseMeta strong{font-weight:400;color:var(--black)}
+  .courseCover .bottomBand{position:absolute;left:74px;right:74px;bottom:48px;display:flex;justify-content:space-between;align-items:end;border-top:1px solid rgba(139,69,19,.32);padding-top:18px;font-family:"Courier New",monospace;font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--gray)}
+  .actSlide{display:flex;flex-direction:column;justify-content:center}
+  .actTop{position:absolute;top:46px;left:74px;right:74px;display:flex;justify-content:space-between;align-items:center;font-family:"Courier New",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--siena)}
+  .actSlide h2{font-size:64px;max-width:880px}
+  .actTag{font-size:27px;line-height:1.22;max-width:850px;margin-top:22px;color:#4b4944}
+  .actFacts{display:grid;grid-template-columns:1.08fr 1fr 1fr;gap:18px;margin-top:34px}
+  .fact{border-top:2px solid var(--siena);padding-top:14px}
+  .fact b{display:block;font-family:"Courier New",monospace;font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--siena);font-weight:400;margin-bottom:10px}
+  .fact span{display:block;font-size:21px;line-height:1.22;color:#3f3d39}
+  .phraseSlide{display:flex;align-items:center;justify-content:center;text-align:center}
+  .phraseWrap{max-width:980px}
+  .phraseSlide .kicker{margin-bottom:34px}
+  .bigPhrase{font-family:"Cormorant Garamond",Georgia,serif;font-size:66px;line-height:1.02;font-style:italic;color:var(--black)}
+  .bigPhrase.smallFit{font-size:58px}
+  .bigPhrase.tightFit{font-size:50px;line-height:1.04}
+  .dark .bigPhrase{color:var(--cream)}
+  .phraseSource{margin:36px auto 0;font-family:"Courier New",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+  .tbl{width:100%;border-collapse:collapse;margin-top:28px;font-size:19px;line-height:1.3}
+  .tbl th{text-align:left;font-family:"Courier New",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--siena);font-weight:400;padding:10px 14px;border-bottom:2px solid var(--siena)}
+  .tbl td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;color:#3e3d39}
+  .dark .tbl th{color:var(--siena-soft);border-bottom-color:var(--siena-soft)}
+  .dark .tbl td{border-bottom-color:rgba(255,255,255,.12);color:#ded8ce}
+  .impGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+  .impCard{border:1px solid var(--line);padding:16px 16px 14px}
+  .impCard b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;font-weight:400;line-height:1;margin-bottom:8px}
+  .impCard span{font-size:16px;line-height:1.22;color:#55524d;display:block}
+  @page{size:16in 9in;margin:0}
+  @media print{
+    body{padding:0;background:#fff}
+    .deck{display:block}
+    .slide{width:16in;height:9in;box-shadow:none;margin:0}
+  }
+</style>
+</head>
+<body>
+<main class="deck">
+
+<!-- ==================== PORTADA ==================== -->
+
+<section class="slide dark">
+  <div class="brand"><svg viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#C4926A" stroke-width="5" stroke-linecap="round" opacity=".82"/><circle cx="72" cy="124" r="6" fill="#C4926A" opacity=".55"/></svg><div class="name">Ritual<br><em>Experiencing</em></div></div>
+  <svg class="watermark" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#C4926A" stroke-width="5" stroke-linecap="round"/><circle cx="72" cy="124" r="6" fill="#C4926A"/></svg>
+  <div class="titleBlock">
+    <p class="kicker">Actos que Mueven · Sábado 2 · Teoría</p>
+    <h1>Por qué funciona<br><em>lo que funciona.</em></h1>
+    <div class="meta">Dr. Miguel Ojeda Rios · Bioenergética V4</div>
+  </div>
+  <div class="footer"><span>Instituto Centrobioenergetica</span><span class="slideNo">01</span></div>
+</section>
+
+<!-- ==================== EL CEREBRO PREDICE ==================== -->
+
+<section class="slide">
+  <div class="brand"><svg viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#8B4513" stroke-width="5" stroke-linecap="round" opacity=".82"/><circle cx="72" cy="124" r="6" fill="#8B4513" opacity=".55"/></svg><div class="name">Ritual<br><em>Experiencing</em></div></div>
+  <p class="kicker">Procesamiento predictivo</p>
+  <h2>El cerebro no percibe.<br><em>Predice.</em></h2>
+  <div class="rule"></div>
+  <p class="lead">No espera el estímulo para responder. Genera hipótesis sobre lo que va a ocurrir y corrige solo cuando hay un error de predicción suficientemente grande.</p>
+  <div class="grid2" style="height:auto;margin-top:34px">
+    <div class="card"><b>El síntoma</b><p>Es una predicción ejecutándose, no un defecto. Lo que la persona hace — evitar, controlar, callar — es la conducta que su predicción genera.</p></div>
+    <div class="card"><b>La corrección</b><p>No se logra con información. Se logra con error de predicción. Solo un momento donde lo predicho no ocurrió — y se sintió en el cuerpo — actualiza el modelo.</p></div>
+  </div>
+  <div class="footer"><span>Barrett, Friston, Clark</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== PRECISIÓN ==================== -->
+
+<section class="slide dark">
+  <p class="kicker">Precisión</p>
+  <h2>Por qué una creencia<br><em>se vive como realidad.</em></h2>
+  <div class="rule"></div>
+  <p class="lead">Cada predicción tiene un peso asignado: su precisión. Un prior de alta precisión suprime los errores de predicción que lo contradicen — los descarta antes de que lleguen a actualizarlo.</p>
+  <div class="grid2" style="height:auto;margin-top:34px">
+    <div class="card"><b>No es una creencia</b><p>El paciente con "no valgo" no cree que no vale. Percibe un mundo en el que no vale. Los datos ya vienen teñidos por ese prior.</p></div>
+    <div class="card"><b>El cambio necesario</b><p>Convertir un hecho-vivido-como-realidad de vuelta en una predicción-que-puede-estar-equivocada. Eso es un cambio perceptual, no cognitivo.</p></div>
+  </div>
+  <div class="footer"><span>El prior no es algo que piensas — es algo con lo que percibes</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== CONDUCTA PRO-PREDICCIÓN ==================== -->
+
+<section class="slide">
+  <p class="kicker">El circuito que se auto-confirma</p>
+  <h2>La conducta<br><em>pro-predicción.</em></h2>
+  <div class="rule"></div>
+  <p class="lead">Las predicciones no solo anticipan — generan conducta. El sistema produce comportamientos que previenen la catástrofe predicha. Esa conducta cierra el circuito.</p>
+  <div class="diagram">
+    <div class="node">Predicción<br><span class="small">"si no doy, me abandonan"</span></div>
+    <div class="arrow">→</div>
+    <div class="node">Conducta<br><span class="small">da sin parar</span></div>
+    <div class="arrow">→</div>
+    <div class="node">Resultado<br><span class="small">nunca recoge el dato contrario</span></div>
+    <div class="arrow">→</div>
+    <div class="node">Confirma<br><span class="small">la predicción se mantiene</span></div>
+  </div>
+  <p style="margin-top:34px">Mientras la conducta opere, el sistema nunca muestrea la evidencia desconfirmadora — la hace imposible.</p>
+  <div class="footer"><span>La conducta no es el síntoma — es el mecanismo de mantenimiento</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== PRESUPUESTO CORPORAL ==================== -->
+
+<section class="slide dark">
+  <p class="kicker">Barrett · Presupuesto corporal</p>
+  <h2>El cuerpo paga<br><em>lo que el cerebro predice.</em></h2>
+  <div class="grid2" style="height:auto;margin-top:34px">
+    <div>
+      <p class="lead">El cerebro no espera a que el cuerpo necesite recursos — los asigna anticipadamente según lo que predice.</p>
+      <div class="rule"></div>
+      <p>Un patrón crónico de predicción negativa mantiene al cerebro asignando recursos de emergencia permanentemente. El costo es real: inflamación, insomnio, fatiga, problemas digestivos.</p>
+    </div>
+    <div>
+      <div class="card"><b>Lo vivido pesa más</b><p>El sistema predictivo opera sobre datos interoceptivos con mucha mayor confianza que sobre datos conceptuales. Una explicación racional llega como dato de baja precisión. Una experiencia corporal contradictoria llega como dato de alta precisión.</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>Por eso un argumento no genera mismatch y una experiencia vivida sí</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== JERARQUÍA PREDICTIVA ==================== -->
+
+<section class="slide">
+  <p class="kicker">Jerarquía predictiva</p>
+  <h2>Un prior generativo<br><em>produce una familia entera.</em></h2>
+  <div class="rule"></div>
+  <p>El prior "el mundo no me sostiene si no empujo" genera predicciones distintas en cada área de la vida:</p>
+  <div class="grid2" style="height:auto;margin-top:28px">
+    <div class="card"><b>Trabajo</b><p>"Si no rindo, me corren."</p></div>
+    <div class="card"><b>Pareja</b><p>"Si no doy, me dejan."</p></div>
+    <div class="card"><b>Dinero</b><p>"Si descanso, pierdo."</p></div>
+    <div class="card"><b>Cuerpo</b><p>"Si paro, me enfermo."</p></div>
+  </div>
+  <p style="margin-top:28px">Por fuera parecen cuatro problemas. Por dentro son cuatro hojas del mismo árbol. Si reescribes el nodo del que cuelga todo, toda la familia pierde su fuente.</p>
+  <div class="footer"><span>La identidad es el prior más lento del sistema</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== RECONSOLIDACIÓN VS CONTRARREGULACIÓN ==================== -->
+
+<section class="slide dark">
+  <p class="kicker">La distinción clave</p>
+  <h2>Reconsolidación vs.<br><em>contrarregulación.</em></h2>
+  <table class="tbl">
+    <tr><th></th><th>Contrarregulación</th><th>Reconsolidación</th></tr>
+    <tr><td style="font-family:'Courier New',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--siena-soft)">Qué hace</td><td>Crea una memoria nueva que compite con la antigua</td><td>Reescribe la memoria antigua</td></tr>
+    <tr><td style="font-family:'Courier New',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--siena-soft)">Resultado</td><td>El patrón viejo sigue ahí, suprimido</td><td>El patrón viejo deja de generarse</td></tr>
+    <tr><td style="font-family:'Courier New',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--siena-soft)">Bajo estrés</td><td>Recae — la memoria original reaparece</td><td>No recae — ya no existe en su forma anterior</td></tr>
+    <tr><td style="font-family:'Courier New',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--siena-soft)">Mantenimiento</td><td>Requiere práctica continua</td><td>No requiere mantenimiento</td></tr>
+  </table>
+  <p style="margin-top:28px">La mayoría de las intervenciones psicológicas enseñan una respuesta nueva que tiene que ganarle a la vieja cada vez. RE busca que la respuesta vieja deje de existir como tal.</p>
+  <div class="footer"><span>Ecker · Reconsolidación de memoria</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== CARGA ALOSTÁTICA ==================== -->
+
+<section class="slide">
+  <p class="kicker">McEwen · Carga alostática</p>
+  <h2>El costo de predecir<br><em>peligro permanente.</em></h2>
+  <div class="rule"></div>
+  <p>Cuando el sistema nervioso predice peligro crónico, mantiene la cascada de estrés activa sin interrupción. El costo se graba en el cuerpo:</p>
+  <div class="steps">
+    <div class="step"><div class="num">01</div><b>Músculos</b><span>Tensión crónica en espalda, garganta, estómago, pecho.</span></div>
+    <div class="step"><div class="num">02</div><b>Sueño</b><span>Insomnio, sueño no reparador, despertar con urgencia.</span></div>
+    <div class="step"><div class="num">03</div><b>Inmune</b><span>Inflamación de bajo grado crónica.</span></div>
+    <div class="step"><div class="num">04</div><b>Digestión</b><span>Problemas funcionales, estómago en contracción.</span></div>
+    <div class="step"><div class="num">05</div><b>Cerebro</b><span>Hipocampo reducido, amígdala hiperreactiva.</span></div>
+  </div>
+  <p style="margin-top:22px">No son síntomas "psicológicos" — son el costo biológico medible de una predicción que corre sin pausa.</p>
+  <div class="footer"><span>El estresor no es externo — es la predicción interna</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== VENTANA DE SEGURIDAD ==================== -->
+
+<section class="slide dark">
+  <p class="kicker">Porges · Teoría polivagal</p>
+  <h2>Tres estados.<br><em>Solo uno permite cambio.</em></h2>
+  <div class="grid3">
+    <div class="card"><b>Vagal ventral</b><p>Seguridad y conexión. El sistema está presente, alerta, regulado. Es el único estado donde la reconsolidación puede ocurrir.</p></div>
+    <div class="card"><b>Simpático</b><p>Alerta y movilización. Lucha o huida. Cualquier experiencia nueva se procesa como amenaza — no como actualización.</p></div>
+    <div class="card"><b>Dorsal vagal</b><p>Apagamiento. Inmovilización, disociación. La experiencia nueva no se procesa en absoluto.</p></div>
+  </div>
+  <p style="margin-top:28px">La regulación antes del acto (Paso 2) no es calentar motores. Es la condición de seguridad que hace posible que el cambio ocurra.</p>
+  <div class="footer"><span>Sin regulación, el acto puede retraumatizar en lugar de transformar</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== LAS 3 CONDICIONES DE ECKER ==================== -->
+
+<section class="slide">
+  <p class="kicker">Ecker · Reconsolidación clínica</p>
+  <h2>Tres condiciones.<br><em>Sin alguna, no ocurre.</em></h2>
+  <div class="grid3">
+    <div class="card"><b>1. Reactivación</b><p>La memoria emocional debe estar encendida — presente en el cuerpo, no recordada narrativamente. Si se describe pero no se siente, no entra en estado lábil.</p></div>
+    <div class="card"><b>2. Discrepancia</b><p>La memoria debe encontrarse con una experiencia que contradiga la predicción. Y esa contradicción debe ser vivida en el cuerpo, no pensada.</p></div>
+    <div class="card"><b>3. Persistencia</b><p>La experiencia contradictoria debe sostenerse el tiempo suficiente. De ahí la pausa de 30-60 segundos: el silencio no es descanso — es registro.</p></div>
+  </div>
+  <div class="footer"><span>La secuencia TAME es una implementación de estas tres condiciones</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== INGENIERÍA DEL MISMATCH ==================== -->
+
+<section class="slide dark">
+  <p class="kicker">Diseño del acto</p>
+  <h2>El mismatch:<br><em>ingeniería inversa.</em></h2>
+  <div class="steps" style="grid-template-columns:repeat(4,1fr)">
+    <div class="step"><div class="num">01</div><b>Identificar</b><span>¿Qué predice el cuerpo? La predicción es somática, no intelectual.</span></div>
+    <div class="step"><div class="num">02</div><b>Diseñar el IF</b><span>Crear la situación donde la condición temida ocurre dentro del ritual.</span></div>
+    <div class="step"><div class="num">03</div><b>Diseñar la ausencia del THEN</b><span>Después de que el IF ocurre, nada malo pasa. La catástrofe no llega.</span></div>
+    <div class="step"><div class="num">04</div><b>Verificar</b><span>Un mismatch para un patrón debe ser específico para ese patrón. Si sirve para cualquiera, es demasiado genérico.</span></div>
+  </div>
+  <p style="margin-top:34px">La pausa de 30-60 segundos después del acto sostiene la brecha — le da al sistema nervioso tiempo para registrar que la catástrofe que esperaba no llegó.</p>
+  <div class="footer"><span>Cada patrón requiere su propio diseño IF→THEN</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== CALIBRACIÓN ==================== -->
+
+<section class="slide">
+  <p class="kicker">Calibración</p>
+  <h2>Tres niveles<br><em>de irreversibilidad.</em></h2>
+  <table class="tbl">
+    <tr><th>Nivel</th><th>Acto</th><th>Cuándo usar</th></tr>
+    <tr><td><b style="font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;font-weight:400">Alto</b></td><td>Destruir el objeto central + eliminar acceso a reemplazo</td><td>Paciente resiliente, alianza sólida, ventana de tolerancia clara</td></tr>
+    <tr><td><b style="font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;font-weight:400">Medio</b></td><td>Destruir objeto secundario + contener primario con fricción</td><td>Paciente hipersensible, enfermedad crónica, historial de pánico</td></tr>
+    <tr><td><b style="font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;font-weight:400">Bajo</b></td><td>Transformar sin destruir + barrera simbólica</td><td>Paciente frágil, crisis activa, primer ritual</td></tr>
+  </table>
+  <p style="margin-top:28px">Siempre elegir el nivel más alto que la persona pueda tolerar. La irreversibilidad baja funciona si la carga sensorial es suficiente.</p>
+  <div class="footer"><span>La ventana de tolerancia como criterio transversal</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== LAS 13 IMPRONTAS ==================== -->
+
+<section class="slide dark">
+  <p class="kicker">Bioenergética V4</p>
+  <h2>Las 13 improntas.</h2>
+  <div class="impGrid">
+    <div class="impCard"><b>I1 · Desacople</b><span>Fragmentar para sobrevivir al impacto</span></div>
+    <div class="impCard"><b>I2 · Acorazamiento</b><span>Blindar la zona vulnerable ante traición</span></div>
+    <div class="impCard"><b>I3 · Retracción</b><span>Retirar exposición para evitar juicio</span></div>
+    <div class="impCard"><b>I4 · Fijación Externa</b><span>Redirigir energía hacia causa externa</span></div>
+    <div class="impCard"><b>I5 · Compresión</b><span>Cerrar el canal de expresión</span></div>
+    <div class="impCard"><b>I6 · Camuflaje</b><span>Invisibilidad como protección</span></div>
+    <div class="impCard"><b>I7 · Hibernación</b><span>Reducir actividad al mínimo vital</span></div>
+    <div class="impCard"><b>I8 · Reserva</b><span>Acumular recursos ante amenaza de escasez</span></div>
+    <div class="impCard"><b>I9 · Confluencia</b><span>Fusionarse con otro para existir</span></div>
+    <div class="impCard"><b>I10 · Vinculación</b><span>Síntoma por fidelidad sistémica</span></div>
+    <div class="impCard"><b>I11 · Superposición</b><span>Operar dos programas vitales simultáneos</span></div>
+    <div class="impCard"><b>I12 · Desarraigo</b><span>Emergencia existencial sin territorio</span></div>
+  </div>
+  <div class="card" style="margin-top:12px;max-width:330px"><b>I13 · Encapsulamiento</b><p>Aislar dolor cardíaco en cápsula</p></div>
+  <div class="footer"><span>Cada impronta tiene su acto ritual diseñado a medida</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== IMPRONTAS → ACTOS ==================== -->
+
+<section class="slide">
+  <p class="kicker">Cada impronta, un acto</p>
+  <h2>El objeto es la impronta<br><em>hecha materia.</em></h2>
+  <div class="grid2" style="height:auto;margin-top:28px">
+    <div>
+      <div class="card"><b>I1 · El Plato Roto</b><p>Romper → reverenciar los pedazos → reparar con grietas visibles.</p></div>
+      <div class="card" style="margin-top:14px"><b>I2 · La Carta en la Espalda</b><p>Escribir → cargar pegada en la espalda → devolver al otro.</p></div>
+      <div class="card" style="margin-top:14px"><b>I5 · La Botella que se Abre</b><p>Escribir lo no dicho → sellar → abrir al viento → poner una flor.</p></div>
+    </div>
+    <div>
+      <div class="card"><b>I6 · La Máscara que se Entierra</b><p>Construir → ponerse al espejo → enterrar con honra.</p></div>
+      <div class="card" style="margin-top:14px"><b>I13 · El Hielo, la Carta y la Mano</b><p>Congelar el dolor → observar cómo se derrite → mano en el pecho.</p></div>
+      <div class="card" style="margin-top:14px"><b>I4 · La Piedra Hervida</b><p>Nombrar el resentimiento → hervir la piedra → depositar fuera de casa.</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>El objeto no es metáfora — es interfaz de acceso a N3</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== ESPECIFICIDAD SENSORIAL ==================== -->
+
+<section class="slide dark">
+  <p class="kicker">Criterio de diseño</p>
+  <h2>Especificidad sensorial:<br><em>cuántos sentidos.</em></h2>
+  <div class="rule"></div>
+  <p>N3 procesa experiencias como reales cuando hay suficiente detalle sensorial. Por debajo del umbral, lo procesa como idea. Por encima, no distingue entre experiencia real y ritual.</p>
+  <div class="steps" style="grid-template-columns:repeat(3,1fr);margin-top:28px">
+    <div class="step"><div class="num">01</div><b>Tacto y temperatura</b><span>El sentido más directo al procesamiento interoceptivo. Peso, textura, frío, calor.</span></div>
+    <div class="step"><div class="num">02</div><b>Sonido y voz</b><span>No se puede cerrar. El sonido del plato romperse ES el momento. La voz dicha produce vibración que el pensamiento silencioso no alcanza.</span></div>
+    <div class="step"><div class="num">03</div><b>Posición y olfato</b><span>Estar de pie comunica recurso. Arrodillarse, reverencia. El olfato tiene acceso directo al sistema límbico.</span></div>
+  </div>
+  <p style="margin-top:22px">A mayor densidad sensorial, mayor probabilidad de que el acto atraviese N4, N3, N2 y N1.</p>
+  <div class="footer"><span>Cada paso del ritual debe involucrar al menos 2 sentidos</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== LOS 5 NIVELES DE CAMBIO ==================== -->
+
+<section class="slide">
+  <p class="kicker">Lo que cambia cuando funciona</p>
+  <h2>Cinco niveles<br><em>de cambio simultáneo.</em></h2>
+  <div class="steps">
+    <div class="step"><div class="num">01</div><b>Neurológico</b><span>La predicción deja de ejecutarse. No hay esfuerzo de supresión — el programa se editó.</span></div>
+    <div class="step"><div class="num">02</div><b>Corporal</b><span>Tensión crónica, postura, respiración se reorganizan. El cuerpo ya no necesita blindarse.</span></div>
+    <div class="step"><div class="num">03</div><b>Conductual</b><span>La persona hace lo que antes no podía — sin esfuerzo. Las conductas pro-predicción pierden su motor.</span></div>
+    <div class="step"><div class="num">04</div><b>Relacional</b><span>Cómo carga, responde, pide, se retira. Los patrones de vínculo se reorganizan desde adentro.</span></div>
+    <div class="step"><div class="num">05</div><b>Bioeléctrico</b><span>Sueño, digestión, temperatura, energía. Cambios en funciones que operan debajo de la conciencia.</span></div>
+  </div>
+  <div class="footer"><span>Se notan por ausencia, no por presencia</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== EL CAMBIO POR RECONSOLIDACIÓN ==================== -->
+
+<section class="slide dark">
+  <p class="kicker">Cómo se siente el cambio real</p>
+  <h2>No siente que<br><em>aprendió algo nuevo.</em></h2>
+  <div class="rule"></div>
+  <p class="lead">Siente que algo que antes era urgente dejó de serlo. La predicción que corría automáticamente simplemente ya no corre.</p>
+  <div class="grid2" style="height:auto;margin-top:34px">
+    <div class="card"><b>No recae bajo estrés</b><p>A diferencia de los cambios por contrarregulación — que el estrés agota — los cambios por reconsolidación se mantienen porque la memoria fue modificada en su origen.</p></div>
+    <div class="card"><b>Se generaliza solo</b><p>La persona reporta: "cambió algo en mi relación con el dinero y yo vine a trabajar la relación con mi madre" — porque ambas conductas derivaban del mismo prior.</p></div>
+  </div>
+  <div class="footer"><span>No requiere mantenimiento — ya no existe a qué recaer</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== FRASE ANCLA ==================== -->
+
+<section class="slide phraseSlide">
+  <div class="phraseWrap">
+    <p class="kicker">El principio central</p>
+    <div class="bigPhrase tightFit">La contradicción debe ser vivida, no pensada.</div>
+    <div class="phraseSource">Barrett · Procesamiento predictivo</div>
+  </div>
+  <div class="footer"><span>Manual de teoría</span><span class="slideNo">00</span></div>
+</section>
+
+<!-- ==================== CIERRE ==================== -->
+
+<section class="slide dark">
+  <div class="brand"><svg viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#C4926A" stroke-width="5" stroke-linecap="round" opacity=".82"/><circle cx="72" cy="124" r="6" fill="#C4926A" opacity=".55"/></svg><div class="name">Ritual<br><em>Experiencing</em></div></div>
+  <svg class="watermark" viewBox="-1 -19 138 155"><path d="M 72 122 C 73 121, 74 120, 73 119 C 72 118, 71 119, 71 120 C 71 121, 72 122, 72 122 C 76 121, 79 117, 78 113 C 76 109, 70 108, 68 111 C 66 114, 68 120, 72 119 C 80 116, 88 104, 84 92 C 80 80, 62 76, 52 84 C 42 92, 50 108, 66 104 C 90 96, 108 72, 100 52 C 92 34, 56 26, 40 40 C 24 54, 34 78, 58 74 C 100 62, 128 32, 118 10 C 108 -6, 48 -10, 26 8 C 8 24, 18 50, 48 48" fill="none" stroke="#C4926A" stroke-width="5" stroke-linecap="round"/><circle cx="72" cy="124" r="6" fill="#C4926A"/></svg>
+  <div class="titleBlock">
+    <p class="kicker">Nada de esto requiere creerlo</p>
+    <h1>Requiere<br><em>hacerlo.</em></h1>
+    <div class="meta">Dr. Miguel Ojeda Rios · Instituto Centrobioenergetica · 2026</div>
+  </div>
+  <div class="footer"><span>Actos que Mueven · Sábado 2</span><span class="slideNo">00</span></div>
+</section>
+
+</main>
+<script>
+  document.querySelectorAll('.slideNo').forEach((node, index) => {
+    node.textContent = String(index + 1).padStart(2, '0');
+  });
+</script>
+</body>
+</html>
