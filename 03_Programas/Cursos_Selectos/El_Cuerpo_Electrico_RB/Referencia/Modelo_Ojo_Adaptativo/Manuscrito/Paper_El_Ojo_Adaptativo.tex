@@ -1,0 +1,257 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- Codificación e idioma ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noindentfirst]{babel}
+\usepackage{lmodern}
+
+% --- Tipografía y diseño ---
+\usepackage{microtype}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{csquotes}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+
+% --- Metadatos ---
+\title{\textbf{El ojo que construye su propia forma}\\[0.4em]
+\large Del circuito retina--coroides--esclera al agente morfogenético:\\
+emetropización, cibernética y cognición basal en la miopía}
+
+\author{Dr.\ Miguel Ojeda Ríos}
+\date{\small Artículo de hipótesis y marco teórico}
+
+\begin{document}
+\maketitle
+
+% =====================================================================
+\begin{abstract}
+\noindent
+El ojo regula su propio crecimiento a partir de la imagen que recibe: lee el desenfoque retiniano y ajusta su longitud axial hasta enfocar. Este proceso ---la emetropización--- está implementado por un \emph{circuito neurobiológico} bien caracterizado (retina $\rightarrow$ epitelio pigmentario $\rightarrow$ coroides $\rightarrow$ esclera) y ha sido modelado, durante medio siglo, como un \emph{sistema de control por retroalimentación con un punto de ajuste}. Sostenemos que ese consenso cibernético, llevado a su conclusión natural, conduce a una lectura que la oftalmología aún no ha incorporado: la del ojo como \emph{agente morfogenético de cognición basal}, en el sentido del marco TAME de Michael Levin. Recorremos los tres niveles ---el \emph{circuito} que ejecuta el control, la \emph{arquitectura cibernética} que lo describe y el \emph{marco agencial} que lo interpreta--- y mostramos que convergen en una conclusión con consecuencias clínicas: la miopía no es un defecto, sino la \emph{conducta competente de un sistema de control adaptativo ante un entorno visual novedoso}, y las terapias eficaces actúan \emph{reescribiendo la señal de referencia del circuito}, no reparando el tejido. Dedicamos especial atención a explicar el marco de la cognición basal, poco conocido en oftalmología, con sus experimentos, y a su lectura predictiva (inferencia activa).
+
+\medskip
+\noindent\textbf{Palabras clave:} miopía; emetropización; crecimiento ocular; cognición basal; TAME; bioelectricidad; inferencia activa; punto de ajuste.
+\end{abstract}
+
+% =====================================================================
+\section{El enigma que la corrección no resuelve}
+
+La lente corrige la miopía desplazando el foco hasta la retina, pero deja intacta la pregunta de fondo: \textbf{¿por qué se alargó el ojo?} Un órgano no crece de más por azar, y sabemos desde hace décadas que el ojo no lo hace: decide cuánto crecer en función de lo que ve. Este artículo defiende una tesis:
+
+\begin{quote}
+La miopía no es un ojo averiado, sino un ojo que \emph{hizo correctamente su trabajo} ---ajustar su forma a la demanda visual--- en un entorno donde ese trabajo conduce a la elongación. El problema no está en el mecanismo, sino en el desencuentro entre un sistema de control antiguo y un mundo nuevo de visión cercana e interiores.
+\end{quote}
+
+Construiremos el argumento en tres niveles. Primero, el \emph{circuito} neurobiológico que ejecuta la regulación (sección~2). Segundo, la \emph{cibernética} ---la arquitectura de control que el propio campo ha usado para describirlo (sección~3)---. Tercero, el marco de la \emph{cognición basal} (TAME), que nombra lo que ese circuito de control \emph{es}: un agente que persigue una meta (secciones~4 y~5). De ahí se siguen la relectura de la miopía y de su tratamiento (secciones~7--9).
+
+% =====================================================================
+\section{El circuito: cómo el ojo traduce la visión en crecimiento}
+
+La emetropización tiene un sustrato celular y molecular cada vez mejor definido. La retina \textbf{detecta el signo del desenfoque} ---el ojo se alarga ante desenfoque hiperópico y frena ante desenfoque miópico, de manera bidireccional, local y sin requerir acomodación (Wallman \& Winawer, 2004; Troilo \emph{et al.}, 2019)--- y traduce ese error en una \textbf{cascada de señales que viaja retina $\rightarrow$ epitelio pigmentario (EPR) $\rightarrow$ coroides $\rightarrow$ esclera} (Brown \emph{et al.}, 2022).
+
+Los nodos principales del circuito:
+
+\begin{itemize}[leftmargin=1.4em]
+  \item \textbf{Dopamina retiniana.} Liberada por las células amacrinas dopaminérgicas, actúa como señal de \emph{freno} del crecimiento. Su liberación aumenta con la luz intensa y se asocia a la inhibición de la elongación (Feldkaemper \& Schaeffel, 2013).
+  \item \textbf{El gen de respuesta temprana EGR1/ZENK.} En las amacrinas, \emph{baja} bajo condiciones que promueven el crecimiento (miopía) y \emph{sube} bajo condiciones que lo frenan (recuperación): un conmutador transcripcional de la dirección del crecimiento.
+  \item \textbf{Mensajeros distales: glucagón, ácido retinoico y óxido nítrico.} Glucagón, ácido retinoico y ZENK son los tres factores que cambian \emph{bidireccionalmente} con el signo del desenfoque.
+  \item \textbf{Coroides.} No es un mero conducto vascular: \emph{modula su grosor} (se engrosa ante desenfoque miópico/freno, se adelgaza ante hiperópico/crecimiento) y \emph{produce reguladores del crecimiento escleral}.
+  \item \textbf{Esclera.} Ejecuta la respuesta final: \emph{remodela su matriz extracelular} (colágeno, metaloproteasas) y cambia su tasa de crecimiento, determinando la longitud axial.
+\end{itemize}
+
+A este circuito se suma el \textbf{brazo luminoso}, base neurobiológica del efecto protector del aire libre. Las \textbf{células ganglionares retinianas intrínsecamente fotosensibles (ipRGC)}, que expresan \textbf{melanopsina} y responden a la luz azul (cerca de 480\,nm), establecen sinapsis con las amacrinas dopaminérgicas y \emph{modulan la liberación de dopamina} según la intensidad luminosa (Liu \emph{et al.}, 2022). La deficiencia de señalización por melanopsina produce un \emph{desplazamiento miópico}, y su activación, uno \emph{hipermétrope}: el circuito ipRGC $\rightarrow$ dopamina es el mecanismo por el cual la luz brillante frena el crecimiento.
+
+Las terapias de control actúan sobre \textbf{nodos identificables} de este circuito: la \emph{luz exterior} activa el brazo ipRGC $\rightarrow$ dopamina; el \emph{desenfoque periférico miópico} (DIMS, HAL, orto-K) invierte el signo del error en la retina periférica; la \emph{atropina} en baja dosis, antagonista muscarínico, actúa en la retina (M1/M4: dopamina, GABA, óxido nítrico), en la coroides (engrosamiento, TGF-$\beta$, FGF-2) y en la esclera (M1/M3/M4: reduce la remodelación de la matriz, con efectores como AKT1, HIF1A y $\beta$-catenina) (Carr \& Stell, 2020). El patrón es inequívoco: \textbf{ninguna intervención repara el tejido; todas intervienen la señal que recorre el circuito.}
+
+% =====================================================================
+\section{La arquitectura cibernética: la emetropización como sistema de control}
+
+Mucho antes de hablar de agencia, la ciencia de la visión describió la emetropización en términos de \textbf{teoría de control}. La estructura es la de un \textbf{lazo de retroalimentación negativa}:
+
+\begin{itemize}[leftmargin=1.4em]
+  \item \textbf{Variable controlada:} el estado refractivo (el foco en la retina).
+  \item \textbf{Punto de ajuste (\emph{set-point}):} la emetropía ---desenfoque cero---.
+  \item \textbf{Señal de error:} el desenfoque, \emph{con signo}, que indica magnitud y dirección de la desviación.
+  \item \textbf{Actuador:} el crecimiento escleral, que modifica la longitud axial para anular el error.
+\end{itemize}
+
+No es una metáfora importada: es un cuerpo de modelos publicados. Diversos autores han ajustado modelos de \emph{control de primer orden} a la trayectoria refractiva del desarrollo (Medina \& Fariza; Schaeffel \& Howland; Greene), y Hung y Ciuffreda formalizaron la \emph{teoría del desenfoque retiniano incremental} (IRDT). La evidencia del desarrollo lo respalda: los neonatos, con dispersión refractiva amplia, \textbf{convergen hacia la emetropía hacia los tres años} ---exactamente lo que predice un sistema de retroalimentación que minimiza un error respecto a un punto de ajuste---.
+
+Subrayemos lo que este consenso ya concede, porque es el puente del artículo: \textbf{el ojo es, en el vocabulario del propio campo, un sistema cibernético que defiende un punto de ajuste.} Lo que sigue no lo contradice: lo completa, preguntando qué clase de sistema es uno que defiende un setpoint y qué se sigue de tomarlo en serio.
+
+% =====================================================================
+\section{De la cibernética a la agencia: la cognición basal (TAME)}
+
+Pedimos al lector suspender por un momento la asociación entre \enquote{cognición} y \enquote{cerebro}. El marco TAME (\emph{Technological Approach to Mind Everywhere}), de Michael Levin (2022), sostiene ---con experimentos--- que \textbf{la capacidad de perseguir metas no es exclusiva de los sistemas con neuronas}. Es la extensión natural de la cibernética: si un sistema defiende un punto de ajuste, ya es, en sentido técnico, un sistema \emph{dirigido a una meta}; la pregunta es cuánta y qué tipo de competencia exhibe.
+
+\subsection{Qué significa \enquote{cognición} aquí}
+
+TAME usa una definición operativa y modesta: \textbf{cognición es el conjunto de operaciones entre percibir y actuar que permiten a un sistema responder abarcando un horizonte mayor que el instante presente}, mediante memoria y/o anticipación. No exige conciencia, ni lenguaje, ni neuronas. Una bacteria que sigue un gradiente la cumple en su forma mínima; un humano que planifica, en su forma máxima. La diferencia es \emph{de grado}, no de tipo. No se afirma que un tejido \enquote{piense} como una persona, sino que existe un \emph{continuo} de competencia para resolver problemas.
+
+\subsection{La morfogénesis como resolución de problemas: homeostasis anatómica}
+
+El ejemplo más relevante para el ojo es la \textbf{morfogénesis}. Cuando se amputa la extremidad de una salamandra a cualquier altura, el muñón regenera exactamente lo que falta y \emph{se detiene al completar una extremidad correcta}. El tejido no ejecuta una secuencia fija: persigue un \emph{estado final} (la forma-objetivo), lo que implica que \textbf{almacena una representación de la forma correcta}, compara la actual con ella y emite una señal de parada cuando la diferencia llega a cero. Levin denomina a esto \textbf{homeostasis anatómica}: como un termostato mantiene una temperatura-objetivo, el tejido mantiene y restaura una \emph{forma-objetivo}.
+
+\subsubsection*{El experimento de los renacuajos \enquote{Picasso}: el ojo encuentra su lugar}
+
+Ningún experimento ilustra esto con más fuerza ---ni más relevancia para el oftalmólogo--- que el de los \textbf{renacuajos \enquote{Picasso}} (Vandenberg, Adams \& Levin, 2012). En el desarrollo normal de \emph{Xenopus}, el rostro del renacuajo se reorganiza durante la metamorfosis hasta convertirse en una cara de rana: los ojos, las fosas nasales y la boca se desplazan a sus posiciones definitivas. Para poner a prueba si ese proceso es un programa rígido o una búsqueda dirigida a una meta, los investigadores construyeron renacuajos con los \textbf{órganos craneofaciales colocados en posiciones radicalmente equivocadas} ---ojos en sitios anómalos, boca y narinas desordenadas---, una disposición que recuerda a un retrato cubista, de ahí el nombre.
+
+La predicción de un modelo de \enquote{programa genético fijo} era clara: deberían resultar ranas con caras monstruosamente deformes. Ocurrió lo contrario. \textbf{Los órganos se desplazaron hasta sus posiciones correctas y allí se detuvieron} ---y lo hicieron por \emph{trayectorias novedosas, que ningún renacuajo normal recorre jamás}, a veces sobrepasando la posición y corrigiendo de vuelta---. Cada \textbf{ojo mal colocado migró hasta su sitio adecuado} y la cara resultante fue, en gran medida, una cara de rana normal.
+
+La conclusión es difícil de eludir: el tejido \textbf{no ejecuta una secuencia preprogramada de movimientos, sino que minimiza el error respecto a una forma-objetivo almacenada} (la cara correcta), improvisando los medios cuando los habituales no están disponibles. Es lo que William James llamó el criterio mínimo de lo mental: \emph{fines fijos con medios variables}. Y es, en miniatura y de forma visible, la lógica de la emetropización: \textbf{un ojo que persigue un objetivo ---el foco en la retina--- y ajusta su forma, por la vía que haga falta, hasta alcanzarlo.} El renacuajo Picasso mueve el ojo \emph{en el espacio} hasta su posición correcta; la emetropización ajusta la \emph{longitud} del ojo hasta su objetivo refractivo. En ambos casos, el tejido sabe \emph{adónde} debe llegar, aunque no sepa \emph{cómo} lo sabe.
+
+\subsection{La herramienta clave: el eje de persuadabilidad}
+
+¿Cómo se cambia el comportamiento de un sistema? TAME lo ordena en cuatro clases según el tipo de intervención que admite (Tabla~\ref{tab:persuad}).
+
+\begin{table}[h]
+\centering
+\caption{El eje de persuadabilidad (Levin, 2022).}
+\label{tab:persuad}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Clase} & \textbf{Sistema} & \textbf{Cómo se cambia su comportamiento} \\
+\midrule
+A & Reloj mecánico & Re-cableando el hardware \\
+B & Termostato / circuito homeostático & Reescribiendo su \emph{set-point} \\
+C & Animal & Recompensa y castigo \\
+D & Ser humano & Argumento racional \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A medida que se avanza de A a D, \textbf{disminuyen el esfuerzo y el conocimiento del mecanismo} necesarios para influir: a un reloj hay que conocerlo entero; a un termostato basta saber escribirle el número de referencia. El error más costoso es tratar a un sistema en la clase equivocada ---argumentarle a un termostato, o intentar re-cablear lo que solo responde a un cambio de set-point---. La sección~5 desarrolla la consecuencia: \textbf{el ojo emetropizante es un sistema de clase B}, y por eso se le cambia el rumbo reescribiendo su señal de referencia, no reparándolo ni \enquote{ejercitándolo}.
+
+\subsection{Cómo un tejido guarda y reescribe su forma-objetivo: bioelectricidad}
+
+Si los tejidos tienen formas-objetivo, ¿dónde se almacenan y cómo se reescriben? La respuesta es \textbf{bioeléctrica}, y conviene despejar un malentendido: no se trata de \enquote{energías} ni metáforas, sino de \textbf{voltaje transmembrana medible} ($V_\mathrm{mem}$), el mismo tipo de fenómeno físico del electrorretinograma, presente en \emph{todas} las células. En las neuronas el voltaje cambia en milisegundos; en las células no neuronales cambia \emph{lentamente} (minutos, horas) y esos cambios funcionan como \emph{señales instructivas} de proliferación, migración, diferenciación y formación de patrones. Las células comparten estos estados por \textbf{uniones comunicantes (gap junctions)}, formando redes que computan patrones a escala de tejido. En planarias, un patrón estable de voltaje determina cuántas cabezas regenera el animal; manipulándolo ---\emph{sin tocar el ADN}--- se obtienen gusanos de dos cabezas que, recortados de nuevo en agua normal, \textbf{siguen regenerando dos cabezas}: la forma-objetivo quedó reescrita de forma estable.
+
+En el ojo, esto es \textbf{literal}: un prepatrón de $V_\mathrm{mem}$ (el \enquote{rostro eléctrico}) dibuja la posición de ojos, boca y nariz \emph{antes} de la anatomía (Vandenberg \emph{et al.}, 2012); imponer un estado bioeléctrico \enquote{tipo ojo} en células del intestino induce un \textbf{ojo completo y organizado} en ese sitio, a nivel de órgano y más potente que forzar el gen maestro Pax6 (Pai \emph{et al.}, 2012); y renacuajos con ojos ectópicos en la cola realizan aprendizaje visual (Blackiston \& Levin, 2013). La forma del ojo es, pues, \textbf{información dirigida a una meta y reescribible}.
+
+\subsection{Competencia sin comprensión}
+
+Una pieza más resuelve la paradoja central de la miopía. Una célula hepática cumple su función con perfecta competencia \emph{sin comprender} que forma parte de un hígado; la coherencia global emerge de millones de competencias locales. Dennett llamó a esto \textbf{competencia sin comprensión}. De ahí que un sistema pueda \textbf{funcionar perfectamente y producir un resultado indeseable}, porque su competencia opera en un nivel que no \enquote{sabe} lo que el contexto global requiere. Es exactamente lo que ocurre en la miopía.
+
+% =====================================================================
+\section{El ojo a la luz de TAME}
+
+Con los tres niveles sobre la mesa ---circuito, cibernética, agencia---, las piezas encajan.
+
+\textbf{La emetropización es homeostasis anatómica.} El circuito retina--coroides--esclera implementa un lazo que almacena una forma-objetivo (la longitud axial que enfoca), mide su distancia a ella (el desenfoque con signo) y actúa (crece o frena) hasta alcanzarla, deteniéndose entonces. Es el mismo tipo de proceso que detiene a la salamandra. El ojo \textbf{persigue y defiende un punto de ajuste refractivo}.
+
+\textbf{El ojo es un sistema de clase B.} No se le repara (A) ni se le argumenta (D): se le cambia el comportamiento \textbf{reescribiendo el set-point}, y la vía es su señal de referencia, el desenfoque. Esto \emph{predice} lo que la clínica observa: las intervenciones que cambian la señal ---desenfoque periférico miópico, luz (ipRGC $\rightarrow$ dopamina), atropina sobre la cascada--- funcionan porque son intervenciones de clase B sobre un sistema de clase B; corregir solo el foco central (lente monofocal) no, porque no toca la señal periférica que impulsa la elongación.
+
+\textbf{La miopía es competencia sin comprensión.} El ojo del niño en visión cercana e interiores hace \emph{exactamente lo que su control le indica}: ajustar la longitud axial a la demanda óptica. No \enquote{sabe} que ese entorno ---de visión próxima sostenida y poca luz, evolutivamente novedoso--- no es el mundo para el que su regulación fue afinada. La miopía no es un fallo del ojo: es la \textbf{conducta competente de un agente adaptativo en un entorno que su punto de ajuste no anticipó}.
+
+Conviene nombrar una convergencia que no es casual: la fisiología del peso describe un \enquote{set point} metabólico; la biología de la morfogénesis describe \emph{setpoints anatómicos}; la emetropización describe un objetivo refractivo. Tres literaturas independientes, una misma estructura ---un valor de referencia que un sistema vivo defiende y restaura activamente---. El término \emph{adaptativo} recoge ambas caras: la forma es una solución adaptativa, y el punto de ajuste \emph{se adapta} (se desplaza); no es fijo.
+
+\subsection{¿Qué añade la lectura agencial a los modelos de control?}
+
+Un lector crítico planteará, con razón, la objeción decisiva: \emph{si la emetropización ya está modelada como un lazo de control con un punto de ajuste, ¿qué se gana llamándola \enquote{cognición basal}, más allá de un cambio de etiqueta?} La respuesta es que la lectura agencial \textbf{no reemplaza los modelos cibernéticos: los completa}, y aporta cinco cosas que un modelo de control, por sí solo, no entrega.
+
+\begin{enumerate}[leftmargin=1.6em]
+  \item \textbf{Un principio de intervención accionable.} El eje de persuadabilidad no solo describe el lazo: dice \emph{cómo} se le cambia el rumbo. Clasificar al ojo como sistema de clase~B predice que la palanca correcta es \emph{reescribir la señal de referencia} (desenfoque, luz), no reparar ni \enquote{ejercitar} el tejido ---y explica por qué la corrección monofocal, que no toca esa señal, no frena la progresión---.
+  \item \textbf{Un sustrato de control nuevo y manipulable.} La bioelectricidad ofrece una capa de control ---la información de forma codificada en voltaje, reescribible sin tocar el genoma--- que la cibernética clásica del crecimiento ocular no contemplaba, y con ella una frontera de intervención inédita (sección~8).
+  \item \textbf{Economía conceptual entre escalas.} El mismo principio ---defensa de un setpoint con competencia sin comprensión--- ordena fenómenos hoy dispersos: el peso metabólico, la regeneración, la forma facial y el crecimiento ocular.
+  \item \textbf{Un reencuadre de la patología.} La miopía deja de ser un defecto y se vuelve la conducta competente de un sistema sano en un entorno novedoso ---con consecuencias clínicas y de comunicación con el paciente (sección~7)---.
+  \item \textbf{Un fundamento normativo.} La inferencia activa (sección~6) explica \emph{por qué} el ojo minimiza el desenfoque, no solo \emph{que} lo hace.
+\end{enumerate}
+
+Y una precisión que el marco mismo impone, contra toda sobre-atribución: el ojo es un agente de \textbf{clase B, no de clase D}. Persigue y defiende un punto de ajuste; \emph{no delibera, no decide ni siente}. Atribuirle \enquote{cognición} en este sentido técnico ---competencia para alcanzar una meta--- no es proyectar psicología sobre un órgano, sino reconocer la misma estructura de control dirigido a un fin que el propio campo ya admite, y extraer de ella sus consecuencias.
+
+% =====================================================================
+\section{El ojo como máquina de predicción: el desenfoque como error de predicción}
+
+Hay un cuarto nivel de descripción que une a los tres anteriores y les da un sentido normativo. La neurociencia contemporánea describe al cerebro ---y, en su forma basal, al organismo entero--- no como un receptor pasivo de la realidad, sino como un \textbf{sistema que la predice}: genera continuamente hipótesis sobre la entrada sensorial y solo se corrige cuando aparece un desajuste, un \textbf{error de predicción}. Karl Friston formalizó este principio como \textbf{inferencia activa} (minimización de energía libre), y TAME lo adopta como puente entre la cognición y la morfogénesis (Friston \emph{et al.}, 2015).
+
+La inferencia activa señala que un sistema puede reducir su error de predicción de \textbf{dos maneras}: actualizando su modelo interno para que prediga mejor lo que percibe (percepción), o \textbf{actuando sobre el mundo ---o sobre sí mismo--- para que la realidad coincida con lo que predice} (acción). El ojo emetropizante hace lo segundo, y de forma literal.
+
+\textbf{El desenfoque es un error de predicción.} La predicción por defecto del sistema visual ---su expectativa basal, su \emph{prior}--- es una imagen \emph{enfocada} sobre la retina. El desenfoque es la distancia entre esa imagen esperada (nítida) y la imagen recibida (borrosa). El ojo no puede \enquote{actualizar su modelo} para aceptar un mundo borroso como nítido; en cambio, \textbf{actúa sobre su propia forma} ---crece o frena su crecimiento--- hasta que la óptica vuelve a producir la imagen que predice. La emetropización es inferencia activa ejecutada en el sustrato morfogenético.
+
+\textbf{Decodificar el signo del error es, en sí mismo, un problema de inferencia.} Para corregir, no basta detectar que hay desenfoque: hay que inferir su \emph{dirección} (foco por delante o por detrás de la retina). La retina dispone de pistas ---la \textbf{aberración cromática longitudinal} (el desenfoque difiere según la longitud de onda, de modo que el perfil espectral informa el signo), gradientes de contraste y claves de acomodación (Schaeffel \& Howland; Rucker)---. Inferir una causa oculta a partir de evidencia sensorial ambigua es, precisamente, lo que hace un sistema predictivo.
+
+\textbf{La predicción tiene horizonte temporal.} El error no se procesa solo en el instante: el sistema lo \emph{integra en el tiempo} ---de ahí los modelos de control de primer orden (sección~3)---. Y, en el fondo, lo que el ojo en desarrollo predice no es una imagen aislada, sino el \textbf{entorno visual que habitará}. Una infancia dominada por la visión cercana es evidencia de que el mundo será cercano; el sistema, racionalmente, sintoniza su óptica a esa predicción. \textbf{La miopía es esa predicción cumplida en la longitud del ojo.}
+
+\textbf{La precisión modula el peso del error.} No todos los errores cuentan igual: el sistema pondera cada uno por su \emph{precisión} ---la confianza que le asigna---. Un desenfoque \emph{sostenido y repetido} pesa más que uno transitorio, y por eso una demanda crónica de visión cercana \emph{fija} la adaptación, mientras que un desenfoque breve es reversible. Esto ofrece un correlato del curso clínico (reversibilidad temprana, consolidación tardía) y un punto de entrada conceptual: la \emph{dopamina}, modulada por la luz y la atropina, puede leerse como un regulador de la ganancia con que el sistema atiende su error de crecimiento.
+
+\textbf{El \enquote{error competente}: dónde se cierra el argumento.} El error de predicción que el ojo minimiza es \emph{real}: hay desenfoque óptico genuino, y el sistema lo corrige de manera impecable. Pero el entorno que genera ese error es \emph{evolutivamente novedoso}, de modo que minimizarlo localmente produce una \emph{desadaptación global}: la elongación. El ojo resuelve a la perfección su problema de inferencia local y, al hacerlo, produce miopía. Es la \emph{competencia sin comprensión} (sección~4.5) dicha en el lenguaje de la predicción.
+
+\textbf{Y reordena la terapéutica.} Si la miopía es la respuesta del ojo a un error de predicción, controlarla es \textbf{gestionar ese error}, no reparar el órgano. El desenfoque periférico miópico (DIMS, orto-K) le entrega al sistema un error de predicción de \emph{signo opuesto} ---en efecto, la señal \enquote{te has pasado, frena}---. La luz exterior y la atropina ajustan la \emph{ganancia/precisión} con que el sistema atiende su error (vía dopamina y la cascada muscarínica). Controlar la miopía es, en este marco, \textbf{administrarle al ojo el error de predicción correctivo} que detiene su elongación.
+
+Con esto, los cuatro niveles se anudan: el error de predicción \emph{es} la señal del circuito (sección~2), \emph{procesada} por el lazo de control (sección~3), \emph{al servicio} de la meta del agente (sección~5) y \emph{fundamentada normativamente} por la inferencia activa. El ojo crece porque crecer es la acción que minimiza su error de predicción sobre el mundo que espera ver.
+
+% =====================================================================
+\section{Implicaciones clínicas}
+
+El marco no inventa terapias; \textbf{reordena} las existentes y cambia el relato.
+
+\begin{itemize}[leftmargin=1.4em]
+  \item \textbf{Las terapias eficaces actúan sobre la señal (clase B), no sobre el hardware}, y sobre nodos identificables del circuito: la luz exterior activa el brazo ipRGC $\rightarrow$ dopamina; el desenfoque periférico invierte el signo del error en la retina periférica; la atropina modula la cascada muscarínica retina--coroides--esclera. Esto orienta la elección y combinación de intervenciones y explica por qué la corrección monofocal convencional no frena la progresión.
+  \item \textbf{La prevención es ambiental:} tiempo al aire libre y gestión de la carga de visión cercana reducen la señal que empuja el punto de ajuste.
+  \item \textbf{El mensaje al paciente cambia:} la miopía no es un defecto del niño ni una falla de su esfuerzo, sino la adaptación de un ojo que funciona. Esto retira culpa y dirige la intervención hacia la señal y el entorno, que es donde rinde.
+\end{itemize}
+
+% =====================================================================
+\section{Predicciones y direcciones de investigación}
+
+\begin{enumerate}[leftmargin=1.6em]
+  \item \textbf{Clase B:} las intervenciones que modifican la \emph{señal} de desenfoque modulan la elongación de forma más fiable que las que solo corrigen el foco central ---consistente con la ventaja de DIMS/orto-K sobre la lente monofocal---.
+  \item \textbf{Competencia local:} el control del crecimiento es regional (desenfoque periférico $\rightarrow$ respuesta periférica), como muestran los modelos animales.
+  \item \textbf{Set-point reversible antes de fijarse:} retirar la señal miopizante (más luz, menos visión próxima) debería frenar e incluso revertir parcialmente más en fases tempranas, antes de que la adaptación se consolide.
+  \item \textbf{Brazo ipRGC:} la manipulación selectiva de la vía melanopsina $\rightarrow$ dopamina (espectros o intensidades definidas) debería modular la elongación de manera predecible.
+  \item \textbf{Frontera bioeléctrica:} cabe explorar si moduladores del estado bioeléctrico de coroides/esclera influyen el crecimiento axial sin alterar el genoma ---una vía de control conceptualmente nueva---.
+\end{enumerate}
+
+% =====================================================================
+\section{Conclusión}
+
+La emetropización puede describirse en tres niveles que no se contradicen, sino que se anidan. En el \textbf{circuito}, es una cascada retina $\rightarrow$ EPR $\rightarrow$ coroides $\rightarrow$ esclera, modulada por dopamina, ipRGC, EGR1, glucagón y ácido retinoico. En la \textbf{arquitectura}, es un lazo de retroalimentación que defiende un punto de ajuste ---como el propio campo ha modelado durante décadas---. Y en su \textbf{naturaleza}, es la conducta de un \textbf{agente morfogenético de cognición basal} que persigue una meta con competencia sin comprensión. Desde esta lectura, la miopía deja de ser una avería y se vuelve inteligible como la conducta competente de ese agente ante un entorno novedoso; las terapias que funcionan se explican como intervenciones de \textbf{clase B} ---reescritura de la señal de referencia del circuito---; y el \enquote{set point} del ojo se ancla en la misma estructura que la biología de la forma y la fisiología metabólica describen por separado. El ojo no es una máquina a la que se repara. Es un sistema que construye y mantiene su propia forma, y al que se le cambia el rumbo reescribiéndole la referencia.
+
+% =====================================================================
+\begin{thebibliography}{99}
+\setlength{\itemsep}{2pt}
+
+\bibitem{wallman2004} Wallman J, Winawer J. Homeostasis of eye growth and the question of myopia. \emph{Neuron}. 2004;43(4):447--468.
+
+\bibitem{troilo2019} Troilo D, Smith EL, Nickla DL, \emph{et al.} IMI --- Report on Experimental Models of Emmetropization and Myopia. \emph{Invest Ophthalmol Vis Sci}. 2019;60(3):M31--M88.
+
+\bibitem{brown2022} Brown DM, Mazade R, Clarkson-Townsend D, \emph{et al.} Candidate pathways for retina to scleral signaling in refractive eye growth. \emph{Exp Eye Res}. 2022;219:109071.
+
+\bibitem{feldkaemper2013} Feldkaemper M, Schaeffel F. An updated view on the role of dopamine in myopia. \emph{Exp Eye Res}. 2013;114:106--119.
+
+\bibitem{liu2022} Liu AL, \emph{et al.} The role of ipRGCs in ocular growth and myopia development. \emph{Sci Adv}. 2022;8(23):eabm9027.
+
+\bibitem{carr2020} Carr BJ, Stell WK. Biological mechanisms of atropine control of myopia. \emph{Eye Contact Lens}. 2020 (y revisión sobre mecanismos coroideos y esclerales, \emph{Front Pharmacol}. 2025).
+
+\bibitem{medina} Medina A. The cause of myopia development and progression: theory, mechanisms, and new approaches (modelos de control de la emetropización).
+
+\bibitem{hung2007} Hung GK, Ciuffreda KJ. Incremental retinal-defocus theory of myopia development. \emph{Comput Biol Med}. 2007 (y obra relacionada).
+
+\bibitem{levin2022} Levin M. Technological Approach to Mind Everywhere (TAME): an experimentally-grounded framework for understanding diverse bodies and minds. \emph{Front Syst Neurosci}. 2022;16:768201.
+
+\bibitem{vandenberg2012} Vandenberg LN, Adams DS, Levin M. Normalized shape and location of perturbed craniofacial structures in the \emph{Xenopus} tadpole. \emph{Dev Dyn}. 2012;241(5):863--878.
+
+\bibitem{pai2012} Pai VP, Aw S, Shomrat T, Lemire JM, Levin M. Transmembrane voltage potential controls embryonic eye patterning in \emph{Xenopus laevis}. \emph{Development}. 2012;139(2):313--323.
+
+\bibitem{blackiston2013} Blackiston DJ, Levin M. Ectopic eyes outside the head in \emph{Xenopus} tadpoles provide sensory data for light-mediated learning. \emph{J Exp Biol}. 2013;216:1031--1040.
+
+\bibitem{friston2015} Friston K, Levin M, Sengupta B, Pezzulo G. Knowing one's place: a free-energy approach to pattern regulation. \emph{J R Soc Interface}. 2015;12:20141383.
+
+\bibitem{rose2008} Rose KA, Morgan IG, Ip J, \emph{et al.} Outdoor activity reduces the prevalence of myopia in children. \emph{Ophthalmology}. 2008;115(8):1279--1285.
+
+\bibitem{lam2020} Lam CSY, Tang WC, Tse DY, \emph{et al.} Defocus Incorporated Multiple Segments (DIMS) spectacle lenses slow myopia progression: a 2-year randomised clinical trial. \emph{Br J Ophthalmol}. 2020;104(3):363--368.
+
+\end{thebibliography}
+
+\vspace{1em}
+\noindent\footnotesize\emph{Nota: las referencias 3--8 deben verificarse en su forma editorial final (volumen, página) antes de la publicación; algunas combinan revisión y fuente primaria.}
+
+\end{document}

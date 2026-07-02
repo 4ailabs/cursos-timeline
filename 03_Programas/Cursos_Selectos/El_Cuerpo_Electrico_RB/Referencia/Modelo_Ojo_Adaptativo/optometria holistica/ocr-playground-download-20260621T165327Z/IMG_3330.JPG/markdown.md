@@ -1,0 +1,11 @@
+143
+
+- Esta situación está corroborada por otros estudios sobre los inuit de Alaska, como el realizado por un grupo de científicos que fueron al Círculo Polar Ártico para estudiar toda una comunidad antes de iniciar la escolarización obligatoria. Se encontraron con que entre los individuos pre-présbitas casi no había miopes, su incidencia era de un 1,5-2,0%. Transcurrido cierto tiempo después de que los niños iniciasen su escolarización ya encontraron un 44,7% de miopes. Otros estudios realizados en Groenlandia mostraron que los inuit que vivían con un estilo de vida tradicional, tampoco presentaban miopía. No obstante, los inuit que iban a la escuela mostraron prevalencias similares de miopía a las que se encontraron en los niños inuit de Alaska.
+
+Es evidente que el aumento en la miopía está correlacionado con la experiencia académica: el fenómeno del aumento de la incidencia de la miopía que ocurrió en una generación, justamente coincidiendo con la escolarización.
+
+Este aumento de generación en generación en la prevalencia de la miopía no se podría explicar por la teoría de Darwin, ya que la selección natural requiere tiempo para que las características cambien. El concepto de Darwin era simple pero poderoso: los individuos mejor adaptados a su entorno tienen más probabilidades de sobrevivir y reproducirse. Mientras haya una cierta variación entre ellos, habrá una inevitable selección de individuos con las variaciones más ventajosas.
+
+W. C. MAPLES, *Darwin vs Skeffington*, *Journal of Behavioral Optometry*, vol. 21, n° 5, 2010.
+
+- El aumento de las tasas de miopía entre la población inuit también se ha citado como evidencia para dar apoyo a la mediación ambiental de la miopía. Goldschmidt citó una frecuencia de la miopía en el Distrito Angmassalik de Groenlandia de 1,2% en 1952, observando un incremento considerable después de 32 años, que fueron testigos de un aumento de diez veces, culminando en una frecuencia del 12%. Es importante destacar que los principales cambios en el entorno y la educación también se experimentaron durante estos años, lo que sugiere

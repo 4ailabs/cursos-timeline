@@ -1,0 +1,8 @@
+|  ETAPAS | LATERALIDAD | LOCOMOCIÓN | MANIPULACIÓN | AUDICIÓN | VISIÓN  |
+| --- | --- | --- | --- | --- | --- |
+|  MONOLATERALIZACIÓN | Ausencia de relaciones funcionales entre ambos lados del cuerpo MONOLATERALIDAD | MEDULA Rodillo Giros Experimentación espalda-vientre delante-detrás | Independencia involuntaria de manos y brazos Reflejo tónico asimétrico del cuello RTAC | MONOAURALIDAD | Divergencia MONOCULARIDAD  |
+|  DUOLATERALIZACIÓN | Inicio de las relaciones funcionales DUOLATERALIDAD | PUENTE DE VAROLIO Reptación ventral homóloga homolateral | Movimiento simultáneo de los dos brazos Reflejo tónico simétrico del cuello RTSC | DUOAURALIDAD | Convergencia visión simultánea DUOCULARIDAD  |
+|  CONTRALATERALIZACIÓN | Transferencias sobre el plano medio CONTRALATERALIDAD | MESENCEFALO CÓRTEX Marchar a 4 patas a 4 manos a dos pies, derecho saltar, correr | Coordinación ojo-mano Transferencias sobre la línea media | BINAURALIDAD | Mantenimiento de la fijación de la mirada BINOCULARIDAD  |
+|  UNILATERALIZACIÓN | Asimetría funcional UNILATERALIDAD | PREDOMINIO HEMISFÉRICO CORTICAL Habilidades unilaterales, chutar, salto de altura | Preferencia manual para escritura dibujo costura etc. | ESTEREOAURALIDAD | Divergencia fisiológica operativa Predominios visuales ESTEREOCULARIDAD  |
+
+La lateralidad – Cuadro recapitulativo<br/>Manuel ROURE ARNALDO, Predominios Visuales, Ed. Milenio, 2012
