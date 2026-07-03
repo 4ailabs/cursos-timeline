@@ -13,9 +13,11 @@
 > **El voltaje de la célula —no su química— decide lo que hace.** Cada órgano es un **agente** que cumple su tarea con esa señal eléctrica. Cuando la señal se **atasca**, el agente pierde su **capacidad de adaptarse** — y esa capacidad es, literalmente, la salud. **El Cuerpo Eléctrico** enseña a trabajar esa capa, sin fármacos, para desatascar la señal y devolver la adaptación.
 
 **Slogan de marca:**
-> ## El voltaje decide lo que hace tu cuerpo. Recupera su capacidad de adaptarte.
+> ## La adaptación empieza en una señal eléctrica. Recupera tu capacidad de adaptarte.
 
-**El método (lo que te diferencia del rastreo suelto):** se razona por **agente** y **perfil** *antes* de rastrear. **El agente manda; el rastreo confirma.**
+> *Registro (ver `Sistema_Decision_Posicionamiento_Largo_Plazo.md`): **categoría** = bioelectricidad aplicada · **mensaje público** = la señal eléctrica · **promesa** = capacidad de adaptarte · **prueba/ciencia** = voltaje · potencial de membrana · Levin. **Principio:** nombrar el **proceso vivo** (adaptación, respuesta), nunca el objeto inerte (cuerpo, célula, tejido) — el objeto solo en la explicación técnica.*
+
+**El método (lo que te diferencia del rastreo suelto):** *antes* de rastrear se lee **qué órgano se atascó y por qué**. **Primero el razonamiento; el rastreo confirma.** *(En clase esto se llama «agente» y «perfil»; en el mensaje al público se dice en llano: «qué órgano se atascó». Nunca usar «agente» de cara al público — confunde.)*
 
 **La ventaja imbatible:** hablas de **voltaje** — un mecanismo con nombre y evidencia (Vmem, Michael Levin, Tufts) — no de "energía". Nadie en el mercado no-iatrogénico puede decir esto con la cara limpia.
 
@@ -33,7 +35,7 @@ Tres piezas, una sola idea:
 | **Capacidad de adaptación = salud** | Salud no es "no tener síntomas": es poder adaptarse. | Machteld Huber, *BMJ* 2011; salutogénesis (Antonovsky). |
 
 **La frase que planta bandera en la categoría (hook / gran idea):**
-> ## El voltaje decide lo que hace cada célula.
+> ## La adaptación empieza en una señal eléctrica.
 
 Concreta, verificable, y no la puede decir nadie más en este espacio.
 
@@ -59,16 +61,16 @@ Esto convierte al rastreador experto en algo más grande: deja de depender del c
 ## 3. Arquitectura de mensajes (jerarquía de slogans)
 
 ### Nivel 1 — Marca (identidad general)
-> ## El voltaje decide lo que hace tu cuerpo. Recupera su capacidad de adaptarte.
+> ## La adaptación empieza en una señal eléctrica. Recupera tu capacidad de adaptarte.
 
-*Resuelve todas las objeciones previas:* no es técnica (habla de lo que el voltaje hace), no es palabra desgastada (voltaje/adaptación son frescos), no es ambiguo (voltaje = concreto), es positivo, no es autoritario (*decide*, no *gobierna*), y es honesto (*recupera/facilita*, no *cura*).
+*Resuelve todas las objeciones previas:* no es técnica, no es palabra desgastada (adaptación/señal son frescas), no es ambigua, es positiva, **nombra el proceso vivo** (adaptación) en vez del objeto inerte (cuerpo/célula), y es honesta (*recupera/facilita*, no *cura*; la señal *orienta*, no "decide" como causa única).
 
 ### Nivel 2 — Hook / gran idea
-> ## El voltaje decide lo que hace cada célula.
+> ## La adaptación empieza en una señal eléctrica.
 
 ### Nivel 3 — Mensajes por audiencia
-- **Biomagnetista experimentado:** *Ya dominas el rastreo. Ahora aprende a leer qué agente se atascó.* — y como gancho emocional: *Por fin entiendes por qué el imán funciona.*
-- **Buscador de salud no-iatrogénica:** *Devuélvele a tu cuerpo su capacidad de adaptarse.*
+- **Biomagnetista experimentado:** *Ya sabes rastrear. Ahora aprende a leer qué órgano se atascó — y por qué.* — y como gancho emocional: *Por fin entiendes por qué el imán funciona.*
+- **Nuevo / buscador de salud (desde cero):** *Devuélvele a tu cuerpo su capacidad de adaptarse.*
 - **Conceptual (el método):** *El agente manda; el rastreo confirma.*
 
 ### Nivel 4 — Frases de contenido (redes, clases)
@@ -91,8 +93,8 @@ El activo de un médico es la credibilidad. Se protege evitando frases atractiva
 | **Desatascar / liberar la señal** | **"Regenerar"** — promete reconstrucción de tejido; activa el detector de charlatán y compite con la medicina regenerativa real. |
 | **Adaptación, señal, voltaje, agente** | **"Terreno", "equilibrio", "bienestar", "vibración"** — desgastados; los dice cualquiera. |
 | **Salud es capacidad de adaptarse** | **"Salud profunda / prevención / sin síntomas"** — genérico; lo firma cualquier vendedor. |
-| **El voltaje decide lo que hace la célula** | **"El cuerpo se gobierna con electricidad"** — tono autoritario. |
-| **Aprende a leer qué agente se atascó** | **"Leer el mapa eléctrico"** — suena a técnica / puntos de acupuntura. |
+| **La señal eléctrica orienta la respuesta** (proceso vivo, no objeto) | **"El voltaje decide lo que hace cada célula"** — *decide* exagera (no es causa única) y *célula/cuerpo* es la escala fría e inerte; **"se gobierna con electricidad"** — autoritario. |
+| **Aprende a leer qué órgano se atascó** *(«agente/perfil» solo en clase)* | **"Leer el mapa eléctrico"** — suena a técnica / puntos de acupuntura. |
 
 **Principio rector:** distinguir siempre **lo demostrado, lo plausible y lo que falta probar.** Es lo que separa a un médico de un vendedor.
 
@@ -100,10 +102,10 @@ El activo de un médico es la credibilidad. Se protege evitando frases atractiva
 
 ## 5. Dos audiencias, dos pistas
 
-| | Buscador de salud (público general) | Biomagnetista experimentado |
+| | Nuevo / desde cero (buscador de salud) | Biomagnetista experimentado |
 |---|---|---|
 | Gancho | La salud como capacidad de adaptarse, a nivel profundo y sin fármacos. | El porqué y el método que le falta a su oficio. |
-| Slogan | *Devuélvele a tu cuerpo su capacidad de adaptarse.* | *Ya dominas el rastreo. Ahora aprende a leer qué agente se atascó.* |
+| Slogan | *Devuélvele a tu cuerpo su capacidad de adaptarse.* | *Ya sabes rastrear. Ahora aprende a leer qué órgano se atascó — y por qué.* |
 | Menciona el rastreo/par | No. | Sí, con respeto: valida su técnica, ofrece el razonamiento. |
 | Riesgo a evitar | Sonar a "otro método de bienestar". | Sonar a que su técnica "estaba mal". |
 

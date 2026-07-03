@@ -50,8 +50,8 @@ Profesionales de la salud, terapeutas y personas que quieran aprender un sistema
 Cuatro módulos que te llevan de la mirada al método, y del método a la clínica:
 
 1. **Ver** — El Cuerpo Eléctrico: entender por qué el cuerpo es eléctrico y qué significa regular.
-2. **Leer y regular** — el instrumento, la lectura del perfil bioeléctrico y los primeros terrenos.
-3. **Mapear** — los cinco terrenos clínicos, para trabajar con orden y sin dispersarte.
+2. **Leer y regular** — el instrumento, la lectura del perfil bioeléctrico y los primeros ejes de regulación.
+3. **Mapear** — los ejes de regulación, para trabajar con orden y sin dispersarte.
 4. **Integrar** — la sesión completa, el mantenimiento, los casos reales y tu certificación.
 
 ---
@@ -78,9 +78,9 @@ Cuatro módulos que te llevan de la mirada al método, y del método a la clíni
 ---
 
 ## MÓDULO 2 — LEER Y REGULAR
-### *El instrumento y los primeros terrenos* · 25 julio
+### *El instrumento y los primeros ejes* · 25 julio
 
-> Aquí tomas los imanes por primera vez. Aprendes qué es el instrumento, cómo interactúa con el cuerpo, cómo leer un perfil bioeléctrico y cómo aplicar con seguridad — y lo pruebas en dos terrenos.
+> Aquí tomas los imanes por primera vez. Aprendes qué es el instrumento, cómo interactúa con el cuerpo, cómo leer un perfil bioeléctrico y cómo aplicar con seguridad — y lo pruebas en dos ejes de regulación.
 
 | Hora | Actividad |
 |---|---|
@@ -88,33 +88,33 @@ Cuatro módulos que te llevan de la mirada al método, y del método a la clíni
 | 10:30-11:30 | El instrumento (desde cero): el campo magnético estático y cómo interactúa con el tejido vivo (canales iónicos, MEC, Vmem). Qué hace, qué no hace, seguridad y límites. |
 | 11:30-12:30 | Leer y regular: el nodo bioeléctrico, el dipolo, el perfil bioeléctrico y el rango homeostático tisular. La aplicación paso a paso. |
 | 12:30-1:30 | Comida |
-| 1:30-2:15 | El eje transversal: alerta sostenida / carga alostática (sistema nervioso autónomo + estrés). Por qué se atiende primero. Marcadores legibles (HRV, cortisol). |
-| 2:15-3:00 | **Terreno barrera / disbiótico (intestino):** el intestino como agente, barrera selectiva y permeabilidad. Cómo se lee y se regula. |
-| 3:00-3:45 | **Terreno metabólico-energético:** la mitocondria (Vmem mitocondrial) y el eje insulina; flexibilidad metabólica y los 5 tipos de fatiga. |
+| 1:30-2:15 | **Eje del estrés (transversal):** alerta sostenida / carga alostática (sistema nervioso autónomo + estrés). Por qué se atiende primero. Marcadores legibles (HRV, cortisol). |
+| 2:15-3:00 | **Eje intestinal (barrera y microbiota):** el intestino como agente, barrera selectiva y permeabilidad. Cómo se lee y se regula. |
+| 3:00-3:45 | **Eje metabólico-energético:** la mitocondria (Vmem mitocondrial) y el eje insulina; flexibilidad metabólica y los 5 tipos de fatiga. |
 | 3:45-5:30 | Práctica supervisada en parejas: lectura del perfil bioeléctrico + aplicación. |
 | 5:30-6:00 | Cierre + tarea. |
 
-**Al terminar podrás:** leer un perfil bioeléctrico básico, aplicar con seguridad, y trabajar el eje de estrés y los dos terrenos de base.
+**Al terminar podrás:** leer un perfil bioeléctrico básico, aplicar con seguridad, y trabajar el eje del estrés y los dos primeros ejes.
 
 ---
 
-## MÓDULO 3 — LOS TERRENOS
+## MÓDULO 3 — LOS EJES DE REGULACIÓN
 ### *El mapa clínico completo* · 8 agosto
 
-> Completas el mapa. Con la técnica ya en las manos, aprendes los tres terrenos restantes y —lo más importante— cómo decidir cuál trabajar primero cuando hay varios. Este es el módulo que te da criterio.
+> Completas el mapa. Con la técnica ya en las manos, aprendes los tres ejes restantes y —lo más importante— cómo decidir cuál trabajar primero cuando hay varios. Este es el módulo que te da criterio.
 
 | Hora | Actividad |
 |---|---|
 | 10:00-10:45 | Revisión de la práctica anterior. |
-| 10:45-12:00 | **Terreno inflamatorio no-resolutivo:** el sistema inmune como agente. El problema no es inflamar, es no resolver. Estados bioeléctricos del macrófago (M1/M2) y su modulación por campo magnético. Marcadores (PCR-us, IL-6). |
-| 12:00-1:00 | **Terreno biotransformación / exposoma:** el hígado como agente (Nrf2) y la carga ambiental. Honestidad: aquí no hay nodo bioeléctrico literal — se dice. Marcadores (GGT). |
+| 10:45-12:00 | **Eje inflamatorio:** el sistema inmune como agente. El problema no es inflamar, es no resolver. Estados bioeléctricos del macrófago (M1/M2) y su modulación por campo magnético. Marcadores (PCR-us, IL-6). |
+| 12:00-1:00 | **Eje de biotransformación (hígado):** el hígado como agente (Nrf2) y la carga ambiental. Honestidad: aquí no hay nodo bioeléctrico literal — se dice. Marcadores (GGT). |
 | 1:00-2:00 | Comida |
-| 2:00-2:45 | **Terreno redox-envejecimiento:** el terreno de fondo. Deriva oxidativa del medio interno y cómo cuidarlo a largo plazo. |
-| 2:45-3:30 | El criterio clínico: perfiles combinados y jerarquía. Cuál terreno se atiende primero y por qué. |
+| 2:00-2:45 | **Eje redox:** el eje de fondo. Deriva oxidativa del medio interno y cómo cuidarlo a largo plazo. |
+| 2:45-3:30 | El criterio clínico: perfiles combinados y jerarquía. Cuál eje se atiende primero y por qué. |
 | 3:30-5:30 | Práctica completa supervisada: perfil bioeléctrico + aplicación (2 rondas). |
 | 5:30-6:00 | Límites honestos + tarea. |
 
-**Al terminar podrás:** reconocer los cinco terrenos, leer sus marcadores, y priorizar con criterio cuando el paciente presenta más de uno.
+**Al terminar podrás:** reconocer los ejes de regulación, leer sus marcadores, y priorizar con criterio cuando el paciente presenta más de uno.
 
 ---
 
@@ -125,8 +125,8 @@ Cuatro módulos que te llevan de la mirada al método, y del método a la clíni
 
 | Hora | Actividad |
 |---|---|
-| 10:00-11:00 | La sesión de mantenimiento como formato propio: periodicidad, lenguaje al paciente, registro por terreno. La persona sana también se atiende (salutogénesis aplicada). |
-| 11:00-12:30 | Casos clínicos del Dr. Ojeda: integración de los 5 terrenos y el eje en pacientes reales. |
+| 10:00-11:00 | La sesión de mantenimiento como formato propio: periodicidad, lenguaje al paciente, registro por eje. La persona sana también se atiende (salutogénesis aplicada). |
+| 11:00-12:30 | Casos clínicos del Dr. Ojeda: integración de los ejes de regulación en pacientes reales. |
 | 12:30-1:30 | Comida |
 | 1:30-3:15 | Supervisión en vivo: sesiones completas de RB frente al grupo. |
 | 3:15-4:15 | Documentación clínica y comunicación con médicos. Qué se dice y qué no. |
@@ -142,7 +142,7 @@ Cuatro módulos que te llevan de la mirada al método, y del método a la clíni
 - Entender el Cuerpo Eléctrico desde cero: qué es el Vmem, la MEC y la bioelectricidad, y cómo se regulan.
 - Dominar el instrumento y la técnica de RB: leer un perfil bioeléctrico y aplicar con seguridad.
 - Un marco para razonar con cualquier paciente, no una lista de puntos que memorizar.
-- Los cinco terrenos con sus marcadores y su ruta de regulación — un mapa para trabajar con orden.
+- Los ejes de regulación con sus marcadores y su ruta — un mapa para trabajar con orden.
 - La capacidad de trabajar tratamiento **y** mantenimiento y prevención.
 - Tu certificación como **Terapeuta en Regulación Bioeléctrica**.
 
