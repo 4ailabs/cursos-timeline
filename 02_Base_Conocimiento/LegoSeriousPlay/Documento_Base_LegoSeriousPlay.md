@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento
 # Curso: LEGO Serious Play & LSP Insight System
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 
@@ -447,7 +447,7 @@ Una vez construido, el modelo permanece frente al constructor durante todo el ta
 ## 15. LSP Insight System: Visión General
 
 ### Definición
-El LSP Insight System es una metodología integrativa desarrollada por el Dr. Miguel Ojeda Ríos que combina LEGO Serious Play con múltiples disciplinas para crear un sistema completo de exploración personal, emocional y sistémica. Va más allá de la metodología LSP original al incorporar dimensiones terapéuticas, neurológicas y transformacionales.
+El LSP Insight System es una metodología integrativa desarrollada por el Dr. Miguel Ojeda Rios que combina LEGO Serious Play con múltiples disciplinas para crear un sistema completo de exploración personal, emocional y sistémica. Va más allá de la metodología LSP original al incorporar dimensiones terapéuticas, neurológicas y transformacionales.
 
 ### Los 6 Componentes Integrados
 
@@ -1093,7 +1093,7 @@ Antes de cada sesión, el facilitador debe informar:
 | # | Fuente | Descripción |
 |---|---|---|
 | 1 | LEGO Serious Play Open Source — Creative Commons | Documento fundacional de la metodología LSP en su versión de código abierto, cubriendo orígenes, principios, fases, facilitación y diseño de talleres |
-| 2 | LSP Insight System — Dr. Miguel Ojeda Ríos | Sistema integrativo que extiende LSP con facilitación simbólica, pensamiento sistémico, inteligencia emocional, neurociencia aplicada y herramientas de IA |
+| 2 | LSP Insight System — Dr. Miguel Ojeda Rios | Sistema integrativo que extiende LSP con facilitación simbólica, pensamiento sistémico, inteligencia emocional, neurociencia aplicada y herramientas de IA |
 | 3 | Csikszentmihalyi, M. — Flow: The Psychology of Optimal Experience | Fundamento teórico del estado de flujo aplicado a LSP |
 | 4 | Piaget, J. — Constructivismo | Base epistemológica: el conocimiento se construye activamente |
 | 5 | Papert, S. — Construccionismo | Extensión práctica: aprender construyendo artefactos tangibles |
@@ -1105,4 +1105,4 @@ Antes de cada sesión, el facilitador debe informar:
 
 *Documento Base de Conocimiento generado para el Instituto Centrobioenergetica.*
 *Curso: LEGO Serious Play & LSP Insight System*
-*Compilación basada en los documentos fuente proporcionados por el Dr. Miguel Ojeda Ríos.*
+*Compilación basada en los documentos fuente proporcionados por el Dr. Miguel Ojeda Rios.*

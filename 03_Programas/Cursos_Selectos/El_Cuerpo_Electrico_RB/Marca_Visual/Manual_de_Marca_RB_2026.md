@@ -187,7 +187,7 @@ Pie: endorsement del Instituto.
 ### Ficha microbioenergetica (público)
 
 Cabecera: título del microorganismo.
-Pie: "Microbioenergetica — Dr. Miguel Ojeda Ríos · Instituto Centrobioenergetica · 2026"
+Pie: "Microbioenergetica — Dr. Miguel Ojeda Rios · Instituto Centrobioenergetica · 2026"
 
 ### Documentos académicos
 

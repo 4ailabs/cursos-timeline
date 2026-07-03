@@ -1,7 +1,7 @@
 # El Ojo Adaptativo
 ## La emetropización como cognición basal: un marco TAME para entender la miopía como adaptación
 
-**Compilación y desarrollo:** Dr. Miguel Ojeda Ríos (Instituto Centrobioenergetica) y colaboradores en oftalmología.
+**Compilación y desarrollo:** Dr. Miguel Ojeda Rios (Instituto Centrobioenergetica) y colaboradores en oftalmología.
 **Tipo de artículo:** Hipótesis y marco teórico (borrador v1).
 
 > **Nota al lector clínico.** Este artículo propone un *marco interpretativo*, no un mecanismo nuevo. Para mantener la honestidad de cada afirmación, usamos cuatro etiquetas: **[E]** evidencia empírica sólida · **[P]** plausible (mecanismo razonable, evidencia parcial) · **[H]** heurístico (interpretación clínica útil, no falsable como mecanismo) · **[S]** simbólico (lenguaje narrativo/terapéutico). El cuerpo del argumento (secciones 2–5) descansa en [E]/[P]; la sección 6 es explícitamente [S] y opcional.

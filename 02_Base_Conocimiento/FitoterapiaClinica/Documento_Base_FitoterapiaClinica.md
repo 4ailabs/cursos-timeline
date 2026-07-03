@@ -1,6 +1,6 @@
 # DOCUMENTO BASE DE CONOCIMIENTO
 # FITOTERAPIA CLÍNICA
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 
@@ -483,6 +483,6 @@ Elementos de una prescripción completa:
 ---
 
 *Documento Base de Conocimiento — Fitoterapia Clínica*
-*Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos*
+*Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios*
 *Generado: Marzo 2026*
 *Fuente: Conocimiento integrado de fitoterapia clínica (sin investigación de fuentes externas)*

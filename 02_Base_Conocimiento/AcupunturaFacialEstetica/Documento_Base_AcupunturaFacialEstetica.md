@@ -1,7 +1,7 @@
 # Documento Base de Conocimiento: Acupuntura Facial y Estética
 
 ## Instituto Centrobioenergetica
-### Dr. Miguel Ojeda Ríos
+### Dr. Miguel Ojeda Rios
 
 ---
 
@@ -403,7 +403,7 @@ Solicitar al paciente que arrugue la frente: la ausencia de arrugas en un lado c
 
 ## 11. Bibliografía y Fuentes
 
-- Material didáctico del curso "Acupuntura Facial y Estética" — Instituto Centrobioenergetica, Dr. Miguel Ojeda Ríos
+- Material didáctico del curso "Acupuntura Facial y Estética" — Instituto Centrobioenergetica, Dr. Miguel Ojeda Rios
 - Yukuko Tanaka — Técnica de masaje facial japonés (田中宥久子 — 生きる美学)
 - Fundamentos de Acupuntura y Moxibustión de China (Beijing College of TCM)
 - Atlas de Acupuntura — Claudia Focks

@@ -2,7 +2,7 @@
 
 ## Morphic Field Therapy® para Animales (MFT Animales)
 
-### Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+### Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 
@@ -461,4 +461,4 @@ La carta se genera como documento PDF exportable desde la aplicación.
 
 ---
 
-*Documento Base de Conocimiento — MFT Animales v4.0 — Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos*
+*Documento Base de Conocimiento — MFT Animales v4.0 — Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios*

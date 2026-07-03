@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento: Conflictología Biológica
 
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 
@@ -562,4 +562,4 @@ El organismo vive permanentemente situaciones desestabilizantes que el cuerpo eq
 ---
 
 *Documento Base de Conocimiento #25 — Generado para el Instituto Centrobioenergetica*
-*Fuente: Contenido proporcionado por el Dr. Miguel Ojeda Ríos sobre conflictología biológica*
+*Fuente: Contenido proporcionado por el Dr. Miguel Ojeda Rios sobre conflictología biológica*

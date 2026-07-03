@@ -1,6 +1,6 @@
 # DOCUMENTO BASE DE CONOCIMIENTO
 ## Oligoterapia Catalítica
-### Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+### Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 
@@ -10,7 +10,7 @@
 |-------|-------|
 | **Nombre oficial** | Oligoterapia Catalítica |
 | **Categoría** | Nutrición, Metabolismo y Regulación |
-| **Instructor** | Dr. Miguel Ojeda Ríos |
+| **Instructor** | Dr. Miguel Ojeda Rios |
 | **Fundador del método** | Dr. Jacques Ménétrier (1930) |
 | **Influencias principales** | Gabriel Bertrand, Paracelso, Claude Meunier, Picard, Yves Requena |
 | **Paradigma** | Medicina funcional del terreno — regulación enzimática mediante oligoelementos en dosis catalíticas |
@@ -790,5 +790,5 @@ Los síndromes reaccionales evolucionan siguiendo las variaciones cronobiológic
 ---
 
 *Documento Base de Conocimiento generado el 13 de marzo de 2026*
-*Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos*
+*Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios*
 *Fuentes: oligoterapia catalitica.pdf, OLIGOTERAPIA.pdf, Oligoelementos.pdf*

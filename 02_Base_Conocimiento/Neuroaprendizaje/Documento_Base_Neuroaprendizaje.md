@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento: Neuroaprendizaje — Integrando la Mente, el Cerebro y el Cuerpo
 
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 **Fecha de creación del curso:** Abril 2023, CDMX
 
@@ -877,5 +877,5 @@ El protocolo del Instituto Centrobioenergetica integra:
 
 *Documento Base de Conocimiento #18 — Instituto Centrobioenergetica*
 *Curso: Neuroaprendizaje — Integrando la Mente, el Cerebro y el Cuerpo*
-*Autor del curso: Dr. Miguel Ojeda Ríos*
+*Autor del curso: Dr. Miguel Ojeda Rios*
 *Generado: Marzo 2026*

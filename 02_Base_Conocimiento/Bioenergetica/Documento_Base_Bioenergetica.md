@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento
 ## Bioenergética
-### Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+### Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 
@@ -551,8 +551,8 @@ Usar con cuidado en:
 
 ## 24. Fuente Documental
 
-- **BIOENERGÉTICA HOLOGRÁFICA: MANUAL BASE DE CONOCIMIENTO** — Dr. Miguel Ojeda Ríos, ©2025.
-- **Transcripción del chatbot asistente de Bioenergética** — Dr. Miguel Ojeda Ríos, 2025.
+- **BIOENERGÉTICA HOLOGRÁFICA: MANUAL BASE DE CONOCIMIENTO** — Dr. Miguel Ojeda Rios, ©2025.
+- **Transcripción del chatbot asistente de Bioenergética** — Dr. Miguel Ojeda Rios, 2025.
 - Contenido extraído: fundamentos, principios, test muscular, sensaciones viscerales, recesión de edad, protocolo completo de 8 pasos, tratamiento y liberación, prohibiciones, operadores modales, ámbito transgeneracional, integración con biomagnetismo, conflictología biológica, conflicto de diagnóstico, fenómeno tumoral, herramientas complementarias, consideraciones éticas.
 - Contenido **excluido**: hologramas bioenergéticos (pertenecen al curso Bioenergética Holográfica).
 

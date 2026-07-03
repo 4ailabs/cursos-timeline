@@ -1,5 +1,5 @@
 # ÍNDICE MAESTRO — Bases de Conocimiento
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 **Total de cursos:** 26
 **Bases de conocimiento completadas:** 26 / 26
@@ -164,4 +164,4 @@ Documentos generados a partir de conferencias y trabajo clínico externo, integr
 ---
 
 *Índice generado el 13 de marzo de 2026 · Actualizado 27 de marzo de 2026*
-*Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos*
+*Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios*

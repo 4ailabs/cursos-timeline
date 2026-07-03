@@ -144,7 +144,7 @@ Ritual Experiencing (RE) es un sistema de intervención somato-simbólica que ut
 
 **QUÉ ES:**
 - Un sistema de intervención clínica basado en actos rituales con protocolo reproducible
-- Basado en el método BV4 (Bioenergética V4) del Dr. Miguel Ojeda Ríos
+- Basado en el método BV4 (Bioenergética V4) del Dr. Miguel Ojeda Rios
 - Integra neurociencia, trabajo corporal, psicología somática y elementos simbólicos en protocolos concretos
 - Cada acto opera sobre N3 a través de acción física con carga sensorial suficiente
 

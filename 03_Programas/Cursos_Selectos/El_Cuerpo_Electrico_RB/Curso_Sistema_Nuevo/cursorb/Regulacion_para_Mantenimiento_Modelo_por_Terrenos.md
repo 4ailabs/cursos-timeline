@@ -2,7 +2,7 @@
 
 ## Un modelo salutogénico por terrenos
 
-### Dr. Miguel Ojeda Ríos — Instituto Centrobioenergetica
+### Dr. Miguel Ojeda Rios — Instituto Centrobioenergetica
 
 > **Versión 2** — perfeccionada tras investigación con fuentes primarias (PubMed). Cambios respecto a la v1: se adopta la **carga alostática** como marco paraguas; **estrés/alerta** pasa de terreno a **eje transversal**; se **fusiona** anérgico + glucémico en un terreno *metabólico-energético*; se re-anclan y renombran los terrenos de *biotransformación* y *redox-envejecimiento*; el **intestino** se incorpora como quinto terreno (barrera/disbiótico).
 

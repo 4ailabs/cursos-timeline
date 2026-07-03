@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento: Terapia con Muñecos y Playmobil Pro
 
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>El cuerpo eléctrico — Webinar</title>
+<style>
+:root{--teal:#0F6E56;--teal2:#5DCAA5;--cream:#E8E6DE;--paper:#F7F4EC;--ink:#2C2C2A;--muted:#77756F;--amber:#BA7517;--coral:#D85A30;--line:#D5D0C4}
+*{box-sizing:border-box}html,body{margin:0;background:#171816;color:var(--ink)}body{font-family:Arial,Helvetica,sans-serif}
+.deck{display:grid;gap:36px;padding:36px;justify-content:center}.slide{position:relative;width:1280px;height:720px;overflow:hidden;background:var(--paper);box-shadow:0 18px 55px #0007}
+.dipole{position:absolute;left:64px;top:46px;width:52px}.section{position:absolute;left:132px;top:49px;color:var(--teal);font:14px Arial;letter-spacing:2.6px;text-transform:uppercase}
+.folio{position:absolute;right:64px;bottom:24px;color:var(--muted);font:14px Arial;letter-spacing:2px}.rule{position:absolute;left:64px;right:64px;bottom:49px;height:1px;background:var(--line)}
+.source{position:absolute;left:64px;bottom:24px;color:var(--muted);font:13px/1.35 Arial;max-width:930px}.title{font:400 50px/1.07 Georgia,serif;letter-spacing:-1.4px}.lead{font:22px/1.45 Georgia,serif;color:#56534D}.eyebrow{color:var(--teal);font:14px Arial;letter-spacing:2.8px;text-transform:uppercase}
+.program{position:absolute;left:64px;top:48px;width:188px}.endorsement{position:absolute;right:64px;top:55px;width:218px}
+
+.cover .hero{position:absolute;right:0;top:0;width:650px;height:720px;object-fit:cover;object-position:center}.cover:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--paper) 0 47%,rgba(247,244,236,.98) 50%,rgba(247,244,236,.08) 68%)}
+.cover>*{z-index:2}.cover .copy{position:absolute;left:64px;top:178px;width:540px}.cover h1{margin:20px 0 0;padding-bottom:7px;font:400 76px/1 Georgia,serif;letter-spacing:-2px}.cover h1 span{display:block;color:var(--teal)}.cover .lead{margin-top:28px;width:500px}.cover .presenter{position:absolute;left:64px;bottom:56px;color:var(--muted);font:13px Arial;letter-spacing:1px}
+
+.quote{background:var(--teal);color:var(--cream)}.quote .program,.quote .endorsement{filter:brightness(0) invert(1);opacity:.75}.quote .copy{position:absolute;left:92px;top:166px;width:1030px}.quote .eyebrow{color:var(--teal2)}.quote h2{margin:28px 0 0;font:400 58px/1.12 Georgia,serif;letter-spacing:-1.5px}.quote h2 em{font-style:normal;color:#F0B45A}.quote p{margin-top:34px;width:760px;color:#E8E6DEB8;font:18px/1.5 Arial}.quote .folio{color:#E8E6DE88}.quote .ring{position:absolute;right:-120px;top:70px;width:610px;height:610px;border:1px solid #E1F5EE22;border-radius:50%;box-shadow:inset 0 0 0 90px #E1F5EE0B,inset 0 0 0 180px #E1F5EE08}
+
+.statement .copy{position:absolute;left:88px;top:170px;width:1060px}.statement h2{margin:18px 0 0;font:400 64px/1.08 Georgia,serif;letter-spacing:-2px}.statement h2 strong{font-weight:400;color:var(--teal)}.statement .lead{margin-top:30px;width:800px}.statement .accent{position:absolute;left:88px;top:132px;width:76px;height:3px;background:var(--amber)}
+
+.image-right .copy{position:absolute;left:64px;top:145px;width:455px;z-index:2}.image-right .title{margin-top:22px}.image-right .lead{margin-top:24px}.image-right .callout{margin-top:28px;border-left:3px solid var(--amber);padding-left:17px;font:15px/1.5 Arial;width:438px}.image-right .visual{position:absolute;right:0;top:0;width:700px;height:720px;object-fit:cover}.image-right .fade{position:absolute;inset:0;background:linear-gradient(90deg,var(--paper) 0 42%,rgba(247,244,236,.98) 47%,transparent 68%)}
+
+.image-full .head{position:absolute;left:64px;right:64px;top:105px;display:flex;justify-content:space-between;align-items:end}.image-full .title{width:760px}.image-full .aside{width:320px;border-left:3px solid var(--amber);padding-left:18px;font:17px/1.4 Arial;color:#595750}.image-full .visual{position:absolute;left:56px;top:292px;width:1168px;height:325px;object-fit:contain}.image-full .labels{position:absolute;left:95px;right:95px;top:260px;display:flex;justify-content:space-around;color:var(--teal);font:14px Arial;letter-spacing:1.7px;text-transform:uppercase}
+
+.split .head{position:absolute;left:64px;top:112px;width:1150px}.split .cols{position:absolute;left:64px;right:64px;top:245px;bottom:78px;display:grid;grid-template-columns:1fr 1fr;gap:56px}.split .col{position:relative;padding:38px 36px;border-top:4px solid var(--teal);background:linear-gradient(145deg,#F3F1EA,#ECE9DF)}.split .col:after{content:"";position:absolute;right:22px;top:22px;width:48px;height:48px;border:1px solid #0F6E5633;border-radius:50%}.split .col.alt{border-color:var(--amber)}.split .col.alt:after{border-color:#BA751744}.split h3{margin:0;width:85%;font:400 32px/1.15 Georgia,serif}.split p{font:19px/1.48 Arial;color:#5A5852}.metric{margin-top:25px;font:400 46px Georgia,serif;color:var(--teal)}
+
+.flow .head{position:absolute;left:64px;top:112px;width:1090px}.flow .nodes{position:absolute;left:64px;right:64px;top:294px;display:flex;align-items:stretch;justify-content:center;gap:12px}.node{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:205px;max-width:225px;min-height:126px;padding:30px 22px 22px;border:1px solid #CBC7BC;border-top:4px solid var(--teal);background:linear-gradient(155deg,#F7F5EF,#ECE9DF);box-shadow:0 10px 24px #2C2C2A10;text-align:left;font:21px/1.22 Georgia,serif}.node .step{position:absolute;left:18px;top:-20px;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;background:var(--teal);color:white;font:13px Arial;letter-spacing:1px;box-shadow:0 4px 10px #0F6E5630}.arrow{align-self:center;width:38px;height:38px;display:grid;place-items:center;border:1px solid #BA751755;border-radius:50%;color:var(--amber);background:var(--paper);font-size:23px}.flow .note{position:absolute;left:175px;right:175px;bottom:92px;padding-top:18px;border-top:1px solid var(--line);text-align:center;color:#66635D;font:17px/1.4 Arial}
+
+.spectrum .head{position:absolute;left:64px;top:112px;width:1080px}.spectrum .bar{position:absolute;left:92px;right:92px;top:355px;height:6px;background:linear-gradient(90deg,var(--teal),var(--teal2),#D6CF9A,var(--amber),var(--coral));border-radius:10px}.spectrum .items{position:absolute;left:72px;right:72px;top:274px;display:grid;grid-template-columns:repeat(var(--count),1fr);gap:20px}.spectrum .item{position:relative;text-align:center}.spectrum .item:after{content:"";position:absolute;left:50%;top:69px;width:18px;height:18px;transform:translateX(-50%);border:4px solid var(--paper);border-radius:50%;background:var(--teal);box-shadow:0 0 0 1px #0F6E5655}.spectrum .item:nth-child(n+3):after{background:var(--amber)}.spectrum .item b{display:block;min-height:58px;font:400 24px/1.15 Georgia,serif}.spectrum .item span{display:block;margin-top:90px;color:#66635D;font:16px/1.4 Arial}.spectrum .transversal{position:absolute;left:210px;right:210px;bottom:72px;padding:16px 22px;border:1px solid #D85A3050;border-left:5px solid var(--coral);background:#D85A3009;text-align:center;color:#4F4D48;font:17px/1.4 Arial}
+
+.cta{background:var(--teal);color:var(--cream)}.cta .copy{position:absolute;left:76px;top:125px;width:750px}.cta h2{margin:24px 0;font:400 58px/1.05 Georgia,serif}.cta .lead{color:#E8E6DEC9;width:690px}.cta .facts{margin-top:35px;display:flex;gap:38px}.cta .fact b{display:block;color:#F0B45A;font:400 30px Georgia,serif}.cta .fact span{font:14px Arial;letter-spacing:1px}.cta .qr{position:absolute;right:115px;top:190px;width:260px;height:260px;background:#F7F4EC;color:var(--teal);display:grid;place-items:center;text-align:center;font:18px/1.4 Arial}.cta .endorsement{filter:brightness(0) invert(1);opacity:.7}.cta .folio{color:#E8E6DE88}
+
+@media(max-width:1320px){body{overflow-x:hidden}.deck{justify-content:start;padding:12px}}
+@media print{@page{size:13.333in 7.5in;margin:0}body{background:#fff}.deck{display:block;padding:0}.slide{break-after:page;box-shadow:none}}
+</style>
+</head>
+<body>
+<main class="deck" id="deck"></main>
+<script>
+const A="assets/";
+const logo="../../Marca_Visual/Branding_RB_2026/svg/";
+const becker="../../Marca_Visual/Webinar/propuesta_1_fondo_mapa_becker.png";
+const slides=[
+{type:"cover",section:"",title:"El cuerpo|eléctrico",body:"Cómo las señales bioeléctricas participan en la adaptación, la reparación y la organización de los tejidos.",image:becker},
+{type:"quote",section:"La pregunta",title:"¿Y si parte de la enfermedad fuera una <em>adaptación que quedó activa?</em>",body:"El problema no siempre es que el cuerpo no responda. A veces responde, pero ya no consigue modificar o terminar esa respuesta."},
+{type:"statement",section:"La pregunta",title:"El cuerpo no solo <strong>reacciona.</strong>",body:"También detecta cambios, compara estados, corrige trayectorias y decide cuándo una respuesta debe terminar."},
+{type:"flow",section:"La pregunta",title:"Seguiremos una señal a través de cuatro escalas.",nodes:["Organismo","Tejido","Célula","Consulta"],note:"Cada escala responde una parte distinta de la misma pregunta."},
+{type:"image-right",section:"La electricidad que organiza",title:"La electricidad corporal puede medirse.",body:"Robert O. Becker investigó gradientes eléctricos estables en organismos vivos y sus cambios frente a la lesión.",callout:"Hablamos de diferencias de potencial registrables, no de una explicación metafórica.",image:becker,source:"Representación didáctica inspirada en los mapas descritos por Becker."},
+{type:"image-right",section:"La electricidad que organiza",title:"Becker encontró un patrón, no puntos aislados.",body:"El mapa muestra una distribución organizada entre regiones centrales y distales.",callout:"El valor del hallazgo está en la relación entre regiones, no en asignar significado clínico universal a cada punto.",image:becker},
+{type:"flow",section:"La electricidad que organiza",title:"Una lesión modifica el patrón eléctrico local.",nodes:["Tejido intacto","Lesión","Corriente de lesión","Reparación"],note:"La señal aparece antes de que el resultado morfológico sea visible."},
+{type:"image-full",section:"La electricidad que organiza",title:"La misma lesión puede iniciar trayectorias biológicas diferentes.",body:"La señal posterior organiza respuestas distintas.",image:A+"comparacion_salamandra_rana_v1.png",labels:["Estado inicial","Lesión comparable","Resultado"],source:"Esquema didáctico · modelo animal · especie y contexto experimental importan."},
+{type:"statement",section:"La electricidad que organiza",title:"La diferencia no estaba solamente en <strong>la herida.</strong>",body:"También estaba en la secuencia de señales que apareció después."},
+{type:"split",section:"La electricidad que organiza",title:"Dos escalas revelan el mismo problema de organización.",leftTitle:"Becker observó el organismo",leftBody:"Gradientes eléctricos corporales, superficie y reparación.",rightTitle:"Levin descendió a la membrana",rightBody:"Voltaje celular, redes de comunicación y decisiones morfológicas."},
+{type:"image-full",section:"La electricidad que organiza",title:"Vmem es un voltaje lento de fondo.",body:"No es un potencial de acción nervioso.",image:A+"vmem_estados_celulares_v1.png",labels:["Estado más polarizado","Estado menos polarizado"],source:"Esquema conceptual; los rangos dependen del tipo celular y del contexto experimental."},
+{type:"split",section:"La electricidad que organiza",title:"Las células mantienen estados eléctricos distintos.",leftTitle:"Más polarizado",leftBody:"Estado compatible con funciones diferenciadas en numerosos modelos.",leftMetric:"−60 a −90 mV",rightTitle:"Menos polarizado",rightBody:"Puede asociarse con proliferación, migración o reparación.",rightMetric:"−10 a −30 mV"},
+{type:"flow",section:"La electricidad que organiza",title:"Cambiar el estado eléctrico puede cambiar la conducta celular.",nodes:["Vmem","Canales y transportadores","Expresión y señalización","Conducta celular"],note:"La relación es dependiente del modelo; no constituye una regla clínica universal."},
+{type:"split",section:"La electricidad que organiza",title:"Bioelectricidad y bioquímica describen capas que interactúan.",leftTitle:"Bioeléctrica",leftBody:"Distribución de cargas, potencial de membrana y conectividad.",rightTitle:"Bioquímica",rightBody:"Moléculas, receptores, metabolismo y expresión génica."},
+{type:"quote",section:"La electricidad que organiza",title:"La pregunta clínica deja de ser solamente <em>“¿dónde duele?”</em>",body:"Y pasa a incluir: ¿qué sistema perdió capacidad de adaptación?"},
+{type:"image-full",section:"Memoria y resolución",title:"Una intervención breve puede preceder a un cambio prolongado.",body:"La duración del estímulo no determina por sí sola la duración de la respuesta.",image:A+"renacuajo_planaria_v1.png",labels:["Renacuajo","Planaria"],source:"Modelos experimentales; no extrapolar automáticamente a duración clínica."},
+{type:"flow",section:"Memoria y resolución",title:"Una hora de modulación; varios días de regeneración.",nodes:["Lesión de cola","Modulación breve","Cambio de estado","Regeneración posterior"],note:"El estímulo puede modificar el estado que organiza la secuencia posterior."},
+{type:"image-full",section:"Memoria y resolución",title:"La planaria conserva información sobre su forma.",body:"Su patrón morfológico puede persistir después de una intervención temporal.",image:A+"renacuajo_planaria_v1.png",labels:["Patrón inicial","Modulación temporal","Morfología persistente"]},
+{type:"statement",section:"Memoria y resolución",title:"Un cambio temporal puede alterar <strong>la memoria morfológica.</strong>",body:"La forma no depende únicamente de instrucciones instantáneas; también de estados que se mantienen y se comunican."},
+{type:"flow",section:"Memoria y resolución",title:"Las células intercambian información eléctrica.",nodes:["Membrana","Canales iónicos","Uniones gap","Estado del tejido"],note:"La comunicación local permite coordinar decisiones más amplias que una célula aislada."},
+{type:"flow",section:"Memoria y resolución",title:"Iniciar inflamación es un programa activo.",nodes:["Daño","Alarma","Reclutamiento","Protección"],note:"Encender la respuesta requiere señales coordinadas."},
+{type:"flow",section:"Memoria y resolución",title:"Resolverla también requiere una señal.",nodes:["Control del daño","Cambio de mediadores","Reparación","Retorno funcional"],note:"Una respuesta útil puede volverse problemática cuando pierde su terminación."},
+{type:"quote",section:"Interacción con campos",title:"¿Cómo podría un campo estático producir un <em>efecto biológico?</em>",body:"La respuesta debe buscarse en estructuras y mecanismos medibles, no en explicaciones vagas."},
+{type:"flow",section:"Interacción con campos",title:"Las membranas poseen orientación y estructura.",nodes:["Fosfolípidos","Proteínas","Canales","Gradientes"],note:"La membrana es una interfaz física y funcional."},
+{type:"split",section:"Interacción con campos",title:"Los canales iónicos son puertas regulables.",leftTitle:"Estado cerrado",leftBody:"Restringe el paso de iones y sostiene un gradiente.",rightTitle:"Estado abierto",rightBody:"Modifica el flujo y puede cambiar la señal intracelular."},
+{type:"flow",section:"Interacción con campos",title:"El calcio puede actuar como señal intracelular.",nodes:["Canal","Entrada de Ca²⁺","Cascada celular","Respuesta"],note:"La entrada de calcio no tiene una sola consecuencia; depende de intensidad, duración y contexto."},
+{type:"flow",section:"Interacción con campos",title:"Bloquear un canal ayuda a identificar el mecanismo.",nodes:["Estímulo","Efecto observado","Bloqueo farmacológico","Efecto reducido"],note:"Diseño experimental: si el efecto disminuye al bloquear el canal, el mecanismo gana plausibilidad."},
+{type:"statement",section:"Interacción con campos",title:"La magnetita existe en <strong>tejido humano.</strong>",body:"Es un hallazgo biológico relevante; por sí solo no demuestra una aplicación clínica."},
+{type:"spectrum",section:"Interacción con campos",title:"Evidencia y aplicación no ocupan el mismo nivel.",items:[["Demostrado","Hallazgo reproducible en un modelo definido."],["Plausible","Mecanismo compatible con la evidencia disponible."],["Empírico","Observación clínica pendiente de validación formal."]]},
+{type:"quote",section:"Interacción con campos",title:"El objetivo no es <em>perseguir un culpable.</em>",body:"Es modificar condiciones del tejido y observar si recupera capacidad de respuesta."},
+{type:"image-right",section:"El ojo como sistema regulador",title:"El ojo permite observar una adaptación completa.",body:"Detecta información óptica, la compara y modifica su crecimiento.",callout:"Es un modelo claro para comprender cómo una referencia organiza una respuesta biológica.",image:A+"circuito_ojo_v1.png"},
+{type:"flow",section:"El ojo como sistema regulador",title:"El ojo compara su imagen con una referencia.",nodes:["Imagen retinal","Desenfoque","Señal de error","Ajuste de crecimiento"],note:"La emetropización funciona como un circuito de retroalimentación."},
+{type:"image-full",section:"El ojo como sistema regulador",title:"La señal atraviesa varias capas antes de cambiar la forma.",body:"Retina → EPR → coroides → esclera.",image:A+"circuito_ojo_v1.png",labels:["Entrada de luz","Detección retinal","Transmisión tisular","Ajuste escleral"]},
+{type:"image-right",section:"El ojo como sistema regulador",title:"La luz diurna participa en la señal.",body:"La dopamina retiniana y la exposición exterior forman parte del entorno regulador del crecimiento ocular.",callout:"La miopía es multifactorial; no puede reducirse a “pantalla igual a miopía”.",image:A+"circuito_ojo_v1.png"},
+{type:"statement",section:"El ojo como sistema regulador",title:"La miopía puede ser una adaptación <strong>competente.</strong>",body:"Una respuesta bien ejecutada puede producir un resultado desfavorable si el entorno ofrece una referencia inadecuada."},
+{type:"quote",section:"El ojo como sistema regulador",title:"El problema no siempre es <em>responder.</em>",body:"A veces es la referencia que organiza la respuesta."},
+{type:"image-full",section:"Del reloj al termostato",title:"Un reloj repite una instrucción.",body:"Para cambiar su conducta hay que intervenir sus piezas.",image:A+"reloj_termostato_v1.png",labels:["Secuencia fija","Retroalimentación"]},
+{type:"image-full",section:"Del reloj al termostato",title:"Un termostato compara el estado real con una referencia.",body:"Detecta desviación, responde y vuelve a medir.",image:A+"reloj_termostato_v1.png",labels:["Sistema abierto","Sistema regulado"]},
+{type:"flow",section:"Del reloj al termostato",title:"Cambiar la referencia reorganiza la respuesta.",nodes:["Estado real","Comparación","Corrección","Nueva medición"],note:"La misma estructura puede producir otra conducta cuando cambia el punto de referencia."},
+{type:"quote",section:"Del reloj al termostato",title:"Los tejidos son <em>termostatos,</em> no relojes.",body:"La clínica cambia cuando buscamos detección, comparación, respuesta y capacidad de resolución."},
+{type:"spectrum",section:"Regulación Bioeléctrica",title:"Cinco ejes ordenan la búsqueda.",items:[["Inflamatorio","Activación y resolución."],["Metabólico","Producción y uso de recursos."],["Hepático","Procesamiento y depuración."],["Medio interno","Cambios asociados al envejecimiento."],["Intestinal","Barrera, digestión y reactividad."]],note:"Eje transversal: la alerta sostenida se atiende primero porque puede amplificar a los demás."},
+{type:"flow",section:"Regulación Bioeléctrica",title:"El rastreo comienza con una hipótesis.",nodes:["Conversar","Formular","Rastrear","Contrastar"],note:"La técnica sirve al razonamiento; no sustituye la pregunta clínica."},
+{type:"flow",section:"Regulación Bioeléctrica",title:"Aplicar no es el final.",nodes:["Aplicar","Reevaluar","Documentar","Ajustar"],note:"La respuesta del paciente es información para la siguiente decisión."},
+{type:"cta",section:"El Cuerpo Eléctrico",title:"Aprende a leer la señal que organiza la respuesta.",body:"Formación práctica en Regulación Bioeléctrica para profesionales que quieren pasar del catálogo de puntos al razonamiento regulatorio."}
+];
+function chrome(s,i,dark=false){return `<img class="dipole" src="${logo+(dark?'icono_dipolo_dark.svg':'icono_dipolo.svg')}" alt=""><div class="section">${s.section||""}</div><div class="folio">${String(i+1).padStart(2,"0")}</div>`}
+function render(s,i){
+ let x=`<section class="slide ${s.type}">`;
+ if(s.type==="cover") return x+`<img class="hero" src="${s.image}" alt=""><img class="program" src="${logo}programa_el_cuerpo_electrico.svg" alt="El cuerpo eléctrico"><img class="endorsement" src="${logo}endorsement_instituto.svg" alt="Instituto Centrobioenergetica"><div class="copy"><div class="eyebrow">Webinar para profesionales de la salud</div><h1>${s.title.replace("|","<span>")}</span></h1><p class="lead">${s.body}</p></div><div class="presenter">Dr. Miguel Ojeda Rios · Regulación Bioeléctrica</div></section>`;
+ if(s.type==="quote") return x+`<img class="program" src="${logo}programa_el_cuerpo_electrico.svg" alt=""><img class="endorsement" src="${logo}endorsement_instituto.svg" alt=""><div class="ring"></div><div class="copy"><div class="eyebrow">${s.section}</div><h2>${s.title}</h2><p>${s.body}</p></div><div class="folio">${String(i+1).padStart(2,"0")}</div></section>`;
+ x+=chrome(s,i);
+ if(s.type==="statement")x+=`<div class="accent"></div><div class="copy"><div class="eyebrow">${s.section}</div><h2>${s.title}</h2><p class="lead">${s.body}</p></div>`;
+ if(s.type==="image-right")x+=`<img class="visual" src="${s.image}" alt=""><div class="fade"></div><div class="copy"><div class="eyebrow">${s.section}</div><h2 class="title">${s.title}</h2><p class="lead">${s.body}</p>${s.callout?`<p class="callout">${s.callout}</p>`:""}</div>${s.source?`<div class="source">${s.source}</div>`:""}`;
+ if(s.type==="image-full")x+=`<div class="head"><h2 class="title">${s.title}</h2><p class="aside">${s.body||""}</p></div>${s.labels?`<div class="labels">${s.labels.map(v=>`<span>${v}</span>`).join("")}</div>`:""}<img class="visual" src="${s.image}" alt="">${s.source?`<div class="source">${s.source}</div>`:""}`;
+ if(s.type==="split")x+=`<div class="head"><h2 class="title">${s.title}</h2></div><div class="cols"><div class="col"><h3>${s.leftTitle}</h3>${s.leftMetric?`<div class="metric">${s.leftMetric}</div>`:""}<p>${s.leftBody}</p></div><div class="col alt"><h3>${s.rightTitle}</h3>${s.rightMetric?`<div class="metric">${s.rightMetric}</div>`:""}<p>${s.rightBody}</p></div></div>`;
+ if(s.type==="flow")x+=`<div class="head"><h2 class="title">${s.title}</h2></div><div class="nodes">${s.nodes.map((v,j)=>`${j?'<span class="arrow">→</span>':""}<div class="node"><span class="step">${String(j+1).padStart(2,"0")}</span><span>${v}</span></div>`).join("")}</div><p class="note">${s.note||""}</p>`;
+ if(s.type==="spectrum")x+=`<div class="head"><h2 class="title">${s.title}</h2></div><div class="bar"></div><div class="items" style="--count:${s.items.length}">${s.items.map(v=>`<div class="item"><b>${v[0]}</b><span>${v[1]}</span></div>`).join("")}</div>${s.note?`<div class="transversal">${s.note}</div>`:""}`;
+ if(s.type==="cta")x+=`<img class="endorsement" src="${logo}endorsement_instituto.svg" alt=""><div class="copy"><div class="eyebrow" style="color:#5DCAA5">${s.section}</div><h2>${s.title}</h2><p class="lead">${s.body}</p><div class="facts"><div class="fact"><b>4 sábados</b><span>FORMACIÓN INTENSIVA</span></div><div class="fact"><b>32 horas</b><span>PRÁCTICA SUPERVISADA</span></div><div class="fact"><b>15 lugares</b><span>GRUPO FUNDADOR</span></div></div></div><div class="qr">QR / enlace<br>de inscripción</div>`;
+ return x+`<div class="rule"></div></section>`;
+}
+document.getElementById("deck").innerHTML=slides.map(render).join("");
+function fitDeck(){
+ const deck=document.getElementById("deck");
+ if(innerWidth<1320){
+   const scale=(innerWidth-24)/1280;
+   deck.style.transform=`scale(${scale})`;
+   deck.style.transformOrigin="top left";
+   deck.style.width="1280px";
+   deck.style.position="absolute";
+   deck.style.left="0";
+   deck.style.top="0";
+   document.body.style.height=`${deck.scrollHeight*scale}px`;
+ }else{
+   deck.style.transform="";
+   deck.style.width="";
+   deck.style.position="";
+   deck.style.left="";
+   deck.style.top="";
+   document.body.style.height="";
+ }
+}
+fitDeck();
+addEventListener("resize",fitDeck);
+addEventListener("load",fitDeck);
+</script>
+</body>
+</html>

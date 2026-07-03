@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento
 ## Nutrición con Aminoácidos Terapéuticos
-### Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+### Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 
@@ -531,7 +531,7 @@ El aminoácido libre más abundante en el organismo. Combustible preferido de lo
 ## 15. Referencia Técnica
 
 - **Fuente**: Guía de Referencia — Aminoácidos Terapéuticos en Medicina Funcional
-- **Instituto**: Centro de Bioenergética — Dr. Miguel Ojeda Ríos
+- **Instituto**: Centro de Bioenergética — Dr. Miguel Ojeda Rios
 - **Aminoácidos cubiertos**: 8 (Lisina, Glicina, Metionina/SAMe, Prolina, Arginina/Citrulina, Triptófano/5-HTP, Carnitina, Glutamina)
 - **Mezclas terapéuticas**: 5 (Ansiolítica, Colágeno, GlyNAC, Pauling-Rath, Sueño)
 - **Tipo de material**: Material de apoyo para alumnos del curso de nutrición con aminoácidos

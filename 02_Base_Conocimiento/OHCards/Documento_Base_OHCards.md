@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento
 # Curso: OH Cards — Técnicas Proyectivas con Cartas Asociativas
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 

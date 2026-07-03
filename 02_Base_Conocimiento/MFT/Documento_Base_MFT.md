@@ -2,7 +2,7 @@
 
 ## Morphic Field Therapy® (MFT)
 
-### Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+### Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 
@@ -444,5 +444,5 @@ MFT es un sistema de trabajo con información de campo. No realiza diagnósticos
 
 ---
 
-*Documento Base de Conocimiento — Morphic Field Therapy® (MFT) — Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos*
+*Documento Base de Conocimiento — Morphic Field Therapy® (MFT) — Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios*
 *Fuente: Base_Conocimiento_MFT_v1.0.md*

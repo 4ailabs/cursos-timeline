@@ -1,5 +1,5 @@
 # MATERIAL ENTREGABLE — MÓDULO 2 (Y ANEXOS MÓDULO 1)
-## Taller "Lo Que Tu Mascota Quiere Decirte" — Dr. Miguel Ojeda Ríos
+## Taller "Lo Que Tu Mascota Quiere Decirte" — Dr. Miguel Ojeda Rios
 
 ---
 

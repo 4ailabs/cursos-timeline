@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento
 ## Par Biomagnético
-### Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+### Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 
@@ -287,7 +287,7 @@ Ejemplo natural: *Dichanthelium lanuginosum* (planta) + *Curvularia protuberata*
 
 ## 19. Fuente Documental
 
-- **Manual de Biomagnetismo 2021** — Dr. Miguel Ojeda Ríos, ©2023.
+- **Manual de Biomagnetismo 2021** — Dr. Miguel Ojeda Rios, ©2023.
 - 58 páginas.
 - Contenido: fundamentos, técnica de rastreo, clasificación de pares, catálogo completo de pares por zona anatómica y tipo microbiano, modelos de enfermedad, sensaciones, simbiosis viral.
 

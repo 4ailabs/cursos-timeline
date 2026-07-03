@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beca Actualización en Bioenergética</title>
+<style>
+  :root {
+    --terracota: #B5604A;
+    --terracota-deep: #8B4A2A;
+    --sage: #8FA87A;
+    --gold: #E8A857;
+    --ink: #362F29;
+    --muted: #746C62;
+    --paper: #FAF6F0;
+    --rule: #E2D6C6;
+    --backdrop-light: #E9E2D6;
+    --backdrop-dark: #1A1512;
+
+    --serif: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, 'Times New Roman', serif;
+    --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    --unit: 0.068in;
+    --step-caption: 9.5px;
+    --step-small: 11px;
+    --step-body: 11.5px;
+    --step-dek: 13px;
+    --step-title: 15px;
+    --step-h1: 27px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--backdrop-light);
+    display: flex;
+    justify-content: center;
+    padding: 3rem 1rem;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-color-scheme: dark) { body { background: var(--backdrop-dark); } }
+  :root[data-theme="dark"] body { background: var(--backdrop-dark); }
+  :root[data-theme="light"] body { background: var(--backdrop-light); }
+
+  .page {
+    position: relative;
+    width: 8.5in;
+    min-height: 11in;
+    background: var(--paper);
+    box-shadow: 0 2rem 4rem rgba(50, 32, 16, 0.22);
+    padding: calc(var(--unit) * 6) calc(var(--unit) * 10) calc(var(--unit) * 4);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--unit) * 3.2);
+  }
+
+  /* ---------- Masthead ---------- */
+
+  .masthead {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: calc(var(--unit) * 3);
+    border-bottom: 1.5px solid var(--terracota-deep);
+    padding-bottom: calc(var(--unit) * 2);
+  }
+
+  .masthead-text { max-width: 5.5in; }
+
+  .eyebrow {
+    font-size: var(--step-caption);
+    font-weight: 500;
+    letter-spacing: 2.6px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin: 0 0 calc(var(--unit) * 1.1) 0;
+  }
+
+  h1 {
+    font-size: var(--step-h1);
+    line-height: 1.12;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: var(--terracota-deep);
+    margin: 0 0 calc(var(--unit) * 1.3) 0;
+    text-wrap: balance;
+  }
+
+  .beca-line {
+    font-size: var(--step-body);
+    color: var(--terracota);
+    font-weight: 500;
+    letter-spacing: 0.2px;
+  }
+  .beca-line::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-right: 0.09in;
+    vertical-align: middle;
+  }
+
+  .mark { flex-shrink: 0; margin-bottom: 1.8rem; }
+  .mark svg { width: 74px; height: auto; display: block; }
+
+  .dek {
+    font-size: var(--step-dek);
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 6.3in;
+    text-wrap: balance;
+    margin: -1.2rem 0 0 0;
+  }
+
+  .fechas {
+    font-size: var(--step-small);
+    color: var(--terracota-deep);
+    margin: -1.2rem 0 0 0;
+    letter-spacing: 0.2px;
+  }
+  .fechas strong { font-weight: 600; }
+
+  /* ---------- Spec row (fact-sheet strip, not a tinted box) ---------- */
+
+  .spec {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: calc(var(--unit) * 2) 0;
+  }
+
+  .spec dt {
+    font-size: var(--step-caption);
+    font-weight: 500;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--terracota);
+    margin: 0 0 calc(var(--unit) * 0.7) 0;
+  }
+
+  .spec dd {
+    font-size: var(--step-small);
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .spec > div {
+    padding: 0 calc(var(--unit) * 2);
+  }
+  .spec > div:first-child { padding-left: 0; }
+  .spec > div:not(:first-child) { border-left: 1px solid var(--rule); }
+
+  /* ---------- Sessions: a numbered program, not a card grid ---------- */
+
+  .sessions { flex: 1; }
+
+  .session {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    column-gap: calc(var(--unit) * 2);
+    padding: calc(var(--unit) * 1.7) 0;
+    border-top: 1px solid var(--rule);
+  }
+  .session:first-child { border-top: none; padding-top: 0; }
+
+  .session-num {
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.02in;
+  }
+  .session:nth-child(odd) .session-num { background: var(--terracota); }
+  .session:nth-child(even) .session-num { background: var(--sage); }
+
+  .session-eyebrow {
+    font-size: var(--step-caption);
+    font-weight: 500;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 calc(var(--unit) * 0.5) 0;
+  }
+
+  .session-title {
+    font-size: var(--step-title);
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 calc(var(--unit) * 1.3) 0;
+  }
+
+  .session ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: calc(var(--unit) * 2.5);
+    row-gap: calc(var(--unit) * 0.8);
+  }
+
+  .session li {
+    font-size: var(--step-body);
+    line-height: 1.38;
+    color: var(--ink);
+    position: relative;
+    padding-left: 0.14in;
+  }
+
+  .session li::before {
+    content: "\2013";
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+  }
+
+  /* ---------- Footer / colophon ---------- */
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(var(--unit) * 2);
+    border-top: 1px solid var(--rule);
+    padding-top: calc(var(--unit) * 1.8);
+  }
+
+  footer .who {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--unit) * 1.3);
+  }
+
+  footer .who svg { width: 180px; height: auto; flex-shrink: 0; }
+
+  footer .who-text {
+    border-left: 1px solid var(--rule);
+    padding-left: calc(var(--unit) * 1.5);
+  }
+
+  footer .who-text p {
+    margin: 0;
+    font-size: var(--step-small);
+    line-height: 1.4;
+    color: var(--muted);
+  }
+  footer .who strong { color: var(--terracota-deep); font-weight: 500; }
+
+  footer .contact {
+    text-align: right;
+    font-size: var(--step-small);
+    line-height: 1.4;
+    color: var(--muted);
+  }
+  footer .contact a {
+    color: var(--terracota);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  footer .contact a:focus-visible,
+  footer .contact a:hover {
+    border-bottom-color: var(--terracota);
+    outline: none;
+  }
+
+  @media print {
+    @page { size: letter; margin: 0; }
+    body { padding: 0; background: #fff; }
+    .page { box-shadow: none; }
+  }
+
+  @media (max-width: 760px) {
+    .page { width: 100%; min-height: auto; height: auto; padding: 0.5in 0.4in; }
+    .masthead { flex-direction: column; align-items: flex-start; }
+    .spec { grid-template-columns: 1fr 1fr; }
+    .spec > div:nth-child(2) { border-left: 1px solid var(--rule); }
+    .spec > div:nth-child(3) { border-left: none; padding-left: 0; }
+    .spec > div:nth-child(3), .spec > div:nth-child(4) { padding-top: calc(var(--unit) * 2); }
+    .session { grid-template-columns: 26px 1fr; }
+    .session ul { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; gap: calc(var(--unit) * 3); }
+    footer .contact { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="masthead">
+    <div class="masthead-text">
+      <p class="eyebrow">Instituto Centrobioenergetica</p>
+      <h1>Actualización en Bioenergética Transgeneracional</h1>
+      <p class="beca-line">4 sesiones en vivo &middot; viernes &middot; 2 horas c/u</p>
+    </div>
+    <div class="mark">
+      <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(80,80)">
+          <circle cx="0" cy="-50" r="8" fill="#B5604A"/>
+          <circle cx="25" cy="-43.3" r="8" fill="#8FA87A"/>
+          <circle cx="43.3" cy="-25" r="8" fill="#B5604A"/>
+          <circle cx="50" cy="0" r="8" fill="#8FA87A"/>
+          <circle cx="43.3" cy="25" r="8" fill="#B5604A"/>
+          <circle cx="25" cy="43.3" r="8" fill="#8FA87A"/>
+          <circle cx="0" cy="50" r="8" fill="#B5604A"/>
+          <circle cx="-25" cy="43.3" r="8" fill="#8FA87A"/>
+          <circle cx="-43.3" cy="25" r="8" fill="#B5604A"/>
+          <circle cx="-50" cy="0" r="8" fill="#8FA87A"/>
+          <circle cx="-43.3" cy="-25" r="8" fill="#B5604A"/>
+          <circle cx="-25" cy="-43.3" r="8" fill="#8FA87A"/>
+          <circle cx="0" cy="0" r="5" fill="#E8A857" opacity="0.5"/>
+          <circle cx="0" cy="0" r="3" fill="#E8A857"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <p class="dek">Un marco actualizado para el rastreo transgeneracional en consulta, con evidencia reciente sobre transmisión intergeneracional.</p>
+
+  <p class="fechas"><strong>Fechas:</strong> Inicio viernes 24 de julio &middot; 4 viernes consecutivos</p>
+
+  <dl class="spec">
+    <div>
+      <dt>Dirigido a</dt>
+      <dd>Alumnos del Instituto, terapeutas de bioenergética o biomagnetismo de otras escuelas, y profesionales de la salud con conocimiento previo de rastreo o técnicas de acceso al inconsciente.</dd>
+    </div>
+    <div>
+      <dt>Modalidad</dt>
+      <dd>Presencial y online (Zoom), con plazas limitadas. Modalidad presencial incluye material.</dd>
+    </div>
+    <div>
+      <dt>Incluye</dt>
+      <dd>Diploma de participación y una sesión de práctica presencial en el Instituto, con cupo limitado.</dd>
+    </div>
+    <div>
+      <dt>Admisión</dt>
+      <dd>Por beca con cupo limitado, mediante formulario. Sujeto a evaluación del Instituto según el perfil de ingreso.</dd>
+    </div>
+  </dl>
+
+  <div class="sessions">
+
+    <div class="session">
+      <span class="session-num">1</span>
+      <div>
+        <p class="session-eyebrow">Sesión 1</p>
+        <p class="session-title">Marco clínico y mapeo familiar</p>
+        <ul>
+          <li>Rastreo transgeneracional en la práctica clínica</li>
+          <li>Genograma y genosociograma como instrumento de diagnóstico</li>
+          <li>Líneas de ADN directas: mitocondrial y cromosoma Y</li>
+          <li>Evidencia actual: epigenética, trauma histórico, co-regulación del sistema nervioso</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="session">
+      <span class="session-num">2</span>
+      <div>
+        <p class="session-eyebrow">Sesión 2</p>
+        <p class="session-title">Línea paterna</p>
+        <ul>
+          <li>Cromosoma Y y transmisión de línea paterna</li>
+          <li>Metaprogramas</li>
+          <li>Movimientos sistémicos familiares y patrones transgeneracionales</li>
+          <li>Técnica proyectiva con muñecos: fundamentos y caso clínico en vivo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="session">
+      <span class="session-num">3</span>
+      <div>
+        <p class="session-eyebrow">Sesión 3</p>
+        <p class="session-title">Línea materna</p>
+        <ul>
+          <li>ADN mitocondrial y transmisión de línea materna</li>
+          <li>Campo mórfico y resonancia transgeneracional</li>
+          <li>Rastreo transgeneracional aplicado a la línea materna</li>
+          <li>Lectura de campo familiar: caso clínico en vivo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="session">
+      <span class="session-num">4</span>
+      <div>
+        <p class="session-eyebrow">Sesión 4</p>
+        <p class="session-title">Programación metabólica transgeneracional</p>
+        <ul>
+          <li>Programas de supervivencia metabólicos</li>
+          <li>Hambruna Holandesa e hipótesis del gen ahorrador</li>
+          <li>Resistencia a la insulina y patrones metabólicos heredados</li>
+          <li>Integración de las cuatro sesiones y ruta de profundización</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="who">
+      <svg viewBox="0 0 340 80" aria-label="Logo Instituto Centrobioenergetica">
+        <g transform="translate(40,40)">
+          <circle cx="0"     cy="-28"   r="4.5" fill="#B5604A"/>
+          <circle cx="14"    cy="-24.2" r="4.5" fill="#8FA87A"/>
+          <circle cx="24.2"  cy="-14"   r="4.5" fill="#B5604A"/>
+          <circle cx="28"    cy="0"     r="4.5" fill="#8FA87A"/>
+          <circle cx="24.2"  cy="14"    r="4.5" fill="#B5604A"/>
+          <circle cx="14"    cy="24.2"  r="4.5" fill="#8FA87A"/>
+          <circle cx="0"     cy="28"    r="4.5" fill="#B5604A"/>
+          <circle cx="-14"   cy="24.2"  r="4.5" fill="#8FA87A"/>
+          <circle cx="-24.2" cy="14"    r="4.5" fill="#B5604A"/>
+          <circle cx="-28"   cy="0"     r="4.5" fill="#8FA87A"/>
+          <circle cx="-24.2" cy="-14"   r="4.5" fill="#B5604A"/>
+          <circle cx="-14"   cy="-24.2" r="4.5" fill="#8FA87A"/>
+          <circle cx="0" cy="0" r="2.8" fill="#E8A857" opacity="0.5"/>
+          <circle cx="0" cy="0" r="1.8" fill="#E8A857"/>
+        </g>
+        <text x="82" y="34" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="500" letter-spacing="3" fill="#888580">INSTITUTO</text>
+        <text x="82" y="50" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" font-weight="500" letter-spacing="1.2" fill="#B5604A">CENTROBIOENERGETICA</text>
+      </svg>
+      <div class="who-text">
+        <p>Dr. Miguel Ojeda Rios</p>
+      </div>
+    </div>
+    <p class="contact">Solicita el formulario de admisión escribiendo a<br><a href="mailto:contacto@institutocentrobioenergetica.com">contacto@institutocentrobioenergetica.com</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>

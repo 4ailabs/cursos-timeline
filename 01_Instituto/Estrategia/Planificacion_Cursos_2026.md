@@ -1,5 +1,5 @@
 # Planificación de Cursos 2026
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 > **Documento de trabajo** para programar y lanzar los cursos del año.
 > Basado en la Propuesta Estratégica 2026: reestructuración de los 26 cursos en 10 programas integrados con 3 niveles de profundidad.

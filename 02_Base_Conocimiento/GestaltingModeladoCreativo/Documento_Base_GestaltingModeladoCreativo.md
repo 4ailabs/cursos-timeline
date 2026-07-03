@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento
 # Curso: Gestalting — Modelado Creativo
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 
@@ -1291,5 +1291,5 @@ Si no se respeta la ventana de tolerancia y el principio de titulación, cualqui
 ---
 
 *Documento Base de Conocimiento — Gestalting Modelado Creativo*
-*Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos*
+*Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios*
 *Base de conocimiento #22 de 29*

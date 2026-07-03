@@ -1,6 +1,6 @@
 # Principios del Biomagnetismo
 
-### Dr. Miguel Ojeda Ríos
+### Dr. Miguel Ojeda Rios
 ### Instituto Centrobioenergetica — Ciudad de México
 ### 2026
 

@@ -1,5 +1,5 @@
 # Lo Que Tu Mascota Quiere Decirte — Taller de 2 Módulos
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 > **Formato:** 2 viernes, 4 horas cada uno (3:00 – 7:00 pm)
 > **Fechas:** Viernes 27 de marzo + Viernes 10 de abril 2026

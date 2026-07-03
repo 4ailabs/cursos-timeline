@@ -1,7 +1,7 @@
 # Del Par Biomagnético a la Cartografía Bioeléctrica
 ## Propuesta de evolución del marco teórico del biomagnetismo clínico
 
-### Dr. Miguel Ojeda Ríos
+### Dr. Miguel Ojeda Rios
 ### Instituto Centrobioenergetica — Ciudad de México
 ### 2026
 
@@ -804,7 +804,7 @@ La cartografía bioeléctrica no reemplaza al par biomagnético. Lo profundiza.
 
 ## Sobre el autor
 
-El Dr. Miguel Ojeda Ríos es médico con especialización en medicina funcional, nutrigenómica y bioenergética. Dirige el Instituto Centrobioenergetica en la Ciudad de México (Acapulco 36, Piso 8, Col. Roma, CDMX). Fue parte del equipo del Dr. Isaac Goiz Durán y ha dedicado más de una década a la enseñanza y evolución del biomagnetismo clínico. Su trabajo integra biomagnetismo, Context Engineering (metodología terapéutica propietaria), y el Modelo de Conflicto Biológico Multiescala (MCBM), un marco teórico original que evoluciona críticamente la medicina germánica utilizando arquitectura probabilística multiescala fundamentada en psiconeuroinmunología, bioelectricidad (TAME de Levin), teoría polivagal, carga alostática y la Cell Danger Response.
+El Dr. Miguel Ojeda Rios es médico con especialización en medicina funcional, nutrigenómica y bioenergética. Dirige el Instituto Centrobioenergetica en la Ciudad de México (Acapulco 36, Piso 8, Col. Roma, CDMX). Fue parte del equipo del Dr. Isaac Goiz Durán y ha dedicado más de una década a la enseñanza y evolución del biomagnetismo clínico. Su trabajo integra biomagnetismo, Context Engineering (metodología terapéutica propietaria), y el Modelo de Conflicto Biológico Multiescala (MCBM), un marco teórico original que evoluciona críticamente la medicina germánica utilizando arquitectura probabilística multiescala fundamentada en psiconeuroinmunología, bioelectricidad (TAME de Levin), teoría polivagal, carga alostática y la Cell Danger Response.
 
 ---
 

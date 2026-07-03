@@ -7,7 +7,7 @@ description: Use when the user asks to create a ritual, design a therapeutic act
 
 ## Overview
 
-This skill creates therapeutic rituals following the BV4 (Bioenergética V4) methodology of Dr. Miguel Ojeda Ríos. Every ritual must operate through the body — not through understanding, insight, or visualization alone. The core principle:
+This skill creates therapeutic rituals following the BV4 (Bioenergética V4) methodology of Dr. Miguel Ojeda Rios. Every ritual must operate through the body — not through understanding, insight, or visualization alone. The core principle:
 
 **"El N3 no distingue entre una experiencia real y una experiencia vividamente construida con retroalimentación sensorial suficiente."**
 

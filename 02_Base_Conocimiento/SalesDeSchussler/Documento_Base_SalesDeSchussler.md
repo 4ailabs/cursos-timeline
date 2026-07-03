@@ -1,5 +1,5 @@
 # DOCUMENTO BASE DE CONOCIMIENTO: SALES DE SCHÜSSLER
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 

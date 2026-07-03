@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento: Acupuntura de Muñeca y Tobillo (Wrist and Ankle Acupuncture)
 
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 
@@ -624,5 +624,5 @@ Según la experiencia clínica de Zhang Xinshu, los resultados siguen estos patr
 ---
 
 *Documento Base de Conocimiento — Acupuntura de Muñeca y Tobillo (WAA)*
-*Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos*
+*Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios*
 *Generado: Marzo 2026*

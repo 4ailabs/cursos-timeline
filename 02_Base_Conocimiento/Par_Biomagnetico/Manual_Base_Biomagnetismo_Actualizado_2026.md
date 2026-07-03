@@ -1,6 +1,6 @@
 # Manual de Biomagnetismo — Documento Base Actualizado
 
-### Dr. Miguel Ojeda Ríos
+### Dr. Miguel Ojeda Rios
 ### Instituto Centrobioenergetica
 ### 2026
 

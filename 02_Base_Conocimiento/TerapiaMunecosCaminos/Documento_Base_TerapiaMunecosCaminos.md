@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento
 # Curso: Terapia de Muñecos y Los Caminos de la Vida
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 
@@ -912,7 +912,7 @@ Los pasos finales del proceso (pasos 10-12 del manual completo):
 
 | Fuente | Descripción |
 |---|---|
-| **Manual de Los Caminos de la Vida** | Material del curso del Instituto Centrobioenergetica. Dr. Miguel Ojeda Ríos. 40 páginas. Documento completo que cubre el marco teórico, la técnica terapéutica con muñecos Playmobil, los cuatro caminos, cuadrantes, metaprogramas, mecanismos de supervivencia biológica y movimientos sistémicos familiares |
+| **Manual de Los Caminos de la Vida** | Material del curso del Instituto Centrobioenergetica. Dr. Miguel Ojeda Rios. 40 páginas. Documento completo que cubre el marco teórico, la técnica terapéutica con muñecos Playmobil, los cuatro caminos, cuadrantes, metaprogramas, mecanismos de supervivencia biológica y movimientos sistémicos familiares |
 | **Terapia Sistémica y Constelaciones Familiares** | Marco teórico para los movimientos sistémicos familiares. Bert Hellinger y escuela de Terapia Sistémica |
 | **Programación Neurolingüística (PNL)** | Marco teórico para los metaprogramas como filtros mentales inconscientes |
 | **Neurobiología del estrés y la supervivencia** | Fundamentos para los mecanismos de supervivencia biológica y las respuestas del sistema nervioso autónomo |
@@ -921,5 +921,5 @@ Los pasos finales del proceso (pasos 10-12 del manual completo):
 
 ---
 
-*Documento Base de Conocimiento generado para el Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos*
+*Documento Base de Conocimiento generado para el Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios*
 *Curso: Terapia de Muñecos y Los Caminos de la Vida*

@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento
 # Curso: Exploración Energética y Despertar Intuitivo
-## Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+## Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 

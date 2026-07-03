@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento
 ## Bioenergética Holográfica
-### Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+### Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 

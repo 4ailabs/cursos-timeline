@@ -21,7 +21,7 @@ Guarden esa pregunta. Vamos a volver a ella.
 
 ### — 1:00 · Quién soy —
 
-Soy el Dr. Miguel Ojeda Ríos, del Instituto Centrobioenergetica. Desde hace 20 años trabajo con la biología eléctrica del cuerpo —el voltaje que instruye a cada célula— para devolverle a mis pacientes su capacidad de adaptarse.
+Soy el Dr. Miguel Ojeda Rios, del Instituto Centrobioenergetica. Desde hace 20 años trabajo con la biología eléctrica del cuerpo —el voltaje que instruye a cada célula— para devolverle a mis pacientes su capacidad de adaptarse.
 
 Hoy les voy a mostrar la evidencia real detrás de eso —no una opinión, evidencia publicada— y un caso clínico que cambia cómo van a ver cualquier problema de salud desde hoy.
 

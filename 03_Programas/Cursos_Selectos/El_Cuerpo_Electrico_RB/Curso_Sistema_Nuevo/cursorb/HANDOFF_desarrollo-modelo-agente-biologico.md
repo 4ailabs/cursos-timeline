@@ -8,7 +8,7 @@ Este documento es para continuar el trabajo en otro modelo (Fable) después de u
 
 ## El objetivo del proyecto
 
-El Dr. Miguel Ojeda Ríos (Instituto Centrobioenergetica) está reformulando el curso **"El Cuerpo Eléctrico" / Regulación Bioeléctrica (RB)**. La instrucción explícita, en sus propias palabras (transcripción de audio, 2 julio 2026):
+El Dr. Miguel Ojeda Rios (Instituto Centrobioenergetica) está reformulando el curso **"El Cuerpo Eléctrico" / Regulación Bioeléctrica (RB)**. La instrucción explícita, en sus propias palabras (transcripción de audio, 2 julio 2026):
 
 > "La idea de este curso ya no es hacerlo como antes, que era el par biomagnético: rastreo punto por punto, encontrar un punto, encontrar su resonancia. Hacer un rastreo así sin tener antes una idea de cómo funciona — solo la palabra clave de 'equilibrar' — clínicamente es muy débil. La idea ahora es establecer un concepto primero de los órganos como un **agente biológico** que tiene capacidades de adaptación... quiero replantear la forma de dar el curso para que no sea otra vez el par biomagnético evolucionado con conceptos nuevos, sino una forma diferente de hacer este trabajo."
 

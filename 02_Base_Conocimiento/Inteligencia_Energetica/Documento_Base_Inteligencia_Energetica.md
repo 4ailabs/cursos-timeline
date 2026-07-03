@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento
 ## Inteligencia Energética
-### Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+### Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 **Seminario Internacional de Inteligencia Energética**
 **Edición actual:** 12ª edición

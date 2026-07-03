@@ -2,7 +2,7 @@
 
 ## El sistema nuevo de Regulación Bioeléctrica
 
-### Documento de redefinición — Dr. Miguel Ojeda Ríos — Instituto Centrobioenergetica
+### Documento de redefinición — Dr. Miguel Ojeda Rios — Instituto Centrobioenergetica
 
 ---
 

@@ -1,7 +1,7 @@
 # El Ojo que Construye su Propia Forma
 ## Del circuito retina–coroides–esclera al agente morfogenético: emetropización, cibernética y cognición basal en la miopía
 
-**Dr. Miguel Ojeda Ríos** (Instituto Centrobioenergetica) y colaboradores en oftalmología.
+**Dr. Miguel Ojeda Rios** (Instituto Centrobioenergetica) y colaboradores en oftalmología.
 **Artículo de hipótesis y marco teórico.**
 
 ---

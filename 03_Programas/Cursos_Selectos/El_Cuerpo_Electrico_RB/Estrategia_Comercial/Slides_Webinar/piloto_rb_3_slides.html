@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Piloto visual — El cuerpo eléctrico</title>
+  <style>
+    :root{
+      --teal:#0F6E56;
+      --teal-mid:#5DCAA5;
+      --cream:#E8E6DE;
+      --paper:#F7F4EC;
+      --ink:#2C2C2A;
+      --muted:#77756F;
+      --amber:#BA7517;
+      --line:#D6D2C7;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:#171816;color:var(--ink)}
+    body{font-family:Arial,Helvetica,sans-serif}
+    .deck{display:grid;gap:36px;padding:36px;justify-content:center}
+    .slide{
+      position:relative;width:1280px;height:720px;overflow:hidden;
+      background:var(--paper);box-shadow:0 18px 55px #0007;
+    }
+    .brand{position:absolute;left:64px;top:46px;width:224px;height:auto}
+    .program{position:absolute;left:64px;top:48px;width:188px;height:auto}
+    .dipole{position:absolute;left:64px;top:47px;width:52px;height:auto}
+    .endorsement{position:absolute;right:64px;top:55px;width:218px;height:auto}
+    .rule{position:absolute;left:64px;right:64px;bottom:46px;height:1px;background:var(--line)}
+    .folio{position:absolute;right:64px;bottom:24px;color:var(--muted);font:12px Arial;letter-spacing:2px}
+    .section{position:absolute;left:132px;top:51px;color:var(--teal);font:12px Arial;letter-spacing:3px;text-transform:uppercase}
+    h1,h2,p{margin:0}
+
+    /* 01 — Portada */
+    .cover::after{
+      content:"";position:absolute;inset:0;
+      background:
+        linear-gradient(90deg,var(--paper) 0%,rgba(247,244,236,.98) 42%,rgba(247,244,236,.52) 70%,rgba(247,244,236,.18) 100%);
+      pointer-events:none;
+    }
+    .cover .map{
+      position:absolute;right:-145px;top:-5px;width:920px;height:730px;
+      object-fit:cover;object-position:right center;opacity:.94;
+    }
+    .cover .program,.cover .endorsement,.cover .copy,.cover .signal,.cover .footer{z-index:2}
+    .cover .copy{position:absolute;left:64px;top:194px;width:665px}
+    .eyebrow{color:var(--teal);font:13px Arial;letter-spacing:4px;text-transform:uppercase;margin-bottom:25px}
+    .cover h1{
+      font:400 76px/0.98 Georgia,serif;letter-spacing:-2.5px;color:var(--ink);
+      max-width:650px;
+    }
+    .cover h1 span{display:block;color:var(--teal)}
+    .cover .dek{margin-top:28px;width:540px;font:21px/1.45 Georgia,serif;color:#53524E}
+    .cover .signal{position:absolute;left:64px;top:158px;width:76px;height:2px;background:var(--amber)}
+    .cover .footer{position:absolute;left:64px;bottom:55px;font:13px Arial;letter-spacing:1.4px;color:var(--muted)}
+
+    /* 02 — Pregunta */
+    .question{background:var(--teal);color:var(--cream)}
+    .question .program{filter:brightness(0) invert(1);opacity:.92}
+    .question .endorsement{filter:brightness(0) invert(1);opacity:.55}
+    .question .ghost{
+      position:absolute;width:620px;height:620px;border:1px solid rgba(225,245,238,.12);
+      border-radius:50%;right:-110px;top:52px;
+    }
+    .question .ghost::before,.question .ghost::after{
+      content:"";position:absolute;border-radius:50%;inset:82px;border:1px solid rgba(225,245,238,.10)
+    }
+    .question .ghost::after{inset:174px;background:rgba(93,202,165,.07)}
+    .question .copy{position:absolute;left:96px;top:178px;width:920px}
+    .question .kicker{font:13px Arial;letter-spacing:4px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:28px}
+    .question h2{font:400 58px/1.12 Georgia,serif;letter-spacing:-1.5px;max-width:930px}
+    .question h2 em{font-style:normal;color:#F0B45A}
+    .question .sub{margin-top:38px;font:19px/1.45 Arial;color:rgba(232,230,222,.72);max-width:690px}
+    .question .rule{background:rgba(232,230,222,.18)}
+    .question .folio{color:rgba(232,230,222,.58)}
+
+    /* 03 — Becker */
+    .becker .visual{
+      position:absolute;right:0;top:0;width:760px;height:720px;object-fit:cover;object-position:right center;
+    }
+    .becker .veil{
+      position:absolute;inset:0;background:linear-gradient(90deg,var(--paper) 0%,var(--paper) 37%,rgba(247,244,236,.94) 48%,rgba(247,244,236,.10) 73%);
+    }
+    .becker .copy{position:absolute;left:64px;top:152px;width:590px}
+    .becker .kicker{font:13px Arial;letter-spacing:3.5px;text-transform:uppercase;color:var(--teal);margin-bottom:24px}
+    .becker h2{font:400 51px/1.06 Georgia,serif;letter-spacing:-1.5px}
+    .becker .lead{margin-top:28px;width:500px;font:20px/1.45 Georgia,serif;color:#55534E}
+    .becker .meaning{
+      margin-top:32px;padding-left:18px;border-left:3px solid var(--amber);
+      width:485px;font:16px/1.5 Arial;color:var(--ink);
+    }
+    .becker .source{position:absolute;left:64px;bottom:66px;font:11px/1.4 Arial;color:var(--muted);width:520px}
+    .becker .legend{position:absolute;right:62px;bottom:62px;display:flex;gap:18px;font:11px Arial;color:#575650}
+    .legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;background:var(--amber)}
+    .legend span:last-child::before{background:var(--teal)}
+
+    /* 04 — Salamandra / rana */
+    .amphibians{background:#F7F4EC}
+    .amphibians .header{position:absolute;left:64px;right:64px;top:112px;display:flex;align-items:flex-end;justify-content:space-between}
+    .amphibians h2{width:770px;font:400 42px/1.08 Georgia,serif;letter-spacing:-1px}
+    .amphibians .thesis{width:285px;padding-left:17px;border-left:3px solid var(--amber);font:14px/1.45 Arial;color:#57554F}
+    .amphibians .figure{position:absolute;left:228px;top:232px;width:985px;height:414px;object-fit:cover;object-position:center}
+    .amphibians .row-label{
+      position:absolute;left:64px;width:145px;color:var(--ink);font:13px Arial;letter-spacing:2.2px;text-transform:uppercase;
+    }
+    .amphibians .row-label small{display:block;margin-top:8px;color:var(--muted);font:12px/1.35 Arial;letter-spacing:0;text-transform:none}
+    .amphibians .salamander-label{top:317px}
+    .amphibians .frog-label{top:521px}
+    .amphibians .stage-labels{
+      position:absolute;left:268px;right:67px;top:204px;display:grid;grid-template-columns:repeat(3,1fr);
+      text-align:center;color:var(--teal);font:11px Arial;letter-spacing:2px;text-transform:uppercase;
+    }
+    .amphibians .evidence{
+      position:absolute;right:64px;bottom:34px;color:var(--muted);font:10px/1.35 Arial;text-align:right;
+    }
+
+    @media(max-width:1320px){
+      body{overflow-x:hidden}
+      .deck{
+        width:1280px;display:grid;justify-content:start;padding:0;margin:12px;
+        transform-origin:top left;transform:scale(calc((100vw - 24px)/1280));
+      }
+    }
+    @media print{
+      @page{size:13.333in 7.5in;margin:0}
+      body{background:white}
+      .deck{display:block;padding:0}
+      .slide{break-after:page;box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide cover">
+      <img class="map" src="../../Marca_Visual/Webinar/propuesta_1_fondo_mapa_becker.png" alt="">
+      <img class="program" src="../../Marca_Visual/Branding_RB_2026/svg/programa_el_cuerpo_electrico.svg" alt="El cuerpo eléctrico">
+      <img class="endorsement" src="../../Marca_Visual/Branding_RB_2026/svg/endorsement_instituto.svg" alt="Instituto Centrobioenergetica">
+      <div class="signal"></div>
+      <div class="copy">
+        <div class="eyebrow">Webinar para profesionales de la salud</div>
+        <h1>El cuerpo <span>eléctrico</span></h1>
+        <p class="dek">Cómo las señales bioeléctricas participan en la adaptación, la reparación y la organización de los tejidos.</p>
+      </div>
+      <div class="footer">Dr. Miguel Ojeda Rios · Regulación Bioeléctrica</div>
+    </section>
+
+    <section class="slide question">
+      <img class="program" src="../../Marca_Visual/Branding_RB_2026/svg/programa_el_cuerpo_electrico.svg" alt="">
+      <img class="endorsement" src="../../Marca_Visual/Branding_RB_2026/svg/endorsement_instituto.svg" alt="">
+      <div class="ghost"></div>
+      <div class="copy">
+        <div class="kicker">La pregunta que abre el webinar</div>
+        <h2>¿Y si parte de la enfermedad fuera una <em>adaptación que quedó activa?</em></h2>
+        <p class="sub">El problema no siempre es que el cuerpo no responda. A veces responde, pero ya no consigue modificar o terminar esa respuesta.</p>
+      </div>
+      <div class="rule"></div><div class="folio">02</div>
+    </section>
+
+    <section class="slide becker">
+      <img class="visual" src="../../Marca_Visual/Webinar/propuesta_1_fondo_mapa_becker.png" alt="Mapa corporal bioeléctrico, vista anterior y posterior">
+      <div class="veil"></div>
+      <img class="dipole" src="../../Marca_Visual/Branding_RB_2026/svg/icono_dipolo.svg" alt="">
+      <div class="section">La electricidad que organiza</div>
+      <div class="copy">
+        <div class="kicker">Robert O. Becker · evidencia histórica</div>
+        <h2>La electricidad corporal puede medirse.</h2>
+        <p class="lead">Becker describió gradientes eléctricos estables en la superficie del organismo y cambios asociados con la lesión.</p>
+        <p class="meaning"><strong>Lo importante:</strong> no observó “energía” en sentido metafórico, sino diferencias de potencial registrables.</p>
+      </div>
+      <div class="source">Representación didáctica inspirada en los mapas descritos por Becker. La escala muestra polaridad relativa, no valores clínicos universales.</div>
+      <div class="legend"><span>relativamente positivo</span><span>relativamente negativo</span></div>
+      <div class="folio">05</div>
+    </section>
+
+    <section class="slide amphibians">
+      <img class="dipole" src="../../Marca_Visual/Branding_RB_2026/svg/icono_dipolo.svg" alt="">
+      <div class="section">La electricidad que organiza</div>
+      <div class="header">
+        <h2>La misma lesión puede iniciar trayectorias biológicas diferentes.</h2>
+        <p class="thesis">La diferencia relevante aparece después de la lesión: en la secuencia de señales que organiza la respuesta.</p>
+      </div>
+      <div class="stage-labels"><span>Estado inicial</span><span>Lesión comparable</span><span>Resultado</span></div>
+      <div class="row-label salamander-label">Salamandra<small>Regenera la estructura distal.</small></div>
+      <div class="row-label frog-label">Rana<small>Cierra la herida sin reconstruir la extremidad.</small></div>
+      <img class="figure" src="assets/comparacion_salamandra_rana_v1.png" alt="Comparación de la respuesta de una salamandra y una rana después de una lesión equivalente en la extremidad">
+      <p class="evidence">Esquema comparativo didáctico · modelo animal · la respuesta depende de especie, tejido y contexto experimental.</p>
+      <div class="folio">08</div>
+    </section>
+  </main>
+</body>
+</html>

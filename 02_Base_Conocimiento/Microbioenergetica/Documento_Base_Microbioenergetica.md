@@ -1,6 +1,6 @@
 # Documento Base de Conocimiento
 ## Microbioenergética
-### Instituto Centrobioenergetica — Dr. Miguel Ojeda Ríos
+### Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios
 
 ---
 
@@ -523,4 +523,4 @@ PROTOCOLO CLÍNICO (4 Fases)
 
 ---
 
-*Documento generado para uso interno del Instituto Centrobioenergetica. Todos los contenidos son propiedad intelectual del Dr. Miguel Ojeda Ríos.*
+*Documento generado para uso interno del Instituto Centrobioenergetica. Todos los contenidos son propiedad intelectual del Dr. Miguel Ojeda Rios.*

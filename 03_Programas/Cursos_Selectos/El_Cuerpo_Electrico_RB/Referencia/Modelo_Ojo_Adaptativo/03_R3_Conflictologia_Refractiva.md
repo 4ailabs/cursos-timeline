@@ -2,7 +2,7 @@
 ## Lo valioso de la Bioenergética de la Visión, destilado
 
 **El Ojo Adaptativo — Registro Simbólico/Clínico (R3).**
-Extracto de *Bioenergética de la Visión / Conflictología aplicada al sistema visual* (Compilación: Dr. Miguel Ojeda Ríos). Se conserva **solo** lo que converge con R1/R2 y con la tesis adaptativa; se descarta el resto (patología orgánica como causa, polaridad ojo der./izq., etimologías, presbicia-como-conflicto). Etiqueta: **[S] simbólico / [H] heurístico**.
+Extracto de *Bioenergética de la Visión / Conflictología aplicada al sistema visual* (Compilación: Dr. Miguel Ojeda Rios). Se conserva **solo** lo que converge con R1/R2 y con la tesis adaptativa; se descarta el resto (patología orgánica como causa, polaridad ojo der./izq., etimologías, presbicia-como-conflicto). Etiqueta: **[S] simbólico / [H] heurístico**.
 
 ---
 
