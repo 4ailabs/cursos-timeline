@@ -14,7 +14,8 @@
 Curso_Sistema_Nuevo/              ← El programa y el sistema nuevo (cursorb)
 Fundamentos_Cientificos/          ← El Tratado (ciencia de respaldo)
 Materiales_Antiguos/              ← Documentos con marco anterior (a actualizar)
-Marca_Visual/                     ← Identidad visual (logos, branding)
+Marca_Visual/                     ← Identidad visual (logos, branding, dirección de arte)
+Estrategia_Comercial/             ← Posicionamiento, oferta, slogans, webinar
 Referencia/                       ← Materiales de investigación y contexto
 ```
 
@@ -64,6 +65,19 @@ Referencia/                       ← Materiales de investigación y contexto
 |---|---|
 | `Branding_RB_2026/` | **Fuente canónica**: logos (svg/png), manual de marca. |
 | `Manual_de_Marca_RB_2026.md` | Copia del manual. Usar el original en `Branding_RB_2026/`. |
+| `Direccion_de_Arte_Ilustracion/Sistema_de_Ilustracion_Cientifica.md` | **Sistema de ilustración** para todas las imágenes del curso. Reemplaza el imán rojo/negro por un lenguaje de mapas de voltaje (falso color, estilo Levin) y redes de nodos. Léelo antes de generar o encargar cualquier imagen. |
+| `Relacion_con_Marca_Institucional.md` | **Cómo se relaciona esta marca con la del Instituto** (`01_Instituto/Identidad/`, fuera de esta carpeta). Jerarquía de marcas, cuándo usar cada logo, y el pendiente de alinear la ficha del programa a la plantilla institucional. |
+
+---
+
+## ESTRATEGIA_COMERCIAL — Posicionamiento, oferta y ejecución
+
+| Documento | Qué es |
+|---|---|
+| `Estrategia_Oferta_Valor_y_Slogans.md` | **Fuente de verdad de voz y slogans.** Posicionamiento cerrado: señal eléctrica → capacidad de adaptarse. |
+| `Propuesta_Comercial_El_Cuerpo_Electrico.md` | Arquitectura de oferta, webinar, secuencia de 9 días. *(Pendiente: alinear slogans a la versión final.)* |
+| `Sistema_Decision_Posicionamiento_Largo_Plazo.md` | Rúbrica de 6 criterios para evaluar cualquier palabra/ángulo nuevo. |
+| `Investigacion_Slogans_y_Audiencia_Biomagnetista.md`, `Brief_para_IA_Concepto_y_Slogans.md`, `Exploracion_Lenguaje_Sin_Voltaje_Codex.md`, `Propuestas_Slogans_Gemini.md` | Insumos y exploraciones que llevaron al posicionamiento final. |
 
 ---
 
