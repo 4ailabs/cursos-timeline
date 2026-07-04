@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Fondo de transmisión — El cuerpo eléctrico</title>
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#E8E6DE}
+    .stage{
+      position:absolute;left:50%;top:50%;
+      width:1920px;height:1080px;
+      transform:translate(-50%,-50%) scale(var(--scale,1));
+      background:#F7F4EC url("assets/fondo_estudio_academico_rb_final.png") center/cover no-repeat;
+      font-family:Arial,Helvetica,sans-serif;color:#2C2C2A;
+    }
+    .brand-panel{
+      position:absolute;left:72px;top:58px;
+      width:390px;height:auto;padding:0;
+      display:flex;align-items:center;
+      background:transparent;
+    }
+    .brand-panel img{width:360px;height:auto}
+    .footer{
+      position:absolute;left:70px;right:70px;bottom:40px;height:42px;
+      display:flex;align-items:center;justify-content:space-between;
+      color:#64615B;font-size:15px;letter-spacing:2.4px;text-transform:uppercase;
+    }
+    .footer:before{
+      content:"";position:absolute;left:0;right:0;top:-16px;height:1px;
+      background:linear-gradient(90deg,rgba(15,110,86,.35),rgba(15,110,86,.08) 45%,rgba(186,117,23,.30));
+    }
+    .live-mark{display:flex;align-items:center;gap:11px}
+    .live-mark i{width:9px;height:9px;border-radius:50%;background:#BA7517;box-shadow:0 0 0 5px rgba(186,117,23,.10)}
+    .safe-zone{
+      position:absolute;left:470px;right:470px;top:120px;bottom:80px;
+      pointer-events:none;
+    }
+    @media(max-aspect-ratio:16/9){
+      .stage{--scale:calc(100vw / 1920)}
+    }
+    @media(min-aspect-ratio:16/9){
+      .stage{--scale:calc(100vh / 1080)}
+    }
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <div class="brand-panel">
+      <img src="../../Marca_Visual/Branding_RB_2026/svg/programa_el_cuerpo_electrico.svg" alt="El cuerpo eléctrico">
+    </div>
+    <div class="safe-zone" aria-hidden="true"></div>
+    <footer class="footer">
+      <span>Regulación bioeléctrica</span>
+      <span class="live-mark"><i></i>Webinar en vivo</span>
+    </footer>
+  </main>
+  <script>
+    function fit(){
+      const stage=document.querySelector(".stage");
+      stage.style.setProperty("--scale",Math.min(innerWidth/1920,innerHeight/1080));
+    }
+    fit();
+    addEventListener("resize",fit);
+  </script>
+</body>
+</html>

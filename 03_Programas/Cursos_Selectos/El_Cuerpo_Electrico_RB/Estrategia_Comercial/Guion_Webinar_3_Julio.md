@@ -16,11 +16,11 @@
 > - Nunca decir: "energía", "cura", "regenerar" (en sentido de promesa — sí se puede citar "regeneración" cuando se refiere a un experimento publicado, ver Bloque 2), **"terreno"/"terrenos"** (lineamiento de la guía de voz: palabra desgastada; el programa canónico los llama **"ejes de regulación"**, que es lo que se usa en el guion), "equilibrio", "bienestar", "vibración", "agente" (de cara al público se dice "qué órgano se atascó").
 > - No se nombra la técnica anterior ni a sus fundadores históricos — la historia que se cuenta es la de Robert Becker y Michael Levin (ciencia pura, verificable, sin relación con el debate de nomenclatura interno).
 > - **Tono: directo, sin preámbulo ni justificación.** Se entra al tema desde el primer minuto.
-> - **Honestidad de niveles de evidencia** (principio del propio Tratado, Documento Fundacional: *"Honestidad primero. Evidencia siempre. Dogma nunca."*): todo el guion distingue entre (1) lo demostrado con estudios publicados, (2) lo plausible por mecanismo pero no probado en la configuración clínica exacta, y (3) lo empírico sin ensayos controlados. Esa honestidad **es** el argumento de venta frente a la competencia esotérica — se dice así, en voz alta, en el Bloque 3.
+> - **Niveles de evidencia (guardrail interno, no discurso):** el guion no promete de más — se distingue lo demostrado con estudios publicados de lo que sigue en investigación (la configuración clínica exacta). Esto se cuida al construir el contenido, **pero NO se verbaliza como "somos honestos / sin dogma / lo decimos abiertamente"** — ese marco suena defensivo y genera desconfianza. Se afirma el hecho de forma directa y se sigue.
 
 > **Sobre la audiencia** (dato de `Referencia/reunion-puntos-clave.md`): la mayoría ya rastrea y ya trabaja con el instrumento. El guion no lo trata como tema aparte — se integra como contenido clínico en el momento donde aporta, marcado con **[AUDIENCIA EXPERIMENTADA]**.
 
-> **La columna vertebral del webinar — el eje de persuadabilidad (fuente: `Paper_El_Ojo_Adaptativo_v4.md` §4.3, marco TAME de Levin):** la metáfora que conecta el caso del ojo con la técnica y que da sentido a todo el curso es **reloj vs. termostato**. Un reloj (clase A) solo cambia recableando su hardware; un termostato (clase B) cambia reescribiéndole su punto de referencia, sin tocar su mecánica. **La tesis del curso: los tejidos del cuerpo son termostatos, no relojes** — por eso no se "reparan", se les reescribe la señal. El campo magnético es una intervención de clase B (cambia la señal eléctrica, no el hardware). Esta metáfora aparece en el Bloque 4 (min 37, 40:30 y 42:30) y conviene que las slides la sostengan visualmente. Nota de honestidad (Tratado Cap. 3): el caso del ojo demuestra el *principio* (clase B); **no** se afirma que "el ojo se trata con campo magnético" — al ojo se le habla con luz, que es su canal; el campo magnético es el canal para los órganos que sí se trabajan.
+> **La columna vertebral del webinar — el eje de persuadabilidad (fuente: `Paper_El_Ojo_Adaptativo_v4.md` §4.3, marco TAME de Levin):** la metáfora que conecta el caso del ojo con la técnica y que da sentido a todo el curso es **reloj vs. termostato**. Un reloj (clase A) solo cambia recableando su hardware; un termostato (clase B) cambia reescribiéndole su punto de referencia, sin tocar su mecánica. **La tesis del curso: los tejidos del cuerpo son termostatos, no relojes** — por eso no se "reparan", se les reescribe la señal. El campo magnético es una intervención de clase B (cambia la señal eléctrica, no el hardware). Esta metáfora aparece en el Bloque 4 (min 37, 40:30 y 42:30) y conviene que las slides la sostengan visualmente. Precisión (Tratado Cap. 3): el caso del ojo demuestra el *principio* (clase B); **no** se afirma que "el ojo se trata con campo magnético" — al ojo se le habla con luz, que es su canal; el campo magnético es el canal para los órganos que sí se trabajan.
 
 ---
 
@@ -40,7 +40,7 @@
 |---|---|---|
 | 1 | 0:00–3:00 | Apertura |
 | 2 | 3:00–17:30 | El cuerpo es eléctrico — la evidencia (Becker, Levin, la red, Vmem) |
-| 3 | 17:30–29:30 | Cómo funciona el instrumento, con honestidad (mecanismo + persistencia + farmacología magnética + infecciones + límites) |
+| 3 | 17:30–29:30 | Cómo funciona el instrumento (mecanismo + persistencia + farmacología magnética + infecciones + límites) |
 | 4 | 29:30–47:00 | El caso del ojo → reloj vs. termostato → el espejo (cómo abordamos un caso hoy) → el puente a la técnica |
 | 5 | 47:00–53:30 | Los ejes de regulación: la consulta (leer → regular → mantener/salutogénesis) |
 | 6 | 53:30–54:30 | Transición a la oferta |
@@ -135,7 +135,7 @@
 
 ---
 
-## BLOQUE 3 — Cómo funciona el instrumento, con honestidad (17:30–29:30)
+## BLOQUE 3 — Cómo funciona el instrumento (17:30–29:30)
 
 **[17:30] La pregunta que pocos responden**
 
@@ -173,11 +173,11 @@
 >
 > Por eso el nombre del microbio nunca fue lo más importante. Lo importante siempre fue el estado del tejido que lo permitía. Ustedes ya lo hacían — ahora saben qué estaban cambiando en realidad. Eso sí: cuando hay una infección que requiere un médico, se va con el médico; esto trabaja las condiciones de fondo, no reemplaza ese tratamiento."
 
-**[27:30] La honestidad como identidad, no como debilidad**
+**[27:30] Alcance y seguridad**
 
-> "Y aquí quiero ser tan honesto como fui con la evidencia: la configuración clínica exacta que se usa en consulta —el punto específico, el tiempo específico— no ha sido estudiada en un ensayo controlado como tal. Eso es cierto, y decirlo en voz alta es parte del método, no un defecto. El principio que gobierna todo esto, y que van a escuchar todo el curso, es: **honestidad primero, evidencia siempre, dogma nunca**.
+> "Un punto sobre el alcance, para que quede claro: el mecanismo del que les hablé está publicado. La configuración clínica exacta —el punto específico, el tiempo específico— todavía está en investigación. Así se trabaja.
 >
-> Y sobre seguridad: se trabaja con campos magnéticos estáticos de una intensidad muy inferior a una resonancia magnética clínica, que usa entre 3 y 30 veces más — y la resonancia se usa todos los días en cualquier hospital, sin riesgo del campo en sí. Las contraindicaciones reales son concretas: marcapasos, dispositivos electrónicos implantados, ciertos implantes metálicos antiguos. Fuera de eso, el perfil de seguridad es amplio. Y algo igual de honesto: esto no diagnostica enfermedades ni sustituye un estudio de laboratorio — es una lectura del estado eléctrico del tejido, y se comunica exactamente así."
+> Y sobre seguridad: se trabaja con campos magnéticos estáticos de una intensidad muy inferior a una resonancia magnética clínica, que usa entre 3 y 30 veces más — y la resonancia se usa todos los días en cualquier hospital, sin riesgo del campo en sí. Las contraindicaciones reales son concretas: marcapasos, dispositivos electrónicos implantados, ciertos implantes metálicos antiguos. Fuera de eso, el perfil de seguridad es amplio. Y esto no diagnostica enfermedades ni sustituye un estudio de laboratorio — es una lectura del estado eléctrico del tejido."
 
 ---
 
@@ -219,9 +219,9 @@
 >
 > Y escuchen bien esto, porque es el error más caro que se comete en la clínica: tratar a un termostato como si fuera un reloj. Intentar reparar por la fuerza algo que solo iba a responder a un cambio de referencia."
 
-**[40:30] El espejo: cómo abordamos un caso hoy** *(reencuadre para el público experimentado — honesto, inclusivo, se dice despacio)*
+**[40:30] El espejo: cómo abordamos un caso hoy** *(reencuadre para el público experimentado — cercano, inclusivo, se dice despacio)*
 
-> "Y esto no es solo del ojo. Nos toca a todos los que nos formamos en lo alopático — que somos casi todos. Sean honestos conmigo un segundo: cuando llega un paciente, ¿qué hacemos casi en automático?
+> "Y esto no es solo del ojo. Nos toca a todos los que nos formamos en lo alopático — que somos casi todos. Piénsenlo un segundo, sin filtro: cuando llega un paciente, ¿qué hacemos casi en automático?
 >
 > Buscamos el punto que le quita el síntoma, como quien receta una pastilla. ¿Está estreñido? el punto del estreñimiento. ¿Le duele la cabeza? el punto de la cabeza. Un punto, un síntoma. O buscamos al culpable: encontramos un par, le ponemos el nombre de un microbio, y ahí se cierra el caso —como si una sola cosa explicara todo lo que le pasa a la persona. Y lo queremos matar.
 >
@@ -325,7 +325,7 @@
 | **[AUDIENCIA EXPERIMENTADA] "Yo ya sé rastrear, ¿esto no es repetir lo que ya sé?"** | **"Van a seguir usando la técnica exactamente igual. Lo que se llevan es lo que va antes de rastrear: cómo decidir dónde entrar y en qué orden, con criterio, cuando el paciente trae varias cosas encima."** |
 | **[AUDIENCIA EXPERIMENTADA] "¿Esto sustituye lo que ya aprendí?"** | **"Lo que ya saben sigue siendo la herramienta central. Esto es el razonamiento clínico que decide cómo usarla mejor."** |
 | **[AUDIENCIA EXPERIMENTADA] "¿Entonces esto ya no sirve para infecciones?"** | **"Sirve, pero por otra vía: no matando el microbio, sino cambiando las condiciones eléctricas del tejido que lo dejaban prosperar — el estado del tejido decide qué puede vivir ahí (Levin 2017; Becker). El nombre del microbio era la referencia; el estado del tejido es lo que se trabaja. Cuando la infección necesita médico, se acompaña con el médico."** |
-| "¿Qué tan comprobado es esto científicamente?" | "Con la misma honestidad de hoy: hay evidencia sólida publicada del mecanismo — Becker, Levin, los canales iónicos, los macrófagos — y hay una parte, la configuración clínica exacta, que todavía no tiene un ensayo controlado dedicado. Eso se los digo en el Módulo 1, y se sostiene con esa honestidad todo el curso." |
+| "¿Qué tan comprobado es esto científicamente?" | "Hay evidencia sólida publicada del mecanismo — Becker, Levin, los canales iónicos, los macrófagos — y una parte, la configuración clínica exacta, que sigue en investigación. Todo eso se ve a fondo en el curso." |
 | "¿Es compatible con medicina convencional?" | "Es complementario: acompaña el diagnóstico y el cuidado médico." |
 | "¿Y si no puedo ir a los cuatro sábados?" | "Tienen la biblioteca de grabaciones de los cuatro módulos incluida." |
 | "¿Puedo pagar en partes?" | "Sí, dos pagos de $4,300." |
@@ -347,7 +347,7 @@
 - **Beats "se dice despacio"** (infecciones 24:45, reloj/termostato 37:00, el espejo 40:30, el puente 42:30, la consulta 48:30): son los momentos de mayor valor. El tiempo extra ya está en los sellos; no los apresures aunque el reloj apriete — recorta antes del Q&A si hace falta.
 - Después del webinar, seguir la secuencia de 9 días ya definida en `Propuesta_Comercial_El_Cuerpo_Electrico.md` §6 (grabación a ausentes el 4 jul, FAQ el 5 jul, cierre de pronto pago el 6 jul, etc.).
 - Trayectoria clínica confirmada: **20 años** (Bloque 1, minuto 1:00).
-- **IRB (Índice de Regulación Bioeléctrica)** — nombre del sistema de evaluación de los ejes, se nombra en la consulta (Bloque 5). **Pendiente de desarrollar** (batería por eje: cuestionario + medidas de consultorio + panel de laboratorio + rastreo dirigido). Honestidad: por ahora se presenta como el *método ordenado de leer cada eje*, no como un número único validado — no prometer un score cerrado hasta construirlo.
+- **IRB (Índice de Regulación Bioeléctrica)** — nombre del sistema de evaluación de los ejes, se nombra en la consulta (Bloque 5). **Pendiente de desarrollar** (batería por eje: cuestionario + medidas de consultorio + panel de laboratorio + rastreo dirigido). Nota: por ahora se presenta como el *método ordenado de leer cada eje*, no como un número único validado; no prometer un score cerrado hasta construirlo.
 
 ---
 

@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>El cuerpo eléctrico — Portada Stream</title>
+<style>
+:root {
+  --teal:  #0F6E56;
+  --teal2: #5DCAA5;
+  --cream: #E8E6DE;
+  --paper: #F7F4EC;
+  --ink:   #2C2C2A;
+  --muted: #77756F;
+  --amber: #BA7517;
+  --coral: #D85A30;
+  --line:  #D5D0C4;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #12100C;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+}
+
+/* ── Slide: fixed 1280×720 scaled to fit the viewport ── */
+.scaler { width: 1280px; height: 720px; transform-origin: center center; }
+.stage {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: 0 40px 120px rgba(0,0,0,.6);
+}
+
+/* ── Hero image derecha ── */
+.hero {
+  position: absolute;
+  right: 0; top: 0;
+  width: 650px; height: 720px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ── Gradiente que funde imagen con fondo ── */
+.fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--paper) 0 47%,
+    rgba(247,244,236,.98) 50%,
+    rgba(247,244,236,.06) 68%
+  );
+  z-index: 1;
+}
+
+/* ── Ondas de voltaje animadas ── */
+.waves { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+
+/* ── Todo el contenido encima del gradiente ── */
+.layer { position: absolute; inset: 0; z-index: 2; }
+
+/* ── Logo programa (esquina superior izquierda) ── */
+.program {
+  position: absolute;
+  left: 64px; top: 44px;
+  width: 104px;
+}
+
+/* ── Endorsement (esquina superior derecha) ── */
+.endorsement {
+  position: absolute;
+  right: 64px; top: 55px;
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #888780;
+}
+
+/* ── Bloque de copy central ── */
+.copy {
+  position: absolute;
+  left: 64px; top: 150px;
+  width: 560px;
+}
+
+.eyebrow {
+  color: var(--teal);
+  font-size: 15px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 22px 0 0;
+  padding-bottom: 7px;
+  font: 400 94px/1 Georgia, serif;
+  letter-spacing: -2.5px;
+}
+
+h1 span {
+  display: block;
+  color: var(--teal);
+}
+
+.lead {
+  margin-top: 30px;
+  width: 520px;
+  font: 24px/1.5 Georgia, serif;
+  color: #56534D;
+  font-style: italic;
+}
+
+/* ── Barra inferior ── */
+.presenter {
+  position: absolute;
+  left: 64px; bottom: 52px;
+  right: 64px;
+}
+
+.rule {
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+  margin: 14px 0 16px;
+}
+
+.presenter-name {
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.presenter-name strong {
+  color: var(--ink);
+  font-weight: 400;
+}
+
+/* Badge LIVE */
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 19px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.live-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 0 4px #D85A3033;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px #D85A3033; }
+  50%       { box-shadow: 0 0 0 9px #D85A3014; }
+}
+
+.folio {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+/* ── Botón de pausa (discreto: invisible salvo hover) ── */
+.pausebtn {
+  position: absolute;
+  right: 20px; bottom: 18px;
+  z-index: 6;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(15,110,86,.35);
+  background: rgba(247,244,236,.7);
+  color: var(--teal);
+  font-size: 13px; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.stage:hover .pausebtn { opacity: .85; }
+.pausebtn:hover, .pausebtn:focus-visible { opacity: 1; outline: none; }
+
+/* ── Contador regresivo ── */
+.countdown { text-align: left; }
+.countdown .cd-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+.countdown .cd-time {
+  font: 400 46px/1 Georgia, serif;
+  color: var(--teal);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+<div class="scaler" id="scaler">
+<div class="stage">
+
+<!-- Imagen de fondo (mapa de Becker) -->
+<img class="hero"
+  src="../../Marca_Visual/Webinar/propuesta_1_fondo_mapa_becker.png"
+  alt="">
+
+<!-- Gradiente de mezcla -->
+<div class="fade"></div>
+
+<!-- Ondas de voltaje -->
+<canvas class="waves" id="waves" width="1280" height="720"></canvas>
+
+<!-- Capa de contenido -->
+<div class="layer">
+
+  <!-- Símbolo del programa (dipolo) superior izquierdo -->
+  <div class="program">
+    <svg viewBox="0 0 44 40" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="20" r="5" fill="#0F6E56"/>
+      <line x1="17" y1="20" x2="27" y2="20" stroke="#0F6E56" stroke-width="0.8"/>
+      <circle cx="34" cy="20" r="5" fill="#0F6E56" opacity="0.35"/>
+    </svg>
+  </div>
+
+  <!-- Endorsement superior derecho -->
+  <div class="endorsement">Instituto Centrobioenergetica</div>
+
+  <!-- Copy principal -->
+  <div class="copy">
+    <div class="eyebrow">Webinar</div>
+    <h1>El cuerpo<span>eléctrico</span></h1>
+    <p class="lead">Cómo las señales bioeléctricas participan en la adaptación, la reparación y la organización de los tejidos.</p>
+  </div>
+
+  <!-- Barra inferior -->
+  <div class="presenter">
+    <div class="presenter-name">
+      <strong>Dr. Miguel Ojeda Rios</strong> &nbsp;·&nbsp; Regulación Bioeléctrica
+    </div>
+    <div class="rule"></div>
+    <div class="countdown" id="countdown">
+      <span class="cd-label">Iniciamos pronto</span>
+      <span class="cd-time" id="cdTime">05:00</span>
+    </div>
+    <div class="live-badge" id="liveBadge" style="display:none;">
+      <div class="live-dot"></div>
+      En vivo
+    </div>
+  </div>
+
+  <!-- Botón discreto de pausa del contador -->
+  <button class="pausebtn" id="pauseBtn" title="Pausar (barra espaciadora)" aria-label="Pausar contador">⏸</button>
+
+</div>
+
+</div>
+</div>
+
+<script>
+  (function () {
+    /* escalado tipo slide */
+    const scaler = document.getElementById('scaler');
+    function fit() {
+      const s = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+      scaler.style.transform = 'scale(' + s + ')';
+    }
+    window.addEventListener('resize', fit);
+    fit();
+
+    /* ───────── Ondas de voltaje ───────── */
+    (function () {
+      const canvas = document.getElementById('waves');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const W = 1280, H = 720;
+      let t = 0;
+      const traces = [
+        { amp: 26, freq: .009, speed: .6,  y: .40, color: 'rgba(15,110,86,.22)',  lw: 1.6 },
+        { amp: 16, freq: .015, speed: -.85, y: .53, color: 'rgba(93,202,165,.30)', lw: 1.3 },
+        { amp: 34, freq: .006, speed: .4,  y: .66, color: 'rgba(15,110,86,.13)',  lw: 1.3 }
+      ];
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        for (const tr of traces) {
+          ctx.beginPath(); ctx.strokeStyle = tr.color; ctx.lineWidth = tr.lw;
+          for (let x = 0; x <= W; x += 4) {
+            const y = tr.y * H + Math.sin(x * tr.freq + t * tr.speed) * tr.amp
+              + Math.sin(x * tr.freq * 2.3 + t * tr.speed * 1.7) * tr.amp * .35;
+            x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+      }
+      function loop() { t += .022; draw(); requestAnimationFrame(loop); }
+      reduce ? (t = 4, draw()) : loop();
+    })();
+
+    /* ───────── Contador regresivo ─────────
+       Opción A — fecha/hora fija del webinar (recomendado):
+         cambia TARGET por la fecha real. Formato: 'AÑO-MES-DÍAThora:min:seg'
+       Opción B — duración desde que se abre (deja TARGET en null y ajusta MINUTOS). */
+    const TARGET  = null;  // null = cuenta 5 min desde que se abre la pantalla de espera
+    const MINUTOS = 5;     // duración del contador (minutos)
+
+    const cdTime    = document.getElementById('cdTime');
+    const countdown = document.getElementById('countdown');
+    const liveBadge = document.getElementById('liveBadge');
+    const pauseBtn  = document.getElementById('pauseBtn');
+
+    let remaining = TARGET ? (TARGET.getTime() - Date.now()) : MINUTOS * 60000;
+    let endTime   = Date.now() + remaining;
+    let paused    = false;
+    let done      = false;
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function render(ms) {
+      const s = Math.floor(ms / 1000);
+      const d = Math.floor(s / 86400);
+      const h = Math.floor((s % 86400) / 3600);
+      const m = Math.floor((s % 3600) / 60);
+      const sec = s % 60;
+      cdTime.textContent = d > 0
+        ? d + 'd ' + pad(h) + ':' + pad(m) + ':' + pad(sec)
+        : h > 0
+          ? pad(h) + ':' + pad(m) + ':' + pad(sec)
+          : pad(m) + ':' + pad(sec);
+    }
+
+    function tick() {
+      if (paused || done) return;
+      const ms = endTime - Date.now();
+      if (ms <= 0) {
+        done = true;
+        countdown.style.display = 'none';
+        liveBadge.style.display = 'flex';
+        return;
+      }
+      render(ms);
+    }
+
+    function togglePause() {
+      if (done) return;
+      paused = !paused;
+      if (paused) {
+        remaining = endTime - Date.now();     // congela el tiempo restante
+        pauseBtn.textContent = '▶';
+        pauseBtn.title = 'Reanudar (barra espaciadora)';
+      } else {
+        endTime = Date.now() + remaining;      // reanuda desde donde quedó
+        pauseBtn.textContent = '⏸';
+        pauseBtn.title = 'Pausar (barra espaciadora)';
+      }
+    }
+
+    pauseBtn.addEventListener('click', togglePause);
+    window.addEventListener('keydown', function (e) {
+      if (e.code === 'Space' || e.key === ' ') { e.preventDefault(); togglePause(); }
+    });
+
+    render(remaining);
+    setInterval(tick, 250);
+  })();
+</script>
+
+</body>
+</html>

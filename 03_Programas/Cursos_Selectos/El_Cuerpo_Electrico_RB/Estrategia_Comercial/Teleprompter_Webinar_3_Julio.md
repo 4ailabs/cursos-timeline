@@ -199,13 +199,13 @@ Eso sí: cuando hay una infección que requiere un médico, se va con el médico
 
 ---
 
-### — 27:30 · Honestidad y seguridad —
+### — 27:30 · Alcance y seguridad —
 
-Y aquí quiero ser tan honesto como fui con la evidencia: la configuración clínica exacta que se usa en consulta —el punto específico, el tiempo específico— no ha sido estudiada en un ensayo controlado como tal. Eso es cierto, y decirlo en voz alta es parte del método, no un defecto. El principio que gobierna todo esto, y que van a escuchar todo el curso, es: honestidad primero, evidencia siempre, dogma nunca.
+Un punto sobre el alcance, para que quede claro: el mecanismo del que les hablé está publicado. La configuración clínica exacta —el punto específico, el tiempo específico— todavía está en investigación. Así se trabaja.
 
 Y sobre seguridad: se trabaja con campos magnéticos estáticos de una intensidad muy inferior a una resonancia magnética clínica, que usa entre 3 y 30 veces más —y la resonancia se usa todos los días en cualquier hospital, sin riesgo del campo en sí. Las contraindicaciones reales son concretas: marcapasos, dispositivos electrónicos implantados, ciertos implantes metálicos antiguos. Fuera de eso, el perfil de seguridad es amplio.
 
-Y algo igual de honesto: esto no diagnostica enfermedades ni sustituye un estudio de laboratorio —es una lectura del estado eléctrico del tejido, y se comunica exactamente así.
+Y esto no diagnostica enfermedades ni sustituye un estudio de laboratorio —es una lectura del estado eléctrico del tejido.
 
 ---
 ---
@@ -260,7 +260,7 @@ Y escuchen bien esto, porque es el error más caro que se comete en la clínica:
 
 ### — 40:30 · El espejo: cómo trabajamos hoy **[DESPACIO]** —
 
-Y esto no es solo del ojo. Nos toca a todos los que nos formamos en lo alopático —que somos casi todos. Sean honestos conmigo un segundo: cuando llega un paciente, ¿qué hacemos casi en automático?
+Y esto no es solo del ojo. Nos toca a todos los que nos formamos en lo alopático —que somos casi todos. Piénsenlo un segundo, sin filtro: cuando llega un paciente, ¿qué hacemos casi en automático?
 
 Buscamos el punto que le quita el síntoma, como quien receta una pastilla. ¿Está estreñido? el punto del estreñimiento. ¿Le duele la cabeza? el punto de la cabeza. Un punto, un síntoma. O buscamos al culpable: encontramos un par, le ponemos el nombre de un microbio, y ahí se cierra el caso —como si una sola cosa explicara todo lo que le pasa a la persona. Y lo queremos matar.
 

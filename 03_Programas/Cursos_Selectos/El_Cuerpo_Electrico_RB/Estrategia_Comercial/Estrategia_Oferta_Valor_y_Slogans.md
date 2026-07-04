@@ -63,7 +63,7 @@ Esto convierte al rastreador experto en algo más grande: deja de depender del c
 ### Nivel 1 — Marca (identidad general)
 > ## La adaptación empieza en una señal eléctrica. Recupera tu capacidad de adaptarte.
 
-*Resuelve todas las objeciones previas:* no es técnica, no es palabra desgastada (adaptación/señal son frescas), no es ambigua, es positiva, **nombra el proceso vivo** (adaptación) en vez del objeto inerte (cuerpo/célula), y es honesta (*recupera/facilita*, no *cura*; la señal *orienta*, no "decide" como causa única).
+*Resuelve todas las objeciones previas:* no es técnica, no es palabra desgastada (adaptación/señal son frescas), no es ambigua, es positiva, **nombra el proceso vivo** (adaptación) en vez del objeto inerte (cuerpo/célula), y no exagera (*recupera/facilita*, no *cura*; la señal *orienta*, no "decide" como causa única).
 
 ### Nivel 2 — Hook / gran idea
 > ## La adaptación empieza en una señal eléctrica.
@@ -86,7 +86,7 @@ Esto convierte al rastreador experto en algo más grande: deja de depender del c
 
 El activo de un médico es la credibilidad. Se protege evitando frases atractivas pero insostenibles. Lo que sigue lo confirmaron los tres agentes del panel de forma independiente.
 
-| ✅ Sí (propio, concreto, honesto) | ❌ No (y por qué) |
+| ✅ Sí (propio, concreto, veraz) | ❌ No (y por qué) |
 |---|---|
 | **Voltaje**, potencial de membrana, señal eléctrica | **"Energía"** — te disuelve en reiki/pulseras/"medicina energética" y borra tu única ventaja (el voltaje es medible, publicado). |
 | **Capacidad de adaptarse**, recuperar la adaptación | **"Cura", "el cuerpo se cura solo"** — overclaim; RB *facilita*, no cura. |
@@ -111,9 +111,9 @@ El activo de un médico es la credibilidad. Se protege evitando frases atractiva
 
 ---
 
-## 6. Condición de honestidad (prerrequisito de la campaña)
+## 6. Condición de veracidad (prerrequisito de la campaña)
 
-El reclamo "sistema nuevo" es verdadero solo si el método **realmente empieza por el agente** (Propuesta A), con el rastreo subordinado. Si en la práctica se sigue entrando por el rastreo por costumbre, vuelve a ser "el par con otro nombre". Confirmar esto en el programa antes de lanzar campaña fuerte. La frase honesta que sostiene todo:
+El reclamo "sistema nuevo" es verdadero solo si el método **realmente empieza por el agente** (Propuesta A), con el rastreo subordinado. Si en la práctica se sigue entrando por el rastreo por costumbre, vuelve a ser "el par con otro nombre". Confirmar esto en el programa antes de lanzar campaña fuerte. La frase que lo sostiene:
 
 > No es el par con otro nombre. Es empezar en otro lugar: por el agente y su señal, no por el punto.
 

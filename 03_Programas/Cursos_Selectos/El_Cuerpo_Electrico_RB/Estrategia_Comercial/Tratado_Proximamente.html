@@ -1,0 +1,626 @@
+<style>
+  :root {
+    --teal:   #0F6E56;
+    --teal-d: #0A4C3B;
+    --teal-t: #E3EFE9;
+    --paper:  #F7F4EC;
+    --paper-2:#F1ECE0;
+    --ink:    #25251E;
+    --muted:  #6B695F;
+    --amber:  #B0710F;
+    --coral:  #CF5730;
+    --line:   #D9D2C3;
+    --line-2: #C8C0AE;
+    --serif: Georgia, 'Times New Roman', 'Times', serif;
+    --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', 'Menlo', 'Consolas', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { height: 100%; }
+  body {
+    background: #12100C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: var(--sans);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Fixed 1280×720 stage, scaled to fit by JS */
+  .scaler { width: 1280px; height: 720px; transform-origin: center center; }
+
+  .stage {
+    position: relative;
+    width: 1280px;
+    height: 720px;
+    background: var(--paper);
+    overflow: hidden;
+    box-shadow: 0 40px 120px rgba(0,0,0,.6);
+  }
+
+  /* subtle paper texture: two ultra-faint gradients */
+  .stage::before {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(120% 80% at 100% 0%, rgba(15,110,86,.05), transparent 55%),
+      radial-gradient(90% 70% at 0% 100%, rgba(176,113,15,.04), transparent 50%);
+  }
+
+  /* ───────── Running head (monograph device) ───────── */
+  .runhead, .folio, .nav, .dots { position: absolute; z-index: 40; }
+  .runhead {
+    top: 40px; left: 92px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .runhead .rh-word {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 2.6px;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .folio {
+    top: 40px; right: 92px;
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 2px; color: var(--muted);
+  }
+  .folio b { color: var(--ink); font-weight: 600; }
+  .stage.bare .runhead, .stage.bare .folio { display: none; }
+
+  /* hairline under runhead on content slides */
+  .rule-top {
+    position: absolute; top: 74px; left: 92px; right: 92px; height: 1px;
+    background: var(--line); z-index: 5;
+  }
+  .stage.bare .rule-top { display: none; }
+
+  /* ───────── Deck / slides ───────── */
+  .deck { position: absolute; inset: 0; z-index: 10; }
+  .slide {
+    position: absolute; inset: 0;
+    padding: 116px 92px 96px;
+    display: flex; flex-direction: column;
+    opacity: 0; visibility: hidden;
+    transition: opacity .55s ease, visibility .55s;
+  }
+  .slide.active { opacity: 1; visibility: visible; }
+  .slide > .inner { margin: auto 0; width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .slide { transition: opacity .01s; } }
+
+  canvas.field { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+
+  /* ───────── Type system ───────── */
+  .kicker {
+    font-family: var(--sans); font-size: 15px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--teal);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .kicker::before {
+    content: ""; width: 26px; height: 1px; background: var(--teal); flex: 0 0 auto;
+  }
+  .kicker.amber { color: var(--amber); }
+  .kicker.amber::before { background: var(--amber); }
+
+  h1 {
+    font-family: var(--serif); font-weight: 400; font-size: 76px; line-height: 1.02;
+    letter-spacing: -1px; color: var(--ink); text-wrap: balance;
+  }
+  h1 em { font-style: italic; color: var(--teal); }
+  h2 {
+    font-family: var(--serif); font-weight: 400; font-size: 44px; line-height: 1.16;
+    letter-spacing: -.4px; color: var(--ink); text-wrap: balance; max-width: 20ch;
+  }
+  .lede {
+    font-family: var(--serif); font-size: 24px; line-height: 1.55; color: #48463E;
+    max-width: 52ch;
+  }
+
+  /* ───────── 1 · Cover ───────── */
+  .cover .inner { margin: 0; height: 100%; }
+  .cover-grid { display: grid; grid-template-columns: 1fr 380px; gap: 48px; height: 100%; align-items: stretch; }
+  .cover-text { display: flex; flex-direction: column; height: 100%; }
+  .cover-book { perspective: 2200px; display: flex; align-items: center; justify-content: center; }
+  .cover-book .book { transform: rotateX(4deg) rotateY(-25deg) scale(.95); }
+  .cover h1 { font-size: 60px; }
+  .cover .brand { display: flex; align-items: center; gap: 16px; margin-top: 8px; }
+  .cover .brand .w { font-family: var(--serif); font-size: 26px; line-height: 1.02; }
+  .cover .brand .w .a { color: var(--ink); }
+  .cover .brand .w .b { color: var(--teal); }
+  .cover .mid { margin: auto 0; }
+  .cover .status {
+    display: inline-flex; align-items: center; gap: 11px;
+    font-family: var(--mono); font-size: 14px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--coral); margin-bottom: 30px;
+  }
+  .cover .status .dot {
+    width: 9px; height: 9px; border-radius: 50%; background: var(--coral);
+    box-shadow: 0 0 0 4px rgba(207,87,48,.15); animation: beat 2.6s ease-in-out infinite;
+  }
+  @keyframes beat { 0%,100%{box-shadow:0 0 0 4px rgba(207,87,48,.15)} 50%{box-shadow:0 0 0 8px rgba(207,87,48,.05)} }
+  @media (prefers-reduced-motion: reduce){ .cover .status .dot{animation:none} }
+  .cover h1 { max-width: 15ch; }
+  .cover .byline {
+    margin-top: 34px; font-family: var(--sans); font-size: 18px; color: var(--muted);
+    letter-spacing: .2px;
+  }
+  .cover .byline strong { color: var(--ink); font-weight: 600; }
+  .cover .foot {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 2px;
+    color: var(--muted); text-transform: uppercase;
+  }
+
+  /* ───────── 2 · Qué es ───────── */
+  .whatis .kicker { margin-bottom: 30px; }
+  .whatis h2 { font-size: 44px; max-width: 21ch; margin-bottom: 28px; }
+  .whatis .lede { max-width: 54ch; }
+  .ground {
+    display: flex; align-items: center; gap: 16px; margin-top: 42px;
+    font-family: var(--mono); font-size: 14px; letter-spacing: 1.4px; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .ground::before { content: ""; width: 30px; height: 1px; background: var(--line-2); flex: 0 0 auto; }
+  .ground b { color: var(--ink); font-weight: 600; }
+
+  /* ───────── 3 · Cifras ───────── */
+  .figures .kicker { margin-bottom: 52px; }
+  .stats { display: grid; grid-template-columns: repeat(5, 1fr); }
+  .stat { padding-right: 28px; border-left: 1px solid var(--line); padding-left: 26px; }
+  .stat:first-child { border-left: none; padding-left: 0; }
+  .stat b {
+    display: block; font-family: var(--serif); font-weight: 400; font-size: 72px;
+    line-height: 1; color: var(--teal); font-variant-numeric: tabular-nums;
+  }
+  .stat span {
+    display: block; margin-top: 16px; font-family: var(--sans); font-size: 14px;
+    letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted);
+  }
+  .stat .u { font-family: var(--mono); font-size: 13px; color: var(--amber); letter-spacing: .5px; }
+  .stats-note {
+    margin-top: 46px; padding-top: 20px; border-top: 1px solid var(--line);
+    font-family: var(--mono); font-size: 13.5px; letter-spacing: 1.4px; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .stats-note b { color: var(--teal); font-weight: 600; }
+
+  /* ───────── 4-5 · Índice ───────── */
+  .toc .kicker { margin-bottom: 40px; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .part-num {
+    font-family: var(--mono); font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--teal); font-weight: 600;
+  }
+  .part-name {
+    font-family: var(--serif); font-size: 25px; color: var(--ink); line-height: 1.1;
+    margin: 8px 0 16px; padding-bottom: 13px; border-bottom: 1px solid var(--line-2);
+  }
+  .part + .part { margin-top: 26px; }
+  .chapter {
+    display: grid; grid-template-columns: 32px 1fr; gap: 14px; align-items: baseline;
+    padding: 6px 0; font-family: var(--sans); font-size: 18px; color: #3A392F; line-height: 1.3;
+  }
+  .chapter .c {
+    font-family: var(--mono); font-size: 13.5px; color: var(--amber); font-weight: 600;
+  }
+
+  /* ───────── 6 · El libro ───────── */
+  .booklg .inner { display: grid; grid-template-columns: 1fr 420px; gap: 40px; align-items: center; }
+  .booklg .kicker { margin-bottom: 26px; }
+  .booklg h2 { font-size: 42px; margin-bottom: 22px; }
+  .booklg .lede { max-width: 40ch; }
+
+  .book-scene { perspective: 2200px; display: flex; align-items: center; justify-content: center; height: 100%; }
+  .book {
+    position: relative; width: 300px; height: 424px;
+    transform-style: preserve-3d;
+    transform: rotateX(4deg) rotateY(-26deg);
+    filter: drop-shadow(38px 42px 42px rgba(20,15,5,.4));
+  }
+  .book > * { position: absolute; top: 50%; left: 50%; }
+  .b-front, .b-back { width: 300px; height: 424px; margin: -212px 0 0 -150px; }
+  .b-front { transform: translateZ(19px); z-index: 2; }
+  .b-back {
+    transform: translateZ(-19px) rotateY(180deg);
+    background: linear-gradient(150deg, #E8E2D3, #D9D2C0);
+    border-radius: 3px;
+  }
+  .b-spine {
+    width: 38px; height: 424px; margin: -212px 0 0 -19px;
+    transform: rotateY(-90deg) translateZ(150px);
+    background: linear-gradient(180deg, var(--teal), var(--teal-d));
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 2px 0 0 2px;
+  }
+  .b-spine span {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    font-family: var(--serif); font-size: 13px; letter-spacing: 2px; color: #E6F2ED; white-space: nowrap;
+  }
+  .b-edge {
+    width: 38px; height: 424px; margin: -212px 0 0 -19px;
+    transform: rotateY(90deg) translateZ(150px);
+    background: repeating-linear-gradient(90deg, #efeadd 0 2px, #cec6b3 2px 4px);
+    border-radius: 0 2px 2px 0;
+  }
+  /* Cover face design — a real monograph jacket */
+  .b-front {
+    background: linear-gradient(158deg, #FBF9F3 0%, #EFEADD 100%);
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px rgba(15,110,86,.25), inset 0 0 0 8px rgba(255,255,255,.35);
+    padding: 34px 30px;
+    display: flex; flex-direction: column;
+  }
+  .b-front .bc-hair { height: 1px; background: var(--line-2); margin: 22px 0; }
+  .b-front .bc-kick {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted);
+  }
+  .b-front .bc-title {
+    font-family: var(--serif); font-size: 34px; line-height: 1.04; color: var(--ink); margin-top: 6px;
+  }
+  .b-front .bc-title em { display: block; font-style: italic; color: var(--teal); }
+  .b-front .bc-author {
+    margin-top: auto; font-family: var(--serif); font-size: 15px; color: #4E4B43;
+  }
+  .b-front .bc-inst {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted); margin-top: 6px;
+  }
+
+  /* ───────── 7 · Linaje ───────── */
+  .lineage .kicker { margin-bottom: 42px; }
+  .figs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; }
+  .fig { padding-top: 20px; border-top: 2px solid var(--teal); }
+  .fig:nth-child(2){ border-top-color: var(--amber); }
+  .fig:nth-child(3){ border-top-color: var(--coral); }
+  .fig h3 { font-family: var(--serif); font-weight: 400; font-size: 28px; color: var(--ink); line-height: 1.05; }
+  .fig .role {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--muted); margin: 10px 0 18px;
+  }
+  .fig p { font-family: var(--sans); font-size: 18px; line-height: 1.55; color: #45433B; }
+
+  /* ───────── 8 · Cierre ───────── */
+  .close .inner { text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .close .brand { display: flex; align-items: center; gap: 15px; margin-bottom: 40px; }
+  .close .brand .w { font-family: var(--serif); font-size: 24px; line-height: 1.02; text-align: left; }
+  .close .brand .w .a { color: var(--ink); }
+  .close .brand .w .b { color: var(--teal); }
+  .close h2 { font-size: 44px; max-width: 18ch; margin-bottom: 34px; }
+  .btn {
+    display: inline-block; background: var(--teal); color: #fff;
+    font-family: var(--sans); font-size: 16px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
+    text-decoration: none; padding: 18px 42px; border-radius: 2px; transition: background .18s ease;
+  }
+  .btn:hover, .btn:focus-visible { background: var(--teal-d); outline: none; }
+  .close .small {
+    margin-top: 22px; font-family: var(--mono); font-size: 14px; letter-spacing: 1.5px;
+    color: var(--muted);
+  }
+
+  /* ───────── Nav chrome ───────── */
+  .nav { right: 92px; bottom: 36px; display: flex; align-items: center; gap: 18px; }
+  .nav button {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--line-2); background: transparent; color: var(--teal);
+    font-size: 19px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s, border-color .15s, color .15s;
+  }
+  .nav button:hover, .nav button:focus-visible { background: var(--teal); color: #fff; border-color: var(--teal); outline: none; }
+  .nav .count { font-family: var(--mono); font-size: 13.5px; letter-spacing: 1.5px; color: var(--muted); }
+  .nav .count b { color: var(--ink); font-weight: 600; }
+
+  .dots { left: 92px; bottom: 46px; display: flex; gap: 9px; }
+  .stage.bare .dots { left: 0; right: 0; justify-content: center; }
+  .dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-2); cursor: pointer; transition: background .2s, transform .2s; }
+  .dots i.on { background: var(--teal); transform: scale(1.3); }
+</style>
+
+<div class="scaler" id="scaler">
+<div class="stage bare" id="stage">
+
+  <div class="runhead">
+    <svg width="44" height="14" viewBox="0 0 60 20" aria-hidden="true">
+      <circle cx="9" cy="10" r="5.5" fill="#0F6E56"/>
+      <line x1="15.5" y1="10" x2="32" y2="10" stroke="#0F6E56" stroke-width="1.2"/>
+      <circle cx="39" cy="10" r="5.5" fill="#0F6E56" opacity="0.35"/>
+    </svg>
+    <span class="rh-word">Regulación Bioeléctrica</span>
+  </div>
+  <div class="folio">Tratado · <b id="fnum">01</b> / 08</div>
+  <div class="rule-top"></div>
+
+  <div class="deck">
+
+    <!-- 1 · Cover -->
+    <section class="slide cover active">
+      <canvas class="field" id="field1"></canvas>
+      <div class="inner cover-grid">
+        <div class="cover-text">
+          <div class="brand">
+            <svg width="58" height="19" viewBox="0 0 60 20" aria-hidden="true">
+              <circle cx="9" cy="10" r="5.5" fill="#0F6E56"/>
+              <line x1="15.5" y1="10" x2="32" y2="10" stroke="#0F6E56" stroke-width="1.2"/>
+              <circle cx="39" cy="10" r="5.5" fill="#0F6E56" opacity="0.35"/>
+            </svg>
+            <div class="w"><span class="a">regulación</span> <span class="b">bioeléctrica</span></div>
+          </div>
+          <div class="mid">
+            <div class="status"><span class="dot"></span>Próximamente · 2026</div>
+            <h1>Tratado de Regulación <em>Bioeléctrica</em></h1>
+            <p class="byline"><strong>Dr. Miguel Ojeda Rios</strong>&nbsp;&nbsp;·&nbsp;&nbsp;Instituto Centrobioenergetica</p>
+          </div>
+          <div class="foot">Ciudad de México · 2026</div>
+        </div>
+        <div class="cover-book">
+          <div class="book">
+            <div class="b-back"></div>
+            <div class="b-edge"></div>
+            <div class="b-spine"><span>Regulación Bioeléctrica&nbsp;&nbsp;·&nbsp;&nbsp;Ojeda Rios</span></div>
+            <div class="b-front">
+              <svg width="52" height="17" viewBox="0 0 60 20" aria-hidden="true">
+                <circle cx="9" cy="10" r="5.5" fill="#0F6E56"/>
+                <line x1="15.5" y1="10" x2="32" y2="10" stroke="#0F6E56" stroke-width="1.2"/>
+                <circle cx="39" cy="10" r="5.5" fill="#0F6E56" opacity="0.35"/>
+              </svg>
+              <div class="bc-hair"></div>
+              <div class="bc-kick">Tratado de</div>
+              <div class="bc-title">Regulación<em>Bioeléctrica</em></div>
+              <div class="bc-author">Dr. Miguel Ojeda Rios</div>
+              <div class="bc-inst">Instituto Centrobioenergetica</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · Qué es -->
+    <section class="slide whatis">
+      <div class="inner">
+        <p class="kicker">Qué es este tratado</p>
+        <h2>El cuerpo es eléctrico. Su terreno se puede leer, y regular.</h2>
+        <p class="lede">Regulación Bioeléctrica evalúa el estado bioeléctrico de los tejidos con campos magnéticos estáticos de intensidad moderada. El rastreo produce un mapa del terreno; la impactación facilita su retorno al rango homeostático.</p>
+        <div class="ground">Fundamento&nbsp; <b>matriz extracelular · potencial transmembrana · bioelectrónica del medio interno</b></div>
+      </div>
+    </section>
+
+    <!-- 3 · Cifras -->
+    <section class="slide figures">
+      <div class="inner">
+        <p class="kicker amber">El tratado en números</p>
+        <div class="stats">
+          <div class="stat"><b>22</b><span>Capítulos</span></div>
+          <div class="stat"><b>5</b><span>Partes</span></div>
+          <div class="stat"><b>126</b><span>Nodos de rastreo</span></div>
+          <div class="stat"><b>158</b><span>Dipolos</span></div>
+          <div class="stat"><b>29</b><span>Principios</span></div>
+        </div>
+        <p class="stats-note">Método &middot; campos magnéticos estáticos de intensidad moderada &middot; <b>0.1–0.5 T</b></p>
+      </div>
+    </section>
+
+    <!-- 4 · Índice I -->
+    <section class="slide toc">
+      <div class="inner">
+        <p class="kicker">El contenido · i</p>
+        <div class="cols">
+          <div>
+            <div class="part">
+              <div class="part-num">Parte I</div>
+              <div class="part-name">Fundamentos</div>
+              <div class="chapter"><span class="c">01</span><span>Historia del biomagnetismo clínico</span></div>
+              <div class="chapter"><span class="c">02</span><span>La matriz extracelular como sistema electroquímico</span></div>
+              <div class="chapter"><span class="c">03</span><span>El potencial transmembrana como señal instructiva</span></div>
+              <div class="chapter"><span class="c">04</span><span>Campos magnéticos estáticos y tejido vivo</span></div>
+              <div class="chapter"><span class="c">05</span><span>El instrumento: el imán estático</span></div>
+              <div class="chapter"><span class="c">06</span><span>El sustrato continuo</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="part">
+              <div class="part-num">Parte II</div>
+              <div class="part-name">El método clínico</div>
+              <div class="chapter"><span class="c">07</span><span>El rastreo</span></div>
+              <div class="chapter"><span class="c">08</span><span>El atlas de rastreo: 126 nodos, 10 regiones</span></div>
+              <div class="chapter"><span class="c">09</span><span>La impactación</span></div>
+              <div class="chapter"><span class="c">10</span><span>Seguridad y límites</span></div>
+            </div>
+            <div class="part">
+              <div class="part-num">Parte III</div>
+              <div class="part-name">El catálogo</div>
+              <div class="chapter"><span class="c">11</span><span>Nomenclatura, clasificación y los 29 principios</span></div>
+              <div class="chapter"><span class="c">12</span><span>El catálogo bioeléctrico</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · Índice II -->
+    <section class="slide toc">
+      <div class="inner">
+        <p class="kicker">El contenido · ii</p>
+        <div class="cols">
+          <div>
+            <div class="part">
+              <div class="part-num">Parte IV</div>
+              <div class="part-name">Patología bioeléctrica</div>
+              <div class="chapter"><span class="c">13</span><span>Desregulación del terreno</span></div>
+              <div class="chapter"><span class="c">14</span><span>El fenómeno tumoral</span></div>
+              <div class="chapter"><span class="c">15</span><span>La Bioelectrónica de Vincent y la relación pH–rH₂</span></div>
+              <div class="chapter"><span class="c">16</span><span>Inflamación y autoinmunidad bioeléctrica</span></div>
+              <div class="chapter"><span class="c">17</span><span>Endocrinología bioeléctrica</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="part">
+              <div class="part-num">Parte V</div>
+              <div class="part-name">Epistemología e investigación</div>
+              <div class="chapter"><span class="c">18</span><span>Análisis de las 26 reglas de Goiz</span></div>
+              <div class="chapter"><span class="c">19</span><span>Convergencia teórica: tres marcos, una cascada</span></div>
+              <div class="chapter"><span class="c">20</span><span>Posicionamiento epistemológico</span></div>
+              <div class="chapter"><span class="c">21</span><span>Protocolos de investigación</span></div>
+              <div class="chapter"><span class="c">22</span><span>Hacia dónde va la Regulación Bioeléctrica</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · El libro -->
+    <section class="slide booklg">
+      <div class="inner">
+        <div>
+          <p class="kicker">Un solo volumen</p>
+          <h2>Veintidós capítulos, reunidos por primera vez.</h2>
+          <p class="lede">Todo el cuerpo teórico y clínico de la Regulación Bioeléctrica —del fundamento a la investigación— en una obra de referencia.</p>
+        </div>
+        <div class="book-scene">
+          <div class="book">
+            <div class="b-back"></div>
+            <div class="b-edge"></div>
+            <div class="b-spine"><span>Regulación Bioeléctrica&nbsp;&nbsp;·&nbsp;&nbsp;Ojeda Rios</span></div>
+            <div class="b-front">
+              <svg width="52" height="17" viewBox="0 0 60 20" aria-hidden="true">
+                <circle cx="9" cy="10" r="5.5" fill="#0F6E56"/>
+                <line x1="15.5" y1="10" x2="32" y2="10" stroke="#0F6E56" stroke-width="1.2"/>
+                <circle cx="39" cy="10" r="5.5" fill="#0F6E56" opacity="0.35"/>
+              </svg>
+              <div class="bc-hair"></div>
+              <div class="bc-kick">Tratado de</div>
+              <div class="bc-title">Regulación<em>Bioeléctrica</em></div>
+              <div class="bc-author">Dr. Miguel Ojeda Rios</div>
+              <div class="bc-inst">Instituto Centrobioenergetica</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 · Linaje -->
+    <section class="slide lineage">
+      <div class="inner">
+        <p class="kicker">El linaje científico</p>
+        <div class="figs">
+          <div class="fig">
+            <h3>Robert O. Becker</h3>
+            <div class="role">El cuerpo eléctrico</div>
+            <p>El mapa eléctrico endógeno del cuerpo y la corriente de lesión: el voltaje predice si un tejido regenera o cicatriza.</p>
+          </div>
+          <div class="fig">
+            <h3>Michael Levin</h3>
+            <div class="role">Potencial transmembrana</div>
+            <p>El potencial transmembrana (Vmem) como señal instructiva para la forma y la reparación, confirmado con técnicas modernas.</p>
+          </div>
+          <div class="fig">
+            <h3>Louis-Claude Vincent</h3>
+            <div class="role">Bioelectrónica del terreno</div>
+            <p>La lectura del medio interno a través del pH y el rH₂: el terreno como magnitud biofísica medible.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · Cierre -->
+    <section class="slide close">
+      <canvas class="field" id="field8"></canvas>
+      <div class="inner">
+        <div class="brand">
+          <svg width="52" height="17" viewBox="0 0 60 20" aria-hidden="true">
+            <circle cx="9" cy="10" r="5.5" fill="#0F6E56"/>
+            <line x1="15.5" y1="10" x2="32" y2="10" stroke="#0F6E56" stroke-width="1.2"/>
+            <circle cx="39" cy="10" r="5.5" fill="#0F6E56" opacity="0.35"/>
+          </svg>
+          <div class="w"><span class="a">regulación</span> <span class="b">bioeléctrica</span></div>
+        </div>
+        <h2>El tratado estará disponible pronto.</h2>
+        <a class="btn" href="mailto:contacto@institutocentrobioenergetica.com?subject=Av%C3%ADsame%20cuando%20salga%20el%20Tratado%20de%20Regulaci%C3%B3n%20Bioel%C3%A9ctrica">Avísame cuando salga</a>
+        <p class="small">contacto@institutocentrobioenergetica.com</p>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="dots" id="dots"></div>
+  <div class="nav">
+    <button id="prev" aria-label="Anterior">‹</button>
+    <span class="count"><b id="cur">1</b> / 8</span>
+    <button id="next" aria-label="Siguiente">›</button>
+  </div>
+
+</div>
+</div>
+
+<script>
+  (function () {
+    /* fit stage to viewport */
+    const scaler = document.getElementById('scaler');
+    function fit() {
+      const s = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+      scaler.style.transform = 'scale(' + s + ')';
+    }
+    window.addEventListener('resize', fit); fit();
+
+    /* deck */
+    const stage = document.getElementById('stage');
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dotsBox = document.getElementById('dots');
+    const cur = document.getElementById('cur');
+    const fnum = document.getElementById('fnum');
+    let i = 0;
+
+    slides.forEach((_, k) => {
+      const d = document.createElement('i');
+      d.addEventListener('click', () => go(k));
+      dotsBox.appendChild(d);
+    });
+    const dots = Array.from(dotsBox.children);
+
+    function go(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach((s, k) => s.classList.toggle('active', k === i));
+      dots.forEach((d, k) => d.classList.toggle('on', k === i));
+      cur.textContent = i + 1;
+      fnum.textContent = String(i + 1).padStart(2, '0');
+      const bare = (i === 0 || i === slides.length - 1);
+      stage.classList.toggle('bare', bare);
+    }
+
+    document.getElementById('next').addEventListener('click', () => go(i + 1));
+    document.getElementById('prev').addEventListener('click', () => go(i - 1));
+    window.addEventListener('keydown', (e) => {
+      if (['ArrowRight','PageDown',' '].includes(e.key)) { e.preventDefault(); go(i + 1); }
+      else if (['ArrowLeft','PageUp'].includes(e.key)) { e.preventDefault(); go(i - 1); }
+      else if (e.key === 'Home') go(0);
+      else if (e.key === 'End') go(slides.length - 1);
+    });
+    go(0);
+
+    /* ambient voltage baseline (cover + close) */
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('canvas.field').forEach(setupField);
+    function setupField(canvas) {
+      const ctx = canvas.getContext('2d');
+      let w = 1280, h = 720, t = 0;
+      canvas.width = w; canvas.height = h;
+      const traces = [
+        { amp: 22, freq: .010, speed: .55, y: .70, color: 'rgba(15,110,86,.20)', lw: 1.4 },
+        { amp: 13, freq: .017, speed: -.8, y: .80, color: 'rgba(93,202,165,.24)', lw: 1.1 }
+      ];
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (const tr of traces) {
+          ctx.beginPath(); ctx.strokeStyle = tr.color; ctx.lineWidth = tr.lw;
+          for (let x = 0; x <= w; x += 4) {
+            const y = tr.y * h + Math.sin(x * tr.freq + t * tr.speed) * tr.amp
+              + Math.sin(x * tr.freq * 2.3 + t * tr.speed * 1.7) * tr.amp * .35;
+            x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+      }
+      function loop() { t += .02; draw(); requestAnimationFrame(loop); }
+      reduce ? (t = 4, draw()) : loop();
+    }
+  })();
+</script>
