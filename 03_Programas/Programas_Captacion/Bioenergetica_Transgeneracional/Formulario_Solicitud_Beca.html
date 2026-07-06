@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Solicitud de admisión a la Beca de Actualización en Bioenergética Transgeneracional.">
+  <title>Solicitud de beca | Bioenergética Transgeneracional</title>
+  <style>
+    :root {
+      --terracota: #b5604a;
+      --terracota-deep: #8b4a2a;
+      --sage: #8fa87a;
+      --gold: #e8a857;
+      --ink: #362f29;
+      --muted: #746c62;
+      --paper: #faf6f0;
+      --white: #fffdf9;
+      --rule: #e2d6c6;
+      --error: #a43737;
+      --serif: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(232, 168, 87, .18), transparent 26rem),
+        radial-gradient(circle at 92% 12%, rgba(143, 168, 122, .16), transparent 24rem),
+        #eee7dc;
+      font-family: var(--sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .shell {
+      width: min(920px, calc(100% - 32px));
+      margin: 40px auto;
+      background: var(--paper);
+      box-shadow: 0 24px 64px rgba(54, 47, 41, .15);
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      padding: 48px 56px 38px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 670px;
+      margin: 0;
+      color: var(--terracota-deep);
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 500;
+      line-height: 1.04;
+    }
+
+    .intro {
+      max-width: 690px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .mark { width: 82px; height: 82px; }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 0;
+      padding: 22px 56px;
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .facts div { padding: 0 22px; border-left: 1px solid var(--rule); }
+    .facts div:first-child { padding-left: 0; border-left: 0; }
+    .facts dt {
+      color: var(--terracota);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .facts dd { margin: 4px 0 0; font-size: .9rem; }
+
+    form { padding: 48px 56px 56px; }
+
+    fieldset {
+      margin: 0 0 42px;
+      padding: 0;
+      border: 0;
+    }
+
+    legend {
+      width: 100%;
+      margin-bottom: 22px;
+      padding: 0 0 11px;
+      border-bottom: 1px solid var(--rule);
+      color: var(--terracota-deep);
+      font-family: var(--serif);
+      font-size: 1.45rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px 26px;
+    }
+
+    .field { min-width: 0; }
+    .field.full { grid-column: 1 / -1; }
+
+    label, .question {
+      display: block;
+      margin-bottom: 7px;
+      font-size: .88rem;
+      font-weight: 650;
+    }
+
+    .required { color: var(--terracota); }
+    .hint {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .76rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      border: 1px solid #cfc1b0;
+      border-radius: 5px;
+      color: var(--ink);
+      background: var(--white);
+      font: inherit;
+      transition: border-color .18s, box-shadow .18s;
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--terracota);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(181, 96, 74, .13);
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .choice {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 0;
+      padding: 13px 14px;
+      border: 1px solid var(--rule);
+      border-radius: 5px;
+      background: var(--white);
+      font-weight: 400;
+      cursor: pointer;
+    }
+
+    .choice:has(input:checked) {
+      border-color: var(--sage);
+      box-shadow: inset 3px 0 var(--sage);
+    }
+
+    .choice input {
+      width: 17px;
+      min-height: 17px;
+      margin: 3px 0 0;
+      accent-color: var(--terracota);
+    }
+
+    .notice {
+      margin-bottom: 24px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--gold);
+      background: rgba(232, 168, 87, .09);
+      font-size: .88rem;
+    }
+
+    .consent { margin-bottom: 26px; }
+    .consent .choice { background: transparent; }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    button {
+      min-height: 50px;
+      padding: 13px 25px;
+      border: 0;
+      border-radius: 5px;
+      color: #fff;
+      background: var(--terracota-deep);
+      font: 700 .92rem var(--sans);
+      cursor: pointer;
+      transition: transform .15s, background .15s;
+    }
+
+    button:hover { background: var(--terracota); transform: translateY(-1px); }
+    button:focus-visible { outline: 3px solid rgba(232, 168, 87, .6); outline-offset: 3px; }
+
+    .submit-note { color: var(--muted); font-size: .76rem; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 56px;
+      color: var(--muted);
+      background: var(--white);
+      border-top: 1px solid var(--rule);
+      font-size: .78rem;
+    }
+
+    footer a { color: var(--terracota-deep); }
+
+    @media (max-width: 680px) {
+      .shell { width: 100%; margin: 0; }
+      header, form { padding: 34px 22px; }
+      header { grid-template-columns: 1fr; }
+      .mark { display: none; }
+      .facts { grid-template-columns: 1fr; padding: 6px 22px; }
+      .facts div, .facts div:first-child {
+        padding: 14px 0;
+        border: 0;
+        border-top: 1px solid var(--rule);
+      }
+      .facts div:first-child { border-top: 0; }
+      .grid, .choices { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .actions, footer { align-items: stretch; flex-direction: column; }
+      footer { padding: 22px; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <p class="eyebrow">Instituto Centrobioenergetica</p>
+        <h1>Solicitud de Beca</h1>
+        <p class="intro">Actualización en Bioenergética Transgeneracional. Completa esta solicitud para que el Instituto evalúe tu perfil de ingreso.</p>
+      </div>
+      <svg class="mark" viewBox="0 0 160 160" aria-hidden="true">
+        <g transform="translate(80,80)">
+          <circle cx="0" cy="-50" r="8" fill="#B5604A"/><circle cx="25" cy="-43.3" r="8" fill="#8FA87A"/>
+          <circle cx="43.3" cy="-25" r="8" fill="#B5604A"/><circle cx="50" cy="0" r="8" fill="#8FA87A"/>
+          <circle cx="43.3" cy="25" r="8" fill="#B5604A"/><circle cx="25" cy="43.3" r="8" fill="#8FA87A"/>
+          <circle cx="0" cy="50" r="8" fill="#B5604A"/><circle cx="-25" cy="43.3" r="8" fill="#8FA87A"/>
+          <circle cx="-43.3" cy="25" r="8" fill="#B5604A"/><circle cx="-50" cy="0" r="8" fill="#8FA87A"/>
+          <circle cx="-43.3" cy="-25" r="8" fill="#B5604A"/><circle cx="-25" cy="-43.3" r="8" fill="#8FA87A"/>
+          <circle cx="0" cy="0" r="4" fill="#E8A857"/>
+        </g>
+      </svg>
+    </header>
+
+    <dl class="facts">
+      <div><dt>Formato</dt><dd>4 viernes consecutivos, 2 horas por sesión</dd></div>
+      <div><dt>Modalidad</dt><dd>Presencial o en línea por Zoom</dd></div>
+      <div><dt>Admisión</dt><dd>Cupo limitado y sujeto a evaluación</dd></div>
+    </dl>
+
+    <form id="solicitud" novalidate>
+      <fieldset>
+        <legend>1. Datos personales</legend>
+        <div class="grid">
+          <div class="field full">
+            <label for="nombre">Nombre completo <span class="required">*</span></label>
+            <input id="nombre" name="Nombre completo" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Correo electrónico <span class="required">*</span></label>
+            <input id="email" name="Correo electrónico" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="telefono">Teléfono / WhatsApp <span class="required">*</span></label>
+            <input id="telefono" name="Teléfono o WhatsApp" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="field">
+            <label for="ciudad">Ciudad y país <span class="required">*</span></label>
+            <input id="ciudad" name="Ciudad y país" type="text" autocomplete="address-level2" required>
+          </div>
+          <div class="field">
+            <label for="ocupacion">Profesión u ocupación <span class="required">*</span></label>
+            <input id="ocupacion" name="Profesión u ocupación" type="text" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Formación y experiencia</legend>
+        <div class="grid">
+          <div class="field">
+            <label for="perfil">Perfil de ingreso <span class="required">*</span></label>
+            <select id="perfil" name="Perfil de ingreso" required>
+              <option value="">Selecciona una opción</option>
+              <option>Alumno/a del Instituto Centrobioenergetica</option>
+              <option>Terapeuta formado/a en otra escuela</option>
+              <option>Profesional de la salud</option>
+              <option>Otro perfil relacionado</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="escuela">Institución o escuela de formación</label>
+            <input id="escuela" name="Institución o escuela" type="text">
+          </div>
+          <div class="field full">
+            <label for="formacion">Formación relevante <span class="required">*</span></label>
+            <textarea id="formacion" name="Formación relevante" required placeholder="Describe brevemente tus estudios, cursos o certificaciones relacionadas."></textarea>
+          </div>
+          <div class="field full">
+            <label for="experiencia">Experiencia con rastreo o técnicas de acceso al inconsciente <span class="required">*</span></label>
+            <textarea id="experiencia" name="Experiencia previa" required placeholder="Indica qué técnica utilizas, desde cuándo y en qué contexto."></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Tu solicitud</legend>
+        <div class="grid">
+          <div class="field full">
+            <label for="motivo">¿Por qué deseas participar en esta actualización? <span class="required">*</span></label>
+            <textarea id="motivo" name="Motivo de interés" required minlength="40" placeholder="Cuéntanos qué te interesa aprender y cómo esperas aplicarlo."></textarea>
+            <span class="hint">Respuesta mínima sugerida: 40 caracteres.</span>
+          </div>
+          <div class="field full">
+            <span class="question">Modalidad preferida <span class="required">*</span></span>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="Modalidad preferida" value="Presencial" required> Presencial</label>
+              <label class="choice"><input type="radio" name="Modalidad preferida" value="Zoom" required> En línea por Zoom</label>
+            </div>
+          </div>
+          <div class="field full">
+            <span class="question">¿Puedes asistir a las cuatro sesiones de los viernes? <span class="required">*</span></span>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="Disponibilidad para 4 sesiones" value="Sí" required> Sí, confirmo mi disponibilidad</label>
+              <label class="choice"><input type="radio" name="Disponibilidad para 4 sesiones" value="Necesito revisar fechas" required> Necesito revisar las fechas</label>
+            </div>
+          </div>
+          <div class="field full">
+            <label for="comentarios">Comentarios adicionales</label>
+            <textarea id="comentarios" name="Comentarios adicionales" placeholder="Incluye aquí cualquier información que debamos considerar."></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="notice">
+        Enviar esta solicitud no garantiza la asignación de la beca. El Instituto revisará tu perfil y, si es aceptado, recibirás una carta de confirmación.
+      </div>
+
+      <div class="consent">
+        <label class="choice">
+          <input id="consentimiento" type="checkbox" required>
+          <span>Acepto que el Instituto utilice estos datos para evaluar mi solicitud y contactarme acerca de este programa. <span class="required">*</span></span>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button type="submit">Enviar solicitud de beca</button>
+        <span class="submit-note">Se abrirá tu aplicación de correo con la solicitud preparada.</span>
+      </div>
+    </form>
+
+    <footer>
+      <span>Instituto Centrobioenergetica · Dr. Miguel Ojeda Rios</span>
+      <a href="mailto:contacto@institutocentrobioenergetica.com">contacto@institutocentrobioenergetica.com</a>
+    </footer>
+  </main>
+
+  <script>
+    const form = document.querySelector("#solicitud");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const data = new FormData(form);
+      const sections = [
+        "SOLICITUD DE BECA — BIOENERGÉTICA TRANSGENERACIONAL",
+        "Fecha de solicitud: " + new Intl.DateTimeFormat("es-MX", { dateStyle: "long" }).format(new Date()),
+        ""
+      ];
+
+      for (const [field, value] of data.entries()) {
+        sections.push(field.toUpperCase());
+        sections.push(String(value).trim() || "Sin respuesta");
+        sections.push("");
+      }
+
+      const applicant = data.get("Nombre completo");
+      const subject = `Solicitud de beca — ${applicant}`;
+      const mailto = new URL("mailto:contacto@institutocentrobioenergetica.com");
+      mailto.searchParams.set("subject", subject);
+      mailto.searchParams.set("body", sections.join("\n"));
+      window.location.href = mailto.toString();
+    });
+  </script>
+</body>
+</html>
