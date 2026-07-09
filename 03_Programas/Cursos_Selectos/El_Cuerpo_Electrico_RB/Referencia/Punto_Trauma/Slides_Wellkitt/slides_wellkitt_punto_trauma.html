@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bases de RB y el Punto Trauma — Jueves de Wellkitt</title>
+<style>
+:root{--teal:#0F6E56;--teal2:#5DCAA5;--tealT:#E1F5EE;--cream:#E8E6DE;--paper:#F7F4EC;--ink:#2C2C2A;--muted:#77756F;--amber:#BA7517;--coral:#D85A30;--purple:#534AB7;--line:#D5D0C4}
+*{box-sizing:border-box}html,body{margin:0;background:#171816;color:var(--ink)}body{font-family:Arial,Helvetica,sans-serif}
+.deck{display:grid;gap:36px;padding:36px;justify-content:center}.slide{position:relative;width:1280px;height:720px;overflow:hidden;background:var(--paper);box-shadow:0 18px 55px #0007}
+.dipole{position:absolute;left:64px;top:46px;width:52px}.section{position:absolute;left:132px;top:49px;color:var(--teal);font:14px Arial;letter-spacing:2.6px;text-transform:uppercase}
+.folio{position:absolute;right:64px;bottom:24px;color:var(--muted);font:14px Arial;letter-spacing:2px}.rule{position:absolute;left:64px;right:64px;bottom:49px;height:1px;background:var(--line)}
+.title{font:400 44px/1.1 Georgia,serif;letter-spacing:-1.2px}.lead{font:20px/1.45 Georgia,serif;color:#56534D}.eyebrow{color:var(--teal);font:14px Arial;letter-spacing:2.8px;text-transform:uppercase}
+.program{position:absolute;left:64px;top:48px;width:188px}.endorsement{position:absolute;right:64px;top:55px;width:250px}
+.head{position:absolute;left:64px;top:104px;width:1150px}
+
+/* ---------- Portada / cierre / declaración / cita (texto, sin diagrama) ---------- */
+.cover .copy{position:absolute;left:64px;top:220px;width:900px}.cover h1{margin:20px 0 0;padding-bottom:7px;font:400 80px/1 Georgia,serif;letter-spacing:-2px}.cover h1 span{display:block;color:var(--teal)}.cover .lead{margin-top:28px;width:760px;font-size:22px}.cover .presenter{position:absolute;left:64px;bottom:56px;color:var(--muted);font:13px Arial;letter-spacing:1px}
+.cover .signal{position:absolute;left:0;right:0;bottom:0;height:180px;opacity:.5}
+
+.quote{background:var(--teal);color:var(--cream)}.quote .program,.quote .endorsement{filter:brightness(0) invert(1);opacity:.75}.quote .copy{position:absolute;left:92px;top:166px;width:1030px}.quote .eyebrow{color:var(--teal2)}.quote h2{margin:28px 0 0;font:400 52px/1.15 Georgia,serif;letter-spacing:-1.5px}.quote h2 em{font-style:normal;color:#F0B45A}.quote p{margin-top:34px;width:800px;color:#E8E6DEB8;font:18px/1.5 Arial}.quote .folio{color:#E8E6DE88}.quote .dots{position:absolute;right:80px;top:80px}
+
+.statement .copy{position:absolute;left:88px;top:170px;width:1060px}.statement h2{margin:18px 0 0;font:400 56px/1.12 Georgia,serif;letter-spacing:-1.6px}.statement h2 strong{font-weight:400;color:var(--teal)}.statement .lead{margin-top:30px;width:840px;font-size:21px}.statement .accent{position:absolute;left:88px;top:132px;width:76px;height:3px;background:var(--amber)}
+
+.close .copy{position:absolute;left:0;right:0;top:250px;text-align:center}.close h2{margin:24px 0 0;font:400 50px Georgia,serif}.close .lead{margin:24px auto 0;max-width:680px}.close .program{left:50%;top:70px;transform:translateX(-50%)}
+
+.split .cols{position:absolute;left:64px;right:64px;top:210px;bottom:78px;display:grid;grid-template-columns:1fr 1fr;align-items:center}
+.split .col{position:relative;padding:44px 46px}
+.split .col.a{padding-right:70px}.split .col.b{padding-left:70px}
+.split .divider{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line);transform:translateX(-.5px)}
+.split .divider .dipole-mid{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;background:var(--paper);display:grid;place-items:center}
+.split .icon{width:44px;height:44px;margin-bottom:22px}
+.split .stat{font:400 46px/1 Georgia,serif;color:var(--teal);letter-spacing:-1px}
+.split .col.b .stat{color:var(--amber)}
+.split .statlabel{margin:8px 0 20px;font:13px Arial;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted)}
+.split h3{margin:0 0 10px;font:400 24px/1.2 Georgia,serif}.split p{margin:0;font:16px/1.52 Arial;color:#5A5852;max-width:420px}
+
+.table .rows{position:absolute;left:64px;right:64px;top:250px;bottom:78px;display:flex;flex-direction:column;gap:2px}.table .row{display:grid;grid-template-columns:1.1fr 1.6fr 1.6fr 1fr;gap:16px;align-items:center;padding:12px 18px;background:#fff}.table .row.head-row{background:transparent;color:var(--teal);font:13px Arial;letter-spacing:1.4px;text-transform:uppercase}.table .row:not(.head-row):nth-child(odd){background:#F1EFE8}.table .row b{font:400 18px Georgia,serif}.table .row span{font:14px/1.3 Arial;color:#5A5852}
+
+/* ---------- CASCADE: espina vertical de nodos (extiende el dipolo) ---------- */
+.cascade .wrap{position:absolute;left:96px;right:96px;top:250px;bottom:70px;display:flex;align-items:center}
+.cascade .wrap.aside{right:auto;width:600px}
+.cascade .aside-visual{position:absolute;right:96px;top:224px;bottom:96px;width:440px;background:#fff;display:flex;align-items:center;justify-content:center;padding:28px}
+.cascade .steps{position:relative;width:1120px}
+.cascade .spine{position:absolute;left:15px;top:16px;bottom:16px;width:2px;background:linear-gradient(var(--teal),var(--teal2))}
+.cascade .step{position:relative;display:flex;align-items:flex-start;gap:26px;padding-bottom:30px}
+.cascade .step:last-child{padding-bottom:0}
+.cascade .node{position:relative;z-index:2;flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font:13px Arial;box-shadow:0 0 0 6px var(--paper)}
+.cascade .body{padding-top:2px}.cascade .body b{font:400 22px Georgia,serif;color:var(--ink)}.cascade .body p{margin:4px 0 0;font:15px/1.4 Arial;color:#5A5852;max-width:920px}
+.cascade.tight .step{padding-bottom:36px}.cascade.tight .node{width:38px;height:38px;font-size:14px}.cascade.tight .body b{font-size:24px}.cascade.tight .body p{font-size:16px;margin-top:6px}
+
+/* ---------- TRACE: gráfico de voltaje real (corriente de lesión) ---------- */
+.trace .chart{position:absolute;left:96px;right:96px;top:230px;bottom:130px}
+.trace .legend{position:absolute;left:96px;bottom:70px;display:flex;gap:34px;font:14px Arial;color:#5A5852}
+.trace .legend span{display:inline-flex;align-items:center;gap:8px}
+.trace .legend i{width:22px;height:3px;display:inline-block;border-radius:2px}
+
+/* ---------- GRADIENT-CONCEPT: B(x) vs dB/dx ---------- */
+.gconcept .chart{position:absolute;left:96px;right:96px;top:196px;bottom:120px}
+.gconcept .note{position:absolute;left:96px;right:96px;bottom:66px;font:15px/1.4 Arial;color:#5A5852}
+
+/* ---------- NETWORK: red de nodos / isla eléctrica ---------- */
+.network .diagram{position:absolute;left:96px;right:96px;top:230px;bottom:130px}
+.network .caption{position:absolute;left:96px;bottom:66px;right:96px;display:flex;justify-content:space-between;font:14px Arial;color:#5A5852}
+.network .caption b{color:var(--ink);font-weight:700}
+
+/* ---------- FIELD: campo radial (atenuación con la distancia) ---------- */
+.field .diagram{position:absolute;left:64px;top:196px;width:560px;height:480px}
+.field .readout{position:absolute;right:96px;top:250px;width:420px;display:flex;flex-direction:column;gap:14px}
+.field .readout .r{display:flex;justify-content:space-between;align-items:baseline;padding:12px 20px;background:#fff;border-left:4px solid var(--teal)}
+.field .readout .r b{font:400 26px Georgia,serif;color:var(--teal)}.field .readout .r span{font:14px Arial;color:#5A5852}
+
+/* ---------- MECHANISMS: grid de 4 mecanismos con ícono propio ---------- */
+.mechanisms .grid{position:absolute;left:64px;right:64px;top:224px;bottom:70px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.mechanisms .card{background:#fff;border-top:4px solid var(--teal);padding:22px 18px;display:flex;flex-direction:column;gap:12px}
+.mechanisms .card:nth-child(2){border-color:var(--amber)}.mechanisms .card:nth-child(3){border-color:var(--purple)}.mechanisms .card:nth-child(4){border-color:var(--coral)}
+.mechanisms .card b{font:400 19px Georgia,serif}.mechanisms .card p{margin:0;font:14px/1.4 Arial;color:#5A5852}
+
+/* ---------- GRADIENT: imán simple vs. arreglo cuadripolar ---------- */
+.gradient .panels{position:absolute;left:64px;right:64px;top:210px;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.gradient .panel{background:#fff;padding:20px 22px 22px}
+.gradient .panel b{font:400 20px Georgia,serif;display:block;margin-bottom:4px}
+.gradient .panel .sub{font:13px Arial;color:var(--muted);margin-bottom:10px;display:block}
+.gradient .panel .diagram-box{height:190px}
+.gradient .panel p{margin:10px 0 0;font:14px/1.4 Arial;color:#5A5852}
+.gradient .note{position:absolute;left:64px;right:64px;bottom:70px;padding:14px 22px;background:var(--ink);color:var(--cream);font:15px/1.4 Georgia,serif;text-align:center}
+
+/* ---------- GAUGE: escala de voltaje ---------- */
+.gauge .scale{position:absolute;left:120px;right:120px;top:340px;height:6px;background:linear-gradient(90deg,var(--coral),var(--amber),var(--teal2),var(--teal))}
+.gauge .tick{position:absolute;top:-30px;text-align:center;transform:translateX(-50%)}
+.gauge .tick .dot{width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--ink);margin:0 auto 10px}
+.gauge .tick b{display:block;font:400 20px Georgia,serif}.gauge .tick span{display:block;font:13px Arial;color:#5A5852;max-width:180px}
+.gauge .axis{position:absolute;left:120px;right:120px;top:352px;display:flex;justify-content:space-between;font:12px Arial;color:var(--muted)}
+
+/* ---------- TRIO: tres columnas que convergen ---------- */
+.trio .cols{position:absolute;left:80px;right:80px;top:220px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px}
+.trio .col{background:#fff;border-top:4px solid var(--teal);padding:20px 20px 60px;position:relative;min-height:210px}
+.trio .col:nth-child(2){border-color:var(--amber)}.trio .col:nth-child(3){border-color:var(--purple)}
+.trio .col b{font:400 20px/1.2 Georgia,serif;display:block;margin-bottom:8px}.trio .col p{margin:0;font:14px/1.42 Arial;color:#5A5852}
+.trio .converge{position:absolute;left:80px;right:80px;bottom:70px;padding:16px 24px;background:var(--ink);color:var(--cream);text-align:center;font:16px/1.4 Georgia,serif}
+.trio svg.wires{position:absolute;left:80px;right:80px;top:430px;height:70px;width:calc(100% - 160px)}
+
+/* ---------- MODEL-3D: escenas de objeto y mecanismo ---------- */
+@media(max-width:1320px){body{overflow-x:hidden}.deck{justify-content:start;padding:12px}}
+@media print{@page{size:13.333in 7.5in;margin:0}body{background:#fff}.deck{display:block;padding:0}.slide{break-after:page;box-shadow:none}}
+</style>
+</head>
+<body>
+<main class="deck" id="deck"></main>
+<script>
+const logo="../../../Marca_Visual/Branding_RB_2026/svg/";
+
+/* ============ Generadores de diagramas propios (SVG) ============ */
+
+// Dipolo — el símbolo de marca, usado como átomo visual base
+function dipoleIcon(color,size){size=size||18;return `<svg width="${size*2}" height="${size}" viewBox="0 0 40 20"><circle cx="10" cy="10" r="9" fill="${color}"/><line x1="19" y1="10" x2="21" y2="10" stroke="${color}" stroke-width="1.4"/><circle cx="30" cy="10" r="9" fill="${color}" opacity="0.35"/></svg>`}
+
+// Fondo decorativo de portada — una línea de voltaje continua, de baja intensidad
+function signalPath(){
+  let d="M0,90 ";
+  for(let x=0;x<=1280;x+=8){
+    const y=90+Math.sin(x*0.012)*22+Math.sin(x*0.031)*10;
+    d+=`L${x},${y.toFixed(1)} `;
+  }
+  return `<svg class="signal" viewBox="0 0 1280 180" preserveAspectRatio="none"><path d="${d}" fill="none" stroke="#0F6E56" stroke-width="2"/><path d="${d}" fill="none" stroke="#0F6E56" stroke-width="1" transform="translate(0,26)" opacity="0.5"/></svg>`
+}
+
+// TRACE — gráfico de voltaje real: dos curvas (salamandra / rana) en el tiempo
+function traceChart(){
+  // Eje X: 0=reposo,1=corte,2=día siguiente,3=1 sem,4=2 sem,5=4 sem  → mapeado a 0..1000
+  const xs=[0,150,300,550,750,1000];
+  const yScale=v=>240-(v+30)*2.2; // -30..+40mV -> 0..240 aprox, invertido
+  const sala=[-10,-10,20,5,-30,-30];
+  const rana=[-10,-10,20,5,-2,-10];
+  const pathOf=arr=>xs.map((x,i)=>`${i===0?'M':'L'}${x},${yScale(arr[i]).toFixed(1)}`).join(' ');
+  const zero=yScale(0);
+  return `<svg viewBox="0 0 1000 300" preserveAspectRatio="none" style="width:100%;height:100%;overflow:visible">
+    <line x1="0" y1="${zero}" x2="1000" y2="${zero}" stroke="#D5D0C4" stroke-width="1"/>
+    <text x="0" y="${zero-10}" font-family="Arial" font-size="13" fill="#77756F">0 mV</text>
+    <path d="${pathOf(rana)}" fill="none" stroke="#BA7517" stroke-width="3.5"/>
+    <path d="${pathOf(sala)}" fill="none" stroke="#0F6E56" stroke-width="3.5"/>
+    ${xs.map((x,i)=>`<circle cx="${x}" cy="${yScale(sala[i])}" r="6" fill="#0F6E56"/>`).join('')}
+    ${xs.map((x,i)=>`<circle cx="${x}" cy="${yScale(rana[i])}" r="6" fill="#BA7517"/>`).join('')}
+    <text x="150" y="${yScale(20)-16}" font-family="Georgia" font-size="17" fill="#2C2C2A">+20 mV — corriente de lesión</text>
+    <text x="1000" y="${yScale(-30)+26}" text-anchor="end" font-family="Georgia" font-size="17" fill="#0F6E56">−30 mV — regenera</text>
+    <text x="1000" y="${yScale(-10)+30}" text-anchor="end" font-family="Georgia" font-size="17" fill="#BA7517">−10 mV — solo cicatriza</text>
+    <g font-family="Arial" font-size="13" fill="#77756F">
+      <text x="0" y="290">Reposo</text><text x="150" y="290" text-anchor="middle">Corte</text><text x="300" y="290" text-anchor="middle">1 día</text><text x="550" y="290" text-anchor="middle">1 sem.</text><text x="750" y="290" text-anchor="middle">2 sem.</text><text x="1000" y="290" text-anchor="end">4 sem.</text>
+    </g>
+  </svg>`
+}
+
+// GAUGE — escala horizontal de Vmem con marcadores
+function gaugeTicks(items){
+  // items: [{pos:0-100, label, value, color}]
+  return items.map(it=>`<div class="tick" style="left:${it.pos}%"><div class="dot" style="border-color:${it.color}"></div><b style="color:${it.color}">${it.value}</b><span>${it.label}</span></div>`).join('')
+}
+
+// NETWORK — red de nodos conectados; variant "healthy" o "isla"
+function networkDiagram(variant){
+  // Grid de nodos con conexiones tipo malla; en "isla" el cluster central se apaga y sus líneas se cortan
+  const nodes=[
+    {x:80,y:60},{x:230,y:40},{x:400,y:70},{x:560,y:45},{x:720,y:75},{x:860,y:50},
+    {x:120,y:190},{x:280,y:210},{x:430,y:180},{x:590,y:215},{x:740,y:185},{x:840,y:220},
+    {x:60,y:320},{x:210,y:300},{x:370,y:330},{x:520,y:295},{x:680,y:325},{x:830,y:300}
+  ];
+  const edges=[[0,1],[1,2],[2,3],[3,4],[4,5],[0,6],[1,7],[2,8],[3,9],[4,10],[5,11],[6,7],[7,8],[8,9],[9,10],[10,11],[6,12],[7,13],[8,14],[9,15],[10,16],[11,17],[12,13],[13,14],[14,15],[15,16],[16,17]];
+  const isla=[7,8,9,13,14,15]; // nodos que forman la isla desconectada
+  const isIsla=n=>variant==='isla'&&isla.includes(n);
+  const edgeBroken=(a,b)=>variant==='isla'&&(isla.includes(a)||isla.includes(b))&&!(isla.includes(a)&&isla.includes(b));
+  const edgeInsideIsla=(a,b)=>variant==='isla'&&isla.includes(a)&&isla.includes(b);
+  let svg=`<svg viewBox="0 0 900 380" style="width:100%;height:100%">`;
+  edges.forEach(([a,b])=>{
+    const A=nodes[a],B=nodes[b];
+    if(edgeBroken(a,b)){
+      svg+=`<line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" stroke="#D85A30" stroke-width="2" stroke-dasharray="3,7" opacity="0.65"/>`;
+    }else if(edgeInsideIsla(a,b)){
+      svg+=`<line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" stroke="#D85A30" stroke-width="1.6" opacity="0.55"/>`;
+    }else{
+      svg+=`<line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" stroke="#0F6E56" stroke-width="1.6" opacity="0.45"/>`;
+    }
+  });
+  nodes.forEach((n,i)=>{
+    const dead=isIsla(i);
+    svg+=`<circle cx="${n.x}" cy="${n.y}" r="${dead?11:9}" fill="${dead?'#D85A30':'#0F6E56'}" opacity="${dead?0.85:1}"/>`;
+  });
+  if(variant==='isla'){
+    svg+=`<text x="450" y="215" text-anchor="middle" font-family="Georgia" font-size="16" fill="#D85A30" font-style="italic">isla eléctrica</text>`;
+  }
+  svg+=`</svg>`;
+  return svg;
+}
+
+// FIELD — anillos concéntricos de intensidad de campo
+function fieldRings(){
+  const rings=[{r:170,op:.55},{r:130,op:.4},{r:90,op:.3},{r:52,op:.22}];
+  let svg=`<svg viewBox="0 0 560 480" style="width:100%;height:100%">`;
+  rings.slice().reverse().forEach(rg=>{svg+=`<circle cx="280" cy="240" r="${rg.r}" fill="#0F6E56" opacity="${rg.op*0.35}"/>`});
+  rings.forEach(rg=>{svg+=`<circle cx="280" cy="240" r="${rg.r}" fill="none" stroke="#0F6E56" stroke-width="1" opacity="${rg.op}"/>`});
+  svg+=`<rect x="260" y="222" width="40" height="36" rx="3" fill="#2C2C2A"/><text x="270" y="245" font-family="Arial" font-size="12" fill="#fff">N</text><text x="278" y="245" font-family="Arial" font-size="12" fill="#fff"></text><line x1="280" y1="222" x2="280" y2="70" stroke="#CBC7BC" stroke-width="1" stroke-dasharray="2,4"/>`;
+  svg+=`</svg>`;
+  return svg;
+}
+
+// GRADIENT — imán simple (campo suave) vs. arreglo cuadripolar (frontera empinada)
+// GRADIENT-CONCEPT — B(x) intensidad vs. dB/dx gradiente: son dos cosas distintas
+function gradientConceptChart(){
+  const xs=[]; for(let x=0;x<=1000;x+=10) xs.push(x);
+  const B=x=>20+320*Math.exp(-x/230); // curva de intensidad, decae con la distancia
+  const yB=v=>170-(v)*0.42; // escala para intensidad (arriba)
+  const bPath=xs.map((x,i)=>`${i===0?'M':'L'}${x},${yB(B(x)).toFixed(1)}`).join(' ');
+  // pendiente (derivada) aproximada, reescalada para verse como segunda curva abajo
+  const dB=x=>-320/230*Math.exp(-x/230);
+  const maxSlope=Math.abs(dB(0));
+  const yG=v=>380-(Math.abs(v)/maxSlope)*120;
+  const gPath=xs.map((x,i)=>`${i===0?'M':'L'}${x},${yG(dB(x)).toFixed(1)}`).join(' ');
+  return `<svg viewBox="0 0 1000 420" preserveAspectRatio="none" style="width:100%;height:100%;overflow:visible">
+    <text x="0" y="20" font-family="Arial" font-size="13" letter-spacing="1.5" fill="#77756F">INTENSIDAD — B(x)</text>
+    <path d="${bPath}" fill="none" stroke="#0F6E56" stroke-width="3.5"/>
+    <line x1="0" y1="255" x2="1000" y2="255" stroke="#D5D0C4" stroke-width="1"/>
+    <rect x="0" y="80" width="130" height="90" fill="#D85A30" opacity="0.08"/>
+    <text x="10" y="95" font-family="Georgia" font-size="15" fill="#D85A30" font-style="italic">cambia rápido</text>
+    <text x="10" y="114" font-family="Arial" font-size="13" fill="#5A5852">= gradiente alto</text>
+    <rect x="600" y="150" width="400" height="60" fill="#0F6E56" opacity="0.06"/>
+    <text x="610" y="182" font-family="Georgia" font-size="15" fill="#0F6E56" font-style="italic">cambia lento = gradiente bajo</text>
+    <text x="0" y="290" font-family="Arial" font-size="13" letter-spacing="1.5" fill="#77756F">GRADIENTE — dB/dx</text>
+    <path d="${gPath}" fill="none" stroke="#BA7517" stroke-width="3.5"/>
+    <line x1="0" y1="380" x2="1000" y2="380" stroke="#D5D0C4" stroke-width="1"/>
+    <text x="1000" y="410" text-anchor="end" font-family="Arial" font-size="13" fill="#77756F">distancia al imán →</text>
+  </svg>`
+}
+
+function bipolarPanel(){
+  return `<svg viewBox="0 0 300 190" style="width:100%;height:100%">
+    <rect x="80" y="70" width="60" height="50" rx="4" fill="#2C2C2A"/>
+    <text x="98" y="100" font-family="Arial" font-size="15" fill="#fff">N</text><text x="122" y="100" font-family="Arial" font-size="15" fill="#77756F">S</text>
+    ${[36,58,82].map(r=>`<circle cx="110" cy="95" r="${r}" fill="none" stroke="#0F6E56" stroke-width="1.4" opacity="${0.55-r*0.004}"/>`).join('')}
+    <text x="110" y="178" text-anchor="middle" font-family="Arial" font-size="12" fill="#77756F">gradiente parejo y suave</text>
+  </svg>`
+}
+function quadripolarPanel(){
+  const cells=[["N","S"],["S","N"]];
+  let svg=`<svg viewBox="0 0 300 190" style="width:100%;height:100%">`;
+  for(let r=0;r<2;r++)for(let c=0;c<2;c++){
+    const x=70+c*70,y=45+r*60;
+    svg+=`<rect x="${x}" y="${y}" width="66" height="56" fill="${cells[r][c]==='N'?'#2C2C2A':'#fff'}" stroke="#2C2C2A" stroke-width="1.6"/>`;
+    svg+=`<text x="${x+33}" y="${y+34}" text-anchor="middle" font-family="Arial" font-size="15" fill="${cells[r][c]==='N'?'#fff':'#2C2C2A'}">${cells[r][c]}</text>`;
+  }
+  svg+=`<circle cx="203" cy="102" r="9" fill="#D85A30" opacity="0.85"/>`;
+  svg+=`<line x1="203" y1="45" x2="203" y2="158" stroke="#D85A30" stroke-width="2" stroke-dasharray="2,5" opacity="0.7"/>`;
+  svg+=`<line x1="136" y1="102" x2="270" y2="102" stroke="#D85A30" stroke-width="2" stroke-dasharray="2,5" opacity="0.7"/>`;
+  svg+=`<text x="203" y="178" text-anchor="middle" font-family="Georgia" font-size="13" fill="#D85A30" font-style="italic">frontera — gradiente máximo</text>`;
+  svg+=`</svg>`;
+  return svg;
+}
+
+// CASCADE ASIDE — trauma y riñón conectados por el gradiente T10–L2
+function distantPanel(){
+  return `<svg viewBox="0 0 320 240" style="width:100%;height:100%">
+  <circle cx="72" cy="120" r="42" fill="#2C2C2A"/><text x="72" y="125" text-anchor="middle" fill="#fff" font-family="Georgia" font-size="15">Trauma</text>
+  <circle cx="248" cy="120" r="42" fill="#2C2C2A" opacity="0.32"/><text x="248" y="125" text-anchor="middle" fill="#2C2C2A" font-family="Georgia" font-size="15">Riñón</text>
+  <line x1="114" y1="120" x2="206" y2="120" stroke="#D85A30" stroke-width="2" stroke-dasharray="2,6"/>
+  <circle cx="160" cy="120" r="5" fill="#D85A30"/>
+  <text x="160" y="86" text-anchor="middle" fill="#D85A30" font-family="Georgia" font-style="italic" font-size="14">gradiente · T10–L2</text>
+  <text x="160" y="178" text-anchor="middle" fill="#77756F" font-family="Arial" font-size="13">20–30 min</text>
+  </svg>`;
+}
+// SPLIT — reloj (rápido) y capas concéntricas (profundo/sistémico)
+function clockIcon(color){
+  return `<svg viewBox="0 0 44 44" style="width:100%;height:100%"><circle cx="22" cy="22" r="19" fill="none" stroke="${color}" stroke-width="2"/><line x1="22" y1="22" x2="22" y2="11" stroke="${color}" stroke-width="2" stroke-linecap="round"/><line x1="22" y1="22" x2="30" y2="26" stroke="${color}" stroke-width="2" stroke-linecap="round"/><circle cx="22" cy="22" r="1.8" fill="${color}"/></svg>`;
+}
+function layersIcon(color){
+  return `<svg viewBox="0 0 44 44" style="width:100%;height:100%"><circle cx="22" cy="22" r="6" fill="${color}"/><circle cx="22" cy="22" r="12" fill="none" stroke="${color}" stroke-width="2" opacity="0.55"/><circle cx="22" cy="22" r="19" fill="none" stroke="${color}" stroke-width="2" opacity="0.3"/></svg>`;
+}
+function fieldDiffuseIcon(color){
+  return `<svg viewBox="0 0 44 44" style="width:100%;height:100%"><circle cx="22" cy="30" r="3" fill="${color}"/><circle cx="22" cy="30" r="11" fill="none" stroke="${color}" stroke-width="2" opacity="0.45"/><circle cx="22" cy="30" r="19" fill="none" stroke="${color}" stroke-width="2" opacity="0.22"/></svg>`;
+}
+function boundaryIcon(color){
+  return `<svg viewBox="0 0 44 44" style="width:100%;height:100%"><rect x="3" y="3" width="17" height="17" fill="${color}"/><rect x="22" y="3" width="17" height="17" fill="none" stroke="${color}" stroke-width="2"/><rect x="3" y="22" width="17" height="17" fill="none" stroke="${color}" stroke-width="2"/><rect x="22" y="22" width="17" height="17" fill="${color}"/><circle cx="22" cy="22" r="3.2" fill="#D85A30"/></svg>`;
+}
+
+// TRIO — cables que convergen desde 3 columnas a un punto central abajo
+function trioWires(){
+  return `<svg class="wires" viewBox="0 0 1120 70" preserveAspectRatio="none"><path d="M186,0 C186,40 560,10 560,60" fill="none" stroke="#0F6E56" stroke-width="2" opacity="0.5"/><path d="M560,0 L560,60" fill="none" stroke="#BA7517" stroke-width="2" opacity="0.5"/><path d="M934,0 C934,40 560,10 560,60" fill="none" stroke="#534AB7" stroke-width="2" opacity="0.5"/><circle cx="560" cy="60" r="6" fill="#2C2C2A"/></svg>`
+}
+
+const slides=[
+{type:"cover",title:"Bases de Regulación Bioeléctrica|y el Punto Trauma",body:"De dónde viene el método, en qué evidencia se sostiene, y una técnica clínica completa explicada con mecanismo."},
+
+{type:"statement",section:"Bases de RB",title:"Regulación Bioeléctrica evalúa y regula <strong>el estado bioeléctrico</strong> del tejido.",body:"Campos magnéticos estáticos de 0.1 a 0.5 tesla. El rastreo produce un perfil bioeléctrico del terreno — no un diagnóstico microbiológico."},
+
+{type:"cascade",section:"De dónde viene",title:"Tres nombres, tres momentos.",steps:[
+  ["Becker, años 60–70","Documenta el mapa eléctrico endógeno del cuerpo y la corriente de lesión."],
+  ["Broeringmeyer, años 80","Origina la técnica clínica: campo magnético + reflejo de acortamiento."],
+  ["Goiz Durán, 1988–2020","Sistematiza a escala: más de 350 dipolos, protocolo, miles de terapeutas."],
+  ["Regulación Bioeléctrica, 2026","Conserva la técnica íntegra. Actualiza el marco interpretativo."]
+]},
+
+{type:"trace",section:"Becker — el cuerpo eléctrico",title:"La corriente de lesión predice regeneración o cicatriz.",note:"Salamandra vs. rana, mismo golpe inicial — Becker & Selden, 1985"},
+
+{type:"quote",section:"Broeringmeyer",title:"Lo que se puede verificar, y lo que es <em>tradición oral.</em>",body:"La vinculación con la NASA no está confirmada por fuentes académicas. Lo que sí se documenta: elongación espinal, atrofia paraespinal y cambios autonómicos en astronautas — consistente con una asimetría funcional, aunque la fuente exacta de la historia no sea verificable."},
+
+{type:"statement",section:"Goiz Durán",title:"Sistematizó el campo a una escala <strong>sin precedente.</strong>",body:"Más de 350 dipolos catalogados, protocolo de rastreo estandarizado, miles de terapeutas formados en tres décadas. El límite: cada par se nombró con un microorganismo por correlación clínica, nunca por identificación de laboratorio."},
+
+{type:"split",section:"Qué se conserva, qué cambia",title:"La técnica se conserva íntegra. El marco se actualiza.",
+  leftIcon:layersIcon("#0F6E56"),leftStat:"100%",leftStatLabel:"Técnica intacta",leftTitle:"Se conserva",leftBody:"El catálogo completo, el rastreo con polo negativo, la impactación con dos imanes opuestos, las correlaciones clínicas como referencia histórica.",
+  rightIcon:boundaryIcon("#BA7517"),rightStat:"2026",rightStatLabel:"Marco actualizado",rightTitle:"Se actualiza",rightBody:"“polo biomagnético” → nodo bioeléctrico. “par” con nombre de microbio → dipolo bioeléctrico, nombrado por anatomía."},
+
+{type:"statement",section:"Fundamento científico",title:"La matriz extracelular <strong>no es un relleno pasivo.</strong>",body:"Es un sistema electroquímico activo: tiene carga eléctrica medible, y esa carga determina el microambiente de cada tejido."},
+
+{type:"gauge",section:"La matriz extracelular",title:"La densidad de carga fija, medida en tejido real.",min:"−0.4 M",max:"0 M",items:[
+  {pos:20,value:"−0.35 M",label:"Cartílago articular (mín.)",color:"#0F6E56"},
+  {pos:55,value:"−0.19 M",label:"Disco, núcleo pulposo",color:"#BA7517"},
+  {pos:88,value:"−0.06 M",label:"Disco, anillo fibroso",color:"#D85A30"}
+]},
+
+{type:"cascade",section:"La cascada de Cidón Madrigal",title:"Cinco pasos, del ácido al hueso.",tight:true,steps:[
+  ["1 — Tamponamiento mesenquimal","Un tercio de las proteínas del cuerpo amortigua el ácido que el riñón y el pulmón no eliminan."],
+  ["2 — Acidosis latente y compensada","No aparece en sangre — la sangre tiene sus propios sistemas tampón."],
+  ["3 — Desplazamiento electrolítico","Las células ceden K⁺, ganan Na⁺/H⁺. Normokaliemia sérica con deficiencia tisular real."],
+  ["4 — Movilización ósea","Si el mesénquima se agota, el cuerpo moviliza minerales del hueso."],
+  ["5 — Paradoja sangre–mesénquima","La sangre no amortigua lo alcalino: termina venosa alcalina, orina ácida."]
+]},
+
+{type:"trio",section:"Bioelectrónica de Vincent",title:"Tres parámetros del terreno, medidos juntos.",cols:[
+  ["pH","7.3 en sangre normal → 7.8 en deterioro. El potencial iónico."],
+  ["rH₂","222 mV → 312 mV. El estado redox, independiente del pH."],
+  ["Resistividad","210 Ω·cm → 140 Ω·cm. Menos resistividad, más electrolitos."]
+],converge:"Un terreno más oxidado, más alcalino en sangre, con más electrolitos disueltos — el mismo desplazamiento que predice la cascada de Cidón Madrigal."},
+
+{type:"statement",section:"El Vmem",title:"El voltaje de membrana es una <strong>señal instructiva,</strong> no un subproducto.",body:"Michael Levin, Universidad de Tufts. Publicado en Cell, Development, Journal of Physiology. Controla proliferación, diferenciación, migración y patrón anatómico."},
+
+{type:"gauge",section:"El Vmem",title:"El voltaje decide entre dos programas.",min:"−90 mV",max:"+0 mV",items:[
+  {pos:15,value:"−90 a −60 mV",label:"Célula diferenciada — mantiene su función",color:"#0F6E56"},
+  {pos:78,value:"−30 a −10 mV",label:"Célula proliferativa — se multiplica",color:"#D85A30"}
+]},
+
+{type:"cascade",section:"Los experimentos de Levin",title:"Una hora de señal, diez días de regeneración.",steps:[
+  ["Renacuajo, sin ventana de regeneración","El período en que normalmente ya no puede regenerar la cola."],
+  ["1 hora de despolarización inducida","Un cóctel de ionóforos cambia el estado bioeléctrico del tejido."],
+  ["El estado bioeléctrico cambia","No importa la molécula exacta usada — importa el patrón de voltaje resultante."],
+  ["Cola completa en 8–10 días","Músculo, médula espinal, piel, vasos sanguíneos — todo."]
+]},
+
+{type:"network",section:"Los experimentos de Levin",title:"La memoria de forma vive en la red — no en el ADN.",variant:"healthy",caption:["Planaria normal: red de gap junctions intacta","Bloquear la red con octanol → el animal regenera dos cabezas, otra vez, en agua normal, sin ADN alterado"]},
+
+{type:"quote",section:"Los experimentos de Levin",title:"“El estado bioeléctrico puede ser <em>dominante</em> sobre la información genética.”",body:"Levin, 2014, Journal of Physiology. Un patrón bioeléctrico correcto corrigió morfología, expresión génica y aprendizaje en animales con una mutación dominante grave — sin tocar el gen."},
+
+{type:"statement",section:"Los experimentos de Levin",title:"Una señal viaja entre extremidades en <strong>30 segundos.</strong>",body:"Demasiado rápido para explicarse por difusión molecular (Busse et al., 2018, Development). Dos puntos distantes del cuerpo, conectados bioeléctricamente, es biología publicada — no es esotérico."},
+
+{type:"mechanisms",section:"Interacción campo–tejido",title:"Cuatro mecanismos documentados, un efecto convergente.",items:[
+  ["membrane","Anisotropía diamagnética","El campo reorienta fosfolípidos y deforma canales iónicos (Rosen, 2003)."],
+  ["channel","Canales Ca²⁺ tipo T","140 mT, 72h: +23% proliferación. Bloquear el canal anula el efecto (Wu et al., 2022)."],
+  ["crystal","Magnetita biogénica","Mín. 5 millones de cristales/g en tejido cerebral (Kirschvink, 1992)."],
+  ["cell","Modulación M1/M2","El campo desplaza al macrófago de proinflamatorio a reparador (Lei et al., 2020)."]
+]},
+
+{type:"field",section:"El instrumento",title:"El campo se atenúa con el cubo de la distancia.",readout:[
+  ["Superficie","400–500 mT"],["1 cm de profundidad","50–100 mT"],["2 cm de profundidad","15–30 mT"],["5 cm de profundidad","1–3 mT"]
+],note:"“500 militesla” es la superficie del imán — no lo que recibe el tejido dos centímetros más adentro."},
+
+{type:"gconcept",section:"El instrumento",title:"¿Qué es el gradiente? No es lo mismo que la intensidad.",note:"Intensidad (B): qué tan fuerte es el campo en un punto. Gradiente (dB/dx): qué tan rápido cambia el campo entre un punto y el siguiente. El campo no actúa empujando iones sueltos — actúa deformando fosfolípidos y canales. Y esa deformación es mayor donde el campo cambia más rápido, no donde es más fuerte."},
+
+{type:"gradient",section:"El instrumento",title:"Lo que importa no es la intensidad — es el gradiente.",
+  left:["Imán simple (bipolar)","Un solo par de polos","El campo cae de forma pareja. La zona de gradiente activo es solo el borde del imán."],
+  right:["Arreglo cuadripolar (N-S-N-S)","Polos alternados en rejilla","La frontera entre polos opuestos es donde el campo cambia de dirección de forma abrupta — el gradiente más empinado posible."],
+  note:"Vanderbilt (McLean, Cavopol, Holcomb, Engstrom, 1991–2005): el gradiente empinado modula la permeabilidad de membrana a Na⁺ y Ca²⁺ en fibras nerviosas sensoriales, y bloquea sus potenciales de acción de forma reversible en ~5 minutos. Un imán bipolar con la misma intensidad, pero sin ese gradiente, no produce el bloqueo. Por eso la Técnica 2 usa dos polos opuestos adyacentes — la frontera entre ellos es la zona de máxima actividad biológica, y también el mecanismo detrás del gradiente trauma-riñón a través del eje T10–L2."},
+
+{type:"split",section:"El instrumento",title:"El gradiente no es más campo — es un efecto biológico distinto.",
+  leftIcon:fieldDiffuseIcon("#0F6E56"),leftStat:"∝ 1/d³",leftStatLabel:"Decae con la distancia",leftTitle:"Aplicación clásica — un imán",leftBody:"Reorienta fosfolípidos y canales en todo el volumen bajo el imán. El efecto es difuso y proporcional a qué tan fuerte es el campo en cada punto — cae rápido con la profundidad, sin ningún punto de actividad concentrada.",
+  rightIcon:boundaryIcon("#BA7517"),rightStat:"~5 min",rightStatLabel:"Bloqueo reversible",rightTitle:"Aplicación con gradiente — dos polos opuestos",rightBody:"En la frontera entre los dos polos, el campo cambia de dirección de forma abrupta. Ahí, el gradiente modula directamente la permeabilidad de Na⁺ y Ca²⁺ en fibras nerviosas y bloquea sus potenciales de acción — sin importar qué tan fuerte sea el campo en ese punto."},
+
+{type:"quote",section:"El instrumento",title:"Lo que ya hacían con las manos, hoy tiene <em>nombre y respaldo publicado.</em>",body:"2025, BioEssays: “farmacología magnética de canales iónicos” — un campo magnético puede modular los mismos canales que un fármaco, sin el fármaco."},
+
+{type:"cascade",section:"La inversión causal",title:"El pH es consecuencia — no la causa.",steps:[
+  ["Tres vías convergentes","Anisotropía diamagnética (Rosen, 2003) · canales Ca²⁺ tipo T (Wu et al., 2022) · clusters Fe-S paramagnéticos mitocondriales (Castello et al., 2023)."],
+  ["Los clusters Fe-S son paramagnéticos","El CME altera sus interacciones hiperfinas → cambia su potencial redox → cambia la velocidad del transporte de electrones."],
+  ["Cambia la partición de ROS","Superóxido vs. peróxido de hidrógeno — el estado redox intracelular se modifica."],
+  ["Las tres vías convergen en el Vmem","El campo actúa primero sobre el voltaje de membrana — no sobre el pH."],
+  ["El pH se ajusta después, como consecuencia","Vía intercambiadores Na⁺/H⁺ y transportadores Cl⁻/HCO₃⁻ acoplados al Vmem."]
+]},
+
+{type:"statement",section:"El punto trauma",title:"Una zona traumatizada se convierte en <strong>una isla eléctrica.</strong>",body:"El punto trauma, explicado con mecanismo — no con tradición oral."},
+
+{type:"network",section:"La isla de despolarización",title:"Del golpe a la desconexión del colectivo.",variant:"isla",caption:["K⁺ sube de 4 a 20–40 mM → Vmem se despolariza de −70 a −30/−40 mV","Las gap junctions se cierran → la zona se desconecta del colectivo bioeléctrico"]},
+
+{type:"statement",section:"Por qué el riñón",title:"El riñón configura el <strong>voltaje de referencia</strong> de todo el organismo.",body:"Único órgano que regula el potasio extracelular con precisión de ±0.5 mM. Un cambio de 1 mM ahí mueve el Vmem de cada célula del cuerpo entre 10 y 15 milivoltios."},
+
+{type:"trio",section:"Tres hipótesis, no cerradas",title:"¿Cómo conectan los dos imanes trauma y riñón?",cols:[
+  ["Gradiente inter-imanes","Cruza el eje simpático T10–L2 y recalibra la excreción renal de K⁺."],
+  ["Reconexión del colectivo","TAME: el imán interroga al colectivo, la pierna señala qué nodo resuelve la incoherencia."],
+  ["Efecto normalizador","El campo normaliza hacia el atractor correcto, en el trauma y en el riñón a la vez."]
+],converge:"No son excluyentes — probablemente operan juntas, en escalas distintas."},
+
+{type:"statement",section:"El sustrato continuo",title:"Los dos imanes <strong>no se comunican por magnetismo.</strong>",body:"A 10–40 cm de distancia, el campo de cada imán ya decayó a valores despreciables — no hay interacción magnética directa entre ambos. Si existe una conexión, es biológica, no del campo."},
+
+{type:"mechanisms",section:"El sustrato continuo",title:"Cuatro sistemas documentados describen el mismo sustrato.",items:[
+  ["fascia","Planos fasciales","190 de 238 puntos anatómicos caen sobre planos fasciales, P < 0.001 (Langevin & Yandow, 2002)."],
+  ["matrix","MEC continua","Sin interrupciones anatómicas entre la matriz de un tejido y la del tejido adyacente (Pischinger; Ulm & Weiss, 2014)."],
+  ["gapjunction","Redes bioeléctricas","Gap junctions señalizan entre extremidades contralaterales en ~30 segundos (Busse et al., 2018)."],
+  ["malt","MALT regionalizado","Territorios inmunológicos regionales, dependientes del estado de la MEC subyacente."]
+]},
+
+{type:"cascade",section:"El sustrato continuo",title:"El iliopsoas: transductor somático-autonómico.",tight:true,steps:[
+  ["La fascia toracolumbar une cráneo y sacro","Envuelve la cadena simpática paravertebral completa."],
+  ["El iliopsoas se fusiona con esa cadena","Vía el ligamento arcuato medial del diafragma (Walford, 2023)."],
+  ["Tiene inervación dual — somática y simpática","Es el músculo cuya respuesta se observa en el rastreo."],
+  ["La perturbación viaja por fascia y gap junctions","No por resonancia magnética entre los dos imanes."]
+]},
+
+{type:"table",section:"No siempre es el riñón",title:"El punto complementario varía según la variable dominante.",rows:[
+  ["Riñón","K⁺, Na⁺, Cl⁻, volumen","Despolarización por K⁺","T10–L2"],
+  ["Bazo","Reflejo inflamatorio (TNF-α, IL-6)","Inflamación sistémica","T6–T10, vagal"],
+  ["Hígado","Fase aguda, lactato","Trauma extenso, necrosis","T7–T10, vagal"],
+  ["Tiroides","Na⁺/K⁺-ATPasa global","Trauma crónico no resuelto","T1–T4"],
+  ["Suprarrenal","Aldosterona, cortisol","Estrés sistémico","T10–L1"]
+]},
+
+{type:"cascade",section:"El bazo — reflejo inflamatorio",title:"El circuito neural mejor documentado para apagar la inflamación.",steps:[
+  ["1 — Nervio vago → ganglio celíaco","Señal eferente."],
+  ["2 — Ganglio celíaco → nervio esplénico","Se transmite hacia el bazo."],
+  ["3 — Nervio esplénico libera noradrenalina en el bazo","Sobre linfocitos T ChAT⁺."],
+  ["4 — Los linfocitos T liberan acetilcolina","Actúa sobre receptores α7 nicotínicos de los macrófagos."],
+  ["5 — Se inhibe TNF-α, IL-1β, IL-6, HMGB1","Tracey, Nature 2000 y 2003. Base del estimulador vagal aprobado por la FDA en 2025 para artritis reumatoide."]
+]},
+
+{type:"cascade",section:"Técnica 1 — distante",title:"Punto trauma distante, paso a paso.",tight:true,aside:distantPanel(),steps:[
+  ["1 — Imán negativo en el trauma","Rastreo estándar. Confirmar el acortamiento."],
+  ["2 — Buscar el complementario","Empezando por el riñón, hasta encontrar nivelación."],
+  ["3 — Dejar 20 a 30 minutos","El tiempo del mecanismo más lento del grupo."],
+  ["4 — Verificar retirando el imán distante","¿Persiste el acortamiento?"],
+  ["5 — Sin acortamiento, el proceso se completó",""]
+]},
+
+{type:"cascade",section:"Técnica 2 — local",title:"Aplicación local, para dolor agudo.",tight:true,aside:quadripolarPanel(),steps:[
+  ["1 — Dos polos opuestos, adyacentes","Directo sobre la zona de máximo dolor."],
+  ["2 — Frontera perpendicular a las fibras","Si se puede estimar su dirección."],
+  ["3 — Dejar 15 a 30 minutos","El gradiente bloquea, de forma reversible, la conducción del dolor, en ~5 minutos."]
+]},
+
+{type:"split",section:"Las dos técnicas se complementan",title:"Rápido y local, o lento y sistémico.",
+  leftStat:"~5 min",leftStatLabel:"Bloqueo del dolor",leftTitle:"Técnica 2 — local",leftBody:"El gradiente en la frontera entre los dos polos bloquea la conducción nociceptiva. Rápida, pero no recalibra la regulación sistémica.",
+  rightStat:"20–30 min",rightStatLabel:"Recalibración renal",rightTitle:"Técnica 1 — distante",rightBody:"El gradiente entre trauma y riñón modula el eje T10–L2. Más lenta, pero actúa sobre la regulación de todo el organismo. Se combinan en la Técnica 4."},
+
+{type:"statement",section:"Contraindicaciones",title:"Marcapasos, embarazo, heridas abiertas, implantes ferromagnéticos.",body:"Y cuidado con alergia al níquel si no hay cubierta entre el imán y la piel."},
+
+{type:"quote",section:"Cierre",title:"El operador no trata el trauma — <em>facilita que el colectivo se autorregule.</em>",body:"El campo actúa primero sobre el Vmem. El Vmem mueve los flujos iónicos. El pH cambia como consecuencia, no como causa. Los 20 a 30 minutos son el tiempo que el colectivo necesita para recalcular su propio patrón."},
+
+{type:"close",title:"Gracias",body:"Preguntas — Jueves de Wellkitt · Regulación Bioeléctrica"}
+];
+
+const ICONS={
+  membrane:`<svg viewBox="0 0 100 70"><path d="M5,20 Q15,10 25,20 T45,20 T65,20 T85,20" fill="none" stroke="#0F6E56" stroke-width="2.5"/><path d="M5,32 Q15,42 25,32 T45,32 T65,32 T85,32" fill="none" stroke="#0F6E56" stroke-width="2.5"/><rect x="42" y="14" width="14" height="24" rx="5" fill="none" stroke="#2C2C2A" stroke-width="2"/><path d="M20,55 A30,10 0 0,0 80,55" fill="none" stroke="#BA7517" stroke-width="1.6" stroke-dasharray="3,4"/><path d="M74,50 l6,5 l-6,5" fill="none" stroke="#BA7517" stroke-width="1.6"/></svg>`,
+  channel:`<svg viewBox="0 0 100 70"><path d="M30,6 Q20,35 30,64" fill="none" stroke="#0F6E56" stroke-width="3"/><path d="M70,6 Q80,35 70,64" fill="none" stroke="#0F6E56" stroke-width="3"/><circle cx="50" cy="16" r="7" fill="#D85A30"/><text x="50" y="19" text-anchor="middle" font-family="Arial" font-size="8" fill="#fff">Ca</text><circle cx="50" cy="50" r="7" fill="#D85A30" opacity="0.4"/><path d="M50,26 L50,42" stroke="#D85A30" stroke-width="2" marker-end="url(#arrowdown)"/><defs><marker id="arrowdown" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#D85A30"/></marker></defs></svg>`,
+  crystal:`<svg viewBox="0 0 100 70"><polygon points="50,10 68,22 68,46 50,58 32,46 32,22" fill="none" stroke="#534AB7" stroke-width="2.5"/><text x="50" y="30" text-anchor="middle" font-family="Arial" font-size="10" fill="#534AB7">N</text><text x="50" y="46" text-anchor="middle" font-family="Arial" font-size="10" fill="#534AB7">S</text><path d="M14,34 Q22,14 34,10" fill="none" stroke="#534AB7" stroke-width="1.4" opacity="0.55"/><path d="M14,34 Q22,54 34,58" fill="none" stroke="#534AB7" stroke-width="1.4" opacity="0.55"/><path d="M86,34 Q78,14 66,10" fill="none" stroke="#534AB7" stroke-width="1.4" opacity="0.55"/><path d="M86,34 Q78,54 66,58" fill="none" stroke="#534AB7" stroke-width="1.4" opacity="0.55"/></svg>`,
+  cell:`<svg viewBox="0 0 100 70"><circle cx="50" cy="35" r="27" fill="none" stroke="#2C2C2A" stroke-width="2"/><path d="M50,8 A27,27 0 0,1 50,62 Z" fill="#D85A30" opacity="0.28"/><path d="M50,8 A27,27 0 0,0 50,62 Z" fill="#0F6E56" opacity="0.28"/><text x="27" y="39" text-anchor="middle" font-family="Arial" font-size="11" fill="#0F6E56">M2</text><text x="66" y="39" text-anchor="middle" font-family="Arial" font-size="11" fill="#D85A30">M1</text><path d="M40,35 L60,35" stroke="#2C2C2A" stroke-width="1.6" marker-end="url(#arrowL)"/><defs><marker id="arrowL" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 Z" fill="#2C2C2A"/></marker></defs></svg>`,
+  fascia:`<svg viewBox="0 0 100 70"><path d="M5,20 Q30,10 50,20 T95,20" fill="none" stroke="#0F6E56" stroke-width="2"/><path d="M5,35 Q30,25 50,35 T95,35" fill="none" stroke="#0F6E56" stroke-width="2"/><path d="M5,50 Q30,40 50,50 T95,50" fill="none" stroke="#0F6E56" stroke-width="2"/><circle cx="50" cy="35" r="5" fill="#BA7517"/></svg>`,
+  matrix:`<svg viewBox="0 0 100 70"><path d="M8,35 Q30,15 50,35 T92,35" fill="none" stroke="#534AB7" stroke-width="1.6" stroke-dasharray="1,7" stroke-linecap="round"/><circle cx="8" cy="35" r="4" fill="#534AB7"/><circle cx="30" cy="22" r="4" fill="#534AB7"/><circle cx="50" cy="35" r="4" fill="#534AB7"/><circle cx="70" cy="22" r="4" fill="#534AB7"/><circle cx="92" cy="35" r="4" fill="#534AB7"/></svg>`,
+  gapjunction:`<svg viewBox="0 0 100 70"><circle cx="30" cy="35" r="22" fill="none" stroke="#0F6E56" stroke-width="2"/><circle cx="70" cy="35" r="22" fill="none" stroke="#0F6E56" stroke-width="2" opacity="0.5"/><rect x="44" y="27" width="12" height="16" fill="#D85A30"/><path d="M50,20 L50,50" stroke="#D85A30" stroke-width="1.4" stroke-dasharray="2,3"/></svg>`,
+  malt:`<svg viewBox="0 0 100 70"><path d="M50,6 L82,18 V38 Q82,58 50,66 Q18,58 18,38 V18 Z" fill="none" stroke="#BA7517" stroke-width="2"/><circle cx="40" cy="30" r="4" fill="#BA7517"/><circle cx="60" cy="30" r="4" fill="#BA7517"/><circle cx="50" cy="46" r="4" fill="#BA7517"/></svg>`
+};
+
+function chrome(s,i,dark){return `<img class="dipole" src="${logo+(dark?'icono_dipolo_dark.svg':'icono_dipolo.svg')}" alt=""><div class="section">${s.section||""}</div><div class="folio">${String(i+1).padStart(2,"0")}</div>`}
+
+function render(s,i){
+ let x=`<section class="slide ${s.type}">`;
+
+ if(s.type==="cover") return x+`<img class="program" src="${logo}programa_el_cuerpo_electrico.svg" alt=""><img class="endorsement" src="${logo}endorsement_instituto.svg" alt="">${signalPath()}<div class="copy"><div class="eyebrow">Jueves de Wellkitt</div><h1>${s.title.replace("|","<span>")}</span></h1><p class="lead">${s.body}</p></div><div class="presenter">Dr. Miguel Ojeda Rios · Instituto Centrobioenergetica</div></section>`;
+
+ if(s.type==="quote") return x+`<img class="program" src="${logo}programa_el_cuerpo_electrico.svg" alt=""><img class="endorsement" src="${logo}endorsement_instituto.svg" alt=""><div class="dots">${dipoleIcon('#5DCAA5',26)}</div><div class="copy"><div class="eyebrow">${s.section}</div><h2>${s.title}</h2><p>${s.body}</p></div><div class="folio">${String(i+1).padStart(2,"0")}</div></section>`;
+
+ if(s.type==="close") return x+`<img class="program" src="${logo}programa_el_cuerpo_electrico.svg" alt=""><div class="copy"><h2>${s.title}</h2><p class="lead">${s.body}</p></div></section>`;
+
+ x+=chrome(s,i);
+
+ if(s.type==="statement")x+=`<div class="accent"></div><div class="copy"><div class="eyebrow">${s.section}</div><h2>${s.title}</h2><p class="lead">${s.body}</p></div>`;
+
+ if(s.type==="split")x+=`<div class="head"><h2 class="title">${s.title}</h2></div><div class="cols"><div class="col a"><div class="icon">${s.leftIcon||clockIcon("#0F6E56")}</div><div class="stat">${s.leftStat}</div><div class="statlabel">${s.leftStatLabel}</div><h3>${s.leftTitle}</h3><p>${s.leftBody}</p></div><div class="divider"><div class="dipole-mid">${dipoleIcon("#77756F",13)}</div></div><div class="col b"><div class="icon">${s.rightIcon||layersIcon("#BA7517")}</div><div class="stat">${s.rightStat}</div><div class="statlabel">${s.rightStatLabel}</div><h3>${s.rightTitle}</h3><p>${s.rightBody}</p></div></div>`;
+
+ if(s.type==="table")x+=`<div class="head"><h2 class="title">${s.title}</h2></div><div class="rows"><div class="row head-row"><span>Nodo</span><span>Controla</span><span>Aparece cuando</span><span>Inervación</span></div>${s.rows.map(r=>`<div class="row"><b>${r[0]}</b><span>${r[1]}</span><span>${r[2]}</span><span>${r[3]}</span></div>`).join("")}</div>`;
+
+ if(s.type==="cascade")x+=`<div class="head"><h2 class="title">${s.title}</h2></div><div class="wrap ${s.aside?'aside':''}"><div class="steps ${s.tight?'tight':''}"><div class="spine"></div>${s.steps.map((st,j)=>`<div class="step"><div class="node">${String(j+1).padStart(2,"0")}</div><div class="body"><b>${st[0]}</b>${st[1]?`<p>${st[1]}</p>`:""}</div></div>`).join("")}</div></div>${s.aside?`<div class="aside-visual">${s.aside}</div>`:""}`;
+
+ if(s.type==="trace")x+=`<div class="head"><h2 class="title">${s.title}</h2><p style="margin-top:6px;font:14px Arial;color:var(--muted)">${s.note||""}</p></div><div class="chart">${traceChart()}</div><div class="legend"><span><i style="background:#0F6E56"></i>Salamandra — regenera</span><span><i style="background:#BA7517"></i>Rana — cicatriza</span></div>`;
+
+ if(s.type==="network")x+=`<div class="head"><h2 class="title">${s.title}</h2></div><div class="diagram">${networkDiagram(s.variant)}</div><div class="caption">${s.caption.map(c=>`<span>${c}</span>`).join("")}</div>`;
+
+ if(s.type==="field")x+=`<div class="head"><h2 class="title">${s.title}</h2></div><div class="diagram">${fieldRings()}</div><div class="readout">${s.readout.map(r=>`<div class="r"><span>${r[0]}</span><b>${r[1]}</b></div>`).join("")}<p style="font:14px/1.4 Arial;color:#5A5852;margin-top:6px">${s.note||""}</p></div>`;
+
+ if(s.type==="mechanisms")x+=`<div class="head"><h2 class="title">${s.title}</h2></div><div class="grid">${s.items.map(it=>`<div class="card">${ICONS[it[0]]}<b>${it[1]}</b><p>${it[2]}</p></div>`).join("")}</div>`;
+
+ if(s.type==="gconcept")x+=`<div class="head"><h2 class="title">${s.title}</h2></div><div class="chart">${gradientConceptChart()}</div><div class="note">${s.note}</div>`;
+
+ if(s.type==="gradient")x+=`<div class="head"><h2 class="title">${s.title}</h2></div><div class="panels"><div class="panel"><b>${s.left[0]}</b><span class="sub">${s.left[1]}</span><div class="diagram-box">${bipolarPanel()}</div><p>${s.left[2]}</p></div><div class="panel"><b>${s.right[0]}</b><span class="sub">${s.right[1]}</span><div class="diagram-box">${quadripolarPanel()}</div><p>${s.right[2]}</p></div></div><div class="note">${s.note}</div>`;
+
+ if(s.type==="gauge")x+=`<div class="head"><h2 class="title">${s.title}</h2></div><div class="scale">${gaugeTicks(s.items)}</div><div class="axis"><span>${s.min}</span><span>${s.max}</span></div>`;
+
+ if(s.type==="trio")x+=`<div class="head"><h2 class="title">${s.title}</h2></div><div class="cols">${s.cols.map(c=>`<div class="col"><b>${c[0]}</b><p>${c[1]}</p></div>`).join("")}</div>${trioWires()}<div class="converge">${s.converge}</div>`;
+
+ return x+`<div class="rule"></div></section>`;
+}
+document.getElementById("deck").innerHTML=slides.map(render).join("");
+function fitDeck(){
+ const deck=document.getElementById("deck");
+ if(innerWidth<1320){
+   const scale=(innerWidth-24)/1280;
+   deck.style.transform=`scale(${scale})`;deck.style.transformOrigin="top left";deck.style.width="1280px";deck.style.position="absolute";deck.style.left="0";deck.style.top="0";
+   document.body.style.height=`${deck.scrollHeight*scale}px`;
+ }else{deck.style.transform="";deck.style.width="";deck.style.position="";deck.style.left="";deck.style.top="";document.body.style.height="";}
+}
+fitDeck();addEventListener("resize",fitDeck);addEventListener("load",fitDeck);
+</script>
+</body>
+</html>
