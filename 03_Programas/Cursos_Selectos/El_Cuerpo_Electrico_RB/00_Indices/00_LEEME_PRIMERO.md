@@ -11,7 +11,7 @@
 
 ```
 00_Indices/                       ← Empieza aquí
-Curso_Sistema_Nuevo/              ← El programa y el sistema nuevo (cursorb)
+Curso_Vigente/                    ← El programa oficial + la teoría vigente (Sistema_Vigente/)
 Fundamentos_Cientificos/          ← El Tratado (ciencia de respaldo)
 Materiales_Antiguos/              ← Documentos con marco anterior (a actualizar)
 Marca_Visual/                     ← Identidad visual (logos, branding, dirección de arte)
@@ -21,18 +21,18 @@ Referencia/                       ← Materiales de investigación y contexto
 
 ---
 
-## CURSO_SISTEMA_NUEVO — El programa y el sistema nuevo
+## CURSO_VIGENTE — El programa y el sistema vigente
 
 **Aquí vive todo lo que necesitas para enseñar el curso.**
 
 | Documento / carpeta | Qué es |
 |---|---|
 | **`Programa_El_Cuerpo_Electrico_RB.md`** | **El programa del curso** — módulos, horarios, competencias. Canónico, listo para difundir. |
-| **`cursorb/`** | Workspace con la teoría del sistema nuevo (agentes + terrenos). Lee primero `cursorb/00_LEEME_cursorb.md`. |
-| `cursorb/concepto-agente-biologico.md` | Fundacional: qué es un agente, TAME, ejemplos por órgano. |
-| `cursorb/Sistema_Nuevo_Regulacion_por_Agentes.md` | Lógica clínica del nuevo sistema (modelo de 4 niveles). |
-| `cursorb/Regulacion_para_Mantenimiento_Modelo_por_Terrenos.md` | Modelo de 1 eje + 5 terrenos (salutogénesis + carga alostática). |
-| `cursorb/Fichas_Terrenos/` | Carpeta para los documentos clave a construir (5 fichas de terrenos). |
+| **`Sistema_Vigente/`** | Workspace con la teoría del sistema nuevo (agentes + terrenos). Lee primero `Sistema_Vigente/00_LEEME_Sistema_Vigente.md`. |
+| `Sistema_Vigente/concepto-agente-biologico.md` | Fundacional: qué es un agente, TAME, ejemplos por órgano. |
+| `Sistema_Vigente/Sistema_Nuevo_Regulacion_por_Agentes.md` | Lógica clínica del nuevo sistema (modelo de 4 niveles). |
+| `Sistema_Vigente/Regulacion_para_Mantenimiento_Modelo_por_Terrenos.md` | Modelo de 1 eje + 5 terrenos (salutogénesis + carga alostática). |
+| `Sistema_Vigente/Fichas_Terrenos/` | Carpeta para los documentos clave a construir (5 fichas de terrenos). |
 
 ---
 
@@ -53,7 +53,7 @@ Referencia/                       ← Materiales de investigación y contexto
 
 | Documento | Qué es | Acción pendiente |
 |---|---|---|
-| `Ficha_Programa_El_Cuerpo_Electrico_RB.md` | Ficha corta del programa | Reescribir al sistema nuevo |
+| `OBSOLETO_Ficha_Programa_El_Cuerpo_Electrico_RB.md` | Ficha corta del programa | Reescribir al sistema nuevo |
 | `Pagina_Web_El_Cuerpo_Electrico_RB.md` | Copy de la página web | Reescribir al sistema nuevo |
 | `Documento_Equipo_RB.md` | Doc interno del equipo (marzo 2026) | Reescribir al sistema nuevo |
 
@@ -93,7 +93,7 @@ Referencia/                       ← Materiales de investigación y contexto
 
 ## Reglas de trabajo (IA y equipo)
 
-1. **Para el curso, la verdad está en `Curso_Sistema_Nuevo/`.**
+1. **Para el curso, la verdad está en `Curso_Vigente/`.**
 2. **`Fundamentos_Cientificos/` es ciencia de respaldo, no el método.**
 3. **No describir como "par biomagnético evolucionado".** Es un sistema distinto.
 4. **No inventar contenido.** Sin fuente, se dice explícitamente.

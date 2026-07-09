@@ -1,7 +1,7 @@
 # Guion del Webinar — El Cuerpo Eléctrico
 ## Palabra por palabra · 3 de julio 2026 · ~62 min de contenido (≈65–67 con interacción) + Q&A
 
-> **Fuentes de este guion:** `Propuesta_Comercial_El_Cuerpo_Electrico.md` (estructura y oferta), `Estrategia_Oferta_Valor_y_Slogans.md` (voz y palabras prohibidas), `Referencia/Modelo_Ojo_Adaptativo/Manuscrito/Paper_El_Ojo_Adaptativo_v4.md` (caso del ojo), `cursorb/concepto-agente-biologico.md` y `cursorb/Regulacion_para_Mantenimiento_Modelo_por_Terrenos.md` (los ejes de regulación), `Curso_Sistema_Nuevo/Programa_El_Cuerpo_Electrico_RB.md` (datos del curso), y el **Tratado de Regulación Bioeléctrica** completo (`Fundamentos_Cientificos/Regulacion-bioelectrica/`, capítulos 1, 2, 3, 4, 5, 10, 11, 13, 15, 16, 19 + Documento Fundacional) para la evidencia científica citada.
+> **Fuentes de este guion:** `Propuesta_Comercial_El_Cuerpo_Electrico.md` (estructura y oferta), `Estrategia_Oferta_Valor_y_Slogans.md` (voz y palabras prohibidas), `Referencia/Modelo_Ojo_Adaptativo/Manuscrito/Paper_El_Ojo_Adaptativo_v4.md` (caso del ojo), `Sistema_Vigente/concepto-agente-biologico.md` y `Sistema_Vigente/Regulacion_para_Mantenimiento_Modelo_por_Terrenos.md` (los ejes de regulación), `Curso_Vigente/Programa_El_Cuerpo_Electrico_RB.md` (datos del curso), y el **Tratado de Regulación Bioeléctrica** completo (`Fundamentos_Cientificos/Regulacion-bioelectrica/`, capítulos 1, 2, 3, 4, 5, 10, 11, 13, 15, 16, 19 + Documento Fundacional) para la evidencia científica citada.
 >
 > **Regla de voz (de `Estrategia_Oferta_Valor_y_Slogans.md`, ajustada):**
 > - Decir: **voltaje, señal eléctrica, capacidad de adaptarte, desatascar/liberar la señal, qué órgano se atascó, campo magnético, el instrumento, red bioeléctrica, nodo, dipolo**.

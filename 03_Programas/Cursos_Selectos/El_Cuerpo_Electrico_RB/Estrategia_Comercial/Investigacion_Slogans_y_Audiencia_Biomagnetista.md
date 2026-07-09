@@ -1,7 +1,7 @@
 # Investigación: ¿Son apropiados los slogans? ¿Por qué lo tomaría un biomagnetista?
 
 > **Pregunta que responde este documento:** ¿los slogans propuestos son apropiados, y por qué tomaría este curso alguien que **ya sabe** par biomagnético / biomagnetismo? Y ¿cómo sostener honestamente que es un **sistema nuevo** y no "el par evolucionado"?
-> **Base:** documentos propios del método (`cursorb/`, programa, Tratado) + verificación del panorama competitivo en web. Fuentes al final.
+> **Base:** documentos propios del método (`Sistema_Vigente/`, programa, Tratado) + verificación del panorama competitivo en web. Fuentes al final.
 
 *Instituto Centrobioenergetica · Julio 2026*
 
@@ -142,9 +142,9 @@ Frases-puente que sostienen el "sistema nuevo" sin mentir:
 ## Fuentes
 
 **Documentos internos del método (base principal):**
-- `cursorb/Sistema_Nuevo_Regulacion_por_Agentes.md` — Propuesta A ("el agente manda, el rastreo confirma"), el giro de la unidad de razonamiento.
-- `cursorb/concepto-agente-biologico.md` — el alumno "entiende por qué, no solo dónde" y "puede diseñar un protocolo para un paciente que nunca vio"; legitimidad vía TAME.
-- `Curso_Sistema_Nuevo/Programa_El_Cuerpo_Electrico_RB.md` — estructura del curso.
+- `Sistema_Vigente/Sistema_Nuevo_Regulacion_por_Agentes.md` — Propuesta A ("el agente manda, el rastreo confirma"), el giro de la unidad de razonamiento.
+- `Sistema_Vigente/concepto-agente-biologico.md` — el alumno "entiende por qué, no solo dónde" y "puede diseñar un protocolo para un paciente que nunca vio"; legitimidad vía TAME.
+- `Curso_Vigente/Programa_El_Cuerpo_Electrico_RB.md` — estructura del curso.
 - `Estrategia_Comercial/Estrategia_Oferta_Valor_y_Slogans.md` — guía de voz y frases descartadas.
 
 **Verificación web (panorama competitivo):**

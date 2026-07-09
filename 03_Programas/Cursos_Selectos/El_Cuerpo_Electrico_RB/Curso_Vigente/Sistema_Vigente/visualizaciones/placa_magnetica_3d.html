@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Placa magnetica hibrida | Visualizador 3D</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --panel: rgba(13, 18, 24, 0.82);
+      --panel-solid: #111820;
+      --line: rgba(255, 255, 255, 0.16);
+      --text: #f3f7fb;
+      --muted: #a7b4c2;
+      --cyan: #52d8ff;
+      --amber: #ffbc47;
+      --red: #ff604f;
+      --blue: #3aa7ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #0b1015;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    #app {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      grid-template-columns: minmax(280px, 340px) 1fr;
+      background:
+        radial-gradient(circle at 68% 20%, rgba(116, 190, 235, 0.2), transparent 30%),
+        linear-gradient(135deg, #111820 0%, #1d2832 54%, #0d1218 100%);
+    }
+
+    #scene {
+      position: relative;
+      min-width: 0;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hud {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 22px;
+      border-right: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(8, 12, 17, 0.92), rgba(13, 18, 24, 0.76));
+      backdrop-filter: blur(18px);
+      overflow-y: auto;
+    }
+
+    .brand {
+      display: grid;
+      gap: 8px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(25px, 2.4vw, 36px);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .panel {
+      display: grid;
+      gap: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+    }
+
+    .panel h2 {
+      margin: 0;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #dfe9f2;
+    }
+
+    .segmented {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 5px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    button {
+      min-height: 34px;
+      border: 0;
+      border-radius: 6px;
+      color: var(--text);
+      background: transparent;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 750;
+      cursor: pointer;
+      transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    button:hover { background: rgba(255, 255, 255, 0.08); }
+    button.active { background: #eaf4fb; color: #111820; }
+    button:active { transform: translateY(1px); }
+
+    .control {
+      display: grid;
+      gap: 9px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--cyan);
+    }
+
+    .toggles {
+      display: grid;
+      gap: 8px;
+    }
+
+    label.toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 34px;
+      color: #dce7ef;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    label.toggle input {
+      width: 38px;
+      height: 20px;
+      appearance: none;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      box-shadow: inset 0 0 0 1px var(--line);
+      cursor: pointer;
+      position: relative;
+    }
+
+    label.toggle input::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      transition: transform 160ms ease;
+    }
+
+    label.toggle input:checked {
+      background: linear-gradient(90deg, #2cc8ff, #ffc24d);
+    }
+
+    label.toggle input:checked::after {
+      transform: translateX(18px);
+    }
+
+    .legend {
+      display: grid;
+      gap: 10px;
+    }
+
+    .legend-item {
+      display: grid;
+      grid-template-columns: 12px 1fr auto;
+      align-items: center;
+      gap: 9px;
+      color: #d7e2eb;
+      font-size: 12px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .specs {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .specs strong {
+      color: var(--text);
+      font-weight: 760;
+      text-align: right;
+    }
+
+    .topbar {
+      position: absolute;
+      z-index: 2;
+      left: 24px;
+      right: 24px;
+      top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      pointer-events: none;
+    }
+
+    .status {
+      width: min(520px, 100%);
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(10, 14, 20, 0.66);
+      backdrop-filter: blur(14px);
+      pointer-events: auto;
+    }
+
+    .status strong {
+      display: block;
+      font-size: 13px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .status span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .camera-buttons {
+      display: flex;
+      align-items: start;
+      gap: 6px;
+      pointer-events: auto;
+    }
+
+    .camera-buttons button {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      background: rgba(10, 14, 20, 0.66);
+      backdrop-filter: blur(14px);
+      font-size: 15px;
+    }
+
+    .label {
+      max-width: 176px;
+      padding: 7px 9px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      background: rgba(10, 14, 20, 0.8);
+      color: #f6fbff;
+      font-size: 11px;
+      line-height: 1.25;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+    }
+
+    .label b {
+      display: block;
+      color: #fff;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .north, .south {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #07111b;
+      font-size: 15px;
+      font-weight: 900;
+      pointer-events: none;
+      box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.24);
+    }
+
+    .north { background: #48b8ff; }
+    .south { background: #ff654e; }
+
+    .footer-note {
+      color: #7f8d99;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 860px) {
+      #app {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+      }
+
+      .hud {
+        max-height: 44vh;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding: 14px;
+      }
+
+      .panel {
+        padding: 12px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .topbar {
+        left: 12px;
+        right: 12px;
+        top: 12px;
+        flex-direction: column;
+      }
+
+      .camera-buttons {
+        align-self: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main id="app">
+    <aside class="hud" aria-label="Controles del visualizador">
+      <section class="brand">
+        <div class="eyebrow">Guia de construccion 3D</div>
+        <h1>Placa magnetica hibrida</h1>
+        <p class="subtitle">Modelo interactivo de capas, cavidades, polaridad y campo conceptual para presentacion profesional.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Modo de vista</h2>
+        <div class="segmented" role="group" aria-label="Modo de vista">
+          <button class="active" data-mode="exploded" type="button">Explosion</button>
+          <button data-mode="section" type="button">Corte</button>
+          <button data-mode="clinical" type="button">Aplicacion</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Ajustes</h2>
+        <div class="control">
+          <div class="row"><span>Separacion de capas</span><strong id="gapValue">1.00x</strong></div>
+          <input id="gap" type="range" min="0" max="1.6" value="1" step="0.01" />
+        </div>
+        <div class="control">
+          <div class="row"><span>Opacidad de cubiertas</span><strong id="opacityValue">76%</strong></div>
+          <input id="opacity" type="range" min="0.18" max="1" value="0.76" step="0.01" />
+        </div>
+        <div class="control">
+          <div class="row"><span>Zoom de camara</span><strong id="zoomValue">1.00x</strong></div>
+          <input id="zoom" type="range" min="0.55" max="1.35" value="1" step="0.01" />
+        </div>
+        <div class="toggles">
+          <label class="toggle">Lineas de campo <input id="fieldToggle" type="checkbox" checked /></label>
+          <label class="toggle">Etiquetas tecnicas <input id="labelToggle" type="checkbox" /></label>
+          <label class="toggle">Corte didactico <input id="cutToggle" type="checkbox" /></label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Capas</h2>
+        <div class="legend">
+          <div class="legend-item"><span class="dot" style="background:#c7ced4"></span><span>Placa de flujo Fe-Si</span><strong>1.5-2 mm</strong></div>
+          <div class="legend-item"><span class="dot" style="background:#8dbbe7"></span><span>Iman base N52</span><strong>50 x 15 mm</strong></div>
+          <div class="legend-item"><span class="dot" style="background:#232a33"></span><span>Soporte aislante</span><strong>55 x 55 x 5 mm</strong></div>
+          <div class="legend-item"><span class="dot" style="background:#47afff"></span><span>Rejilla N48 N</span><strong>18 x 6 mm</strong></div>
+          <div class="legend-item"><span class="dot" style="background:#ff604f"></span><span>Rejilla N48 S</span><strong>18 x 6 mm</strong></div>
+          <div class="legend-item"><span class="dot" style="background:#434a4e"></span><span>Cubierta ABS</span><strong>2.5 mm</strong></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Especificaciones</h2>
+        <div class="specs">
+          <span>Dimension base</span><strong>55 x 55 mm</strong>
+          <span>Altura total</span><strong>30 mm</strong>
+          <span>Patron polar</span><strong>N-S / S-N</strong>
+          <span>Uso visual</span><strong>Educativo</strong>
+        </div>
+      </section>
+
+      <p class="footer-note">Visualizacion conceptual basada en las referencias. No sustituye evaluacion, diagnostico ni validacion tecnica o clinica.</p>
+    </aside>
+
+    <section id="scene" aria-label="Escena 3D interactiva">
+      <div class="topbar">
+        <div class="status">
+          <strong id="modeTitle">Vista explosionada</strong>
+          <span id="modeText">Capas separadas para mostrar el orden de ensamble y la relacion entre placa de flujo, iman base, soporte, rejilla y cubierta.</span>
+        </div>
+        <div class="camera-buttons" aria-label="Camaras">
+          <button type="button" data-camera="iso" title="Vista isometrica">ISO</button>
+          <button type="button" data-camera="top" title="Vista superior">TOP</button>
+          <button type="button" data-camera="side" title="Vista lateral">LAT</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module">
+    import * as THREE from "three";
+    import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+    import { CSS2DObject, CSS2DRenderer } from "three/addons/renderers/CSS2DRenderer.js";
+
+    const sceneEl = document.querySelector("#scene");
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.Fog(0x17212b, 120, 260);
+
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 500);
+    camera.position.set(112, 78, 142);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(sceneEl.clientWidth, sceneEl.clientHeight);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.45;
+    sceneEl.appendChild(renderer.domElement);
+
+    const labelRenderer = new CSS2DRenderer();
+    labelRenderer.setSize(sceneEl.clientWidth, sceneEl.clientHeight);
+    labelRenderer.domElement.style.position = "absolute";
+    labelRenderer.domElement.style.inset = "0";
+    labelRenderer.domElement.style.pointerEvents = "none";
+    sceneEl.appendChild(labelRenderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.target.set(0, 9, 0);
+    controls.minDistance = 42;
+    controls.maxDistance = 240;
+
+    const root = new THREE.Group();
+    scene.add(root);
+
+    const parts = {
+      flux: new THREE.Group(),
+      base: new THREE.Group(),
+      support: new THREE.Group(),
+      grid: new THREE.Group(),
+      cover: new THREE.Group(),
+      closedCase: new THREE.Group(),
+      field: new THREE.Group(),
+      tissue: new THREE.Group(),
+      labels: new THREE.Group()
+    };
+
+    Object.values(parts).forEach((part) => root.add(part));
+
+    const materials = {
+      metal: new THREE.MeshStandardMaterial({
+        color: 0xd8dde1,
+        metalness: 0.88,
+        roughness: 0.32,
+        envMapIntensity: 0.9
+      }),
+      blueMagnet: new THREE.MeshPhysicalMaterial({
+        color: 0x8fc5f2,
+        metalness: 0.18,
+        roughness: 0.28,
+        clearcoat: 0.55,
+        clearcoatRoughness: 0.24
+      }),
+      black: new THREE.MeshStandardMaterial({
+        color: 0x2b333d,
+        roughness: 0.54,
+        metalness: 0.04
+      }),
+      cover: new THREE.MeshPhysicalMaterial({
+        color: 0x68727a,
+        roughness: 0.42,
+        metalness: 0.02,
+        transparent: true,
+        opacity: 0.76
+      }),
+      caseShell: new THREE.MeshPhysicalMaterial({
+        color: 0x6f7980,
+        roughness: 0.46,
+        metalness: 0.03,
+        clearcoat: 0.18,
+        clearcoatRoughness: 0.45
+      }),
+      caseEdge: new THREE.MeshPhysicalMaterial({
+        color: 0x2f3740,
+        roughness: 0.5,
+        metalness: 0.04
+      }),
+      north: new THREE.MeshPhysicalMaterial({
+        color: 0x39aaff,
+        roughness: 0.24,
+        metalness: 0.14,
+        clearcoat: 0.5
+      }),
+      south: new THREE.MeshPhysicalMaterial({
+        color: 0xff604f,
+        roughness: 0.25,
+        metalness: 0.14,
+        clearcoat: 0.5
+      }),
+      amber: new THREE.MeshBasicMaterial({
+        color: 0xffb444,
+        transparent: true,
+        opacity: 0.9,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+      }),
+      fieldBlue: new THREE.MeshBasicMaterial({
+        color: 0x48b8ff,
+        transparent: true,
+        opacity: 0.72,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+      }),
+      tissue: new THREE.MeshStandardMaterial({
+        color: 0xe5b793,
+        roughness: 0.82,
+        transparent: true,
+        opacity: 0.9
+      })
+    };
+
+    const layerTargets = {
+      exploded: { cover: -24, grid: -10, support: 6, base: 25, flux: 43, tissue: -33 },
+      section: { cover: -16, grid: -7, support: 3, base: 17, flux: 28, tissue: -26 },
+      clinical: { cover: 0, grid: 3.6, support: 9.8, base: 20, flux: 29, closedCase: 0, tissue: -4.6 }
+    };
+
+    const technicalLabels = [];
+    const fieldLines = [];
+    const poleBadges = [];
+
+    const state = {
+      mode: "exploded",
+      gap: 1,
+      opacity: 0.76,
+      zoom: 1,
+      fields: true,
+      labels: false,
+      cutaway: false
+    };
+
+    const cameraPresets = {
+      iso: [112, 78, 142, 0, 7, 0],
+      top: [0, 188, 0.1, 0, 4, 0],
+      side: [176, 42, 0, 0, 7, 0]
+    };
+    let activeCameraPreset = "iso";
+
+    setupLights();
+    buildModel();
+    buildFields();
+    buildLabels();
+    applyState(true);
+    resize();
+    animate();
+
+    function setupLights() {
+      scene.add(new THREE.HemisphereLight(0xe8f7ff, 0x33404d, 2.8));
+
+      const key = new THREE.DirectionalLight(0xffffff, 3.8);
+      key.position.set(38, 62, 44);
+      key.castShadow = true;
+      key.shadow.mapSize.set(2048, 2048);
+      key.shadow.camera.near = 8;
+      key.shadow.camera.far = 150;
+      key.shadow.camera.left = -70;
+      key.shadow.camera.right = 70;
+      key.shadow.camera.top = 70;
+      key.shadow.camera.bottom = -70;
+      scene.add(key);
+
+      const rim = new THREE.DirectionalLight(0x77bfff, 1.5);
+      rim.position.set(-50, 24, -30);
+      scene.add(rim);
+
+      const softFill = new THREE.DirectionalLight(0xfff1d0, 1.65);
+      softFill.position.set(-34, 36, 58);
+      scene.add(softFill);
+
+      const front = new THREE.PointLight(0xbfeaff, 120, 150, 1.7);
+      front.position.set(0, 28, 68);
+      scene.add(front);
+    }
+
+    function buildModel() {
+      const ground = new THREE.Mesh(
+        new THREE.PlaneGeometry(150, 150),
+        new THREE.ShadowMaterial({ color: 0x000000, opacity: 0.16 })
+      );
+      ground.rotation.x = -Math.PI / 2;
+      ground.position.y = -36.5;
+      ground.receiveShadow = true;
+      scene.add(ground);
+
+      const tissue = new THREE.Mesh(new THREE.BoxGeometry(74, 7, 58, 18, 1, 12), materials.tissue);
+      tissue.position.set(0, -3.4, 0);
+      tissue.receiveShadow = true;
+      tissue.castShadow = true;
+      parts.tissue.add(tissue);
+
+      const cover = roundedBox(55, 2.5, 55, 3, materials.cover);
+      cover.castShadow = true;
+      cover.receiveShadow = true;
+      parts.cover.add(cover);
+      addPlateLabel(parts.cover, "Cover", 0xffffff, [0, 1.6, 0], 1.8);
+
+      const gridPlate = roundedBox(55, 5, 55, 2.2, materials.black);
+      gridPlate.castShadow = true;
+      gridPlate.receiveShadow = true;
+      parts.grid.add(gridPlate);
+
+      [
+        [-12, 0, -12, "N"],
+        [12, 0, -12, "S"],
+        [-12, 0, 12, "S"],
+        [12, 0, 12, "N"]
+      ].forEach(([x, y, z, pole]) => {
+        const magnet = cylinder(9, 6, pole === "N" ? materials.north : materials.south);
+        magnet.position.set(x, 4.1, z);
+        parts.grid.add(magnet);
+        addPoleBadge(magnet, pole);
+      });
+
+      const support = cavityPlate();
+      support.castShadow = true;
+      support.receiveShadow = true;
+      parts.support.add(support);
+
+      const baseMagnet = cylinder(25, 11.5, materials.blueMagnet, 96);
+      baseMagnet.position.y = 5.75;
+      baseMagnet.castShadow = true;
+      baseMagnet.receiveShadow = true;
+      parts.base.add(baseMagnet);
+      addPlateLabel(parts.base, "N52", 0x1d394d, [0, 7.4, 21.6], 4.2);
+
+      const flux = new THREE.Mesh(new THREE.BoxGeometry(55, 1.9, 55), materials.metal);
+      flux.position.y = 0.95;
+      flux.castShadow = true;
+      flux.receiveShadow = true;
+      parts.flux.add(flux);
+
+      const brushed = createBrushedTexture();
+      materials.metal.map = brushed;
+      materials.metal.needsUpdate = true;
+
+      const bevelFrame = new THREE.Mesh(
+        new THREE.BoxGeometry(57, 0.55, 57),
+        new THREE.MeshStandardMaterial({ color: 0x87909a, roughness: 0.34, metalness: 0.7 })
+      );
+      bevelFrame.position.y = -0.22;
+      parts.flux.add(bevelFrame);
+
+      buildClosedCase();
+    }
+
+    function buildClosedCase() {
+      const shell = new THREE.Group();
+
+      const bottom = roundedBox(58, 3, 58, 4, materials.caseShell);
+      bottom.position.y = 0;
+      shell.add(bottom);
+
+      const top = roundedBox(58, 3, 58, 4, materials.caseShell);
+      top.position.y = 27;
+      shell.add(top);
+
+      const lipTop = roundedBox(60, 1.2, 60, 4, materials.caseEdge);
+      lipTop.position.y = 25.6;
+      shell.add(lipTop);
+
+      const lipBottom = roundedBox(60, 1.2, 60, 4, materials.caseEdge);
+      lipBottom.position.y = 3.2;
+      shell.add(lipBottom);
+
+      const wallSpecs = [
+        [0, 15, -29.5, 60, 24, 3],
+        [0, 15, 29.5, 60, 24, 3],
+        [-29.5, 15, 0, 3, 24, 60],
+        [29.5, 15, 0, 3, 24, 60]
+      ];
+      wallSpecs.forEach(([x, y, z, w, h, d]) => {
+        const wall = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), materials.caseShell);
+        wall.position.set(x, y, z);
+        wall.castShadow = true;
+        wall.receiveShadow = true;
+        shell.add(wall);
+      });
+
+      const faceLine = new THREE.Mesh(
+        new THREE.BoxGeometry(61, 0.8, 61),
+        new THREE.MeshStandardMaterial({ color: 0x1f262e, roughness: 0.48, metalness: 0.06 })
+      );
+      faceLine.position.y = 12.8;
+      shell.add(faceLine);
+
+      const fluxCap = new THREE.Mesh(new THREE.BoxGeometry(54, 1.2, 54), materials.metal);
+      fluxCap.position.y = 28.8;
+      fluxCap.castShadow = true;
+      shell.add(fluxCap);
+
+      const topMark = new THREE.Mesh(
+        new THREE.RingGeometry(2.2, 3.3, 48),
+        new THREE.MeshBasicMaterial({ color: 0xdfe8ee, transparent: true, opacity: 0.9, side: THREE.DoubleSide })
+      );
+      topMark.rotation.x = -Math.PI / 2;
+      topMark.position.y = 30.05;
+      shell.add(topMark);
+
+      const centerDot = new THREE.Mesh(
+        new THREE.CircleGeometry(0.85, 32),
+        new THREE.MeshBasicMaterial({ color: 0xdfe8ee, transparent: true, opacity: 0.95, side: THREE.DoubleSide })
+      );
+      centerDot.rotation.x = -Math.PI / 2;
+      centerDot.position.y = 30.08;
+      shell.add(centerDot);
+
+      shell.traverse((node) => {
+        if (node.isMesh) {
+          node.castShadow = true;
+          node.receiveShadow = true;
+        }
+      });
+      parts.closedCase.add(shell);
+    }
+
+    function roundedBox(w, h, d, radius, material) {
+      const shape = roundedRectShape(w, d, radius);
+      const geometry = new THREE.ExtrudeGeometry(shape, {
+        depth: h,
+        bevelEnabled: true,
+        bevelSize: 0.45,
+        bevelThickness: 0.45,
+        bevelSegments: 4
+      });
+      geometry.rotateX(Math.PI / 2);
+      geometry.translate(0, h / 2, 0);
+      return new THREE.Mesh(geometry, material);
+    }
+
+    function roundedRectShape(w, d, r) {
+      const x = -w / 2;
+      const y = -d / 2;
+      const shape = new THREE.Shape();
+      shape.moveTo(x + r, y);
+      shape.lineTo(x + w - r, y);
+      shape.quadraticCurveTo(x + w, y, x + w, y + r);
+      shape.lineTo(x + w, y + d - r);
+      shape.quadraticCurveTo(x + w, y + d, x + w - r, y + d);
+      shape.lineTo(x + r, y + d);
+      shape.quadraticCurveTo(x, y + d, x, y + d - r);
+      shape.lineTo(x, y + r);
+      shape.quadraticCurveTo(x, y, x + r, y);
+      return shape;
+    }
+
+    function cavityPlate() {
+      const shape = roundedRectShape(55, 55, 2.2);
+      [[-13, -13], [13, -13], [-13, 13], [13, 13]].forEach(([x, y]) => {
+        const hole = new THREE.Path();
+        hole.absarc(x, y, 7.6, 0, Math.PI * 2, true);
+        shape.holes.push(hole);
+      });
+
+      const geometry = new THREE.ExtrudeGeometry(shape, {
+        depth: 5,
+        bevelEnabled: true,
+        bevelSize: 0.35,
+        bevelThickness: 0.35,
+        bevelSegments: 3,
+        curveSegments: 48
+      });
+      geometry.rotateX(Math.PI / 2);
+      geometry.translate(0, 2.5, 0);
+      return new THREE.Mesh(geometry, materials.black);
+    }
+
+    function cylinder(radius, height, material, segments = 72) {
+      const geometry = new THREE.CylinderGeometry(radius, radius, height, segments, 1, false);
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.castShadow = true;
+      mesh.receiveShadow = true;
+      return mesh;
+    }
+
+    function addPlateLabel(group, text, color, position, size) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 512;
+      canvas.height = 160;
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, 512, 160);
+      ctx.font = "900 72px Arial";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = `#${color.toString(16).padStart(6, "0")}`;
+      ctx.fillText(text, 256, 82);
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.colorSpace = THREE.SRGBColorSpace;
+      const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
+      const label = new THREE.Mesh(new THREE.PlaneGeometry(size * 8, size * 2.5), material);
+      label.position.set(...position);
+      label.rotation.x = -Math.PI / 2;
+      group.add(label);
+    }
+
+    function addPoleBadge(mesh, pole) {
+      const el = document.createElement("div");
+      el.className = pole === "N" ? "north" : "south";
+      el.textContent = pole;
+      const label = new CSS2DObject(el);
+      label.position.set(0, 3.35, 0);
+      mesh.add(label);
+      poleBadges.push(label);
+    }
+
+    function createBrushedTexture() {
+      const canvas = document.createElement("canvas");
+      canvas.width = 512;
+      canvas.height = 512;
+      const ctx = canvas.getContext("2d");
+      const cx = 256;
+      const cy = 256;
+      const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, 340);
+      gradient.addColorStop(0, "#fbfdff");
+      gradient.addColorStop(0.25, "#b9c0c6");
+      gradient.addColorStop(0.55, "#f3f5f6");
+      gradient.addColorStop(1, "#8e969e");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 512, 512);
+      ctx.globalAlpha = 0.28;
+      ctx.strokeStyle = "#5b636b";
+      for (let r = 8; r < 380; r += 3.2) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 0.18;
+      for (let i = 0; i < 180; i += 1) {
+        const a = (i / 180) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(a) * 340, cy + Math.sin(a) * 340);
+        ctx.stroke();
+      }
+      return new THREE.CanvasTexture(canvas);
+    }
+
+    function buildFields() {
+      const sources = [
+        { x: -12, z: -12, color: materials.fieldBlue, phase: 0 },
+        { x: 12, z: -12, color: materials.amber, phase: 0.45 },
+        { x: -12, z: 12, color: materials.amber, phase: 0.9 },
+        { x: 12, z: 12, color: materials.fieldBlue, phase: 1.35 }
+      ];
+
+      sources.forEach((source) => {
+        for (let i = 0; i < 7; i += 1) {
+          const angle = source.phase + (i / 7) * Math.PI * 2;
+          const r = 5 + (i % 3) * 2.6;
+          const endR = 16 + (i % 4) * 2.2;
+          const points = [
+            new THREE.Vector3(source.x + Math.cos(angle) * r, 8, source.z + Math.sin(angle) * r),
+            new THREE.Vector3(source.x + Math.cos(angle) * 12, 1, source.z + Math.sin(angle) * 12),
+            new THREE.Vector3(source.x + Math.cos(angle) * endR, -13, source.z + Math.sin(angle) * endR),
+            new THREE.Vector3(source.x + Math.cos(angle) * 10, -28, source.z + Math.sin(angle) * 10)
+          ];
+          const curve = new THREE.CatmullRomCurve3(points);
+          const tube = new THREE.Mesh(new THREE.TubeGeometry(curve, 40, 0.16, 8, false), source.color);
+          parts.field.add(tube);
+          fieldLines.push(tube);
+        }
+      });
+
+      for (let i = 0; i < 16; i += 1) {
+        const a = (i / 16) * Math.PI * 2;
+        const points = [
+          new THREE.Vector3(Math.cos(a) * 18, 16, Math.sin(a) * 18),
+          new THREE.Vector3(Math.cos(a) * 28, 4, Math.sin(a) * 28),
+          new THREE.Vector3(Math.cos(a) * 31, -16, Math.sin(a) * 31),
+          new THREE.Vector3(Math.cos(a) * 20, -31, Math.sin(a) * 20)
+        ];
+        const curve = new THREE.CatmullRomCurve3(points);
+        const tube = new THREE.Mesh(new THREE.TubeGeometry(curve, 48, 0.13, 8, false), materials.fieldBlue);
+        parts.field.add(tube);
+        fieldLines.push(tube);
+      }
+    }
+
+    function buildLabels() {
+      const labels = [
+        ["Placa de flujo", "Fe-Si, limite superior de campo", parts.flux, [36, 7, 5]],
+        ["Iman base", "Neodimio N52, 50 x 15 mm", parts.base, [35, 10, 4]],
+        ["Soporte", "Aislante con 4 cavidades", parts.support, [36, 6, 0]],
+        ["Rejilla N48", "Patron alterno N-S / S-N", parts.grid, [36, 7, -5]],
+        ["Cubierta inferior", "ABS / acrilico, cara paciente", parts.cover, [36, 4, 0]],
+        ["Campo profundo", "Representacion conceptual a 30-40 mm", parts.field, [-42, -14, 0]]
+      ];
+
+      labels.forEach(([title, text, parent, position]) => {
+        const el = document.createElement("div");
+        el.className = "label";
+        el.innerHTML = `<b>${title}</b>${text}`;
+        const obj = new CSS2DObject(el);
+        obj.position.set(...position);
+        parent.add(obj);
+        technicalLabels.push(obj);
+      });
+    }
+
+    function applyState(immediate = false) {
+      const target = layerTargets[state.mode];
+      Object.entries(target).forEach(([key, y]) => {
+        const value = key === "tissue" ? y : y * state.gap;
+        if (immediate) {
+          parts[key].position.y = value;
+        } else {
+          parts[key].userData.targetY = value;
+        }
+      });
+
+      parts.field.visible = state.fields;
+      const closed = state.mode === "clinical";
+      parts.closedCase.visible = closed;
+      parts.cover.visible = !closed;
+      parts.grid.visible = !closed;
+      parts.support.visible = !closed;
+      parts.base.visible = !closed;
+      parts.flux.visible = !closed;
+      parts.field.visible = state.fields && !closed;
+      poleBadges.forEach((badge) => {
+        badge.visible = !closed;
+      });
+      technicalLabels.forEach((label) => {
+        label.visible = state.labels && !closed;
+      });
+      materials.cover.opacity = state.opacity;
+      materials.cover.needsUpdate = true;
+      materials.black.transparent = state.cutaway || state.mode === "section";
+      materials.black.opacity = state.cutaway || state.mode === "section" ? 0.58 : 1;
+      materials.blueMagnet.transparent = state.cutaway || state.mode === "section";
+      materials.blueMagnet.opacity = state.cutaway || state.mode === "section" ? 0.72 : 1;
+
+      document.querySelector("#gapValue").textContent = `${state.gap.toFixed(2)}x`;
+      document.querySelector("#opacityValue").textContent = `${Math.round(state.opacity * 100)}%`;
+      document.querySelector("#zoomValue").textContent = `${state.zoom.toFixed(2)}x`;
+
+      const copy = {
+        exploded: ["Vista explosionada", "Capas separadas para mostrar el orden de ensamble y la relacion entre placa de flujo, iman base, soporte, rejilla y cubierta."],
+        section: ["Corte transversal", "Opacidad y campos activos para leer cavidades, patron polar y profundidad conceptual del campo."],
+        clinical: ["Caja cerrada", "Vista compacta del componente ensamblado: carcasa perimetral, tapa superior y cuerpo cerrado como en la referencia tecnica."]
+      };
+      document.querySelector("#modeTitle").textContent = copy[state.mode][0];
+      document.querySelector("#modeText").textContent = copy[state.mode][1];
+    }
+
+    function setCamera(name) {
+      activeCameraPreset = name;
+      applyCameraZoom();
+    }
+
+    function applyCameraZoom() {
+      const [x, y, z, tx, ty, tz] = cameraPresets[activeCameraPreset];
+      controls.target.set(tx, ty, tz);
+      const target = new THREE.Vector3(tx, ty, tz);
+      const base = new THREE.Vector3(x, y, z);
+      const direction = base.clone().sub(target);
+      const distance = direction.length() / state.zoom;
+      direction.normalize().multiplyScalar(distance);
+      camera.position.copy(target.clone().add(direction));
+      controls.update();
+    }
+
+    document.querySelectorAll("[data-mode]").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-mode]").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        state.mode = button.dataset.mode;
+        if (state.mode === "section") {
+          state.cutaway = true;
+          document.querySelector("#cutToggle").checked = true;
+        }
+        if (state.mode === "clinical") {
+          state.gap = 0.18;
+          document.querySelector("#gap").value = state.gap;
+        }
+        applyState();
+      });
+    });
+
+    document.querySelectorAll("[data-camera]").forEach((button) => {
+      button.addEventListener("click", () => setCamera(button.dataset.camera));
+    });
+
+    document.querySelector("#gap").addEventListener("input", (event) => {
+      state.gap = Number(event.target.value);
+      applyState();
+    });
+
+    document.querySelector("#opacity").addEventListener("input", (event) => {
+      state.opacity = Number(event.target.value);
+      applyState();
+    });
+
+    document.querySelector("#zoom").addEventListener("input", (event) => {
+      state.zoom = Number(event.target.value);
+      applyCameraZoom();
+      applyState();
+    });
+
+    document.querySelector("#fieldToggle").addEventListener("change", (event) => {
+      state.fields = event.target.checked;
+      applyState();
+    });
+
+    document.querySelector("#labelToggle").addEventListener("change", (event) => {
+      state.labels = event.target.checked;
+      applyState();
+    });
+
+    document.querySelector("#cutToggle").addEventListener("change", (event) => {
+      state.cutaway = event.target.checked;
+      applyState();
+    });
+
+    window.addEventListener("resize", resize);
+
+    function resize() {
+      const width = Math.max(1, sceneEl.clientWidth);
+      const height = Math.max(1, sceneEl.clientHeight);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+      labelRenderer.setSize(width, height);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = performance.now() * 0.001;
+      fieldLines.forEach((line, index) => {
+        line.material.opacity = (index % 3 === 0 ? 0.42 : 0.62) + Math.sin(t * 2 + index) * 0.12;
+      });
+      Object.values(parts).forEach((part) => {
+        if (typeof part.userData.targetY === "number") {
+          part.position.y += (part.userData.targetY - part.position.y) * 0.08;
+        }
+      });
+      controls.update();
+      renderer.render(scene, camera);
+      labelRenderer.render(scene, camera);
+    }
+  </script>
+</body>
+</html>

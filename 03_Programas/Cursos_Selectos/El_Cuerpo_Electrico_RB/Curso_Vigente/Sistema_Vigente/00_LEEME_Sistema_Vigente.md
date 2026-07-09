@@ -1,4 +1,4 @@
-# cursorb — Workspace del sistema nuevo de RB
+# Sistema_Vigente — Workspace del sistema nuevo de RB
 
 > **Léeme primero.** Esta carpeta contiene el **sistema nuevo** de Regulación Bioeléctrica: el que organiza la clínica por **agentes biológicos** y **terrenos**, para el rediseño del curso *El Cuerpo Eléctrico* (generación 2026). Todo lo de aquí es **vigente**. Si trabajas en el curso, este es tu punto de partida.
 

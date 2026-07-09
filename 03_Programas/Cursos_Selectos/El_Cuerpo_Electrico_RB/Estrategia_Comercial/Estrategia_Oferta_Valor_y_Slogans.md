@@ -52,7 +52,7 @@ El buen biomagnetista dirá: *"rastreo, eso ya lo domino."* Tiene razón — y p
 5. **Aplicar** como regulación de esa señal.
 6. **Reevaluar** la capacidad del agente, no "cuántos puntos quedan".
 
-> **El agente manda; el rastreo confirma.** *(Propuesta A — ver `cursorb/Sistema_Nuevo_Regulacion_por_Agentes.md`.)*
+> **El agente manda; el rastreo confirma.** *(Propuesta A — ver `Sistema_Vigente/Sistema_Nuevo_Regulacion_por_Agentes.md`.)*
 
 Esto convierte al rastreador experto en algo más grande: deja de depender del catálogo memorizado y empieza a **razonar el caso** — y a poder explicarlo a un médico.
 
@@ -129,8 +129,8 @@ El reclamo "sistema nuevo" es verdadero solo si el método **realmente empieza p
 
 - **Michael Levin (Tufts)** — Vmem como "señal instructiva"; TAME. Tratado de RB §III.2; Levin, *Frontiers* 2022 ([arxiv 2201.10346](https://arxiv.org/pdf/2201.10346)).
 - **Salud como capacidad de adaptación** — Huber M, et al. "How should we define health?" *BMJ* 2011;343:d4163.
-- **Salutogénesis** — Antonovsky A. *(modelo de mantenimiento por terrenos, `cursorb/`)*.
-- **Método por agente y perfil** — `cursorb/Sistema_Nuevo_Regulacion_por_Agentes.md` (Propuesta A) y `cursorb/concepto-agente-biologico.md` (perfiles).
+- **Salutogénesis** — Antonovsky A. *(modelo de mantenimiento por terrenos, `Sistema_Vigente/`)*.
+- **Método por agente y perfil** — `Sistema_Vigente/Sistema_Nuevo_Regulacion_por_Agentes.md` (Propuesta A) y `Sistema_Vigente/concepto-agente-biologico.md` (perfiles).
 - **Panel de posicionamiento** — estratega de categoría + copywriter de respuesta directa + voz del cliente/escéptico (julio 2026).
 
 ---

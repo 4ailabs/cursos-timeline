@@ -61,7 +61,7 @@ Esta carpeta completa (`El_Cuerpo_Electrico_RB/`) corresponde a los niveles 1–
 
 ## 5. Pendiente detectado: la ficha del programa no sigue el estándar del Instituto
 
-`Materiales_Antiguos/Ficha_Programa_El_Cuerpo_Electrico_RB.md` (ya marcada como desactualizada por otras razones — lenguaje de "par biomagnético evolucionado") **tampoco sigue la estructura obligatoria** de `01_Instituto/Identidad/02_Ficha_Estandar_de_Programa.md` (secciones ★ obligatorias: qué es, para quién, qué aprenderás, qué podrás hacer, **alcance y límites**, duración, certificación, inversión, fechas, contacto).
+`Materiales_Antiguos/OBSOLETO_Ficha_Programa_El_Cuerpo_Electrico_RB.md` (ya marcada como desactualizada por otras razones — lenguaje de "par biomagnético evolucionado") **tampoco sigue la estructura obligatoria** de `01_Instituto/Identidad/02_Ficha_Estandar_de_Programa.md` (secciones ★ obligatorias: qué es, para quién, qué aprenderás, qué podrás hacer, **alcance y límites**, duración, certificación, inversión, fechas, contacto).
 
 Cuando se reescriba esa ficha (pendiente ya anotado en el índice maestro), debe hacerse **sobre la plantilla institucional**, no desde cero — es la que usan todos los programas del Instituto y protege legal/éticamente tanto al alumno como al Instituto (sección de Alcance y Límites es obligatoria y no debe omitirse).
 
