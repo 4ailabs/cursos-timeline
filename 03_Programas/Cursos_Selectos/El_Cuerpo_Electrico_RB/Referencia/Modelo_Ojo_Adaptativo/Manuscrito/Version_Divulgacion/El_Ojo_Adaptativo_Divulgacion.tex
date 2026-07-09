@@ -1,0 +1,320 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noindentfirst]{babel}
+\usepackage{mathpazo}
+\usepackage[scaled=0.90]{helvet}
+\usepackage{microtype}
+\usepackage[margin=2.7cm,bottom=3.1cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.12}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,babel}
+
+% ---- Diagramas ópticos (vectoriales), tomados de Paper_El_Ojo_Adaptativo ----
+\newcommand{\eyeunit}[5]{%
+ \begin{scope}[xshift=#1 cm]
+   \draw[thick,fill=blue!4] (0,0) ellipse (1.2 and 1.0);
+   \draw[densely dashed,gray!60] (-2.4,0)--(2.0,0);
+   \draw[very thick,blue!55!black] (-1.05,-0.55) .. controls (-0.72,0) .. (-1.05,0.55);
+   \draw[very thick,blue!55!black] (-1.05,-0.55) .. controls (-1.38,0) .. (-1.05,0.55);
+   \draw[line width=1.8pt,orange!85!black] (0.95,0.66) .. controls (1.5,0.33) and (1.5,-0.33) .. (0.95,-0.66);
+   \draw[blue!65] (-2.4,0.45)--(-1.05,0.45);
+   \draw[blue!65] (-2.4,-0.45)--(-1.05,-0.45);
+   \draw[blue!65] (-1.05,0.45)--(#2,0);
+   \draw[blue!65] (-1.05,-0.45)--(#2,0);
+   \fill[red!80!black] (#2,0) circle (1.6pt);
+   \node[align=center,font=\bfseries\small] at (0,1.55) {#3};
+   \node[#5,align=center,font=\small] at (0,-1.5) {#4};
+ \end{scope}}
+\newcommand{\eyeperiph}[4]{%
+ \begin{scope}[xshift=#1 cm]
+   \draw[thick,fill=blue!4] (0,0) ellipse (1.2 and 1.0);
+   \draw[densely dashed,gray!60] (-2.4,0)--(2.0,0);
+   \draw[very thick,blue!55!black] (-1.05,-0.55) .. controls (-0.72,0) .. (-1.05,0.55);
+   \draw[very thick,blue!55!black] (-1.05,-0.55) .. controls (-1.38,0) .. (-1.05,0.55);
+   \draw[line width=1.8pt,orange!85!black] (0.95,0.66) .. controls (1.5,0.33) and (1.5,-0.33) .. (0.95,-0.66);
+   \draw[blue!65] (-2.4,0.18)--(-1.05,0.18);
+   \draw[blue!65] (-2.4,-0.18)--(-1.05,-0.18);
+   \draw[blue!65] (-1.05,0.18)--(1.4,0);
+   \draw[blue!65] (-1.05,-0.18)--(1.4,0);
+   \fill[red!80!black] (1.4,0) circle (1.4pt);
+   \draw[#4] (-2.4,0.72)--(-1.05,0.72);
+   \draw[#4] (-1.05,0.72)--(#2,0.5);
+   \draw[#4] (-2.4,-0.72)--(-1.05,-0.72);
+   \draw[#4] (-1.05,-0.72)--(#2,-0.5);
+   \fill[#4] (#2,0.5) circle (1.4pt);
+   \fill[#4] (#2,-0.5) circle (1.4pt);
+   \node[align=center,font=\bfseries\small] at (0,1.55) {#3};
+ \end{scope}}
+
+\usepackage[hidelinks]{hyperref}
+
+\providecommand{\enquote}[1]{``#1''}
+
+% ---- Paleta: casi monocroma, como un paper real. El color vive solo en las figuras. ----
+\definecolor{ink}{HTML}{111111}
+\definecolor{gtext}{HTML}{444444}
+\definecolor{rule}{HTML}{222222}
+
+\color{ink}
+
+% ---- Secciones: numeradas, negrita, serif, sin color ni versalitas ----
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.7em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing{\section}{0pt}{1.6em}{0.5em}
+\titlespacing{\subsection}{0pt}{1.1em}{0.3em}
+
+% Recuadro numerado, tipo "Box" de revista (Trends/Cell): borde fino, sin relleno de color
+\newcounter{recuadro}
+\newcommand{\featurebox}[2]{%
+\par\medskip
+\begingroup
+\begin{center}
+\fboxsep8pt\fboxrule0.6pt
+\fcolorbox{rule}{white}{%
+\begin{minipage}{0.90\linewidth}
+\refstepcounter{recuadro}%
+\textbf{\footnotesize RECUADRO~\therecuadro.\ #1}\par\smallskip
+\footnotesize #2
+\end{minipage}}
+\end{center}
+\endgroup
+\medskip}
+
+% Epígrafe (tesis central): párrafo indentado en cursiva, sin color ni filete
+\newcommand{\thesisquote}[1]{%
+\par\medskip
+\begingroup
+\begin{center}
+\begin{minipage}{0.86\linewidth}
+\itshape\small #1
+\end{minipage}
+\end{center}
+\endgroup
+\medskip}
+
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L]{\footnotesize\itshape El ojo que construye su propia forma}
+\fancyhead[R]{\footnotesize\itshape Instituto Centrobioenergetica}
+\fancyfoot[C]{\footnotesize\thepage}
+
+\begin{document}
+\shorthandoff{<>}% evita conflicto del español de babel con TikZ (>=Stealth)
+
+% --- Portada de art\'iculo ---
+\begin{center}
+{\LARGE\bfseries El ojo que construye su propia forma}\\[6pt]
+{\large\itshape Por qu\'e la miop\'ia no es un ojo averiado, sino un ojo que aprendi\'o demasiado bien}\\[14pt]
+{\large Dr.\ Miguel Ojeda Rios\footnotemark}\\[3pt]
+{\small\color{gtext} Instituto Centrobioenerg\'etica \textbullet\ Julio de 2026}
+\end{center}
+\footnotetext{Instituto Centrobioenerg\'etica. Correo: contacto@institutocentrobioenergetica.com --- www.institutocentrobioenergetica.com}
+
+\vspace{1.2em}
+{\small\itshape Versi\'on de divulgaci\'on cient\'ifica. Adaptada de Ojeda Rios, M. \enquote{El Ojo que Construye su Propia Forma: del circuito retina--coroides--esclera al agente morfogen\'etico}, art\'iculo de hip\'otesis y marco te\'orico, 2026.}
+\vspace{1em}
+
+\noindent Ponerle lentes a un ojo miope resuelve el s\'intoma en el acto: la imagen borrosa vuelve a verse n\'itida. Pero no toca la pregunta que realmente importa --- \textbf{\textquestiondown por qu\'e ese ojo se alarg\'o en primer lugar?} Un \'organo no crece de m\'as por accidente. Y sabemos, desde hace d\'ecadas, que el ojo no lo hace al azar: decide cu\'anto crecer en funci\'on de lo que ve.
+
+La tesis de este texto es inc\'omoda porque le quita al ojo la etiqueta de \enquote{defectuoso}:
+
+\thesisquote{La miop\'ia no es un ojo averiado. Es un ojo que hizo, con toda correcci\'on, el trabajo para el que fue dise\~nado ---ajustar su forma a la demanda visual--- en un mundo donde ese mismo trabajo termina en elongaci\'on. El problema no est\'a en el mecanismo. Est\'a en el desencuentro entre un sistema de control muy antiguo y un entorno visual completamente nuevo: pantallas, interiores, distancias cortas sostenidas durante a\~nos.}
+
+Para sostener esta idea hay que recorrerla en capas, y cada capa es m\'as extra\~na que la anterior. Primero el \textbf{circuito} biol\'ogico que ejecuta el ajuste. Despu\'es la \textbf{arquitectura de control} ---el lenguaje con el que la propia oftalmolog\'ia describe ese circuito desde hace cincuenta a\~nos---. Y por \'ultimo, la capa menos conocida y m\'as reveladora de todas: lo que ese circuito de control \emph{es}, cuando se le mira con el marco correcto --- un agente que persigue una meta, sin tener cerebro para desearla ni pensarla.
+
+\section{El circuito: c\'omo la visi\'on se traduce en crecimiento}
+
+La retina no se limita a \enquote{ver} --- \textbf{detecta el signo del desenfoque}. Sabe distinguir si el ojo se qued\'o corto (la imagen enfoca detr\'as de la retina) o se pas\'o de largo (enfoca delante), y traduce esa lectura en una cascada de se\~nales qu\'imicas que viaja hacia atr\'as: retina \(\rightarrow\) una capa de soporte llamada epitelio pigmentario \(\rightarrow\) la coroides, una membrana muy irrigada \(\rightarrow\) la esclera, la envoltura blanca que le da su forma final al ojo.
+
+El mensajero mejor estudiado de esta cadena es la \textbf{dopamina} que liberan unas neuronas espec\'ificas de la retina, llamadas c\'elulas amacrinas dopamin\'ergicas. Funciona como un freno del crecimiento, y su liberaci\'on aumenta con la luz intensa. El detector de esa luz tiene nombre propio: unas c\'elulas ganglionares de la retina que contienen un pigmento llamado \textbf{melanopsina} y responden sobre todo a la luz azul, alrededor de los 480 nan\'ometros ---la que abunda al aire libre y escasea bajo techo---. Estas c\'elulas hacen sinapsis directa con las neuronas que liberan dopamina, y ese es el circuito exacto ---luz azul \(\rightarrow\) melanopsina \(\rightarrow\) dopamina--- por el que \textbf{la luz del d\'ia protege contra la miop\'ia}: m\'as luz de ese tipo, m\'as dopamina, m\'as freno al alargamiento. Junto a la dopamina viajan otros mensajeros ---glucag\'on, \'acido retinoico, \'oxido n\'itrico--- que ajustan la se\~nal en su camino hacia la coroides, y un interruptor gen\'etico en las propias neuronas de la retina (un gen llamado \emph{EGR1}, tambi\'en conocido como \emph{ZENK}) que se activa o se apaga seg\'un hacia d\'onde deba ir el crecimiento.
+
+La coroides no es un simple conducto de paso: cambia activamente de grosor seg\'un la se\~nal que recibe ---se engrosa cuando debe frenar el crecimiento, se adelgaza cuando debe permitirlo--- y desde ah\'i libera las sustancias que le indican a la esclera cu\'anto y c\'omo remodelarse. La esclera ejecuta la sentencia final: reorganiza su propia matriz de col\'ageno, con la ayuda de enzimas que la degradan y reconstruyen, hasta fijar el largo definitivo del ojo.
+
+Y aqu\'i aparece el primer dato que sostiene todo el argumento posterior: \textbf{ninguna de las terapias que hoy funcionan repara nada.} La luz exterior activa el freno de dopamina por la v\'ia que acabamos de describir. Los lentes especiales para control de miop\'ia ---con nombres t\'ecnicos como DIMS (segmentos de desenfoque m\'ultiple)--- y los lentes de contacto de ortoqueratolog\'ia cambian el tipo de desenfoque que recibe la retina perif\'erica, invirtiendo la se\~nal de crecimiento. La atropina en dosis bajas act\'ua sobre receptores espec\'ificos (llamados muscar\'inicos) presentes tanto en la retina como en la coroides y la esclera, modificando la cascada completa desde varios puntos a la vez. \textbf{Todas act\'uan sobre el mensaje. Ninguna sobre el tejido.}
+
+\begin{figure}[h]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  >=Stealth, thick,
+  box/.style={draw, rounded corners, align=center, font=\small, minimum height=1.1cm, minimum width=2.6cm, fill=blue!5, thick},
+  ref/.style={box, fill=blue!15},
+  act/.style={box, fill=orange!15},
+  ther/.style={->, teal!55!black, line width=1pt},
+  ]
+  \node[ref] (ref) at (0,0) {Enfoque perfecto\\\footnotesize(la referencia)};
+  \node[box] (ret) at (4.6,0) {Retina\\\footnotesize compara};
+  \node[box] (cas) at (9.4,0) {Cascada\\\footnotesize retina--EPR--\\\footnotesize coroides--esclera};
+  \node[act] (esc) at (14.0,0) {Esclera\\\footnotesize ejecuta:\\\footnotesize largo del ojo};
+  \draw[->] (ref) -- (ret);
+  \draw[->] (ret) -- node[above,align=center,font=\scriptsize]{error:\\desenfoque} (cas);
+  \draw[->] (cas) -- (esc);
+  \draw[->] (esc) -- ++(0,-2.0) -| node[below,pos=0.25,font=\scriptsize]{nueva imagen retiniana (retroalimentaci\'on)} (ret);
+  \node[teal!50!black,font=\footnotesize] (luz) at (4.6,2.3) {Luz};
+  \draw[ther] (luz) -- (ret);
+  \node[teal!50!black,font=\footnotesize] (atr) at (8.4,2.3) {Atropina};
+  \draw[ther] (atr) -- (cas.north west);
+  \node[teal!50!black,font=\footnotesize] (dims) at (11.2,2.3) {DIMS / orto-K};
+  \draw[ther] (dims) -- (cas.north east);
+  \node[red!55!black,font=\footnotesize,align=center] (mono) at (1.5,2.3) {Lente monofocal};
+  \draw[->, red!50!black, dashed, line width=1pt] (mono) -- (ret.north west);
+  \node[red!70!black,font=\bfseries] at (2.9,1.85) {$\times$};
+  \node[red!55!black,font=\scriptsize,align=center] at (1.5,1.45) {(no toca\\el mensaje perif\'erico)};
+\end{tikzpicture}}
+\caption{El circuito como un lazo cerrado: la retina compara la imagen con el enfoque perfecto, la cascada transmite el error de desenfoque, la esclera ajusta el largo del ojo, y la nueva imagen retroalimenta a la retina. La luz, la atropina y el desenfoque especialmente dise\~nado (DIMS/orto-K) intervienen en puntos concretos de este circuito; el lente monofocal corrige el foco central pero no toca la se\~nal perif\'erica que sigue empujando el crecimiento.}
+\label{fig:lazo}
+\end{figure}
+
+\section{Medio siglo describiendo al ojo como un termostato}
+
+Mucho antes de hablar de \enquote{inteligencia} en un \'organo, la propia ciencia de la visi\'on ya usaba, sin saberlo, el vocabulario de la teor\'ia de control ---el mismo que gobierna un termostato:
+
+\begin{itemize}[leftmargin=1.3em,itemsep=2pt,topsep=4pt]
+  \item Hay un \textbf{valor que el sistema defiende}: el enfoque perfecto sobre la retina.
+  \item Hay una \textbf{se\~nal de error, con signo}: el desenfoque, que indica no solo que algo est\'a mal, sino en qu\'e direcci\'on.
+  \item Hay un \textbf{actuador}: el crecimiento escleral, que corrige el error hasta anularlo.
+\end{itemize}
+
+Esto no es una licencia po\'etica. Distintos investigadores ---Medina y Fariza, Schaeffel y Howland, entre otros--- han ajustado, durante d\'ecadas, modelos matem\'aticos de control de primer orden a la trayectoria del desarrollo visual, y Hung y Ciuffreda formalizaron una versi\'on espec\'ifica para el crecimiento miope, conocida como teor\'ia del desenfoque retiniano incremental. La evidencia de campo respalda ese modelo con una precisi\'on notable: los reci\'en nacidos exhiben una enorme dispersi\'on de errores de graduaci\'on (unos muy hiperm\'etropes, otros ya miopes), y hacia los tres a\~nos \textbf{la mayor\'ia converge hacia el enfoque perfecto}. Es exactamente lo que predice un sistema que minimiza un error respecto a un objetivo fijo ---no una casualidad estad\'istica.
+
+Aqu\'i est\'a el pelda\~no que sostiene todo lo que sigue, y conviene subrayarlo porque el propio campo ya lo concedi\'o sin proponérselo: \textbf{si el ojo defiende un valor de referencia, entonces el ojo es, en el sentido m\'as literal y menos metaf\'orico posible, un sistema dirigido a una meta.} La pregunta que casi nadie se atreve a hacer despu\'es de admitir esto es: \textquestiondown qu\'e clase de sistema es uno que \enquote{defiende una meta} ---y qu\'e se sigue de tom\'arselo en serio?
+
+\section{De termostato a agente: sistemas que persiguen metas sin tener cerebro para quererlo}
+
+Aqu\'i hay que pedirle al lector algo inc\'omodo: soltar, por un momento, la idea de que \enquote{perseguir una meta} exige una mente que decide o desea. Existe una l\'inea de investigaci\'on biol\'ogica ---cuyo referente es el bi\'ologo Michael Levin--- que sostiene, con experimentos reproducibles y no como especulaci\'on filos\'ofica, que \textbf{la capacidad de perseguir un objetivo no es propiedad exclusiva de los sistemas con neuronas.}
+
+La idea central, dicho sin adornos: un sistema puede \enquote{saber} hacia d\'onde tiene que llegar sin saber \emph{que} lo sabe, ni \emph{c\'omo} lo sabe. Una bacteria que nada hacia una fuente de az\'ucar lo hace en su forma m\'as elemental. Un tejido que reconstruye un \'organo perdido lo hace en una forma ya compleja. Un ser humano que planea su a\~no lo hace en la forma m\'as elaborada que conocemos. La diferencia entre estos casos, sostiene Levin, \textbf{es de grado ---no de naturaleza.}
+
+\textbf{La salamandra que sabe cu\'ando detenerse.} El ejemplo can\'onico es la regeneraci\'on de extremidades. Si se amputa la pata de una salamandra ---no importa a qu\'e altura del mu\~n\'on---, el tejido regenera exactamente lo que falta y \textbf{se detiene en el momento preciso en que la pata queda completa.} No sigue una receta r\'igida de pasos: persigue un \textbf{resultado final}. Eso implica algo que suena casi imposible ---que el tejido guarda, en alg\'un lugar, una representaci\'on de c\'omo debe verse una pata terminada, la compara constantemente con lo que ya construy\'o, y emite una se\~nal de alto cuando la diferencia llega a cero. A este fen\'omeno Levin lo llama \textbf{homeostasis de la forma}: as\'i como un termostato mantiene una temperatura-objetivo, ciertos tejidos mantienen y restauran una \textbf{forma-objetivo}.
+
+\featurebox{El experimento que deber\'ia ser m\'as famoso: los renacuajos \enquote{Picasso}}{%
+En 2012, un equipo liderado por Laura Vandenberg, Dany Adams y Michael Levin public\'o un experimento con renacuajos de la especie \emph{Xenopus} construidos con los \'organos craneofaciales colocados en posiciones radicalmente incorrectas ---ojos fuera de sitio, boca y narinas desordenadas, una disposici\'on que recuerda a un retrato cubista. De ah\'i el nombre del experimento. Si el desarrollo fuera un programa fijo de instrucciones, la predicci\'on era clara: deber\'ian resultar ranas con caras monstruosamente deformes para siempre. Ocurri\'o justamente lo contrario. Cada \'organo mal colocado ---incluidos los ojos--- migr\'o por su cuenta hasta su posici\'on correcta, y se detuvo exactamente ah\'i, siguiendo trayectorias que ning\'un renacuajo normal recorre jam\'as, a veces sobrepasando el objetivo y corrigiendo de vuelta. El tejido no ejecutaba una secuencia preprogramada de movimientos: estaba minimizando el error respecto a una forma-objetivo almacenada ---la cara correcta---, improvisando el camino cuando la ruta habitual no estaba disponible. El fil\'osofo William James propuso hace m\'as de un siglo un criterio m\'inimo para reconocer algo parecido a una mente: \emph{\enquote{fines fijos, con medios variables}}. Es exactamente lo que hicieron esos renacuajos ---y es, en miniatura, la misma l\'ogica exacta de la emetropizaci\'on: un ojo que persigue un objetivo, el foco sobre la retina, y ajusta su forma, por la v\'ia que haga falta, hasta alcanzarlo.}
+
+\textbf{D\'onde se guarda esa \enquote{forma correcta}.} La respuesta, sorprendentemente, no es gen\'etica sino \textbf{el\'ectrica} ---y conviene despejar aqu\'i cualquier sospecha de met\'afora. No se trata de \enquote{energ\'ias} en sentido esot\'erico, sino de un \textbf{voltaje transmembrana} real y medible ---la misma magnitud f\'isica que se registra en un electrorretinograma--- presente en todas las c\'elulas, incluidas las que no son neuronas. En las neuronas, ese voltaje cambia en mil\'esimas de segundo. En el resto de las c\'elulas cambia mucho m\'as despacio ---minutos, horas--- y las c\'elulas vecinas comparten ese estado a trav\'es de canales microsc\'opicos llamados uniones comunicantes (\emph{gap junctions}), formando redes que \enquote{calculan} un patr\'on a nivel de tejido entero. Ese cambio lento funciona como una instrucci\'on: \emph{crece as\'i, con\'ectate aqu\'i, det\'ente ahora.}
+
+La prueba m\'as contundente viene, de nuevo, de organismos capaces de regenerarse: en gusanos planos (planarias), un patr\'on el\'ectrico estable determina cu\'antas cabezas regenera el animal. El laboratorio de Levin manipul\'o ese patr\'on ---sin tocar una sola letra del ADN--- y obtuvo gusanos de dos cabezas que, al ser cortados de nuevo en agua normal, \textbf{siguen regenerando dos cabezas} indefinidamente. La forma-objetivo qued\'o reescrita de manera estable, en el patr\'on el\'ectrico, no en el genoma.
+
+En el caso del ojo, esto es literal: un estudio de 2012 (Pai, Aw, Shomrat, Lemire y Levin, publicado en la revista \emph{Development}) mostr\'o que un patr\'on de voltaje ---lo que los autores llamaron el \enquote{rostro el\'ectrico}--- dibuja, antes de que exista anatom\'ia visible, la posici\'on futura de ojos, boca y nariz. Y en un experimento posterior, imponiendo ese mismo patr\'on el\'ectrico en c\'elulas que normalmente formar\'ian parte del \textbf{intestino} de un renacuajo, \textbf{se indujo ah\'i un ojo completo y organizado}, con retina, cristalino y nervio \'optico ---un efecto incluso m\'as potente que activar directamente el gen que se consideraba \enquote{maestro} para la formaci\'on del ojo (\emph{Pax6}). Renacuajos con estos ojos fuera de lugar, incluso en la cola, demostraron poder usarlos para aprender a evitar est\'imulos luminosos ---es decir, los ojos ect\'opicos funcionaban de verdad.
+
+\section{No todos los sistemas se corrigen de la misma manera}
+
+Aqu\'i conviene ordenar cuatro tipos de sistemas, de menor a mayor complejidad, porque de ah\'i se desprende una regla pr\'actica muy poderosa.
+
+\featurebox{Cuatro maneras de cambiar un comportamiento}{%
+\begin{itemize}[leftmargin=1.3em,itemsep=3pt,topsep=4pt]
+  \item \textbf{Reloj mec\'anico:} solo cambia su comportamiento si alguien abre la carcasa y recablea su mec\'anica interna ---hay que conocer el mecanismo entero.
+  \item \textbf{Termostato:} no requiere tocar nada por dentro ---basta con escribirle un nuevo n\'umero de referencia, sin saber absolutamente nada de electr\'onica.
+  \item \textbf{Animal:} cambia su conducta con premio y castigo.
+  \item \textbf{Persona:} puede cambiar de opini\'on frente a un argumento razonado, sin necesidad de premio ni castigo.
+\end{itemize}
+A medida que se avanza de esta lista hacia adelante, se necesita \textbf{menos conocimiento del mecanismo interno} para producir el cambio deseado. El error m\'as costoso ---el que de hecho comete buena parte de la medicina convencional--- es tratar a un sistema como si perteneciera a la categor\'ia equivocada: intentar razonar con un termostato, o tratar de recablear por la fuerza algo que solo necesitaba un nuevo n\'umero de referencia.}
+
+\begin{figure}[h]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  >=Stealth, thick,
+  box/.style={draw, rounded corners, align=center, font=\small, minimum height=1.9cm, minimum width=3.3cm, fill=blue!5, thick},
+  hl/.style={box, fill=teal!12, draw=teal!65!black, very thick},
+]
+  \node[box] (a) at (0,0) {\textbf{Reloj mec\'anico}\\[3pt]\footnotesize Recablear\\\footnotesize el mecanismo};
+  \node[hl]  (b) at (4.4,0) {\textbf{Termostato}\\[3pt]\footnotesize Reescribir\\\footnotesize la referencia};
+  \node[box] (c) at (8.8,0) {\textbf{Animal}\\[3pt]\footnotesize Premio\\\footnotesize y castigo};
+  \node[box] (d) at (13.2,0) {\textbf{Persona}\\[3pt]\footnotesize Argumento\\\footnotesize razonado};
+  \draw[-{Stealth}, line width=2.5pt, gray!45] (-1.7,-1.6) -- (14.9,-1.6);
+  \node[gray!55!black, font=\footnotesize] at (6.6,-1.95) {Se necesita menos conocimiento del mecanismo interno para cambiar el comportamiento};
+  \node[hl, fill=teal!8, text width=5.6cm, minimum height=1.6cm] (eye) at (4.4,-3.9) {\textbf{El ojo emetropizante: un termostato.}\\[2pt]\footnotesize Se le cambia el rumbo reescribiendo su referencia (desenfoque, luz) --- no repar\'andolo ni argument\'andole};
+  \draw[->, teal!65!black, thick] (b.south) -- (eye.north);
+\end{tikzpicture}}
+\caption{Cuatro maneras de cambiar un comportamiento. A medida que se avanza del reloj a la persona, se necesita menos conocimiento del mecanismo interno para producir el cambio. El ojo emetropizante se comporta como un \textbf{termostato}: su rumbo se modifica reescribiendo su se\~nal de referencia, no repar\'andolo ni razonando con \'el.}
+\label{fig:persuad_eje}
+\end{figure}
+
+\textbf{El ojo que se alarga por miop\'ia se comporta, en este sentido preciso, como un termostato.} Y de ah\'i se sigue la consecuencia cl\'inica m\'as importante de todo este marco: no se le cambia el rumbo repar\'andolo ni \enquote{ejercit\'andolo} ---se le cambia el rumbo \textbf{d\'andole una nueva se\~nal de referencia}. Esto explica, con una elegancia que ning\'un otro modelo ofrece, por qu\'e un lente que solo corrige el foco central ---sin tocar la se\~nal perif\'erica que empuja el crecimiento--- \textbf{no logra frenar la progresi\'on de la miop\'ia}, mientras que las terapias que s\'i modifican esa se\~nal perif\'erica ---desenfoque especialmente dise\~nado, luz exterior, atropina--- \textbf{s\'i lo consiguen}.
+
+\section{Competencia perfecta, resultado indeseado}
+
+Hay una pieza m\'as que resuelve la aparente paradoja de la miop\'ia, y se la debemos al fil\'osofo Daniel Dennett. Una c\'elula del h\'igado cumple su funci\'on con perfecta competencia \textbf{sin \enquote{entender}} que forma parte de un h\'igado, ni mucho menos de una persona completa. La coherencia del \'organo entero emerge de millones de estas peque\~nas competencias locales ---cada una ciega al conjunto que integra.
+
+Dennett llam\'o a esto \textbf{competencia sin comprensi\'on}: un sistema puede operar de forma impecable en su tarea local y, precisamente por eso, producir un resultado que no conviene al conjunto ---porque su competencia opera en un nivel que no \enquote{sabe} lo que el contexto global necesita.
+
+Esto es, con precisi\'on quir\'urgica, lo que ocurre en la miop\'ia. El ojo de un ni\~no que pasa el d\'ia frente a una pantalla, en interiores, con poca luz, hace \textbf{exactamente lo que su sistema de control le indica}: ajustar la longitud axial a la demanda \'optica que recibe. No \enquote{sabe} ---no puede saber--- que ese entorno de visi\'on cercana sostenida es evolutivamente nuevo, y que su regulaci\'on fue afinada para un mundo distinto, de horizontes abiertos y luz abundante. La miop\'ia no es un fallo del ojo. Es la \textbf{conducta competente de un sistema de control adaptativo, ejecutada a la perfecci\'on, en un entorno que su punto de ajuste jam\'as anticip\'o.}
+
+\section{El ojo como una m\'aquina que predice --- y act\'ua cuando se equivoca}
+
+Hay todav\'ia una capa m\'as profunda, que amarra todo lo anterior y le da sentido de fondo. El neurocient\'ifico Karl Friston formaliz\'o un principio ---la \textbf{inferencia activa}, tambi\'en llamada minimizaci\'on de energ\'ia libre--- que describe cada vez m\'as a los organismos vivos, no solo al cerebro, sino al cuerpo entero en su forma m\'as b\'asica, no como receptores pasivos de la realidad, sino como \textbf{sistemas que la predicen constantemente}, generando hip\'otesis sobre lo que van a percibir y corrigi\'endose \'unicamente cuando aparece un desajuste: un error de predicci\'on. Junto con Levin y otros colegas, Friston mostr\'o en 2015 que este mismo principio sirve de puente entre la cognici\'on y la morfog\'enesis ---es decir, que la l\'ogica que usa el cerebro para predecir el mundo es, en esencia, la misma que usa un tejido para predecir y mantener su propia forma.
+
+Un sistema as\'i tiene, en esencia, dos maneras de reducir ese error: \textbf{actualizar su expectativa} para que se ajuste mejor a lo que percibe, o \textbf{actuar sobre el mundo ---o sobre s\'i mismo--- para que la realidad termine coincidiendo con lo que esperaba.} El ojo emetropizante hace lo segundo, de manera absolutamente literal.
+
+\textbf{El desenfoque es, ni m\'as ni menos, un error de predicci\'on.} La expectativa por defecto del sistema visual es una imagen n\'itida sobre la retina. El desenfoque es exactamente la distancia entre esa expectativa y lo que realmente llega. El ojo no puede \enquote{aceptar} un mundo borroso como si fuera lo normal ---as\'i que hace la \'unica cosa que puede hacer: \textbf{actuar sobre su propia forma}, creciendo o frenando su crecimiento, hasta que la \'optica vuelva a producir la imagen que esperaba ver desde el principio.
+
+Y esa expectativa no es sobre una imagen aislada en un instante ---es, en el fondo, una apuesta sobre \textbf{qu\'e clase de mundo visual va a habitar ese ojo durante toda su vida.} Una infancia entera dominada por la visi\'on cercana es, para el sistema, evidencia contundente de que el mundo ser\'a uno de distancias cortas. El ojo, con una l\'ogica impecable dentro de su nivel, ajusta su \'optica a esa expectativa. \textbf{La miop\'ia es, literalmente, esa predicci\'on cumplida en la longitud del ojo.}
+
+Esto explica tambi\'en por qu\'e el tiempo pesa tanto en esta historia: no todos los errores de predicci\'on cuentan igual ---el sistema pondera cada uno seg\'un cu\'anta confianza le asigna. Un desenfoque breve y ocasional apenas deja huella y es f\'acilmente reversible. Uno \textbf{sostenido y repetido durante meses o a\~nos}, en cambio, termina \textbf{fijando} la adaptaci\'on de forma mucho m\'as dif\'icil de revertir. De ah\'i que intervenir temprano ---antes de que el patr\'on se consolide--- rinda mucho m\'as que intervenir tarde.
+
+\thesisquote{Las cuatro capas del argumento terminan por anudarse en una sola imagen: el error de predicci\'on \textbf{es} la se\~nal que recorre el circuito biol\'ogico; esa se\~nal \textbf{es procesada} por un lazo de control que defiende un punto de ajuste; ese lazo de control \textbf{est\'a al servicio} de un sistema capaz de perseguir metas sin tener cerebro para desearlas; y todo el conjunto \textbf{queda fundamentado} por el hecho de que los sistemas vivos, en su forma m\'as b\'asica, funcionan prediciendo y corrigiendo. El ojo crece porque crecer es, sencillamente, la acci\'on que minimiza su error de predicci\'on sobre el mundo que espera habitar.}
+
+\section{Lo que esto cambia en la consulta}
+
+Este marco no inventa terapias nuevas. \textbf{Reordena las que ya existen} ---y, sobre todo, cambia por completo el relato que se le entrega a las familias.
+
+Las intervenciones que de verdad funcionan son las que \textbf{modifican la se\~nal} que el ojo recibe ---luz exterior, desenfoque perif\'erico especialmente dise\~nado (como los lentes DIMS o la ortoqueratolog\'ia), atropina--- y no las que se limitan a corregir el foco central sin tocar esa se\~nal de fondo. La prevenci\'on m\'as simple y mejor respaldada sigue siendo el tiempo al aire libre: un estudio de referencia (Rose y colaboradores, 2008, publicado en \emph{Ophthalmology}) mostr\'o que m\'as horas de actividad al aire libre reducen la prevalencia de miop\'ia en ni\~nos, exactamente lo que predice la v\'ia luz \(\rightarrow\) melanopsina \(\rightarrow\) dopamina descrita en la primera secci\'on. Reducir la carga sostenida de visi\'on cercana opera sobre el mismo principio, desde el lado contrario.
+
+\begin{figure}[h]
+\centering
+\resizebox{0.92\textwidth}{!}{%
+\begin{tikzpicture}
+  \eyeunit{0}{1.85}{Desenfoque\\hiperm\'etrope}{$\Downarrow$ El ojo se alarga}{red!70!black}
+  \eyeunit{5.0}{1.45}{Emetrop\'ia}{El crecimiento se detiene}{blue!55!black}
+  \eyeunit{10.0}{0.7}{Desenfoque\\miope}{El crecimiento frena}{teal!55!black}
+  \begin{scope}[yshift=-4.2cm]
+    \eyeperiph{2.0}{1.9}{Lente monofocal}{red!60!black}
+    \eyeperiph{8.0}{0.95}{DIMS / orto-K}{teal!60!black}
+    \node[red!60!black,font=\scriptsize,align=center] at (-1.2,-1.5) {Desenfoque\\perif\'erico\\(por detr\'as)};
+    \node[teal!60!black,font=\scriptsize,align=center] at (11.2,-1.5) {Desenfoque\\perif\'erico\\miope (por delante)};
+  \end{scope}
+\end{tikzpicture}}
+\caption{El signo del desenfoque decide la respuesta del ojo. Arriba: si el foco cae por detr\'as de la retina el ojo se alarga; en el enfoque perfecto el crecimiento se detiene; si el foco cae por delante, el crecimiento frena. Abajo: el lente monofocal corrige el centro pero deja un desenfoque hacia atr\'as en la periferia, que sigue empujando la elongaci\'on; los lentes DIMS y la ortoqueratolog\'ia imponen el desenfoque contrario en la periferia, invirtiendo esa se\~nal.}
+\label{fig:desenfoque}
+\end{figure}
+
+Y quiz\'as lo m\'as importante de todo: \textbf{el mensaje que recibe el paciente cambia de ra\'iz.} La miop\'ia no es un defecto del ni\~no, ni el resultado de \enquote{hacer algo mal} ni de \enquote{leer demasiado} en el sentido moral con que a veces se lo cuenta. Es la adaptaci\'on ---competente, funcional, perfectamente l\'ogica desde su propio nivel--- de un ojo que hace exactamente lo que su dise\~no le ordena, en un entorno que ese dise\~no nunca tuvo oportunidad de anticipar. Eso retira la culpa de la conversaci\'on cl\'inica, y dirige toda la energ\'ia hacia el \'unico lugar donde realmente produce resultados: la se\~nal y el entorno.
+
+\section*{En una frase}
+
+El ojo no es una m\'aquina que se rompe y a la que hay que reparar. \textbf{Es un sistema que construye y sostiene activamente su propia forma} ---un termostato biol\'ogico, no un reloj---, y al que se le cambia el rumbo no forz\'andolo por dentro, sino d\'andole una instrucci\'on distinta: m\'as luz, un desenfoque diferente, un mundo visual con m\'as distancia y m\'as horizonte. La miop\'ia no es una falla del sistema. Es la respuesta correcta, competente y perfectamente inteligible de un ojo que aprendi\'o su lecci\'on demasiado bien ---en un mundo que cambi\'o m\'as r\'apido de lo que su biolog\'ia pudo prever.
+
+\section*{Referencias}
+\small
+\begin{itemize}[leftmargin=1.3em,itemsep=3pt]
+  \item Wallman, J. y Winawer, J. \emph{Homeostasis of eye growth and the question of myopia.} \textbf{Neuron}, 2004. La revisi\'on que estableci\'o el ojo como un sistema que regula su propio crecimiento.
+  \item Troilo, D. \emph{et al.} \emph{IMI -- Report on Experimental Models of Emmetropization and Myopia.} \textbf{Investigative Ophthalmology \& Visual Science}, 2019.
+  \item Feldkaemper, M. y Schaeffel, F. \emph{An updated view on the role of dopamine in myopia.} \textbf{Experimental Eye Research}, 2013.
+  \item Liu, A. L. \emph{et al.} \emph{The role of ipRGCs in ocular growth and myopia development.} \textbf{Science Advances}, 2022. El circuito melanopsina \(\rightarrow\) dopamina.
+  \item Vandenberg, L. N., Adams, D. S. y Levin, M. \emph{Normalized shape and location of perturbed craniofacial structures in the Xenopus tadpole\ldots} \textbf{Developmental Dynamics}, 2012. El experimento de los renacuajos con la cara revuelta.
+  \item Pai, V. P., Aw, S., Shomrat, T., Lemire, J. M. y Levin, M. \emph{Transmembrane voltage potential controls embryonic eye patterning in Xenopus laevis.} \textbf{Development}, 2012. El \enquote{rostro el\'ectrico} y el ojo inducido en el intestino.
+  \item Levin, M. \emph{Technological Approach to Mind Everywhere (TAME)\ldots} \textbf{Frontiers in Systems Neuroscience}, 2022. El marco que extiende la idea de perseguir metas a tejidos sin neuronas.
+  \item Friston, K., Levin, M., Sengupta, B. y Pezzulo, G. \emph{Knowing one's place: a free-energy approach to pattern regulation.} \textbf{Journal of the Royal Society Interface}, 2015. El puente entre inferencia activa y morfog\'enesis.
+  \item Rose, K. A. \emph{et al.} \emph{Outdoor activity reduces the prevalence of myopia in children.} \textbf{Ophthalmology}, 2008. El estudio sobre el aire libre y la miop\'ia infantil.
+  \item Lam, C. S. Y. \emph{et al.} \emph{Defocus Incorporated Multiple Segments (DIMS) spectacle lenses slow myopia progression.} \textbf{British Journal of Ophthalmology}, 2020.
+  \item Hung, G. K. y Ciuffreda, K. J. \emph{Incremental retinal-defocus theory of myopia development.} \textbf{Computers in Biology and Medicine}, 2007.
+\end{itemize}
+\normalsize
+
+\vspace{0.6em}
+\noindent{\footnotesize\color{gtext} Dr.\ Miguel Ojeda Rios \textbullet\ Instituto Centrobioenerg\'etica \textbullet\ Versi\'on de divulgaci\'on, Julio de 2026 \textbullet\ contacto@institutocentrobioenergetica.com}
+
+\end{document}
