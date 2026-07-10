@@ -1,0 +1,264 @@
+<meta charset="utf-8">
+<style>
+  :root{
+    --paper:#FFFFFF;--desk:#EAEAEA;--ink:#222222;--teal:#000000;--teal-tint:#EEEEEE;
+    --muted:#5C5C5C;--label:#8A8A8A;--line:#D6D6D6;--card:#F2F2F2;--fold:#C2C2C2;
+    --font:Georgia,'Times New Roman',serif;
+  }
+  .tri-root{background:var(--desk);padding:26px 14px;display:flex;flex-direction:column;align-items:center;gap:26px;overflow-x:auto;font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+  .sheet{
+    width:11in;height:8.5in;background:var(--paper);
+    box-shadow:0 1px 3px rgba(0,0,0,.10),0 12px 34px rgba(0,0,0,.16);
+    display:grid;grid-template-columns:1fr 1fr 1fr;box-sizing:border-box;
+  }
+  .panel{padding:0.5in 0.42in;box-sizing:border-box;display:flex;flex-direction:column;overflow:hidden;position:relative}
+  .panel + .panel{border-left:1px dashed var(--fold)}
+  .sheet.inside .panel{justify-content:center}
+
+  .dipole{display:inline-block;vertical-align:middle;flex:none}
+  .lockup{display:flex;align-items:center;gap:9px}
+  .lockup .name{font-size:13.5px;letter-spacing:.3px;line-height:1}
+  .lockup .name b{color:var(--teal);font-weight:normal}
+
+  .eyebrow{font-size:10.5px;letter-spacing:2.6px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+  .sec-label{font-size:10.5px;letter-spacing:2.4px;text-transform:uppercase;color:var(--label);margin:0 0 11px}
+  .p{font-size:13px;line-height:1.55;color:var(--ink);margin:0}
+  .p.muted{color:var(--muted)}
+  .dot{display:flex;align-items:center;gap:9px;color:var(--line);margin:18px 0}
+  .dot::before,.dot::after{content:"";height:1px;background:var(--line);flex:1}
+  .spacer{flex:1}
+
+  /* front cover */
+  .cover{justify-content:space-between}
+  .cover h1{margin:0;font-weight:bold;font-size:53px;line-height:.98;letter-spacing:-.5px}
+  .cover h1 .accent{color:var(--teal)}
+  .cover .sub{margin:13px 0 0;font-size:16px;color:var(--muted);font-style:italic}
+  .cover .tag{margin:18px 0 0;font-size:13px;line-height:1.55;color:var(--ink)}
+  .cover .foot{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--label)}
+
+  /* science */
+  .sci{padding:12px 0;border-top:1px solid var(--line)}
+  .sci:first-of-type{border-top:0}
+  .sci .src{font-size:13.5px;color:var(--teal);margin-bottom:3px}
+  .sci .src em{font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--label);font-style:normal;margin-left:6px}
+  .sci .txt{font-size:11.5px;line-height:1.5;color:var(--ink)}
+
+  .defbox{background:var(--teal-tint);border-radius:3px;padding:13px 14px;margin-bottom:15px}
+  .defbox .p{font-size:12.5px;font-style:italic}
+  .defbox .p b{color:var(--teal);font-style:normal;font-weight:normal}
+
+  /* modules */
+  .mod{padding:15px 0;border-top:1px solid var(--line)}
+  .mod:first-of-type{border-top:0}
+  .mod .mh{display:flex;align-items:baseline;gap:10px}
+  .mod .num{font-size:22px;color:var(--teal);font-variant-numeric:tabular-nums;line-height:1}
+  .mod .mt{font-size:15.5px;font-weight:bold}
+  .mod .date{margin-left:auto;font-size:10.5px;color:var(--label);letter-spacing:.5px;white-space:nowrap}
+  .mod .kick{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--label);margin:5px 0 9px 30px}
+  .mod ul{margin:0 0 0 30px;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+  .mod li{position:relative;padding-left:13px;font-size:11.5px;line-height:1.42;color:var(--ink)}
+  .mod li::before{content:"";position:absolute;left:0;top:7px;width:4.5px;height:4.5px;border-radius:50%;background:var(--teal);opacity:.55}
+
+  .applist{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+  .applist li{position:relative;padding-left:15px;font-size:12.5px;line-height:1.4}
+  .applist li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--teal);opacity:.55}
+
+  .facts{display:flex;flex-direction:column;gap:0;margin-top:2px}
+  .facts .row{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-top:1px solid var(--line);font-size:12px}
+  .facts .row:first-child{border-top:0}
+  .facts .k{color:var(--label)}
+  .facts .v{text-align:right;font-variant-numeric:tabular-nums}
+
+  .price{background:var(--ink);color:var(--paper);border-radius:3px;padding:15px 16px;margin-top:4px}
+  .price .prow{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:5px 0}
+  .price .pk{font-size:12px;color:#DDDDDD}
+  .price .amount{font-size:21px;color:#fff;font-variant-numeric:tabular-nums}
+  .price .amount small{font-size:12px;color:#BBBBBB}
+  .price .full .amount{color:#F2F2F2}
+  .price hr{border:0;border-top:1px solid rgba(255,255,255,.16);margin:8px 0}
+
+  .contact .ctitle{font-size:15px;font-weight:bold;color:var(--teal);margin:0 0 6px}
+  .contact .cl{font-size:12.5px;line-height:1.7;margin:0;font-variant-numeric:tabular-nums}
+  .contact .cl b{color:var(--teal);font-weight:normal}
+
+  .endo{font-size:9.5px;letter-spacing:2.2px;text-transform:uppercase;color:var(--label)}
+
+  @page{size:letter landscape;margin:0}
+  @media print{
+    .tri-root{background:#fff;padding:0;gap:0;overflow:visible}
+    .sheet{box-shadow:none;page-break-after:always}
+    .sheet:last-child{page-break-after:auto}
+    .panel + .panel{border-left:1px dashed #d9d5c7}
+  }
+  @media (max-width:11.2in){.tri-root{align-items:flex-start}}
+</style>
+
+<div class="tri-root">
+
+  <!-- ================= HOJA 1 — EXTERIOR ================= -->
+  <!-- columnas: [solapa interior] [contraportada] [portada] -->
+  <section class="sheet">
+
+    <!-- SOLAPA INTERIOR -->
+    <div class="panel" style="justify-content:center">
+      <div class="eyebrow">El planteamiento</div>
+      <p class="p">El cuerpo no es solo química: es un sistema eléctrico. Cada célula mantiene un voltaje que le indica qué hacer, y cada órgano defiende un punto de calibración. Cuando ese punto se desregula, no se trata de atacar nada — se trata de <b style="color:var(--teal);font-weight:normal">regular</b>: devolverle al cuerpo, por su canal eléctrico, la información para recalibrarse. Eso es la Regulación Bioeléctrica.</p>
+      <div class="dot"><svg class="dipole" width="28" height="9" viewBox="0 0 38 12" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#222"/><line x1="12" y1="6" x2="26" y2="6" stroke="#222" stroke-width="1.6"/><circle cx="32" cy="6" r="6" fill="#222" opacity="0.35"/></svg></div>
+      <div class="sec-label">¿Para quién es?</div>
+      <p class="p muted">Profesionales de la salud, terapeutas y personas que quieran aprender un sistema clínico completo de RB — tanto quien empieza de cero como quien ya trabaja el cuerpo y busca un marco riguroso.</p>
+      <div class="dot"><svg class="dipole" width="28" height="9" viewBox="0 0 38 12" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#222"/><line x1="12" y1="6" x2="26" y2="6" stroke="#222" stroke-width="1.6"/><circle cx="32" cy="6" r="6" fill="#222" opacity="0.35"/></svg></div>
+      <div class="sec-label">Un método distinto</div>
+      <ul class="applist">
+        <li>Un criterio clínico, no un catálogo de puntos que memorizar</li>
+        <li>Fundamento científico verificable (Becker, Levin)</li>
+        <li>Para tratamiento y para mantenimiento de la salud</li>
+      </ul>
+    </div>
+
+    <!-- CONTRAPORTADA -->
+    <div class="panel">
+      <div class="sec-label">Datos generales</div>
+      <div class="facts">
+        <div class="row"><span class="k">Facilitador</span><span class="v">Dr. Miguel Ojeda Ríos</span></div>
+        <div class="row"><span class="k">Formato</span><span class="v">Presencial y en línea</span></div>
+        <div class="row"><span class="k">Duración</span><span class="v">4 sábados · 32 h</span></div>
+        <div class="row"><span class="k">Horario</span><span class="v">10:00 – 18:00 h</span></div>
+        <div class="row"><span class="k">Instrumento</span><span class="v">Campo magnético (0.1–0.5 T)</span></div>
+        <div class="row"><span class="k">Prerequisito</span><span class="v">Ninguno</span></div>
+      </div>
+
+      <div class="sec-label" style="margin-top:18px">Inversión</div>
+      <div class="price">
+        <div class="prow"><span class="pk">Por módulo</span><span class="amount">$2,150<small> MXN</small></span></div>
+        <hr/>
+        <div class="prow full"><span class="pk">Curso completo</span><span class="amount">$8,600<small> MXN</small></span></div>
+      </div>
+
+      <div class="spacer"></div>
+      <div class="contact">
+        <p class="ctitle">Inscripciones e informes</p>
+        <p class="cl">WhatsApp <b>+52 55 7907 6626</b></p>
+        <p class="cl">contacto@institutocentrobioenergetica.com</p>
+      </div>
+      <div class="spacer"></div>
+      <span class="endo">Instituto Centrobioenergetica · 2026</span>
+    </div>
+
+    <!-- PORTADA -->
+    <div class="panel cover">
+      <div class="lockup">
+        <svg class="dipole" width="38" height="12" viewBox="0 0 38 12" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#222"/><line x1="12" y1="6" x2="26" y2="6" stroke="#222" stroke-width="1.6"/><circle cx="32" cy="6" r="6" fill="#222" opacity="0.35"/></svg>
+        <span class="name">regulación <b>bioeléctrica</b></span>
+      </div>
+      <div>
+        <div class="eyebrow">Programa de formación · 4 sábados</div>
+        <h1>El Cuerpo <span class="accent">Eléctrico</span></h1>
+        <p class="sub">Formación en Regulación Bioeléctrica</p>
+        <p class="tag">Aprende a leer y regular el cuerpo desde su biología eléctrica. Desde cero, con fundamento científico.</p>
+      </div>
+      <div class="foot">Julio – Agosto 2026</div>
+    </div>
+  </section>
+
+  <!-- ================= HOJA 2 — INTERIOR ================= -->
+  <!-- columnas al abrir: [fundamento + beneficios] [módulos 1–2] [módulos 3–4] -->
+  <section class="sheet inside">
+
+    <!-- INTERIOR 1 — QUÉ ES + FUNDAMENTO + BENEFICIOS -->
+    <div class="panel">
+      <div class="eyebrow">Qué es</div>
+      <div class="defbox"><p class="p">Un método de evaluación y regulación del <b>estado bioeléctrico de los tejidos</b>, mediante <b>campos magnéticos estáticos</b> de intensidad moderada (0.1–0.5 T).</p></div>
+
+      <div class="sec-label">Fundamento científico</div>
+      <div class="sci"><div class="src">Robert Becker<em>The Body Electric</em></div><div class="txt">El cuerpo tiene un mapa eléctrico medible; la señal que recibe un tejido decide si regenera o solo cicatriza.</div></div>
+      <div class="sci"><div class="src">Michael Levin<em>Tufts</em></div><div class="txt">Cada célula mantiene un voltaje de membrana (Vmem) que instruye su comportamiento.</div></div>
+      <div class="sci"><div class="src">Campo magnético estático<em>0.1–0.5 T</em></div><div class="txt">Actúa sobre los canales iónicos de la membrana y la magnetita del tejido cerebral (Rosen; Kirschvink).</div></div>
+      <div class="sci"><div class="src">La red bioeléctrica<em>Pischinger · Levin</em></div><div class="txt">Matriz y fascia conectan el cuerpo en una red eléctrica continua; la señal viaja en segundos.</div></div>
+
+      <div class="dot"><svg class="dipole" width="26" height="8" viewBox="0 0 38 12" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#222"/><line x1="12" y1="6" x2="26" y2="6" stroke="#222" stroke-width="1.6"/><circle cx="32" cy="6" r="6" fill="#222" opacity="0.35"/></svg></div>
+
+      <div class="sec-label">Beneficios del método</div>
+      <ul class="applist">
+        <li>Sin fármacos: trabaja la capa eléctrica del tejido</li>
+        <li>Complementario: acompaña el cuidado médico, no lo sustituye</li>
+        <li>Perfil de seguridad amplio: campo de baja intensidad</li>
+        <li>Aplicación breve: de 15 a 30 minutos por sesión</li>
+        <li>Amplía tu práctica con pacientes de mantenimiento</li>
+      </ul>
+    </div>
+
+    <!-- INTERIOR 2 — MÓDULOS 1 Y 2 -->
+    <div class="panel">
+      <div class="eyebrow">El programa · el arco del curso</div>
+      <p class="p muted" style="font-size:12px;margin-bottom:7px">Cuatro módulos que van de la mirada al método, y del método a la clínica.</p>
+
+      <div class="mod">
+        <div class="mh"><span class="num">01</span><span class="mt">El Cuerpo Eléctrico</span><span class="date">11 jul</span></div>
+        <div class="kick">Ver · el cambio de mirada</div>
+        <ul>
+          <li>Qué es la Regulación Bioeléctrica</li>
+          <li>La matriz extracelular y el voltaje de membrana (Vmem)</li>
+          <li>La bioelectricidad como lenguaje del tejido (Levin, TAME)</li>
+          <li>El órgano como sistema con una meta y un punto de calibración</li>
+          <li>Caso ejemplar: el Ojo Adaptativo y los 4 niveles del razonamiento</li>
+          <li>Regular no es corregir el síntoma: recalibrar el punto</li>
+          <li>Salud y mantenimiento: salutogénesis y carga alostática</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mh"><span class="num">02</span><span class="mt">La lectura del cuerpo</span><span class="date">25 jul</span></div>
+        <div class="kick">Leer y regular · el instrumento</div>
+        <ul>
+          <li>El campo magnético estático y cómo interactúa con el tejido</li>
+          <li>El nodo bioeléctrico, el dipolo y el perfil bioeléctrico</li>
+          <li>Eje del estrés (transversal): la alerta sostenida</li>
+          <li>Eje intestinal: barrera y microbiota</li>
+          <li>Eje metabólico-energético y los 5 tipos de fatiga</li>
+          <li>Prácticas</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- INTERIOR 3 — MÓDULOS 3 Y 4 + APLICACIONES -->
+    <div class="panel">
+      <div class="mod" style="border-top:0">
+        <div class="mh"><span class="num">03</span><span class="mt">Los ejes de regulación</span><span class="date">8 ago</span></div>
+        <div class="kick">Mapear · el mapa clínico</div>
+        <ul>
+          <li>Eje inflamatorio: el sistema inmune y la resolución de la inflamación</li>
+          <li>Eje de biotransformación (hígado) y la carga ambiental</li>
+          <li>Eje redox: la deriva oxidativa del medio interno</li>
+          <li>El criterio clínico: perfiles combinados y jerarquía</li>
+          <li>Prácticas</li>
+        </ul>
+      </div>
+
+      <div class="mod">
+        <div class="mh"><span class="num">04</span><span class="mt">La sesión completa</span><span class="date">22 ago</span></div>
+        <div class="kick">Integrar · la clínica</div>
+        <ul>
+          <li>Integración de los ejes de regulación en el paciente real</li>
+          <li>Lectura completa del perfil bioeléctrico</li>
+          <li>Estrategias clínicas: combinar y priorizar los ejes</li>
+          <li>Casos clínicos</li>
+          <li>La sesión completa y la sesión de mantenimiento</li>
+          <li>Prácticas</li>
+        </ul>
+      </div>
+
+      <div class="dot"><svg class="dipole" width="26" height="8" viewBox="0 0 38 12" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#222"/><line x1="12" y1="6" x2="26" y2="6" stroke="#222" stroke-width="1.6"/><circle cx="32" cy="6" r="6" fill="#222" opacity="0.35"/></svg></div>
+
+      <div class="sec-label">Se aplica en el acompañamiento de</div>
+      <ul class="applist">
+        <li>Inflamación de bajo grado y recuperación lenta</li>
+        <li>Fatiga persistente e intolerancia al esfuerzo</li>
+        <li>Digestión reactiva y barrera intestinal</li>
+        <li>Carga de estrés sostenida</li>
+        <li>Mantenimiento y prevención (salutogénesis)</li>
+      </ul>
+    </div>
+  </section>
+
+</div>

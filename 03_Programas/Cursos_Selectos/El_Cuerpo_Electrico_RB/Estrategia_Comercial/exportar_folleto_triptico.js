@@ -28,6 +28,11 @@ const JOBS = [
     selector: '.sheet',
     names: ['Triptico_Cara_A_Exterior', 'Triptico_Cara_B_Interior'],
   },
+  {
+    file: 'Triptico_Programa_RB_BN.html',
+    selector: '.sheet',
+    names: ['Triptico_BN_Cara_A_Exterior', 'Triptico_BN_Cara_B_Interior'],
+  },
 ];
 
 (async () => {
