@@ -1,0 +1,104 @@
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,900&family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#0F6E56;--teal-mid:#5DCAA5;--paper:#F7F4EC;--coral:#CF5730;--amber:#BA7517;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#cfccc3;display:flex;flex-direction:column;align-items:center;gap:24px;padding:24px}
+
+  .thumb{
+    width:1280px;height:720px;position:relative;overflow:hidden;color:var(--paper);
+    background:
+      radial-gradient(circle at 82% 34%, rgba(93,202,165,.22) 0, transparent 42%),
+      linear-gradient(135deg,#072F28 0%,#093F35 45%,var(--teal) 100%);
+    font-family:'Instrument Sans',system-ui,sans-serif;
+  }
+
+  .island{position:absolute;right:40px;top:50%;transform:translateY(-50%)}
+
+  .text{position:absolute;left:76px;top:72px;right:540px;bottom:72px;display:flex;flex-direction:column;justify-content:center}
+  .kick{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+  .kick svg{flex:none}
+  .kick span{font-family:'JetBrains Mono',monospace;font-size:22px;letter-spacing:3px;text-transform:uppercase;color:var(--teal-mid);font-weight:500}
+  .title{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:128px;line-height:.9;letter-spacing:-2px;white-space:pre-line}
+  .thumb[data-lang="en"] .title{font-size:104px}
+  .rule{width:96px;height:5px;background:var(--amber);border-radius:3px;margin:30px 0 26px}
+  .sub{font-size:31px;line-height:1.25;opacity:.93;max-width:560px}
+
+  .badge{position:absolute;left:76px;bottom:44px;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:2px;text-transform:uppercase;background:rgba(255,255,255,.12);padding:9px 18px;border-radius:999px}
+
+  .cap{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#6b6a62}
+</style>
+
+<body>
+
+  <div class="cap">Portada ES — 1280 × 720</div>
+  <section class="thumb" data-lang="es">
+    <div class="island"></div>
+    <div class="text">
+      <div class="kick">
+        <svg width="54" height="17" viewBox="0 0 38 12" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#5DCAA5"/><line x1="12" y1="6" x2="26" y2="6" stroke="#5DCAA5" stroke-width="1.8"/><circle cx="32" cy="6" r="6" fill="#5DCAA5" opacity="0.4"/></svg>
+        <span>Regulación Bioeléctrica</span>
+      </div>
+      <div class="title">El Punto
+Trauma</div>
+      <div class="rule"></div>
+      <div class="sub">Cómo una lesión cambia el voltaje del tejido</div>
+    </div>
+    <div class="badge">Clase de referencia · Instituto Centrobioenergética</div>
+  </section>
+
+  <div class="cap">Portada EN — 1280 × 720</div>
+  <section class="thumb" data-lang="en">
+    <div class="island"></div>
+    <div class="text">
+      <div class="kick">
+        <svg width="54" height="17" viewBox="0 0 38 12" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#5DCAA5"/><line x1="12" y1="6" x2="26" y2="6" stroke="#5DCAA5" stroke-width="1.8"/><circle cx="32" cy="6" r="6" fill="#5DCAA5" opacity="0.4"/></svg>
+        <span>Bioelectric Regulation</span>
+      </div>
+      <div class="title">The Trauma
+Point</div>
+      <div class="rule"></div>
+      <div class="sub">How an injury changes the tissue's voltage</div>
+    </div>
+    <div class="badge">Reference class · Instituto Centrobioenergética</div>
+  </section>
+
+<script>
+  // Genera la "isla eléctrica" (visual firma del video): malla de nodos teal
+  // con un cúmulo central coral desconectado (líneas punteadas = señal rota).
+  function buildIsland(el){
+    const NS="http://www.w3.org/2000/svg";
+    const cols=[90,230,370,510], rows=[70,220,370,520];
+    const nodes=[];
+    cols.forEach((x,ci)=>rows.forEach((y,ri)=>nodes.push({x,y,isla:(ci===1||ci===2)&&(ri===1||ri===2)})));
+    const svg=document.createElementNS(NS,"svg");
+    svg.setAttribute("viewBox","0 0 600 590");
+    svg.setAttribute("width","520");svg.setAttribute("height","520");
+    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
+      const a=nodes[i],b=nodes[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d>160)continue;
+      const broken=a.isla!==b.isla, inside=a.isla&&b.isla;
+      const ln=document.createElementNS(NS,"line");
+      ln.setAttribute("x1",a.x);ln.setAttribute("y1",a.y);ln.setAttribute("x2",b.x);ln.setAttribute("y2",b.y);
+      ln.setAttribute("stroke",(broken||inside)?"#CF5730":"#5DCAA5");
+      ln.setAttribute("stroke-width",broken?3:4);
+      if(broken)ln.setAttribute("stroke-dasharray","6 9");
+      ln.setAttribute("opacity",broken?0.85:inside?0.85:0.55);
+      svg.appendChild(ln);
+    }
+    nodes.forEach(n=>{
+      if(n.isla){const g=document.createElementNS(NS,"circle");g.setAttribute("cx",n.x);g.setAttribute("cy",n.y);g.setAttribute("r",34);g.setAttribute("fill","#CF5730");g.setAttribute("opacity",0.22);svg.appendChild(g);}
+      const c=document.createElementNS(NS,"circle");
+      c.setAttribute("cx",n.x);c.setAttribute("cy",n.y);c.setAttribute("r",n.isla?21:17);
+      c.setAttribute("fill",n.isla?"#CF5730":"#5DCAA5");c.setAttribute("opacity",n.isla?1:0.9);
+      svg.appendChild(c);
+    });
+    el.appendChild(svg);
+  }
+  document.querySelectorAll('.island').forEach(buildIsland);
+</script>
+</body>
