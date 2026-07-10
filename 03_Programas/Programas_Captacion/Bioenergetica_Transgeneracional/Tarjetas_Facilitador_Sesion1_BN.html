@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjetas del Facilitador — Sesión 1 (14×9 cm, B&amp;N)</title>
+<style>
+  :root {
+    --terracota: #2A2A2A;
+    --terracota-deep: #000000;
+    --sage: #767676;
+    --gold: #B0B0B0;
+    --ink: #1A1A1A;
+    --muted: #666666;
+    --paper: #FFFFFF;
+    --rule: #D5D5D5;
+    --backdrop-light: #E8E8E8;
+    --code-bg: #EFEFEF;
+
+    --serif: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, 'Times New Roman', serif;
+    --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--backdrop-light);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    padding: 2rem;
+    gap: 0.6rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .index-tag {
+    width: 14cm;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin: 0.6rem 0 -0.2rem;
+  }
+
+  .card {
+    width: 14cm;
+    height: 9cm;
+    background: var(--paper);
+    box-shadow: 0 0.5rem 1.4rem rgba(0, 0, 0, 0.22);
+    border: 1px solid var(--rule);
+    padding: 0.34cm 0.5cm;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1cm;
+    overflow: hidden;
+  }
+
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1.4px solid var(--terracota-deep);
+    padding-bottom: 0.07cm;
+    flex-shrink: 0;
+  }
+
+  .card-eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    color: var(--terracota);
+    line-height: 1.25;
+  }
+
+  .card-title {
+    font-family: var(--serif);
+    font-size: 18.5px;
+    font-weight: 600;
+    color: var(--terracota-deep);
+    line-height: 1.1;
+    margin-top: 2px;
+  }
+
+  .card-slide {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 6px;
+  }
+
+  .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1cm;
+    min-height: 0;
+    justify-content: flex-start;
+    padding-top: 0.06cm;
+  }
+
+  ul.cues {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5px;
+  }
+  ul.cues li {
+    font-family: var(--sans);
+    font-size: 12.6px;
+    line-height: 1.32;
+    color: var(--ink);
+    padding-left: 12px;
+    position: relative;
+  }
+  ul.cues li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+  ul.cues li strong { color: var(--terracota-deep); font-weight: 700; }
+  ul.cues li .say { font-family: var(--serif); font-style: italic; color: var(--terracota-deep); }
+
+  .note-box {
+    border-left: 2.5px solid var(--gold);
+    background: var(--code-bg);
+    padding: 4px 7px;
+    font-family: var(--sans);
+    font-size: 11px;
+    line-height: 1.28;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+  .note-box b { color: var(--terracota-deep); }
+
+  .card-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid var(--rule);
+    padding-top: 0.05cm;
+    flex-shrink: 0;
+    gap: 6px;
+  }
+  .transition {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 10.8px;
+    color: var(--muted);
+    flex: 1;
+  }
+  .transition b { color: var(--terracota); font-style: normal; }
+  .pageno {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  @media print {
+    @page { size: 14cm 9cm; margin: 0; }
+    body { padding: 0; background: #fff; gap: 0; display: block; }
+    .index-tag { display: none; }
+    .card { box-shadow: none; border: none; width: 14cm; height: 9cm; page-break-after: always; }
+    .card:last-child { page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="index-tag">01 · CHECKLIST PRE-SESIÓN</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Antes de empezar</div><div class="card-title">Checklist pre-sesión</div></div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li><strong>Co-facilitador de Zoom</strong> confirmado, con acceso al chat y capacidad de abrir salas de breakout.</li>
+      <li>13 slides proyectando en sala y compartidos en Zoom, simultáneo.</li>
+      <li>Plantilla de genograma — impresa para sala, link enviado a Zoom con anticipación.</li>
+      <li>Manual del Participante (color o B&amp;N) a la mano — símbolos, 8 categorías, método A/R/E, ejemplo resuelto.</li>
+      <li>Tono: registro clínico-terapéutico, cero frases defensivas, cero "no es X es Y" (ver <code>README.md</code>).</li>
+      <li>Sin tiempos fijos — se avanza cuando el grupo está listo, no por reloj.</li>
+      <li>Objetivo del día: cada participante sale con su genograma de 3 generaciones + al menos 1 patrón marcado con asterisco.</li>
+    </ul>
+  </div>
+  <div class="card-foot">
+    <span class="transition"><b>Hora 1</b> marco (12 bloques) → <b>Hora 2</b> práctica (9 secciones)</span>
+    <span class="pageno">01/25</span>
+  </div>
+</div>
+
+<div class="index-tag">02 · BLOQUE 1 — BIENVENIDA</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 1 · Bloque 1</div><div class="card-title">Bienvenida</div></div>
+    <div class="card-slide">Slide 1</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>~50 personas: 10 en el Instituto + 40 por Zoom. La sesión se graba y queda disponible.</li>
+      <li>Programa de 4 sesiones, una por semana. <strong>Hoy: el mapa</strong> — genograma, genosociograma y al menos 1 patrón identificado en su línea familiar.</li>
+      <li>Sesión 2 — línea paterna: Los Caminos de la Vida + Playmobil, demo en vivo.</li>
+      <li>Sesión 3 — línea materna: Campos Mórficos, demo en vivo.</li>
+      <li>Sesión 4 — cierre con lo que se hereda a nivel metabólico.</li>
+    </ul>
+  </div>
+  <div class="card-foot">
+    <span class="transition">→ Bloque 2: mecánica híbrida</span>
+    <span class="pageno">02/25</span>
+  </div>
+</div>
+
+<div class="index-tag">03 · BLOQUE 2 — MECÁNICA HÍBRIDA</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 1 · Bloque 2</div><div class="card-title">Mecánica híbrida</div></div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>Zoom → preguntas van al chat, el co-facilitador las trae a viva voz en los cortes designados.</li>
+      <li>Sala → se deja espacio de pregunta al cierre de cada concepto, no a media explicación.</li>
+      <li>Estructura: Hora 1 = marco conceptual, 4 ideas con evidencia detrás · Hora 2 = trabajo directo, construyen su propio genograma y genosociograma con acompañamiento.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> confirmar en voz alta que el co-facilitador de Zoom está activo ANTES de seguir — único momento para resolverlo sin interrumpir después.</div>
+  <div class="card-foot">
+    <span class="transition">→ Bloque 3: qué es lo transgeneracional</span>
+    <span class="pageno">03/25</span>
+  </div>
+</div>
+
+<div class="index-tag">04 · BLOQUE 3 — MARCO TRANSGENERACIONAL</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 1 · Bloque 3</div><div class="card-title">Marco: qué es lo transgeneracional</div></div>
+    <div class="card-slide">Slide 2</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>Transmisión de información no resuelta que se expresa como síntoma o patrón — sin que la persona haya vivido el evento que lo originó.</li>
+      <li>4 tipos: <strong>duelo no resuelto</strong> (pérdida nunca elaborada) / <strong>exclusión</strong> (miembro negado u olvidado) / <strong>secreto familiar</strong> / <strong>cripta genealógica</strong> (evento enterrado, programa oculto).</li>
+      <li>Exclusión → mecanismo preciso: <strong>sentimientos ajenos</strong> (NIG) — cargar el estado emocional de un ancestro nunca conocido, excluido o que no cargó las consecuencias de sus actos.</li>
+      <li>3 implicaciones: rastreo válido aunque no viviera el evento · patrones repetidos = dato clínico · diferenciar lo propio de lo ancestral = acto terapéutico, base de las 3 frases de liberación (Sesión 4).</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> este marco NO se abre a preguntas todavía — primer corte es al cierre de Concepto 1.</div>
+  <div class="card-foot">
+    <span class="transition">→ Bloque 4: lo mismo desde Bowen</span>
+    <span class="pageno">04/25</span>
+  </div>
+</div>
+
+<div class="index-tag">05 · BLOQUE 4 — BOWEN</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 1 · Bloque 4</div><div class="card-title">Marco sistémico: la teoría de Bowen</div></div>
+    <div class="card-slide">Slide 3</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>Proceso de transmisión multigeneracional: la <strong>diferenciación del yo</strong> se transmite de padres a hijos, generación tras generación.</li>
+      <li><strong>Corte emocional</strong> — distancia o silencio hacia un familiar — es desplazamiento de la ansiedad del sistema, no resolución. Es el dato a rastrear, no señal de que se resolvió.</li>
+      <li><strong>Proceso de proyección familiar</strong>: la ansiedad de los padres se deposita desigual en un solo hijo, no en la familia completa.</li>
+      <li>El genograma es el instrumento clínico de Bowen — la notación que usan en Hora 2 (McGoldrick-Gerson) viene directo de este marco.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> segundo corte natural para preguntas del chat, antes de pasar a la impronta.</div>
+  <div class="card-foot">
+    <span class="transition">→ Bloque 5: programa biológico, no solo relacional</span>
+    <span class="pageno">05/25</span>
+  </div>
+</div>
+
+<div class="index-tag">06 · BLOQUE 5 — IMPRONTA</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 1 · Bloque 5</div><div class="card-title">La impronta como programa de supervivencia</div></div>
+    <div class="card-slide">Slide 4</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>Impronta = ciclo defensivo de 4 fases —activación (cortisol/adrenalina), respuesta (congelar/huir/luchar/someterse), descarga (temblor/llanto), reposo— que quedó atrapado cuando algo interrumpió la descarga.</li>
+      <li>Consecuencia metabólica: eje HPA desregulado, cortisol crónico → resistencia a la insulina, grasa visceral, inmunosupresión. <strong>Fisiología medible, no metáfora.</strong></li>
+      <li>Transgeneracional: se transmite por vía epigenética. El descendiente no hereda el evento — <strong>hereda el umbral</strong> de activación de esa misma respuesta.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> prepara la Sesión 4 sin adelantarla — no profundizar en el detalle metabólico todavía.</div>
+  <div class="card-foot">
+    <span class="transition">→ Bloque 6: dónde vive cada cosa</span>
+    <span class="pageno">06/25</span>
+  </div>
+</div>
+
+<div class="index-tag">07 · BLOQUE 6 — 4 NIVELES (TAME)</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 1 · Bloque 6</div><div class="card-title">Los 4 niveles y dónde vive cada cosa</div></div>
+    <div class="card-slide">Slide 5</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li><strong>N1</strong> celular/bioeléctrico, en todo el cuerpo · <strong>N2</strong> homeostático, temperatura/glucosa/eje del estrés · <strong>N3</strong> inconsciente somático — aquí vive la impronta, firma corporal específica · <strong>N4</strong> consciente explícito, lenguaje y narrativa.</li>
+      <li>Entender el patrón (N4) no cambia automáticamente el patrón (N3) — son niveles distintos, con distinto idioma.</li>
+      <li>Impronta transgeneracional: empieza en N1 (marca epigenética heredada) → altera el umbral en N2 → se ejecuta completa en N3 — el N4 muchas veces no tiene narrativa que ofrecer ("no sé de dónde viene esto").</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> no dar clase de neurociencia — el objetivo es preparar el momento somático que sigue.</div>
+  <div class="card-foot">
+    <span class="transition">→ Bloque 7: momento somático (sin slide)</span>
+    <span class="pageno">07/25</span>
+  </div>
+</div>
+
+<div class="index-tag">08 · BLOQUE 7 (1/2) — MOMENTO SOMÁTICO</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 1 · Bloque 7 · Ritual — 1/2</div><div class="card-title">Dónde vive tu impronta</div></div>
+    <div class="card-slide">Sin slide</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>Bajar mirada de pantalla, manos libres. No se comparte nada de esto en voz alta con el grupo — es información para cada quien.</li>
+      <li><strong>1. Nombrar</strong> — ambas manos en las piernas, palmas hacia abajo. <span class="say">"Esto es lo que traigo: patrones que son míos, y patrones que quizás no lo son."</span></li>
+      <li><strong>2. Regular</strong> — respiración 4-4-6, tres veces. <span class="say">"Mi cuerpo está aquí, en esta silla, en este momento."</span></li>
+      <li><strong>3. Recursos</strong> — pies apoyados en el piso. <span class="say">"Tengo un cuerpo que puede sentir esto sin quebrarse."</span></li>
+    </ul>
+  </div>
+  <div class="card-foot">
+    <span class="transition">→ sigue Paso 4-5 (tarjeta 09)</span>
+    <span class="pageno">08/25</span>
+  </div>
+</div>
+
+<div class="index-tag">09 · BLOQUE 7 (2/2) — MOMENTO SOMÁTICO</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 1 · Bloque 7 · Ritual — 2/2</div><div class="card-title">Dónde vive tu impronta</div></div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li><strong>4. Ampliar conciencia</strong> — escaneo pecho/garganta/hombros/vientre/mandíbula. <span class="say">"¿Qué zona reconoces como tuya, con historia clara?"</span> (pausa) <span class="say">"¿Qué zona se siente más antigua, como prestada?"</span> (pausa)</li>
+      <li><strong>5. El gesto</strong> — mano en zona 1: <span class="say">"Esto lo reconozco como mío."</span> (silencio) Mano en zona 2: <span class="say">"Esto puede no ser mío. Lo dejo marcado, no resuelto."</span> (silencio)</li>
+      <li><strong>Cierre</strong> — palmas hacia arriba. <span class="say">"Con esto llego a construir mi mapa."</span></li>
+      <li>Objeto que se llevan: marcan con símbolo propio esas 2 zonas en el margen de su plantilla, ya en Hora 2.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> activación fuerte (llanto, temblor) → NO se trabaja en grupo. Co-facilitador anota y atiende 1:1 después.</div>
+  <div class="card-foot">
+    <span class="transition">→ Bloque 8: material y transición</span>
+    <span class="pageno">09/25</span>
+  </div>
+</div>
+
+<div class="index-tag">10 · BLOQUE 8 — MATERIAL Y TRANSICIÓN</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 1 · Bloque 8</div><div class="card-title">Material y transición</div></div>
+    <div class="card-slide">Slide 6</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>Plantilla de genograma de 3 generaciones a la mano — la van a usar en Hora 2, pero visible desde ahora.</li>
+      <li>Cada concepto de esta hora se lo van aplicando mentalmente a su propia familia mientras avanzamos.</li>
+      <li>Arranca Concepto 1: por qué "línea materna" y "línea paterna" es descripción exacta de cómo viaja la información genética, no convención de lenguaje del árbol.</li>
+    </ul>
+  </div>
+  <div class="card-foot">
+    <span class="transition">→ Bloque 9: las dos líneas de ADN directas</span>
+    <span class="pageno">10/25</span>
+  </div>
+</div>
+
+<div class="index-tag">11 · BLOQUE 9 — CONCEPTO 1: ADN</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 1 · Bloque 9 · Concepto 1</div><div class="card-title">Líneas de ADN directas</div></div>
+    <div class="card-slide">Slide 7</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li><strong>ADN mitocondrial</strong>: madre → todos los hijos por igual, intacto. Mecanismo activo: mitocondrias del espermatozoide se degradan (ubiquitinación + autofagia) tras la fecundación — el óvulo las elimina. Rarísimos casos de herencia biparental documentados.</li>
+      <li><strong>Cromosoma Y</strong>: padre → hijo varón. La región que no se recombina con el X pasa completa.</li>
+      <li>Base de 23andMe / MyHeritage — "haplogrupo materno/paterno" es exactamente esto.</li>
+      <li>Fundamento de la Sesión 2 (línea paterna) y Sesión 3 (línea materna).</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> primer corte natural para 1-2 preguntas del chat de Zoom.</div>
+  <div class="card-foot">
+    <span class="transition">→ Concepto 2: de la familia al pueblo entero</span>
+    <span class="pageno">11/25</span>
+  </div>
+</div>
+
+<div class="index-tag">12 · BLOQUE 10 — CONCEPTO 2: TRAUMA HISTÓRICO</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 1 · Bloque 10 · Concepto 2</div><div class="card-title">Trauma histórico y duelo colectivo</div></div>
+    <div class="card-slide">Slide 8</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li><strong>Maria Yellow Horse Brave Heart</strong> (psicóloga lakota): "duelo histórico no resuelto" — duelo colectivo acumulado de todo un pueblo, no de una familia.</li>
+      <li>Ejemplos: masacres, remoción forzada de niños a internados, despojo territorial sostenido por décadas. Comparación directa con descendientes de sobrevivientes del Holocausto.</li>
+      <li>Mecanismo: la amenaza al pueblo continúa generación tras generación → el duelo nunca tiene ventana para cerrar → se acumula y transmite.</li>
+      <li>Aplica más allá de un país o comunidad específica: colonización, desplazamientos forzados, persecución sostenida.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> invitar a notar —sin compartir todavía— si su propia historia familiar tiene esta capa.</div>
+  <div class="card-foot">
+    <span class="transition">→ Concepto 3: el silencio de la crianza</span>
+    <span class="pageno">12/25</span>
+  </div>
+</div>
+
+<div class="index-tag">13 · BLOQUE 11 — CONCEPTO 3: CO-REGULACIÓN</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 1 · Bloque 11 · Concepto 3</div><div class="card-title">Co-regulación del sistema nervioso</div></div>
+    <div class="card-slide">Slide 9</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li><strong>Porges</strong> — neurocepción: evaluación automática de seguridad, ~200ms, antes de lo consciente. El bebé no tiene madurez para regularse solo.</li>
+      <li><strong>Schore</strong> — desarrollo del hemisferio derecho depende de la calidad de la relación temprana; tarea central de los primeros 2 años.</li>
+      <li><strong>Tronick</strong> — paradigma del rostro inmóvil: madre congela expresión sin hostilidad, el bebé intenta reconectar, se angustia, se retira. Ese retiro = pérdida de la fuente externa de regulación.</li>
+      <li>Transmisión sin palabras: tensión de brazos, calidad de presencia, retirada del cuidador — el bebé lo integra como información propia.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> tercer corte — suele activar preguntas personales de crianza; redirigir con calidez a Hora 2.</div>
+  <div class="card-foot">
+    <span class="transition">→ Concepto 4: la marca medible en los genes</span>
+    <span class="pageno">13/25</span>
+  </div>
+</div>
+
+<div class="index-tag">14 · BLOQUE 12 — CONCEPTO 4: EPIGENÉTICA</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 1 · Bloque 12 · Concepto 4</div><div class="card-title">Herencia epigenética — más allá de la metilación</div></div>
+    <div class="card-slide">Slide 10</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li><strong>NO desarrollar Yehuda/FKBP5</strong> (Holocausto) — ya lo conocen. Pivotear directo a ARN espermático.</li>
+      <li>Mecanismo: el esperma transporta microARN + ARN largo no codificante — altera la expresión génica del embrión sin tocar la secuencia de ADN.</li>
+      <li>Prueba causal en animales: ARN de macho estresado, inyectado en óvulo normal sin el padre presente → las crías muestran las mismas alteraciones.</li>
+      <li><strong>miR-34/449</strong>: restaurar sus niveles en el embrión PREVIENE el patrón — no es destino fijo, es información corregible.</li>
+      <li>ARN largo = metabolismo (alimento, glucosa) / ARN corto = conducta (peso, desesperanza) → conecta directo con Sesión 4.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> último corte de preguntas — luego cierre directo de Hora 1, sin más pausas.</div>
+  <div class="card-foot">
+    <span class="transition">→ Cierre Hora 1 → Hora 2 práctica</span>
+    <span class="pageno">14/25</span>
+  </div>
+</div>
+
+<div class="index-tag">15 · SECCIÓN 1 — INSTRUCCIONES</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 2 · Sección 1</div><div class="card-title">Instrucciones del ejercicio</div></div>
+    <div class="card-slide">Slide 11</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>Construyen 2 cosas sobre el mismo papel: genograma (árbol, notación estándar) + genosociograma (fechas + tipo de evento).</li>
+      <li>Símbolos: cuadrado/hombre, círculo/mujer, línea/matrimonio, doble línea/divorcio, X/fallecimiento, línea cortada/corte emocional, <strong>?</strong>/dato desconocido.</li>
+      <li>8 categorías de evento (Manual p.3) — para no inventar cómo nombrarlo. Ejemplo: "infarto a los 52, dos generaciones seguidas" — un dato clínico, no una impresión vaga.</li>
+      <li>Marcar en el margen, con símbolo propio, las 2 zonas del cuerpo del Bloque 7 antes de empezar a llenar el árbol.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> proyectar el ejemplo resuelto (Slide 11) durante todo el ejercicio, no solo al inicio.</div>
+  <div class="card-foot">
+    <span class="transition">→ Sección 2: ritual antes de dibujar</span>
+    <span class="pageno">15/25</span>
+  </div>
+</div>
+
+<div class="index-tag">16 · SECCIÓN 2 (1/2) — RITUAL DEL PULSO</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 2 · Sección 2 · Ritual — 1/2</div><div class="card-title">El pulso antes del trazo</div></div>
+    <div class="card-slide">Sin slide</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>Lápiz a un lado, sin tocar el papel aún. Lo que van a dibujar ya está en su cuerpo — esto solo lo hace consciente antes de pasar a la mano.</li>
+      <li><strong>1. Nombrar</strong> — dos dedos en el pulso (cuello o muñeca). <span class="say">"Esto es lo que traigo: un pulso que no empezó conmigo."</span></li>
+      <li><strong>2. Regular</strong> — 4-4-6, dos o tres veces, sin soltar el pulso. <span class="say">"Mi cuerpo está aquí, respirando, en este momento."</span></li>
+      <li><strong>3. Recursos</strong> — pies en el piso, sintiendo el peso del cuerpo. <span class="say">"Tengo un cuerpo que sostiene este pulso ahora mismo."</span></li>
+    </ul>
+  </div>
+  <div class="card-foot">
+    <span class="transition">→ sigue Paso 4-5 (tarjeta 17)</span>
+    <span class="pageno">16/25</span>
+  </div>
+</div>
+
+<div class="index-tag">17 · SECCIÓN 2 (2/2) — RITUAL DEL PULSO</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 2 · Sección 2 · Ritual — 2/2</div><div class="card-title">El pulso antes del trazo</div></div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li><strong>4. Ampliar</strong> — sin responder en voz alta, sin buscar recuerdo. <span class="say">"Este pulso que siento, ¿de dónde viene?"</span> (pausa breve, sin resolver)</li>
+      <li><strong>5. El gesto</strong> — una mano queda en el pulso, la otra se extiende al papel en blanco. <span class="say">"Aquí empiezo yo. Detrás de mí, la línea completa."</span></li>
+      <li><strong>Cierre</strong> — ambas manos bajan al lápiz. <span class="say">"Ahora dibujo lo que ya siento."</span></li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> gesto de manos — funciona igual en sala y Zoom, sin cámara ni voz compartida.</div>
+  <div class="card-foot">
+    <span class="transition">→ Sección 3: empiezan a dibujar</span>
+    <span class="pageno">17/25</span>
+  </div>
+</div>
+
+<div class="index-tag">18 · SECCIÓN 3 — TU GENERACIÓN</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 2 · Sección 3</div><div class="card-title">Construcción: tu propia generación</div></div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>Empiecen por ustedes mismos: su símbolo, su nombre, su fecha de nacimiento.</li>
+      <li>Si tienen pareja o hijos, se agregan aquí también.</li>
+      <li>Es el punto de entrada más fácil — sirve para que todos, sala y Zoom, arranquen al mismo tiempo antes de que el ejercicio se vuelva más denso.</li>
+    </ul>
+  </div>
+  <div class="card-foot">
+    <span class="transition">→ Sección 4: padres</span>
+    <span class="pageno">18/25</span>
+  </div>
+</div>
+
+<div class="index-tag">19 · SECCIÓN 4 — PADRES</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 2 · Sección 4</div><div class="card-title">Construcción: padres</div></div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>Suban una generación: madre y padre — fechas de nacimiento, y si aplica, de muerte.</li>
+      <li>Matrimonio, divorcio, corte emocional si lo hay.</li>
+      <li>Empiecen a anotar el tipo de evento junto a cada fecha, usando las 8 categorías.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> aquí suele aparecer la primera pausa larga o la primera pregunta — es normal, no apurar.</div>
+  <div class="card-foot">
+    <span class="transition">→ Sección 5: abuelos</span>
+    <span class="pageno">19/25</span>
+  </div>
+</div>
+
+<div class="index-tag">20 · SECCIÓN 5 — ABUELOS</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 2 · Sección 5</div><div class="card-title">Construcción: abuelos</div></div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>Suban otra generación: los 4 abuelos, línea materna y línea paterna. Normal no completar las 4 ramas.</li>
+      <li>Huecos: no dejar en blanco, no inventar — marcar con <strong>?</strong>. "No sé qué le pasó a mi abuela" es información: puede señalar un corte emocional, un secreto, algo que nadie habló nunca.</li>
+      <li>Si no quieren abrir una rama hoy, no la abran — márquenla con <strong>?</strong> y sigan. El ritmo lo pone cada quien.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> mayor fricción híbrida. Yo circulo en sala resolviendo dudas 1:1 — co-facilitador atiende chat de Zoom y abre breakouts de 3-4 si se piden.</div>
+  <div class="card-foot">
+    <span class="transition">→ Sección 6: revisar las 3 generaciones juntas</span>
+    <span class="pageno">20/25</span>
+  </div>
+</div>
+
+<div class="index-tag">21 · SECCIÓN 6 — REVISIÓN</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 2 · Sección 6</div><div class="card-title">Revisión del genosociograma completo</div></div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>Revisar las 3 generaciones juntas: ¿quedaron las fechas, las enfermedades, los divorcios, las migraciones, y su categoría de evento?</li>
+      <li>Completar lo que falte antes de pasar al método de detección de patrones.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> avisar que viene el último tramo — quien va atrasado prioriza cerrar el genosociograma sobre el detalle decorativo.</div>
+  <div class="card-foot">
+    <span class="transition">→ Sección 7: el método de 4 pasos</span>
+    <span class="pageno">21/25</span>
+  </div>
+</div>
+
+<div class="index-tag">22 · SECCIÓN 7 (1/2) — MÉTODO DE DETECCIÓN</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 2 · Sección 7 — 1/2</div><div class="card-title">Método de detección de patrones</div></div>
+    <div class="card-slide">Slides 12–13</div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li><strong>Criterio de sospecha:</strong> ¿la biografía propia lo explica? Si recorrieron su infancia y gestación sin encontrar el origen — miren una generación atrás.</li>
+      <li><strong>Paso 1 — Edades:</strong> ¿se repite la misma edad de evento en dos generaciones de la misma línea? → código <strong>A</strong></li>
+      <li><strong>Paso 2 — Fechas del calendario:</strong> ¿se repite día/mes entre eventos de personas distintas? → código <strong>A</strong></li>
+    </ul>
+  </div>
+  <div class="card-foot">
+    <span class="transition">→ sigue Paso 3-4 (tarjeta 23)</span>
+    <span class="pageno">22/25</span>
+  </div>
+</div>
+
+<div class="index-tag">23 · SECCIÓN 7 (2/2) — MÉTODO DE DETECCIÓN</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 2 · Sección 7 — 2/2</div><div class="card-title">Método de detección de patrones</div></div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li><strong>Paso 3 — Oficios y roles:</strong> ¿se repite el mismo oficio o rol —cuidador, rebelde, el que se va— en la misma línea? → código <strong>R</strong></li>
+      <li><strong>Paso 4 — Tipo de evento por rama:</strong> ¿la misma categoría aparece más de una vez, en una sola rama? → código <strong>E</strong></li>
+      <li>Elegir la marca más clara —la que se explica en una frase sin dudar— y ponerle un asterisco.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> proyectar los 4 pasos (Slide 13) durante todo el ejercicio — se sigue en orden, no de memoria.</div>
+  <div class="card-foot">
+    <span class="transition">→ Sección 8: compartir hallazgos</span>
+    <span class="pageno">23/25</span>
+  </div>
+</div>
+
+<div class="index-tag">24 · SECCIÓN 8 — COMPARTIR HALLAZGOS</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 2 · Sección 8</div><div class="card-title">Compartir hallazgos</div></div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>2-3 voluntarios, mezcla de sala y Zoom.</li>
+      <li>Comparten qué código encontraron —A, R o E— y en una frase, cuál es el patrón.</li>
+      <li>No hace falta contar la historia completa, solo el patrón.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> si nadie de Zoom se anima, el co-facilitador lee una coincidencia del chat con permiso de quien la escribió.</div>
+  <div class="card-foot">
+    <span class="transition">→ Sección 9: cierre de sesión</span>
+    <span class="pageno">24/25</span>
+  </div>
+</div>
+
+<div class="index-tag">25 · SECCIÓN 9 — CIERRE</div>
+<div class="card">
+  <div class="card-head">
+    <div><div class="card-eyebrow">Hora 2 · Sección 9</div><div class="card-title">Cierre de sesión</div></div>
+  </div>
+  <div class="card-body">
+    <ul class="cues">
+      <li>Guardar el árbol — material de trabajo de las próximas 2 sesiones: línea paterna (Los Caminos de la Vida + Playmobil, Sesión 2), línea materna (Campos Mórficos, Sesión 3).</li>
+      <li>La Sesión 4 vuelve a este mismo árbol para llevarlo 2 generaciones más atrás y trabajar lo metabólico.</li>
+      <li>La sesión quedó grabada — disponible para quien se desconectó o quiere repasar un concepto.</li>
+    </ul>
+  </div>
+  <div class="note-box"><b>Nota:</b> cierre sin gancho comercial aquí — se construye después de las demos en vivo, en Sesiones 2 y 3.</div>
+  <div class="card-foot">
+    <span class="transition">Fin de Sesión 1</span>
+    <span class="pageno">25/25</span>
+  </div>
+</div>
+
+</body>
+</html>

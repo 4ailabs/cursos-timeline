@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual — Genograma y Genosociograma (B&amp;N)</title>
+<style>
+  :root {
+    --terracota: #2A2A2A;
+    --terracota-deep: #000000;
+    --sage: #767676;
+    --gold: #B0B0B0;
+    --ink: #1A1A1A;
+    --muted: #666666;
+    --paper: #FFFFFF;
+    --rule: #D5D5D5;
+    --backdrop-light: #E8E8E8;
+    --backdrop-dark: #1A1A1A;
+    --code-bg: #EFEFEF;
+
+    --serif: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, 'Times New Roman', serif;
+    --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', 'Courier New', monospace;
+
+    --unit: 0.068in;
+    --step-caption: 9.5px;
+    --step-small: 11px;
+    --step-body: 11.5px;
+    --step-dek: 13px;
+    --step-title: 16px;
+    --step-h1: 24px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--backdrop-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1rem;
+    gap: 2.5rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    position: relative;
+    width: 8.5in;
+    height: 11in;
+    background: var(--paper);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.22);
+    padding: calc(var(--unit) * 5.6) calc(var(--unit) * 10) calc(var(--unit) * 3.4);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---------- Masthead (shared) ---------- */
+
+  .masthead {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: calc(var(--unit) * 3);
+    border-bottom: 1.5px solid var(--terracota-deep);
+    padding-bottom: calc(var(--unit) * 1.8);
+    margin-bottom: calc(var(--unit) * 2.2);
+    flex-shrink: 0;
+  }
+
+  .masthead-text { max-width: 6in; }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: var(--step-caption);
+    font-weight: 500;
+    letter-spacing: 2.2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin: 0 0 calc(var(--unit) * 0.9) 0;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: var(--step-h1);
+    line-height: 1.12;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: var(--terracota-deep);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .page-tag {
+    font-family: var(--mono);
+    font-size: var(--step-caption);
+    color: var(--muted);
+    letter-spacing: 1px;
+    white-space: nowrap;
+    padding-bottom: 0.06in;
+  }
+
+  .mark { display: flex; align-items: center; gap: calc(var(--unit) * 1.4); }
+  .mark svg { display: block; }
+  .mark .tree-mark { width: 44px; height: auto; }
+  .mark .institute-mark { width: 40px; height: auto; }
+  .mark-divider { width: 1px; align-self: stretch; background: var(--rule); }
+
+  /* ---------- Body content flows and fills the page ---------- */
+
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--unit) * 2.6);
+    min-height: 0;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: var(--step-title);
+    font-weight: 600;
+    color: var(--terracota-deep);
+    margin: 0 0 calc(var(--unit) * 0.7) 0;
+  }
+
+  .lede {
+    font-family: var(--sans);
+    font-size: var(--step-dek);
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 6.4in;
+    text-wrap: balance;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  p.body-text {
+    font-family: var(--sans);
+    font-size: var(--step-body);
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .section { display: flex; flex-direction: column; gap: calc(var(--unit) * 1.2); flex-shrink: 0; }
+  .section + .section { border-top: 1px solid var(--rule); padding-top: calc(var(--unit) * 2.2); }
+
+  /* ---------- Footer / colophon (shared) ---------- */
+
+  footer {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(var(--unit) * 2);
+    border-top: 1px solid var(--rule);
+    padding-top: calc(var(--unit) * 1.3);
+    margin-top: calc(var(--unit) * 2.2);
+  }
+
+  footer .who {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--unit) * 0.9);
+    font-family: var(--sans);
+    font-size: var(--step-caption);
+    letter-spacing: 0.6px;
+    color: var(--muted);
+  }
+  footer .who strong { color: var(--terracota-deep); font-weight: 600; }
+  footer .who svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  footer .pageno {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    font-size: var(--step-caption);
+    color: var(--muted);
+  }
+
+  /* ---------- Diagram frame (page 1) ---------- */
+
+  .diagram-frame {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--rule);
+    background: var(--code-bg);
+    padding: calc(var(--unit) * 1.8) calc(var(--unit) * 2);
+    min-height: 0;
+  }
+  .diagram-frame svg { flex: 1; width: 100%; height: 100%; }
+  .diagram-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: calc(var(--unit) * 1);
+    padding-top: calc(var(--unit) * 1);
+    border-top: 1px solid var(--rule);
+    flex-shrink: 0;
+  }
+  .diagram-caption .cap-label {
+    font-family: var(--sans);
+    font-size: var(--step-caption);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .diagram-caption .cap-note {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--terracota-deep);
+  }
+
+  /* ---------- Symbol grid (page 2) ---------- */
+
+  .symgroup-label {
+    font-family: var(--sans);
+    font-size: var(--step-caption);
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--terracota);
+    flex-shrink: 0;
+  }
+
+  .symgrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(var(--unit) * 1.6) calc(var(--unit) * 2.4);
+    flex-shrink: 0;
+  }
+
+  .symcard {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--unit) * 1.4);
+    padding: calc(var(--unit) * 1) 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .symcard svg { flex-shrink: 0; }
+
+  .symcard .symname {
+    font-family: var(--sans);
+    font-size: var(--step-small);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .symcard .symdesc {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.35;
+    margin-top: 1px;
+  }
+
+  .callout {
+    border-left: 3px solid var(--gold);
+    background: var(--code-bg);
+    padding: calc(var(--unit) * 1.4) calc(var(--unit) * 2);
+    font-family: var(--sans);
+    font-size: var(--step-body);
+    line-height: 1.55;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+  .callout strong { color: var(--terracota-deep); }
+
+  /* ---------- Category chips (page 3) ---------- */
+
+  .catgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(var(--unit) * 1.2) calc(var(--unit) * 2.4);
+    flex-shrink: 0;
+  }
+  .catrow {
+    display: flex;
+    align-items: baseline;
+    gap: calc(var(--unit) * 1);
+    padding: calc(var(--unit) * 0.9) 0;
+    border-top: 1px solid var(--rule);
+  }
+  .catnum {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    font-size: var(--step-small);
+    color: var(--terracota);
+    width: 0.3in;
+    flex-shrink: 0;
+  }
+  .catlabel {
+    font-family: var(--sans);
+    font-size: var(--step-body);
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .example {
+    display: flex;
+    gap: calc(var(--unit) * 2);
+    align-items: stretch;
+    flex-shrink: 0;
+  }
+  .example > div {
+    flex: 1;
+    padding: calc(var(--unit) * 1.4) calc(var(--unit) * 1.7);
+    font-family: var(--sans);
+    font-size: var(--step-small);
+    line-height: 1.5;
+  }
+  .example .vague {
+    color: var(--muted);
+    font-style: italic;
+    border: 1px dashed var(--rule);
+  }
+  .example .precise {
+    color: var(--ink);
+    background: var(--code-bg);
+    border-left: 3px solid var(--sage);
+  }
+  .example-label {
+    font-family: var(--sans);
+    font-size: var(--step-caption);
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: calc(var(--unit) * 0.5);
+    display: block;
+  }
+
+  .row-sample {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid var(--rule);
+    padding: calc(var(--unit) * 1.3) calc(var(--unit) * 1.7);
+    line-height: 2.1;
+  }
+  .row-sample .k { color: var(--terracota); }
+
+  /* ---------- Numbered steps (pages 4-5) ---------- */
+
+  .steps { display: flex; flex-direction: column; flex-shrink: 0; }
+  .step {
+    display: grid;
+    grid-template-columns: 0.42in 1fr;
+    column-gap: calc(var(--unit) * 2);
+    padding: calc(var(--unit) * 1.4) 0;
+    border-top: 1px solid var(--rule);
+  }
+  .step:first-child { border-top: none; }
+
+  .step-num {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--terracota);
+    line-height: 1;
+  }
+
+  .step-title {
+    font-family: var(--sans);
+    font-size: var(--step-body);
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 2px 0;
+  }
+  .step-code {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 10px;
+    color: #fff;
+    background: var(--terracota);
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    margin-left: calc(var(--unit) * 0.8);
+    vertical-align: middle;
+  }
+  .step-body {
+    font-family: var(--sans);
+    font-size: var(--step-small);
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .quote-block {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--terracota-deep);
+    border-left: 2.5px solid var(--terracota);
+    padding-left: calc(var(--unit) * 1.4);
+    line-height: 1.5;
+    max-width: 6in;
+    flex-shrink: 0;
+  }
+
+  .spacer { flex: 1; }
+
+  @media print {
+    @page { size: letter; margin: 0; }
+    body { padding: 0; background: #fff; gap: 0; }
+    .page { box-shadow: none; page-break-after: always; }
+    .page:last-child { page-break-after: avoid; }
+  }
+
+  @media (max-width: 760px) {
+    .page { width: 100%; height: auto; min-height: 11in; padding: 0.5in 0.4in; }
+    .masthead { flex-direction: column; align-items: flex-start; gap: calc(var(--unit) * 1); }
+    .symgrid { grid-template-columns: 1fr 1fr; }
+    .catgrid { grid-template-columns: 1fr; }
+    .example { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PÁGINA 1 — PORTADA                                            -->
+<!-- ============================================================ -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="masthead-text">
+      <p class="eyebrow">Instituto Centrobioenergetica · Bioenergética Transgeneracional</p>
+      <h1>Construye tu Genograma y tu Genosociograma</h1>
+    </div>
+    <div class="mark">
+      <svg class="tree-mark" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="8" r="3.5" stroke="#767676" stroke-width="1.6"/>
+        <circle cx="34" cy="8" r="3.5" stroke="#767676" stroke-width="1.6"/>
+        <circle cx="22" cy="24" r="4.2" fill="#767676" opacity="0.18" stroke="#767676" stroke-width="1.6"/>
+        <path d="M10 11.5 V17 H34 V11.5" stroke="#767676" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M22 17 V19.8" stroke="#767676" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M22 28.2 V33" stroke="#767676" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="22" cy="37.5" r="3" fill="#767676"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <p class="lede">Sesión 1 — Actualización en Bioenergética Transgeneracional. Este manual acompaña la Hora 2: la construcción guiada de su propio árbol familiar.</p>
+
+    <div class="section">
+      <h2>Dos instrumentos, un mismo papel</h2>
+      <p class="body-text">El <strong>genograma</strong> es el árbol — mínimo tres generaciones: usted, sus padres, sus abuelos. Se dibuja con una notación estándar, la misma que usa la terapia familiar sistémica.</p>
+      <p class="body-text">El <strong>genosociograma</strong> es lo que se agrega sobre ese árbol: fechas de nacimiento, de muerte, enfermedades, divorcios, migraciones — y junto a cada fecha, el tipo de evento. No es el genograma clásico con más adornos: es la herramienta que permite leer, generación tras generación, los patrones que se repiten sin ser casualidad.</p>
+      <div class="catgrid" style="margin-top: calc(var(--unit) * 0.6);">
+        <div class="catrow" style="border-top:none; padding-top:0;"><span class="catnum">P2</span><span class="catlabel">La notación — cómo se dibuja</span></div>
+        <div class="catrow" style="border-top:none; padding-top:0;"><span class="catnum">P3</span><span class="catlabel">El genosociograma — qué se agrega y por qué</span></div>
+        <div class="catrow" style="border-top:none; padding-top:0;"><span class="catnum">P4</span><span class="catlabel">Construcción, generación por generación</span></div>
+        <div class="catrow" style="border-top:none; padding-top:0;"><span class="catnum">P5</span><span class="catlabel">Método para detectar un patrón</span></div>
+      </div>
+    </div>
+
+    <div class="section" style="flex:1; min-height:0; display:flex; flex-direction:column;">
+      <h2>Así se ve un árbol ya resuelto</h2>
+      <div class="diagram-frame">
+        <svg viewBox="0 0 620 275" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, -apple-system, sans-serif">
+
+          <!-- ══ LÍNEAS — dibujadas primero, todas terminan exactamente en el borde de una figura ══ -->
+
+          <!-- matrimonio abuelos paternos: borde derecho del cuadrado (103) al borde izquierdo del círculo (157) -->
+          <line x1="103" y1="40" x2="157" y2="40" stroke="#000000" stroke-width="1.6"/>
+          <!-- matrimonio abuelos maternos -->
+          <line x1="463" y1="40" x2="517" y2="40" stroke="#000000" stroke-width="1.6"/>
+
+          <!-- de la línea de matrimonio paterna (punto medio x=130) baja directo al Padre -->
+          <line x1="130" y1="40" x2="130" y2="127" stroke="#000000" stroke-width="1.6"/>
+          <!-- de la línea de matrimonio materna (punto medio x=490) baja directo a la Madre -->
+          <line x1="490" y1="40" x2="490" y2="127" stroke="#000000" stroke-width="1.6"/>
+
+          <!-- matrimonio Padre-Madre: borde derecho del cuadrado (143) al borde izquierdo del círculo (477) -->
+          <line x1="143" y1="140" x2="477" y2="140" stroke="#000000" stroke-width="1.6"/>
+
+          <!-- del punto medio del matrimonio (x=310) baja a la barra de hermanos -->
+          <line x1="310" y1="140" x2="310" y2="185" stroke="#000000" stroke-width="1.6"/>
+          <!-- barra de hermanos -->
+          <line x1="235" y1="185" x2="385" y2="185" stroke="#000000" stroke-width="1.6"/>
+          <!-- de la barra, un trazo por cada hijo -->
+          <line x1="235" y1="185" x2="235" y2="212" stroke="#000000" stroke-width="1.6"/>
+          <line x1="310" y1="185" x2="310" y2="220.5" stroke="#000000" stroke-width="1.6"/>
+          <line x1="385" y1="185" x2="385" y2="212" stroke="#000000" stroke-width="1.6"/>
+
+          <!-- ══ FIGURAS ══ -->
+
+          <!-- Abuelo paterno — fallecido -->
+          <rect x="77" y="27" width="26" height="26" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+          <line x1="77" y1="27" x2="103" y2="53" stroke="#2A2A2A" stroke-width="1.8"/>
+          <line x1="103" y1="27" x2="77" y2="53" stroke="#2A2A2A" stroke-width="1.8"/>
+          <text x="90" y="68" text-anchor="middle" font-size="9" fill="#2A2A2A" font-weight="700">* 1938–2004</text>
+
+          <!-- Abuela paterna -->
+          <circle cx="170" cy="40" r="13" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+          <text x="170" y="68" text-anchor="middle" font-size="9" fill="#666666">1941</text>
+
+          <!-- Abuelo materno -->
+          <rect x="437" y="27" width="26" height="26" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+          <text x="450" y="68" text-anchor="middle" font-size="9" fill="#666666">1935</text>
+
+          <!-- Abuela materna — fallecida -->
+          <circle cx="530" cy="40" r="13" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+          <line x1="521" y1="31" x2="539" y2="49" stroke="#2A2A2A" stroke-width="1.8"/>
+          <line x1="539" y1="31" x2="521" y2="49" stroke="#2A2A2A" stroke-width="1.8"/>
+          <text x="530" y="68" text-anchor="middle" font-size="9" fill="#666666">1939–1991</text>
+
+          <!-- Padre -->
+          <rect x="117" y="127" width="26" height="26" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+          <text x="130" y="170" text-anchor="middle" font-size="9" fill="#666666">1964</text>
+          <text x="130" y="181" text-anchor="middle" font-size="9" fill="#2A2A2A" font-weight="700">* infarto · 52 años</text>
+
+          <!-- Madre -->
+          <circle cx="490" cy="140" r="13" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+          <text x="490" y="170" text-anchor="middle" font-size="9" fill="#666666">1967</text>
+
+          <!-- Hijo 1 — Yo -->
+          <circle cx="235" cy="225" r="13" fill="none" stroke="#1A1A1A" stroke-width="2.2"/>
+          <text x="235" y="253" text-anchor="middle" font-size="9" fill="#666666">Yo · 1992</text>
+
+          <!-- Hijo 2 (medio) — aborto espontáneo: punto pequeño relleno, sobre su propia línea -->
+          <circle cx="310" cy="225" r="4.5" fill="#000000"/>
+          <text x="310" y="253" text-anchor="middle" font-size="8" font-style="italic" fill="#666666">aborto</text>
+
+          <!-- Hijo 3 -->
+          <rect x="372" y="212" width="26" height="26" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+          <text x="385" y="253" text-anchor="middle" font-size="9" fill="#666666">1996</text>
+
+        </svg>
+        <div class="diagram-caption">
+          <span class="cap-label">Ejemplo — tres generaciones, con un patrón marcado</span>
+          <span class="cap-note">* misma edad — infarto a los 52, dos generaciones seguidas</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="who">
+      <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(80,80)">
+          <circle cx="0" cy="-50" r="8" fill="#2A2A2A"/>
+          <circle cx="25" cy="-43.3" r="8" fill="#767676"/>
+          <circle cx="43.3" cy="-25" r="8" fill="#2A2A2A"/>
+          <circle cx="50" cy="0" r="8" fill="#767676"/>
+          <circle cx="43.3" cy="25" r="8" fill="#2A2A2A"/>
+          <circle cx="25" cy="43.3" r="8" fill="#767676"/>
+          <circle cx="0" cy="50" r="8" fill="#2A2A2A"/>
+          <circle cx="-25" cy="43.3" r="8" fill="#767676"/>
+          <circle cx="-43.3" cy="25" r="8" fill="#2A2A2A"/>
+          <circle cx="-50" cy="0" r="8" fill="#767676"/>
+          <circle cx="-43.3" cy="-25" r="8" fill="#2A2A2A"/>
+          <circle cx="-25" cy="-43.3" r="8" fill="#767676"/>
+          <circle cx="0" cy="0" r="5" fill="#B0B0B0" opacity="0.5"/>
+          <circle cx="0" cy="0" r="3" fill="#B0B0B0"/>
+        </g>
+      </svg>
+      Dr. Miguel Ojeda Rios · <strong>Instituto Centrobioenergetica</strong>
+    </span>
+    <span class="pageno">1 / 5</span>
+  </footer>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- PÁGINA 2 — NOTACIÓN                                           -->
+<!-- ============================================================ -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="masthead-text">
+      <p class="eyebrow">Bioenergética Transgeneracional · Manual del Participante</p>
+      <h1>La notación: cómo se dibuja el árbol</h1>
+    </div>
+    <div class="page-tag">Genograma — símbolos estándar</div>
+  </div>
+
+  <div class="content">
+
+    <p class="lede">Doce símbolos son suficientes para dibujar cualquier árbol de tres generaciones — personas, uniones, y lo que ocurrió en el camino. Son la misma notación que usa la terapia familiar sistémica (McGoldrick-Gerson) — no hay que inventar cómo representar nada.</p>
+
+    <div class="section">
+      <div class="symgroup-label">Personas y uniones</div>
+      <div class="symgrid" style="margin-top: calc(var(--unit) * 1);">
+
+        <div class="symcard">
+          <svg width="42" height="42" viewBox="0 0 46 46"><rect x="9" y="9" width="28" height="28" fill="none" stroke="#1A1A1A" stroke-width="2.4"/></svg>
+          <div><div class="symname">Cuadrado</div><div class="symdesc">Hombre</div></div>
+        </div>
+
+        <div class="symcard">
+          <svg width="42" height="42" viewBox="0 0 46 46"><circle cx="23" cy="23" r="14" fill="none" stroke="#1A1A1A" stroke-width="2.4"/></svg>
+          <div><div class="symname">Círculo</div><div class="symdesc">Mujer</div></div>
+        </div>
+
+        <div class="symcard">
+          <svg width="60" height="42" viewBox="0 0 66 46">
+            <rect x="4" y="9" width="20" height="20" fill="none" stroke="#1A1A1A" stroke-width="2.2"/>
+            <circle cx="52" cy="19" r="10" fill="none" stroke="#1A1A1A" stroke-width="2.2"/>
+            <line x1="24" y1="19" x2="42" y2="19" stroke="#1A1A1A" stroke-width="2.2"/>
+          </svg>
+          <div><div class="symname">Línea continua</div><div class="symdesc">Matrimonio</div></div>
+        </div>
+
+        <div class="symcard">
+          <svg width="60" height="42" viewBox="0 0 66 46">
+            <rect x="4" y="9" width="20" height="20" fill="none" stroke="#1A1A1A" stroke-width="2.2"/>
+            <circle cx="52" cy="19" r="10" fill="none" stroke="#1A1A1A" stroke-width="2.2"/>
+            <line x1="24" y1="19" x2="42" y2="19" stroke="#1A1A1A" stroke-width="2.2"/>
+            <line x1="30" y1="12" x2="36" y2="26" stroke="#2A2A2A" stroke-width="2.4"/>
+            <line x1="35" y1="12" x2="41" y2="26" stroke="#2A2A2A" stroke-width="2.4"/>
+          </svg>
+          <div><div class="symname">Doble diagonal</div><div class="symdesc">Divorcio</div></div>
+        </div>
+
+        <div class="symcard">
+          <svg width="42" height="42" viewBox="0 0 46 46">
+            <rect x="9" y="9" width="28" height="28" fill="none" stroke="#1A1A1A" stroke-width="2.2"/>
+            <line x1="9" y1="9" x2="37" y2="37" stroke="#2A2A2A" stroke-width="2.4"/>
+            <line x1="37" y1="9" x2="9" y2="37" stroke="#2A2A2A" stroke-width="2.4"/>
+          </svg>
+          <div><div class="symname">X sobre la figura</div><div class="symdesc">Fallecimiento</div></div>
+        </div>
+
+        <div class="symcard">
+          <svg width="60" height="42" viewBox="0 0 66 46">
+            <rect x="4" y="9" width="20" height="20" fill="none" stroke="#1A1A1A" stroke-width="2.2"/>
+            <circle cx="52" cy="19" r="10" fill="none" stroke="#1A1A1A" stroke-width="2.2"/>
+            <line x1="24" y1="19" x2="30" y2="19" stroke="#1A1A1A" stroke-width="2.2"/>
+            <line x1="30" y1="13" x2="34" y2="25" stroke="#000000" stroke-width="2"/>
+            <line x1="34" y1="13" x2="38" y2="25" stroke="#000000" stroke-width="2"/>
+            <line x1="36" y1="19" x2="42" y2="19" stroke="#1A1A1A" stroke-width="2.2"/>
+          </svg>
+          <div><div class="symname">Línea cortada</div><div class="symdesc">Corte emocional — dejar de hablarse</div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="symgroup-label">Embarazo y descendencia</div>
+      <div class="symgrid" style="margin-top: calc(var(--unit) * 1);">
+
+        <div class="symcard">
+          <svg width="42" height="42" viewBox="0 0 46 46"><polygon points="23,10 36,34 10,34" fill="none" stroke="#1A1A1A" stroke-width="2.2"/></svg>
+          <div><div class="symname">Triángulo</div><div class="symdesc">Embarazo en curso</div></div>
+        </div>
+
+        <div class="symcard">
+          <svg width="42" height="42" viewBox="0 0 46 46">
+            <circle cx="23" cy="23" r="7" fill="#1A1A1A"/>
+          </svg>
+          <div><div class="symname">Punto pequeño relleno</div><div class="symdesc">Aborto espontáneo — mucho más pequeño que una persona</div></div>
+        </div>
+
+        <div class="symcard">
+          <svg width="42" height="42" viewBox="0 0 46 46">
+            <circle cx="23" cy="23" r="7" fill="#1A1A1A"/>
+            <line x1="14" y1="14" x2="32" y2="32" stroke="#2A2A2A" stroke-width="2.2"/>
+          </svg>
+          <div><div class="symname">Punto relleno con diagonal</div><div class="symdesc">Aborto inducido</div></div>
+        </div>
+
+        <div class="symcard">
+          <svg width="42" height="42" viewBox="0 0 46 46">
+            <rect x="9" y="9" width="28" height="28" fill="none" stroke="#1A1A1A" stroke-width="2.2"/>
+            <line x1="9" y1="9" x2="37" y2="37" stroke="#1A1A1A" stroke-width="2.2"/>
+            <line x1="37" y1="9" x2="9" y2="37" stroke="#1A1A1A" stroke-width="2.2"/>
+          </svg>
+          <div><div class="symname">Figura de tamaño completo, con X</div><div class="symdesc">Óbito o mortinato — mismo tamaño que una persona viva; eso lo distingue del aborto. Se ubica en su orden de nacimiento</div></div>
+        </div>
+
+        <div class="symcard">
+          <svg width="52" height="42" viewBox="0 0 58 46">
+            <line x1="29" y1="6" x2="14" y2="22" stroke="#1A1A1A" stroke-width="2"/>
+            <line x1="29" y1="6" x2="44" y2="22" stroke="#1A1A1A" stroke-width="2"/>
+            <line x1="14" y1="22" x2="44" y2="22" stroke="#1A1A1A" stroke-width="1.6"/>
+            <rect x="4" y="22" width="20" height="20" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+            <circle cx="44" cy="32" r="10" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+          </svg>
+          <div><div class="symname">Líneas desde un solo punto</div><div class="symdesc">Gemelos — línea que los une: idénticos</div></div>
+        </div>
+
+        <div class="symcard">
+          <svg width="60" height="42" viewBox="0 0 66 46">
+            <rect x="4" y="9" width="20" height="20" fill="none" stroke="#1A1A1A" stroke-width="2.2"/>
+            <circle cx="52" cy="19" r="10" fill="none" stroke="#1A1A1A" stroke-width="2.2"/>
+            <line x1="24" y1="19" x2="42" y2="19" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="4 3"/>
+          </svg>
+          <div><div class="symname">Línea discontinua</div><div class="symdesc">Adopción — sólida con padres biológicos si se conocen</div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Un último símbolo, el que van a necesitar seguro en algún punto:</strong> un signo de interrogación (<strong>?</strong>) sobre la figura o la fecha, para marcar lo que no saben. No se deja en blanco — un hueco marcado es información; un hueco en blanco se pierde.
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="who">
+      <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(80,80)">
+          <circle cx="0" cy="-50" r="8" fill="#2A2A2A"/>
+          <circle cx="25" cy="-43.3" r="8" fill="#767676"/>
+          <circle cx="43.3" cy="-25" r="8" fill="#2A2A2A"/>
+          <circle cx="50" cy="0" r="8" fill="#767676"/>
+          <circle cx="43.3" cy="25" r="8" fill="#2A2A2A"/>
+          <circle cx="25" cy="43.3" r="8" fill="#767676"/>
+          <circle cx="0" cy="50" r="8" fill="#2A2A2A"/>
+          <circle cx="-25" cy="43.3" r="8" fill="#767676"/>
+          <circle cx="-43.3" cy="25" r="8" fill="#2A2A2A"/>
+          <circle cx="-50" cy="0" r="8" fill="#767676"/>
+          <circle cx="-43.3" cy="-25" r="8" fill="#2A2A2A"/>
+          <circle cx="-25" cy="-43.3" r="8" fill="#767676"/>
+          <circle cx="0" cy="0" r="5" fill="#B0B0B0" opacity="0.5"/>
+          <circle cx="0" cy="0" r="3" fill="#B0B0B0"/>
+        </g>
+      </svg>
+      Dr. Miguel Ojeda Rios · <strong>Instituto Centrobioenergetica</strong>
+    </span>
+    <span class="pageno">2 / 5</span>
+  </footer>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- PÁGINA 3 — GENOSOCIOGRAMA / 8 CATEGORÍAS                      -->
+<!-- ============================================================ -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="masthead-text">
+      <p class="eyebrow">Bioenergética Transgeneracional · Manual del Participante</p>
+      <h1>El genosociograma: qué se agrega y por qué</h1>
+    </div>
+    <div class="page-tag">8 categorías de evento</div>
+  </div>
+
+  <div class="content">
+
+    <p class="lede">Sobre el árbol ya dibujado se agregan fechas — nacimiento, muerte, enfermedades, divorcios, migraciones — y junto a cada fecha, el tipo de evento. Ocho categorías cubren la mayoría de los casos, para no tener que inventar cómo nombrarlo.</p>
+
+    <div class="catgrid">
+      <div class="catrow"><span class="catnum">01</span><span class="catlabel">Muerte o pérdida</span></div>
+      <div class="catrow"><span class="catnum">02</span><span class="catlabel">Abandono o rechazo</span></div>
+      <div class="catrow"><span class="catnum">03</span><span class="catlabel">Traición o engaño</span></div>
+      <div class="catrow"><span class="catnum">04</span><span class="catlabel">Violencia</span></div>
+      <div class="catrow"><span class="catnum">05</span><span class="catlabel">Humillación o exclusión</span></div>
+      <div class="catrow"><span class="catnum">06</span><span class="catlabel">Accidente o enfermedad</span></div>
+      <div class="catrow"><span class="catnum">07</span><span class="catlabel">Secreto</span></div>
+      <div class="catrow"><span class="catnum">08</span><span class="catlabel">Crisis — económica, migratoria, de estatus</span></div>
+    </div>
+
+    <div class="section">
+      <h2>Así se ve un renglón real del genosociograma</h2>
+      <div class="row-sample">
+        <span class="k">Persona</span> — Padre &nbsp;·&nbsp; <span class="k">Nacimiento</span> — 1964 &nbsp;·&nbsp; <span class="k">Evento</span> — Accidente o enfermedad (06) &nbsp;·&nbsp; <span class="k">Edad</span> — 52 &nbsp;·&nbsp; <span class="k">Fecha</span> — marzo 2016
+      </div>
+      <p class="body-text">Cuatro datos, no más: quién, cuándo nació, qué categoría de evento, y a qué edad o en qué fecha ocurrió. Con eso alcanza para compararlo, más adelante, con el mismo dato en otra generación.</p>
+    </div>
+
+    <div class="section">
+      <h2>¿Por qué estos datos específicos y no otros?</h2>
+      <p class="body-text">Porque cada dato que se agrega reduce el campo hasta que un patrón deja de ser una impresión vaga y se vuelve algo específico y verificable.</p>
+      <div class="example">
+        <div class="vague"><span class="example-label">Impresión vaga</span>"Algo se repite en mi familia."</div>
+        <div class="precise"><span class="example-label">Dato clínico</span>"Mi abuelo murió de infarto a los 52, mi padre tuvo el suyo a los 52, y yo tengo 50 este año."</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>El hilo con lo que ya vimos hoy</h2>
+      <p class="body-text">El duelo no resuelto, la exclusión y el secreto familiar nombrados al inicio de la sesión están aquí, ahora como categorías que se pueden fechar y ubicar en una persona específica del árbol. Y la cripta genealógica — el cuarto tipo — es precisamente lo que el método de detección de la página 5 busca: la misma categoría de evento repitiéndose, enterrada, en una sola rama.</p>
+    </div>
+
+    <div class="spacer"></div>
+
+  </div>
+
+  <footer>
+    <span class="who">
+      <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(80,80)">
+          <circle cx="0" cy="-50" r="8" fill="#2A2A2A"/>
+          <circle cx="25" cy="-43.3" r="8" fill="#767676"/>
+          <circle cx="43.3" cy="-25" r="8" fill="#2A2A2A"/>
+          <circle cx="50" cy="0" r="8" fill="#767676"/>
+          <circle cx="43.3" cy="25" r="8" fill="#2A2A2A"/>
+          <circle cx="25" cy="43.3" r="8" fill="#767676"/>
+          <circle cx="0" cy="50" r="8" fill="#2A2A2A"/>
+          <circle cx="-25" cy="43.3" r="8" fill="#767676"/>
+          <circle cx="-43.3" cy="25" r="8" fill="#2A2A2A"/>
+          <circle cx="-50" cy="0" r="8" fill="#767676"/>
+          <circle cx="-43.3" cy="-25" r="8" fill="#2A2A2A"/>
+          <circle cx="-25" cy="-43.3" r="8" fill="#767676"/>
+          <circle cx="0" cy="0" r="5" fill="#B0B0B0" opacity="0.5"/>
+          <circle cx="0" cy="0" r="3" fill="#B0B0B0"/>
+        </g>
+      </svg>
+      Dr. Miguel Ojeda Rios · <strong>Instituto Centrobioenergetica</strong>
+    </span>
+    <span class="pageno">3 / 5</span>
+  </footer>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- PÁGINA 4 — CONSTRUCCIÓN PASO A PASO                           -->
+<!-- ============================================================ -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="masthead-text">
+      <p class="eyebrow">Bioenergética Transgeneracional · Manual del Participante</p>
+      <h1>Construcción, generación por generación</h1>
+    </div>
+    <div class="page-tag">3 generaciones mínimo</div>
+  </div>
+
+  <div class="content">
+
+    <div class="diagram-frame" style="flex: 0 0 1.35in;">
+      <svg viewBox="0 0 620 90" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, -apple-system, sans-serif">
+        <line x1="90" y1="45" x2="530" y2="45" stroke="#D5D5D5" stroke-width="1.5" stroke-dasharray="2 5"/>
+        <circle cx="90" cy="45" r="22" fill="#EFEFEF" stroke="#2A2A2A" stroke-width="2"/>
+        <text x="90" y="41" text-anchor="middle" font-size="15" font-weight="700" fill="#000000">1</text>
+        <text x="90" y="58" text-anchor="middle" font-size="9" fill="#000000">Yo</text>
+        <text x="230" y="30" text-anchor="middle" font-size="18" fill="#2A2A2A">→</text>
+        <circle cx="310" cy="45" r="22" fill="#EFEFEF" stroke="#2A2A2A" stroke-width="2"/>
+        <text x="310" y="41" text-anchor="middle" font-size="15" font-weight="700" fill="#000000">2</text>
+        <text x="310" y="58" text-anchor="middle" font-size="9" fill="#000000">Padres</text>
+        <text x="450" y="30" text-anchor="middle" font-size="18" fill="#2A2A2A">→</text>
+        <circle cx="530" cy="45" r="22" fill="#EFEFEF" stroke="#2A2A2A" stroke-width="2"/>
+        <text x="530" y="41" text-anchor="middle" font-size="15" font-weight="700" fill="#000000">3</text>
+        <text x="530" y="58" text-anchor="middle" font-size="9" fill="#000000">Abuelos</text>
+      </svg>
+      <div class="diagram-caption">
+        <span class="cap-label">Orden de construcción</span>
+        <span class="cap-note">de lo más fácil a lo más denso</span>
+      </div>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <p class="step-title">Su propia generación</p>
+          <p class="step-body">Empiece por usted mismo. Su símbolo, su nombre, su fecha de nacimiento. Si tiene pareja o hijos, se agregan aquí también. Es el punto de entrada más fácil — antes de que el ejercicio se vuelva más denso.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <p class="step-title">Padres</p>
+          <p class="step-body">Suba una generación: madre y padre. Fechas de nacimiento, y si aplica, de muerte. Matrimonio, divorcio, corte emocional si lo hay. Empiece a anotar el tipo de evento junto a cada fecha, usando las ocho categorías de la página 3.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <p class="step-title">Abuelos</p>
+          <p class="step-body">Suba otra generación: los cuatro abuelos, línea materna y línea paterna. No se preocupe si no completa las cuatro ramas — es normal encontrar huecos aquí. Es también el punto donde suele aparecer un embarazo perdido, un óbito o un par de gemelos que nadie había puesto en el papel — use los símbolos de la página 2.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <p class="step-title">Revisión completa</p>
+          <p class="step-body">Antes de seguir, revise las tres generaciones juntas: ¿quedaron las fechas, las enfermedades, los divorcios, las migraciones, y junto a cada una el tipo de evento? Complete lo que falte.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="callout">
+      <strong>Cuando no sepa algo:</strong> no lo deje en blanco ni lo invente — márquelo con el signo de interrogación (página 2). "No sé qué le pasó a mi abuela" no es información faltante: es información. Puede señalar un corte emocional, un secreto familiar, o algo que nadie en la familia habló nunca. Trabaje con lo que sí sabe. Y si hay una rama que no quiere abrir hoy, no la abra — márquela con <strong>?</strong> y siga. El ritmo lo pone cada quien.
+    </div>
+
+    <div class="spacer"></div>
+
+  </div>
+
+  <footer>
+    <span class="who">
+      <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(80,80)">
+          <circle cx="0" cy="-50" r="8" fill="#2A2A2A"/>
+          <circle cx="25" cy="-43.3" r="8" fill="#767676"/>
+          <circle cx="43.3" cy="-25" r="8" fill="#2A2A2A"/>
+          <circle cx="50" cy="0" r="8" fill="#767676"/>
+          <circle cx="43.3" cy="25" r="8" fill="#2A2A2A"/>
+          <circle cx="25" cy="43.3" r="8" fill="#767676"/>
+          <circle cx="0" cy="50" r="8" fill="#2A2A2A"/>
+          <circle cx="-25" cy="43.3" r="8" fill="#767676"/>
+          <circle cx="-43.3" cy="25" r="8" fill="#2A2A2A"/>
+          <circle cx="-50" cy="0" r="8" fill="#767676"/>
+          <circle cx="-43.3" cy="-25" r="8" fill="#2A2A2A"/>
+          <circle cx="-25" cy="-43.3" r="8" fill="#767676"/>
+          <circle cx="0" cy="0" r="5" fill="#B0B0B0" opacity="0.5"/>
+          <circle cx="0" cy="0" r="3" fill="#B0B0B0"/>
+        </g>
+      </svg>
+      Dr. Miguel Ojeda Rios · <strong>Instituto Centrobioenergetica</strong>
+    </span>
+    <span class="pageno">4 / 5</span>
+  </footer>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- PÁGINA 5 — MÉTODO DE DETECCIÓN DE PATRONES                    -->
+<!-- ============================================================ -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="masthead-text">
+      <p class="eyebrow">Bioenergética Transgeneracional · Manual del Participante</p>
+      <h1>Método para detectar un patrón</h1>
+    </div>
+    <div class="page-tag">4 pasos — códigos A / R / E</div>
+  </div>
+
+  <div class="content">
+
+    <div class="section" style="border-top:none; padding-top:0;">
+      <h2>Antes del método: ¿vale la pena buscar?</h2>
+      <p class="body-text">No todo lo que aparece en el árbol es transgeneracional — la mayoría de los síntomas tienen origen en la propia vida de la persona. La sospecha aparece cuando la biografía propia no alcanza para explicar lo que se busca explicar: ansiedad sin un evento personal que la justifique, un patrón relacional que se repite igual que el de los padres o abuelos, un síntoma físico recurrente que la medicina no logra anclar a nada.</p>
+      <p class="quote-block">Si recorrió su propia historia — su infancia, su gestación — y no encuentra ahí el origen, es momento de mirar una generación atrás.</p>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <p class="step-title">Edades <span class="step-code">A</span></p>
+          <p class="step-body">Para cada persona del árbol con un evento marcado, anote la edad que tenía cuando ocurrió. Compare esas edades entre sí: ¿se repite la misma edad en dos o más personas de generaciones distintas, en la misma línea?</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <p class="step-title">Fechas del calendario <span class="step-code">A</span></p>
+          <p class="step-body">Compare el día y el mes de los eventos marcados, sin importar el año ni la edad. ¿Se repite una fecha del calendario entre eventos de personas distintas? Es la misma familia de patrón que el Paso 1, solo que por fecha exacta.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <p class="step-title">Oficios y roles <span class="step-code">R</span></p>
+          <p class="step-body">Recorra el árbol por línea — materna, paterna — y anote el oficio y el rol familiar de cada persona: el cuidador, el rebelde, el que se va, el que sostiene. ¿El mismo oficio o el mismo rol aparece en dos o más generaciones seguidas de la misma línea?</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <p class="step-title">Tipo de evento por rama <span class="step-code">E</span></p>
+          <p class="step-body">Revise la columna de categorías del genosociograma. ¿La misma categoría aparece más de una vez, pero en una sola rama, no en el árbol completo?</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="callout">
+      Al terminar los cuatro pasos, su árbol va a tener cero, una o varias marcas <strong>A</strong>, <strong>R</strong> o <strong>E</strong>. Elija la que pueda explicar en una sola frase sin dudar, y póngale un asterisco. Esa es la que comparte y la que se lleva a las próximas sesiones.
+    </div>
+
+    <div class="section">
+      <h2>Lo que sigue</h2>
+      <p class="body-text">Guarde este árbol — es el material de trabajo de las próximas dos sesiones: la línea paterna con Los Caminos de la Vida y Playmobil en la Sesión 2, la línea materna con Campos Mórficos en la Sesión 3. La Sesión 4 vuelve a este mismo árbol para llevarlo dos generaciones más atrás y trabajar lo que se hereda a nivel metabólico.</p>
+    </div>
+
+    <div class="spacer"></div>
+
+  </div>
+
+  <footer>
+    <span class="who">
+      <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(80,80)">
+          <circle cx="0" cy="-50" r="8" fill="#2A2A2A"/>
+          <circle cx="25" cy="-43.3" r="8" fill="#767676"/>
+          <circle cx="43.3" cy="-25" r="8" fill="#2A2A2A"/>
+          <circle cx="50" cy="0" r="8" fill="#767676"/>
+          <circle cx="43.3" cy="25" r="8" fill="#2A2A2A"/>
+          <circle cx="25" cy="43.3" r="8" fill="#767676"/>
+          <circle cx="0" cy="50" r="8" fill="#2A2A2A"/>
+          <circle cx="-25" cy="43.3" r="8" fill="#767676"/>
+          <circle cx="-43.3" cy="25" r="8" fill="#2A2A2A"/>
+          <circle cx="-50" cy="0" r="8" fill="#767676"/>
+          <circle cx="-43.3" cy="-25" r="8" fill="#2A2A2A"/>
+          <circle cx="-25" cy="-43.3" r="8" fill="#767676"/>
+          <circle cx="0" cy="0" r="5" fill="#B0B0B0" opacity="0.5"/>
+          <circle cx="0" cy="0" r="3" fill="#B0B0B0"/>
+        </g>
+      </svg>
+      Dr. Miguel Ojeda Rios · <strong>Instituto Centrobioenergetica</strong>
+    </span>
+    <span class="pageno">5 / 5</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

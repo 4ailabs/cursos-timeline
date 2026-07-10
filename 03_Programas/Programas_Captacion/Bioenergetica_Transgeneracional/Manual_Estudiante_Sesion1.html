@@ -1,0 +1,623 @@
+<style>
+  :root {
+    --ink:        #141414;
+    --ink-soft:   #333333;
+    --muted:      #5E5E5E;
+    --faint:      #8A8A8A;
+    --rule:       #C9C9C9;
+    --rule-soft:  #E0E0E0;
+    --box:        #F0F0F0;
+    --box-line:   #BDBDBD;
+    --paper:      #FFFFFF;
+    --write:      #999999;
+    /* acentos del Instituto — elegidos para dar grises nítidos en impresión B&N */
+    --terra:      #9E4028;
+    --terra-deep: #7C3220;
+    --sage:       #5A6E48;
+    --gold:       #B5822C;
+    --terra-tint: #F5EAE5;
+    --serif: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, 'Times New Roman', serif;
+    --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', 'Courier New', monospace;
+    --u: 0.07in;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #DADADA; }
+  body {
+    font-family: var(--sans); color: var(--ink);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 2.5rem 1rem; gap: 2rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    position: relative;
+    width: 11in; height: 8.5in;
+    background: var(--paper);
+    box-shadow: 0 1.4rem 3rem rgba(0,0,0,.28);
+    padding: 0.5in 0.55in 0.42in;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ---------- masthead ---------- */
+  .mast {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: calc(var(--u) * 3);
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: calc(var(--u) * 1.3);
+    margin-bottom: calc(var(--u) * 1.8);
+    flex-shrink: 0;
+  }
+  .mast .eyebrow {
+    font-size: 8.5px; font-weight: 700; letter-spacing: 2.2px;
+    text-transform: uppercase; color: var(--terra);
+    margin-bottom: calc(var(--u) * 0.7);
+  }
+  .mast h1 {
+    font-family: var(--serif); font-size: 21px; line-height: 1.08;
+    font-weight: 600; letter-spacing: -.2px; color: var(--ink);
+    text-wrap: balance; max-width: 8in;
+  }
+  .mast .rightmark { display: flex; align-items: center; gap: calc(var(--u) * 1.6); padding-bottom: 2px; }
+  .mast .isotipo { width: 30px; height: 30px; }
+  .mast .rmtext { text-align: right; }
+  .mast .rmtext .inst { font-size: 8.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .mast .rmtext .pg { font-family: var(--mono); font-size: 8.5px; color: var(--faint); letter-spacing: 1px; margin-top: 2px; }
+
+  /* ---------- content scaffold ---------- */
+  .content { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+
+  .kick {
+    font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--terra); display: flex; align-items: center; gap: 9px; margin-bottom: calc(var(--u) * 1.4);
+  }
+  .kick::before { content: ""; width: 20px; height: 2px; background: var(--terra); flex: 0 0 auto; }
+  .kick .n { font-family: var(--mono); color: var(--muted); }
+
+  h2 { font-family: var(--serif); font-size: 17px; font-weight: 600; line-height: 1.15; color: var(--ink); text-wrap: balance; }
+  h3 { font-size: 11.5px; font-weight: 700; color: var(--ink); letter-spacing: .2px; }
+  p  { font-size: 11px; line-height: 1.5; color: var(--ink-soft); }
+  .lede { font-family: var(--serif); font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
+  b, strong { color: var(--ink); font-weight: 600; }
+  em { font-style: italic; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 5); flex: 1; min-height: 0; }
+  .two.wide-left { grid-template-columns: 1.25fr 1fr; }
+  .two.wide-right { grid-template-columns: 1fr 1.3fr; }
+  .col { display: flex; flex-direction: column; gap: calc(var(--u) * 2); min-height: 0; }
+
+  /* ---------- write-in areas ---------- */
+  .writebox {
+    border: 1.2px solid var(--box-line); border-radius: 3px;
+    padding: calc(var(--u) * 1.6) calc(var(--u) * 2); flex: 1;
+    display: flex; flex-direction: column; gap: calc(var(--u) * 1.4);
+  }
+  .writebox .wblabel { font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .writebox .wbhint { font-size: 9px; font-style: italic; color: var(--write); line-height: 1.4; }
+  .writebox .wbhint b { color: var(--muted); font-style: normal; font-weight: 700; }
+  .lines { display: flex; flex-direction: column; gap: calc(var(--u) * 2.6); flex: 1; justify-content: flex-start; padding-top: calc(var(--u)*1.2); }
+  .lines .ln { border-bottom: 1px solid var(--rule); height: 0; }
+  .ruled { background-image: repeating-linear-gradient(to bottom, transparent, transparent calc(var(--u)*2.8), var(--rule) calc(var(--u)*2.8), var(--rule) calc(var(--u)*2.8 + 1px)); }
+
+  /* ---------- info boxes ---------- */
+  .note {
+    border-left: 3px solid var(--terra); background: var(--box);
+    padding: calc(var(--u) * 1.4) calc(var(--u) * 2); border-radius: 0 3px 3px 0;
+  }
+  .note .nl { font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--terra); font-weight: 700; margin-bottom: 4px; }
+  .note p { font-size: 10.5px; line-height: 1.45; }
+
+  ul.clean { list-style: none; display: flex; flex-direction: column; gap: calc(var(--u) * 1.2); }
+  ul.clean li { position: relative; padding-left: 16px; font-size: 11px; line-height: 1.42; color: var(--ink-soft); }
+  ul.clean li::before { content: ""; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--ink); }
+  ul.clean li b { color: var(--ink); }
+
+  /* ---------- cover ---------- */
+  .cover { justify-content: space-between; }
+  .cover .top { display: flex; align-items: center; gap: calc(var(--u)*2); }
+  .cover .top .isotipo { width: 34px; height: 34px; }
+  .cover .top .w { font-size: 10px; letter-spacing: 2.4px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .cover .mid { display: flex; flex-direction: column; gap: calc(var(--u)*2); }
+  .cover .prog { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--terra); font-weight: 700; }
+  .cover h1.big { font-family: var(--serif); font-size: 52px; line-height: 1; font-weight: 600; letter-spacing: -1px; color: var(--ink); }
+  .cover .subt { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--ink-soft); }
+  .cover .namefield { display: flex; gap: calc(var(--u)*6); margin-top: calc(var(--u)*3); }
+  .cover .namefield .f { flex: 1; }
+  .cover .namefield .f .flabel { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: calc(var(--u)*2.5); }
+  .cover .namefield .f .fline { border-bottom: 1.2px solid var(--rule); height: 0; }
+  .cover .bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .cover .sesh-rail { display: grid; grid-template-columns: repeat(4, auto); gap: calc(var(--u)*4); }
+  .cover .sr { }
+  .cover .sr .srn { font-size: 8.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .cover .sr.on .srn { color: var(--terra); }
+  .cover .sr .srt { font-size: 10px; color: var(--ink-soft); margin-top: 3px; max-width: 15ch; line-height: 1.25; }
+  .cover .sr.on { border-top: 2.5px solid var(--terra); padding-top: 6px; }
+  .cover .sr:not(.on) { border-top: 1.5px solid var(--rule); padding-top: 6px; }
+
+  /* ---------- footer ---------- */
+  .foot {
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--rule); padding-top: calc(var(--u) * 1.1);
+    margin-top: calc(var(--u) * 1.4); flex-shrink: 0;
+    font-size: 8px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--faint);
+  }
+  .foot .fno { font-family: var(--mono); }
+
+  /* ---------- 4 frameworks grid ---------- */
+  .frame4 { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u)*2.4); flex: 1; }
+  .fcard { border: 1.2px solid var(--box-line); border-radius: 3px; padding: calc(var(--u)*1.8) calc(var(--u)*2); display: flex; flex-direction: column; gap: 5px; }
+  .fcard .fnum { font-family: var(--mono); font-size: 9px; color: var(--terra); font-weight: 700; letter-spacing: 1px; }
+  .fcard h3 { font-family: var(--serif); font-weight: 600; font-size: 13px; }
+  .fcard p { font-size: 10px; line-height: 1.4; }
+  .fcard .ex { font-size: 9.5px; line-height: 1.42; color: var(--ink-soft); border-left: 2px solid var(--rule); padding-left: 8px; margin-top: 2px; }
+  .fcard .ex .exl { display: block; font-size: 8px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 2px; }
+  .fcard .cue { font-size: 9px; line-height: 1.38; color: var(--muted); margin-top: auto; padding-top: 6px; border-top: 1px dotted var(--rule); }
+  .fcard .cue .cuel { font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .8px; font-size: 8px; }
+
+  /* ---------- notation grid ---------- */
+  .notg { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--u)*2); }
+  .notc { border: 1px solid var(--rule); border-radius: 3px; padding: calc(var(--u)*1.4); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 7px; }
+  .notc .g { height: 42px; display: flex; align-items: center; justify-content: center; }
+  .notc h4 { font-size: 10px; font-weight: 700; color: var(--ink); }
+  .notc span { font-size: 8.5px; color: var(--muted); }
+
+  /* ---------- 8 categories ---------- */
+  .catg { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--u)*1.8); }
+  .catc { border: 1px solid var(--rule); border-radius: 3px; padding: calc(var(--u)*1.4) calc(var(--u)*1.6); display: flex; align-items: center; gap: 9px; }
+  .catc .cn { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--ink); flex: 0 0 auto; width: 16px; }
+  .catc h4 { font-size: 10.5px; font-weight: 600; color: var(--ink); line-height: 1.15; }
+  .catc span { font-size: 8.5px; color: var(--muted); display: block; margin-top: 1px; }
+
+  /* ---------- method steps ---------- */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--u)*2.2); }
+  .stp { border: 1.2px solid var(--box-line); border-radius: 3px; padding: calc(var(--u)*1.8); position: relative; display: flex; flex-direction: column; gap: 5px; }
+  .stp .code { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--terra); border: 1.5px solid var(--terra); width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; border-radius: 4px; margin-bottom: 3px; }
+  .stp .sname { font-family: var(--serif); font-size: 12.5px; font-weight: 600; color: var(--ink); }
+  .stp p { font-size: 9.5px; line-height: 1.38; }
+  .codekey { display: flex; gap: calc(var(--u)*5); margin-top: calc(var(--u)*1.8); justify-content: center; }
+  .codekey .ck { font-size: 10px; color: var(--ink-soft); display: flex; align-items: center; gap: 7px; }
+  .codekey .ck b { font-family: var(--mono); color: var(--terra); border: 1.5px solid var(--terra); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 3px; }
+
+  /* ---------- genogram template area ---------- */
+  .genofield { flex: 1; border: 1.2px solid var(--box-line); border-radius: 3px; position: relative; background:
+    repeating-linear-gradient(to right, transparent, transparent 0.38in, var(--rule-soft) 0.38in, var(--rule-soft) calc(0.38in + 0.5px)),
+    repeating-linear-gradient(to bottom, transparent, transparent 0.38in, var(--rule-soft) 0.38in, var(--rule-soft) calc(0.38in + 0.5px));
+  }
+  .genofield .glabel { position: absolute; top: 8px; left: 12px; font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--faint); font-weight: 700; background: var(--paper); padding: 0 5px; }
+  .genofield .gen-tag { position: absolute; right: 12px; font-size: 8.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--faint); font-weight: 600; background: var(--paper); padding: 2px 6px; }
+
+  .instrucset { display: flex; flex-direction: column; gap: calc(var(--u)*1.6); }
+  .instrucset .row { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; }
+  .instrucset .row .rn { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--ink); padding-top: 1px; }
+  .instrucset .row p { font-size: 10.5px; line-height: 1.4; }
+
+  /* ---------- ritual steps ---------- */
+  .ritsteps { display: grid; grid-template-columns: repeat(5, 1fr); gap: calc(var(--u)*1.8); }
+  .rst { border: 1px solid var(--rule); border-radius: 3px; padding: calc(var(--u)*1.5); display: flex; flex-direction: column; gap: 5px; }
+  .rst .rn { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--ink); }
+  .rst h4 { font-family: var(--serif); font-size: 11.5px; font-weight: 600; }
+  .rst p { font-size: 9px; line-height: 1.35; }
+  .rst .rq { font-size: 9px; font-style: italic; color: var(--muted); border-top: 1px solid var(--rule-soft); padding-top: 5px; margin-top: 2px; line-height: 1.3; }
+
+  @media print {
+    @page { size: letter landscape; margin: 0; }
+    html, body { background: #fff; }
+    body { padding: 0; gap: 0; }
+    .page { box-shadow: none; page-break-after: always; width: 100%; height: 100vh; }
+    .page:last-child { page-break-after: avoid; }
+  }
+</style>
+
+<!-- ========== PAGE 1 · COVER ========== -->
+<div class="page">
+  <div class="content cover">
+    <div class="top">
+      <span class="isotipo" data-iso></span>
+      <span class="w">Instituto Centrobioenergetica</span>
+    </div>
+    <div class="mid">
+      <div class="prog">Actualización en Bioenergética Transgeneracional</div>
+      <h1 class="big">El mapa que cargas</h1>
+      <div class="subt">Manual del estudiante — Sesión 1</div>
+      <div style="font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:10px;">Dr. Miguel Ojeda Rios · Instituto Centrobioenergetica</div>
+      <div style="display:flex;gap:calc(var(--u)*5);margin-top:calc(var(--u)*2);max-width:8.5in;">
+        <div style="flex:1;">
+          <div style="font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px;">Lo que trabajas hoy</div>
+          <ul class="clean">
+            <li>El marco: qué es lo transgeneracional y la evidencia detrás</li>
+            <li>Construyes tu <b>genograma</b> de tres generaciones</li>
+            <li>Detectas al menos <b>un patrón</b> en tu línea familiar</li>
+          </ul>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px;">Cómo usar este cuaderno</div>
+          <ul class="clean">
+            <li>Las páginas 1 a 5 acompañan la <b>Hora 1</b> (marco)</li>
+            <li>Las páginas 6 a 10 son de <b>trabajo</b> — las llenas tú</li>
+            <li>Tráelo a las 4 sesiones: es el material de todas</li>
+          </ul>
+        </div>
+      </div>
+      <div class="namefield">
+        <div class="f"><div class="flabel">Nombre</div><div class="fline"></div></div>
+        <div class="f"><div class="flabel">Fecha</div><div class="fline"></div></div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="sesh-rail">
+        <div class="sr on"><div class="srn">Sesión 1 · Hoy</div><div class="srt">El mapa: genograma y genosociograma</div></div>
+        <div class="sr"><div class="srn">Sesión 2</div><div class="srt">Línea paterna · Los Caminos de la Vida</div></div>
+        <div class="sr"><div class="srn">Sesión 3</div><div class="srt">Línea materna · Campos Mórficos</div></div>
+        <div class="sr"><div class="srn">Sesión 4</div><div class="srt">Herencia metabólica transgeneracional</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PAGE 2 · MARCO: qué es lo transgeneracional ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Marco conceptual · Hora 1</div>
+      <h1>Qué es lo transgeneracional</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">El mapa que cargas · S1</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <p class="lede" style="margin-bottom:calc(var(--u)*2);">Información no resuelta que pasa de una generación a la siguiente y se expresa como síntoma físico, patrón emocional o conductual — <b>sin que la persona haya vivido el evento que lo originó</b>.</p>
+    <div class="frame4">
+      <div class="fcard">
+        <div class="fnum">TIPO 1</div><h3>Duelo no resuelto</h3>
+        <p>Una pérdida que nunca se elaboró y sigue operando como carga activa. El luto se interrumpió —por otra crisis, por un mandato familiar de "seguir adelante"— y quedó abierto.</p>
+        <div class="ex"><span class="exl">Ejemplo</span> Una abuela pierde a un hijo pequeño y nadie vuelve a nombrarlo. Dos generaciones después, una nieta carga una tristeza de fondo sin causa propia.</div>
+        <div class="cue"><span class="cuel">Cómo lo reconoces</span> una muerte temprana, un aborto o un hijo perdido que "no se menciona" en la familia.</div>
+      </div>
+      <div class="fcard">
+        <div class="fnum">TIPO 2</div><h3>Exclusión</h3>
+        <p>Un miembro negado u olvidado del sistema. El descendiente carga <em>sentimientos ajenos</em>: el estado emocional de un ancestro que no conoció, como si fuera propio.</p>
+        <div class="ex"><span class="exl">Ejemplo</span> Un tío "del que no se habla" —por una vergüenza, una ruptura, una enfermedad mental—. Un sobrino que nunca lo conoció repite su misma inquietud o su mismo aislamiento.</div>
+        <div class="cue"><span class="cuel">Cómo lo reconoces</span> alguien borrado del relato familiar; una rama entera "que no cuenta".</div>
+      </div>
+      <div class="fcard">
+        <div class="fnum">TIPO 3</div><h3>Secreto familiar</h3>
+        <p>Información oculta que produce síntomas en quien la desconoce. El secreto se siente aunque no se sepa: pesa en el ambiente sin nombre.</p>
+        <div class="ex"><span class="exl">Ejemplo</span> Una paternidad oculta, una quiebra, un origen negado. La generación siguiente vive una tensión difusa alrededor de un tema que "no se toca".</div>
+        <div class="cue"><span class="cuel">Cómo lo reconoces</span> zonas del árbol con fechas que no cuadran, silencios cerrados, un tema que incomoda sin razón clara.</div>
+      </div>
+      <div class="fcard">
+        <div class="fnum">TIPO 4</div><h3>Cripta genealógica</h3>
+        <p>Un evento traumático enterrado que opera como programa oculto, generación tras generación. Es el secreto llevado al extremo: nadie vivo lo recuerda, pero sigue actuando.</p>
+        <div class="ex"><span class="exl">Ejemplo</span> Una violencia o una pérdida colectiva que la familia "selló". El patrón —miedo, huida, un mismo tipo de enfermedad— reaparece en una sola rama sin explicación.</div>
+        <div class="cue"><span class="cuel">Cómo lo reconoces</span> la misma categoría de evento repitiéndose, enterrada, en una sola línea (lo busca el Paso 4 del método).</div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:calc(var(--u)*2);">
+      <div class="nl">Tres implicaciones para el rastreo</div>
+      <p>Un conflicto puede rastrearse a un evento <b>que nunca viviste</b> · los patrones que se repiten son <b>datos clínicos, no coincidencias</b> · distinguir lo propio de lo del ancestro es, en sí mismo, <b>un acto terapéutico</b>.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 1</span><span class="fno">02</span></div>
+</div>
+
+<!-- ========== PAGE 3 · MARCOS: Bowen + impronta + niveles ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Marco conceptual · Hora 1</div>
+      <h1>Los marcos que sostienen la lectura</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">El mapa que cargas · S1</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="two">
+      <div class="col">
+        <div>
+          <h2 style="font-size:14px;margin-bottom:6px;">Teoría de Bowen</h2>
+          <ul class="clean">
+            <li><b>Transmisión multigeneracional:</b> el nivel de diferenciación del yo se transmite de padres a hijos y se repite —o se profundiza— generación tras generación.</li>
+            <li><b>Corte emocional:</b> distancia o silencio para manejar la ansiedad. Es desplazamiento, no resolución: exactamente el dato a rastrear.</li>
+            <li><b>Proyección familiar:</b> la ansiedad se deposita de forma desigual en un hijo específico.</li>
+          </ul>
+        </div>
+        <div>
+          <h2 style="font-size:14px;margin-bottom:6px;">La impronta como programa</h2>
+          <p style="margin-bottom:6px;">Lo que se hereda no es solo un sentimiento: es un <b>ciclo defensivo completo</b> que quedó activo. Cuatro fases —activación, respuesta, descarga, reposo—. Si la descarga se interrumpe, el ciclo queda atrapado <b>como programa activo, no como recuerdo</b>.</p>
+          <p>No heredas el evento. Heredas <b>el umbral</b> con que tu sistema activa esa misma respuesta.</p>
+        </div>
+      </div>
+      <div class="col">
+        <h2 style="font-size:14px;margin-bottom:8px;">Dónde vive cada cosa · 4 niveles</h2>
+        <div style="display:flex;flex-direction:column;gap:calc(var(--u)*1.4);">
+          <div class="fcard" style="flex-direction:row;align-items:baseline;gap:12px;padding:calc(var(--u)*1.3) calc(var(--u)*1.8);"><span style="font-family:var(--mono);font-weight:700;font-size:12px;">N4</span><div><h3 style="font-size:11px;">Consciente · explícito</h3><p style="font-size:9.5px;">Lo que puedes contar de ti.</p></div></div>
+          <div class="fcard" style="flex-direction:row;align-items:baseline;gap:12px;padding:calc(var(--u)*1.3) calc(var(--u)*1.8);border-width:2px;border-color:var(--ink);"><span style="font-family:var(--mono);font-weight:700;font-size:12px;">N3</span><div><h3 style="font-size:11px;">Inconsciente somático</h3><p style="font-size:9.5px;">Donde viven las improntas: pecho, garganta, vientre.</p></div></div>
+          <div class="fcard" style="flex-direction:row;align-items:baseline;gap:12px;padding:calc(var(--u)*1.3) calc(var(--u)*1.8);"><span style="font-family:var(--mono);font-weight:700;font-size:12px;">N2</span><div><h3 style="font-size:11px;">Homeostático</h3><p style="font-size:9.5px;">Temperatura, glucosa, inmune, eje del estrés.</p></div></div>
+          <div class="fcard" style="flex-direction:row;align-items:baseline;gap:12px;padding:calc(var(--u)*1.3) calc(var(--u)*1.8);"><span style="font-family:var(--mono);font-weight:700;font-size:12px;">N1</span><div><h3 style="font-size:11px;">Celular · bioeléctrico</h3><p style="font-size:9.5px;">La base biológica de todo lo demás.</p></div></div>
+        </div>
+        <div class="note" style="margin-top:auto;">
+          <div class="nl">La clave transgeneracional</div>
+          <p>La impronta heredada empieza en <b>N1</b>, ajusta el umbral en <b>N2</b> y se ejecuta en <b>N3</b> — aunque nunca viviste el evento. Por eso a veces dices: <em>"no sé de dónde viene esto."</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 1</span><span class="fno">03</span></div>
+</div>
+
+<!-- ========== PAGE 4 · LOS 4 CONCEPTOS (evidencia) ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Marco conceptual · Hora 1</div>
+      <h1>Cuatro conceptos, la evidencia detrás</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">El mapa que cargas · S1</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="frame4" style="grid-template-columns:1fr 1fr;">
+      <div class="fcard"><div class="fnum">CONCEPTO 1</div><h3>Líneas de ADN directas</h3><p>Dos líneas se transmiten completas sin mezclarse: el <b>ADN mitocondrial</b> (de la madre a todos los hijos) y el <b>cromosoma Y</b> (de padre a hijo varón). Son la única vía biológica que conecta con ese ancestro específico.</p></div>
+      <div class="fcard"><div class="fnum">CONCEPTO 2</div><h3>Trauma histórico y duelo colectivo</h3><p>No conecta a una persona con su árbol, sino con su pueblo. Un duelo colectivo que nunca tuvo ventana para cerrarse — hay patrones que aparecen en la familia pero <b>no se originan en ella</b>.</p></div>
+      <div class="fcard"><div class="fnum">CONCEPTO 3</div><h3>Co-regulación del sistema nervioso</h3><p>Antes de una palabra, el sistema nervioso del bebé se regula copiando al del cuidador. Un patrón de alerta o desconexión <b>se transmite sin decir nada</b>, antes de que haya memoria consciente.</p></div>
+      <div class="fcard"><div class="fnum">CONCEPTO 4</div><h3>Herencia epigenética</h3><p>El espermatozoide no entrega solo ADN: entrega una <b>carga de ARN</b> que cambia con el estrés del padre y altera la expresión génica del embrión. No es destino fijo — es información corregible.</p></div>
+    </div>
+    <div class="note" style="margin-top:calc(var(--u)*2);">
+      <div class="nl">Anota mientras avanzamos</div>
+      <p>¿Cuál de estos cuatro conceptos resuena con algo de tu propia historia familiar? Márcalo y guárdalo para la construcción del mapa en la Hora 2.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 1</span><span class="fno">04</span></div>
+</div>
+
+<!-- ========== PAGE 5 · MOMENTO SOMÁTICO ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Momento somático · Hora 1</div>
+      <h1>Dónde vive tu impronta</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">El mapa que cargas · S1</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <p class="lede" style="margin-bottom:calc(var(--u)*2);">Un momento breve con el cuerpo antes de construir el mapa. No lo compartes en voz alta — es información para ti, que después anotas aquí.</p>
+    <div class="ritsteps">
+      <div class="rst"><span class="rn">1</span><h4>Nombrar</h4><p>Ambas manos sobre las piernas, palmas hacia abajo.</p><div class="rq">"Esto es lo que traigo: patrones míos, y patrones que quizás no lo son."</div></div>
+      <div class="rst"><span class="rn">2</span><h4>Regular</h4><p>Respiración 4-4-6, tres veces.</p><div class="rq">"Mi cuerpo está aquí, en esta silla, en este momento."</div></div>
+      <div class="rst"><span class="rn">3</span><h4>Recursos</h4><p>Pies en el piso, el peso del cuerpo sobre la silla.</p><div class="rq">"Tengo un cuerpo que puede sentir esto sin quebrarse."</div></div>
+      <div class="rst"><span class="rn">4</span><h4>Ampliar</h4><p>Escaneo breve: pecho, garganta, hombros, vientre, mandíbula.</p><div class="rq">"¿Qué zona reconozco como mía? ¿Cuál se siente prestada?"</div></div>
+      <div class="rst"><span class="rn">5</span><h4>El gesto</h4><p>Una mano sobre cada zona.</p><div class="rq">"Esto es mío. Esto puede no serlo: lo dejo marcado, no resuelto."</div></div>
+    </div>
+    <div class="two" style="flex:1;margin-top:calc(var(--u)*2.5);">
+      <div class="writebox">
+        <span class="wblabel">Zona que reconozco como mía — con historia, nombre, fecha</span>
+        <div class="wbhint"><b>Ej.</b> "Garganta. Se cierra cuando tengo que poner un límite. Empezó en la secundaria."</div>
+        <div class="lines" style="flex:1;"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+      </div>
+      <div class="writebox">
+        <span class="wblabel">Zona que se siente prestada — más antigua, no enteramente mía</span>
+        <div class="wbhint"><b>Ej.</b> "Pecho. Un peso que no sé de dónde viene; nunca me pasó nada que lo explique."</div>
+        <div class="lines" style="flex:1;"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:calc(var(--u)*1.8);">
+      <div class="nl">Se lleva al mapa</div>
+      <p>En la Hora 2, marca esas dos zonas con un símbolo propio (un punto, una estrella) en el margen de tu plantilla de genograma, <b>antes de empezar a llenarla</b>.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 1</span><span class="fno">05</span></div>
+</div>
+
+<!-- ========== PAGE 6 · NOTACIÓN DEL GENOGRAMA ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Construcción del mapa · Hora 2</div>
+      <h1>Cómo se dibuja el genograma</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">El mapa que cargas · S1</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <p style="margin-bottom:calc(var(--u)*2);">Se dibuja con la misma notación estándar que usa la terapia familiar sistémica. Mínimo tres generaciones: tú, tus padres, tus abuelos.</p>
+    <div class="notg">
+      <div class="notc"><div class="g"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="8" y="8" width="24" height="24" fill="none" stroke="#141414" stroke-width="2"/></svg></div><h4>Hombre</h4><span>Cuadrado</span></div>
+      <div class="notc"><div class="g"><svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="13" fill="none" stroke="#141414" stroke-width="2"/></svg></div><h4>Mujer</h4><span>Círculo</span></div>
+      <div class="notc"><div class="g"><svg width="80" height="40" viewBox="0 0 80 40"><rect x="6" y="14" width="14" height="14" fill="none" stroke="#141414" stroke-width="2"/><circle cx="66" cy="21" r="8" fill="none" stroke="#141414" stroke-width="2"/><line x1="20" y1="21" x2="58" y2="21" stroke="#141414" stroke-width="2"/></svg></div><h4>Matrimonio</h4><span>Línea continua</span></div>
+      <div class="notc"><div class="g"><svg width="80" height="40" viewBox="0 0 80 40"><rect x="6" y="14" width="14" height="14" fill="none" stroke="#141414" stroke-width="2"/><circle cx="66" cy="21" r="8" fill="none" stroke="#141414" stroke-width="2"/><line x1="20" y1="21" x2="58" y2="21" stroke="#141414" stroke-width="2"/><line x1="35" y1="13" x2="43" y2="29" stroke="#141414" stroke-width="2"/><line x1="41" y1="13" x2="49" y2="29" stroke="#141414" stroke-width="2"/></svg></div><h4>Divorcio</h4><span>Doble diagonal</span></div>
+      <div class="notc"><div class="g"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="8" y="8" width="24" height="24" fill="none" stroke="#141414" stroke-width="2"/><line x1="8" y1="8" x2="32" y2="32" stroke="#141414" stroke-width="2"/><line x1="32" y1="8" x2="8" y2="32" stroke="#141414" stroke-width="2"/></svg></div><h4>Fallecimiento</h4><span>X sobre la figura</span></div>
+      <div class="notc"><div class="g"><svg width="80" height="40" viewBox="0 0 80 40"><circle cx="14" cy="21" r="8" fill="none" stroke="#141414" stroke-width="2"/><rect x="58" y="14" width="14" height="14" fill="none" stroke="#141414" stroke-width="2"/><line x1="22" y1="21" x2="31" y2="21" stroke="#141414" stroke-width="2"/><line x1="37" y1="21" x2="46" y2="21" stroke="#141414" stroke-width="2"/><line x1="52" y1="21" x2="58" y2="21" stroke="#141414" stroke-width="2"/></svg></div><h4>Corte emocional</h4><span>Línea cortada</span></div>
+      <div class="notc"><div class="g"><svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="13" fill="none" stroke="#141414" stroke-width="2" stroke-dasharray="4 3"/><text x="20" y="26" text-anchor="middle" font-size="17" font-family="Georgia" fill="#141414" font-weight="bold">?</text></svg></div><h4>Dato desconocido</h4><span>Interrogación</span></div>
+      <div class="notc"><div class="g"><svg width="40" height="40" viewBox="0 0 40 40"><circle cx="13" cy="14" r="3.5" fill="#141414"/><path d="M24 11l2.2 4.5 5 .5-3.6 3.5 1 5-4.6-2.6-4.6 2.6 1-5-3.6-3.5 5-.5z" fill="none" stroke="#141414" stroke-width="1.3"/></svg></div><h4>Tus dos zonas</h4><span>Marca en el margen</span></div>
+    </div>
+    <div class="note" style="margin-top:calc(var(--u)*2.4);">
+      <div class="nl">Regla de oro</div>
+      <p>Un hueco marcado con <b style="font-family:var(--mono);">?</b> es información —puede señalar un corte o un secreto—. Un hueco en blanco se pierde. <b>No inventes:</b> un dato inventado contamina todo lo que se construye sobre él.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 1</span><span class="fno">06</span></div>
+</div>
+
+<!-- ========== PAGE 7 · 8 CATEGORÍAS DE EVENTO ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Construcción del mapa · Hora 2</div>
+      <h1>El genosociograma: fechas y tipo de evento</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">El mapa que cargas · S1</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <p style="margin-bottom:calc(var(--u)*2);">Sobre el árbol agregas: fechas de nacimiento, muerte, enfermedades, divorcios, migraciones. Junto a cada fecha, <b>el tipo de evento</b> — usa estas ocho categorías para no tener que inventar cómo nombrarlo.</p>
+    <div class="catg">
+      <div class="catc"><span class="cn">1</span><div><h4>Muerte o pérdida</h4></div></div>
+      <div class="catc"><span class="cn">2</span><div><h4>Abandono o rechazo</h4></div></div>
+      <div class="catc"><span class="cn">3</span><div><h4>Traición o engaño</h4></div></div>
+      <div class="catc"><span class="cn">4</span><div><h4>Violencia</h4></div></div>
+      <div class="catc"><span class="cn">5</span><div><h4>Humillación o exclusión</h4></div></div>
+      <div class="catc"><span class="cn">6</span><div><h4>Accidente o enfermedad</h4></div></div>
+      <div class="catc"><span class="cn">7</span><div><h4>Secreto</h4></div></div>
+      <div class="catc"><span class="cn">8</span><div><h4>Crisis</h4><span>económica · migratoria · estatus</span></div></div>
+    </div>
+    <div class="two" style="flex:1;margin-top:calc(var(--u)*2.5);align-items:stretch;">
+      <div class="col">
+        <div class="note">
+          <div class="nl">Por qué estos datos y no otros</div>
+          <p>Cada dato reduce el campo hasta que un patrón deja de ser una impresión vaga y se vuelve verificable.</p>
+        </div>
+        <div class="fcard" style="flex:1;justify-content:center;">
+          <p style="font-size:10px;"><b>No es lo mismo</b> decir <em>"algo se repite en mi familia"</em> (una sensación) que decir <em>"mi abuelo murió de infarto a los 52, mi padre a los 52, y yo tengo 50 este año"</em> (un dato clínico).</p>
+        </div>
+      </div>
+      <div class="writebox">
+        <span class="wblabel">Eventos que ya reconozco en mi familia — fecha, persona, categoría</span>
+        <div class="wbhint"><b>Ej.</b> "1998 · abuelo materno · muerte (infarto, 52 años)" — anota una línea por evento.</div>
+        <div class="lines" style="flex:1;"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 1</span><span class="fno">07</span></div>
+</div>
+
+<!-- ========== PAGE 8 · PLANTILLA DEL GENOGRAMA (grande) ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Construcción del mapa · Hora 2</div>
+      <h1>Tu genograma de tres generaciones</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">El mapa que cargas · S1</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="instrucset" style="margin-bottom:calc(var(--u)*1.6);">
+      <div class="row"><span class="rn">1</span><p>Empieza por ti (abajo). Sube a tus padres. Sube a tus cuatro abuelos. Usa la notación de la página 6.</p></div>
+    </div>
+    <div class="genofield">
+      <span class="glabel">Dibuja aquí tu árbol · marca tus dos zonas en el margen antes de empezar</span>
+      <span class="gen-tag" style="top:8px;">Abuelos</span>
+      <span class="gen-tag" style="top:38%;">Padres</span>
+      <span class="gen-tag" style="bottom:8px;">Tú</span>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 1</span><span class="fno">08</span></div>
+</div>
+
+<!-- ========== PAGE 9 · MÉTODO DE DETECCIÓN A/R/E ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Detección de patrones · Hora 2</div>
+      <h1>El método: cuatro pasos en orden</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">El mapa que cargas · S1</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="note" style="margin-bottom:calc(var(--u)*2);">
+      <div class="nl">Antes del método · el criterio de sospecha</div>
+      <p><b>"¿La biografía propia lo explica?"</b> — Si tu propia vida (infancia, gestación, un evento personal) explica el síntoma, el origen está ahí. Si no alcanza —ansiedad sin evento, un patrón que replica el de tus padres sin haberlo vivido— <b>es momento de mirar una generación atrás</b>.</p>
+    </div>
+    <div class="steps">
+      <div class="stp"><span class="code">A</span><span class="sname">1 · Edades</span><p>¿Se repite la misma edad en dos personas de generaciones distintas, en la misma línea?</p></div>
+      <div class="stp"><span class="code">A</span><span class="sname">2 · Fechas</span><p>Mismo día y mes entre eventos, sin importar el año. Misma familia de patrón, por fecha exacta.</p></div>
+      <div class="stp"><span class="code">R</span><span class="sname">3 · Roles</span><p>El cuidador, el rebelde, el que se va. ¿El mismo rol en dos generaciones seguidas de una línea?</p></div>
+      <div class="stp"><span class="code">E</span><span class="sname">4 · Evento por rama</span><p>¿La misma categoría —muerte, secreto, crisis— más de una vez, pero en una sola rama?</p></div>
+    </div>
+    <div class="codekey">
+      <div class="ck"><b>A</b> Aniversario — edad o fecha</div>
+      <div class="ck"><b>R</b> Rol — oficio o función</div>
+      <div class="ck"><b>E</b> Evento — categoría por rama</div>
+    </div>
+    <div class="two" style="flex:1;margin-top:calc(var(--u)*2.2);align-items:stretch;">
+      <div class="writebox">
+        <span class="wblabel">Marcas que encontré — código A / R / E + en qué línea</span>
+        <div class="wbhint"><b>Ej.</b> "A — infarto a los 52 en abuelo y padre (línea materna)"</div>
+        <div class="lines" style="flex:1;"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+      </div>
+      <div class="writebox" style="border-width:2px;border-color:var(--ink);">
+        <span class="wblabel" style="color:var(--ink);">★ Mi patrón — el que puedo explicar en una sola frase sin dudar</span>
+        <div class="wbhint"><b>Ej.</b> "En mi línea materna, los hombres mueren del corazón a la misma edad."</div>
+        <div class="lines" style="flex:1;"><div class="ln"></div><div class="ln"></div></div>
+        <p style="font-size:9px;color:var(--muted);">Este es el que compartes y el que llevas a las próximas sesiones.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 1</span><span class="fno">09</span></div>
+</div>
+
+<!-- ========== PAGE 10 · CIERRE + NOTAS ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Cierre de sesión</div>
+      <h1>Lo que te llevas</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">El mapa que cargas · S1</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="two wide-right">
+      <div class="col">
+        <p class="lede">Hoy construiste el mapa. Guárdalo — es el material de trabajo de las próximas tres sesiones: el mismo árbol, leído con tres herramientas distintas.</p>
+        <div style="display:flex;flex-direction:column;gap:calc(var(--u)*1.4);margin-top:calc(var(--u)*1);">
+          <div class="fcard"><div class="fnum">SESIÓN 2</div><h3 style="font-size:11.5px;">Línea paterna</h3><p style="font-size:9.5px;">Los Caminos de la Vida y Playmobil.</p></div>
+          <div class="fcard"><div class="fnum">SESIÓN 3</div><h3 style="font-size:11.5px;">Línea materna</h3><p style="font-size:9.5px;">Campos Mórficos.</p></div>
+          <div class="fcard"><div class="fnum">SESIÓN 4</div><h3 style="font-size:11.5px;">Herencia metabólica</h3><p style="font-size:9.5px;">Dos generaciones más atrás.</p></div>
+        </div>
+      </div>
+      <div class="writebox">
+        <span class="wblabel">Notas · preguntas · lo que quiero seguir rastreando</span>
+        <div class="ruled" style="flex:1;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 1 · Instituto Centrobioenergetica</span><span class="fno">10</span></div>
+</div>
+
+<script>
+  // Isotipo del Instituto en B&N — anillo de 12 círculos + centro.
+  (function () {
+    function iso(size) {
+      var pts = [];
+      for (var k = 0; k < 12; k++) {
+        var ang = (k * 30 - 90) * Math.PI / 180;
+        var x = (48 * Math.cos(ang)).toFixed(1);
+        var y = (48 * Math.sin(ang)).toFixed(1);
+        // colores reales del logo del Instituto: terra + sage alternados
+        var fill = k % 2 === 0 ? '#A94D36' : '#8FA87A';
+        pts.push('<circle cx="' + x + '" cy="' + y + '" r="11" fill="' + fill + '"/>');
+      }
+      return '<svg width="' + size + '" height="' + size + '" viewBox="-80 -80 160 160" aria-hidden="true">'
+        + pts.join('')
+        + '<circle cx="0" cy="0" r="14" fill="#E8A857" opacity="0.28"/><circle cx="0" cy="0" r="7" fill="#E8A857"/></svg>';
+    }
+    document.querySelectorAll('[data-iso]').forEach(function (el) {
+      var w = el.clientWidth || 30;
+      el.innerHTML = iso(w);
+      el.style.display = 'inline-flex';
+    });
+  })();
+</script>
