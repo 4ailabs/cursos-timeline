@@ -1,0 +1,282 @@
+<title>El Cuerpo Eléctrico · 3D interactivo — Campo del imán y la red bioeléctrica</title>
+<style>
+  :root{
+    --paper:#FBF9F2; --ink:#22201A; --soft:#4C4A42; --muted:#8A897F; --line:#E4DFD1;
+    --teal:#0F6E56; --teal-soft:#E7F4EF; --amber:#BA7517; --coral:#C0512B; --panel:#ffffff;
+    --sans:system-ui,-apple-system,'Segoe UI',sans-serif; --serif:Georgia,'Times New Roman',serif;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --paper:#13120C; --ink:#ECE7DB; --soft:#BCB7A8; --muted:#8D897B; --line:#2C2A21;
+    --teal:#2FA588; --teal-soft:#12241E; --amber:#E0A64B; --coral:#E07850; --panel:#1B1A13;
+  }}
+  :root[data-theme="light"]{--paper:#FBF9F2;--ink:#22201A;--soft:#4C4A42;--muted:#8A897F;--line:#E4DFD1;--teal:#0F6E56;--teal-soft:#E7F4EF;--amber:#BA7517;--coral:#C0512B;--panel:#fff}
+  :root[data-theme="dark"]{--paper:#13120C;--ink:#ECE7DB;--soft:#BCB7A8;--muted:#8D897B;--line:#2C2A21;--teal:#2FA588;--teal-soft:#12241E;--amber:#E0A64B;--coral:#E07850;--panel:#1B1A13}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+  .app{display:flex;flex-direction:column;height:100vh;min-height:520px}
+  header{padding:14px 20px 10px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+  .brand{display:flex;align-items:center;gap:9px;margin-right:auto}
+  .brand svg{width:34px;height:18px;color:var(--teal)}
+  .brand b{font-size:15px;letter-spacing:.01em}
+  .brand span{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+  .tabs{display:flex;gap:6px;background:var(--teal-soft);padding:4px;border-radius:999px}
+  .tabs button{font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--soft);background:transparent;border:0;
+    padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .18s}
+  .tabs button[aria-selected="true"]{background:var(--teal);color:#fff}
+  .stage{position:relative;flex:1;min-height:0;overflow:hidden}
+  canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+  canvas:active{cursor:grabbing}
+  .overlay{position:absolute;pointer-events:none;font-family:var(--sans)}
+  .legend{left:18px;top:16px;background:color-mix(in srgb,var(--panel) 86%,transparent);border:1px solid var(--line);
+    border-radius:12px;padding:12px 14px;max-width:290px;backdrop-filter:blur(4px)}
+  .legend h3{margin:0 0 8px;font-family:var(--serif);font-size:15px;color:var(--ink)}
+  .legend .row{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--soft);margin:5px 0;line-height:1.35}
+  .legend .row i{width:13px;height:13px;border-radius:4px;flex:none}
+  .legend .row i.line{height:3px;border-radius:2px}
+  .legend p{margin:8px 0 0;font-size:11.5px;color:var(--muted);line-height:1.45}
+  .hud{right:16px;bottom:14px;text-align:right;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .ctrls{left:50%;transform:translateX(-50%);bottom:14px;display:flex;gap:8px;pointer-events:auto}
+  .ctrls button{font-family:var(--sans);font-size:11.5px;color:var(--soft);background:color-mix(in srgb,var(--panel) 86%,transparent);
+    border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer}
+  .ctrls button:hover{border-color:var(--teal);color:var(--teal)}
+  .caption{padding:11px 20px;border-top:1px solid var(--line);font-size:13px;color:var(--soft);line-height:1.5;background:var(--panel)}
+  .caption b{color:var(--teal)}
+  @media (max-width:640px){.legend{max-width:210px;font-size:11px}.brand span{display:none}}
+</style>
+
+<div class="app">
+  <header>
+    <div class="brand">
+      <svg viewBox="0 0 44 24" aria-hidden="true"><circle cx="8" cy="12" r="6" fill="currentColor"/><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"/><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.35"/></svg>
+      <div><b>El Cuerpo Eléctrico</b><span>Regulación Bioeléctrica · 3D</span></div>
+    </div>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-scene="field">Campo del imán</button>
+      <button role="tab" aria-selected="false" data-scene="net">Red e isla</button>
+    </div>
+  </header>
+  <div class="stage">
+    <canvas id="c"></canvas>
+    <div class="overlay legend" id="legend"></div>
+    <div class="overlay hud">arrastra para girar · rueda para acercar</div>
+    <div class="overlay ctrls">
+      <button id="btnRot">Pausar giro</button>
+      <button id="btnReset">Reencuadrar</button>
+    </div>
+  </div>
+  <div class="caption" id="caption"></div>
+</div>
+
+<script>
+(function(){
+"use strict";
+const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+const legend = document.getElementById('legend'), caption = document.getElementById('caption');
+let W=0,H=0,DPR=1;
+function palette(){
+  const s=getComputedStyle(document.documentElement);
+  const g=n=>s.getPropertyValue(n).trim();
+  return {paper:g('--paper'),ink:g('--ink'),soft:g('--soft'),muted:g('--muted'),line:g('--line'),
+          teal:g('--teal'),amber:g('--amber'),coral:g('--coral')};
+}
+let PAL=palette();
+function resize(){
+  DPR=Math.min(window.devicePixelRatio||1,2);
+  const r=cv.getBoundingClientRect(); W=r.width; H=r.height;
+  cv.width=Math.round(W*DPR); cv.height=Math.round(H*DPR);
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+}
+window.addEventListener('resize',resize);
+new ResizeObserver(resize).observe(document.querySelector('.stage'));
+
+// ---- cámara / proyección pseudo-3D ----
+const cam={yaw:0.7,pitch:-0.35,dist:6.4,focal:4.2};
+function project(p){
+  const cy=Math.cos(cam.yaw),sy=Math.sin(cam.yaw);
+  let x1=p.x*cy - p.z*sy, z1=p.x*sy + p.z*cy;
+  const cp=Math.cos(cam.pitch),sp=Math.sin(cam.pitch);
+  let y2=p.y*cp - z1*sp, z2=p.y*sp + z1*cp;
+  const zc=z2+cam.dist;
+  const scale=Math.min(W,H)*0.5;
+  const f=cam.focal/Math.max(zc,0.1);
+  return {x:W/2 + x1*f*scale, y:H/2 - y2*f*scale, d:zc, f:f*scale};
+}
+// interacción
+let drag=false,px=0,py=0,autor=true;
+cv.addEventListener('pointerdown',e=>{drag=true;autor=false;px=e.clientX;py=e.clientY;cv.setPointerCapture(e.pointerId);});
+cv.addEventListener('pointermove',e=>{if(!drag)return;cam.yaw+=(e.clientX-px)*0.008;cam.pitch+=(e.clientY-py)*0.008;
+  cam.pitch=Math.max(-1.3,Math.min(1.3,cam.pitch));px=e.clientX;py=e.clientY;});
+cv.addEventListener('pointerup',()=>drag=false);
+cv.addEventListener('wheel',e=>{e.preventDefault();cam.dist=Math.max(3.5,Math.min(11,cam.dist+e.deltaY*0.004));},{passive:false});
+document.getElementById('btnRot').onclick=function(){autor=!autor;this.textContent=autor?'Pausar giro':'Reanudar giro';};
+document.getElementById('btnReset').onclick=()=>{cam.yaw=0.7;cam.pitch=-0.35;cam.dist=6.4;};
+
+// helpers de dibujo
+function hexA(hex,a){ // hex → rgba con alpha
+  hex=hex.replace('#',''); if(hex.length===3)hex=hex.split('').map(c=>c+c).join('');
+  const n=parseInt(hex,16); return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`;
+}
+
+// =================== ESCENA 1 · CAMPO DEL IMÁN ===================
+const field=(function(){
+  const y0=0.25; // centro del dipolo
+  // líneas de campo (loops dipolares replicados en azimut)
+  const lines=[];
+  const shells=[[0.55,0.9],[0.9,0.72],[1.28,0.5],[1.7,0.32]]; // [C, alpha]
+  const az=[0,Math.PI/4,Math.PI/2,3*Math.PI/4];
+  for(const [C,al] of shells){
+    const m=[];
+    for(let i=0;i<=44;i++){const th=0.16+(Math.PI-0.32)*i/44;const r=C*Math.sin(th)*Math.sin(th);m.push([r*Math.sin(th),y0+r*Math.cos(th)]);}
+    for(const phi of az){const cp=Math.cos(phi),sp=Math.sin(phi);
+      for(const sg of [1,-1]) lines.push({al,pts:m.map(([xp,y])=>({x:sg*xp*cp,y,z:sg*xp*sp}))});
+    }
+  }
+  function ring(r,y,n){const a=[];for(let i=0;i<n;i++){const t=i/n*Math.PI*2;a.push({x:Math.cos(t)*r,y,z:Math.sin(t)*r});}return a;}
+  const magR=0.5, magTop=0.5;
+  const depths=[{y:0,t:'superficie · ~450 mT'},{y:-0.5,t:'~1 cm · ~150 mT'},{y:-1.0,t:'~2 cm · 15–30 mT'},{y:-1.5,t:'~3 cm · ~8 mT'}];
+  return {
+    legend:`<h3>El campo del imán en el tejido</h3>
+      <div class="row"><i class="line" style="background:var(--teal)"></i>líneas de campo (N→S)</div>
+      <div class="row"><i style="background:var(--teal)"></i>polo negativo (N, hacia el tejido)</div>
+      <div class="row"><i style="background:var(--amber)"></i>polo positivo (S)</div>
+      <p>El campo penetra el tejido y <b>cae con la profundidad</b> (≈ 1/d³): lo que importa es la intensidad que llega, no la de la superficie.</p>`,
+    caption:`<b>Campo del imán.</b> Un imán estático genera un campo dipolar que entra al tejido y se atenúa rápido con la profundidad. A 2 cm quedan 15–30 mT —dentro de la ventana de efecto documentada. Gira la escena para ver cómo las líneas envuelven el imán y se hunden en el tejido.`,
+    draw(){
+      const items=[];
+      // plano de tejido (rejilla en y=0)
+      const g=2.3, step=0.46;
+      for(let x=-g;x<=g+1e-6;x+=step){const a=project({x,y:0,z:-g}),b=project({x,y:0,z:g});items.push({d:(a.d+b.d)/2,type:'grid',a,b});}
+      for(let z=-g;z<=g+1e-6;z+=step){const a=project({x:-g,y:0,z}),b=project({x:g,y:0,z});items.push({d:(a.d+b.d)/2,type:'grid',a,b});}
+      // líneas de campo
+      for(const L of lines){
+        const pr=L.pts.map(project); let dsum=0;
+        for(const p of pr)dsum+=p.d; items.push({d:dsum/pr.length,type:'field',pr,al:L.al});
+      }
+      // imán (cilindro): anillos N (abajo) y S (arriba)
+      const rb=ring(magR,0,28).map(project), rt=ring(magR,magTop,28).map(project);
+      let dm=0; rb.forEach(p=>dm+=p.d); items.push({d:dm/rb.length-0.01,type:'mag',rb,rt});
+      // regla de profundidad
+      for(const dp of depths){const p=project({x:1.85,y:dp.y,z:0});items.push({d:p.d,type:'depth',p,t:dp.t});}
+      const p0=project({x:1.85,y:0.05,z:0}),p1=project({x:1.85,y:-1.55,z:0});
+      items.push({d:(p0.d+p1.d)/2,type:'ruler',a:p0,b:p1});
+
+      items.sort((a,b)=>b.d-a.d);
+      for(const it of items){
+        if(it.type==='grid'){ctx.strokeStyle=hexA(PAL.muted,0.28);ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(it.a.x,it.a.y);ctx.lineTo(it.b.x,it.b.y);ctx.stroke();}
+        else if(it.type==='field'){
+          ctx.lineWidth=1.6;ctx.lineJoin='round';
+          for(let i=1;i<it.pr.length;i++){const A=it.pr[i-1],B=it.pr[i];
+            const ym=( (A.y+B.y) );// no usar; usamos profundidad tejido via world y aprox
+            ctx.strokeStyle=hexA(PAL.teal,it.al);ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}
+        }
+        else if(it.type==='mag'){
+          // cara lateral
+          ctx.beginPath();for(let i=0;i<it.rb.length;i++){const a=it.rb[i],b=it.rt[i];if(i===0)ctx.moveTo(a.x,a.y);else ctx.lineTo(a.x,a.y);}
+          for(let i=it.rt.length-1;i>=0;i--)ctx.lineTo(it.rt[i].x,it.rt[i].y);ctx.closePath();
+          const grd=ctx.createLinearGradient(0,it.rt[0].y,0,it.rb[0].y);
+          grd.addColorStop(0,hexA(PAL.amber,0.9));grd.addColorStop(0.5,hexA(PAL.amber,0.55));grd.addColorStop(0.5,hexA(PAL.teal,0.55));grd.addColorStop(1,hexA(PAL.teal,0.92));
+          ctx.fillStyle=grd;ctx.fill();
+          // tapa N (abajo) y S (arriba)
+          ctx.fillStyle=hexA(PAL.teal,0.95);ctx.beginPath();it.rb.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.fill();
+          ctx.fillStyle=hexA(PAL.amber,0.95);ctx.beginPath();it.rt.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.fill();
+          const cB=it.rb.reduce((s,p)=>({x:s.x+p.x/it.rb.length,y:s.y+p.y/it.rb.length}),{x:0,y:0});
+          const cT=it.rt.reduce((s,p)=>({x:s.x+p.x/it.rt.length,y:s.y+p.y/it.rt.length}),{x:0,y:0});
+          ctx.fillStyle='#fff';ctx.font='700 15px '+PAL._serif;ctx.textAlign='center';ctx.textBaseline='middle';
+          ctx.font='700 14px Georgia,serif';ctx.fillText('N',cB.x,cB.y);ctx.fillText('S',cT.x,cT.y);
+        }
+        else if(it.type==='ruler'){ctx.strokeStyle=hexA(PAL.muted,0.5);ctx.lineWidth=1.2;ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(it.a.x,it.a.y);ctx.lineTo(it.b.x,it.b.y);ctx.stroke();ctx.setLineDash([]);}
+        else if(it.type==='depth'){ctx.fillStyle=PAL.soft;ctx.font='11px '+'system-ui,sans-serif';ctx.textAlign='left';ctx.textBaseline='middle';
+          ctx.fillStyle=hexA(PAL.amber,0.9);ctx.beginPath();ctx.arc(it.p.x,it.p.y,2.6,0,7);ctx.fill();
+          ctx.fillStyle=PAL.soft;ctx.fillText(it.t,it.p.x+8,it.p.y);}
+      }
+    }
+  };
+})();
+
+// =================== ESCENA 2 · RED E ISLA ===================
+const net=(function(){
+  // generar células en un slab con jitter
+  const cells=[]; const rnd=(a,b)=>a+Math.random()*(b-a);
+  let seed=7; const rng=()=>{seed=(seed*9301+49297)%233280;return seed/233280;};
+  for(let ix=-2;ix<=2;ix++)for(let iy=-1;iy<=1;iy++)for(let iz=-1;iz<=1;iz++){
+    if(rng()<0.12)continue;
+    cells.push({x:ix*0.9+(rng()-0.5)*0.5,y:iy*0.9+(rng()-0.5)*0.5,z:iz*0.95+(rng()-0.5)*0.5});
+  }
+  // isla: células cerca de un centro
+  const isC={x:1.7,y:0.5,z:0.2};
+  cells.forEach(c=>{c.isla=Math.hypot(c.x-isC.x,c.y-isC.y,c.z-isC.z)<1.0;});
+  // aristas (gap junctions) entre células conectadas del colectivo (no-isla)
+  const edges=[]; const TH=1.35;
+  for(let i=0;i<cells.length;i++)for(let j=i+1;j<cells.length;j++){
+    const a=cells[i],b=cells[j];const dd=Math.hypot(a.x-b.x,a.y-b.y,a.z-b.z);
+    if(dd<TH && !a.isla && !b.isla)edges.push([i,j]);
+  }
+  // BFS distancia de grafo desde una fuente lejana a la isla → onda de señal
+  const adj=cells.map(()=>[]); edges.forEach(([i,j])=>{adj[i].push(j);adj[j].push(i);});
+  let src=0,best=1e9; cells.forEach((c,i)=>{if(!c.isla){const d=Math.hypot(c.x+2.4,c.y,c.z);if(d<best){best=d;src=i;}}});
+  const dist=cells.map(()=>Infinity); dist[src]=0; const q=[src];
+  while(q.length){const u=q.shift();for(const v of adj[u])if(dist[v]===Infinity){dist[v]=dist[u]+1;q.push(v);}}
+  const maxD=Math.max(...dist.filter(d=>isFinite(d)));
+  let t0=performance.now();
+  function cellNode(c,i){const p=project(c);const wave=((performance.now()-t0)/1600)%1.6*maxD;
+    const on=isFinite(dist[i]) && dist[i]<=wave && dist[i]>wave-2.2;
+    return {p,c,i,on};}
+  return {
+    legend:`<h3>El colectivo y la isla</h3>
+      <div class="row"><i style="background:var(--teal)"></i>células conectadas (gap junctions)</div>
+      <div class="row"><i class="line" style="background:var(--teal)"></i>señal que viaja por la red</div>
+      <div class="row"><i style="background:var(--amber)"></i>isla despolarizada · uniones cerradas</div>
+      <p>La señal recorre el <b>colectivo conectado</b>, pero <b>no entra en la isla</b>: esa zona cerró sus gap junctions y quedó desconectada de la red.</p>`,
+    caption:`<b>La isla de despolarización.</b> Un trauma eleva el K⁺ local, despolariza la zona y cierra sus gap junctions: queda como una isla que ya no comparte información con el colectivo. Regular es devolverle las condiciones para repolarizarse y <b>reconectarse</b>. Gira para ver la isla aislada dentro de la red.`,
+    draw(){
+      const items=[];
+      // aristas
+      for(const [i,j] of edges){const a=project(cells[i]),b=project(cells[j]);
+        const wave=((performance.now()-t0)/1600)%1.6*maxD;
+        const lit=isFinite(dist[i])&&Math.abs(dist[i]-wave)<1.1;
+        items.push({d:(a.d+b.d)/2,type:'edge',a,b,lit});}
+      // frontera de la isla (anillo punteado)
+      const islaCells=cells.filter(c=>c.isla);
+      // células
+      cells.forEach((c,i)=>{const n=cellNode(c,i);items.push({d:n.p.d,type:'cell',...n});});
+      // marcas ✕ de uniones cerradas alrededor de la isla
+      islaCells.forEach(c=>{const p=project({x:c.x-0.55,y:c.y,z:c.z});items.push({d:p.d-0.01,type:'x',p});});
+      items.sort((a,b)=>b.d-a.d);
+      for(const it of items){
+        if(it.type==='edge'){ctx.strokeStyle=it.lit?hexA(PAL.teal,0.95):hexA(PAL.teal,0.22);ctx.lineWidth=it.lit?2.2:1;
+          ctx.beginPath();ctx.moveTo(it.a.x,it.a.y);ctx.lineTo(it.b.x,it.b.y);ctx.stroke();}
+        else if(it.type==='x'){ctx.strokeStyle=hexA(PAL.coral,0.85);ctx.lineWidth=1.6;const s=4;
+          ctx.beginPath();ctx.moveTo(it.p.x-s,it.p.y-s);ctx.lineTo(it.p.x+s,it.p.y+s);ctx.moveTo(it.p.x+s,it.p.y-s);ctx.lineTo(it.p.x-s,it.p.y+s);ctx.stroke();}
+        else if(it.type==='cell'){
+          const R=Math.max(5,it.p.f*0.075);
+          const base=it.c.isla?PAL.amber:PAL.teal;
+          const g=ctx.createRadialGradient(it.p.x-R*0.35,it.p.y-R*0.35,R*0.15,it.p.x,it.p.y,R);
+          if(it.c.isla){g.addColorStop(0,hexA(PAL.amber,0.98));g.addColorStop(1,hexA('#8A5A10',0.92));}
+          else if(it.on){g.addColorStop(0,'#eafff8');g.addColorStop(0.5,hexA(PAL.teal,1));g.addColorStop(1,hexA(PAL.teal,0.85));}
+          else{g.addColorStop(0,hexA(PAL.teal,0.85));g.addColorStop(1,hexA(PAL.teal,0.5));}
+          ctx.fillStyle=g;ctx.beginPath();ctx.arc(it.p.x,it.p.y,R,0,7);ctx.fill();
+          if(it.on){ctx.strokeStyle=hexA('#eafff8',0.9);ctx.lineWidth=2;ctx.beginPath();ctx.arc(it.p.x,it.p.y,R+2.5,0,7);ctx.stroke();}
+        }
+      }
+    }
+  };
+})();
+
+// ---- loop ----
+const scenes={field,net}; let cur='field';
+function setScene(name){cur=name;legend.innerHTML=scenes[name].legend;caption.innerHTML=scenes[name].caption;
+  document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.scene===name));}
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>setScene(b.dataset.scene));
+const mq=window.matchMedia('(prefers-color-scheme:dark)');mq.addEventListener&&mq.addEventListener('change',()=>PAL=palette());
+new MutationObserver(()=>PAL=palette()).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+resize(); setScene('field');
+(function frame(){
+  PAL=palette();
+  ctx.clearRect(0,0,W,H);
+  if(autor && !drag)cam.yaw+=0.0035;
+  scenes[cur].draw();
+  requestAnimationFrame(frame);
+})();
+})();
+</script>

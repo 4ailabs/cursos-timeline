@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<title>El Cuerpo Eléctrico · Módulo 1 · Bloque 1</title>
+<style>
+  :root{
+    --bg:#FFFFFF; --sheet:#FFFFFF; --edge:#E7E4DA;
+    --ink:#25241E; --ink-soft:#4C4A42; --muted:#8A897F; --rule:#E7E4DA;
+    --teal:#0F6E56; --teal-soft:#E7F4EF; --teal-line:#C4E4D8;
+    --coral:#B84E27; --card:#F5F3EC;
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  :root[data-theme="dark"]{
+    --bg:#FFFFFF; --sheet:#FFFFFF; --edge:#E7E4DA;
+    --ink:#25241E; --ink-soft:#4C4A42; --muted:#8A897F; --rule:#E7E4DA;
+    --teal:#0F6E56; --teal-soft:#E7F4EF; --teal-line:#C4E4D8;
+    --coral:#B84E27; --card:#F5F3EC;
+  }
+  :root[data-mode="bw"]{
+    --teal:#1d1d1b; --teal-soft:#ECEAE4; --teal-line:#CBC9C1; --coral:#4a4a46;
+    --ink:#1a1a18; --ink-soft:#3a3a36; --muted:#6f6d64; --card:#F1EFE9; --edge:#D9D6CD; --rule:#E2DFD6;
+  }
+  :root[data-mode="bw"] .fig svg{filter:grayscale(1) contrast(1.06)}
+  .ctrl{display:flex;justify-content:center;padding:6px 16px 0}
+  .ctrl button{font-family:system-ui,-apple-system,sans-serif;font-size:12px;color:var(--teal);background:#fff;
+    border:1px solid var(--teal-line);border-radius:20px;padding:6px 18px;cursor:pointer}
+  .ctrl button:hover{background:var(--teal-soft)}
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--serif);margin:0;counter-reset:pg;
+    -webkit-font-smoothing:antialiased;line-height:1.46}
+  .screen-note{font-family:var(--sans);font-size:12px;color:var(--muted);text-align:center;padding:20px 16px 2px}
+  .book{display:flex;flex-direction:column;align-items:center;gap:18px;padding:8px 14px 40px}
+  .sheet{width:148mm;min-height:210mm;background:var(--sheet);border:1px solid var(--edge);
+    box-shadow:0 6px 26px rgba(30,28,20,.08);padding:11mm 12mm 15mm 20mm;position:relative;
+    display:flex;flex-direction:column;overflow:hidden;counter-increment:pg}
+
+  .hd{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);
+    padding-bottom:4px;margin-bottom:5mm;color:var(--teal)}
+  .hd .brand{display:flex;align-items:center;gap:6px}
+  .hd .dip{width:26px;height:14px;color:var(--teal);flex:none}
+  .hd .eyebrow{font-family:var(--sans);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .hd .tag{font-family:var(--sans);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:600}
+  .ft{position:absolute;left:12mm;right:12mm;bottom:8mm;display:flex;align-items:center;justify-content:space-between;
+    border-top:1px solid var(--rule);padding-top:4px;font-family:var(--sans);font-size:7.6px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted)}
+  .ft .pg{font-size:0}
+  .ft .pg::after{content:counter(pg,decimal-leading-zero);font-size:7.6px;letter-spacing:.1em;font-variant-numeric:tabular-nums;color:var(--muted)}
+  .body{flex:1}
+
+  h2{font-size:21px;line-height:1.16;margin:0 0 2.4mm;text-wrap:balance;font-weight:700;letter-spacing:.002em}
+  h3{font-size:14.5px;margin:3.8mm 0 1.6mm;color:var(--teal);font-weight:700;letter-spacing:.004em}
+  .kicker{font-family:var(--sans);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin:0 0 2.2mm;font-weight:600}
+  p{margin:0 0 2.2mm;font-size:12.5px;color:var(--ink)}
+  .lead{font-size:13.5px;color:var(--ink-soft);line-height:1.46}
+  strong{font-weight:700}
+  em{font-style:italic}
+
+  .nlist{margin:1.4mm 0;padding:0;list-style:none;counter-reset:n;display:flex;flex-direction:column;gap:1.4mm}
+  .nlist>li{position:relative;padding-left:7.5mm;font-size:12.5px}
+  .nlist>li::before{counter-increment:n;content:counter(n);position:absolute;left:0;top:0;width:5mm;height:5mm;
+    border-radius:50%;background:var(--teal-soft);color:var(--teal);font-family:var(--sans);font-size:8px;font-weight:700;
+    display:flex;align-items:center;justify-content:center}
+  .blist{margin:1.4mm 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1.2mm}
+  .blist>li{position:relative;padding-left:5mm;font-size:12.5px}
+  .blist>li::before{content:"";position:absolute;left:.6mm;top:1.9mm;width:4px;height:4px;border-radius:50%;background:var(--teal)}
+  .blist>li b,.nlist>li b{color:var(--teal)}
+
+  table.tbl{width:100%;border-collapse:collapse;margin:1.6mm 0}
+  table.tbl th{text-align:left;font-family:var(--sans);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);border-bottom:1.4px solid var(--teal-line);padding:1.4mm 2mm 1.2mm;font-weight:600}
+  table.tbl td{border-bottom:1px solid var(--rule);padding:1.6mm 2mm;font-size:10.5px;color:var(--ink);vertical-align:top}
+  table.tbl td:first-child{font-weight:700;color:var(--teal)}
+
+  .fig{margin:2.6mm 0 2mm;border:1px solid var(--rule);border-radius:6px;padding:2.6mm 3mm 2.2mm;background:#fff}
+  .fig .fighd{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2mm;flex-wrap:wrap;gap:2mm}
+  .fig .figt{font-family:var(--sans);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .fig .leg{font-family:var(--sans);font-size:8.5px;color:var(--ink-soft);display:flex;align-items:center;gap:4px}
+  .fig .leg i{display:inline-block;width:12px;height:3px;border-radius:2px}
+  .fig svg{width:100%;height:auto;display:block}
+  .figcap{font-family:var(--sans);font-size:9px;color:var(--muted);margin-top:1.6mm;line-height:1.44}
+  .figcap b{color:var(--teal)}
+
+  .idea{background:var(--card);border-radius:5px;padding:2.2mm 2.8mm;margin:2.4mm 0 0;border:1px solid var(--rule)}
+  .idea .lab{font-family:var(--sans);font-size:7.2px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);
+    font-weight:700;display:flex;align-items:center;gap:5px;margin-bottom:1mm}
+  .idea .lab .dot{width:5px;height:5px;border-radius:50%;background:var(--coral);flex:none}
+  .idea p{margin:0;font-size:12px;font-style:italic;color:var(--ink-soft);line-height:1.44}
+
+  .chain{background:var(--teal-soft);border-left:2.5px solid var(--teal);border-radius:0 5px 5px 0;
+    padding:2.2mm 3mm;margin:2mm 0;font-size:12px;color:var(--ink)}
+  .chain b{color:var(--teal)}
+
+  .two{column-count:2;column-gap:7mm}
+  .two>*{break-inside:avoid}
+  dl.gl{margin:0}
+  dl.gl div{font-size:12px;margin-bottom:1.5mm;line-height:1.4;padding-bottom:1.3mm;border-bottom:1px solid var(--rule)}
+  dl.gl div:last-child{border-bottom:none}
+  dl.gl dt{display:inline;font-weight:700;color:var(--teal)}
+  dl.gl dd{display:inline;margin:0;color:var(--ink-soft)}
+  dl.gl dd::before{content:" — "}
+
+  .refs{font-size:9.5px;color:var(--ink-soft);line-height:1.42}
+  .refs h4{font-family:var(--sans);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);
+    margin:0 0 1mm;font-weight:700;break-after:avoid}
+  .refs p{font-size:9.5px;margin:0 0 1mm;break-inside:avoid}
+  .refs .grp{margin-bottom:2.4mm;break-inside:avoid}
+
+  .cover{align-items:stretch;justify-content:flex-start;padding-top:16mm}
+  .cover .gap-t{flex:382 0 0}
+  .cover .gap-b{flex:618 0 0}
+  .cover .top{display:flex;align-items:center;gap:8px}
+  .cover .top .dip{width:38px;height:20px;color:var(--teal)}
+  .cover .top span{font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .cover .center{margin:0}
+  .cover .prog{font-family:var(--sans);font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--coral);margin-bottom:5mm;font-weight:600}
+  .cover h1{font-size:42px;line-height:1.02;margin:0 0 4mm;letter-spacing:-.01em;text-wrap:balance}
+  .cover .sub{font-size:16px;color:var(--ink-soft);font-style:italic;max-width:30ch;margin-bottom:6mm}
+  .cover .obj{border-top:1px solid var(--rule);padding-top:3mm}
+  .cover .obj .lab{font-family:var(--sans);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:1.4mm}
+  .cover .obj li{font-size:9.6px}
+  .cover .meta{border-top:1px solid var(--rule);padding-top:4mm;display:flex;justify-content:space-between;align-items:flex-end}
+  .cover .meta .who{font-size:12.5px}.cover .meta .who b{color:var(--teal)}
+  .cover .meta .mod{font-family:var(--sans);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:right}
+  .wm{position:absolute;right:-24mm;bottom:16mm;width:112mm;height:61mm;color:var(--teal);opacity:.08;pointer-events:none}
+
+  @media (max-width:640px){
+    .sheet{width:100%;min-height:0;padding:22px 18px 54px}
+    .ft{left:18px;right:18px;bottom:16px}.cover h1{font-size:34px}.two{column-count:1}
+  }
+  @media print{
+    @page{size:A5;margin:0}
+    .screen-note,.ctrl{display:none}.book{gap:0;padding:0}
+    .sheet{width:auto;min-height:auto;box-shadow:none;border:none;margin:0;page-break-after:always;break-after:page}
+    .sheet:last-child{page-break-after:auto}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="dipolo" viewBox="0 0 44 24"><circle cx="8" cy="12" r="6" fill="currentColor"/><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"/><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.35"/></symbol>
+</svg>
+
+<p class="screen-note">Cuadernillo A5 · se imprime a tamaño real (148 × 210 mm)</p>
+<div class="ctrl"><button id="bwtoggle" type="button">Ver en blanco y negro</button></div>
+<script>(function(){var b=document.getElementById('bwtoggle');if(!b)return;b.addEventListener('click',function(){var r=document.documentElement;var on=r.getAttribute('data-mode')==='bw';r.setAttribute('data-mode',on?'color':'bw');b.textContent=on?'Ver en blanco y negro':'Ver a color';});})();</script>
+
+<div class="book">
+
+  <!-- COVER -->
+  <section class="sheet cover">
+    <svg class="wm" aria-hidden="true"><use href="#dipolo"/></svg>
+    <div class="top"><svg class="dip"><use href="#dipolo"/></svg><span>el cuerpo eléctrico</span></div>
+    <div class="gap gap-t"></div>
+    <div class="center">
+      <div class="prog">Formación en Regulación Bioeléctrica</div>
+      <h1>El Cuerpo Eléctrico</h1>
+      <p class="sub">Por qué el cuerpo es un sistema eléctrico.</p>
+    </div>
+    <div class="gap gap-b"></div>
+    <div class="meta">
+      <div class="who"><b>Dr. Miguel Ojeda Rios</b><br>Instituto Centrobioenergetica · 2026</div>
+      <div class="mod">Módulo 1 · Bloque 1<br>Manual de trabajo</div>
+    </div>
+  </section>
+
+  <!-- 2 · ENCUADRE -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">1 · Encuadre</p>
+      <h2>Qué es la Regulación Bioeléctrica</h2>
+      <p>La Regulación Bioeléctrica (RB) es un método de evaluación y regulación del estado bioeléctrico de los tejidos del cuerpo humano mediante <strong>campos magnéticos estáticos de intensidad moderada (0.1–0.5 T)</strong>. El método tiene dos momentos:</p>
+      <ul class="blist">
+        <li><b>El rastreo</b> produce un mapa individualizado del estado bioeléctrico del microambiente tisular del paciente.</li>
+        <li><b>La aplicación</b> facilita el retorno del tejido a su rango homeostático.</li>
+      </ul>
+      <p>El resultado es un <strong>perfil bioeléctrico del microambiente tisular</strong>: una lectura biofísica del estado de los tejidos, fundamentada en tres apoyos que desarrollan este bloque y el siguiente —la densidad de carga de la MEC, el potencial de membrana como señal instructiva, y la interacción de los campos magnéticos estáticos con los canales iónicos.</p>
+      <h3>El perfil bioeléctrico como lectura</h3>
+      <p>El perfil no es una lista de puntos activos, sino un patrón que se interpreta por su forma: la <strong>densidad</strong> (dónde se concentran los nodos), la <strong>simetría</strong> (hallazgos bilaterales frente a unilaterales), la <strong>vecindad anatómica</strong> (nodos que comparten territorio de drenaje o inervación) y la <strong>correlación con la historia clínica</strong>. Dos personas con el mismo cuadro pueden presentar perfiles distintos, porque cada perfil describe el microambiente de ese paciente en ese momento. El desarrollo completo corresponde al Módulo 2; aquí basta fijar la idea: <strong>el rastreo lee un estado, y ese estado tiene estructura.</strong></p>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>La RB lee y regula el estado del microambiente tisular. El rastreo identifica el estado bioeléctrico de una zona; la aplicación facilita su recalibración hacia el rango propio del tejido. La denominación de cada punto es anatómica.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg">02</span></div>
+  </section>
+
+  <!-- 3 · LINAJE (BECKER) -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">1 · El linaje del método</p>
+      <h2>De dónde viene la RB</h2>
+      <p>La RB desarrolla una tradición de investigación que va de la biología del cuerpo eléctrico hasta la ciencia contemporánea de la bioelectricidad. Conocer este linaje da al terapeuta el fundamento para explicar de dónde viene cada elemento de su práctica.</p>
+      <h3>Robert O. Becker (1923–2008)</h3>
+      <p>Cirujano ortopédico e investigador en SUNY Upstate. Documentó con evidencia publicada que el cuerpo posee un sistema bioeléctrico endógeno de corriente directa, superpuesto al sistema nervioso clásico. En <em>The Body Electric</em> (1985) sostiene cuatro principios precursores de la RB:</p>
+      <ol class="nlist">
+        <li><b>El cuerpo mantiene un mapa eléctrico propio.</b> El centro es positivo y las extremidades negativas, con un potencial de reposo de ~-10 mV en las extremidades.</li>
+        <li><b>Los gradientes de voltaje instruyen la regeneración.</b> Tras amputar una extremidad, el patrón de voltaje del muñón predice el desenlace: en la salamandra sube a +20 mV (corriente de lesión) y baja a −30 mV, y regenera; en la rana solo vuelve al reposo, y cicatriza (ver fig. 1).</li>
+        <li><b>La polaridad eléctrica orienta a los microorganismos.</b> La plata con voltaje positivo frena las bacterias sin perturbar el hueso; con voltaje negativo estimula la regeneración ósea.</li>
+        <li><b>La piezoelectricidad del hueso</b> —el hueso genera corriente al recibir carga mecánica— dio lugar a la estimulación eléctrica para fracturas no consolidadas, hoy procedimiento ortopédico estándar aprobado por la FDA.</li>
+      </ol>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Corriente de lesión (Becker)</span>
+          <span class="leg"><i style="background:#0F6E56"></i>salamandra · regenera&nbsp;&nbsp;<i style="background:#C0512B"></i>rana · cicatriza</span></div>
+        <svg viewBox="0 0 660 272" role="img" aria-label="Voltaje del muñón en salamandra y rana tras amputación">
+          <line x1="34" y1="150" x2="640" y2="150" stroke="#CBC8BE" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="30" y="146" text-anchor="end" font-family="system-ui,sans-serif" font-size="10" fill="#8A897F">0 mV</text>
+          <line x1="44" y1="240" x2="640" y2="240" stroke="#E7E4DA" stroke-width="1"/>
+          <path d="M44,170 L160,170 L280,110 L430,140 L530,154 L628,170" fill="none" stroke="#C0512B" stroke-width="3" stroke-dasharray="7 5" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M44,170 L160,170 L280,110 L430,140 L530,210 L628,210" fill="none" stroke="#0F6E56" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="44" cy="170" r="4.4" fill="#0F6E56"/><circle cx="160" cy="170" r="4.4" fill="#0F6E56"/><circle cx="280" cy="110" r="4.4" fill="#0F6E56"/><circle cx="430" cy="140" r="4.4" fill="#0F6E56"/><circle cx="530" cy="210" r="4.4" fill="#0F6E56"/><circle cx="628" cy="210" r="4.4" fill="#0F6E56"/>
+          <circle cx="530" cy="154" r="4.4" fill="#C0512B"/><circle cx="628" cy="170" r="4.4" fill="#C0512B"/>
+          <text x="280" y="99" text-anchor="middle" font-family="Georgia,serif" font-size="11.5" fill="#25241E">+20 mV · corriente de lesión</text>
+          <text x="636" y="228" text-anchor="end" font-family="Georgia,serif" font-size="11.5" fill="#0F6E56">−30 mV · regenera</text>
+          <text x="636" y="182" text-anchor="end" font-family="Georgia,serif" font-size="11.5" fill="#C0512B">−10 mV · cicatriza</text>
+          <g font-family="system-ui,sans-serif" font-size="10.5" fill="#8A897F">
+            <text x="44" y="258" text-anchor="start">Reposo</text><text x="160" y="258" text-anchor="middle">Corte</text>
+            <text x="280" y="258" text-anchor="middle">1 día</text><text x="430" y="258" text-anchor="middle">1 sem</text>
+            <text x="530" y="258" text-anchor="middle">2 sem</text><text x="628" y="258" text-anchor="end">4 sem</text>
+          </g>
+        </svg>
+        <figcaption><b>Fig. 1.</b> El patrón de voltaje del muñón predice el desenlace: la salamandra regenera, la rana cicatriza (Becker, 1985).</figcaption>
+      </figure>
+      <p>Becker anticipó con instrumentos analógicos lo que Levin verificaría décadas después con técnicas moleculares.</p>
+      <h3>Richard Broeringmeyer</h3>
+      <p>Desarrolló el biomagnetismo clínico sobre una base biofísica: la relación entre campos magnéticos, concentración de iones de hidrógeno (pH) y función orgánica. Identificaba las cargas de disfunciones iónicas (H⁺ y OH⁻) y las traducía en polos biomagnéticos. Sus aportaciones: identificó las primeras <strong>150 configuraciones</strong> de puntos anatómicos; estableció el reflejo neuromuscular del <strong>iliopsoas</strong> como el observable central de la lectura; y desarrolló la teoría inicial sobre principios enteramente electroquímicos.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 4b · LINAJE (GOIZ, RB) -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">1 · El linaje del método · continuación</p>
+      <h3>Isaac Goiz Durán (1941–2020)</h3>
+      <p>Médico mexicano que desde 1988 hizo la sistematización clínica más extensa. La observación fundacional: al colocar un imán sobre el timo notó que una pierna se acortaba; buscó el punto complementario con un segundo imán de polaridad opuesta hasta nivelar las piernas, y mantuvo ambos ~15 minutos. De ahí un protocolo: <strong>la búsqueda sistemática de configuraciones donde la respuesta neuromuscular indica una relación bioeléctrica entre dos zonas.</strong> Su contribución:</p>
+      <ul class="blist">
+        <li>Un catálogo de más de <b>350 configuraciones</b> dipolares, ampliado con los años.</li>
+        <li>Una clasificación por tipos (regulares, disfuncionales, especiales, reservorios, asociados, temporales, personales, complejos).</li>
+        <li>Un protocolo de rastreo estandarizado, enseñable y replicable, y las 26 Reglas de Oro.</li>
+        <li>La formación de generaciones de terapeutas en América Latina y Europa.</li>
+      </ul>
+      <h3>Regulación Bioeléctrica — Dr. Miguel Ojeda Rios (2026)</h3>
+      <p>Conserva íntegramente la técnica, el catálogo y las correlaciones clínicas como referencia estadística, y actualiza el marco que las explica hacia la biofísica contemporánea. Tres decisiones: <b>conservar</b> la técnica; <b>actualizar</b> el marco (MEC, Vmem, interacción campo–tejido); <b>abrir</b> la práctica a la investigación. Cada dipolo se interpreta como una lectura del estado bioeléctrico del microambiente; su denominación es anatómica; la referencia histórica se conserva como dato. El marco normativo de Goiz —sus 26 Reglas de Oro— se sustituye por principios fundamentados en biofísica verificable.</p>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>La técnica se conserva; el marco que la explica se actualiza. El eje del curso: aprender a razonar sobre el microambiente bioeléctrico sin dejar de usar la técnica clásica del biomagnetismo.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg">04</span></div>
+  </section>
+
+  <!-- 5 · MEC / FCD -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">2 · Primer pilar · la matriz extracelular</p>
+      <h2>La matriz como sistema electroquímico</h2>
+      <p>La matriz extracelular (MEC) es un medio electroquímicamente activo, con propiedades eléctricas medibles y determinantes para el comportamiento celular. Es el microambiente tisular sobre el cual opera la RB.</p>
+      <h3>2.1 · La densidad de carga fija (FCD)</h3>
+      <p>Los glicosaminoglicanos (GAGs) de la MEC —condroitín sulfato, heparán sulfato, ácido hialurónico— portan grupos carboxilo (—COO⁻) y sulfato (—OSO₃⁻) ionizados a pH fisiológico. El conjunto genera una carga negativa distribuida en el espacio extracelular: la <strong>densidad de carga fija (FCD)</strong>.</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">La matriz extracelular · proteoglicano y carga fija</span></div>
+        <svg viewBox="0 0 600 300" role="img" aria-label="Matriz extracelular: proteoglicano con carga negativa fija que atrae cationes y agua, entre dos células">
+          <rect x="98" y="30" width="404" height="238" rx="10" fill="#F6FAF8"/>
+          <text x="300" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" letter-spacing="1.5" fill="#8A897F">ESPACIO EXTRACELULAR</text>
+          <rect x="12" y="30" width="86" height="238" rx="12" fill="#EAF4EF" stroke="#0F6E56" stroke-width="3"/>
+          <rect x="502" y="30" width="86" height="238" rx="12" fill="#EAF4EF" stroke="#0F6E56" stroke-width="3"/>
+          <line x1="98" y1="34" x2="98" y2="264" stroke="#0F6E56" stroke-width="1" opacity="0.45"/>
+          <line x1="502" y1="34" x2="502" y2="264" stroke="#0F6E56" stroke-width="1" opacity="0.45"/>
+          <text x="55" y="146" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#25241E">célula</text>
+          <text x="545" y="146" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#25241E">célula</text>
+          <text x="55" y="162" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">membrana</text>
+          <text x="545" y="162" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">membrana</text>
+          <rect x="126" y="236" width="352" height="15" rx="7.5" fill="#EFE7D6" stroke="#CFC6B0"/>
+          <g stroke="#CFC6B0" stroke-width="1"><line x1="156" y1="236" x2="156" y2="251"/><line x1="186" y1="236" x2="186" y2="251"/><line x1="216" y1="236" x2="216" y2="251"/><line x1="246" y1="236" x2="246" y2="251"/><line x1="276" y1="236" x2="276" y2="251"/><line x1="306" y1="236" x2="306" y2="251"/><line x1="336" y1="236" x2="336" y2="251"/><line x1="366" y1="236" x2="366" y2="251"/><line x1="396" y1="236" x2="396" y2="251"/><line x1="426" y1="236" x2="426" y2="251"/><line x1="456" y1="236" x2="456" y2="251"/></g>
+          <circle cx="300" cy="236" r="2.4" fill="#B4B1A6"/><line x1="300" y1="234" x2="300" y2="214" stroke="#B4B1A6" stroke-width="0.8"/>
+          <text x="300" y="208" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#8A897F">fibra de colágeno</text>
+          <path d="M126,150 Q186,132 246,150 T366,150 T486,150" fill="none" stroke="#0F6E56" stroke-width="3.4" stroke-linecap="round"/>
+          <g stroke="#0F6E56" stroke-width="1.6">
+            <line x1="166" y1="142" x2="158" y2="114"/><line x1="206" y1="141" x2="212" y2="112"/><line x1="306" y1="142" x2="298" y2="114"/><line x1="346" y1="141" x2="352" y2="112"/><line x1="436" y1="146" x2="430" y2="118"/>
+            <line x1="186" y1="150" x2="182" y2="180"/><line x1="266" y1="150" x2="262" y2="180"/><line x1="326" y1="150" x2="332" y2="182"/><line x1="416" y1="150" x2="410" y2="180"/><line x1="456" y1="150" x2="462" y2="180"/>
+          </g>
+          <g fill="#0F6E56"><circle cx="158" cy="110" r="6.5"/><circle cx="213" cy="108" r="6.5"/><circle cx="297" cy="110" r="6.5"/><circle cx="353" cy="108" r="6.5"/><circle cx="429" cy="114" r="6.5"/><circle cx="181" cy="184" r="6.5"/><circle cx="261" cy="184" r="6.5"/><circle cx="333" cy="186" r="6.5"/><circle cx="409" cy="184" r="6.5"/><circle cx="463" cy="184" r="6.5"/></g>
+          <g fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle"><text x="158" y="114">–</text><text x="213" y="112">–</text><text x="297" y="114">–</text><text x="353" y="112">–</text><text x="429" y="118">–</text><text x="181" y="188">–</text><text x="261" y="188">–</text><text x="333" y="190">–</text><text x="409" y="188">–</text><text x="463" y="188">–</text></g>
+          <g><circle cx="236" cy="120" r="11" fill="#BA7517"/><circle cx="386" cy="126" r="11" fill="#BA7517"/><circle cx="276" cy="200" r="11" fill="#BA7517"/></g>
+          <g fill="#fff" font-family="system-ui,sans-serif" font-size="8.5" font-weight="700" text-anchor="middle"><text x="236" y="123">Na⁺</text><text x="386" y="129">K⁺</text><text x="276" y="203">Ca²⁺</text></g>
+          <g fill="#BFD8CE"><circle cx="216" cy="168" r="3.4"/><circle cx="336" cy="120" r="3.4"/><circle cx="360" cy="196" r="3.4"/><circle cx="446" cy="160" r="3.4"/></g>
+          <circle cx="246" cy="150" r="2.6" fill="#0F6E56"/><line x1="246" y1="150" x2="246" y2="58" stroke="#B4B1A6" stroke-width="0.8"/>
+          <text x="246" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E"><tspan fill="#0F6E56" font-weight="700">proteoglicano</tspan> — GAG con carga fija (−)</text>
+          <line x1="386" y1="126" x2="440" y2="74" stroke="#B4B1A6" stroke-width="0.8"/>
+          <text x="470" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E"><tspan fill="#BA7517" font-weight="700">cationes (+)</tspan> y agua</text>
+        </svg>
+        <figcaption><b>Fig. 2.</b> El proteoglicano de la matriz porta carga negativa fija (los GAGs). Esa carga atrae cationes (Na⁺, K⁺, Ca²⁺) y agua, y mantiene el tejido hidratado.</figcaption>
+      </figure>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p>Esta carga confiere a la MEC su capacidad de retener agua, resistir compresión, regular la distribución iónica y generar un potencial eléctrico dentro del tejido. Es un parámetro dinámico y medible:</p>
+      <table class="tbl">
+        <thead><tr><th>Tejido</th><th>FCD documentada</th><th>Técnica</th></tr></thead>
+        <tbody>
+          <tr><td>Cartílago articular</td><td>-0.19 a -0.35 M</td><td>RMN de ²³Na (Lesperance, 1992)</td></tr>
+          <tr><td>Disco intervertebral (núcleo)</td><td>0.19 mEq/g</td><td>Conductividad (Jackson, 2009)</td></tr>
+          <tr><td>Disco cervical (placa terminal)</td><td>0.124 mEq/g</td><td>Biomecánica (Buchweitz, 2025)</td></tr>
+          <tr><td>Redes perineuronales (cerebro)</td><td>0.4–0.5 M</td><td>Microsonda PIXE (Morawski, 2015)</td></tr>
+        </tbody>
+      </table>
+      <p>La FCD funciona además como <strong>marcador temprano de integridad tisular</strong>: su pérdida —por depleción de GAGs— es detectable antes de que aparezcan signos clínicos por otros métodos (Bansal, 2010). En las redes perineuronales, la carga negativa densa actúa como un "escudo aniónico" que protege a las neuronas de especies tóxicas del estrés oxidativo (Morawski, 2015).</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg">05</span></div>
+  </section>
+
+  <!-- 6 · DONNAN + pH -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">2 · Primer pilar · continuación</p>
+      <h3>2.2 · El potencial de Donnan</h3>
+      <p>La FCD negativa genera un potencial eléctrico de Donnan (Φ_D) dentro del tejido, formalizado por la ecuación de Gibbs-Donnan a partir de la electroneutralidad. De él dependen cuatro propiedades del microambiente:</p>
+      <ol class="nlist">
+        <li><b>Distribución iónica.</b> Los cationes (Na⁺, K⁺, Ca²⁺) se concentran dentro del tejido; los aniones (Cl⁻) se excluyen. El gradiente lo mantiene la MEC, sin gasto energético celular.</li>
+        <li><b>Presión osmótica de Donnan.</b> Determina la hidratación de la matriz. Al bajar la FCD, baja la presión osmótica, el tejido pierde agua y cambian sus propiedades mecánicas.</li>
+        <li><b>Potenciales electrocinéticos.</b> El flujo de fluido a través del tejido cargado genera pequeños voltajes de flujo (potenciales de streaming), indicadores medibles del estado del tejido.</li>
+        <li><b>pH local.</b> El potencial de Donnan establece un pH dentro del tejido que puede diferir del pH de la sangre que lo perfunde.</li>
+      </ol>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <figure class="fig">
+        <div class="fighd"><span class="figt">El potencial de Donnan</span></div>
+        <svg viewBox="0 0 600 290" role="img" aria-label="La carga fija concentra cationes, excluye el cloruro y genera un voltaje interno de Donnan">
+          <rect x="56" y="42" width="384" height="206" rx="12" fill="#F6FAF8" stroke="#0F6E56" stroke-width="2.4"/>
+          <text x="248" y="34" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" letter-spacing="1.5" fill="#8A897F">TEJIDO CARGADO (MATRIZ) · membrana</text>
+          <g fill="none" stroke="#0F6E56" stroke-width="1.6" opacity="0.9"><path d="M78,92 Q168,78 258,92 T420,92"/><path d="M78,150 Q168,136 258,150 T420,150"/><path d="M78,208 Q168,194 258,208 T420,208"/></g>
+          <g fill="#0F6E56"><circle cx="128" cy="88" r="6"/><circle cx="248" cy="96" r="6"/><circle cx="360" cy="88" r="6"/><circle cx="128" cy="146" r="6"/><circle cx="248" cy="154" r="6"/><circle cx="360" cy="146" r="6"/><circle cx="128" cy="204" r="6"/><circle cx="248" cy="212" r="6"/><circle cx="360" cy="204" r="6"/></g>
+          <g fill="#fff" font-family="system-ui,sans-serif" font-size="9" font-weight="700" text-anchor="middle"><text x="128" y="91">–</text><text x="248" y="99">–</text><text x="360" y="91">–</text><text x="128" y="149">–</text><text x="248" y="157">–</text><text x="360" y="149">–</text><text x="128" y="207">–</text><text x="248" y="215">–</text><text x="360" y="207">–</text></g>
+          <g><circle cx="104" cy="118" r="9" fill="#BA7517"/><circle cx="196" cy="122" r="9" fill="#BA7517"/><circle cx="300" cy="116" r="9" fill="#BA7517"/><circle cx="168" cy="176" r="9" fill="#BA7517"/><circle cx="308" cy="180" r="9" fill="#BA7517"/><circle cx="232" cy="66" r="9" fill="#BA7517"/></g>
+          <g fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle"><text x="104" y="121">+</text><text x="196" y="125">+</text><text x="300" y="119">+</text><text x="168" y="179">+</text><text x="308" y="183">+</text><text x="232" y="69">+</text></g>
+          <text x="248" y="240" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E"><tspan fill="#BA7517" font-weight="700">cationes concentrados</tspan> · agua retenida</text>
+          <g fill="#EDEBE3" stroke="#B4B1A6" stroke-width="1"><circle cx="474" cy="94" r="11"/><circle cx="502" cy="146" r="11"/><circle cx="474" cy="198" r="11"/></g>
+          <g fill="#8A897F" font-family="system-ui,sans-serif" font-size="8.5" font-weight="700" text-anchor="middle"><text x="474" y="97">Cl⁻</text><text x="502" y="149">Cl⁻</text><text x="474" y="201">Cl⁻</text></g>
+          <text x="488" y="224" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E">Cl⁻ excluido</text>
+          <defs><linearGradient id="vg2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#0F6E56"/><stop offset="1" stop-color="#BA7517"/></linearGradient></defs>
+          <rect x="556" y="58" width="20" height="176" rx="5" fill="url(#vg2)"/>
+          <text x="566" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#8A897F">Φ_D</text>
+          <text x="566" y="248" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">voltaje</text>
+          <text x="566" y="258" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">interno</text>
+        </svg>
+        <figcaption><b>Fig. 3.</b> La carga fija concentra cationes dentro, excluye el Cl⁻ y retiene agua; de esa diferencia surge un voltaje interno (Donnan), sin gasto de energía.</figcaption>
+      </figure>
+      <h3>2.3 · El pH y la carga de la matriz</h3>
+      <p>En la matriz, el pH gobierna la carga. Al acidificarse el microambiente, los grupos carboxilo y sulfato de los GAGs se protonan y ceden su carga negativa; la FCD disminuye, el potencial de Donnan se modifica, la matriz se deshidrata y cambia su capacidad de amortiguación (Lesperance, 1992). La acidificación se amplifica a través de las propiedades de la propia matriz.</p>
+      <p>Alfred Pischinger describió esta unidad funcional —MEC, fibroblastos, colágeno, fibras nerviosas, capilares e inmunidad: el "espacio de Pischinger"— como el sistema de regulación básica del organismo. Ulm y Weiss (2014) lo verificaron histoquímicamente: los proteoglicanos actúan como intercambiadores iónicos y tampones de protones en todo el cuerpo, y el <strong>pH es el parámetro de control primario</strong> de la homeostasis entre la MEC y la célula.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg">06</span></div>
+  </section>
+
+  <!-- 7 · CASCADA -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">2 · Primer pilar · continuación</p>
+      <h2>2.4 · La cascada de deterioro del microambiente</h2>
+      <p>Cuando la carga ácida supera la capacidad de eliminación de los órganos excretores, el mesénquima sigue una secuencia predecible (Cidón Madrigal, 2003, sobre el marco de Pischinger):</p>
+      <ol class="nlist">
+        <li><b>Tamponamiento.</b> Cerca de un tercio de las proteínas del cuerpo reside en el mesénquima; estas tamponan los ácidos que no se eliminan.</li>
+        <li><b>Almacenamiento.</b> El exceso se acumula como acidosis latente y compensada —la sangre conserva sus propios sistemas tampón, de modo que sus valores permanecen en rango.</li>
+        <li><b>Desplazamiento electrolítico.</b> El tejido cede K⁺ y capta Na⁺/H⁺, con acidosis intracelular. El suero puede mostrar potasio normal mientras el tejido está depletado ("normokaliemia con deficiencia tisular"). La deficiencia de Mg²⁺ acompaña a la de K⁺.</li>
+        <li><b>Movilización mineral.</b> Agotada la capacidad del mesénquima, el organismo recurre a cationes del esqueleto.</li>
+        <li><b>Paradoja sangre-mesénquima.</b> La acidosis del mesénquima se acompaña de sangre venosa alcalina y orina ácida. Un pH sanguíneo alto puede acompañar a una acidosis tisular compensada.</li>
+      </ol>
+      <p>Esta cascada es coherente con la biofísica contemporánea: los mismos protones que acidifican el mesénquima protonan los GAGs y reducen la FCD; la inversión del gradiente catiónico corresponde a la alteración del equilibrio de Gibbs-Donnan cuando la carga fija disminuye.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">2 · Primer pilar · la cascada en imagen</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">La cascada de deterioro · 5 pasos</span></div>
+        <svg viewBox="0 0 560 400" role="img" aria-label="Cascada de acidificación del microambiente en cinco pasos">
+          <defs><linearGradient id="casc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0F6E56"/><stop offset="1" stop-color="#BA7517"/></linearGradient></defs>
+          <text x="548" y="16" text-anchor="end" font-family="system-ui,sans-serif" font-size="10" letter-spacing="1.5" fill="#8A897F">CARGA ÁCIDA ↑</text>
+          <line x1="40" y1="55" x2="40" y2="359" stroke="url(#casc)" stroke-width="4"/>
+          <rect x="40" y="24" width="500" height="62" rx="12" fill="#EAF4EF"/>
+          <circle cx="40" cy="55" r="18" fill="#0F6E56"/><text x="40" y="61" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#fff">1</text>
+          <text x="76" y="50" font-family="Georgia,serif" font-size="15.5" font-weight="700" fill="#25241E">Tamponamiento</text>
+          <text x="76" y="71" font-family="system-ui,sans-serif" font-size="11.5" fill="#4C4A42">Las proteínas del mesénquima amortiguan el ácido.</text>
+          <rect x="40" y="100" width="500" height="62" rx="12" fill="#EDF1E6"/>
+          <circle cx="40" cy="131" r="18" fill="#3F7A43"/><text x="40" y="137" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#fff">2</text>
+          <text x="76" y="126" font-family="Georgia,serif" font-size="15.5" font-weight="700" fill="#25241E">Almacenamiento</text>
+          <text x="76" y="147" font-family="system-ui,sans-serif" font-size="11.5" fill="#4C4A42">Acidez latente y compensada; la sangre sigue en rango.</text>
+          <rect x="40" y="176" width="500" height="62" rx="12" fill="#F1EFE2"/>
+          <circle cx="40" cy="207" r="18" fill="#6E7E30"/><text x="40" y="213" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#fff">3</text>
+          <text x="76" y="202" font-family="Georgia,serif" font-size="15.5" font-weight="700" fill="#25241E">Desplazamiento electrolítico</text>
+          <text x="76" y="223" font-family="system-ui,sans-serif" font-size="11.5" fill="#4C4A42">El tejido cede K⁺ y capta Na⁺/H⁺.</text>
+          <rect x="40" y="252" width="500" height="62" rx="12" fill="#F5EEDD"/>
+          <circle cx="40" cy="283" r="18" fill="#9A7B22"/><text x="40" y="289" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#fff">4</text>
+          <text x="76" y="278" font-family="Georgia,serif" font-size="15.5" font-weight="700" fill="#25241E">Movilización mineral</text>
+          <text x="76" y="299" font-family="system-ui,sans-serif" font-size="11.5" fill="#4C4A42">El organismo saca cationes del esqueleto.</text>
+          <rect x="40" y="328" width="500" height="62" rx="12" fill="#F7EAD3"/>
+          <circle cx="40" cy="359" r="18" fill="#BA7517"/><text x="40" y="365" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#fff">5</text>
+          <text x="76" y="354" font-family="Georgia,serif" font-size="15.5" font-weight="700" fill="#25241E">Paradoja sangre–mesénquima</text>
+          <text x="76" y="375" font-family="system-ui,sans-serif" font-size="11.5" fill="#4C4A42">Sangre venosa alcalina y orina ácida.</text>
+        </svg>
+        <figcaption><b>Fig. 4.</b> El deterioro del microambiente sigue un orden predecible: la carga ácida asciende paso a paso mientras la sangre puede permanecer en rango.</figcaption>
+      </figure>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg">07</span></div>
+  </section>
+
+  <!-- 8 · VINCENT -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">2 · Primer pilar · continuación</p>
+      <h2>2.5 · La Bioelectrónica de Vincent</h2>
+      <p>Louis-Claude Vincent (1906–1988) propuso un marco cuantitativo para evaluar el estado del microambiente con tres parámetros medidos en sangre, saliva y orina:</p>
+      <ul class="blist">
+        <li><b>pH</b> (potencial iónico) — estado ácido-base; concentración de protones.</li>
+        <li><b>rH₂</b> (potencial electrónico) — estado de oxidación-reducción; se calcula como rH₂ = E/30 + 2pH y evalúa el redox con independencia del pH.</li>
+        <li><b>Resistividad (ρ)</b> — concentración de sales minerales (ohm·cm); a mayor resistividad, menor concentración mineral.</li>
+      </ul>
+      <p>Vincent observó que cada tipo de microorganismo prospera en una zona definida del espacio pH–rH₂: las formas fúngicas en ambiente oxidado y ácido, las virales en oxidado y alcalino, las bacterianas patógenas en ambiente reducido. Converge con Becker (polaridad y microorganismos) y con la biofísica del microambiente: <strong>el estado electroquímico del microambiente determina qué nichos ecológicos quedan disponibles para la colonización.</strong></p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Mapa pH–rH₂ de Vincent</span>
+          <span class="leg"><i style="background:#0F6E56"></i>sangre funcional&nbsp;&nbsp;<i style="background:#C0512B"></i>degradado</span></div>
+        <svg viewBox="0 0 560 424" role="img" aria-label="Mapa pH-rH2 con zonas de microorganismos y dos estados">
+          <rect x="70" y="50" width="215" height="165" fill="#BA7517" opacity="0.10"/>
+          <rect x="285" y="50" width="215" height="165" fill="#0F6E56" opacity="0.10"/>
+          <rect x="70" y="300" width="430" height="80" fill="#888780" opacity="0.10"/>
+          <text x="177" y="138" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10.5" fill="#9A6412">hongos</text>
+          <text x="392" y="138" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10.5" fill="#0F6E56">virus</text>
+          <text x="285" y="345" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10.5" fill="#736F66">bacterias patógenas</text>
+          <line x1="70" y1="50" x2="70" y2="380" stroke="#CBC8BE" stroke-width="1.4"/>
+          <line x1="70" y1="380" x2="500" y2="380" stroke="#CBC8BE" stroke-width="1.4"/>
+          <text x="285" y="406" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#8A897F">pH · ácido → alcalino</text>
+          <text x="50" y="215" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#8A897F" transform="rotate(-90 50 215)">rH₂ · reducido → oxidado</text>
+          <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0F6E56"/></marker></defs>
+          <line x1="356" y1="222" x2="392" y2="104" stroke="#0F6E56" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+          <circle cx="354" cy="226" r="6" fill="#0F6E56"/>
+          <circle cx="397" cy="94" r="6" fill="#C0512B"/>
+          <text x="344" y="242" text-anchor="end" font-family="Georgia,serif" font-size="10" fill="#25241E">sangre funcional</text>
+          <text x="344" y="256" text-anchor="end" font-family="system-ui,sans-serif" font-size="9.5" fill="#8A897F">pH 7.3 · E 222 mV · ρ 210</text>
+          <text x="408" y="90" text-anchor="start" font-family="Georgia,serif" font-size="10" fill="#25241E">degradado</text>
+          <text x="408" y="104" text-anchor="start" font-family="system-ui,sans-serif" font-size="9.5" fill="#8A897F">pH 7.8 · E 312 mV · ρ 140</text>
+        </svg>
+        <figcaption><b>Fig. 5.</b> Cada microorganismo prospera en una zona del espacio pH–rH₂. Al degradarse, el microambiente se desplaza hacia lo oxidado-alcalino: más oxidado, con menor capacidad reductora y mayor carga electrolítica.</figcaption>
+      </figure>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>El microambiente tisular tiene estado, y ese estado es electroquímico: carga (FCD), potencial (Donnan), pH y redox (rH₂). La sangre puede permanecer en rango mientras el microambiente está desregulado. La RB lo lee directamente.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg">08</span></div>
+  </section>
+
+  <!-- 9 · PUENTE -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">Puente entre los dos pilares</p>
+      <h2>El Vmem organiza, el pH es una lectura</h2>
+      <p>El estado bioeléctrico del tejido es un sistema acoplado de tres variables —potencial de membrana (Vmem), pH intracelular y estado redox— en el que el <strong>Vmem es la variable organizadora</strong>:</p>
+      <p>De aquí surge el papel exacto del pH: es una <strong>lectura (readout) del estado bioeléctrico</strong>, acoplada al Vmem. Conviene distinguir dos niveles. En la matriz extracelular, el pH gobierna la carga fija (§2.3) y es un parámetro medible del microambiente (§2.5). En la jerarquía de la célula, el Vmem organiza y el pH se ajusta con él.</p>
+      <p>Esta distinción orienta la clínica: <strong>el pH y el redox son señales legibles del estado; el Vmem es lo que el método regula.</strong> El Bloque 2 muestra que el campo magnético modifica directamente el Vmem, y que el pH se ajusta como consecuencia.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <figure class="fig">
+        <div class="fighd"><span class="figt">El voltaje organiza; el pH es una lectura</span></div>
+        <svg viewBox="0 0 520 400" role="img" aria-label="Ciclo acoplado Vmem, canales, flujo de iones, pH, redox">
+          <defs><marker id="cyc" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#0F6E56"/></marker></defs>
+          <g fill="none" stroke="#0F6E56" stroke-width="2.4">
+            <path d="M301,61 A150 150 0 0 1 371,105" marker-end="url(#cyc)"/>
+            <path d="M409,221 A150 150 0 0 1 390,280" marker-end="url(#cyc)"/>
+            <path d="M291,352 A150 150 0 0 1 229,352" marker-end="url(#cyc)"/>
+            <path d="M130,280 A150 150 0 0 1 111,221" marker-end="url(#cyc)"/>
+            <path d="M149,105 A150 150 0 0 1 219,61" marker-end="url(#cyc)"/>
+          </g>
+          <g font-family="Georgia,serif" font-size="10.5" fill="#25241E" text-anchor="middle">
+            <rect x="338" y="143" width="130" height="32" rx="16" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/><text x="403" y="163">canales se abren</text>
+            <rect x="283" y="310" width="130" height="32" rx="16" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/><text x="348" y="330">flujo de iones</text>
+            <rect x="107" y="310" width="130" height="32" rx="16" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/><text x="172" y="330">pH intracelular</text>
+            <rect x="52" y="143" width="130" height="32" rx="16" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/><text x="117" y="163">redox · ROS</text>
+          </g>
+          <text x="348" y="358" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">H⁺ · K⁺ · Na⁺ · Ca²⁺</text>
+          <rect x="142" y="345" width="60" height="15" rx="7.5" fill="#BA7517"/><text x="172" y="356" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" font-weight="700" fill="#fff">lectura</text>
+          <circle cx="260" cy="55" r="36" fill="#0F6E56"/>
+          <text x="260" y="53" text-anchor="middle" font-family="Georgia,serif" font-size="11.5" font-weight="700" fill="#fff">Vmem</text>
+          <text x="260" y="67" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#CDEBE0">organiza</text>
+        </svg>
+        <figcaption><b>Fig. 6.</b> El Vmem abre los canales → fijan el flujo de iones → fija el pH → modula el redox → retroalimenta al Vmem. El pH es una <strong>lectura</strong> del estado; el Vmem es lo que el método regula.</figcaption>
+      </figure>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>El Vmem es la variable primaria del estado bioeléctrico; el pH es una lectura acoplada a él. La regulación actúa sobre el voltaje, y el pH lo acompaña.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg">09</span></div>
+  </section>
+
+  <!-- 10 · VMEM 1 -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">3 · Segundo pilar · el potencial de membrana</p>
+      <h2>El voltaje que instruye</h2>
+      <p>El trabajo de Michael Levin (Universidad de Tufts) establece el segundo pilar: el voltaje que cada célula mantiene es una señal que instruye su comportamiento. Levin estudia los cambios lentos del Vmem —de minutos a días, potenciales de corriente directa— en todas las células, un campo distinto de la electrofisiología de milisegundos de nervio y músculo.</p>
+      <h3>3.1 · Todas las células son bioeléctricas</h3>
+      <p>Toda célula —no solo neuronas y músculo— genera y recibe señales bioeléctricas codificadas en su potencial de membrana (Vmem) y en flujos iónicos que operan en escala de minutos a días (Levin &amp; Stevenson, 2012). El valor típico ronda los <strong>-50 mV</strong> (interior negativo) y varía según el tipo celular y su estado. Los tejidos que se rastrean con imanes —piel, músculo, fascia, vísceras— son bioeléctricamente activos: mantienen un voltaje que gobierna su comportamiento.</p>
+      <h3>3.2 · El Vmem decide proliferación y diferenciación</h3>
+      <p>El Vmem funciona como regulador del programa celular (Cone, 1971; Sundelacruz, Levin &amp; Kaplan, 2009):</p>
+      <ul class="blist">
+        <li>Células <b>diferenciadas</b> → Vmem hiperpolarizado (más negativo, -60 a -90 mV).</li>
+        <li>Células <b>proliferativas</b> → Vmem despolarizado (menos negativo, -10 a -30 mV).</li>
+      </ul>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <figure class="fig">
+        <div class="fighd"><span class="figt">El Vmem como interruptor</span>
+          <span class="leg"><i style="background:#BA7517"></i>prolifera&nbsp;&nbsp;<i style="background:#0F6E56"></i>se diferencia</span></div>
+        <svg viewBox="0 0 600 276" role="img" aria-label="El voltaje de membrana como interruptor entre proliferar y diferenciar">
+          <text x="303" y="30" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#8A897F">Vmem (mV)</text>
+          <defs><linearGradient id="vsc" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#BA7517"/><stop offset="1" stop-color="#0F6E56"/></linearGradient></defs>
+          <rect x="296" y="44" width="14" height="200" rx="5" fill="url(#vsc)"/>
+          <g font-family="system-ui,sans-serif" font-size="9" fill="#8A897F">
+            <line x1="312" y1="244" x2="320" y2="244" stroke="#CBC8BE"/><text x="324" y="247">−10</text>
+            <line x1="312" y1="194" x2="320" y2="194" stroke="#CBC8BE"/><text x="324" y="197">−30</text>
+            <line x1="312" y1="144" x2="320" y2="144" stroke="#CBC8BE"/><text x="324" y="147">−50</text>
+            <line x1="312" y1="94" x2="320" y2="94" stroke="#CBC8BE"/><text x="324" y="97">−70</text>
+            <line x1="312" y1="44" x2="320" y2="44" stroke="#CBC8BE"/><text x="324" y="47">−90</text>
+          </g>
+          <line x1="180" y1="150" x2="294" y2="219" stroke="#BA7517" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <line x1="428" y1="102" x2="312" y2="69" stroke="#0F6E56" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <circle cx="106" cy="150" r="26" fill="#F8EBD3" stroke="#BA7517" stroke-width="2.2"/>
+          <circle cx="152" cy="150" r="26" fill="#F8EBD3" stroke="#BA7517" stroke-width="2.2"/>
+          <path d="M129,126 Q124,150 129,174" fill="none" stroke="#BA7517" stroke-width="1.4" opacity="0.6"/>
+          <circle cx="106" cy="150" r="7" fill="#BA7517" opacity="0.45"/><circle cx="152" cy="150" r="7" fill="#BA7517" opacity="0.45"/>
+          <g font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#BA7517"><text x="92" y="120" text-anchor="middle">+</text><text x="166" y="120" text-anchor="middle">+</text></g>
+          <text x="129" y="198" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#BA7517" font-weight="700">despolarizado</text>
+          <text x="129" y="212" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#8A897F">−20 mV · prolifera</text>
+          <circle cx="460" cy="102" r="28" fill="#E7F4EF" stroke="#0F6E56" stroke-width="2.4"/>
+          <circle cx="460" cy="102" r="9" fill="#0F6E56" opacity="0.4"/>
+          <g font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#0F6E56"><text x="436" y="82" text-anchor="middle">+</text><text x="484" y="82" text-anchor="middle">+</text><text x="436" y="130" text-anchor="middle">+</text><text x="484" y="130" text-anchor="middle">+</text></g>
+          <g font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#8A897F"><text x="448" y="94" text-anchor="middle">–</text><text x="472" y="94" text-anchor="middle">–</text><text x="460" y="128" text-anchor="middle">–</text></g>
+          <rect x="446" y="72" width="28" height="9" rx="3" fill="#0F6E56"/><text x="460" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7.5" fill="#8A897F">bomba Na⁺/K⁺</text>
+          <text x="460" y="152" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#0F6E56" font-weight="700">hiperpolarizado</text>
+          <text x="460" y="166" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#8A897F">−80 mV · se diferencia</text>
+        </svg>
+        <figcaption><b>Fig. 7.</b> El voltaje es un interruptor: bajo (despolarizado) la célula se divide; alto (hiperpolarizado) se especializa. Alterarlo desregula el comportamiento del tejido.</figcaption>
+      </figure>
+      <p>Puede existir un nivel umbral de Vmem que dispara la síntesis de ADN y la mitosis. La estimulación eléctrica directa lo confirma: la despolarización acompaña a la proliferación; la hiperpolarización, a la diferenciación (Mobini, 2016). El Vmem es, por tanto, un regulador funcional: proliferar o diferenciarse.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg">10</span></div>
+  </section>
+
+  <!-- 11 · VMEM 2 -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">3 · Segundo pilar · continuación</p>
+      <h3>3.3 · El Vmem instruye el patrón anatómico</h3>
+      <p>Levin ha demostrado que modificar el estado bioeléctrico produce cambios anatómicos específicos, coherentes y predecibles —el hallazgo central para la RB:</p>
+      <ul class="blist">
+        <li><b>Regeneración de cola en <em>Xenopus</em>:</b> en una etapa en que el renacuajo normalmente ya no regenera, <strong>una hora</strong> de despolarización inducida desencadena la regeneración completa de una cola (músculo, médula, epidermis, vasculatura, notocorda) a lo largo de 8–10 días (Tseng, 2010).</li>
+        <li><b>Regeneración de extremidad:</b> 24 horas de modificación del estado bioeléctrico del tejido de la herida (el blastema) desencadenan una extremidad con dedos y uñas donde normalmente no se regenera (Tseng &amp; Levin, 2013).</li>
+        <li><b>Ojos ectópicos:</b> fijar un estado de voltaje "tipo ojo" induce un ojo completo, incluso en el intestino o la cola (Pai, 2012).</li>
+        <li><b>La "cara eléctrica":</b> un prepatrón bioeléctrico endógeno determina la regionalización de la cara del vertebrado antes de la anatomía (Adams, 2016).</li>
+      </ul>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">3 · Segundo pilar · los experimentos en imagen</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">El voltaje instruye la forma · experimentos de Levin</span></div>
+        <svg viewBox="0 0 560 206" role="img" aria-label="Regeneración de cola y ojo ectópico inducidos por el estado bioeléctrico en Xenopus">
+          <defs>
+            <marker id="lvpt" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#BA7517"/></marker>
+          </defs>
+          <line x1="280" y1="24" x2="280" y2="190" stroke="#E7E4DA" stroke-width="1"/>
+
+          <!-- IZQUIERDA · regeneración de cola -->
+          <text x="140" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#0F6E56">Regeneración de cola</text>
+          <path d="M150,112 Q176,92 202,108 L202,132 Q176,150 150,130 Z" fill="#DCEDE5" stroke="#0F6E56" stroke-width="1.4"/>
+          <path d="M60,120 Q60,88 100,86 Q146,84 166,112 Q170,120 166,128 Q146,156 100,154 Q60,152 60,120 Z" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.8"/>
+          <path d="M118,96 Q126,120 118,144" fill="none" stroke="#0F6E56" stroke-width="1" opacity="0.45"/>
+          <circle cx="88" cy="112" r="6.5" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/><circle cx="88" cy="112" r="2.8" fill="#25241E"/>
+          <line x1="202" y1="98" x2="202" y2="142" stroke="#8A897F" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <path d="M202,108 Q232,100 250,120 Q232,140 202,132" fill="#F4E9D8" fill-opacity="0.55" stroke="#BA7517" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <line x1="202" y1="98" x2="202" y2="74" stroke="#0F6E56" stroke-width="1"/>
+          <circle cx="202" cy="61" r="14" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/>
+          <path d="M194,61 L198,61 L200,53 L203,69 L205,61 L210,61" fill="none" stroke="#0F6E56" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+          <text x="222" y="57" text-anchor="start" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#0F6E56">1 h</text>
+          <text x="255" y="118" text-anchor="start" font-family="system-ui,sans-serif" font-size="8" fill="#BA7517">cola nueva</text>
+          <text x="140" y="182" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#4C4A42">1 h de voltaje → 8–10 días de regeneración</text>
+
+          <!-- DERECHA · ojo ectópico -->
+          <text x="415" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#0F6E56">Ojo ectópico</text>
+          <path d="M438,112 Q480,88 518,116 Q480,148 438,132 Z" fill="#DCEDE5" stroke="#0F6E56" stroke-width="1.4"/>
+          <path d="M338,120 Q338,88 378,86 Q424,84 444,112 Q448,120 444,128 Q424,156 378,154 Q338,152 338,120 Z" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.8"/>
+          <path d="M396,96 Q404,120 396,144" fill="none" stroke="#0F6E56" stroke-width="1" opacity="0.45"/>
+          <circle cx="366" cy="112" r="6.5" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/><circle cx="366" cy="112" r="2.8" fill="#25241E"/>
+          <circle cx="398" cy="140" r="15" fill="#0F6E56" opacity="0.12"/>
+          <circle cx="398" cy="140" r="8.5" fill="#fff" stroke="#0F6E56" stroke-width="1.6"/>
+          <circle cx="398" cy="140" r="4.8" fill="#0F6E56" opacity="0.32"/>
+          <circle cx="398" cy="140" r="2.4" fill="#25241E"/>
+          <path d="M413,146 L436,156" fill="none" stroke="#BA7517" stroke-width="1.2" marker-end="url(#lvpt)"/>
+          <text x="440" y="159" text-anchor="start" font-family="system-ui,sans-serif" font-size="8" font-weight="700" fill="#BA7517">ojo ectópico</text>
+          <text x="415" y="182" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#4C4A42">un “voltaje de ojo” induce un ojo donde no tocaba</text>
+        </svg>
+        <figcaption><b>Fig. 8.</b> Modificar el estado bioeléctrico produce cambios anatómicos específicos: una breve despolarización regenera la cola completa; fijar un patrón de voltaje "de ojo" forma un ojo ectópico (Levin).</figcaption>
+      </figure>
+      <h3>3.4 · El estado bioeléctrico, capa dominante</h3>
+      <p><b>El estado, no el producto génico.</b> El desencadenante de la regeneración es el estado bioeléctrico resultante, y puede alcanzarse por vías moleculares distintas —incluso con una bomba iónica sin homología con la proteína nativa (Levin, 2014). Lo que importa es el patrón de voltaje, no el canal que lo produjo.</p>
+      <p><b>Dominancia sobre la genética.</b> Dos células con idéntico ARNm pueden estar en estados bioeléctricos muy distintos. Un patrón bioeléctrico correcto puede corregir la morfología, la expresión génica y el aprendizaje incluso frente a un defecto genético de fondo (una mutación del gen Notch): "algunos defectos de hardware pueden repararse en software mediante un breve patrón bioeléctrico" (Levin, 2024). El estado bioeléctrico es una capa de información superpuesta a la genética que, en ciertos contextos, la corrige.</p>
+      <p>Esto conecta con la RB: el objetivo de la regulación es el patrón de voltaje del tejido, alcanzable por el estímulo del campo magnético.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg">11</span></div>
+  </section>
+
+  <!-- 12 · VMEM 3 REDES -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">3 · Segundo pilar · continuación</p>
+      <h3>3.5 · Redes, memoria, señal a distancia e inmunidad</h3>
+      <p>Las células somáticas forman redes bioeléctricas a través de <strong>gap junctions</strong>, y estas redes almacenan y transmiten información:</p>
+      <ul class="blist">
+        <li><b>Memoria tisular.</b> Las planarias mantienen una forma de dos cabezas tras la manipulación del Vmem, sin cambio genómico, a través de sucesivos cortes; la información está distribuida por todo el cuerpo, codificada en la red de células acopladas (Levin, 2014).</li>
+        <li><b>Señal a distancia.</b> La amputación de una extremidad genera una señal bioeléctrica en la extremidad contralateral en <strong>~30 segundos</strong> (Busse, 2018) —demasiado rápido para la difusión molecular clásica. Dos puntos anatómicos distantes conectados bioeléctricamente es biología publicada.</li>
+        <li><b>Susceptibilidad a patógenos.</b> El estado bioeléctrico del tejido orienta su resistencia a la infección (Paré, Martyniuk &amp; Levin, 2017), lo que conecta el Vmem con la observación de que los dipolos se asocian a cuadros infecciosos: el dipolo lee el estado del microambiente que favorece a un patógeno.</li>
+      </ul>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <figure class="fig">
+        <div class="fighd"><span class="figt">La red bioeléctrica · conexones y señal a distancia</span></div>
+        <svg viewBox="0 0 620 316" style="width:92%;margin-inline:auto" role="img" aria-label="Células acopladas por gap junctions con zoom del conexón; una señal viaja a un punto distante en 30 segundos">
+          <defs>
+            <radialGradient id="cellv" cx="0.5" cy="0.4" r="0.75"><stop offset="0" stop-color="#E0F1EA"/><stop offset="1" stop-color="#C7E6DA"/></radialGradient>
+            <linearGradient id="sig" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0F6E56"/><stop offset="1" stop-color="#BA7517"/></linearGradient>
+            <marker id="an" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#BA7517"/></marker>
+          </defs>
+          <!-- coupled cells -->
+          <circle cx="132" cy="204" r="42" fill="url(#cellv)" stroke="#0F6E56" stroke-width="2.4"/>
+          <circle cx="228" cy="204" r="42" fill="url(#cellv)" stroke="#0F6E56" stroke-width="2.4"/>
+          <circle cx="324" cy="204" r="42" fill="url(#cellv)" stroke="#0F6E56" stroke-width="2.4"/>
+          <circle cx="132" cy="204" r="13" fill="#0F6E56" opacity="0.16"/><circle cx="228" cy="204" r="13" fill="#0F6E56" opacity="0.16"/><circle cx="324" cy="204" r="13" fill="#0F6E56" opacity="0.16"/>
+          <!-- gap junctions -->
+          <g><rect x="170" y="195" width="20" height="18" rx="3" fill="#0F6E56"/><rect x="266" y="195" width="20" height="18" rx="3" fill="#0F6E56"/>
+            <g stroke="#fff" stroke-width="1"><line x1="175" y1="196" x2="175" y2="212"/><line x1="180" y1="196" x2="180" y2="212"/><line x1="185" y1="196" x2="185" y2="212"/><line x1="271" y1="196" x2="271" y2="212"/><line x1="276" y1="196" x2="276" y2="212"/><line x1="281" y1="196" x2="281" y2="212"/></g></g>
+          <text x="228" y="274" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#25241E">red acoplada por <tspan fill="#0F6E56" font-weight="700">gap junctions</tspan></text>
+          <!-- distant cell + signal -->
+          <circle cx="540" cy="118" r="34" fill="#EAF4EF" stroke="#0F6E56" stroke-width="2"/>
+          <circle cx="540" cy="118" r="10" fill="#0F6E56" opacity="0.16"/>
+          <text x="540" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E">punto distante</text>
+          <path d="M362,182 Q470,70 512,112" fill="none" stroke="url(#sig)" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#an)"/>
+          <rect x="404" y="64" width="62" height="21" rx="10.5" fill="#fff" stroke="#0F6E56" stroke-width="1.2"/>
+          <text x="435" y="78.5" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10.5" font-weight="700" fill="#0F6E56">~30 s</text>
+          <text x="452" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E">señal a distancia</text>
+          <!-- zoom inset: connexon channel -->
+          <line x1="180" y1="200" x2="132" y2="112" stroke="#B4B1A6" stroke-width="0.8" stroke-dasharray="3 3"/>
+          <circle cx="112" cy="76" r="58" fill="#fff" stroke="#0F6E56" stroke-width="1.6"/>
+          <rect x="66" y="44" width="92" height="8" rx="3" fill="#CFE7DD"/>
+          <rect x="66" y="100" width="92" height="8" rx="3" fill="#CFE7DD"/>
+          <path d="M92,52 L100,68 L100,84 L92,100 M132,52 L124,68 L124,84 L132,100" fill="none" stroke="#0F6E56" stroke-width="2"/>
+          <circle cx="112" cy="64" r="3.6" fill="#BA7517"/><circle cx="112" cy="88" r="3.6" fill="#BA7517"/>
+          <text x="112" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#25241E"><tspan fill="#0F6E56" font-weight="700">conexón</tspan> · canal</text>
+        </svg>
+        <figcaption><b>Fig. 9.</b> Las células se acoplan por <strong>conexones (gap junctions)</strong>, que dejan pasar iones y señal directamente. La red así formada almacena un patrón (memoria del tejido) y comunica puntos distantes del cuerpo en ~30 segundos.</figcaption>
+      </figure>
+      <h3>3.6 · Un kit de herramientas ya existente</h3>
+      <p>Los fármacos que modifican canales iónicos son el tercer grupo de medicamentos más prescrito, y solo una fracción de los ~400 genes de canales iónicos del genoma humano ha sido abordada (Levin, 2021). La existencia de reactivos que inducen regeneración y normalización por esta vía revela que los moduladores de canales iónicos son una herramienta poderosa. Los campos magnéticos estáticos actúan sobre esos mismos canales —el puente que desarrolla el Bloque 2.</p>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>El cuerpo posee un sistema bioeléctrico somático activo en todas las células, que instruye el comportamiento, forma redes que almacenan información, señaliza a distancia y orienta la respuesta a los patógenos. Estos son los fenómenos que la práctica clínica observa. La RB opera en ese canal.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg">12</span></div>
+  </section>
+
+  <!-- 13 · SÍNTESIS -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">Síntesis del bloque</p>
+      <h2>Lo que queda establecido</h2>
+      <ul class="blist">
+        <li>La <b>Regulación Bioeléctrica</b> evalúa y regula el estado bioeléctrico del microambiente tisular con campos magnéticos estáticos moderados. Su resultado es un perfil que se lee por densidad, simetría, vecindad y correlación clínica.</li>
+        <li>Se apoya en un <b>linaje</b>: Becker (el cuerpo eléctrico y sus cuatro principios), Broeringmeyer (la técnica clínica y el reflejo del iliopsoas), Goiz (la sistematización del catálogo) y la biofísica contemporánea. La técnica se conserva; el marco se actualiza.</li>
+        <li><b>Primer pilar — la MEC:</b> un sistema electroquímico con carga (FCD), potencial (Donnan) y un regulador primario (pH), cuya cascada de deterioro es predecible y cuyo estado se describe con parámetros medibles (incluida la Bioelectrónica de Vincent).</li>
+        <li><b>Segundo pilar — el Vmem:</b> el voltaje de cada célula instruye su comportamiento, actúa como capa dominante sobre la genética, forma redes que almacenan información y señaliza a distancia.</li>
+        <li><b>La jerarquía:</b> el Vmem organiza el estado bioeléctrico; el pH y el redox son lecturas acopladas. La regulación actúa sobre el voltaje, y el pH lo acompaña como consecuencia.</li>
+      </ul>
+      <p>Sobre estos dos pilares —el microambiente que conduce y el voltaje que instruye— se construye todo el método. El <strong>Bloque 2</strong> muestra la herramienta (el imán) y el sustrato del cuerpo donde actúa.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg">13</span></div>
+  </section>
+
+  <!-- 14 · GLOSARIO -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">Para consultar</p>
+      <h2>Glosario del bloque</h2>
+      <dl class="gl">
+          <div><dt>Microambiente tisular</dt><dd>entorno electroquímico inmediato del tejido, sobre el que opera la RB (carga, potencial, pH, redox, hidratación).</dd></div>
+          <div><dt>MEC (matriz extracelular)</dt><dd>medio electroquímico entre las células; el microambiente donde opera la RB.</dd></div>
+          <div><dt>GAGs (glicosaminoglicanos)</dt><dd>polímeros cargados negativamente de la MEC; origen molecular de la FCD.</dd></div>
+          <div><dt>FCD (densidad de carga fija)</dt><dd>carga negativa de los GAGs; determina hidratación, distribución iónica y pH local.</dd></div>
+          <div><dt>Potencial de Donnan (Φ_D)</dt><dd>potencial eléctrico intratisular generado por la FCD.</dd></div>
+          <div><dt>Espacio de Pischinger</dt><dd>unidad funcional MEC–fibroblastos–colágeno–nervio–capilar–inmunidad.</dd></div>
+          <div><dt>Bioelectrónica de Vincent (BEV)</dt><dd>lectura del microambiente por pH, rH₂ y resistividad.</dd></div>
+          <div><dt>rH₂</dt><dd>potencial electrónico; estado de oxidación-reducción del fluido.</dd></div>
+          <div><dt>pH</dt><dd>parámetro ácido-base; en la matriz gobierna la FCD, y a nivel celular es una lectura acoplada al Vmem.</dd></div>
+          <div><dt>Vmem (potencial de membrana)</dt><dd>diferencia de voltaje a través de la membrana; señal instructiva de la célula. La variable que organiza.</dd></div>
+          <div><dt>Despolarizado / hiperpolarizado</dt><dd>voltaje menos negativo (proliferación) / más negativo (diferenciación).</dd></div>
+          <div><dt>Gap junctions</dt><dd>canales que conectan citoplasmas de células vecinas y forman redes bioeléctricas.</dd></div>
+          <div><dt>Jerarquía bioeléctrica</dt><dd>el Vmem organiza; el pH y el redox son lecturas acopladas, no el mecanismo.</dd></div>
+      </dl>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg">14</span></div>
+  </section>
+
+  <!-- 15 · REFERENCIAS -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 1</span></div>
+    <div class="body">
+      <p class="kicker">Fuentes</p>
+      <h2>Referencias del bloque</h2>
+      <div class="two refs">
+        <div class="grp">
+          <h4>Cap. 1 — Historia</h4>
+          <p>Becker RO, Selden G. <em>The Body Electric</em>. William Morrow; 1985.</p>
+          <p>Broeringmeyer R. <em>Principles of Magnetic Therapy</em>. Bio-Health Enterprises.</p>
+          <p>Goiz Durán I. <em>El Par Biomagnético</em>. Univ. Autónoma Chapingo; 1996.</p>
+          <p>Corrêa LMR, et al. <em>Health and Society</em>. 2023;3(01):345–367.</p>
+        </div>
+        <div class="grp">
+          <h4>Cap. 2 — Matriz extracelular</h4>
+          <p>Lesperance LM, Gray ML, Burstein D. <em>J Orthop Res</em>. 1992;10(1):1-13.</p>
+          <p>Jackson AR, et al. <em>Ann Biomed Eng</em>. 2009;37(12):2566-2573.</p>
+          <p>Buchweitz N, et al. <em>J Biomech</em>. 2025;181:112554.</p>
+          <p>Morawski M, et al. <em>Sci Rep</em>. 2015;5:17383.</p>
+          <p>Bansal PN, et al. <em>Osteoarthritis Cartilage</em>. 2010;18(2):184-191.</p>
+          <p>Ulm L, Weiss T. <em>Fascia Research III</em>. Kiener; 2014.</p>
+          <p>Pischinger A. <em>The Extracellular Matrix and Ground Regulation</em>. 2007.</p>
+          <p>Cidón Madrigal JL. Tesis doctoral. UPM; 2003.</p>
+          <p>Fougerousse JF. <em>Bull Union Phys</em>. 1996.</p>
+        </div>
+        <div class="grp">
+          <h4>Cap. 3 — Potencial de membrana (Levin)</h4>
+          <p>Levin M. <em>Cell</em>. 2021;184(8):1971-1989.</p>
+          <p>Levin M. <em>J Physiol</em>. 2014;592(11):2295-2305.</p>
+          <p>Levin M. <em>BioEssays</em>. 2024;46(7):e2400043.</p>
+          <p>Levin M &amp; Stevenson CG. <em>Annu Rev Biomed Eng</em>. 2012;14:295-323.</p>
+          <p>Cone CD. <em>J Theor Biol</em>. 1971;30(1):151-181.</p>
+          <p>Sundelacruz S, Levin M, Kaplan DL. <em>Stem Cell Rev Rep</em>. 2009;5(3):231-246.</p>
+          <p>Pai VP, et al. <em>Development</em>. 2012;139(2):313-323.</p>
+          <p>Tseng A, Levin M. <em>Commun Integr Biol</em>. 2013;6(1):e22595.</p>
+          <p>Adams DS, et al. <em>J Physiol</em>. 2016;594(12):3245-3270.</p>
+          <p>Busse SM, McMillen PT, Levin M. <em>Development</em>. 2018;145(20):dev164210.</p>
+          <p>Paré JF, Martyniuk CJ, Levin M. <em>npj Regen Med</em>. 2017;2:15.</p>
+          <p>Mobini S, et al. <em>Biotechniques</em>. 2016;60(2):95-98.</p>
+        </div>
+      </div>
+    </div>
+    <div class="ft"><span>Instituto Centrobioenergetica · 2026</span><span class="pg">15</span></div>
+  </section>
+
+</div>
+</body>
+</html>

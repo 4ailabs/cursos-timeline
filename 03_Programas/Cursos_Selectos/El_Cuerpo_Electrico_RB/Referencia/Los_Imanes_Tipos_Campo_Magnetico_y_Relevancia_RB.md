@@ -31,6 +31,8 @@ El campo es **estático** — no varía en el tiempo. Esto lo distingue de los c
 
 Ventajas: bajo costo, alta estabilidad térmica, menor peligrosidad por su menor fuerza de atracción. Limitación: menor intensidad por unidad de volumen — se necesita más tamaño para la misma intensidad que un neodimio.
 
+Grados comerciales típicos de ferrita dura: **Y30 / C5** (Br ~0.37–0.40 T; Hcb 175–210 kA/m; BHmax 26–30 kJ/m³) y **C8 / Y30H-1** (Br ~0.385 T, con mayor coercitividad). Ambos tienen remanencia similar; el C8 resiste mejor la desmagnetización.
+
 ### 2.2 Neodimio (NdFeB)
 
 Aleación de neodimio, hierro y boro (Nd₂Fe₁₄B). Desarrollado independientemente por General Motors y Sumitomo Special Metals en 1984. Es el imán permanente más potente disponible comercialmente, y el más usado en la práctica clínica actual.
@@ -46,6 +48,23 @@ Aleación de neodimio, hierro y boro (Nd₂Fe₁₄B). Desarrollado independient
 | Densidad | 7.3–7.5 g/cm³ |
 
 Grados comunes en clínica: **N35 a N52** (el número indica el BHmax en MGOe). N42 y N45 son los más frecuentes — buen balance entre intensidad, costo y estabilidad.
+
+**Tabla grado por grado** (datos de K&J Magnetics, 2026):
+
+| Grado | Remanencia Br | BHmax (MGOe) |
+|---|---|---|
+| N35 | 1.17–1.21 T | 33–35 |
+| N38 | 1.22–1.26 T | 36–38 |
+| N40 | 1.26–1.29 T | 38–40 |
+| N42 | 1.30–1.32 T | 40–42 |
+| N45 | 1.33–1.37 T | 43–45 |
+| N48 | 1.38–1.42 T | 45–48 |
+| N50 | 1.41–1.45 T | 48–50 |
+| N52 | 1.45–1.48 T | 49.5–52 |
+
+Datos comunes a todos los grados N estándar: coercitividad Hc > 11 kOe, coercitividad intrínseca Hci > 11–12 kOe (desciende ligeramente en los grados más altos), densidad 7.4–7.5 g/cm³, temperatura máxima de operación 80 °C, temperatura de Curie ~310 °C.
+
+> **Precisión importante:** la remanencia (Br) es una propiedad del *material*. El campo real medido en la superficie de un imán concreto es algo menor que Br y depende de la geometría (diámetro, espesor). Por eso un N42 "de 1.3 T" mide en superficie del orden de 0.4–0.5 T, no 1.3 T.
 
 ### 2.3 Otros materiales
 

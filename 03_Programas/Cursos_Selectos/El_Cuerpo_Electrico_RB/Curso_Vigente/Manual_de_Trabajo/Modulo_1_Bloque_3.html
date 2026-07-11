@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<title>El agente y la regulación · Módulo 1 · Bloque 3</title>
+<style>
+  :root{
+    --bg:#FFFFFF; --sheet:#FFFFFF; --edge:#E7E4DA;
+    --ink:#25241E; --ink-soft:#4C4A42; --muted:#8A897F; --rule:#E7E4DA;
+    --teal:#0F6E56; --teal-soft:#E7F4EF; --teal-line:#C4E4D8;
+    --coral:#B84E27; --card:#F5F3EC;
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  :root[data-theme="dark"]{
+    --bg:#FFFFFF; --sheet:#FFFFFF; --edge:#E7E4DA;
+    --ink:#25241E; --ink-soft:#4C4A42; --muted:#8A897F; --rule:#E7E4DA;
+    --teal:#0F6E56; --teal-soft:#E7F4EF; --teal-line:#C4E4D8;
+    --coral:#B84E27; --card:#F5F3EC;
+  }
+  :root[data-mode="bw"]{
+    --teal:#1d1d1b; --teal-soft:#ECEAE4; --teal-line:#CBC9C1; --coral:#4a4a46;
+    --ink:#1a1a18; --ink-soft:#3a3a36; --muted:#6f6d64; --card:#F1EFE9; --edge:#D9D6CD; --rule:#E2DFD6;
+  }
+  :root[data-mode="bw"] .fig svg{filter:grayscale(1) contrast(1.06)}
+  .ctrl{display:flex;justify-content:center;padding:6px 16px 0}
+  .ctrl button{font-family:system-ui,-apple-system,sans-serif;font-size:12px;color:var(--teal);background:#fff;
+    border:1px solid var(--teal-line);border-radius:20px;padding:6px 18px;cursor:pointer}
+  .ctrl button:hover{background:var(--teal-soft)}
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--serif);margin:0;counter-reset:pg 48;
+    -webkit-font-smoothing:antialiased;line-height:1.46}
+  .screen-note{font-family:var(--sans);font-size:12px;color:var(--muted);text-align:center;padding:20px 16px 2px}
+  .book{display:flex;flex-direction:column;align-items:center;gap:18px;padding:8px 14px 40px}
+  .sheet{width:148mm;min-height:210mm;background:var(--sheet);border:1px solid var(--edge);
+    box-shadow:0 6px 26px rgba(30,28,20,.08);padding:11mm 12mm 15mm 20mm;position:relative;
+    display:flex;flex-direction:column;overflow:hidden;counter-increment:pg}
+
+  .hd{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);
+    padding-bottom:4px;margin-bottom:5mm;color:var(--teal)}
+  .hd .brand{display:flex;align-items:center;gap:6px}
+  .hd .dip{width:26px;height:14px;color:var(--teal);flex:none}
+  .hd .eyebrow{font-family:var(--sans);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .hd .tag{font-family:var(--sans);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:600}
+  .ft{position:absolute;left:12mm;right:12mm;bottom:8mm;display:flex;align-items:center;justify-content:space-between;
+    border-top:1px solid var(--rule);padding-top:4px;font-family:var(--sans);font-size:7.6px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted)}
+  .ft .pg{font-size:0}
+  .ft .pg::after{content:counter(pg,decimal-leading-zero);font-size:7.6px;letter-spacing:.1em;font-variant-numeric:tabular-nums;color:var(--muted)}
+  .body{flex:1}
+
+  h2{font-size:21px;line-height:1.16;margin:0 0 2.4mm;text-wrap:balance;font-weight:700;letter-spacing:.002em}
+  h3{font-size:14.5px;margin:3.8mm 0 1.6mm;color:var(--teal);font-weight:700;letter-spacing:.004em}
+  .kicker{font-family:var(--sans);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin:0 0 2.2mm;font-weight:600}
+  p{margin:0 0 2.2mm;font-size:12.5px;color:var(--ink)}
+  .lead{font-size:13.5px;color:var(--ink-soft);line-height:1.46}
+  strong{font-weight:700}
+  em{font-style:italic}
+
+  .nlist{margin:1.4mm 0;padding:0;list-style:none;counter-reset:n;display:flex;flex-direction:column;gap:1.4mm}
+  .nlist>li{position:relative;padding-left:7.5mm;font-size:12.5px}
+  .nlist>li::before{counter-increment:n;content:counter(n);position:absolute;left:0;top:0;width:5mm;height:5mm;
+    border-radius:50%;background:var(--teal-soft);color:var(--teal);font-family:var(--sans);font-size:8px;font-weight:700;
+    display:flex;align-items:center;justify-content:center}
+  .blist{margin:1.4mm 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1.2mm}
+  .blist>li{position:relative;padding-left:5mm;font-size:12.5px}
+  .blist>li::before{content:"";position:absolute;left:.6mm;top:1.9mm;width:4px;height:4px;border-radius:50%;background:var(--teal)}
+  .blist>li b,.nlist>li b{color:var(--teal)}
+
+  table.tbl{width:100%;border-collapse:collapse;margin:1.6mm 0}
+  table.tbl th{text-align:left;font-family:var(--sans);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);border-bottom:1.4px solid var(--teal-line);padding:1.4mm 2mm 1.2mm;font-weight:600}
+  table.tbl td{border-bottom:1px solid var(--rule);padding:1.6mm 2mm;font-size:10.5px;color:var(--ink);vertical-align:top}
+  table.tbl td:first-child{font-weight:700;color:var(--teal)}
+
+  .fig{margin:2.6mm 0 2mm;border:1px solid var(--rule);border-radius:6px;padding:2.6mm 3mm 2.2mm;background:#fff}
+  .fig .fighd{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2mm;flex-wrap:wrap;gap:2mm}
+  .fig .figt{font-family:var(--sans);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .fig .leg{font-family:var(--sans);font-size:8.5px;color:var(--ink-soft);display:flex;align-items:center;gap:4px}
+  .fig .leg i{display:inline-block;width:12px;height:3px;border-radius:2px}
+  .fig svg{width:100%;height:auto;display:block}
+  .figcap{font-family:var(--sans);font-size:9px;color:var(--muted);margin-top:1.6mm;line-height:1.44}
+  .figcap b{color:var(--teal)}
+
+  .idea{background:var(--card);border-radius:5px;padding:2.2mm 2.8mm;margin:2.4mm 0 0;border:1px solid var(--rule)}
+  .idea .lab{font-family:var(--sans);font-size:7.2px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);
+    font-weight:700;display:flex;align-items:center;gap:5px;margin-bottom:1mm}
+  .idea .lab .dot{width:5px;height:5px;border-radius:50%;background:var(--coral);flex:none}
+  .idea p{margin:0;font-size:12px;font-style:italic;color:var(--ink-soft);line-height:1.44}
+
+  .chain{background:var(--teal-soft);border-left:2.5px solid var(--teal);border-radius:0 5px 5px 0;
+    padding:2.2mm 3mm;margin:2mm 0;font-size:12px;color:var(--ink)}
+  .chain b{color:var(--teal)}
+
+  .two{column-count:2;column-gap:7mm}
+  .two>*{break-inside:avoid}
+  dl.gl{margin:0}
+  dl.gl div{font-size:12px;margin-bottom:1.5mm;line-height:1.4;padding-bottom:1.3mm;border-bottom:1px solid var(--rule)}
+  dl.gl div:last-child{border-bottom:none}
+  dl.gl dt{display:inline;font-weight:700;color:var(--teal)}
+  dl.gl dd{display:inline;margin:0;color:var(--ink-soft)}
+  dl.gl dd::before{content:" — "}
+
+  .refs{font-size:9.5px;color:var(--ink-soft);line-height:1.42}
+  .refs h4{font-family:var(--sans);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);
+    margin:0 0 1mm;font-weight:700;break-after:avoid}
+  .refs p{font-size:9.5px;margin:0 0 1mm;break-inside:avoid}
+  .refs .grp{margin-bottom:2.4mm;break-inside:avoid}
+
+  .cover{align-items:stretch;justify-content:flex-start;padding-top:16mm}
+  .cover .gap-t{flex:382 0 0}
+  .cover .gap-b{flex:618 0 0}
+  .cover .top{display:flex;align-items:center;gap:8px}
+  .cover .top .dip{width:38px;height:20px;color:var(--teal)}
+  .cover .top span{font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .cover .center{margin:0}
+  .cover .prog{font-family:var(--sans);font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--coral);margin-bottom:5mm;font-weight:600}
+  .cover h1{font-size:42px;line-height:1.02;margin:0 0 4mm;letter-spacing:-.01em;text-wrap:balance}
+  .cover .sub{font-size:16px;color:var(--ink-soft);font-style:italic;max-width:30ch;margin-bottom:6mm}
+  .cover .obj{border-top:1px solid var(--rule);padding-top:3mm}
+  .cover .obj .lab{font-family:var(--sans);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:1.4mm}
+  .cover .obj li{font-size:9.6px}
+  .cover .meta{border-top:1px solid var(--rule);padding-top:4mm;display:flex;justify-content:space-between;align-items:flex-end}
+  .cover .meta .who{font-size:12.5px}.cover .meta .who b{color:var(--teal)}
+  .cover .meta .mod{font-family:var(--sans);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:right}
+  .wm{position:absolute;right:-24mm;bottom:16mm;width:112mm;height:61mm;color:var(--teal);opacity:.08;pointer-events:none}
+
+  @media (max-width:640px){
+    .sheet{width:100%;min-height:0;padding:22px 18px 54px}
+    .ft{left:18px;right:18px;bottom:16px}.cover h1{font-size:34px}.two{column-count:1}
+  }
+  @media print{
+    @page{size:A5;margin:0}
+    .screen-note,.ctrl{display:none}.book{gap:0;padding:0}
+    .sheet{width:auto;min-height:auto;box-shadow:none;border:none;margin:0;page-break-after:always;break-after:page}
+    .sheet:last-child{page-break-after:auto}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="dipolo" viewBox="0 0 44 24"><circle cx="8" cy="12" r="6" fill="currentColor"/><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"/><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.35"/></symbol>
+  <marker id="b2a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0F6E56"/></marker>
+  <radialGradient id="cellv" cx="0.5" cy="0.4" r="0.75"><stop offset="0" stop-color="#E0F1EA"/><stop offset="1" stop-color="#C7E6DA"/></radialGradient>
+</svg>
+
+<p class="screen-note">Cuadernillo A5 · se imprime a tamaño real (148 × 210 mm)</p>
+<div class="ctrl"><button id="bwtoggle" type="button">Ver en blanco y negro</button></div>
+<script>(function(){var b=document.getElementById('bwtoggle');if(!b)return;b.addEventListener('click',function(){var r=document.documentElement;var on=r.getAttribute('data-mode')==='bw';r.setAttribute('data-mode',on?'color':'bw');b.textContent=on?'Ver en blanco y negro':'Ver a color';});})();</script>
+
+<div class="book">
+
+  <!-- COVER -->
+  <section class="sheet cover">
+    <svg class="wm" aria-hidden="true"><use href="#dipolo"/></svg>
+    <div class="top"><svg class="dip"><use href="#dipolo"/></svg><span>el cuerpo eléctrico</span></div>
+    <div class="gap gap-t"></div>
+    <div class="center">
+      <div class="prog">Formación en Regulación Bioeléctrica</div>
+      <h1>El agente y la regulación</h1>
+      <p class="sub">Del cuerpo que se avería al agente que se recalibra.</p>
+    </div>
+    <div class="gap gap-b"></div>
+    <div class="meta">
+      <div class="who"><b>Dr. Miguel Ojeda Rios</b><br>Instituto Centrobioenergetica · 2026</div>
+      <div class="mod">Módulo 1 · Bloque 3<br>Manual de trabajo</div>
+    </div>
+  </section>
+
+  <!-- 2 · EL GIRO -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El giro</p>
+      <h2>Del cuerpo-máquina al cuerpo-agente</h2>
+      <p>Los Bloques 1 y 2 establecieron el cuerpo eléctrico, la herramienta y el sustrato. Este bloque cambia la mirada clínica: deja de ver el cuerpo como una máquina que se avería y empieza a verlo como un conjunto de <strong>agentes</strong> que persiguen metas y defienden un punto de calibración. Con esa mirada, la pregunta clínica cambia —y con ella, lo que significa regular.</p>
+      <p>La medicina y el biomagnetismo clásico trabajan, casi siempre, en modo <strong>máquina</strong>: el cuerpo es un aparato que se descompone, se localiza la pieza fallada y se corrige. Bajo esa mirada, la enfermedad es un error a combatir.</p>
+      <p>Este bloque propone otra mirada. Un tejido —hasta una sola célula— tiene una particularidad que ninguna máquina tiene: <strong>persigue una meta</strong>. No funciona por azar ni ejecuta pasivamente un programa; trabaja activamente por conseguir algo. Cuando lo consigue con holgura, es un agente sano. Cuando se desregula, no es que "se haya roto": es un agente que <strong>cambió de meta o de calibración porque las condiciones cambiaron</strong>, y se quedó en ese estado incluso después de que las condiciones volvieron a la normalidad.</p>
+      <p>Esto reencuadra la enfermedad: no es un error del cuerpo, es una <strong>adaptación que se quedó activada</strong>. Y reencuadra el tratamiento: no se trata de forzar ni de suprimir, sino de <strong>devolverle al agente la información y las condiciones para recalibrarse</strong>. Eso es regular.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 3 · AGENTE / TAME -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El agente biológico</p>
+      <h2>El agente y el marco TAME</h2>
+      <p>Esta idea tiene un marco científico riguroso. Michael Levin —biólogo del desarrollo en Tufts, uno de los investigadores más citados en bioelectricidad— lo formuló como <strong>TAME</strong> (<em>Technological Approach to Mind Everywhere</em>, 2022).</p>
+      <p>La tesis central: <strong>todo sistema biológico —de la célula al órgano al organismo— es un agente</strong>. No en el sentido de que "piense" como un humano, sino en que procesa información, fija metas, toma decisiones y resuelve problemas activamente. Una célula es un agente con preferencias y competencias que se adapta a las condiciones.</p>
+      <p>Cuatro conceptos de Levin sostienen el modelo:</p>
+      <ul class="blist">
+        <li><b>Competencia multiescala.</b> Hay agentes en cada nivel —molecular, celular, tisular, orgánico, organismo—, cada uno con sus metas, operando en paralelo. La célula hepática detoxifica; el hígado mantiene el metabolismo limpio; el organismo sobrevive.</li>
+        <li><b>Cono de luz cognitivo.</b> Cada agente tiene un rango de metas que puede perseguir: una célula, metas metabólicas simples; un tejido, metas de forma (reparar una herida, mantener una morfología); un órgano, metas más amplias.</li>
+        <li><b>La bioelectricidad como lenguaje de coordinación.</b> Los patrones de voltaje entre células (Vmem) coordinan el comportamiento colectivo —codifican qué forma construir y cuándo dejar de crecer (Bloque 1)—. Este es el canal en el que opera la RB.</li>
+        <li><b>Fines fijos, medios variables.</b> El agente persigue su meta y, si le bloquean un camino, encuentra otro (los renacuajos de Levin cuyos órganos se reorganizan para llegar a la posición correcta). La meta es estable; los medios se ajustan.</li>
+      </ul>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 4 · PROPIEDADES + PREDICCION -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El agente biológico · continuación</p>
+      <h3>Las tres propiedades de todo agente</h3>
+      <ol class="nlist">
+        <li><b>Meta</b> — lo que persigue activamente. El hígado: detoxificar. El ojo: ver bien a toda distancia. La mitocondria: producir energía a demanda. El sistema inmune: distinguir lo propio de lo ajeno, responder de forma proporcional —y <b>resolver</b>. El intestino: absorber y mantener una barrera selectiva.</li>
+        <li><b>Capacidad de agencia</b> — qué tan bien cumple su meta en las condiciones actuales. Depende de sus recursos (cofactores, energía, sustratos), su integridad estructural, las señales del entorno y su historia (a qué se adaptó, qué set point fijó).</li>
+        <li><b>Set point</b> — el punto de calibración desde el cual opera, su "normal". El agente lo ajusta según la experiencia; eso es adaptación sana. <b>El problema aparece cuando el set point se queda en una posición que ya no corresponde a la realidad.</b></li>
+      </ol>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El agente biológico · continuación</p>
+      <h3>La enfermedad como una predicción que no se actualizó</h3>
+      <p>Los sistemas biológicos funcionan de forma <strong>predictiva</strong>: predicen cuál es el estado correcto y trabajan para mantenerlo. Cuando el set point se desplazó, el agente <strong>predice mal</strong> y actúa para sostener un estado que ya no es apropiado —y esa acción perpetúa el problema—. El ojo miope predice que necesita visión cercana; el sistema inmune encendido predice que hay amenaza; la mitocondria en modo ahorro predice que hay emergencia.</p>
+      <p>El cerebro y el cuerpo operan como un <strong>órgano de inferencia activa</strong>, y las alteraciones de las predicciones sobre el estado del cuerpo son una vulnerabilidad común para la enfermedad (Barrett &amp; Simmons, 2015; Jungilligens &amp; Perez, 2025). La enfermedad crónica es, con frecuencia, <strong>una predicción que no se actualizó</strong>.</p>
+      <p>Y esa predicción no vive en el aire. El set point que el agente defiende está codificado en un patrón bioeléctrico literal —el potencial de membrana (Vmem)—; Levin demostró que los patrones de voltaje guardan la "meta" hacia la que el tejido trabaja. En términos físicos, <strong>una predicción que no se actualiza es un patrón de Vmem atascado en el estado equivocado</strong>. Y es sobre el Vmem donde actúa la RB.</p>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>Un agente persigue una meta desde un set point. La enfermedad no es una avería: es un set point atascado en una condición vieja —una predicción que no se actualizó—. Regular es darle la información para recalibrarse.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 5 · PERSUADIBILIDAD -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El agente biológico</p>
+      <h2>El eje de persuadibilidad</h2>
+      <p>Si el cuerpo es un conjunto de agentes, la pregunta operativa es: <strong>¿cómo se persuade a un agente para que cambie de conducta?</strong> TAME ordena los sistemas según cuán persuadibles son y por qué medio:</p>
+      <table class="tbl">
+        <thead><tr><th>Tipo</th><th>Ejemplo</th><th>Cómo se cambia su conducta</th></tr></thead>
+        <tbody>
+          <tr><td><b>A</b></td><td>Reloj mecánico</td><td>Re-cableando el hardware (abrirlo y cambiar piezas)</td></tr>
+          <tr><td><b>B</b></td><td>Termostato / homeostático</td><td><b>Reescribiendo su set point</b> —sin tocar la mecánica</td></tr>
+          <tr><td><b>C</b></td><td>Animal</td><td>Recompensa y castigo</td></tr>
+          <tr><td><b>D</b></td><td>Ser humano</td><td>Argumento racional</td></tr>
+        </tbody>
+      </table>
+      <p>La tesis clínica de la RB: <strong>los agentes que trabajamos son de clase B.</strong> No se les re-cablea ni se les argumenta; se les regula <strong>reescribiendo su señal de referencia</strong>. Por eso regular no es suprimir el síntoma ni forzar un resultado: es cambiar la información desde la que el agente calibra.</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">EL AGENTE COMO LAZO DE CONTROL</span></div>
+        <svg viewBox="0 0 560 206" role="img" aria-label="Lazo de control cibernético: la variable controlada se compara con el set point, genera una señal de error que mueve al actuador; regular clase B es reescribir el set point sin tocar la mecánica">
+          <defs>
+            <marker id="b3a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0F6E56"/></marker>
+            <marker id="b3amb" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#BA7517"/></marker>
+          </defs>
+          <rect x="48" y="22" width="112" height="32" rx="7" fill="#F7E9D1" stroke="#BA7517" stroke-width="1.4"/>
+          <text x="104" y="42" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" font-weight="700" fill="#BA7517">SET POINT</text>
+          <path d="M252,16 C212,6 176,16 165,29" fill="none" stroke="#BA7517" stroke-width="1.6" marker-end="url(#b3amb)"/>
+          <text x="258" y="26" font-family="system-ui,sans-serif" font-size="9" fill="#BA7517">reescribe el set point</text>
+          <text x="258" y="38" font-family="system-ui,sans-serif" font-size="8" fill="#8A6510">(la señal de referencia)</text>
+          <line x1="104" y1="54" x2="104" y2="74" stroke="#0F6E56" stroke-width="1.6" marker-end="url(#b3a)"/>
+          <circle cx="104" cy="96" r="20" fill="#fff" stroke="#0F6E56" stroke-width="1.6"/>
+          <g stroke="#0F6E56" stroke-width="1.4"><line x1="92" y1="84" x2="116" y2="108"/><line x1="116" y1="84" x2="92" y2="108"/></g>
+          <text x="104" y="132" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#4C4A42">comparador</text>
+          <rect x="168" y="80" width="104" height="32" rx="7" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.3"/>
+          <text x="220" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#25241E">señal de error</text>
+          <text x="220" y="106" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#4C4A42">± desviación</text>
+          <rect x="300" y="80" width="96" height="32" rx="7" fill="#fff" stroke="#0F6E56" stroke-width="1.3"/>
+          <text x="348" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#25241E">actuador</text>
+          <rect x="424" y="80" width="120" height="32" rx="7" fill="#DCEDE5" stroke="#0F6E56" stroke-width="1.3"/>
+          <text x="484" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#25241E">variable</text>
+          <text x="484" y="106" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#4C4A42">controlada</text>
+          <g stroke="#0F6E56" stroke-width="1.8" marker-end="url(#b3a)"><line x1="124" y1="96" x2="166" y2="96"/><line x1="272" y1="96" x2="298" y2="96"/><line x1="396" y1="96" x2="422" y2="96"/></g>
+          <path d="M484,112 L484,150 L104,150 L104,118" fill="none" stroke="#0F6E56" stroke-width="1.6" marker-end="url(#b3a)"/>
+          <text x="294" y="164" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#0F6E56">retroalimentación (sensor)</text>
+          <text x="280" y="190" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#4C4A42">regular (clase B) = <tspan fill="#BA7517" font-weight="700">reescribir el set point</tspan>, sin tocar la mecánica</text>
+        </svg>
+        <figcaption><b>Fig. 1.</b> El agente clase B es un lazo de control: compara su variable con un set point y corrige con un actuador. Regular no re-cablea la mecánica —reescribe la señal de referencia.</figcaption>
+      </figure>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 6 · EL OJO -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El caso que enseña el marco</p>
+      <h2>El ojo adaptativo</h2>
+      <p>El ojo es el ejemplo más limpio y publicado de un agente clase B. Sirve para ver el marco completo antes de aplicarlo al cuerpo.</p>
+      <ul class="blist">
+        <li><b>Meta:</b> la emetropía —enfocar la imagen en la retina a toda distancia.</li>
+        <li><b>Cómo lo logra:</b> el ojo regula su propia forma según la imagen que le llega. Si la imagen cae detrás de la retina, se alarga para traerla al plano; si cae delante, se acorta. Se gestiona solo.</li>
+        <li><b>Set point sano:</b> un ojo entrenado para ver de lejos y de cerca —el niño que juega en la calle, mira a distancia y recibe horas de luz natural.</li>
+        <li><b>Set point atascado (miopía):</b> el niño en interiores, con poca luz y visión cercana constante. El ojo se entrena solo para ver de cerca, se alarga, y deja de ver de lejos. La miopía es eso: el ojo recalibrado para un mundo distinto, que se quedó fijo.</li>
+        <li><b>Su tipo:</b> clase B. Se reescribe su referencia con la señal adecuada (desenfoque periférico, luz natural).</li>
+      </ul>
+      <p>El ojo muestra los tres elementos del marco en un solo caso reconocible: un agente con meta, un set point que se reescribe, y una clase (B) que define cómo se le regula.</p>
+      <p><em>El ojo enseña la lógica; su regulación (luz al aire libre, lentes de desenfoque periférico, atropina) no usa los imanes de la RB. Su función aquí es el marco, no la técnica. El puente con la herramienta lo tiende el siguiente caso.</em></p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 7 · CUATRO NIVELES -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El razonamiento</p>
+      <h2>Los cuatro niveles del razonamiento</h2>
+      <p>El caso del ojo, extraído como método, da una <strong>plantilla de cuatro niveles</strong> que sirve para razonar cualquier agente del cuerpo. Reemplaza a "la lista de puntos del órgano".</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">LA PLANTILLA DE CUATRO NIVELES</span></div>
+        <svg viewBox="0 0 560 206" role="img" aria-label="Cuatro niveles apilados de razonamiento, del circuito en la base a la inferencia activa en la cima, cada uno apoyado en el anterior, con el ejemplo del ojo por nivel">
+          <defs><marker id="b3b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0F6E56"/></marker></defs>
+          <path d="M26,194 L26,34" fill="none" stroke="#0F6E56" stroke-width="1.4" marker-end="url(#b3b)"/>
+          <text x="18" y="114" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F" transform="rotate(-90 18 114)">cada nivel se apoya en el anterior</text>
+          <rect x="44" y="28" width="300" height="40" rx="9" fill="#F7E9D1" stroke="#BA7517" stroke-width="1.4"/>
+          <circle cx="66" cy="48" r="11" fill="#BA7517"/><text x="66" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="700" fill="#fff">4</text>
+          <text x="86" y="45" font-family="Georgia,serif" font-size="10.5" font-weight="700" fill="#BA7517">Inferencia activa</text>
+          <text x="86" y="58" font-family="system-ui,sans-serif" font-size="8" fill="#8A6510">error de predicción</text>
+          <rect x="44" y="72" width="300" height="40" rx="9" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.4"/>
+          <circle cx="66" cy="92" r="11" fill="#0F6E56"/><text x="66" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="700" fill="#fff">3</text>
+          <text x="86" y="89" font-family="Georgia,serif" font-size="10.5" font-weight="700" fill="#0F6E56">Agencia · Vmem</text>
+          <text x="86" y="102" font-family="system-ui,sans-serif" font-size="8" fill="#4C4A42">sustrato bioeléctrico literal</text>
+          <rect x="44" y="116" width="300" height="40" rx="9" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.4"/>
+          <circle cx="66" cy="136" r="11" fill="#0F6E56"/><text x="66" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="700" fill="#fff">2</text>
+          <text x="86" y="133" font-family="Georgia,serif" font-size="10.5" font-weight="700" fill="#0F6E56">Arquitectura cibernética</text>
+          <text x="86" y="146" font-family="system-ui,sans-serif" font-size="8" fill="#4C4A42">lazo de control · clase B</text>
+          <rect x="44" y="160" width="300" height="40" rx="9" fill="#DCEDE5" stroke="#0F6E56" stroke-width="1.6"/>
+          <circle cx="66" cy="180" r="11" fill="#0F6E56"/><text x="66" y="184" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="700" fill="#fff">1</text>
+          <text x="86" y="177" font-family="Georgia,serif" font-size="10.5" font-weight="700" fill="#0F6E56">Circuito</text>
+          <text x="86" y="190" font-family="system-ui,sans-serif" font-size="8" fill="#4C4A42">nodos moleculares reales</text>
+          <text x="452" y="20" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" letter-spacing=".08em" fill="#8A897F">EL OJO, NIVEL A NIVEL</text>
+          <line x1="360" y1="28" x2="360" y2="200" stroke="#C4E4D8" stroke-width="1"/>
+          <g stroke="#0F6E56" stroke-width="1.2"><line x1="344" y1="48" x2="358" y2="48"/><line x1="344" y1="92" x2="358" y2="92"/><line x1="344" y1="136" x2="358" y2="136"/><line x1="344" y1="180" x2="358" y2="180"/></g>
+          <g fill="#0F6E56"><circle cx="360" cy="48" r="2.4"/><circle cx="360" cy="92" r="2.4"/><circle cx="360" cy="136" r="2.4"/><circle cx="360" cy="180" r="2.4"/></g>
+          <g font-family="system-ui,sans-serif" font-size="9" fill="#25241E">
+            <text x="370" y="51">predice el foco</text>
+            <text x="370" y="95">Vmem retiniano</text>
+            <text x="370" y="139">desenfoque = error ±</text>
+            <text x="370" y="183">retina · EPR · esclera</text>
+          </g>
+        </svg>
+        <figcaption><b>Fig. 2.</b> Cuatro niveles apilados: cada uno se apoya en el de abajo. Del circuito real (base) a la inferencia activa (cima), con el ojo como ejemplo nivel a nivel.</figcaption>
+      </figure>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El razonamiento · continuación</p>
+      <p><b>Nivel 1 — El circuito.</b> Los nodos moleculares y celulares reales con los que el órgano ejecuta su meta, identificados con rigor y fuente. En el ojo: retina → epitelio pigmentario → coroides → esclera, con la dopamina y las células ipRGC como señalizadores de luz.</p>
+      <p><b>Nivel 2 — La arquitectura cibernética.</b> El circuito descrito como un <strong>lazo de control</strong>: variable controlada, set point, señal de error (con su signo) y actuador. Y su clasificación en el eje de persuadibilidad. En el ojo: la variable es el enfoque; el error es el desenfoque (con signo); el actuador es el crecimiento axial; la clase es B.</p>
+      <p><b>Nivel 3 — La agencia y el sustrato bioeléctrico.</b> El agente persigue su meta con fines fijos y medios variables, y guarda o reescribe su estado en un sustrato <strong>bioeléctrico literal</strong>: el potencial de membrana (Vmem), un voltaje transmembrana real. Aquí es donde el campo magnético encuentra su punto de acción (Bloque 2).</p>
+      <p><b>Nivel 4 — La inferencia activa.</b> El porqué último: el síntoma como <strong>error de predicción</strong>. El agente actúa para que la realidad coincida con lo que predice; si su predicción quedó obsoleta, su acción sostiene el problema. Al actualizar la información, la predicción se corrige. (En Módulo 1 basta con introducirlo; se profundiza en los módulos siguientes.)</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 8 · PLANTILLA + NODO LITERAL -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El razonamiento · la plantilla</p>
+      <h3>La plantilla que cada agente llena</h3>
+      <table class="tbl">
+        <thead><tr><th>Nivel</th><th>Pregunta</th><th>Ejemplo (ojo)</th></tr></thead>
+        <tbody>
+          <tr><td>Meta</td><td>¿Qué persigue?</td><td>Emetropía</td></tr>
+          <tr><td>Circuito</td><td>¿Con qué nodos reales?</td><td>Retina–EPR–coroides–esclera</td></tr>
+          <tr><td>Set point</td><td>¿Qué referencia defiende?</td><td>Longitud axial que enfoca</td></tr>
+          <tr><td>Señal de error</td><td>¿Qué desviación lee, con qué signo?</td><td>Desenfoque hiper/miópico</td></tr>
+          <tr><td>Clase (A/B/C/D)</td><td>¿Cómo se le cambia la conducta?</td><td>B — reescribir la señal</td></tr>
+          <tr><td>Nodo bioeléctrico</td><td>¿Qué voltaje/canal literal?</td><td>Vmem retiniano; ipRGC→dopamina</td></tr>
+          <tr><td>Condición que lo atascó</td><td>¿Qué cambió en el entorno?</td><td>Visión cercana + poca luz</td></tr>
+          <tr><td>Regulación</td><td>¿Qué señal lo recalibra?</td><td>Desenfoque periférico, luz</td></tr>
+        </tbody>
+      </table>
+      <h3>Cuándo el nodo bioeléctrico es literal —y cuándo no</h3>
+      <p>No todos los agentes "hablan voltaje" con la misma literalidad. En unos el nodo es <strong>literal y fuerte</strong> (la mitocondria, con su ΔΨm de ~−150 a −180 mV; el macrófago, cuyo Vmem controla su polarización). En otros es <strong>indirecto</strong> (los órganos endocrinos, donde el Vmem regula la secreción). Y en otros <strong>no hay un nodo bioeléctrico literal documentado</strong> —el hígado es el caso: el argumento se sostiene en su circuito molecular (Keap1–Nrf2, fases I/II) y se <strong>declara la ausencia, no se inventa un voltaje</strong>. Cada agente se trabaja en el grado de literalidad que le corresponde: literal, indirecto o ausente.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 9 · EL MACROFAGO -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El caso que conecta con el imán</p>
+      <h2>El macrófago</h2>
+      <p>El ojo enseñó el marco. El macrófago es el primer <strong>agente clínico</strong> donde ese marco se aplica —y donde se cierra el puente con la herramienta de la RB.</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">EL CAMPO FAVORECE LA TRANSICIÓN M1 → M2</span></div>
+        <svg viewBox="0 0 560 232" role="img" aria-label="El macrófago pasa de M1 proinflamatorio y despolarizado a M2 reparador y polarizado; el campo magnético estático impulsa la transición y el Vmem se desplaza hacia la polarización">
+          <defs>
+            <radialGradient id="b3m1" cx="0.5" cy="0.4" r="0.75"><stop offset="0" stop-color="#F7E9D1"/><stop offset="1" stop-color="#E7CFA0"/></radialGradient>
+            <linearGradient id="b3vgrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E7CFA0"/><stop offset="1" stop-color="#0F6E56"/></linearGradient>
+            <marker id="b3c" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0F6E56"/></marker>
+          </defs>
+          <text x="95" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" font-weight="700" fill="#BA7517">M1 · proinflamatorio</text>
+          <g stroke="#BA7517" stroke-width="2" stroke-linecap="round"><line x1="135" y1="100" x2="147" y2="100"/><line x1="123" y1="72" x2="130" y2="63"/><line x1="95" y1="60" x2="95" y2="48"/><line x1="67" y1="72" x2="60" y2="63"/><line x1="55" y1="100" x2="43" y2="100"/><line x1="67" y1="128" x2="60" y2="137"/><line x1="95" y1="140" x2="95" y2="152"/><line x1="123" y1="128" x2="130" y2="137"/></g>
+          <circle cx="95" cy="100" r="40" fill="url(#b3m1)" stroke="#BA7517" stroke-width="2.2"/>
+          <circle cx="95" cy="100" r="9" fill="#BA7517" opacity="0.28"/>
+          <text x="95" y="180" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#8A6510">Vmem despolarizado</text>
+          <text x="465" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" font-weight="700" fill="#0F6E56">M2 · reparador</text>
+          <path d="M416,92 L398,100 L416,108 Z" fill="url(#cellv)" stroke="#0F6E56" stroke-width="2.2"/>
+          <path d="M514,92 L532,100 L514,108 Z" fill="url(#cellv)" stroke="#0F6E56" stroke-width="2.2"/>
+          <ellipse cx="465" cy="100" rx="52" ry="30" fill="url(#cellv)" stroke="#0F6E56" stroke-width="2.2"/>
+          <ellipse cx="465" cy="100" rx="9" ry="7.5" fill="#0F6E56" opacity="0.16"/>
+          <text x="465" y="180" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#0F6E56">Vmem polarizado</text>
+          <text x="277" y="58" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#0F6E56">campo magnético estático</text>
+          <g fill="none" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#b3c)">
+            <path d="M162,80 C240,66 320,66 386,80"/>
+            <path d="M158,100 H388"/>
+            <path d="M162,120 C240,134 320,134 386,120"/>
+          </g>
+          <text x="273" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#0F6E56">campo → Vmem → <tspan fill="#BA7517" font-weight="700">M2 (resolución)</tspan></text>
+          <text x="148" y="204" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#4C4A42">Vmem</text>
+          <path d="M165,188 H395" fill="none" stroke="#0F6E56" stroke-width="1.4" marker-end="url(#b3c)"/>
+          <rect x="155" y="196" width="250" height="12" rx="6" fill="url(#b3vgrad)"/>
+          <circle cx="360" cy="202" r="7" fill="#fff" stroke="#0F6E56" stroke-width="1.6"/>
+          <text x="155" y="222" font-family="system-ui,sans-serif" font-size="8" fill="#8A6510">despolarizado</text>
+          <text x="405" y="222" text-anchor="end" font-family="system-ui,sans-serif" font-size="8" fill="#0F6E56">polarizado</text>
+        </svg>
+        <figcaption><b>Fig. 3.</b> El macrófago M1 (proinflamatorio, despolarizado) pasa a M2 (reparador, polarizado). El campo magnético estático desplaza el Vmem hacia la polarización y favorece la resolución.</figcaption>
+      </figure>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El macrófago · continuación</p>
+      <ul class="blist">
+        <li><b>Meta:</b> distinguir lo propio de lo ajeno, responder de forma proporcional y —el punto clave— <b>resolver</b> cuando la amenaza pasa. La inflamación no está hecha para detenerse: está hecha para <em>resolverse activamente</em>, mediante un programa propio de mediadores pro-resolución (SPMs; Serhan, 2014).</li>
+        <li><b>Set point atascado:</b> el macrófago se queda en fenotipo <b>M1</b> (proinflamatorio) y no hace la transición a <b>M2</b> (reparador). La inflamación crónica es, entonces, <b>resolución que no se activó</b> (Panigrahy, Serhan et al., 2021).</li>
+        <li><b>Circuito y set point:</b> la polarización M1↔M2 la controlan circuitos de retroalimentación entre STAT1 y STAT6; la transición reprograma más de mil genes. Es un lazo de control con estados alternativos —un agente clase B.</li>
+        <li><b>Nodo bioeléctrico literal:</b> el Vmem de membrana, vía canales de potasio y el canal TRPM2, gobierna la polarización del macrófago (Tratado, Cap. 16).</li>
+        <li><b>Regulación con la herramienta:</b> el <b>campo magnético estático favorece la transición hacia M2</b>, por la vía podosoma/Rho/ROCK, e incluso permite temporizar la transición M1→M2 (Huang et al., 2022). Actúa preferentemente sobre los macrófagos, más sensibles al gradiente por su tamaño (Cap. 16).</li>
+      </ul>
+      <p>El macrófago reúne el marco completo y su conexión con el imán, y es el agente del perfil clínico "inflamado".</p>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>El macrófago es el primer agente donde el marco se aplica y conecta con el imán: su Vmem controla la polarización M1/M2, y el campo magnético estático favorece la transición a M2 —la resolución que faltaba.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 10 · REGULAR NO ES CURAR -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">La clínica</p>
+      <h2>Regular no es curar</h2>
+      <p>Con el marco en la mano, la diferencia clave se vuelve nítida. Volviendo al ojo:</p>
+      <ul class="blist">
+        <li>El <b>lente monofocal</b> corrige el síntoma —enfoca la imagen— pero no toca el set point. El ojo sigue calibrado para visión cercana y la miopía sigue progresando. Eso es <b>corregir</b>.</li>
+        <li>Los lentes de <b>desenfoque periférico</b> y la <b>luz natural</b> enseñan al ojo a recalibrarse hacia la visión lejana: reescriben el set point. Eso es <b>regular</b>.</li>
+      </ul>
+      <p>La misma distinción vale para todos los agentes. Suprimir la inflamación (apagar la alarma sin ver por qué suena) corrige; favorecer la resolución M1→M2 y retirar las señales que mantienen el estado (estrés, barrera intestinal dañada) regula. La RB trabaja en el segundo registro: <strong>le da al agente la información bioeléctrica para volver a su meta</strong>.</p>
+      <table class="tbl">
+        <thead><tr><th>Antes (modelo de máquina)</th><th>Ahora (modelo de agente)</th></tr></thead>
+        <tbody>
+          <tr><td>¿Qué enfermedad tiene?</td><td>¿Qué agente perdió su agencia?</td></tr>
+          <tr><td>¿Qué microbio lo causa?</td><td>¿Cuál es su meta y por qué no la cumple?</td></tr>
+          <tr><td>¿Dónde pongo el imán para quitar el síntoma?</td><td>¿Qué set point se atascó, y desde cuándo?</td></tr>
+          <tr><td>¿Qué tratamiento le doy?</td><td>¿Qué información necesita para recalibrarse?</td></tr>
+        </tbody>
+      </table>
+      <p>Razonar así permite diseñar un abordaje para un paciente que nunca se vio en clase: se entiende el principio en lugar de memorizar una lista.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 11 · DONDE ENTRA LA RB -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El enlace con el imán</p>
+      <h2>Dónde entra la Regulación Bioeléctrica</h2>
+      <p>Todo lo anterior —agente, set point, predicción, clase B— sería teoría abstracta si no conectara con la herramienta. Conecta, por un solo enlace: el <strong>Vmem</strong>.</p>
+      <ol class="nlist">
+        <li>Cada agente guarda su set point —su "predicción" de cuál es el estado correcto— en un patrón bioeléctrico <b>literal</b>: el Vmem.</li>
+        <li>La enfermedad crónica es ese patrón <b>atascado</b> en el estado equivocado —la predicción que no se actualizó.</li>
+        <li>La RB modifica el Vmem y los canales iónicos con el <b>campo magnético estático</b> (Bloque 2).</li>
+        <li>Modificar la señal de referencia sin tocar la mecánica es, exactamente, <b>regular un sistema clase B</b>.</li>
+      </ol>
+      <p>El imán no suprime el síntoma ni fuerza un resultado: <strong>envía información por el canal bioeléctrico para que el agente pueda actualizar su predicción</strong> y volver a su meta.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El enlace con el imán · continuación</p>
+      <p>Los hechos que sostienen la cadena:</p>
+      <ul class="blist">
+        <li><b>El caso literal y verificable:</b> el macrófago. Su Vmem controla la polarización M1/M2, y el campo favorece la transición a M2. Ahí "razonar por agente" y "aplicar el imán" son la misma acción.</li>
+        <li><b>La prueba del sustrato reescribible:</b> las planarias de Levin (Bloque 1) —un cambio del Vmem reescribe la forma-meta y persiste sin cambio genético, y se puede volver a actualizar bioeléctricamente.</li>
+        <li><b>La técnica clásica se subordina:</b> el rastreo y el dipolo dejan de ser el punto de partida; primero se razona el agente y luego se aplican dirigidos a sus nodos.</li>
+      </ul>
+      <p><b>El límite del enlace.</b> Es fuerte donde hay nodo bioeléctrico literal (macrófago, mitocondria); donde no lo hay (hígado, Nrf2) se declara, no se inventa un voltaje; y si el campo estático reescribe de forma duradera un set point (frente a modularlo transitoriamente) es todavía frontera de investigación (Cap. 19).</p>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>La línea que une el razonamiento por agente con el imán: <strong>agente → set point → patrón de Vmem → la RB modifica el Vmem = intervención clase B.</strong> El resto del método —el rastreo, el dipolo, la lectura del microambiente— se ordena alrededor de ese enlace.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 12 · MANTENIMIENTO -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">Salud y mantenimiento</p>
+      <h2>No esperar la enfermedad</h2>
+      <p>El marco de agentes no sirve solo para tratar: sirve para <strong>mantener la salud</strong> —y ahí la persona sana también se atiende. Dos marcos científicos lo sostienen:</p>
+      <ul class="blist">
+        <li><b>Salutogénesis (Antonovsky).</b> En vez de "¿qué causa la enfermedad?", "¿qué origina la salud?". La salud es un <strong>continuo</strong>; los estresores son constantes y lo que importa es la capacidad de gestionarlos y volver al equilibrio. La medicina saca del río a quien se ahoga; la salutogénesis pregunta cómo hacer mejor nadadora a la persona y examina el río —el entorno— entero.</li>
+        <li><b>Carga alostática (McEwen &amp; Stellar, 1993).</b> La alostasis es la estabilidad a través del cambio —el organismo ajusta sus set points para anticipar la demanda—; la carga alostática es el <strong>costo acumulado de mantener esos set points bajo perturbación crónica</strong>. La salud es conservar la competencia de volver al set point con bajo costo; la deriva a la enfermedad es atascarse y pagar el costo.</li>
+      </ul>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">Salud y mantenimiento · continuación</p>
+      <h3>Un eje y cinco sistemas</h3>
+      <p>El mantenimiento se ordena en un <strong>eje transversal</strong> —que se atiende primero— y <strong>cinco sistemas</strong>, que son tendencias del organismo, no diagnósticos. Este es solo el panorama; cada sistema, con sus marcadores y su ruta, se desarrolla en los módulos siguientes.</p>
+      <ul class="blist">
+        <li><b>Eje — Carga alostática / alerta sostenida</b> (SNA + eje HPA). El costo a través de todos los sistemas; activación simpática que no baja a recuperación. <b>Se atiende primero.</b></li>
+        <li><b>Sistema 1 — Inflamatorio (no-resolutivo).</b> El fondo encendido sin amenaza que lo justifique; el problema es no resolver (macrófago M1/M2).</li>
+        <li><b>Sistema 2 — Metabólico-energético.</b> Pérdida de flexibilidad para conmutar combustibles (mitocondria + eje insulina).</li>
+        <li><b>Sistema 3 — Biotransformación / carga exposómica.</b> La capacidad de procesar la carga ambiental al límite (hígado, Nrf2). <em>Sin nodo bioeléctrico literal documentado.</em></li>
+        <li><b>Sistema 4 — Redox-envejecimiento.</b> La oxidación de fondo del medio interno con el tiempo; el juego largo.</li>
+        <li><b>Sistema 5 — Barrera / disbiótico (intestinal).</b> La barrera pierde selectividad y la microbiota se desequilibra; alimenta a los sistemas inflamatorio y metabólico.</li>
+      </ul>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>Regular es también mantener la competencia del agente para volver a su set point con bajo costo. La salutogénesis dice <em>por qué</em>; la carga alostática dice <em>cuánto cuesta</em>; los cinco sistemas dicen <em>por dónde</em>.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 13 · PUNTO TRAUMA -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El punto trauma</p>
+      <h2>El marco en un caso clínico</h2>
+      <p>Todo lo anterior converge en un caso clínico reconocible de la RB: el <strong>punto trauma</strong>. Es el cierre del bloque y la puerta a las técnicas.</p>
+      <p><b>El fenómeno.</b> Una zona traumatizada —un golpe, una extracción dental, una cirugía— produce acortamiento de la pierna al colocar sobre ella un imán negativo. Al buscar el polo complementario, con frecuencia aparece sobre la zona de un riñón. Se deja la configuración 20–30 minutos; cuando al retirar el imán ya no hay acortamiento, el proceso se completó.</p>
+      <p><b>Qué es: una isla de despolarización.</b> El trauma rompe membranas y vierte potasio al espacio extracelular ([K⁺] pasa de ~4 a 20–40 mM). Por la ecuación de Goldman, ese K⁺ <strong>despolariza el Vmem</strong> de las células vecinas; la despolarización abre canales de Ca²⁺ y <strong>cierra las gap junctions</strong>, y la zona <strong>se desconecta del colectivo</strong>. Es la isla bioeléctrica del Bloque 2, ahora en la clínica. El pH ácido llega después, como consecuencia.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El punto trauma · continuación</p>
+      <p><b>El punto complementario es un nodo regulador.</b> El riñón aparece porque es el <strong>agente que controla la variable fuera de rango</strong>: regula con precisión el [K⁺] extracelular, no "el pH". El operador no <em>elige</em> ese punto; lo <em>encuentra</em> siguiendo la señal del colectivo —la nivelación de la pierna—, que apunta al nodo capaz de resolver la incoherencia (TAME). Regular el trauma es <strong>reconectar la isla al colectivo</strong>: devolver las condiciones iónicas para que la zona repolarice, reabra sus uniones y vuelva al patrón.</p>
+      <ul class="blist">
+        <li><b>Distante (trauma–riñón):</b> actúa sobre la regulación sistémica del entorno iónico; más lento, más profundo.</li>
+        <li><b>Local (dos polos opuestos sobre la zona):</b> crea un <b>gradiente empinado</b> que bloquea de forma reversible la señal del dolor (Bloque 2); rápido para el dolor.</li>
+      </ul>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">El punto trauma · en imagen</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">EL TRAUMA COMO ISLA DE DESPOLARIZACIÓN</span></div>
+        <svg viewBox="0 0 560 250" role="img" aria-label="La zona del trauma vierte potasio y se despolariza: sus células ámbar cierran sus gap junctions y quedan como isla desconectada del colectivo teal; la señal del colectivo apunta al riñón, el nodo que regula el potasio">
+          <defs>
+            <radialGradient id="b3isla" cx="0.5" cy="0.4" r="0.75"><stop offset="0" stop-color="#F7E9D1"/><stop offset="1" stop-color="#E7CFA0"/></radialGradient>
+            <marker id="b3d" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0F6E56"/></marker>
+          </defs>
+          <rect x="34" y="58" width="176" height="150" rx="56" fill="#0F6E56" opacity="0.06"/>
+          <text x="118" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="700" fill="#0F6E56">colectivo conectado</text>
+          <g stroke="#0F6E56" stroke-width="2.2"><line x1="78" y1="108" x2="128" y2="92"/><line x1="128" y1="92" x2="150" y2="150"/><line x1="78" y1="108" x2="84" y2="172"/><line x1="84" y1="172" x2="150" y2="150"/></g>
+          <g fill="#fff" stroke="#0F6E56" stroke-width="1.3"><rect x="99" y="96" width="8" height="8" rx="2"/><rect x="135" y="117" width="8" height="8" rx="2"/><rect x="107" y="136" width="8" height="8" rx="2"/></g>
+          <g stroke="#0F6E56" stroke-width="2.2" fill="url(#cellv)"><circle cx="78" cy="108" r="22"/><circle cx="128" cy="92" r="22"/><circle cx="150" cy="150" r="22"/><circle cx="84" cy="172" r="22"/></g>
+          <g fill="#0F6E56" opacity="0.16"><circle cx="78" cy="108" r="7"/><circle cx="128" cy="92" r="7"/><circle cx="150" cy="150" r="7"/><circle cx="84" cy="172" r="7"/></g>
+          <text x="296" y="34" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" font-weight="700" fill="#BA7517">[K⁺]↑ · zona del trauma</text>
+          <path d="M296,46 l-8,16 l6,0 l-7,18" fill="none" stroke="#BA7517" stroke-width="2.4" stroke-linejoin="round"/>
+          <g fill="#BA7517"><circle cx="272" cy="80" r="3"/><circle cx="330" cy="84" r="3"/><circle cx="316" cy="66" r="3"/></g>
+          <rect x="214" y="70" width="164" height="150" rx="52" fill="none" stroke="#BA7517" stroke-width="1.6" stroke-dasharray="7 5"/>
+          <g stroke="#BA7517" stroke-width="2.2" fill="url(#b3isla)"><circle cx="262" cy="116" r="22"/><circle cx="322" cy="100" r="22"/><circle cx="316" cy="166" r="22"/></g>
+          <g fill="#BA7517" opacity="0.22"><circle cx="262" cy="116" r="7"/><circle cx="322" cy="100" r="7"/><circle cx="316" cy="166" r="7"/></g>
+          <text x="296" y="206" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A6510">isla despolarizada · desconectada</text>
+          <line x1="150" y1="150" x2="188" y2="138" stroke="#0F6E56" stroke-width="2.2"/>
+          <path d="M208,137 L240,124" stroke="#8A897F" stroke-width="1.4" stroke-dasharray="3 3"/>
+          <rect x="190" y="128" width="18" height="18" rx="3" fill="#F7E9D1" stroke="#BA7517" stroke-width="1.5"/>
+          <g stroke="#C0512B" stroke-width="2.2"><line x1="194" y1="132" x2="204" y2="142"/><line x1="204" y1="132" x2="194" y2="142"/></g>
+          <text x="199" y="164" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" font-weight="700" fill="#C0512B">unión cerrada</text>
+          <line x1="384" y1="130" x2="450" y2="130" stroke="#0F6E56" stroke-width="1.8" marker-end="url(#b3d)"/>
+          <text x="414" y="120" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7.5" fill="#0F6E56">señal del colectivo</text>
+          <text x="494" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" font-weight="700" fill="#0F6E56">riñón · nodo regulador</text>
+          <path d="M506,88 C534,94 538,132 516,154 C500,170 468,166 458,146 C454,138 460,131 467,133 C474,135 476,124 469,120 C458,113 462,96 480,90 C489,86 498,86 506,88 Z" fill="#DCEDE5" stroke="#0F6E56" stroke-width="2.2"/>
+          <text x="496" y="122" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="700" fill="#0F6E56">riñón</text>
+          <text x="496" y="137" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#0F6E56">regula [K⁺]ₑ</text>
+          <g><rect x="272" y="222" width="24" height="15" fill="#0F6E56"/><rect x="296" y="222" width="24" height="15" fill="#BA7517"/><text x="284" y="233" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="700" fill="#fff">N</text><text x="308" y="233" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="700" fill="#fff">S</text></g>
+          <g><rect x="462" y="200" width="24" height="15" fill="#0F6E56"/><rect x="486" y="200" width="24" height="15" fill="#BA7517"/><text x="474" y="211" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="700" fill="#fff">N</text><text x="498" y="211" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="700" fill="#fff">S</text></g>
+        </svg>
+        <figcaption><b>Fig. 4.</b> El punto trauma como isla bioeléctrica: el K⁺ derramado despolariza la zona, cierra sus gap junctions (✕) y la desconecta del colectivo. La señal del colectivo apunta al riñón, el nodo que regula el [K⁺].</figcaption>
+      </figure>
+      <p><em>La isla de despolarización (K⁺ → Goldman → Vmem) es física verificable; el mecanismo exacto de la conexión trauma–riñón está en fase de hipótesis. Los protocolos y el instrumental se trabajan en la parte práctica.</em></p>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>El punto trauma reúne todo el marco en un caso clínico: una <strong>isla despolarizada</strong> (la zona) más un <strong>nodo regulador</strong> (el riñón, que controla el [K⁺] fuera de rango), y el campo que <strong>facilita la reconexión</strong> de la isla al colectivo. De aquí arrancan las técnicas.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 14 · SINTESIS -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">Cierre del bloque</p>
+      <h2>Lo que queda establecido</h2>
+      <ul class="blist">
+        <li>El cuerpo es un conjunto de <strong>agentes</strong> (TAME, Levin): cada uno persigue una <strong>meta</strong> desde un <strong>set point</strong> y tiene una <strong>capacidad de agencia</strong>. La enfermedad no es una avería, es un set point atascado —una predicción que no se actualizó.</li>
+        <li>Los agentes del cuerpo son de <strong>clase B</strong>: se regulan <strong>reescribiendo su set point</strong>, no re-cableándolos ni suprimiendo el síntoma.</li>
+        <li>La plantilla de <strong>cuatro niveles</strong> —circuito, cibernética/clase B, agencia/bioelectricidad, inferencia activa— permite razonar cualquier agente. El <strong>ojo</strong> enseña el marco; el <strong>macrófago</strong> lo aplica a la clínica y conecta con el imán.</li>
+        <li><strong>Regular no es curar:</strong> corregir apaga el síntoma; regular recalibra el set point. La pregunta clínica cambia de "qué enfermedad" a "qué agente perdió agencia y qué necesita para recalibrarse".</li>
+        <li>El marco sirve también para <strong>mantener la salud</strong> (salutogénesis + carga alostática, sobre un eje y cinco sistemas). El <strong>punto trauma</strong> reúne todo el marco en un caso —una isla despolarizada que se reconecta al colectivo— y es la entrada a las técnicas.</li>
+      </ul>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 15 · REFERENCIAS -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque 3</span></div>
+    <div class="body">
+      <p class="kicker">Fuentes</p>
+      <h2>Referencias del bloque</h2>
+      <div class="two refs">
+        <div class="grp">
+          <h4>Agencia biológica y TAME</h4>
+          <p>Levin M. <em>Technological Approach to Mind Everywhere (TAME).</em> Front Syst Neurosci. 2022;16:768201.</p>
+          <p>Levin M. <em>The Computational Boundary of a 'Self'.</em> Front Psychol. 2019.</p>
+          <p>Fields C, Levin M. <em>Competency in Navigating Arbitrary Spaces.</em> Entropy. 2022.</p>
+          <p>Levin M. <em>Cell.</em> 2021;184(8):1971-1989.</p>
+          <h4>Inferencia activa</h4>
+          <p>Barrett LF, Simmons WK. <em>Interoceptive predictions in the brain.</em> Nat Rev Neurosci. 2015;16(7):419-29.</p>
+          <p>Barrett LF. <em>The theory of constructed emotion.</em> Soc Cogn Affect Neurosci. 2017;12(1):1-23.</p>
+          <p>Jungilligens J, Perez DL. <em>Predictive processing and functional neurological disorder.</em> Curr Top Behav Neurosci. 2025;74:279-305.</p>
+        </div>
+        <div class="grp">
+          <h4>Inflamación, resolución y macrófago</h4>
+          <p>Serhan CN. <em>Pro-resolving lipid mediators.</em> Nature. 2014;510(7503):92-101.</p>
+          <p>Panigrahy D, Serhan CN, et al. <em>Resolution of inflammation.</em> Pharmacol Ther. 2021;227:107879.</p>
+          <p>Huang D, et al. <em>Macrophage phenotypic transition by magnetic field.</em> Small. 2022;18(39):e2203680.</p>
+          <p>Tratado de RB, Cap. 16 (Inflamación bioeléctrica).</p>
+          <h4>Mantenimiento y punto trauma</h4>
+          <p>Antonovsky A. <em>Unraveling the Mystery of Health.</em> Jossey-Bass; 1987.</p>
+          <p>McEwen BS, Stellar E. <em>Stress and the individual.</em> Arch Intern Med. 1993;153(18):2093-101.</p>
+          <p>Goldman DE. <em>Potential, impedance, and rectification in membranes.</em> J Gen Physiol. 1943;27(1):37-60.</p>
+          <p>Morris CE, Skalak TC. <em>Static magnetic fields alter arteriolar tone.</em> Bioelectromagnetics. 2005;26(1):1-9.</p>
+        </div>
+      </div>
+    </div>
+    <div class="ft"><span>Instituto Centrobioenergetica · 2026</span><span class="pg"></span></div>
+  </section>
+
+</div>
+</body>
+</html>

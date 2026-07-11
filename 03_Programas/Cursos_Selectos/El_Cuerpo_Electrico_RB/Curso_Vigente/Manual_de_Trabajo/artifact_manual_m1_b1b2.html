@@ -1,0 +1,1138 @@
+<style>
+:root{
+  --paper:#FBF9F2; --ink:#1b1913; --soft:#46433b; --muted:#8b8779; --line:#e4dfd1;
+  --card:#F1EDE2; --figbg:#ffffff; --hair:#e4dfd1; --accent:#1b1913;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#14130d; --ink:#ece7db; --soft:#bcb7a8; --muted:#8d897b; --line:#2c2a21;
+  --card:#1e1c14; --figbg:#f7f5ef; --hair:#2c2a21; --accent:#ece7db;
+}}
+:root[data-theme="light"]{--paper:#FBF9F2;--ink:#1b1913;--soft:#46433b;--muted:#8b8779;--line:#e4dfd1;--card:#F1EDE2;--figbg:#fff;--hair:#e4dfd1;--accent:#1b1913}
+:root[data-theme="dark"]{--paper:#14130d;--ink:#ece7db;--soft:#bcb7a8;--muted:#8d897b;--line:#2c2a21;--card:#1e1c14;--figbg:#f7f5ef;--hair:#2c2a21;--accent:#ece7db}
+
+*{box-sizing:border-box}
+.manual{background:var(--paper);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  -webkit-font-smoothing:antialiased;line-height:1.68;padding:0 24px 120px}
+.manual .wrap{max-width:720px;margin:0 auto}
+
+/* masthead */
+.masthead{max-width:720px;margin:0 auto;padding:54px 0 34px;display:flex;align-items:center;
+  justify-content:space-between;border-bottom:1px solid var(--hair);flex-wrap:wrap;gap:12px}
+.masthead .brand{display:flex;align-items:center;gap:11px;color:var(--ink)}
+.masthead .dip{width:40px;height:22px;color:var(--ink)}
+.masthead .brand b{font-size:15px;letter-spacing:.02em}
+.masthead .brand span{display:block;font-family:system-ui,sans-serif;font-size:10.5px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.masthead .meta{font-family:system-ui,sans-serif;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);text-align:right}
+
+/* portada de bloque */
+.blockhead{max-width:720px;margin:0 auto;padding:88px 0 20px;border-bottom:1px solid var(--hair)}
+.bh-eyebrow{font-family:system-ui,sans-serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:20px}
+.bh-title{font-size:52px;line-height:1.04;letter-spacing:-.015em;margin:0 0 14px;font-weight:700}
+.bh-sub{font-size:20px;font-style:italic;color:var(--soft);margin:0 0 8px;max-width:36ch}
+
+/* tipografía de contenido */
+.manual h2{font-size:27px;line-height:1.2;letter-spacing:-.01em;margin:52px 0 14px;font-weight:700;text-wrap:balance}
+.manual h3{font-size:19px;line-height:1.3;margin:34px 0 8px;font-weight:700;color:var(--ink)}
+.manual p{font-size:18px;margin:0 0 16px;color:var(--soft)}
+.manual .lead{font-size:19.5px;color:var(--ink)}
+.manual strong{color:var(--ink);font-weight:700}
+.manual em{font-style:italic}
+.manual .kicker{font-family:system-ui,sans-serif;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 6px}
+
+/* listas */
+.manual ul.blist,.manual ol.nlist{list-style:none;margin:14px 0 20px;padding:0;display:flex;flex-direction:column;gap:11px}
+.manual ol.nlist{counter-reset:n}
+.manual .blist>li,.manual .nlist>li{position:relative;padding-left:34px;font-size:18px;color:var(--soft)}
+.manual .blist>li::before{content:"";position:absolute;left:6px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--ink)}
+.manual .nlist>li::before{counter-increment:n;content:counter(n);position:absolute;left:0;top:1px;width:23px;height:23px;
+  border:1px solid var(--ink);border-radius:50%;font-family:system-ui,sans-serif;font-size:11px;font-weight:700;
+  color:var(--ink);display:flex;align-items:center;justify-content:center}
+.manual .blist>li b,.manual .nlist>li b{color:var(--ink)}
+
+/* idea / chain */
+.manual .idea{background:var(--card);border-radius:10px;padding:22px 26px;margin:26px 0}
+.manual .idea .lab{display:flex;align-items:center;gap:9px;font-family:system-ui,sans-serif;font-size:10.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:9px}
+.manual .idea .lab .dot{width:6px;height:6px;border-radius:50%;background:var(--ink)}
+.manual .idea p{margin:0;font-style:italic;font-size:18px;color:var(--ink)}
+.manual .chain{border-left:2px solid var(--ink);padding:4px 0 4px 20px;margin:22px 0;font-size:18px;color:var(--soft)}
+.manual .chain b{color:var(--ink)}
+
+/* figuras */
+.manual figure.fig{margin:34px 0;background:var(--figbg);border:1px solid var(--hair);border-radius:12px;
+  padding:22px 22px 18px;overflow:hidden}
+.manual .fig .fighd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.manual .fig .figt{font-family:system-ui,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8a897f;font-weight:700}
+.manual .fig .leg{font-family:system-ui,sans-serif;font-size:11px;color:#4c4a42;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.manual .fig .leg i{display:inline-block;width:13px;height:3px;border-radius:2px;filter:grayscale(1)}
+.manual .fig svg{width:100%;height:auto;display:block;filter:grayscale(1)}
+.manual figcaption{font-family:system-ui,sans-serif;font-size:13px;line-height:1.5;color:#6f6d64;margin-top:14px}
+.manual figcaption b{color:#25241e}
+.manual .figcap{font-family:system-ui,sans-serif;font-size:13px;color:#6f6d64;margin-top:12px}
+
+/* tabla */
+.manual table.tbl{width:100%;border-collapse:collapse;margin:22px 0;font-family:system-ui,sans-serif}
+.manual table.tbl th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+  border-bottom:1.5px solid var(--ink);padding:9px 12px;font-weight:700}
+.manual table.tbl td{border-bottom:1px solid var(--hair);padding:11px 12px;font-size:14.5px;color:var(--soft);vertical-align:top}
+.manual table.tbl td:first-child{font-weight:700;color:var(--ink)}
+
+/* referencias / glosario */
+.manual .two{column-count:2;column-gap:34px}
+.manual .two>*{break-inside:avoid}
+.manual dl.gl div{font-size:15px;margin-bottom:9px;padding-bottom:9px;border-bottom:1px solid var(--hair);color:var(--soft)}
+.manual dl.gl dt{display:inline;font-weight:700;color:var(--ink)}
+.manual dl.gl dd{display:inline;margin:0}
+.manual dl.gl dd::before{content:" — "}
+.manual .refs{font-size:14px;color:var(--soft);line-height:1.55}
+.manual .refs h4{font-family:system-ui,sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin:18px 0 6px;font-weight:700}
+.manual .refs p{font-size:14px;margin:0 0 6px}
+.manual .refs .grp{margin-bottom:16px}
+
+.manual .colophon{max-width:720px;margin:80px auto 0;padding-top:22px;border-top:1px solid var(--hair);
+  font-family:system-ui,sans-serif;font-size:12px;letter-spacing:.04em;color:var(--muted);text-align:center}
+
+@media (max-width:560px){
+  .bh-title{font-size:38px}.manual h2{font-size:23px}.manual .two{column-count:1}
+  .manual{padding:0 18px 90px}
+}
+</style>
+<div class="manual">
+  <div class="masthead">
+    <div class="brand"><svg class="dip" viewBox="0 0 44 24" aria-hidden="true"><circle cx="8" cy="12" r="6" fill="currentColor"/><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"/><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.35"/></svg><div><b>Regulación Bioeléctrica</b><span>El Cuerpo Eléctrico · Manual</span></div></div>
+    <div class="meta">Módulo 1 · Bloques 1 y 2<br>Dr. Miguel Ojeda Rios</div>
+  </div>
+
+  <header class="blockhead">
+    <div class="bh-eyebrow">Módulo 1 · Bloque 1</div>
+    <h1 class="bh-title">El Cuerpo Eléctrico</h1>
+    <p class="bh-sub">Por qué el cuerpo es un sistema eléctrico.</p>
+  </header>
+  <div class="wrap">
+
+      <p class="kicker">1 · Encuadre</p>
+      <h2>Qué es la Regulación Bioeléctrica</h2>
+      <p>La Regulación Bioeléctrica (RB) es un método de evaluación y regulación del estado bioeléctrico de los tejidos del cuerpo humano mediante <strong>campos magnéticos estáticos de intensidad moderada (0.1–0.5 T)</strong>. El método tiene dos momentos:</p>
+      <ul class="blist">
+        <li><b>El rastreo</b> produce un mapa individualizado del estado bioeléctrico del microambiente tisular del paciente.</li>
+        <li><b>La aplicación</b> facilita el retorno del tejido a su rango homeostático.</li>
+      </ul>
+      <p>El resultado es un <strong>perfil bioeléctrico del microambiente tisular</strong>: una lectura biofísica del estado de los tejidos, fundamentada en tres apoyos que desarrollan este bloque y el siguiente —la densidad de carga de la MEC, el potencial de membrana como señal instructiva, y la interacción de los campos magnéticos estáticos con los canales iónicos.</p>
+      <h3>El perfil bioeléctrico como lectura</h3>
+      <p>El perfil no es una lista de puntos activos, sino un patrón que se interpreta por su forma: la <strong>densidad</strong> (dónde se concentran los nodos), la <strong>simetría</strong> (hallazgos bilaterales frente a unilaterales), la <strong>vecindad anatómica</strong> (nodos que comparten territorio de drenaje o inervación) y la <strong>correlación con la historia clínica</strong>. Dos personas con el mismo cuadro pueden presentar perfiles distintos, porque cada perfil describe el microambiente de ese paciente en ese momento. El desarrollo completo corresponde al Módulo 2; aquí basta fijar la idea: <strong>el rastreo lee un estado, y ese estado tiene estructura.</strong></p>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>La RB lee y regula el estado del microambiente tisular. El rastreo identifica el estado bioeléctrico de una zona; la aplicación facilita su recalibración hacia el rango propio del tejido. La denominación de cada punto es anatómica.</p></div>
+    
+
+      <p class="kicker">1 · El linaje del método</p>
+      <h2>De dónde viene la RB</h2>
+      <p>La RB desarrolla una tradición de investigación que va de la biología del cuerpo eléctrico hasta la ciencia contemporánea de la bioelectricidad. Conocer este linaje da al terapeuta el fundamento para explicar de dónde viene cada elemento de su práctica.</p>
+      <h3>Robert O. Becker (1923–2008)</h3>
+      <p>Cirujano ortopédico e investigador en SUNY Upstate. Documentó con evidencia publicada que el cuerpo posee un sistema bioeléctrico endógeno de corriente directa, superpuesto al sistema nervioso clásico. En <em>The Body Electric</em> (1985) sostiene cuatro principios precursores de la RB:</p>
+      <ol class="nlist">
+        <li><b>El cuerpo mantiene un mapa eléctrico propio.</b> El centro es positivo y las extremidades negativas, con un potencial de reposo de ~-10 mV en las extremidades.</li>
+        <li><b>Los gradientes de voltaje instruyen la regeneración.</b> Tras amputar una extremidad, el patrón de voltaje del muñón predice el desenlace: en la salamandra sube a +20 mV (corriente de lesión) y baja a −30 mV, y regenera; en la rana solo vuelve al reposo, y cicatriza (ver fig. 1).</li>
+        <li><b>La polaridad eléctrica orienta a los microorganismos.</b> La plata con voltaje positivo frena las bacterias sin perturbar el hueso; con voltaje negativo estimula la regeneración ósea.</li>
+        <li><b>La piezoelectricidad del hueso</b> —el hueso genera corriente al recibir carga mecánica— dio lugar a la estimulación eléctrica para fracturas no consolidadas, hoy procedimiento ortopédico estándar aprobado por la FDA.</li>
+      </ol>
+    
+
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Corriente de lesión (Becker)</span>
+          <span class="leg"><i style="background:#0F6E56"></i>salamandra · regenera&nbsp;&nbsp;<i style="background:#C0512B"></i>rana · cicatriza</span></div>
+        <svg viewBox="0 0 660 272" role="img" aria-label="Voltaje del muñón en salamandra y rana tras amputación">
+          <line x1="34" y1="150" x2="640" y2="150" stroke="#CBC8BE" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="30" y="146" text-anchor="end" font-family="system-ui,sans-serif" font-size="10" fill="#8A897F">0 mV</text>
+          <line x1="44" y1="240" x2="640" y2="240" stroke="#E7E4DA" stroke-width="1"/>
+          <path d="M44,170 L160,170 L280,110 L430,140 L530,154 L628,170" fill="none" stroke="#C0512B" stroke-width="3" stroke-dasharray="7 5" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M44,170 L160,170 L280,110 L430,140 L530,210 L628,210" fill="none" stroke="#0F6E56" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="44" cy="170" r="4.4" fill="#0F6E56"/><circle cx="160" cy="170" r="4.4" fill="#0F6E56"/><circle cx="280" cy="110" r="4.4" fill="#0F6E56"/><circle cx="430" cy="140" r="4.4" fill="#0F6E56"/><circle cx="530" cy="210" r="4.4" fill="#0F6E56"/><circle cx="628" cy="210" r="4.4" fill="#0F6E56"/>
+          <circle cx="530" cy="154" r="4.4" fill="#C0512B"/><circle cx="628" cy="170" r="4.4" fill="#C0512B"/>
+          <text x="280" y="99" text-anchor="middle" font-family="Georgia,serif" font-size="11.5" fill="#25241E">+20 mV · corriente de lesión</text>
+          <text x="636" y="228" text-anchor="end" font-family="Georgia,serif" font-size="11.5" fill="#0F6E56">−30 mV · regenera</text>
+          <text x="636" y="182" text-anchor="end" font-family="Georgia,serif" font-size="11.5" fill="#C0512B">−10 mV · cicatriza</text>
+          <g font-family="system-ui,sans-serif" font-size="10.5" fill="#8A897F">
+            <text x="44" y="258" text-anchor="start">Reposo</text><text x="160" y="258" text-anchor="middle">Corte</text>
+            <text x="280" y="258" text-anchor="middle">1 día</text><text x="430" y="258" text-anchor="middle">1 sem</text>
+            <text x="530" y="258" text-anchor="middle">2 sem</text><text x="628" y="258" text-anchor="end">4 sem</text>
+          </g>
+        </svg>
+        <figcaption><b>Fig. 1.</b> El patrón de voltaje del muñón predice el desenlace: la salamandra regenera, la rana cicatriza (Becker, 1985).</figcaption>
+      </figure>
+      <p>Becker anticipó con instrumentos analógicos lo que Levin verificaría décadas después con técnicas moleculares.</p>
+      <h3>Richard Broeringmeyer</h3>
+      <p>Desarrolló el biomagnetismo clínico sobre una base biofísica: la relación entre campos magnéticos, concentración de iones de hidrógeno (pH) y función orgánica. Identificaba las cargas de disfunciones iónicas (H⁺ y OH⁻) y las traducía en polos biomagnéticos. Sus aportaciones: identificó las primeras <strong>150 configuraciones</strong> de puntos anatómicos; estableció el reflejo neuromuscular del <strong>iliopsoas</strong> como el observable central de la lectura; y desarrolló la teoría inicial sobre principios enteramente electroquímicos.</p>
+    
+
+      <h3>Isaac Goiz Durán (1941–2020)</h3>
+      <p>Médico mexicano que desde 1988 hizo la sistematización clínica más extensa. La observación fundacional: al colocar un imán sobre el timo notó que una pierna se acortaba; buscó el punto complementario con un segundo imán de polaridad opuesta hasta nivelar las piernas, y mantuvo ambos ~15 minutos. De ahí un protocolo: <strong>la búsqueda sistemática de configuraciones donde la respuesta neuromuscular indica una relación bioeléctrica entre dos zonas.</strong> Su contribución:</p>
+      <ul class="blist">
+        <li>Un catálogo de más de <b>350 configuraciones</b> dipolares, ampliado con los años.</li>
+        <li>Una clasificación por tipos (regulares, disfuncionales, especiales, reservorios, asociados, temporales, personales, complejos).</li>
+        <li>Un protocolo de rastreo estandarizado, enseñable y replicable, y las 26 Reglas de Oro.</li>
+        <li>La formación de generaciones de terapeutas en América Latina y Europa.</li>
+      </ul>
+      <h3>Regulación Bioeléctrica — Dr. Miguel Ojeda Rios (2026)</h3>
+      <p>Conserva íntegramente la técnica, el catálogo y las correlaciones clínicas como referencia estadística, y actualiza el marco que las explica hacia la biofísica contemporánea. Tres decisiones: <b>conservar</b> la técnica; <b>actualizar</b> el marco (MEC, Vmem, interacción campo–tejido); <b>abrir</b> la práctica a la investigación. Cada dipolo se interpreta como una lectura del estado bioeléctrico del microambiente; su denominación es anatómica; la referencia histórica se conserva como dato. El marco normativo de Goiz —sus 26 Reglas de Oro— se sustituye por principios fundamentados en biofísica verificable.</p>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>La técnica se conserva; el marco que la explica se actualiza. El eje del curso: aprender a razonar sobre el microambiente bioeléctrico sin dejar de usar la técnica clásica del biomagnetismo.</p></div>
+    
+
+      <p class="kicker">2 · Primer pilar · la matriz extracelular</p>
+      <h2>La matriz como sistema electroquímico</h2>
+      <p>La matriz extracelular (MEC) es un medio electroquímicamente activo, con propiedades eléctricas medibles y determinantes para el comportamiento celular. Es el microambiente tisular sobre el cual opera la RB.</p>
+      <h3>2.1 · La densidad de carga fija (FCD)</h3>
+      <p>Los glicosaminoglicanos (GAGs) de la MEC —condroitín sulfato, heparán sulfato, ácido hialurónico— portan grupos carboxilo (—COO⁻) y sulfato (—OSO₃⁻) ionizados a pH fisiológico. El conjunto genera una carga negativa distribuida en el espacio extracelular: la <strong>densidad de carga fija (FCD)</strong>.</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">La matriz extracelular · proteoglicano y carga fija</span></div>
+        <svg viewBox="0 0 600 300" role="img" aria-label="Matriz extracelular: proteoglicano con carga negativa fija que atrae cationes y agua, entre dos células">
+          <rect x="98" y="30" width="404" height="238" rx="10" fill="#F6FAF8"/>
+          <text x="300" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" letter-spacing="1.5" fill="#8A897F">ESPACIO EXTRACELULAR</text>
+          <rect x="12" y="30" width="86" height="238" rx="12" fill="#EAF4EF" stroke="#0F6E56" stroke-width="3"/>
+          <rect x="502" y="30" width="86" height="238" rx="12" fill="#EAF4EF" stroke="#0F6E56" stroke-width="3"/>
+          <line x1="98" y1="34" x2="98" y2="264" stroke="#0F6E56" stroke-width="1" opacity="0.45"/>
+          <line x1="502" y1="34" x2="502" y2="264" stroke="#0F6E56" stroke-width="1" opacity="0.45"/>
+          <text x="55" y="146" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#25241E">célula</text>
+          <text x="545" y="146" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#25241E">célula</text>
+          <text x="55" y="162" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">membrana</text>
+          <text x="545" y="162" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">membrana</text>
+          <rect x="126" y="236" width="352" height="15" rx="7.5" fill="#EFE7D6" stroke="#CFC6B0"/>
+          <g stroke="#CFC6B0" stroke-width="1"><line x1="156" y1="236" x2="156" y2="251"/><line x1="186" y1="236" x2="186" y2="251"/><line x1="216" y1="236" x2="216" y2="251"/><line x1="246" y1="236" x2="246" y2="251"/><line x1="276" y1="236" x2="276" y2="251"/><line x1="306" y1="236" x2="306" y2="251"/><line x1="336" y1="236" x2="336" y2="251"/><line x1="366" y1="236" x2="366" y2="251"/><line x1="396" y1="236" x2="396" y2="251"/><line x1="426" y1="236" x2="426" y2="251"/><line x1="456" y1="236" x2="456" y2="251"/></g>
+          <circle cx="300" cy="236" r="2.4" fill="#B4B1A6"/><line x1="300" y1="234" x2="300" y2="214" stroke="#B4B1A6" stroke-width="0.8"/>
+          <text x="300" y="208" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#8A897F">fibra de colágeno</text>
+          <path d="M126,150 Q186,132 246,150 T366,150 T486,150" fill="none" stroke="#0F6E56" stroke-width="3.4" stroke-linecap="round"/>
+          <g stroke="#0F6E56" stroke-width="1.6">
+            <line x1="166" y1="142" x2="158" y2="114"/><line x1="206" y1="141" x2="212" y2="112"/><line x1="306" y1="142" x2="298" y2="114"/><line x1="346" y1="141" x2="352" y2="112"/><line x1="436" y1="146" x2="430" y2="118"/>
+            <line x1="186" y1="150" x2="182" y2="180"/><line x1="266" y1="150" x2="262" y2="180"/><line x1="326" y1="150" x2="332" y2="182"/><line x1="416" y1="150" x2="410" y2="180"/><line x1="456" y1="150" x2="462" y2="180"/>
+          </g>
+          <g fill="#0F6E56"><circle cx="158" cy="110" r="6.5"/><circle cx="213" cy="108" r="6.5"/><circle cx="297" cy="110" r="6.5"/><circle cx="353" cy="108" r="6.5"/><circle cx="429" cy="114" r="6.5"/><circle cx="181" cy="184" r="6.5"/><circle cx="261" cy="184" r="6.5"/><circle cx="333" cy="186" r="6.5"/><circle cx="409" cy="184" r="6.5"/><circle cx="463" cy="184" r="6.5"/></g>
+          <g fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle"><text x="158" y="114">–</text><text x="213" y="112">–</text><text x="297" y="114">–</text><text x="353" y="112">–</text><text x="429" y="118">–</text><text x="181" y="188">–</text><text x="261" y="188">–</text><text x="333" y="190">–</text><text x="409" y="188">–</text><text x="463" y="188">–</text></g>
+          <g><circle cx="236" cy="120" r="11" fill="#BA7517"/><circle cx="386" cy="126" r="11" fill="#BA7517"/><circle cx="276" cy="200" r="11" fill="#BA7517"/></g>
+          <g fill="#fff" font-family="system-ui,sans-serif" font-size="8.5" font-weight="700" text-anchor="middle"><text x="236" y="123">Na⁺</text><text x="386" y="129">K⁺</text><text x="276" y="203">Ca²⁺</text></g>
+          <g fill="#BFD8CE"><circle cx="216" cy="168" r="3.4"/><circle cx="336" cy="120" r="3.4"/><circle cx="360" cy="196" r="3.4"/><circle cx="446" cy="160" r="3.4"/></g>
+          <circle cx="246" cy="150" r="2.6" fill="#0F6E56"/><line x1="246" y1="150" x2="246" y2="58" stroke="#B4B1A6" stroke-width="0.8"/>
+          <text x="246" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E"><tspan fill="#0F6E56" font-weight="700">proteoglicano</tspan> — GAG con carga fija (−)</text>
+          <line x1="386" y1="126" x2="440" y2="74" stroke="#B4B1A6" stroke-width="0.8"/>
+          <text x="470" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E"><tspan fill="#BA7517" font-weight="700">cationes (+)</tspan> y agua</text>
+        </svg>
+        <figcaption><b>Fig. 2.</b> El proteoglicano de la matriz porta carga negativa fija (los GAGs). Esa carga atrae cationes (Na⁺, K⁺, Ca²⁺) y agua, y mantiene el tejido hidratado.</figcaption>
+      </figure>
+    
+
+      <p>Esta carga confiere a la MEC su capacidad de retener agua, resistir compresión, regular la distribución iónica y generar un potencial eléctrico dentro del tejido. Es un parámetro dinámico y medible:</p>
+      <table class="tbl">
+        <thead><tr><th>Tejido</th><th>FCD documentada</th><th>Técnica</th></tr></thead>
+        <tbody>
+          <tr><td>Cartílago articular</td><td>-0.19 a -0.35 M</td><td>RMN de ²³Na (Lesperance, 1992)</td></tr>
+          <tr><td>Disco intervertebral (núcleo)</td><td>0.19 mEq/g</td><td>Conductividad (Jackson, 2009)</td></tr>
+          <tr><td>Disco cervical (placa terminal)</td><td>0.124 mEq/g</td><td>Biomecánica (Buchweitz, 2025)</td></tr>
+          <tr><td>Redes perineuronales (cerebro)</td><td>0.4–0.5 M</td><td>Microsonda PIXE (Morawski, 2015)</td></tr>
+        </tbody>
+      </table>
+      <p>La FCD funciona además como <strong>marcador temprano de integridad tisular</strong>: su pérdida —por depleción de GAGs— es detectable antes de que aparezcan signos clínicos por otros métodos (Bansal, 2010). En las redes perineuronales, la carga negativa densa actúa como un "escudo aniónico" que protege a las neuronas de especies tóxicas del estrés oxidativo (Morawski, 2015).</p>
+    
+
+      <h3>2.2 · El potencial de Donnan</h3>
+      <p>La FCD negativa genera un potencial eléctrico de Donnan (Φ_D) dentro del tejido, formalizado por la ecuación de Gibbs-Donnan a partir de la electroneutralidad. De él dependen cuatro propiedades del microambiente:</p>
+      <ol class="nlist">
+        <li><b>Distribución iónica.</b> Los cationes (Na⁺, K⁺, Ca²⁺) se concentran dentro del tejido; los aniones (Cl⁻) se excluyen. El gradiente lo mantiene la MEC, sin gasto energético celular.</li>
+        <li><b>Presión osmótica de Donnan.</b> Determina la hidratación de la matriz. Al bajar la FCD, baja la presión osmótica, el tejido pierde agua y cambian sus propiedades mecánicas.</li>
+        <li><b>Potenciales electrocinéticos.</b> El flujo de fluido a través del tejido cargado genera pequeños voltajes de flujo (potenciales de streaming), indicadores medibles del estado del tejido.</li>
+        <li><b>pH local.</b> El potencial de Donnan establece un pH dentro del tejido que puede diferir del pH de la sangre que lo perfunde.</li>
+      </ol>
+    
+
+      <figure class="fig">
+        <div class="fighd"><span class="figt">El potencial de Donnan</span></div>
+        <svg viewBox="0 0 600 290" role="img" aria-label="La carga fija concentra cationes, excluye el cloruro y genera un voltaje interno de Donnan">
+          <rect x="56" y="42" width="384" height="206" rx="12" fill="#F6FAF8" stroke="#0F6E56" stroke-width="2.4"/>
+          <text x="248" y="34" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" letter-spacing="1.5" fill="#8A897F">TEJIDO CARGADO (MATRIZ) · membrana</text>
+          <g fill="none" stroke="#0F6E56" stroke-width="1.6" opacity="0.9"><path d="M78,92 Q168,78 258,92 T420,92"/><path d="M78,150 Q168,136 258,150 T420,150"/><path d="M78,208 Q168,194 258,208 T420,208"/></g>
+          <g fill="#0F6E56"><circle cx="128" cy="88" r="6"/><circle cx="248" cy="96" r="6"/><circle cx="360" cy="88" r="6"/><circle cx="128" cy="146" r="6"/><circle cx="248" cy="154" r="6"/><circle cx="360" cy="146" r="6"/><circle cx="128" cy="204" r="6"/><circle cx="248" cy="212" r="6"/><circle cx="360" cy="204" r="6"/></g>
+          <g fill="#fff" font-family="system-ui,sans-serif" font-size="9" font-weight="700" text-anchor="middle"><text x="128" y="91">–</text><text x="248" y="99">–</text><text x="360" y="91">–</text><text x="128" y="149">–</text><text x="248" y="157">–</text><text x="360" y="149">–</text><text x="128" y="207">–</text><text x="248" y="215">–</text><text x="360" y="207">–</text></g>
+          <g><circle cx="104" cy="118" r="9" fill="#BA7517"/><circle cx="196" cy="122" r="9" fill="#BA7517"/><circle cx="300" cy="116" r="9" fill="#BA7517"/><circle cx="168" cy="176" r="9" fill="#BA7517"/><circle cx="308" cy="180" r="9" fill="#BA7517"/><circle cx="232" cy="66" r="9" fill="#BA7517"/></g>
+          <g fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="700" text-anchor="middle"><text x="104" y="121">+</text><text x="196" y="125">+</text><text x="300" y="119">+</text><text x="168" y="179">+</text><text x="308" y="183">+</text><text x="232" y="69">+</text></g>
+          <text x="248" y="240" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E"><tspan fill="#BA7517" font-weight="700">cationes concentrados</tspan> · agua retenida</text>
+          <g fill="#EDEBE3" stroke="#B4B1A6" stroke-width="1"><circle cx="474" cy="94" r="11"/><circle cx="502" cy="146" r="11"/><circle cx="474" cy="198" r="11"/></g>
+          <g fill="#8A897F" font-family="system-ui,sans-serif" font-size="8.5" font-weight="700" text-anchor="middle"><text x="474" y="97">Cl⁻</text><text x="502" y="149">Cl⁻</text><text x="474" y="201">Cl⁻</text></g>
+          <text x="488" y="224" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E">Cl⁻ excluido</text>
+          <defs><linearGradient id="vg2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#0F6E56"/><stop offset="1" stop-color="#BA7517"/></linearGradient></defs>
+          <rect x="556" y="58" width="20" height="176" rx="5" fill="url(#vg2)"/>
+          <text x="566" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#8A897F">Φ_D</text>
+          <text x="566" y="248" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">voltaje</text>
+          <text x="566" y="258" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">interno</text>
+        </svg>
+        <figcaption><b>Fig. 3.</b> La carga fija concentra cationes dentro, excluye el Cl⁻ y retiene agua; de esa diferencia surge un voltaje interno (Donnan), sin gasto de energía.</figcaption>
+      </figure>
+      <h3>2.3 · El pH y la carga de la matriz</h3>
+      <p>En la matriz, el pH gobierna la carga. Al acidificarse el microambiente, los grupos carboxilo y sulfato de los GAGs se protonan y ceden su carga negativa; la FCD disminuye, el potencial de Donnan se modifica, la matriz se deshidrata y cambia su capacidad de amortiguación (Lesperance, 1992). La acidificación se amplifica a través de las propiedades de la propia matriz.</p>
+      <p>Alfred Pischinger describió esta unidad funcional —MEC, fibroblastos, colágeno, fibras nerviosas, capilares e inmunidad: el "espacio de Pischinger"— como el sistema de regulación básica del organismo. Ulm y Weiss (2014) lo verificaron histoquímicamente: los proteoglicanos actúan como intercambiadores iónicos y tampones de protones en todo el cuerpo, y el <strong>pH es el parámetro de control primario</strong> de la homeostasis entre la MEC y la célula.</p>
+    
+
+      <h2>2.4 · La cascada de deterioro del microambiente</h2>
+      <p>Cuando la carga ácida supera la capacidad de eliminación de los órganos excretores, el mesénquima sigue una secuencia predecible (Cidón Madrigal, 2003, sobre el marco de Pischinger):</p>
+      <ol class="nlist">
+        <li><b>Tamponamiento.</b> Cerca de un tercio de las proteínas del cuerpo reside en el mesénquima; estas tamponan los ácidos que no se eliminan.</li>
+        <li><b>Almacenamiento.</b> El exceso se acumula como acidosis latente y compensada —la sangre conserva sus propios sistemas tampón, de modo que sus valores permanecen en rango.</li>
+        <li><b>Desplazamiento electrolítico.</b> El tejido cede K⁺ y capta Na⁺/H⁺, con acidosis intracelular. El suero puede mostrar potasio normal mientras el tejido está depletado ("normokaliemia con deficiencia tisular"). La deficiencia de Mg²⁺ acompaña a la de K⁺.</li>
+        <li><b>Movilización mineral.</b> Agotada la capacidad del mesénquima, el organismo recurre a cationes del esqueleto.</li>
+        <li><b>Paradoja sangre-mesénquima.</b> La acidosis del mesénquima se acompaña de sangre venosa alcalina y orina ácida. Un pH sanguíneo alto puede acompañar a una acidosis tisular compensada.</li>
+      </ol>
+      <p>Esta cascada es coherente con la biofísica contemporánea: los mismos protones que acidifican el mesénquima protonan los GAGs y reducen la FCD; la inversión del gradiente catiónico corresponde a la alteración del equilibrio de Gibbs-Donnan cuando la carga fija disminuye.</p>
+    
+
+      <p class="kicker">2 · Primer pilar · la cascada en imagen</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">La cascada de deterioro · 5 pasos</span></div>
+        <svg viewBox="0 0 560 400" role="img" aria-label="Cascada de acidificación del microambiente en cinco pasos">
+          <defs><linearGradient id="casc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0F6E56"/><stop offset="1" stop-color="#BA7517"/></linearGradient></defs>
+          <text x="548" y="16" text-anchor="end" font-family="system-ui,sans-serif" font-size="10" letter-spacing="1.5" fill="#8A897F">CARGA ÁCIDA ↑</text>
+          <line x1="40" y1="55" x2="40" y2="359" stroke="url(#casc)" stroke-width="4"/>
+          <rect x="40" y="24" width="500" height="62" rx="12" fill="#EAF4EF"/>
+          <circle cx="40" cy="55" r="18" fill="#0F6E56"/><text x="40" y="61" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#fff">1</text>
+          <text x="76" y="50" font-family="Georgia,serif" font-size="15.5" font-weight="700" fill="#25241E">Tamponamiento</text>
+          <text x="76" y="71" font-family="system-ui,sans-serif" font-size="11.5" fill="#4C4A42">Las proteínas del mesénquima amortiguan el ácido.</text>
+          <rect x="40" y="100" width="500" height="62" rx="12" fill="#EDF1E6"/>
+          <circle cx="40" cy="131" r="18" fill="#3F7A43"/><text x="40" y="137" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#fff">2</text>
+          <text x="76" y="126" font-family="Georgia,serif" font-size="15.5" font-weight="700" fill="#25241E">Almacenamiento</text>
+          <text x="76" y="147" font-family="system-ui,sans-serif" font-size="11.5" fill="#4C4A42">Acidez latente y compensada; la sangre sigue en rango.</text>
+          <rect x="40" y="176" width="500" height="62" rx="12" fill="#F1EFE2"/>
+          <circle cx="40" cy="207" r="18" fill="#6E7E30"/><text x="40" y="213" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#fff">3</text>
+          <text x="76" y="202" font-family="Georgia,serif" font-size="15.5" font-weight="700" fill="#25241E">Desplazamiento electrolítico</text>
+          <text x="76" y="223" font-family="system-ui,sans-serif" font-size="11.5" fill="#4C4A42">El tejido cede K⁺ y capta Na⁺/H⁺.</text>
+          <rect x="40" y="252" width="500" height="62" rx="12" fill="#F5EEDD"/>
+          <circle cx="40" cy="283" r="18" fill="#9A7B22"/><text x="40" y="289" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#fff">4</text>
+          <text x="76" y="278" font-family="Georgia,serif" font-size="15.5" font-weight="700" fill="#25241E">Movilización mineral</text>
+          <text x="76" y="299" font-family="system-ui,sans-serif" font-size="11.5" fill="#4C4A42">El organismo saca cationes del esqueleto.</text>
+          <rect x="40" y="328" width="500" height="62" rx="12" fill="#F7EAD3"/>
+          <circle cx="40" cy="359" r="18" fill="#BA7517"/><text x="40" y="365" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#fff">5</text>
+          <text x="76" y="354" font-family="Georgia,serif" font-size="15.5" font-weight="700" fill="#25241E">Paradoja sangre–mesénquima</text>
+          <text x="76" y="375" font-family="system-ui,sans-serif" font-size="11.5" fill="#4C4A42">Sangre venosa alcalina y orina ácida.</text>
+        </svg>
+        <figcaption><b>Fig. 4.</b> El deterioro del microambiente sigue un orden predecible: la carga ácida asciende paso a paso mientras la sangre puede permanecer en rango.</figcaption>
+      </figure>
+    
+
+      <h2>2.5 · La Bioelectrónica de Vincent</h2>
+      <p>Louis-Claude Vincent (1906–1988) propuso un marco cuantitativo para evaluar el estado del microambiente con tres parámetros medidos en sangre, saliva y orina:</p>
+      <ul class="blist">
+        <li><b>pH</b> (potencial iónico) — estado ácido-base; concentración de protones.</li>
+        <li><b>rH₂</b> (potencial electrónico) — estado de oxidación-reducción; se calcula como rH₂ = E/30 + 2pH y evalúa el redox con independencia del pH.</li>
+        <li><b>Resistividad (ρ)</b> — concentración de sales minerales (ohm·cm); a mayor resistividad, menor concentración mineral.</li>
+      </ul>
+      <p>Vincent observó que cada tipo de microorganismo prospera en una zona definida del espacio pH–rH₂: las formas fúngicas en ambiente oxidado y ácido, las virales en oxidado y alcalino, las bacterianas patógenas en ambiente reducido. Converge con Becker (polaridad y microorganismos) y con la biofísica del microambiente: <strong>el estado electroquímico del microambiente determina qué nichos ecológicos quedan disponibles para la colonización.</strong></p>
+    
+
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Mapa pH–rH₂ de Vincent</span>
+          <span class="leg"><i style="background:#0F6E56"></i>sangre funcional&nbsp;&nbsp;<i style="background:#C0512B"></i>degradado</span></div>
+        <svg viewBox="0 0 560 424" role="img" aria-label="Mapa pH-rH2 con zonas de microorganismos y dos estados">
+          <rect x="70" y="50" width="215" height="165" fill="#BA7517" opacity="0.10"/>
+          <rect x="285" y="50" width="215" height="165" fill="#0F6E56" opacity="0.10"/>
+          <rect x="70" y="300" width="430" height="80" fill="#888780" opacity="0.10"/>
+          <text x="177" y="138" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10.5" fill="#9A6412">hongos</text>
+          <text x="392" y="138" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10.5" fill="#0F6E56">virus</text>
+          <text x="285" y="345" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10.5" fill="#736F66">bacterias patógenas</text>
+          <line x1="70" y1="50" x2="70" y2="380" stroke="#CBC8BE" stroke-width="1.4"/>
+          <line x1="70" y1="380" x2="500" y2="380" stroke="#CBC8BE" stroke-width="1.4"/>
+          <text x="285" y="406" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#8A897F">pH · ácido → alcalino</text>
+          <text x="50" y="215" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#8A897F" transform="rotate(-90 50 215)">rH₂ · reducido → oxidado</text>
+          <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0F6E56"/></marker></defs>
+          <line x1="356" y1="222" x2="392" y2="104" stroke="#0F6E56" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+          <circle cx="354" cy="226" r="6" fill="#0F6E56"/>
+          <circle cx="397" cy="94" r="6" fill="#C0512B"/>
+          <text x="344" y="242" text-anchor="end" font-family="Georgia,serif" font-size="10" fill="#25241E">sangre funcional</text>
+          <text x="344" y="256" text-anchor="end" font-family="system-ui,sans-serif" font-size="9.5" fill="#8A897F">pH 7.3 · E 222 mV · ρ 210</text>
+          <text x="408" y="90" text-anchor="start" font-family="Georgia,serif" font-size="10" fill="#25241E">degradado</text>
+          <text x="408" y="104" text-anchor="start" font-family="system-ui,sans-serif" font-size="9.5" fill="#8A897F">pH 7.8 · E 312 mV · ρ 140</text>
+        </svg>
+        <figcaption><b>Fig. 5.</b> Cada microorganismo prospera en una zona del espacio pH–rH₂. Al degradarse, el microambiente se desplaza hacia lo oxidado-alcalino: más oxidado, con menor capacidad reductora y mayor carga electrolítica.</figcaption>
+      </figure>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>El microambiente tisular tiene estado, y ese estado es electroquímico: carga (FCD), potencial (Donnan), pH y redox (rH₂). La sangre puede permanecer en rango mientras el microambiente está desregulado. La RB lo lee directamente.</p></div>
+    
+
+      <p class="kicker">Puente entre los dos pilares</p>
+      <h2>El Vmem organiza, el pH es una lectura</h2>
+      <p>El estado bioeléctrico del tejido es un sistema acoplado de tres variables —potencial de membrana (Vmem), pH intracelular y estado redox— en el que el <strong>Vmem es la variable organizadora</strong>:</p>
+      <p>De aquí surge el papel exacto del pH: es una <strong>lectura (readout) del estado bioeléctrico</strong>, acoplada al Vmem. Conviene distinguir dos niveles. En la matriz extracelular, el pH gobierna la carga fija (§2.3) y es un parámetro medible del microambiente (§2.5). En la jerarquía de la célula, el Vmem organiza y el pH se ajusta con él.</p>
+      <p>Esta distinción orienta la clínica: <strong>el pH y el redox son señales legibles del estado; el Vmem es lo que el método regula.</strong> El Bloque 2 muestra que el campo magnético modifica directamente el Vmem, y que el pH se ajusta como consecuencia.</p>
+    
+
+      <figure class="fig">
+        <div class="fighd"><span class="figt">El voltaje organiza; el pH es una lectura</span></div>
+        <svg viewBox="0 0 520 400" role="img" aria-label="Ciclo acoplado Vmem, canales, flujo de iones, pH, redox">
+          <defs><marker id="cyc" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#0F6E56"/></marker></defs>
+          <g fill="none" stroke="#0F6E56" stroke-width="2.4">
+            <path d="M301,61 A150 150 0 0 1 371,105" marker-end="url(#cyc)"/>
+            <path d="M409,221 A150 150 0 0 1 390,280" marker-end="url(#cyc)"/>
+            <path d="M291,352 A150 150 0 0 1 229,352" marker-end="url(#cyc)"/>
+            <path d="M130,280 A150 150 0 0 1 111,221" marker-end="url(#cyc)"/>
+            <path d="M149,105 A150 150 0 0 1 219,61" marker-end="url(#cyc)"/>
+          </g>
+          <g font-family="Georgia,serif" font-size="10.5" fill="#25241E" text-anchor="middle">
+            <rect x="338" y="143" width="130" height="32" rx="16" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/><text x="403" y="163">canales se abren</text>
+            <rect x="283" y="310" width="130" height="32" rx="16" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/><text x="348" y="330">flujo de iones</text>
+            <rect x="107" y="310" width="130" height="32" rx="16" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/><text x="172" y="330">pH intracelular</text>
+            <rect x="52" y="143" width="130" height="32" rx="16" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/><text x="117" y="163">redox · ROS</text>
+          </g>
+          <text x="348" y="358" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">H⁺ · K⁺ · Na⁺ · Ca²⁺</text>
+          <rect x="142" y="345" width="60" height="15" rx="7.5" fill="#BA7517"/><text x="172" y="356" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" font-weight="700" fill="#fff">lectura</text>
+          <circle cx="260" cy="55" r="36" fill="#0F6E56"/>
+          <text x="260" y="53" text-anchor="middle" font-family="Georgia,serif" font-size="11.5" font-weight="700" fill="#fff">Vmem</text>
+          <text x="260" y="67" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#CDEBE0">organiza</text>
+        </svg>
+        <figcaption><b>Fig. 6.</b> El Vmem abre los canales → fijan el flujo de iones → fija el pH → modula el redox → retroalimenta al Vmem. El pH es una <strong>lectura</strong> del estado; el Vmem es lo que el método regula.</figcaption>
+      </figure>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>El Vmem es la variable primaria del estado bioeléctrico; el pH es una lectura acoplada a él. La regulación actúa sobre el voltaje, y el pH lo acompaña.</p></div>
+    
+
+      <p class="kicker">3 · Segundo pilar · el potencial de membrana</p>
+      <h2>El voltaje que instruye</h2>
+      <p>El trabajo de Michael Levin (Universidad de Tufts) establece el segundo pilar: el voltaje que cada célula mantiene es una señal que instruye su comportamiento. Levin estudia los cambios lentos del Vmem —de minutos a días, potenciales de corriente directa— en todas las células, un campo distinto de la electrofisiología de milisegundos de nervio y músculo.</p>
+      <h3>3.1 · Todas las células son bioeléctricas</h3>
+      <p>Toda célula —no solo neuronas y músculo— genera y recibe señales bioeléctricas codificadas en su potencial de membrana (Vmem) y en flujos iónicos que operan en escala de minutos a días (Levin &amp; Stevenson, 2012). El valor típico ronda los <strong>-50 mV</strong> (interior negativo) y varía según el tipo celular y su estado. Los tejidos que se rastrean con imanes —piel, músculo, fascia, vísceras— son bioeléctricamente activos: mantienen un voltaje que gobierna su comportamiento.</p>
+      <h3>3.2 · El Vmem decide proliferación y diferenciación</h3>
+      <p>El Vmem funciona como regulador del programa celular (Cone, 1971; Sundelacruz, Levin &amp; Kaplan, 2009):</p>
+      <ul class="blist">
+        <li>Células <b>diferenciadas</b> → Vmem hiperpolarizado (más negativo, -60 a -90 mV).</li>
+        <li>Células <b>proliferativas</b> → Vmem despolarizado (menos negativo, -10 a -30 mV).</li>
+      </ul>
+    
+
+      <figure class="fig">
+        <div class="fighd"><span class="figt">El Vmem como interruptor</span>
+          <span class="leg"><i style="background:#BA7517"></i>prolifera&nbsp;&nbsp;<i style="background:#0F6E56"></i>se diferencia</span></div>
+        <svg viewBox="0 0 600 276" role="img" aria-label="El voltaje de membrana como interruptor entre proliferar y diferenciar">
+          <text x="303" y="30" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#8A897F">Vmem (mV)</text>
+          <defs><linearGradient id="vsc" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#BA7517"/><stop offset="1" stop-color="#0F6E56"/></linearGradient></defs>
+          <rect x="296" y="44" width="14" height="200" rx="5" fill="url(#vsc)"/>
+          <g font-family="system-ui,sans-serif" font-size="9" fill="#8A897F">
+            <line x1="312" y1="244" x2="320" y2="244" stroke="#CBC8BE"/><text x="324" y="247">−10</text>
+            <line x1="312" y1="194" x2="320" y2="194" stroke="#CBC8BE"/><text x="324" y="197">−30</text>
+            <line x1="312" y1="144" x2="320" y2="144" stroke="#CBC8BE"/><text x="324" y="147">−50</text>
+            <line x1="312" y1="94" x2="320" y2="94" stroke="#CBC8BE"/><text x="324" y="97">−70</text>
+            <line x1="312" y1="44" x2="320" y2="44" stroke="#CBC8BE"/><text x="324" y="47">−90</text>
+          </g>
+          <line x1="180" y1="150" x2="294" y2="219" stroke="#BA7517" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <line x1="428" y1="102" x2="312" y2="69" stroke="#0F6E56" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <circle cx="106" cy="150" r="26" fill="#F8EBD3" stroke="#BA7517" stroke-width="2.2"/>
+          <circle cx="152" cy="150" r="26" fill="#F8EBD3" stroke="#BA7517" stroke-width="2.2"/>
+          <path d="M129,126 Q124,150 129,174" fill="none" stroke="#BA7517" stroke-width="1.4" opacity="0.6"/>
+          <circle cx="106" cy="150" r="7" fill="#BA7517" opacity="0.45"/><circle cx="152" cy="150" r="7" fill="#BA7517" opacity="0.45"/>
+          <g font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#BA7517"><text x="92" y="120" text-anchor="middle">+</text><text x="166" y="120" text-anchor="middle">+</text></g>
+          <text x="129" y="198" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#BA7517" font-weight="700">despolarizado</text>
+          <text x="129" y="212" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#8A897F">−20 mV · prolifera</text>
+          <circle cx="460" cy="102" r="28" fill="#E7F4EF" stroke="#0F6E56" stroke-width="2.4"/>
+          <circle cx="460" cy="102" r="9" fill="#0F6E56" opacity="0.4"/>
+          <g font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#0F6E56"><text x="436" y="82" text-anchor="middle">+</text><text x="484" y="82" text-anchor="middle">+</text><text x="436" y="130" text-anchor="middle">+</text><text x="484" y="130" text-anchor="middle">+</text></g>
+          <g font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#8A897F"><text x="448" y="94" text-anchor="middle">–</text><text x="472" y="94" text-anchor="middle">–</text><text x="460" y="128" text-anchor="middle">–</text></g>
+          <rect x="446" y="72" width="28" height="9" rx="3" fill="#0F6E56"/><text x="460" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7.5" fill="#8A897F">bomba Na⁺/K⁺</text>
+          <text x="460" y="152" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#0F6E56" font-weight="700">hiperpolarizado</text>
+          <text x="460" y="166" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" fill="#8A897F">−80 mV · se diferencia</text>
+        </svg>
+        <figcaption><b>Fig. 7.</b> El voltaje es un interruptor: bajo (despolarizado) la célula se divide; alto (hiperpolarizado) se especializa. Alterarlo desregula el comportamiento del tejido.</figcaption>
+      </figure>
+      <p>Puede existir un nivel umbral de Vmem que dispara la síntesis de ADN y la mitosis. La estimulación eléctrica directa lo confirma: la despolarización acompaña a la proliferación; la hiperpolarización, a la diferenciación (Mobini, 2016). El Vmem es, por tanto, un regulador funcional: proliferar o diferenciarse.</p>
+    
+
+      <h3>3.3 · El Vmem instruye el patrón anatómico</h3>
+      <p>Levin ha demostrado que modificar el estado bioeléctrico produce cambios anatómicos específicos, coherentes y predecibles —el hallazgo central para la RB:</p>
+      <ul class="blist">
+        <li><b>Regeneración de cola en <em>Xenopus</em>:</b> en una etapa en que el renacuajo normalmente ya no regenera, <strong>una hora</strong> de despolarización inducida desencadena la regeneración completa de una cola (músculo, médula, epidermis, vasculatura, notocorda) a lo largo de 8–10 días (Tseng, 2010).</li>
+        <li><b>Regeneración de extremidad:</b> 24 horas de modificación del estado bioeléctrico del tejido de la herida (el blastema) desencadenan una extremidad con dedos y uñas donde normalmente no se regenera (Tseng &amp; Levin, 2013).</li>
+        <li><b>Ojos ectópicos:</b> fijar un estado de voltaje "tipo ojo" induce un ojo completo, incluso en el intestino o la cola (Pai, 2012).</li>
+        <li><b>La "cara eléctrica":</b> un prepatrón bioeléctrico endógeno determina la regionalización de la cara del vertebrado antes de la anatomía (Adams, 2016).</li>
+      </ul>
+    
+
+      <p class="kicker">3 · Segundo pilar · los experimentos en imagen</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">El voltaje instruye la forma · experimentos de Levin</span></div>
+        <svg viewBox="0 0 560 206" role="img" aria-label="Regeneración de cola y ojo ectópico inducidos por el estado bioeléctrico en Xenopus">
+          <defs>
+            <marker id="lvpt" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#BA7517"/></marker>
+          </defs>
+          <line x1="280" y1="24" x2="280" y2="190" stroke="#E7E4DA" stroke-width="1"/>
+
+          <!-- IZQUIERDA · regeneración de cola -->
+          <text x="140" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#0F6E56">Regeneración de cola</text>
+          <path d="M150,112 Q176,92 202,108 L202,132 Q176,150 150,130 Z" fill="#DCEDE5" stroke="#0F6E56" stroke-width="1.4"/>
+          <path d="M60,120 Q60,88 100,86 Q146,84 166,112 Q170,120 166,128 Q146,156 100,154 Q60,152 60,120 Z" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.8"/>
+          <path d="M118,96 Q126,120 118,144" fill="none" stroke="#0F6E56" stroke-width="1" opacity="0.45"/>
+          <circle cx="88" cy="112" r="6.5" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/><circle cx="88" cy="112" r="2.8" fill="#25241E"/>
+          <line x1="202" y1="98" x2="202" y2="142" stroke="#8A897F" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <path d="M202,108 Q232,100 250,120 Q232,140 202,132" fill="#F4E9D8" fill-opacity="0.55" stroke="#BA7517" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <line x1="202" y1="98" x2="202" y2="74" stroke="#0F6E56" stroke-width="1"/>
+          <circle cx="202" cy="61" r="14" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/>
+          <path d="M194,61 L198,61 L200,53 L203,69 L205,61 L210,61" fill="none" stroke="#0F6E56" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+          <text x="222" y="57" text-anchor="start" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#0F6E56">1 h</text>
+          <text x="255" y="118" text-anchor="start" font-family="system-ui,sans-serif" font-size="8" fill="#BA7517">cola nueva</text>
+          <text x="140" y="182" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#4C4A42">1 h de voltaje → 8–10 días de regeneración</text>
+
+          <!-- DERECHA · ojo ectópico -->
+          <text x="415" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#0F6E56">Ojo ectópico</text>
+          <path d="M438,112 Q480,88 518,116 Q480,148 438,132 Z" fill="#DCEDE5" stroke="#0F6E56" stroke-width="1.4"/>
+          <path d="M338,120 Q338,88 378,86 Q424,84 444,112 Q448,120 444,128 Q424,156 378,154 Q338,152 338,120 Z" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.8"/>
+          <path d="M396,96 Q404,120 396,144" fill="none" stroke="#0F6E56" stroke-width="1" opacity="0.45"/>
+          <circle cx="366" cy="112" r="6.5" fill="#fff" stroke="#0F6E56" stroke-width="1.4"/><circle cx="366" cy="112" r="2.8" fill="#25241E"/>
+          <circle cx="398" cy="140" r="15" fill="#0F6E56" opacity="0.12"/>
+          <circle cx="398" cy="140" r="8.5" fill="#fff" stroke="#0F6E56" stroke-width="1.6"/>
+          <circle cx="398" cy="140" r="4.8" fill="#0F6E56" opacity="0.32"/>
+          <circle cx="398" cy="140" r="2.4" fill="#25241E"/>
+          <path d="M413,146 L436,156" fill="none" stroke="#BA7517" stroke-width="1.2" marker-end="url(#lvpt)"/>
+          <text x="440" y="159" text-anchor="start" font-family="system-ui,sans-serif" font-size="8" font-weight="700" fill="#BA7517">ojo ectópico</text>
+          <text x="415" y="182" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#4C4A42">un “voltaje de ojo” induce un ojo donde no tocaba</text>
+        </svg>
+        <figcaption><b>Fig. 8.</b> Modificar el estado bioeléctrico produce cambios anatómicos específicos: una breve despolarización regenera la cola completa; fijar un patrón de voltaje "de ojo" forma un ojo ectópico (Levin).</figcaption>
+      </figure>
+      <h3>3.4 · El estado bioeléctrico, capa dominante</h3>
+      <p><b>El estado, no el producto génico.</b> El desencadenante de la regeneración es el estado bioeléctrico resultante, y puede alcanzarse por vías moleculares distintas —incluso con una bomba iónica sin homología con la proteína nativa (Levin, 2014). Lo que importa es el patrón de voltaje, no el canal que lo produjo.</p>
+      <p><b>Dominancia sobre la genética.</b> Dos células con idéntico ARNm pueden estar en estados bioeléctricos muy distintos. Un patrón bioeléctrico correcto puede corregir la morfología, la expresión génica y el aprendizaje incluso frente a un defecto genético de fondo (una mutación del gen Notch): "algunos defectos de hardware pueden repararse en software mediante un breve patrón bioeléctrico" (Levin, 2024). El estado bioeléctrico es una capa de información superpuesta a la genética que, en ciertos contextos, la corrige.</p>
+      <p>Esto conecta con la RB: el objetivo de la regulación es el patrón de voltaje del tejido, alcanzable por el estímulo del campo magnético.</p>
+    
+
+      <h3>3.5 · Redes, memoria, señal a distancia e inmunidad</h3>
+      <p>Las células somáticas forman redes bioeléctricas a través de <strong>gap junctions</strong>, y estas redes almacenan y transmiten información:</p>
+      <ul class="blist">
+        <li><b>Memoria tisular.</b> Las planarias mantienen una forma de dos cabezas tras la manipulación del Vmem, sin cambio genómico, a través de sucesivos cortes; la información está distribuida por todo el cuerpo, codificada en la red de células acopladas (Levin, 2014).</li>
+        <li><b>Señal a distancia.</b> La amputación de una extremidad genera una señal bioeléctrica en la extremidad contralateral en <strong>~30 segundos</strong> (Busse, 2018) —demasiado rápido para la difusión molecular clásica. Dos puntos anatómicos distantes conectados bioeléctricamente es biología publicada.</li>
+        <li><b>Susceptibilidad a patógenos.</b> El estado bioeléctrico del tejido orienta su resistencia a la infección (Paré, Martyniuk &amp; Levin, 2017), lo que conecta el Vmem con la observación de que los dipolos se asocian a cuadros infecciosos: el dipolo lee el estado del microambiente que favorece a un patógeno.</li>
+      </ul>
+    
+
+      <figure class="fig">
+        <div class="fighd"><span class="figt">La red bioeléctrica · conexones y señal a distancia</span></div>
+        <svg viewBox="0 0 620 316" style="width:92%;margin-inline:auto" role="img" aria-label="Células acopladas por gap junctions con zoom del conexón; una señal viaja a un punto distante en 30 segundos">
+          <defs>
+            <radialGradient id="cellv" cx="0.5" cy="0.4" r="0.75"><stop offset="0" stop-color="#E0F1EA"/><stop offset="1" stop-color="#C7E6DA"/></radialGradient>
+            <linearGradient id="sig" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0F6E56"/><stop offset="1" stop-color="#BA7517"/></linearGradient>
+            <marker id="an" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#BA7517"/></marker>
+          </defs>
+          <!-- coupled cells -->
+          <circle cx="132" cy="204" r="42" fill="url(#cellv)" stroke="#0F6E56" stroke-width="2.4"/>
+          <circle cx="228" cy="204" r="42" fill="url(#cellv)" stroke="#0F6E56" stroke-width="2.4"/>
+          <circle cx="324" cy="204" r="42" fill="url(#cellv)" stroke="#0F6E56" stroke-width="2.4"/>
+          <circle cx="132" cy="204" r="13" fill="#0F6E56" opacity="0.16"/><circle cx="228" cy="204" r="13" fill="#0F6E56" opacity="0.16"/><circle cx="324" cy="204" r="13" fill="#0F6E56" opacity="0.16"/>
+          <!-- gap junctions -->
+          <g><rect x="170" y="195" width="20" height="18" rx="3" fill="#0F6E56"/><rect x="266" y="195" width="20" height="18" rx="3" fill="#0F6E56"/>
+            <g stroke="#fff" stroke-width="1"><line x1="175" y1="196" x2="175" y2="212"/><line x1="180" y1="196" x2="180" y2="212"/><line x1="185" y1="196" x2="185" y2="212"/><line x1="271" y1="196" x2="271" y2="212"/><line x1="276" y1="196" x2="276" y2="212"/><line x1="281" y1="196" x2="281" y2="212"/></g></g>
+          <text x="228" y="274" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#25241E">red acoplada por <tspan fill="#0F6E56" font-weight="700">gap junctions</tspan></text>
+          <!-- distant cell + signal -->
+          <circle cx="540" cy="118" r="34" fill="#EAF4EF" stroke="#0F6E56" stroke-width="2"/>
+          <circle cx="540" cy="118" r="10" fill="#0F6E56" opacity="0.16"/>
+          <text x="540" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E">punto distante</text>
+          <path d="M362,182 Q470,70 512,112" fill="none" stroke="url(#sig)" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#an)"/>
+          <rect x="404" y="64" width="62" height="21" rx="10.5" fill="#fff" stroke="#0F6E56" stroke-width="1.2"/>
+          <text x="435" y="78.5" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10.5" font-weight="700" fill="#0F6E56">~30 s</text>
+          <text x="452" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E">señal a distancia</text>
+          <!-- zoom inset: connexon channel -->
+          <line x1="180" y1="200" x2="132" y2="112" stroke="#B4B1A6" stroke-width="0.8" stroke-dasharray="3 3"/>
+          <circle cx="112" cy="76" r="58" fill="#fff" stroke="#0F6E56" stroke-width="1.6"/>
+          <rect x="66" y="44" width="92" height="8" rx="3" fill="#CFE7DD"/>
+          <rect x="66" y="100" width="92" height="8" rx="3" fill="#CFE7DD"/>
+          <path d="M92,52 L100,68 L100,84 L92,100 M132,52 L124,68 L124,84 L132,100" fill="none" stroke="#0F6E56" stroke-width="2"/>
+          <circle cx="112" cy="64" r="3.6" fill="#BA7517"/><circle cx="112" cy="88" r="3.6" fill="#BA7517"/>
+          <text x="112" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#25241E"><tspan fill="#0F6E56" font-weight="700">conexón</tspan> · canal</text>
+        </svg>
+        <figcaption><b>Fig. 9.</b> Las células se acoplan por <strong>conexones (gap junctions)</strong>, que dejan pasar iones y señal directamente. La red así formada almacena un patrón (memoria del tejido) y comunica puntos distantes del cuerpo en ~30 segundos.</figcaption>
+      </figure>
+      <h3>3.6 · Un kit de herramientas ya existente</h3>
+      <p>Los fármacos que modifican canales iónicos son el tercer grupo de medicamentos más prescrito, y solo una fracción de los ~400 genes de canales iónicos del genoma humano ha sido abordada (Levin, 2021). La existencia de reactivos que inducen regeneración y normalización por esta vía revela que los moduladores de canales iónicos son una herramienta poderosa. Los campos magnéticos estáticos actúan sobre esos mismos canales —el puente que desarrolla el Bloque 2.</p>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>El cuerpo posee un sistema bioeléctrico somático activo en todas las células, que instruye el comportamiento, forma redes que almacenan información, señaliza a distancia y orienta la respuesta a los patógenos. Estos son los fenómenos que la práctica clínica observa. La RB opera en ese canal.</p></div>
+    
+
+      <p class="kicker">Síntesis del bloque</p>
+      <h2>Lo que queda establecido</h2>
+      <ul class="blist">
+        <li>La <b>Regulación Bioeléctrica</b> evalúa y regula el estado bioeléctrico del microambiente tisular con campos magnéticos estáticos moderados. Su resultado es un perfil que se lee por densidad, simetría, vecindad y correlación clínica.</li>
+        <li>Se apoya en un <b>linaje</b>: Becker (el cuerpo eléctrico y sus cuatro principios), Broeringmeyer (la técnica clínica y el reflejo del iliopsoas), Goiz (la sistematización del catálogo) y la biofísica contemporánea. La técnica se conserva; el marco se actualiza.</li>
+        <li><b>Primer pilar — la MEC:</b> un sistema electroquímico con carga (FCD), potencial (Donnan) y un regulador primario (pH), cuya cascada de deterioro es predecible y cuyo estado se describe con parámetros medibles (incluida la Bioelectrónica de Vincent).</li>
+        <li><b>Segundo pilar — el Vmem:</b> el voltaje de cada célula instruye su comportamiento, actúa como capa dominante sobre la genética, forma redes que almacenan información y señaliza a distancia.</li>
+        <li><b>La jerarquía:</b> el Vmem organiza el estado bioeléctrico; el pH y el redox son lecturas acopladas. La regulación actúa sobre el voltaje, y el pH lo acompaña como consecuencia.</li>
+      </ul>
+      <p>Sobre estos dos pilares —el microambiente que conduce y el voltaje que instruye— se construye todo el método. El <strong>Bloque 2</strong> muestra la herramienta (el imán) y el sustrato del cuerpo donde actúa.</p>
+    
+
+      <p class="kicker">Para consultar</p>
+      <h2>Glosario del bloque</h2>
+      <dl class="gl">
+          <div><dt>Microambiente tisular</dt><dd>entorno electroquímico inmediato del tejido, sobre el que opera la RB (carga, potencial, pH, redox, hidratación).</dd></div>
+          <div><dt>MEC (matriz extracelular)</dt><dd>medio electroquímico entre las células; el microambiente donde opera la RB.</dd></div>
+          <div><dt>GAGs (glicosaminoglicanos)</dt><dd>polímeros cargados negativamente de la MEC; origen molecular de la FCD.</dd></div>
+          <div><dt>FCD (densidad de carga fija)</dt><dd>carga negativa de los GAGs; determina hidratación, distribución iónica y pH local.</dd></div>
+          <div><dt>Potencial de Donnan (Φ_D)</dt><dd>potencial eléctrico intratisular generado por la FCD.</dd></div>
+          <div><dt>Espacio de Pischinger</dt><dd>unidad funcional MEC–fibroblastos–colágeno–nervio–capilar–inmunidad.</dd></div>
+          <div><dt>Bioelectrónica de Vincent (BEV)</dt><dd>lectura del microambiente por pH, rH₂ y resistividad.</dd></div>
+          <div><dt>rH₂</dt><dd>potencial electrónico; estado de oxidación-reducción del fluido.</dd></div>
+          <div><dt>pH</dt><dd>parámetro ácido-base; en la matriz gobierna la FCD, y a nivel celular es una lectura acoplada al Vmem.</dd></div>
+          <div><dt>Vmem (potencial de membrana)</dt><dd>diferencia de voltaje a través de la membrana; señal instructiva de la célula. La variable que organiza.</dd></div>
+          <div><dt>Despolarizado / hiperpolarizado</dt><dd>voltaje menos negativo (proliferación) / más negativo (diferenciación).</dd></div>
+          <div><dt>Gap junctions</dt><dd>canales que conectan citoplasmas de células vecinas y forman redes bioeléctricas.</dd></div>
+          <div><dt>Jerarquía bioeléctrica</dt><dd>el Vmem organiza; el pH y el redox son lecturas acopladas, no el mecanismo.</dd></div>
+      </dl>
+    
+
+      <p class="kicker">Fuentes</p>
+      <h2>Referencias del bloque</h2>
+      <div class="two refs">
+        <div class="grp">
+          <h4>Cap. 1 — Historia</h4>
+          <p>Becker RO, Selden G. <em>The Body Electric</em>. William Morrow; 1985.</p>
+          <p>Broeringmeyer R. <em>Principles of Magnetic Therapy</em>. Bio-Health Enterprises.</p>
+          <p>Goiz Durán I. <em>El Par Biomagnético</em>. Univ. Autónoma Chapingo; 1996.</p>
+          <p>Corrêa LMR, et al. <em>Health and Society</em>. 2023;3(01):345–367.</p>
+        </div>
+        <div class="grp">
+          <h4>Cap. 2 — Matriz extracelular</h4>
+          <p>Lesperance LM, Gray ML, Burstein D. <em>J Orthop Res</em>. 1992;10(1):1-13.</p>
+          <p>Jackson AR, et al. <em>Ann Biomed Eng</em>. 2009;37(12):2566-2573.</p>
+          <p>Buchweitz N, et al. <em>J Biomech</em>. 2025;181:112554.</p>
+          <p>Morawski M, et al. <em>Sci Rep</em>. 2015;5:17383.</p>
+          <p>Bansal PN, et al. <em>Osteoarthritis Cartilage</em>. 2010;18(2):184-191.</p>
+          <p>Ulm L, Weiss T. <em>Fascia Research III</em>. Kiener; 2014.</p>
+          <p>Pischinger A. <em>The Extracellular Matrix and Ground Regulation</em>. 2007.</p>
+          <p>Cidón Madrigal JL. Tesis doctoral. UPM; 2003.</p>
+          <p>Fougerousse JF. <em>Bull Union Phys</em>. 1996.</p>
+        </div>
+        <div class="grp">
+          <h4>Cap. 3 — Potencial de membrana (Levin)</h4>
+          <p>Levin M. <em>Cell</em>. 2021;184(8):1971-1989.</p>
+          <p>Levin M. <em>J Physiol</em>. 2014;592(11):2295-2305.</p>
+          <p>Levin M. <em>BioEssays</em>. 2024;46(7):e2400043.</p>
+          <p>Levin M &amp; Stevenson CG. <em>Annu Rev Biomed Eng</em>. 2012;14:295-323.</p>
+          <p>Cone CD. <em>J Theor Biol</em>. 1971;30(1):151-181.</p>
+          <p>Sundelacruz S, Levin M, Kaplan DL. <em>Stem Cell Rev Rep</em>. 2009;5(3):231-246.</p>
+          <p>Pai VP, et al. <em>Development</em>. 2012;139(2):313-323.</p>
+          <p>Tseng A, Levin M. <em>Commun Integr Biol</em>. 2013;6(1):e22595.</p>
+          <p>Adams DS, et al. <em>J Physiol</em>. 2016;594(12):3245-3270.</p>
+          <p>Busse SM, McMillen PT, Levin M. <em>Development</em>. 2018;145(20):dev164210.</p>
+          <p>Paré JF, Martyniuk CJ, Levin M. <em>npj Regen Med</em>. 2017;2:15.</p>
+          <p>Mobini S, et al. <em>Biotechniques</em>. 2016;60(2):95-98.</p>
+        </div>
+      </div>
+    
+  </div>
+
+  <header class="blockhead">
+    <div class="bh-eyebrow">Módulo 1 · Bloque 2</div>
+    <h1 class="bh-title">El instrumento y el sustrato</h1>
+    <p class="bh-sub">Con qué se toca el cuerpo eléctrico y dónde actúa.</p>
+  </header>
+  <div class="wrap">
+
+      <p class="kicker">Encuadre</p>
+      <h2>El instrumento y el sustrato</h2>
+      <p>El Bloque 1 estableció que el cuerpo es eléctrico: la matriz extracelular tiene carga, la célula tiene voltaje (Vmem) y las células forman redes que comparten y transmiten información. Este bloque completa la mañana con las dos piezas que faltan para entender la práctica: <strong>con qué se actúa</strong> sobre ese cuerpo eléctrico —el imán estático— y <strong>sobre qué mapa físico</strong> se trabaja —el sustrato continuo del cuerpo.</p>
+      <p>Tres preguntas ordenan el bloque:</p>
+      <ul class="blist">
+        <li><b>¿Cómo toca el imán a la célula?</b> Los cuatro mecanismos por los que un campo magnético estático interactúa con el tejido vivo, y la evidencia de cada uno.</li>
+        <li><b>¿Qué es el instrumento?</b> Qué es un imán, qué campo genera, cómo se mide, cómo se atenúa con la profundidad y cómo se usa con seguridad.</li>
+        <li><b>¿Dónde actúa?</b> El sustrato continuo —matricial, fascial, bioeléctrico e inmunológico— sobre el que opera la RB, y el iliopsoas como su efector observable.</li>
+      </ul>
+      <p>Al cerrar el bloque, el estudiante comprende el microambiente tisular (Bloque 1), la herramienta y el mapa físico (Bloque 2). La tarde construye sobre esta base el razonamiento clínico.</p>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>La RB actúa sobre el cuerpo eléctrico con un instrumento de propiedades conocidas —el imán estático— y sobre un sustrato anatómico continuo y documentado. Herramienta y mapa: eso es este bloque.</p></div>
+    
+
+      <p class="kicker">1 · Cómo el campo toca la célula</p>
+      <h2>Dónde ocurre el efecto</h2>
+      <p>Un ion en movimiento dentro de un campo magnético experimenta la <strong>fuerza de Lorentz</strong> (F = qv × B). A las intensidades clínicas (0.1–0.5 T) y a las velocidades de los iones en solución, esa fuerza sobre un ion aislado es mucho menor que la energía térmica del cuerpo, que lo zarandea sin cesar. Por eso el efecto biológico del campo <strong>no se explica al nivel del ion individual</strong>.</p>
+      <p>El efecto ocurre en otro nivel: el de las <strong>estructuras supramoleculares cooperativas</strong> —membranas con miles de fosfolípidos alineados, canales iónicos con geometría sensible a su entorno, cristales de magnetita con momento magnético permanente—. En estas estructuras los pequeños efectos individuales se <strong>suman de forma cooperativa</strong> y superan el umbral térmico. Los cuatro mecanismos que siguen operan en este nivel, y todos convergen en modificar el potencial de membrana (Vmem).</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Por qué no al nivel del ion, sino de la estructura</span></div>
+        <svg viewBox="0 0 560 216" role="img" aria-label="El efecto del campo no ocurre sobre un ion aislado sino sobre estructuras supramoleculares cooperativas">
+          <line x1="280" y1="24" x2="280" y2="196" stroke="#E7E4DA" stroke-width="1"/>
+          <text x="140" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#8A897F">ion aislado</text>
+          <g stroke="#CDE3DA" stroke-width="1"><line x1="40" y1="70" x2="240" y2="70"/><line x1="40" y1="150" x2="240" y2="150"/></g>
+          <text x="248" y="73" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">B</text>
+          <path d="M96,128 q10,-14 20,0 q10,14 20,0 q10,-14 20,0 q10,14 20,0" fill="none" stroke="#8A897F" stroke-width="1.4" opacity="0.7"/>
+          <text x="140" y="150" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">energía térmica</text>
+          <circle cx="140" cy="108" r="9" fill="#BA7517"/>
+          <line x1="140" y1="108" x2="140" y2="88" stroke="#0F6E56" stroke-width="1.6" marker-end="url(#b2a)"/>
+          <text x="150" y="96" font-family="system-ui,sans-serif" font-size="8" fill="#0F6E56">F=qv×B</text>
+          <text x="140" y="180" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#4C4A42">la fuerza &lt; energía térmica → aquí no hay efecto</text>
+
+          <text x="420" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#0F6E56">estructura cooperativa</text>
+          <g stroke="#CDE3DA" stroke-width="1"><line x1="320" y1="58" x2="520" y2="58"/></g>
+          <text x="524" y="61" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">B</text>
+          <g fill="#0F6E56"><circle cx="332" cy="96" r="5"/><circle cx="352" cy="94" r="5"/><circle cx="372" cy="96" r="5"/><circle cx="392" cy="94" r="5"/><circle cx="412" cy="96" r="5"/><circle cx="432" cy="94" r="5"/><circle cx="452" cy="96" r="5"/><circle cx="472" cy="94" r="5"/><circle cx="492" cy="96" r="5"/></g>
+          <g stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round"><line x1="332" y1="96" x2="330" y2="120"/><line x1="352" y1="94" x2="350" y2="118"/><line x1="372" y1="96" x2="370" y2="120"/><line x1="392" y1="94" x2="390" y2="118"/><line x1="412" y1="96" x2="410" y2="120"/><line x1="432" y1="94" x2="430" y2="118"/><line x1="452" y1="96" x2="450" y2="120"/><line x1="472" y1="94" x2="470" y2="118"/><line x1="492" y1="96" x2="490" y2="120"/></g>
+          <text x="420" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#BA7517">Σ</text>
+          <text x="420" y="180" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#4C4A42">miles alineados → el efecto se suma y supera el umbral</text>
+        </svg>
+        <figcaption><b>Fig. 1.</b> Sobre un ion aislado la fuerza del campo es menor que el ruido térmico. Sobre estructuras ordenadas —membranas, cristales— los efectos individuales se suman de forma cooperativa y sí modifican la célula.</figcaption>
+      </figure>
+    
+
+      <p class="kicker">1 · Cuatro mecanismos</p>
+      <h3>Mecanismo 1 · Anisotropía diamagnética de la membrana</h3>
+      <p>Los fosfolípidos de la membrana son moléculas <strong>diamagnéticas anisotrópicas</strong>: su respuesta al campo depende de cómo estén orientados. Un campo estático moderado ejerce un <strong>torque</strong> que los reorienta parcialmente (Rosen, 2003), y esa reorientación deforma la geometría de los canales iónicos embebidos, alterando su cinética de apertura. Rosen documentó un patrón coherente:</p>
+      <ul class="blist">
+        <li>La <b>activación</b> (apertura) del canal se modifica, consistente con la deformación de su segmento dentro de la membrana.</li>
+        <li>La <b>inactivación</b> (cierre), que se controla desde el interior de la célula, permanece igual.</li>
+        <li>El efecto depende de la temperatura, es dosis-dependiente y reversible al retirar el campo.</li>
+      </ul>
+      <p>Grupos posteriores lo confirmaron y ampliaron: los campos estáticos modifican el Vmem (Saletnik, 2024), aumentan la rigidez de la membrana (Hsieh, 2015) y —en canales de potasio— el efecto <strong>persiste tras retirar el imán</strong> (2025), coherente con una aplicación de 15–30 minutos.</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">El torque reorienta los lípidos y deforma el canal</span></div>
+        <svg viewBox="0 0 560 210" style="width:88%;margin-inline:auto" role="img" aria-label="Sin campo el canal está en reposo; con campo el torque reorienta los fosfolípidos y deforma la activación del canal">
+          <line x1="280" y1="24" x2="280" y2="188" stroke="#E7E4DA" stroke-width="1"/>
+          <text x="140" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#8A897F">sin campo</text>
+          <g fill="#0F6E56"><circle cx="60" cy="70" r="4.5"/><circle cx="80" cy="70" r="4.5"/><circle cx="100" cy="70" r="4.5"/><circle cx="180" cy="70" r="4.5"/><circle cx="200" cy="70" r="4.5"/><circle cx="220" cy="70" r="4.5"/></g>
+          <g stroke="#0F6E56" stroke-width="1.6" stroke-linecap="round"><line x1="60" y1="70" x2="60" y2="92"/><line x1="80" y1="70" x2="80" y2="92"/><line x1="100" y1="70" x2="100" y2="92"/><line x1="180" y1="70" x2="180" y2="92"/><line x1="200" y1="70" x2="200" y2="92"/><line x1="220" y1="70" x2="220" y2="92"/></g>
+          <path d="M120,66 L120,96 M160,66 L160,96" stroke="#0F6E56" stroke-width="2"/>
+          <path d="M126,74 q14,7 0,14" fill="none" stroke="#0F6E56" stroke-width="1.4"/>
+          <text x="140" y="120" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#4C4A42">canal en reposo</text>
+
+          <text x="420" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#0F6E56">con campo B</text>
+          <line x1="330" y1="44" x2="500" y2="44" stroke="#CDE3DA" stroke-width="1"/><text x="506" y="47" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">B</text>
+          <g fill="#0F6E56"><circle cx="342" cy="72" r="4.5"/><circle cx="362" cy="70" r="4.5"/><circle cx="382" cy="72" r="4.5"/><circle cx="458" cy="70" r="4.5"/><circle cx="478" cy="72" r="4.5"/><circle cx="498" cy="70" r="4.5"/></g>
+          <g stroke="#0F6E56" stroke-width="1.6" stroke-linecap="round"><line x1="342" y1="72" x2="352" y2="92"/><line x1="362" y1="70" x2="372" y2="90"/><line x1="382" y1="72" x2="392" y2="92"/><line x1="458" y1="70" x2="468" y2="90"/><line x1="478" y1="72" x2="488" y2="92"/><line x1="498" y1="70" x2="508" y2="90"/></g>
+          <path d="M404,66 q10,15 -2,30 M440,66 q-10,15 2,30" stroke="#BA7517" stroke-width="2" fill="none"/>
+          <text x="422" y="120" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#BA7517" font-weight="700">activación modificada</text>
+          <text x="280" y="168" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#4C4A42">la inactivación (interior de la célula) permanece igual · reversible al retirar el campo</text>
+        </svg>
+        <figcaption><b>Fig. 2.</b> El campo reorienta los fosfolípidos por torque y deforma la geometría del canal: cambia su apertura (activación), no su cierre (inactivación). Efecto dosis-dependiente y reversible.</figcaption>
+      </figure>
+    
+
+      <p class="kicker">1 · Cuatro mecanismos</p>
+      <h3>Mecanismo 2 · Canales de Ca²⁺ tipo T como transductores</h3>
+      <p>Wu y colaboradores (2022) identificaron los <strong>canales de Ca²⁺ tipo T</strong> como transductores directos del campo magnético estático en células madre mesenquimales, con la cascada documentada de principio a fin: campo estático → despolarización → transducción por el canal → señalización (ERK, JNK) → expresión de genes tempranos (FOS, EGR1) → proliferación (+23 % a 140 mT).</p>
+      <p>El hallazgo clave es de <strong>causalidad</strong>: al bloquear farmacológicamente el canal, el efecto del campo <strong>desaparece</strong>. El canal es el transductor necesario. Y como el calcio intracelular es uno de los mensajeros centrales de la célula —regula proliferación, diferenciación, contracción, secreción, apoptosis, expresión génica e inmunidad—, este mecanismo alcanza una vía con ramificaciones sistémicas. Pall (2013) recopiló al menos 23 estudios donde los bloqueadores de canales de calcio anulan efectos de campos electromagnéticos: son un blanco compartido.</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Del campo al gen: la cascada del canal Ca²⁺ tipo T</span></div>
+        <svg viewBox="0 0 560 232" role="img" aria-label="Cascada desde el campo estático hasta la proliferación a través del canal de calcio tipo T, y el bloqueo farmacológico que la anula">
+          <defs><marker id="b2c" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0F6E56"/></marker></defs>
+          <g font-family="Georgia,serif" font-size="9.5" fill="#25241E" text-anchor="middle">
+            <rect x="24" y="40" width="92" height="34" rx="7" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.3"/><text x="70" y="55">campo</text><text x="70" y="67">estático</text>
+            <rect x="150" y="40" width="92" height="34" rx="7" fill="#fff" stroke="#0F6E56" stroke-width="1.3"/><text x="196" y="55">despolari-</text><text x="196" y="67">zación</text>
+            <rect x="276" y="36" width="100" height="42" rx="7" fill="#0F6E56"/><text x="326" y="52" fill="#fff" font-weight="700">canal Ca²⁺</text><text x="326" y="65" fill="#CDEBE0" font-size="8.5">tipo T</text>
+            <rect x="410" y="40" width="92" height="34" rx="7" fill="#fff" stroke="#0F6E56" stroke-width="1.3"/><text x="456" y="55">ERK · JNK</text><text x="456" y="67" font-size="8">señalización</text>
+          </g>
+          <g stroke="#0F6E56" stroke-width="1.8" marker-end="url(#b2c)" fill="none"><line x1="116" y1="57" x2="146" y2="57"/><line x1="242" y1="57" x2="272" y2="57"/><line x1="376" y1="57" x2="406" y2="57"/></g>
+          <line x1="456" y1="74" x2="456" y2="104" stroke="#0F6E56" stroke-width="1.8" marker-end="url(#b2c)"/>
+          <g font-family="Georgia,serif" font-size="9.5" fill="#25241E" text-anchor="middle">
+            <rect x="330" y="108" width="126" height="34" rx="7" fill="#fff" stroke="#0F6E56" stroke-width="1.3"/><text x="393" y="123">genes tempranos</text><text x="393" y="135" font-size="8.5">FOS · EGR1</text>
+            <rect x="176" y="108" width="126" height="42" rx="7" fill="#F4E9D8" stroke="#BA7517" stroke-width="1.3"/><text x="239" y="124" fill="#BA7517" font-weight="700">proliferación</text><text x="239" y="138" fill="#BA7517" font-size="9">+23 % a 140 mT</text>
+          </g>
+          <line x1="330" y1="129" x2="304" y2="129" stroke="#0F6E56" stroke-width="1.8" marker-end="url(#b2c)"/>
+          <g><line x1="326" y1="78" x2="326" y2="98" stroke="#C0512B" stroke-width="2"/><line x1="315" y1="87" x2="337" y2="87" stroke="#C0512B" stroke-width="2.4"/><circle cx="326" cy="188" r="0" /></g>
+          <text x="326" y="176" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#C0512B">bloqueo farmacológico del canal</text>
+          <path d="M300,168 Q326,150 326,100" fill="none" stroke="#C0512B" stroke-width="1.4" stroke-dasharray="4 3"/>
+          <text x="326" y="190" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#4C4A42">→ el efecto del campo desaparece (prueba de causalidad)</text>
+        </svg>
+        <figcaption><b>Fig. 3.</b> El canal de Ca²⁺ tipo T transduce el campo hacia la señalización y la expresión génica. Bloquearlo anula el efecto: es el transductor necesario.</figcaption>
+      </figure>
+    
+
+      <p class="kicker">1 · Cuatro mecanismos</p>
+      <h3>Mecanismo 3 · Magnetita biogénica</h3>
+      <p>El cerebro humano contiene cristales de <strong>magnetita biogénica</strong> (Fe₃O₄) —hierro sintetizado por el propio organismo—, documentados por Kirschvink (1992) con magnetómetro superconductor: un mínimo de <strong>5 millones de cristales por gramo</strong> de tejido cerebral, y más de 100 millones por gramo en las meninges. Miden ~50 nm (un solo dominio magnético) y su forma corresponde a síntesis biológica controlada, como la de bacterias y aves migratorias. Maher (2016) los confirmó y los distinguió de la magnetita de contaminación externa.</p>
+      <p>Un cristal ferromagnético de dominio único experimenta un <strong>torque</strong> ante un campo externo; anclado a la membrana o al citoesqueleto, ese torque activa canales mecanosensibles y deforma la bicapa —convergiendo con el mecanismo 1—. Es el mismo principio de magnetorrecepción verificado en aves y peces. Su densidad en tejidos distintos del cerebro es una de las preguntas abiertas de la investigación.</p>
+      <h3>Mecanismo 4 · Modulación inmunológica</h3>
+      <p>Los campos magnéticos estáticos desplazan la polarización de los macrófagos hacia el fenotipo <strong>M2</strong> —antiinflamatorio y reparativo— (Lei, 2020; Feng, 2022). El balance M1/M2 define el carácter del microambiente: los M1 producen citocinas proinflamatorias (IL-1β, TNF-α, IL-6); los M2, citocinas de resolución y reparación (IL-10, TGF-β). Al inclinar el balance hacia M2, el campo orienta el microambiente local hacia la resolución, con menor estrés oxidativo y mejor cicatrización.</p>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>Dos vías más se suman a las de la membrana: la magnetita da al campo un punto de anclaje mecánico, y la modulación M1/M2 orienta el microambiente inmunológico hacia la reparación.</p></div>
+    
+
+      <p class="kicker">1 · El puente de intensidad</p>
+      <h3>La intensidad que llega al tejido</h3>
+      <p>Los imanes clínicos generan 0.1–0.5 T en superficie, y el campo se atenúa con la distancia. La intensidad que alcanza cada profundidad cae dentro del rango donde los efectos están documentados: los tejidos superficiales reciben 100–500 mT (Wu, 2022: 140 mT); los tejidos a 2–3 cm reciben 10–30 mT (Saletnik, 2024: 2–80 mT). La literatura describe además <strong>ventanas de intensidad</strong> —rangos donde el efecto aparece y fuera de los cuales disminuye—, lo que subraya que lo relevante es la intensidad que llega al tejido, no la de la superficie.</p>
+      <table class="tbl">
+        <thead><tr><th>Mecanismo</th><th>Diana molecular</th><th>Escala</th><th>Evidencia</th></tr></thead>
+        <tbody>
+          <tr><td>Anisotropía diamagnética</td><td>Fosfolípidos → canales</td><td>Segundos</td><td>Verificada (patch-clamp)</td></tr>
+          <tr><td>Canales Ca²⁺ tipo T</td><td>Canal → ERK/JNK → genes</td><td>Min–horas</td><td>Verificada (bloqueo)</td></tr>
+          <tr><td>Magnetita biogénica</td><td>Cristales → mecanotransducción</td><td>Milisegundos</td><td>Existencia verificada</td></tr>
+          <tr><td>Modulación M1/M2</td><td>Macrófagos → microambiente</td><td>Horas–días</td><td>Verificada (varios estudios)</td></tr>
+        </tbody>
+      </table>
+      <p>Este campo de trabajo tiene reconocimiento propio: Zablotskii (2025, <em>BioEssays</em>) propone la <strong>farmacología magnética de canales iónicos</strong> como alternativa a los fármacos de canales —la misma revista donde publica Levin—. Caracterizar experimentalmente la configuración clínica de dos imanes opuestos es una prioridad de investigación de la RB.</p>
+    
+
+      <p class="kicker">1 · La variable que converge</p>
+      <h3>Cuatro mecanismos, una variable: el Vmem</h3>
+      <p>Los cuatro mecanismos convergen en una misma variable: el <strong>potencial de membrana (Vmem)</strong>. El campo deforma canales, modula el calcio y altera el estado redox, y con ello desplaza el Vmem. El pH intracelular y el redox se ajustan como <strong>lecturas acopladas</strong> a ese nuevo Vmem. Un mecanismo adicional refuerza la jerarquía: los clusters de hierro-azufre (Fe-S) de la mitocondria son paramagnéticos y responden al campo, alterando el redox y, a través de él, el Vmem (Castello, 2023).</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Los cuatro mecanismos desplazan el Vmem</span></div>
+        <svg viewBox="0 0 560 270" role="img" aria-label="Cuatro mecanismos y los clusters Fe-S convergen en el Vmem, y de ahí el pH y el redox como lectura">
+          <defs><marker id="b2v" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0F6E56"/></marker></defs>
+          <g font-family="system-ui,sans-serif" font-size="9" fill="#25241E">
+            <rect x="20" y="26" width="150" height="28" rx="6" fill="#fff" stroke="#0F6E56" stroke-width="1.2"/><text x="95" y="44" text-anchor="middle">anisotropía diamagnética</text>
+            <rect x="20" y="66" width="150" height="28" rx="6" fill="#fff" stroke="#0F6E56" stroke-width="1.2"/><text x="95" y="84" text-anchor="middle">canales Ca²⁺ tipo T</text>
+            <rect x="20" y="106" width="150" height="28" rx="6" fill="#fff" stroke="#0F6E56" stroke-width="1.2"/><text x="95" y="124" text-anchor="middle">magnetita biogénica</text>
+            <rect x="20" y="146" width="150" height="28" rx="6" fill="#fff" stroke="#0F6E56" stroke-width="1.2"/><text x="95" y="164" text-anchor="middle">polarización M1 / M2</text>
+            <rect x="20" y="186" width="150" height="28" rx="6" fill="#F6F1E7" stroke="#BA7517" stroke-width="1.2" stroke-dasharray="4 3"/><text x="95" y="204" text-anchor="middle" fill="#8A6510">clusters Fe-S (redox)</text>
+          </g>
+          <g stroke="#0F6E56" stroke-width="1.6" fill="none" marker-end="url(#b2v)">
+            <path d="M170,40 Q250,60 330,116"/><path d="M170,80 Q250,92 330,124"/><path d="M170,120 L330,128"/><path d="M170,160 Q250,148 330,140"/><path d="M170,200 Q250,180 330,150"/>
+          </g>
+          <circle cx="392" cy="133" r="46" fill="#0F6E56"/>
+          <text x="392" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="17" font-weight="700" fill="#fff">Vmem</text>
+          <text x="392" y="148" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#CDEBE0">variable primaria</text>
+          <line x1="438" y1="133" x2="474" y2="133" stroke="#0F6E56" stroke-width="1.8" marker-end="url(#b2v)"/>
+          <rect x="476" y="112" width="76" height="42" rx="8" fill="#F4E9D8" stroke="#BA7517" stroke-width="1.3"/>
+          <text x="514" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#BA7517" font-weight="700">pH · redox</text>
+          <text x="514" y="143" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#BA7517">lectura</text>
+        </svg>
+        <figcaption><b>Fig. 4.</b> Campo magnético estático → <strong>Vmem</strong> → flujos iónicos → pH y redox como consecuencia. La regulación desplaza el voltaje; el pH lo acompaña —coherente con el Bloque 1.</figcaption>
+      </figure>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>Cuatro mecanismos, una variable: el campo converge en el Vmem, con evidencia de patch-clamp, bloqueo farmacológico e histología. El pH y el redox se ajustan como lecturas de ese nuevo estado.</p></div>
+    
+
+      <p class="kicker">2 · El instrumento</p>
+      <h2>El imán estático</h2>
+      <p>Un imán permanente genera un campo magnético <strong>estático</strong> —constante en el tiempo—, sin corriente externa. Antes de los tipos y tamaños conviene tener cuatro ideas claras.</p>
+      <ul class="blist">
+        <li><b>Qué es.</b> Mantiene su campo a partir de la alineación de los momentos magnéticos de sus electrones. No se enciende ni consume energía: sostiene su campo durante años. Al ser estático, se distingue de los campos pulsados (PEMF), de radiofrecuencia y de baja frecuencia (ELF), que sí varían.</li>
+        <li><b>Qué hace.</b> No "emite energía" de forma difusa. Crea un campo que interactúa con el tejido por los cuatro mecanismos anteriores: deforma canales, modula el calcio, altera el redox y, con ello, desplaza el Vmem.</li>
+        <li><b>Qué es el campo.</b> La región alrededor del imán donde actúa su fuerza. Lo que se mide en un punto es la <strong>densidad de flujo (B)</strong>: qué tan intenso es el campo ahí. Su rasgo clave para la clínica es que <strong>decae con la distancia</strong>.</li>
+        <li><b>Cómo se mide.</b> Con un <strong>gaussímetro (teslámetro)</strong>: una sonda con sensor de efecto Hall que mide B en un punto. Es portátil y económico, y permite verificar qué intensidad entrega realmente un imán —un dato que conviene confirmar, no asumir.</li>
+      </ul>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">El imán y su campo · líneas de N a S</span></div>
+        <svg viewBox="0 0 520 210" style="width:70%;margin-inline:auto" role="img" aria-label="Imán con sus líneas de campo saliendo del polo norte y regresando al sur, y un punto de medición de densidad de flujo B">
+          <defs><marker id="fld" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0F6E56"/></marker></defs>
+          <g fill="none" stroke="#0F6E56" stroke-width="1.5">
+            <path d="M224,96 C182,54 338,54 296,96" marker-end="url(#fld)"/>
+            <path d="M218,98 C150,20 370,20 302,98" marker-end="url(#fld)"/>
+            <path d="M224,124 C182,166 338,166 296,124" marker-end="url(#fld)"/>
+            <path d="M218,122 C150,200 370,200 302,122" marker-end="url(#fld)"/>
+            <path d="M220,110 H96" marker-end="url(#fld)"/>
+            <path d="M424,110 H300" marker-end="url(#fld)"/>
+          </g>
+          <rect x="220" y="94" width="40" height="32" fill="#0F6E56"/>
+          <rect x="260" y="94" width="40" height="32" fill="#BA7517"/>
+          <text x="240" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="700" fill="#fff">N</text>
+          <text x="280" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="700" fill="#fff">S</text>
+          <circle cx="356" cy="70" r="3.6" fill="#BA7517"/>
+          <text x="364" y="73" font-family="system-ui,sans-serif" font-size="9" fill="#25241E">B · densidad de flujo</text>
+        </svg>
+        <figcaption><b>Fig. 5.</b> El imán genera un campo dipolar: las líneas salen del polo norte y regresan al sur. Lo que se mide en un punto es la densidad de flujo (B), que decae con la distancia.</figcaption>
+      </figure>
+    
+
+      <p class="kicker">2 · El instrumento</p>
+      <h3>Por qué se mide en tesla y no en gauss</h3>
+      <p>El tesla y el gauss miden lo mismo —la densidad de flujo— en dos sistemas distintos: el <strong>tesla (T)</strong> es la unidad del Sistema Internacional; el <strong>gauss (G)</strong>, la unidad antigua del sistema CGS. La equivalencia es fija: <strong>1 T = 10 000 G</strong>. La RB reporta en tesla y militesla por tres razones:</p>
+      <ol class="nlist">
+        <li>Es la unidad de la literatura científica y médica —los estudios de efecto y la resonancia se expresan en mT y T—, lo que permite comparar de forma directa.</li>
+        <li>Hace legible la ventana de efecto documentada (2–80 mT) y la comparación con la resonancia (1.5–3 T).</li>
+        <li>Evita el efecto de "número inflado": 0.5 T y 5 000 G son exactamente el mismo campo, pero "5 000" suena mucho mayor. Hablar en tesla es hablar con precisión y sin exageración.</li>
+      </ol>
+      <table class="tbl">
+        <thead><tr><th>Equivalencia</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>1 tesla (T)</td><td>10 000 gauss (G)</td></tr>
+          <tr><td>1 militesla (mT)</td><td>10 gauss (G)</td></tr>
+          <tr><td>100 mT</td><td>1 000 gauss</td></tr>
+          <tr><td>0.5 T (neodimio clínico, superficie)</td><td>5 000 gauss</td></tr>
+        </tbody>
+      </table>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>Lo que importa clínicamente es la <strong>densidad de flujo (B) que llega al tejido</strong>, medida en militesla. El tesla conecta la práctica con la evidencia; el gauss infla el número sin cambiar el campo.</p></div>
+    
+
+      <p class="kicker">2 · El instrumento</p>
+      <h3>Los dos tipos que se usan</h3>
+      <p>En la práctica hay dos materiales. La <strong>ferrita (cerámica)</strong> es de menor intensidad, bajo costo, estable al calor y no se corroe: fue el material tradicional del biomagnetismo. El <strong>neodimio (NdFeB)</strong> es el imán permanente más potente y el más usado hoy, a cambio de ser más sensible al calor y a los golpes. Para el curso basta reconocer ambos y saber cuál se tiene en la mano; las especificaciones por grado (Br, temperatura) viven en el documento de referencia de imanes.</p>
+      <h3>Geometría y atenuación del campo</h3>
+      <p>Este es el dato de mayor peso práctico. El imán genera un campo dipolar cuya densidad es máxima en la superficie de los polos y <strong>decae con la distancia</strong> según una ley aproximada de cubo inverso (1/d³). En biomagnetismo la forma más usada es el <strong>disco</strong>, aplicado con una cara plana sobre la piel. Valores para un imán N42, disco de 25 × 10 mm:</p>
+      <table class="tbl">
+        <thead><tr><th>Profundidad</th><th>Intensidad estimada</th><th>Referencia</th></tr></thead>
+        <tbody>
+          <tr><td>Superficie</td><td>~400–500 mT</td><td>—</td></tr>
+          <tr><td>5 mm (piel + subcutáneo)</td><td>~150–250 mT</td><td>Ca²⁺ tipo T (140 mT)</td></tr>
+          <tr><td>10 mm (~1 cm)</td><td>~50–100 mT</td><td>Dentro de rango</td></tr>
+          <tr><td>20 mm (~2 cm)</td><td>~15–30 mT</td><td>Saletnik (2–80 mT)</td></tr>
+          <tr><td>30 mm (~3 cm)</td><td>~5–10 mT</td><td>Rango bajo</td></tr>
+        </tbody>
+      </table>
+    
+
+      <p class="kicker">2 · El instrumento · en imagen</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">El campo cae con la profundidad (≈ 1/d³)</span></div>
+        <svg viewBox="0 0 560 330" role="img" aria-label="Curva de intensidad del campo frente a la profundidad, con la ventana efectiva sombreada">
+          <rect x="70" y="40" width="150" height="24" rx="4" fill="#0F6E56"/><text x="145" y="56" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#fff" font-weight="700">imán · disco N42</text>
+          <line x1="70" y1="72" x2="520" y2="72" stroke="#8A897F" stroke-width="1" stroke-dasharray="3 3"/><text x="524" y="75" font-family="system-ui,sans-serif" font-size="8" fill="#8A897F">piel</text>
+          <line x1="90" y1="72" x2="90" y2="300" stroke="#E7E4DA" stroke-width="1"/>
+          <line x1="90" y1="300" x2="520" y2="300" stroke="#E7E4DA" stroke-width="1"/>
+          <rect x="90" y="252" width="430" height="40" fill="#EAF4EF"/>
+          <text x="512" y="268" text-anchor="end" font-family="system-ui,sans-serif" font-size="8" fill="#0F6E56" font-weight="700">ventana efectiva 2–80 mT</text>
+          <path d="M110,92 C150,150 190,232 250,262 C320,290 430,296 500,298" fill="none" stroke="#0F6E56" stroke-width="2.6"/>
+          <g fill="#0F6E56"><circle cx="110" cy="92" r="4"/><circle cx="170" cy="196" r="4"/><circle cx="250" cy="262" r="4"/><circle cx="360" cy="288" r="4"/><circle cx="470" cy="296" r="4"/></g>
+          <g font-family="system-ui,sans-serif" font-size="8.5" fill="#4C4A42" text-anchor="middle">
+            <text x="110" y="316">0</text><text x="170" y="316">5</text><text x="250" y="316">10</text><text x="360" y="316">20</text><text x="470" y="316">30 mm</text>
+          </g>
+          <g font-family="system-ui,sans-serif" font-size="8.5" fill="#25241E">
+            <text x="120" y="90">~450 mT (superficie)</text>
+            <text x="180" y="194">~200 mT</text>
+            <text x="260" y="256">~75 mT</text>
+            <text x="366" y="282">15–30 mT (2 cm)</text>
+          </g>
+          <text x="300" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" letter-spacing=".08em" fill="#8A897F">INTENSIDAD (mT) · vertical  —  PROFUNDIDAD · horizontal</text>
+        </svg>
+        <figcaption><b>Fig. 6.</b> La intensidad en superficie (400–500 mT) no es la que llega al tejido: a 2 cm quedan 15–30 mT —dentro de la ventana efectiva documentada. La profundidad del tejido decide el imán.</figcaption>
+      </figure>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>La intensidad clínica relevante es la que llega al tejido. Un imán de 500 mT en superficie entrega ~15–30 mT a 2 cm —dentro del rango efectivo. Esto orienta la comunicación con precisión y ayuda a elegir el imán según la profundidad.</p></div>
+    
+
+      <p class="kicker">2 · El instrumento</p>
+      <h3>El gradiente del campo</h3>
+      <p>La intensidad (B) no es la única propiedad que cuenta. El <strong>gradiente</strong> es qué tan rápido cambia esa intensidad de un punto a otro (dB/dx, en tesla por metro). Un campo puede ser intenso pero uniforme —sin gradiente—, o cambiar de forma brusca en poco espacio: un <strong>gradiente empinado</strong>.</p>
+      <p>La investigación de Vanderbilt (McLean, Cavopol, 1991–2005) mostró que el efecto del campo sobre las fibras nerviosas depende del <strong>gradiente espacial</strong>, no solo de la intensidad. Un gradiente empinado modula la permeabilidad de la membrana al Na⁺ y al Ca²⁺ y <strong>bloquea de forma reversible los potenciales de acción</strong> de las fibras del dolor —en unos 5 minutos y sin daño neural. El gradiente es máximo en la <strong>frontera entre dos polos opuestos</strong>, y ese es el fundamento biofísico de la aplicación local sobre una zona dolorosa (el punto trauma).</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Intensidad uniforme vs gradiente empinado</span></div>
+        <svg viewBox="0 0 560 210" role="img" aria-label="A la izquierda campo intenso pero uniforme; a la derecha dos polos opuestos con gradiente empinado en la frontera que bloquea la fibra del dolor">
+          <line x1="280" y1="24" x2="280" y2="188" stroke="#E7E4DA" stroke-width="1"/>
+          <text x="140" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#8A897F">intenso pero uniforme</text>
+          <g stroke="#0F6E56" stroke-width="2" marker-end="url(#b2a)"><line x1="50" y1="70" x2="110" y2="70"/><line x1="130" y1="70" x2="190" y2="70"/><line x1="50" y1="100" x2="110" y2="100"/><line x1="130" y1="100" x2="190" y2="100"/><line x1="50" y1="130" x2="110" y2="130"/><line x1="130" y1="130" x2="190" y2="130"/></g>
+          <text x="140" y="168" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#4C4A42">sin gradiente · no bloquea la señal</text>
+
+          <text x="420" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#0F6E56">gradiente empinado</text>
+          <circle cx="360" cy="88" r="26" fill="#0F6E56"/><text x="360" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff">N</text>
+          <circle cx="470" cy="88" r="26" fill="#BA7517"/><text x="470" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff">S</text>
+          <line x1="415" y1="52" x2="415" y2="150" stroke="#C0512B" stroke-width="1.4" stroke-dasharray="4 3"/>
+          <text x="415" y="46" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#C0512B" font-weight="700">frontera</text>
+          <line x1="330" y1="132" x2="500" y2="132" stroke="#4C4A42" stroke-width="2.4"/>
+          <text x="500" y="128" text-anchor="end" font-family="system-ui,sans-serif" font-size="8" fill="#4C4A42">fibra del dolor</text>
+          <g stroke="#C0512B" stroke-width="2.2"><line x1="409" y1="126" x2="421" y2="138"/><line x1="421" y1="126" x2="409" y2="138"/></g>
+          <text x="415" y="170" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#4C4A42">máximo en la frontera · bloqueo reversible (~5 min)</text>
+        </svg>
+        <figcaption><b>Fig. 7.</b> Intensidad y gradiente son distintos. La intensidad alcanza el tejido en profundidad; el gradiente empinado, en la frontera entre polos opuestos, bloquea la señal del dolor.</figcaption>
+      </figure>
+    
+
+      <p class="kicker">2 · El instrumento</p>
+      <h3>Polaridad</h3>
+      <p>Cada imán tiene polo norte y polo sur. En la convención clínica, el rastreo se realiza con el polo negativo aplicado sobre el paciente, y la aplicación coloca dos imanes de polaridad opuesta sobre los dos puntos del dipolo. La RB conserva esta convención operativa. Como los mecanismos predicen efectos de polaridad distintos —la anisotropía depende de la intensidad; el torque sobre la magnetita, de la orientación—, la caracterización experimental de los efectos diferenciales de polaridad es una línea de estudio abierta.</p>
+      <h3>Seguridad y mantenimiento</h3>
+      <p><b>Contraindicaciones absolutas</b> (verificar antes de aplicar):</p>
+      <ul class="blist">
+        <li><b>Marcapasos y dispositivos cardíacos implantables</b> —el campo puede interferir con su función.</li>
+        <li><b>Implantes ferromagnéticos</b> (ciertos clips quirúrgicos, fragmentos, prótesis) —el campo puede ejercer torque o tracción.</li>
+        <li><b>Bombas de insulina y otros dispositivos electrónicos implantables.</b></li>
+      </ul>
+      <p><b>Precauciones.</b> Durante el embarazo se reserva la aplicación directa sobre el abdomen gestante por principio de precaución. El paciente retira tarjetas magnéticas, relojes y dispositivos electrónicos. Los imanes grandes de neodimio se manipulan con separadores: su fuerza de atracción (&gt;10–20 kg en grados clínicos) puede pinzar tejido o fracturar el imán.</p>
+      <p><b>Mantenimiento.</b> Degradan un imán la temperatura (el neodimio pierde magnetización por encima de 80 °C), los impactos y la corrosión. En uso normal conserva su magnetización durante décadas (pierde ~1 % en los primeros 10 años). Conviene verificar su intensidad con un gaussímetro.</p>
+    
+
+      <p class="kicker">2 · El instrumento</p>
+      <h3>El perfil de seguridad del campo estático</h3>
+      <p>Los imanes clínicos generan campos 3–10 veces más débiles que una resonancia magnética (1.5–3 T), que se realiza millones de veces al año con amplio margen de seguridad para el campo estático.</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Escala de intensidades (militesla, escala relativa)</span></div>
+        <svg viewBox="0 0 560 150" role="img" aria-label="Escala de intensidades desde el campo terrestre hasta la resonancia magnética, con el rango clínico destacado">
+          <line x1="40" y1="96" x2="524" y2="96" stroke="#25241E" stroke-width="1.6"/>
+          <rect x="250" y="88" width="150" height="16" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1"/>
+          <text x="325" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#0F6E56" font-weight="700">imán clínico</text>
+          <g font-family="system-ui,sans-serif" font-size="8.5" fill="#25241E" text-anchor="middle">
+            <line x1="70" y1="90" x2="70" y2="102" stroke="#8A897F" stroke-width="1.4"/><text x="70" y="80">tierra</text><text x="70" y="122" fill="#8A897F">50 µT</text>
+            <line x1="150" y1="90" x2="150" y2="102" stroke="#8A897F" stroke-width="1.4"/><text x="150" y="80">refri</text><text x="150" y="122" fill="#8A897F">5 mT</text>
+            <line x1="285" y1="86" x2="285" y2="106" stroke="#0F6E56" stroke-width="1.8"/><text x="285" y="78" fill="#0F6E56">ferrita</text><text x="285" y="122" fill="#0F6E56">100–300</text>
+            <line x1="365" y1="86" x2="365" y2="106" stroke="#0F6E56" stroke-width="1.8"/><text x="365" y="78" fill="#0F6E56">neodimio</text><text x="365" y="122" fill="#0F6E56">300–500</text>
+            <line x1="490" y1="90" x2="490" y2="102" stroke="#BA7517" stroke-width="1.8"/><text x="490" y="80" fill="#BA7517">resonancia</text><text x="490" y="122" fill="#BA7517">1.5–3 T</text>
+          </g>
+        </svg>
+        <figcaption><b>Fig. 8.</b> El imán clínico (100–500 mT) queda muy por debajo de la resonancia magnética. Toda la escala en la misma unidad: el tesla evita el "número inflado" del gauss.</figcaption>
+      </figure>
+      <h3>La configuración de dos imanes</h3>
+      <p>El biomagnetismo aplica dos imanes de polaridad opuesta sobre los dos puntos de un dipolo. A las distancias del cuerpo (10–40 cm entre puntos), cada imán actúa <strong>localmente</strong> sobre su punto, modificando el estado electroquímico de su microambiente. La conexión entre los dos puntos es una propiedad del <strong>sustrato bioeléctrico del paciente</strong> —coherente con las redes del Bloque 1—, y caracterizarla directamente forma parte de la agenda de investigación de la RB.</p>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>El imán es un instrumento de propiedades físicas conocidas, medibles y predecibles. Cada imán modifica localmente el estado del microambiente en su punto; la relación entre los dos puntos vive en el sustrato del paciente.</p></div>
+    
+
+      <p class="kicker">3 · El sustrato continuo</p>
+      <h2>Dónde actúa la RB</h2>
+      <p>Cuatro sistemas estudiados —la MEC, las redes bioeléctricas, la interacción del campo y la anatomía fascial— describen un mismo tejido: una red <strong>matricial-fascial-bioeléctrica-inmunológica continua</strong>, con diferenciación por regiones. Cuatro tradiciones de investigación, con métodos distintos, convergen en el mismo sustrato.</p>
+      <table class="tbl">
+        <thead><tr><th>Sistema</th><th>Investigadores</th><th>Qué describe</th></tr></thead>
+        <tbody>
+          <tr><td>Planos fasciales</td><td>Langevin, Heine</td><td>El tejido conectivo como red de nodos funcionales</td></tr>
+          <tr><td>Regulación básica</td><td>Pischinger, Ulm</td><td>La MEC como sistema de comunicación electroquímica</td></tr>
+          <tr><td>Redes bioeléctricas</td><td>Levin, Busse</td><td>Señalización somática por gap junctions</td></tr>
+          <tr><td>Inmunidad mucosa</td><td>Múltiples</td><td>Territorios inmunológicos regionales sobre la MEC</td></tr>
+        </tbody>
+      </table>
+      <p><b>Anatomía fascial.</b> Los planos fasciales contienen nodos donde convergen vasos, nervios y MEC (Heine, 1988). De 238 puntos anatómicos del brazo, el 80 % se ubica sobre planos fasciales (Langevin &amp; Yandow, 2002; P &lt; 0.001): la selección empírica de puntos terapéuticos converge con la anatomía fascial documentada.</p>
+    
+
+      <p class="kicker">3 · Las descripciones convergentes</p>
+      <p><b>MEC continua.</b> Los GAGs, el colágeno y el líquido intersticial forman un medio electroquímico conectado que se extiende desde la piel hasta los órganos profundos, a través de planos fasciales, septos intermusculares y espacios perivasculares (Pischinger, 2007; Ulm &amp; Weiss, 2014).</p>
+      <p><b>Comunicación eléctrica.</b> Los fibroblastos de la fascia están acoplados por <strong>gap junctions</strong> de conexina 43, formando una red eléctrica continua que almacena información y señaliza a distancia en segundos (Levin, 2021; Busse, 2018).</p>
+      <p><b>Territorios inmunológicos.</b> El tejido linfoide de las mucosas (MALT) se organiza por regiones sobre la MEC: NALT (nasal), BALT (bronquial), GALT (intestinal), VALT (genital), SALT (piel), CALT (conjuntival). Su función depende del estado de la matriz: la IgA secretora —la inmunoglobulina más abundante— se produce en la lámina propia (MEC especializada), de modo que un microambiente acidificado y depletado compromete la defensa mucosa.</p>
+      <p>Cuatro miradas —anatomía fascial, histoquímica de la matriz, optogenética de las redes e inmunología de las mucosas— describen, con métodos independientes, la misma estructura continua. Esa convergencia es la base de que el biomagnetismo lea con un imán lo que otras disciplinas midieron por separado.</p>
+    
+
+      <p class="kicker">3 · El sustrato continuo</p>
+      <h3>El iliopsoas como transductor</h3>
+      <p>La <strong>fascia toracolumbar</strong> —del cráneo al sacro— integra en una sola estructura los planos fasciales, la cadena simpática paravertebral, los territorios GALT y las gap junctions fasciales. Dentro de ella, el <strong>iliopsoas</strong> ocupa una posición única: inervación dual (somática L1–L3 y simpática), fusión fascial con la cadena simpática lumbar, continuidad con el diafragma y la región torácica, y una asimetría natural que es la base del reflejo de acortamiento.</p>
+      <p>Esto lo convierte en un <strong>transductor somático-autonómico</strong>: cuando el campo actúa sobre una zona desregulada del sustrato, la señal viaja por la fascia y la cadena simpática hasta el iliopsoas, que produce la respuesta neuromuscular que el terapeuta observa en el rastreo. Cada tramo de esta ruta está documentado por separado.</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Del sustrato a la respuesta observable</span></div>
+        <svg viewBox="0 0 560 200" role="img" aria-label="Flujo: la zona desregulada envía una señal por la fascia y la cadena simpática al iliopsoas, transductor que produce la respuesta observable del rastreo">
+          <defs><marker id="b2i" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0F6E56"/></marker></defs>
+          <rect x="16" y="60" width="104" height="48" rx="8" fill="#F7E9D1" stroke="#BA7517" stroke-width="1.3"/>
+          <text x="68" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#BA7517" font-weight="700">zona</text>
+          <text x="68" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#BA7517">desregulada</text>
+          <line x1="122" y1="84" x2="198" y2="84" stroke="#0F6E56" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#b2i)"/>
+          <text x="160" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7.5" fill="#4C4A42">fascia · cadena</text>
+          <text x="160" y="104" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7.5" fill="#4C4A42">simpática (seg.)</text>
+          <rect x="204" y="54" width="150" height="60" rx="12" fill="#0F6E56"/>
+          <text x="279" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#fff">iliopsoas</text>
+          <text x="279" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#CDEBE0">transductor somático-autonómico</text>
+          <line x1="358" y1="84" x2="432" y2="84" stroke="#0F6E56" stroke-width="2" marker-end="url(#b2i)"/>
+          <text x="395" y="74" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7.5" fill="#4C4A42">reflejo</text>
+          <rect x="436" y="60" width="110" height="48" rx="8" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.3"/>
+          <text x="491" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0F6E56" font-weight="700">respuesta del</text>
+          <text x="491" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0F6E56">rastreo · acortamiento</text>
+          <text x="280" y="140" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" letter-spacing=".12em" font-weight="700" fill="#8A897F">POR QUÉ EL ILIOPSOAS</text>
+          <g font-family="system-ui,sans-serif" font-size="8.5" fill="#25241E" text-anchor="middle">
+            <rect x="44" y="150" width="234" height="22" rx="11" fill="#F5F3EC" stroke="#E7E4DA" stroke-width="1"/><text x="161" y="165">inervación dual (somática L1–L3 + simpática)</text>
+            <rect x="286" y="150" width="230" height="22" rx="11" fill="#F5F3EC" stroke="#E7E4DA" stroke-width="1"/><text x="401" y="165">fusión fascial con la cadena simpática</text>
+            <rect x="90" y="176" width="188" height="22" rx="11" fill="#F5F3EC" stroke="#E7E4DA" stroke-width="1"/><text x="184" y="191">continuidad con el diafragma</text>
+            <rect x="286" y="176" width="150" height="22" rx="11" fill="#F5F3EC" stroke="#E7E4DA" stroke-width="1"/><text x="361" y="191">asimetría natural</text>
+          </g>
+        </svg>
+        <figcaption><b>Fig. 9.</b> El iliopsoas traduce el estado del sustrato en una respuesta neuromuscular observable: es el efector que responde en el rastreo.</figcaption>
+      </figure>
+    
+
+      <p class="kicker">3 · El sustrato continuo</p>
+      <h3>La diferenciación regional</h3>
+      <p>El sustrato es continuo, pero no homogéneo: presenta <strong>diez regiones</strong> con perfil propio de MALT, plexo autonómico, planos fasciales y territorio de drenaje.</p>
+      <ol class="nlist">
+        <li><b>Cabeza y cara</b> — NALT, CALT, magnetita cerebral.</li>
+        <li><b>SNC / craneal</b> — magnetita en piamadre y meninges.</li>
+        <li><b>Cuello y garganta</b> — anillo de Waldeyer, nervio vago.</li>
+        <li><b>Tórax anterior</b> — BALT, timo, plexo cardíaco.</li>
+        <li><b>Abdomen superior</b> — plexo celíaco, GALT proximal.</li>
+        <li><b>Abdomen inferior y pelvis</b> — GALT distal, VALT, plexo hipogástrico.</li>
+        <li><b>Tórax posterior</b> — cadena simpática torácica.</li>
+        <li><b>Columna y eje axial</b> — fascia toracolumbar, cadena simpática completa.</li>
+        <li><b>Miembro superior</b> — territorio linfático axilar.</li>
+        <li><b>Miembro inferior</b> — territorio linfático inguinal.</li>
+      </ol>
+      <p>Esta diferenciación es la base anatómica del rastreo por regiones que se trabaja a partir del Módulo 2, y permite leer el perfil como un patrón regional con significado anatómico.</p>
+    
+
+      <p class="kicker">3 · El sustrato continuo</p>
+      <h3>La isla bioeléctrica: cuando una zona se desconecta</h3>
+      <p>El sustrato se mantiene unido por las gap junctions, que comparten el estado bioeléctrico entre células vecinas. Cuando una zona se <strong>despolariza</strong> —un trauma que rompe membranas y libera potasio, elevando el [K⁺] local—, sus uniones se cierran y esa zona <strong>se desconecta del colectivo</strong>: queda como una <strong>isla bioeléctrica</strong>, un parche que ya no comparte información con la red (Levin, 2021).</p>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Una zona despolarizada se aísla de la red</span></div>
+        <svg viewBox="0 0 560 296" role="img" aria-label="El colectivo comparte su Vmem por gap junctions abiertas; una zona despolarizada cierra sus uniones y queda como isla desconectada de la red">
+          <defs><radialGradient id="islac" cx="0.5" cy="0.4" r="0.75"><stop offset="0" stop-color="#F7E9D1"/><stop offset="1" stop-color="#E7CFA0"/></radialGradient></defs>
+          <rect x="34" y="66" width="250" height="172" rx="66" fill="#0F6E56" opacity="0.08"/>
+          <text x="159" y="56" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" font-weight="700" fill="#0F6E56">colectivo conectado · comparte Vmem</text>
+          <g stroke="#0F6E56" stroke-width="2.2">
+            <line x1="96" y1="122" x2="158" y2="108"/><line x1="158" y1="108" x2="214" y2="148"/>
+            <line x1="96" y1="122" x2="120" y2="186"/><line x1="120" y1="186" x2="196" y2="198"/>
+            <line x1="158" y1="108" x2="196" y2="198"/><line x1="214" y1="148" x2="196" y2="198"/>
+          </g>
+          <g fill="#fff" stroke="#0F6E56" stroke-width="1.3"><rect x="123" y="110" width="8" height="8" rx="2"/><rect x="182" y="124" width="8" height="8" rx="2"/><rect x="104" y="150" width="8" height="8" rx="2"/><rect x="153" y="188" width="8" height="8" rx="2"/></g>
+          <g stroke="#0F6E56" stroke-width="2.2" fill="url(#cellv)"><circle cx="96" cy="122" r="26"/><circle cx="158" cy="108" r="26"/><circle cx="214" cy="148" r="26"/><circle cx="120" cy="186" r="26"/><circle cx="196" cy="198" r="26"/></g>
+          <g fill="#0F6E56" opacity="0.16"><circle cx="96" cy="122" r="8"/><circle cx="158" cy="108" r="8"/><circle cx="214" cy="148" r="8"/><circle cx="120" cy="186" r="8"/><circle cx="196" cy="198" r="8"/></g>
+          <text x="300" y="46" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" font-weight="700" fill="#BA7517">[K⁺]↑ · trauma</text>
+          <path d="M300,52 l-9,18 l7,0 l-8,20" fill="none" stroke="#BA7517" stroke-width="2.4" stroke-linejoin="round"/>
+          <line x1="240" y1="150" x2="286" y2="150" stroke="#0F6E56" stroke-width="2.2"/>
+          <rect x="291" y="141" width="18" height="18" rx="3" fill="#F7E9D1" stroke="#BA7517" stroke-width="1.5"/>
+          <g stroke="#C0512B" stroke-width="2.2"><line x1="295" y1="145" x2="305" y2="155"/><line x1="305" y1="145" x2="295" y2="155"/></g>
+          <text x="300" y="176" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" font-weight="700" fill="#C0512B">unión cerrada</text>
+          <rect x="330" y="82" width="152" height="156" rx="46" fill="none" stroke="#BA7517" stroke-width="1.6" stroke-dasharray="7 5"/>
+          <text x="406" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" font-weight="700" fill="#BA7517">isla bioeléctrica · despolarizada</text>
+          <g stroke="#BA7517" stroke-width="2.2" fill="url(#islac)"><circle cx="378" cy="148" r="26"/><circle cx="438" cy="124" r="26"/><circle cx="434" cy="188" r="26"/></g>
+          <g fill="#BA7517" opacity="0.22"><circle cx="378" cy="148" r="8"/><circle cx="438" cy="124" r="8"/><circle cx="434" cy="188" r="8"/></g>
+          <text x="406" y="226" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#8A6510">desconectada de la red</text>
+          <line x1="40" y1="250" x2="520" y2="250" stroke="#E7E4DA" stroke-width="1"/>
+          <text x="40" y="266" font-family="system-ui,sans-serif" font-size="8" letter-spacing=".08em" fill="#8A897F">DETALLE · GAP JUNCTION</text>
+          <rect x="176" y="258" width="10" height="12" rx="2" fill="#0F6E56"/><rect x="176" y="278" width="10" height="12" rx="2" fill="#0F6E56"/>
+          <path d="M181,260 V288" stroke="#0F6E56" stroke-width="0.8" stroke-dasharray="2 2"/>
+          <text x="196" y="279" font-family="system-ui,sans-serif" font-size="8.5" fill="#0F6E56" font-weight="700">abierta → pasa Vmem</text>
+          <rect x="356" y="258" width="10" height="12" rx="2" fill="#BA7517"/><rect x="356" y="278" width="10" height="12" rx="2" fill="#BA7517"/>
+          <g stroke="#C0512B" stroke-width="1.8"><line x1="356" y1="272" x2="366" y2="278"/><line x1="366" y1="272" x2="356" y2="278"/></g>
+          <text x="376" y="279" font-family="system-ui,sans-serif" font-size="8.5" fill="#BA7517" font-weight="700">cerrada → aísla</text>
+        </svg>
+        <figcaption><b>Fig. 10.</b> La desregulación tiene forma en el sustrato: no un daño difuso, sino una zona que cerró sus gap junctions y perdió su conexión con la red. Regular es devolverle las condiciones para repolarizarse y reconectarse.</figcaption>
+      </figure>
+      <div class="idea"><span class="lab"><span class="dot"></span>Idea clave</span><p>La desregulación se ve, en el sustrato, como una <strong>isla bioeléctrica</strong>: una zona despolarizada y desconectada de la red. Regular es facilitar su reconexión —el puente hacia la tarde, donde el campo/red se trabaja como un agente que se autoajusta.</p></div>
+    
+
+      <p class="kicker">Cierre del bloque</p>
+      <h2>Lo que queda establecido</h2>
+      <ul class="blist">
+        <li>Un campo magnético estático interactúa con el tejido por <strong>cuatro mecanismos convergentes</strong> —anisotropía diamagnética, canales de Ca²⁺ tipo T, magnetita biogénica y polarización M1/M2— que operan en el nivel supramolecular y confluyen en desplazar el <strong>Vmem</strong>; el pH y el redox se ajustan como lecturas de ese nuevo estado.</li>
+        <li>El <strong>imán</strong> es un instrumento de propiedades conocidas, medidas en tesla: su campo se <strong>atenúa</strong> con la distancia (lo relevante es lo que llega al tejido) y tiene un <strong>gradiente</strong> cuya forma empinada, en la frontera entre polos opuestos, bloquea la señal del dolor. Su uso seguro se apoya en contraindicaciones claras.</li>
+        <li>La RB actúa sobre un <strong>sustrato continuo</strong> —matricial, fascial, bioeléctrico e inmunológico— descrito por cuatro tradiciones. El <strong>iliopsoas</strong> conecta ese sustrato con la respuesta observable del rastreo, y la diferenciación regional sostiene el rastreo por regiones.</li>
+        <li>La desregulación tiene forma: una <strong>isla bioeléctrica</strong> despolarizada y desconectada de la red. Regular es facilitar su reconexión.</li>
+      </ul>
+      <div class="idea"><span class="lab"><span class="dot"></span>Cierre de la mañana</span><p>El estudiante comprende el microambiente tisular (Bloque 1), la herramienta y el mapa físico (Bloque 2). La tarde construye sobre esta base el razonamiento clínico.</p></div>
+    
+
+      <p class="kicker">Para consultar</p>
+      <h2>Glosario del bloque</h2>
+      <dl class="gl">
+          <div><dt>Campo magnético estático</dt><dd>campo constante en el tiempo generado por un imán permanente.</dd></div>
+          <div><dt>Fuerza de Lorentz</dt><dd>fuerza sobre una carga en movimiento dentro de un campo magnético.</dd></div>
+          <div><dt>Cooperatividad supramolecular</dt><dd>suma de efectos individuales en estructuras ordenadas que supera el umbral térmico.</dd></div>
+          <div><dt>Anisotropía diamagnética</dt><dd>propiedad de los fosfolípidos por la que un campo los reorienta y deforma los canales embebidos.</dd></div>
+          <div><dt>Canal de Ca²⁺ tipo T</dt><dd>canal de calcio dependiente de voltaje que transduce el campo en señalización celular.</dd></div>
+          <div><dt>Magnetita biogénica</dt><dd>cristales de Fe₃O₄ sintetizados por el organismo, capaces de transducir campos magnéticos.</dd></div>
+          <div><dt>Polarización M1 / M2</dt><dd>estados proinflamatorio (M1) y reparativo (M2) del macrófago.</dd></div>
+          <div><dt>Clusters Fe-S</dt><dd>grupos hierro-azufre de la mitocondria, paramagnéticos; vía redox por la que el campo alcanza el Vmem.</dd></div>
+          <div><dt>Densidad de flujo (B)</dt><dd>intensidad del campo magnético en un punto; es lo que se mide en la clínica.</dd></div>
+      </dl>
+    
+
+      <dl class="gl">
+          <div><dt>Tesla (T) / Gauss (G)</dt><dd>unidades de densidad de flujo; 1 T = 10 000 G. La RB reporta en tesla y militesla.</dd></div>
+          <div><dt>Gaussímetro (teslámetro)</dt><dd>instrumento con sensor de efecto Hall que mide la densidad de flujo B.</dd></div>
+          <div><dt>Atenuación</dt><dd>disminución de la intensidad del campo con la distancia (≈ 1/d³).</dd></div>
+          <div><dt>Gradiente del campo (dB/dx)</dt><dd>qué tan rápido cambia la intensidad de un punto a otro (T/m).</dd></div>
+          <div><dt>Gradiente empinado</dt><dd>cambio brusco del campo, máximo en la frontera entre polos opuestos; bloquea de forma reversible los potenciales de acción del dolor.</dd></div>
+          <div><dt>Sustrato continuo</dt><dd>red matricial-fascial-bioeléctrica-inmunológica que conecta el cuerpo.</dd></div>
+          <div><dt>MALT</dt><dd>tejido linfoide asociado a mucosas; se organiza por territorios (NALT, BALT, GALT, VALT, SALT, CALT).</dd></div>
+          <div><dt>Iliopsoas</dt><dd>músculo con inervación dual y fusión fascial simpática; efector observable del rastreo.</dd></div>
+          <div><dt>Isla bioeléctrica</dt><dd>zona despolarizada cuyas gap junctions se cerraron y quedó desconectada del colectivo.</dd></div>
+      </dl>
+    
+
+      <p class="kicker">Fuentes</p>
+      <h2>Referencias del bloque</h2>
+      <div class="two refs">
+        <div class="grp">
+          <h4>Campos magnéticos estáticos</h4>
+          <p>Rosen AD. <em>Cell Biochem Biophys</em>. 2003;39(2):163-173.</p>
+          <p>Wu H, et al. <em>Cells</em>. 2022;11(15):2460.</p>
+          <p>Pall ML. <em>J Cell Mol Med</em>. 2013;17(8):958-965.</p>
+          <p>Kirschvink JL, et al. <em>PNAS</em>. 1992;89(16):7683-7687.</p>
+          <p>Maher BA, et al. <em>PNAS</em>. 2016;113(39):10797-10801.</p>
+          <p>Lei H, et al. <em>Front Immunol</em>. 2020;11:582772.</p>
+          <p>Feng C, et al. <em>Cells</em>. 2022;11(3):443.</p>
+          <p>Saletnik B, et al. <em>Int Agrophys</em>. 2024;38(1):43-75.</p>
+          <p>Kaneda E, et al. <em>Physiol Rep</em>. 2025;13(6):e70236.</p>
+          <p>Castello PR, et al. <em>Sci Rep</em>. 2023;13:13267.</p>
+          <p>Zablotskii V, et al. <em>BioEssays</em>. 2025;47(3):e202400200.</p>
+          <p>McLean MJ, et al. <em>Bioelectromagnetics</em>. 1995;16(1):20-32.</p>
+          <p>Cavopol AV, et al. <em>Bioelectromagnetics</em>. 1995;16(3):197-206.</p>
+        </div>
+        <div class="grp">
+          <h4>El instrumento</h4>
+          <p>Datos técnicos NdFeB y ferrita (K&amp;J Magnetics, Supermagnete), verificados 2026.</p>
+          <p>Marędziak M, et al. <em>J Magn Magn Mater</em>. 2016;398:235-245.</p>
+          <h4>El sustrato continuo</h4>
+          <p>Langevin HM, Yandow JA. <em>Anat Rec</em>. 2002;269(6):257-265.</p>
+          <p>Heine H. <em>J Tradit Chin Med</em>. 1988;8(3):207-212.</p>
+          <p>Pischinger A. <em>The Extracellular Matrix and Ground Regulation</em>. 2007.</p>
+          <p>Ulm L, Weiss T. <em>Fascia Research III</em>. Kiener; 2014.</p>
+          <p>Levin M. <em>Cell</em>. 2021;184(8):1971-1989.</p>
+          <p>Busse SM, McMillen PT, Levin M. <em>Development</em>. 2018;145(20):dev164210.</p>
+          <p>Walford G. <em>Psoas major</em>. StatPearls; 2023.</p>
+        </div>
+      </div>
+    
+  </div>
+
+  <div class="colophon">Regulación Bioeléctrica · Instituto Centrobioenergetica · 2026</div>
+</div>
