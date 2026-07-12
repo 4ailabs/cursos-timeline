@@ -7,8 +7,10 @@
 
 ## Convenciones y materiales
 
-- **Posición:** paciente en decúbito supino, relajado.
+- **Camilla:** de masaje u otra **sin superficie metálica externa** (evita interferencia con los imanes).
+- **Posición:** decúbito supino, **cabeza en posición neutra**, relajado.
 - **Referencia de simetría:** siempre el **talón de la extremidad inferior izquierda**.
+- **Ayuda de lectura:** que la persona lleve **zapatos** o **marcar los talones** para apreciar mejor la diferencia.
 - **Signo de rastreo:** *acortamiento* de una extremidad = señal de nodo activo. *Nivelación* (emparejamiento) = resolución.
 - **Polaridad (confirmada por el autor):** polo **negativo = Norte**; polo **positivo = Sur**. El polo **negativo (Norte)** es el de **rastreo/impactación** sobre la zona de lesión; el **positivo (Sur)** es el **complementario** (par local o nodo distante).
 - **Cara del imán hacia la piel:** en la aplicación general, la **cara negativa** es la que contacta la piel sobre la lesión. **Única excepción:** la corrección renal (Fase 1), donde la **cara positiva** va hacia la piel.
@@ -18,14 +20,19 @@
 
 ---
 
-## Fase 0 — Rastreo basal (medición de simetría)
+## Fase 0 — Preparación, relajación y rastreo basal
 
-1. Acostar a la persona en supino.
-2. Medir la simetría corporal comparando ambos talones, con referencia en el **izquierdo**.
-3. Si las extremidades están **parejas**, dejarlas así y proceder al rastreo de zonas (Fase 3).
-4. Si hay **acortamiento** (ej. extremidad derecha), proceder a la corrección renal (Fase 1).
+**Preparación y relajación** (reduce los mecanismos de defensa y mejora la medición):
+1. Acostar a la persona en supino, cabeza en posición neutra.
+2. Sujetar ambas extremidades inferiores y **traccionarlas suavemente** para relajar la articulación pélvica; movilizarlas con las manos **hacia los lados** para relajar el piso pélvico.
+3. Cubrir con una **manta**: relaja el cuerpo, retira los mecanismos de defensa y permite medir mejor.
 
-> **Lectura bioeléctrica.** El acortamiento es la señal somática de una incoherencia en el patrón bioeléctrico —una isla de despolarización desconectada del colectivo—. El rastreo es una **heurística de exploración** (no un instrumento diagnóstico validado); su peso probatorio se traslada al desenlace clínico medido en la Fase 7.
+**Medición de simetría:**
+4. Tomar ambas extremidades con las manos, **levantarlas ~30°** y medir —solo levantar y medir—.
+5. Comparar la **simetría de los talones** (referencia en el izquierdo): *acortamiento* (un talón más corto) vs *simétricos*.
+6. Si están **parejas** → rastreo de zonas (Fase 3). Si hay **acortamiento** (ej. extremidad derecha) → corrección renal (Fase 1).
+
+> **Lectura bioeléctrica.** El acortamiento es la señal somática de una incoherencia en el patrón bioeléctrico —una isla de despolarización desconectada del colectivo—. El rastreo es una **heurística de exploración** (no un instrumento diagnóstico validado); su peso probatorio se traslada al desenlace clínico medido en la Fase 7. La preparación (tracción pélvica, manta) **reduce el tono de defensa muscular**, que es una de las fuentes de variabilidad de la prueba —una mejora práctica del punto débil identificado en la investigación (fiabilidad del test muscular, dossier T6)—.
 
 ---
 
@@ -96,7 +103,7 @@
 
 ## Fase 5 — Técnica 3 · Rejilla de gradiente ("ajedrez")
 
-*Refuerzo local sobre un punto ya confirmado.*
+*Indicación: **dolor con contractura**. Refuerzo local sobre un punto ya confirmado.*
 
 1. En el lugar donde quedó el **polo negativo (Norte)**, colocar el **positivo (Sur)** para fijar el par.
 2. Alrededor de esos puntos, **sin moverlos**, construir una **rejilla de 4 imanes en 2×2** con polaridades alternadas en **tablero de ajedrez** (N-S / S-N).
