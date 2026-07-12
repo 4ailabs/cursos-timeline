@@ -81,7 +81,7 @@ Los cuatro mecanismos convergen en una misma variable: el **potencial de membran
 
 > campo magnético estático → **Vmem** → flujos iónicos → pH y redox (como consecuencia)
 
-Un mecanismo adicional refuerza esta jerarquía: los clusters de hierro-azufre (Fe-S) de la cadena mitocondrial son paramagnéticos y responden al campo, alterando el estado redox y, a través de él, el Vmem (Castello et al., 2023). El Vmem es, por tanto, la variable primaria que la regulación desplaza; el pH acompaña ese cambio —coherente con la jerarquía establecida en el Bloque 1.
+Un mecanismo adicional, aún en investigación, apunta en la misma dirección: los clusters de hierro-azufre (Fe-S) de la cadena mitocondrial son paramagnéticos y responden a campos magnéticos (Usselman et al., 2016), aunque esa evidencia proviene de campos débiles y su extrapolación al imán estático es todavía hipótesis. Lo establecido es que el Vmem es la variable primaria que la regulación desplaza; el pH acompaña ese cambio —coherente con la jerarquía del Bloque 1.
 
 > **Idea clave.** Cuatro mecanismos, una variable: el campo magnético converge en el Vmem, con evidencia de patch-clamp, bloqueo farmacológico e histología. El pH y el redox se ajustan como lecturas de ese nuevo estado.
 
@@ -304,7 +304,7 @@ Así, la desregulación tiene una forma legible en el sustrato continuo: no un "
 - Feng C, et al. *Cells*. 2022;11(3):443.
 - Saletnik B, et al. *Int Agrophys*. 2024;38(1):43-75.
 - Kaneda E, et al. *Physiol Rep*. 2025;13(6):e70236.
-- Castello PR, et al. *Sci Rep*. 2023;13:13267.
+- Usselman RJ, Castello PR, et al. *Sci Rep*. 2016;6:38543. PMID 27995996.
 - Zablotskii V, et al. *BioEssays*. 2025;47(3):e202400200.
 - McLean MJ, et al. Blockade of sensory neuron action potentials by static magnetic field. *Bioelectromagnetics*. 1995;16(1):20-32.
 - Cavopol AV, et al. Static magnetic fields that block action potentials. *Bioelectromagnetics*. 1995;16(3):197-206.

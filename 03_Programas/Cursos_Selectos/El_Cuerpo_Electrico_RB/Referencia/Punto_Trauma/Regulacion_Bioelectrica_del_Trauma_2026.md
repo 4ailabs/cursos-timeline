@@ -42,15 +42,15 @@ Cuando [K+] sube de 4 a 20-40 mM, el Vmem de las células vecinas intactas se de
 
 La despolarización desencadena una cascada que no requiere invocar el pH:
 
-**Despolarización, apertura de canales de Ca2+ dependientes de voltaje.** Los canales tipo T se activan a ~-60 mV, los tipo L a ~-40 mV. El Vmem despolarizado del trauma activa ambos, entrada masiva de Ca2+, activación de calpaínas, proteasas, citoquinas, NF-kB.
+**Despolarización, apertura de canales de Ca2+ dependientes de voltaje.** Los canales tipo T se activan a ~-60 mV, los tipo L a ~-30/-20 mV. El Vmem despolarizado del trauma activa ambos, entrada masiva de Ca2+, activación de calpaínas, proteasas, citoquinas, NF-kB.
 
-**Despolarización, cierre de gap junctions.** Las connexinas se cierran con la despolarización y con [Ca2+] intracelular elevado. La zona traumatizada se desconecta del colectivo bioeléctrico, se convierte en una isla eléctrica (Levin, 2021, Cell).
+**Cierre de gap junctions (sobre todo por Ca²⁺).** Las conexinas se cierran principalmente por el **[Ca²⁺] intracelular elevado (vía calmodulina)**; el gating por voltaje responde al voltaje transjuntural, no a la despolarización absoluta. La zona traumatizada se desconecta del colectivo bioeléctrico, se convierte en una isla eléctrica (marco de Levin, 2021, Cell).
 
-**Despolarización, inflamación.** La entrada de Ca2+ activa fosfolipasa A2, prostaglandinas y leucotrienos, vasodilatación, edema, dolor. Los macrófagos se polarizan a M1 (proinflamatorio); la polarización M1 correlaciona con despolarización del Vmem del macrófago.
+**Despolarización, inflamación.** La entrada de Ca2+ activa fosfolipasa A2, prostaglandinas y leucotrienos, vasodilatación, edema, dolor. Los macrófagos se polarizan a M1 (proinflamatorio); la relación entre Vmem del macrófago y polarización M1/M2 es **contexto-dependiente**, no una regla fija (evidencia en ambos sentidos; cf. Yu et al., 2022, *Nat Commun*).
 
 **Edema, compresión capilar, hipoperfusión, metabolismo anaeróbico, lactato.** La acidosis local es una consecuencia downstream de la cascada de despolarización. El K+ y el Ca2+ llegan primero. El pH cambia después.
 
-El catch-22 bioeléctrico: para repararse, las células necesitan repolarizarse y reconectarse (reabrir gap junctions). Para repolarizarse, necesitan que [K+] regrese a ~4 mM. Pero mientras las gap junctions están cerradas y la perfusión está comprometida, el K+ no se depura eficientemente.
+El catch-22 bioeléctrico (hipótesis condicionada): para repararse, las células necesitan repolarizarse y reconectarse (reabrir gap junctions), y para ello [K+] debe regresar a ~4 mM. En tejido bien perfundido esto ocurre en minutos; el bloqueo se sostiene sobre todo **cuando la perfusión está comprometida** (isquemia, edema con compresión capilar): entonces el K+ no se depura eficientemente, la despolarización persiste y la reparación se estanca. Esa condición es la que conecta con el argumento renal.
 
 ---
 
@@ -60,13 +60,13 @@ El catch-22 bioeléctrico: para repararse, las células necesitan repolarizarse 
 
 ### 4. El riñón como regulador maestro del Vmem sistémico
 
-El riñón no regula "el pH." Regula las concentraciones iónicas extracelulares que determinan el Vmem de cada célula del organismo:
+El riñón no regula *únicamente* el pH: regula el conjunto de concentraciones iónicas extracelulares que determinan el Vmem de cada célula del organismo (el equilibrio ácido-base es una de esas funciones):
 
-**[K+] extracelular:** El riñón es el único órgano que regula [K+] extracelular con precisión de ±0.5 mM, filtrando ~800 mmol/día y excretando solo 50-100 mmol vía canales ROMK y BK en el conducto colector. Una variación de 1 mM en [K+] extracelular cambia el Vmem de cada célula del cuerpo en ~10-15 mV (Goldman). El riñón configura el set point del Vmem de todo el organismo.
+**[K+] extracelular:** El riñón domina el balance **externo** de K+ (excreción) con precisión de ±0.5 mM, filtrando ~800 mmol/día y excretando solo 50-100 mmol vía canales ROMK y BK en el conducto colector; el balance **interno** agudo lo comparten la Na⁺/K⁺-ATPasa, la insulina y las catecolaminas. Una variación de 1 mM en [K+] extracelular cambia el Vmem de cada célula del cuerpo en ~5-6 mV cerca del rango fisiológico (relación logarítmica de Goldman). El riñón configura el set point del Vmem de todo el organismo.
 
 **[Na+], [Ca2+], [Cl-] extracelulares:** Los otros tres iones de la ecuación de Goldman, todos regulados por el riñón con mecanismos independientes y precisos (ENaC, NCC, NKCC2, PTH, pendrina, ClC-K2).
 
-Inervación sensorial renal: ganglios dorsales T10-T13 y L1-L2 (bioRxiv, 2023). Inervación simpática eferente: regula liberación de renina, resistencia vascular, reabsorción de Na+/H2O, y células inmunes (Hering et al., 2020). Los receptores beta3-adrenérgicos en las células intercaladas regulan directamente los transportadores iónicos (Milano et al., 2024). El circuito reflejo renorenal recalibra la función renal momento a momento.
+Inervación sensorial renal: ganglios dorsales T10-T13 y L1-L2 (preprint bioRxiv, 2023 — no revisado por pares). Inervación simpática eferente: regula liberación de renina, resistencia vascular, reabsorción de Na+/H2O, y células inmunes (Hering et al., 2020). Los receptores beta3-adrenérgicos en las células intercaladas regulan directamente los transportadores iónicos (Milano et al., 2024). El circuito reflejo renorenal recalibra la función renal momento a momento.
 
 ### 5. Tres hipótesis sobre el mecanismo de la configuración trauma-riñón
 
@@ -74,13 +74,13 @@ Inervación sensorial renal: ganglios dorsales T10-T13 y L1-L2 (bioRxiv, 2023). 
 
 **Hipótesis de reconexión del colectivo (TAME).** El colectivo bioeléctrico detecta la isla eléctrica del trauma como una incoherencia en su patrón de Vmem y señala al operador (vía nivelación de la pierna) cuál nodo regulador puede resolverla. El riñón aparece porque controla [K+] extracelular, la variable fuera de rango. La perturbación simultánea de ambos nodos proporciona al colectivo la información para recomputar su patrón bioeléctrico.
 
-**Hipótesis del efecto normalizador (Morris-Levin).** El CME no empuja en una dirección, normaliza hacia el atractor correcto (Morris y Skalak, 2005: normalización del tono arteriolar hacia el mediano del 15%). El CME en el trauma reduce la barrera que mantiene al Vmem en el atractor despolarizado. El CME en el riñón normaliza la función tubular. Los dos efectos normalizadores convergen.
+**Hipótesis del efecto normalizador (Morris-Skalak, leído con el marco de atractores de Levin — dos literaturas independientes, no un "efecto Morris-Levin" unificado).** El CME no empuja en una dirección, normaliza hacia el atractor correcto (Morris y Skalak, 2005: normalización del tono arteriolar hacia el mediano del 15%). El CME en el trauma reduce la barrera que mantiene al Vmem en el atractor despolarizado. El CME en el riñón normaliza la función tubular. Los dos efectos normalizadores convergen.
 
 Las tres hipótesis no son excluyentes, probablemente operan simultáneamente en diferentes escalas.
 
 ### 6. Los 20-30 minutos y la resolución del acortamiento
 
-Escala temporal de los mecanismos: bloqueo de potenciales de acción por gradiente (5 min, McLean), reorientación de fosfolípidos por anisotropía diamagnética (135 s para revertir, Rosen), normalización del tono arteriolar (15-30 min, Morris & Skalak), respuesta de células intercaladas renales (minutos a horas).
+Escala temporal de los mecanismos: bloqueo de potenciales de acción por gradiente (5 min, McLean), reorientación de fosfolípidos por anisotropía diamagnética (reversión lenta, orden de minutos, Rosen), normalización del tono arteriolar (15-30 min, Morris & Skalak), respuesta de células intercaladas renales (minutos a horas).
 
 Cuando el acortamiento desaparece al retirar el imán, el colectivo bioeléctrico ya no detecta incoherencia, el patrón se recomputó. No significa que la reparación tisular se completó. Significa que la información de patrón fluye de nuevo. La reparación anatómica procederá en horas-días.
 
@@ -94,7 +94,7 @@ El riñón controla [K+] extracelular (el determinante dominante de Goldman), co
 |------|----------------------|-------------------|------------|
 | **Riñón** | [K+], [Na+], [Cl-], volumen extracelulares | Despolarización por K+ dominante | T10-L2 |
 | **Bazo** | Reflejo inflamatorio (TNF-alfa, IL-6) vía circuito vagal de Tracey | Inflamación sistémica dominante | T6-T10, vagal |
-| **Hígado** | Fase aguda, lactato, complemento | Trauma extenso con necrosis | T7-T10, vagal |
+| **Hígado** | Fase aguda, lactato, complemento | Trauma extenso con necrosis | Simpático esplácnico T7-T10; vagal (parasimpático) por vía aparte |
 | **Tiroides** | Na+/K+-ATPasa (set point Vmem global) | Trauma crónico no resuelto | T1-T4 |
 | **Suprarrenal** | Aldosterona (K+/Na+), cortisol | Estrés sistémico | T10-L1 |
 | **Paratiroides** | [Ca2+] extracelular | Excitabilidad neuromuscular | T1-T4 |
@@ -268,11 +268,15 @@ Para cada aplicación, registrar:
 
 ### 22. Desde TAME: qué sabe el colectivo
 
+> **Encuadre honesto.** Esta sección es una **lectura interpretativa** con el léxico del marco TAME de Levin, no afirmaciones de Levin sobre el trauma. El acoplamiento por gap junctions y la memoria de patrón están publicados (planaria, Xenopus, desarrollo/regeneración); "el colectivo sabe qué nodo lo resuelve", "recomputa el patrón en 20-30 min" y "el imán baja la barrera del atractor" son **hipótesis del autor inspiradas en ese marco**, no evidencia en trauma de mamífero adulto.
+
 El colectivo bioeléctrico del organismo (Levin, 2021, Cell) monitorea su propio estado iónico a través de la red de gap junctions. El trauma produce un "pixel negro", una zona desconectada del patrón. El colectivo detecta la incoherencia y, al ser interrogado por el imán (perturbación de un nodo), señala al operador cuál nodo regulador puede resolverla.
 
 El operador no elige el punto complementario, lo encuentra siguiendo la señal del colectivo (la nivelación de la pierna). El colectivo computa en tiempo real cuál de sus nodos reguladores controla la variable que está fuera de rango. Los 20-30 minutos son el tiempo de recomputación del patrón, no de reacción química.
 
 ### 23. La inversión causal: Vmem es primario, pH es derivado
+
+> **Estatus.** Encuadre de modelo (línea de Levin), no jerarquía causal demostrada: Vmem, pH y redox están acoplados bidireccionalmente (Salameh et al., 2002). Marco organizador útil, no ley.
 
 Los tres mecanismos directos del CME (anisotropía diamagnética de fosfolípidos, deformación de canales; modulación de canales de Ca2+ tipo T/L; interacción con clusters Fe-S paramagnéticos mitocondriales) convergen en el Vmem como variable primaria. La cascada es: CME, Vmem, flujos iónicos, pH (como consecuencia, paso 6 de 8). La hipótesis clásica del biomagnetismo ("el imán alcaliniza") invierte la causalidad.
 
@@ -280,7 +284,7 @@ Los tres mecanismos directos del CME (anisotropía diamagnética de fosfolípido
 
 Morris y Skalak (2005): el CME normaliza el tono arteriolar hacia el mediano del 15%, vasodilatación de vasos constrictos, vasoconstricción de vasos dilatados. Esto no es un efecto farmacológico (input, output predecible). Es un efecto de facilitación: el CME reduce la barrera que mantiene al sistema en un atractor incorrecto, permitiendo que la dinámica interna lo lleve al atractor correcto.
 
-La ventana de intensidad (10-70 mT funciona, 400 mT no) es consistente: el sistema no necesita fuerza, necesita una perturbación del tamaño correcto que baje la barrera sin empujar al sistema a otro atractor incorrecto.
+La idea de una ventana de intensidad es coherente con este modelo: el sistema no necesita fuerza, sino una perturbación del tamaño correcto que baje la barrera sin empujarlo a otro atractor. (Precisión: Morris & Skalak 2005 solo probó ~70 mT; el rango exacto de la ventana está por caracterizar, no debe darse por establecido.)
 
 ### 25. Reformulación del punto trauma
 
@@ -295,15 +299,15 @@ La ventana de intensidad (10-70 mT funciona, 400 mT no) es consistente: el siste
 ## Referencias
 
 1. Borovikova LV, et al. Vagus nerve stimulation attenuates the systemic inflammatory response. *Nature*. 2000;405:458-462.
-2. Castello PR, et al. Impact of magnetic fields on key signaling molecules. *Sci Rep*. 2023;13:13267.
+2. Usselman RJ, Castello PR, et al. The quantum biology of reactive oxygen species partitioning impacts cellular bioenergetics. *Sci Rep*. 2016;6:38543. PMID 27995996. [Nota: campos débiles/oscilantes, no CME estático fuerte.]
 3. Cavopol AV, et al. Measurement and analysis of static magnetic fields that block action potentials. *Bioelectromagnetics*. 1995;16(3):197-206.
-4. Deng ZD, et al. Electric field depth-focality tradeoff in TMS. *Clin Neurophysiol*. 2013;124(2):255-262.
+4. Deng ZD, Lisanby SH, Peterchev AV. Electric field depth-focality tradeoff in transcranial magnetic stimulation: simulation comparison of 50 coil designs. *Brain Stimul*. 2013;6(1):1-13. PMID 22483681.
 5. Goldman DE. Potential, impedance, and rectification in membranes. *J Gen Physiol*. 1943;27(1):37-60.
 6. Hering L, et al. Role of alpha2-adrenoceptors in renal sympathetic regulation. *Front Physiol*. 2020;11:566871.
 7. Hodgkin AL, Katz B. Effect of sodium ions on the giant axon. *J Physiol*. 1949;108(1):37-77.
 8. Kaneda K, et al. Effects of moderate SMF on Kv channels. *Physiol Rep*. 2025;13:e70236.
 9. Kelly MJ, et al. Manipulation of the inflammatory reflex. *Cell Rep Med*. 2022;3(7):100696.
-10. Kidney sensory innervation mapping. *bioRxiv*. 2023. doi:10.1101/2023.11.15.567276.
+10. Kidney sensory innervation mapping. *bioRxiv*. 2023. doi:10.1101/2023.11.15.567276. [Preprint, no revisado por pares.]
 11. Levin M. Bioelectric signaling: reprogrammable circuits. *Cell*. 2021;184(6):1971-1989.
 12. McLean MJ, et al. Blockade of sensory neuron action potentials. *Bioelectromagnetics*. 1995;16(1):20-32.
 13. Milano S, et al. beta3-Adrenoceptor in renal homeostasis. *Front Physiol*. 2024;15:1304375.

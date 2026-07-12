@@ -274,7 +274,7 @@ Y ahí está el nudo del problema, el círculo cerrado: para repararse, la célu
 
 **[68:00 — Por qué el riñón, con las tres hipótesis]**
 
-El riñón no regula "el pH", como se suele decir en la tradición. Regula, con muchísima precisión, las concentraciones iónicas extracelulares que determinan el Vmem de cada célula del cuerpo. Es el único órgano capaz de regular el potasio con precisión de más menos 0.5 milimolar, filtrando cerca de 800 milimoles al día y excretando apenas 50 a 100. Y como ya sabemos, una variación de solo 1 milimolar en el potasio extracelular cambia el Vmem de cada célula del cuerpo entre 10 y 15 milivoltios. El riñón, además, regula los otros tres iones de la misma ecuación de Goldman: sodio, calcio, cloro. Configura, en los hechos, el punto de referencia del voltaje de todo el organismo.
+El riñón no regula solo "el pH", como se suele reducir en la tradición. Regula, con muchísima precisión, el conjunto de concentraciones iónicas extracelulares que determinan el Vmem de cada célula del cuerpo. Es el órgano que ajusta la excreción de potasio con precisión de más menos 0.5 milimolar, filtrando cerca de 800 milimoles al día y excretando apenas 50 a 100. Y como ya sabemos, una variación de solo 1 milimolar en el potasio extracelular cambia el Vmem de cada célula del cuerpo alrededor de 5 a 6 milivoltios cerca del rango normal. El riñón, además, regula los otros tres iones de la misma ecuación de Goldman: sodio, calcio, cloro. Configura, en los hechos, el punto de referencia del voltaje de todo el organismo.
 
 **[pausa]**
 

@@ -22,7 +22,7 @@ Los canales iónicos están embebidos en la bicapa lipídica. Cuando los fosfol�
 
 Kaneda et al. (2025, *Physiological Reports*) demostraron que un CME moderado reduce la densidad de corriente de canales de K⁺ dependientes de voltaje (Kv) en células PC12. El CME modifica directamente la conductancia iónica.
 
-Dato temporal relevante para la impactación clínica: la frecuencia de potenciales miniatura de placa terminal (MEPP) cambia durante la exposición al CME y necesita ~135 segundos para regresar al basal después de retirar el campo. Esto es consistente con la reorientación lenta de dominios diamagnéticos — y con el tiempo de impactación del biomagnetismo (15–30 min).
+Dato temporal relevante para la impactación clínica: la frecuencia de potenciales miniatura de placa terminal (MEPP) cambia durante la exposición al CME y regresa al basal de forma **lenta**, en el orden de minutos, tras retirar el campo. Como referencia cuantitativa verificada, McLean et al. (1995) midieron en neuronas sensoriales bloqueo de potenciales de acción en ~200–250 s y recuperación en ~400–600 s. Esta cinética lenta es consistente con la reorientación de dominios diamagnéticos — y con el tiempo de impactación del biomagnetismo (15–30 min).
 
 **Cadena causal:** CME → reorientación de fosfolípidos → deformación de canales iónicos embebidos → cambio de conductancia iónica → **cambio de Vmem**. Sin pH de por medio.
 
@@ -38,7 +38,9 @@ Un grupo de la Academia China de Ciencias (Wu et al., 2022, *Cells*) demostró q
 
 ## Mecanismo 3 — Pares de radicales en clusters Fe-S mitocondriales → ROS → redox → Vmem
 
-Este es el mecanismo más reciente y el más fuerte para explicar por qué el pH es consecuencia, no causa. Castello et al. (2023, *Scientific Reports*) demostraron que campos magnéticos alteran directamente los clusters de hierro-azufre (Fe-S) de la cadena de transporte de electrones mitocondrial. Los clusters Fe-S son paramagnéticos — responden directamente al campo magnético.
+Este mecanismo ofrece una vía por la cual el pH sería consecuencia, no causa. Usselman, Castello et al. (2016, *Scientific Reports* 6:38543) demostraron que campos magnéticos alteran la partición de especies reactivas de oxígeno (ROS) por su efecto sobre pares de radicales acoplados a los clusters de hierro-azufre (Fe-S) de la cadena de transporte de electrones mitocondrial. Los clusters Fe-S son paramagnéticos — responden al campo magnético.
+
+**Salvedad importante (límite de este mecanismo):** el efecto de pares de radicales de Usselman/Castello se demostró con campos **débiles y oscilantes** (rango nT–µT), no con el campo magnético estático fuerte (100–500 mT) del imán de neodimio de la placa. La extrapolación de este mecanismo cuántico al CME estático clínico es, por tanto, **biofísicamente cuestionable** y debe tratarse como hipótesis, no como mecanismo establecido para la técnica. Los Mecanismos 1 (anisotropía diamagnética) y 2 (canales Ca²⁺ tipo T) son los que operan en el régimen de campo de la placa.
 
 El mecanismo, paso a paso:
 
@@ -56,6 +58,8 @@ Los clusters Fe-S son los que usan el pH como variable de acoplamiento entre su 
 ---
 
 ## La jerarquía real: Vmem es primario, pH es derivado
+
+> **Estatus de esta jerarquía.** "Vmem primario, pH derivado" es un **encuadre de modelo** (en la línea de la escuela de Levin), útil para invertir la vieja narrativa del pH. No es una jerarquía causal demostrada: Vmem, pH intracelular y estado redox están **acoplados bidireccionalmente** (p. ej. Salameh et al., 2002), y en distintas condiciones cualquiera de ellos puede ser el motor. Se sostiene como marco organizador, no como ley causal.
 
 La ecuación de la Bioelectrónica de Vincent (Cap. 15 del Tratado) conecta pH y potencial redox:
 
@@ -79,7 +83,7 @@ El pH no es el mecanismo — el pH es un **readout** del estado bioeléctrico. L
 1. Rosen AD. Mechanism of action of moderate-intensity static magnetic fields on biological systems. *Cell Biochem Biophys*. 2003;39(2):163-173.
 2. Kaneda E, Kawai T, Okamura Y, Miyagawa S. Effects of moderate static magnetic fields on voltage-gated potassium ion channels in sympathetic neuron-like PC12 cells. *Physiol Rep*. 2025;13(6):e70236.
 3. Wu H, Li C, Masood M, et al. Static magnetic fields regulate T-type calcium ion channels and mediate mesenchymal stem cells proliferation. *Cells*. 2022;11(15):2460.
-4. Castello PR, et al. Impact of magnetic fields on key signaling molecules. *Sci Rep*. 2023;13:13267.
+4. Usselman RJ, Castello PR, et al. The quantum biology of reactive oxygen species partitioning impacts cellular bioenergetics. *Sci Rep*. 2016;6:38543. PMID 27995996. [Campos débiles/oscilantes nT–µT; no CME estático fuerte.]
 5. Modelo matemático de acoplamiento pH–Vmem vía intercambiadores Na⁺/H⁺ y transportadores Cl⁻/HCO₃⁻. *PLOS ONE*. 2014.
 6. Bioelectrónica de Vincent — ecuación E = 30(rH₂ − 2pH). Ver `Tratado_RB_Cap15_BEV_pH_rH2.md`.
 

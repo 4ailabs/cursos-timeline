@@ -25,7 +25,7 @@ En vez de una lista suelta de órganos, tres **puntos reales del catálogo** for
 |---|---|---|---|---|
 | **Bulbo raquídeo** (84, "en la nuca"; Cap. 8) | **control central** del tono autonómico | todo el tono simpático/vagal (upstream) | médula oblonga: centros vasomotor y cardiorrespiratorio, núcleos del vago (motor dorsal, tracto solitario) | origen del vago y del flujo simpático |
 | **Suprarrenal** (80) | **efector neuroendocrino** (sympathoadrenal + HPA) | K⁺/Na⁺, inflamación, estrés | aldosterona (RAAS) → K⁺/Na⁺; cortisol vía eje HPA → antiinflamatorio | simpática T10–L1 + HPA |
-| **Hígado** (40) | **efector metabólico** | ácido / lactato | aclaramiento de lactato, respuesta de fase aguda | vagal (T7–T10) |
+| **Hígado** (40) | **efector metabólico** | ácido / lactato | aclaramiento de lactato, respuesta de fase aguda | vagal (parasimpático); el simpático hepático es esplácnico T7–T10 |
 
 **Por qué estos tres, y por qué encaja:**
 - El **bulbo raquídeo** es la sede física de los centros autonómicos y de los núcleos del vago —el orquestador de simpático y parasimpático—; en el catálogo de la RB es además **complementario recurrente de 6 dipolos** (Cap. 8), a la par del riñón.
