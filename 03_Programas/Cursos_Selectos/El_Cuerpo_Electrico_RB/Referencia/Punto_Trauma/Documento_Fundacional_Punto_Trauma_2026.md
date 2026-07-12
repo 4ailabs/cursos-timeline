@@ -105,7 +105,7 @@ El complementario del nodo de lesión sería el nodo cuyo eje autonómico gobier
 | **Suprarrenal** | efector neuroendocrino | K⁺/Na⁺ (aldosterona), inflamación/estrés (cortisol) | simpática T10–L1 + HPA |
 | **Hígado** | efector metabólico | lactato, fase aguda | vagal; simpático esplácnico T7–T10 aparte |
 
-El riñón es el único **[Establecido]** como complementario recurrente del trauma (Tratado). El reflejo inflamatorio del vago–bazo (Tracey) es fisiología sólida —y la medicina bioelectrónica lo confirma: la FDA aprobó en 2025 un estimulador vagal implantable para artritis reumatoide (ensayo RESET-RA)— pero eso es estimulación eléctrica directa de un nervio, no un imán transcutáneo. El mapeo lesión→nodo es una línea de investigación fundada, no una técnica cerrada.
+En la práctica documentada (`Protocolo_Clinico_Tecnica_Trauma_RB.md`), cuando el dipolo local no nivela el nodo distante se busca en un **orden fijo de preferencia** —riñón → suprarrenal → hígado → bulbo → cuerpo entero—, que **corrobora el elenco de la tríada** pero indica que la selección es un **orden empírico**, no una elección por variable dominante. El riñón es el único **[Establecido]** como complementario recurrente del trauma (Tratado). El reflejo inflamatorio del vago–bazo (Tracey) es fisiología sólida —y la medicina bioelectrónica lo confirma: la FDA aprobó en 2025 un estimulador vagal implantable para artritis reumatoide (ensayo RESET-RA)— pero eso es estimulación eléctrica directa de un nervio, no un imán transcutáneo. El mapeo lesión→nodo es una línea de investigación fundada, no una técnica cerrada.
 
 ---
 

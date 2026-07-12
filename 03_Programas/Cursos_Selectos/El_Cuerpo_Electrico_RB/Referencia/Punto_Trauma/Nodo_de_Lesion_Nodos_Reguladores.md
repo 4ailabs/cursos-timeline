@@ -54,6 +54,19 @@ La versión previa listaba 6 órganos (riñón, suprarrenal, bazo, hígado, para
 
 El mapeo **"lesión → punto"** (qué punto aparece según la variable dominante) **no está verificado clínicamente**. Lo que sí está: (a) el riñón como complementario recurrente del trauma (Tratado); (b) los tres puntos como complementarios reales del catálogo (bulbo 6, suprarrenal 5 dipolos); (c) el papel regulador de cada órgano en la fisiología publicada. La hipótesis es fisiológicamente fundada y **testable** —es una línea de investigación, no una técnica establecida.
 
+## 7. Adenda (julio 2026): el orden de selección en la práctica
+
+La documentación del procedimiento tal como se practica (`Protocolo_Clinico_Tecnica_Trauma_RB.md`) precisa un dato que **corrobora la tríada y a la vez corrige la hipótesis de selección**:
+
+Cuando el dipolo local no nivela, el nodo distante se busca en un **orden fijo de preferencia**, no por la variable dominante:
+
+> **riñón derecho → riñón izquierdo → suprarrenal derecha → suprarrenal izquierda → hígado → bulbo raquídeo → rastreo de todo el cuerpo.**
+
+Implicaciones:
+- **Corrobora los efectores propuestos:** riñón (iónico), suprarrenal (neuroendocrino), hígado (metabólico) y bulbo (control central) son exactamente los nodos de la tríada + riñón. La práctica valida el elenco.
+- **Corrige el criterio:** la selección es un **orden empírico fijo**, no una elección caso a caso por "la variable más desregulada" (hipótesis §2). El mapeo lesión→variable→nodo se debilita como *mecanismo de selección*; lo que hay es una jerarquía de prueba fija.
+- **Pendiente de explicar:** por qué ese orden (riñón antes que suprarrenal, hígado antes que bulbo). Es una nueva pregunta de investigación —¿refleja frecuencia clínica, accesibilidad, o una jerarquía funcional?
+
 ---
 
 *Fuentes: Tratado de RB (Cap. 7, 8, 12, 17) + `Referencia/Punto_Trauma/Regulacion_Bioelectrica_del_Trauma_2026.md` + PubMed (jul 2026). Documento de referencia — Instituto Centrobioenergetica, 2026.*
