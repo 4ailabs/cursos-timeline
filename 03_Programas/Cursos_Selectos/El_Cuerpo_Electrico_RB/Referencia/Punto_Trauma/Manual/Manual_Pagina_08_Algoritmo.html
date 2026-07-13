@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>El nodo de lesión · 14</title>
+<title>El nodo de lesión · 08</title>
 <style>
   :root{
     --ink:#2C2C2A; --soft:#4A4643; --faint:#888780;
@@ -194,23 +194,58 @@
 <style>body{background:#E9E8E3;margin:0}.wrap{display:flex;justify-content:center;padding:26px 16px 44px}.frame{zoom:1}@media print{.wrap{padding:0}}</style>
 </head>
 <body><div class="wrap"><section class="page prem">
-      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Cerrar la sesión</span></div>
-      <p class="eyebrow">Cerrar la sesión</p>
-      <h1>Cierre e integración</h1>
-      <p class="lead">Concluido el tratamiento por zonas, la sesión se cierra registrando los <b>hallazgos</b>, acompañando la reincorporación del paciente y consolidando el nuevo estado mediante las preguntas de integración.</p>
-      <div class="body">
-        <div class="sub">Procedimiento de cierre</div>
-        <ol class="clin">
-          <li>Registrar en el <b>mapa corporal</b>, con un punto, cada zona que surgió durante el rastreo. Este registro documenta la sesión y sirve de referencia para valorar la evolución.</li>
-          <li>Asistir al paciente en la <b>reincorporación</b> y valorar su estado. La respuesta habitual es de relajación, calma, disminución del dolor y mayor movilidad.</li>
-          <li>Formular las <b>preguntas de integración</b> (recuadro). Al hacer consciente el cambio se facilita la adopción de un nuevo <b>set point</b>.</li>
-          <li>La sesión termina en el <b>tiempo fijado por el operador</b>; el tratamiento puede <b>continuarse en sesiones posteriores</b>, repitiendo la secuencia hasta que el rastreo <b>no marque acortamiento</b>.</li>
-        </ol>
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Antes de empezar</span></div>
+      <p class="eyebrow">Antes de empezar</p>
+      <h1>Algoritmo de la sesión</h1>
+      <p class="lead">El flujo de decisiones de una sesión, de la medición basal a la apertura del rastreo y al trabajo del nodo de lesión.</p>
+      <div class="flow">
+        <div class="fnode strong"><div class="t">Medición basal de la simetría</div><div class="s">Izquierda: referencia fija · derecha: variable</div></div>
+        <div class="fconn"></div>
+        <div class="fdec"><div class="q">¿La derecha aparece acortada?</div>
+          <div class="fbranch">
+            <span class="chip"><b>No, isométricas</b> → pasar directo al rastreo por zonas (nodo de lesión)</span>
+            <span class="chip"><b>Sí, acortamiento funcional</b> → hacer la apertura del rastreo</span>
+          </div>
+        </div>
 
-        <div class="signal"><span class="w" style="color:var(--teal)">Preguntas de integración</span><p><i>¿Qué diferencias percibes? · ¿Cómo te encuentras? · ¿Qué ha cambiado?</i></p></div>
+        <div class="phase">Apertura del rastreo <span>· cuando hay acortamiento basal · común a toda sesión</span></div>
+        <div class="fnode"><div class="t">Acidosis temporal</div><div class="s">Polo positivo (Sur) sobre la zona renal + dipolo local</div></div>
+        <div class="fconn"></div>
+        <div class="fdec"><div class="q">Reevaluación de la simetría</div>
+          <div class="fbranch">
+            <span class="chip"><b>Isométricas</b> → resuelto; continuar</span>
+            <span class="chip"><b>Reaparece el acortamiento</b> → acidosis latente</span>
+          </div>
+        </div>
+        <div class="fconn"></div>
+        <div class="fnode"><div class="t">Acidosis latente</div><div class="s">Dipolo a distancia: zona renal + área parietal contralateral</div></div>
 
-        <div class="sub">Frecuencia entre sesiones</div>
-        <p>Se ajusta a la <b>evolución clínica</b> del paciente; no hay un intervalo fijo. Se espacian las sesiones a medida que el rastreo deja de marcar. Este procedimiento <b>no sustituye</b> el diagnóstico ni el tratamiento médico.</p>
+        <div class="phase">Nodo de lesión <span>· por cada zona del mapa, de mayor a menor dolor</span></div>
+        <div class="fnode"><div class="t">Colocar el negativo (Norte) sobre la zona más sintomática</div></div>
+        <div class="fconn"></div>
+        <div class="fdec"><div class="q">Al colocarlo, ¿la extremidad se acorta?</div>
+          <div class="fbranch">
+            <span class="chip"><b>No</b> → mover el imán por la zona y volver a medir; si en toda la zona no acorta, pasar a otra zona</span>
+            <span class="chip"><b>Sí</b> → colocar el positivo (Sur) adyacente</span>
+          </div>
+        </div>
+        <div class="fconn"></div>
+        <div class="fdec"><div class="q">Reevaluación de la simetría</div>
+          <div class="fbranch">
+            <span class="chip"><b>Isométricas</b> → dipolo local; mantener</span>
+            <span class="chip"><b>Sin isometría</b> → buscar un punto distante (orden fijo)</span>
+          </div>
+        </div>
+        <div class="fconn"></div>
+        <div class="fdec"><div class="q">¿La zona tiene contractura? <span style="font-weight:400;color:var(--soft)">(dolor con rigidez muscular)</span></div>
+          <div class="fbranch">
+            <span class="chip"><b>Sí</b> → reforzar con rejilla de gradiente</span>
+            <span class="chip"><b>No</b> → dejar el dipolo colocado</span>
+          </div>
+        </div>
+
+        <div class="phase">Cierre de la sesión</div>
+        <div class="fnode strong"><div class="t">Cierre e integración</div><div class="s">Registro del mapa e integración del nuevo set point</div></div>
       </div>
-      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">14</div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">08</div>
     </section></div></body></html>
