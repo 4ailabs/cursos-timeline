@@ -58,20 +58,20 @@
   .cover .endfoot{position:absolute;left:0;right:0;bottom:9mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
 
   /* ÍNDICE */
-  .indice{padding:16mm 22mm 14mm 22mm}
-  .indice .brand{display:flex;align-items:center;gap:3mm;margin-bottom:10mm;padding-bottom:3mm;border-bottom:1px solid var(--hair)}
+  .indice{padding:11mm 22mm 11mm 22mm}
+  .indice .brand{display:flex;align-items:center;gap:3mm;margin-bottom:5.5mm;padding-bottom:2.6mm;border-bottom:1px solid var(--hair)}
   .indice .brand svg{height:5.6mm}
   .indice .wordmark{font-size:10.5px;color:var(--ink)}.indice .wordmark b{color:var(--teal);font-weight:400}
   .indice .sp{flex:1}
   .indice .rh{font:400 8px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
   .indice .eyebrow{font:600 9px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:0 0 2.5mm}
-  .indice h1{font-family:var(--serif);font-weight:700;font-size:27px;margin:0 0 9mm}
-  .indice .grp{font:600 9px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 3mm}
-  .indice .grp.mt{margin-top:8mm}
+  .indice h1{font-family:var(--serif);font-weight:700;font-size:22px;margin:0 0 5mm}
+  .indice .grp{font:600 8.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 1.8mm}
+  .indice .grp.mt{margin-top:4.4mm}
   .indice .toc{list-style:none;margin:0;padding:0}
-  .indice .toc li{display:flex;align-items:baseline;gap:2.5mm;padding:2.4mm 0;border-bottom:1px solid var(--hair)}
+  .indice .toc li{display:flex;align-items:baseline;gap:2.5mm;padding:1.5mm 0;border-bottom:1px solid var(--hair)}
   .indice .toc li .n{font:700 9px var(--sans);color:var(--teal);width:8mm;flex:none;font-variant-numeric:tabular-nums}
-  .indice .toc li .t{font-size:12.5px;color:var(--ink)}.indice .toc li .t small{color:var(--faint);font-size:10px}
+  .indice .toc li .t{font-size:11px;color:var(--ink)}.indice .toc li .t small{color:var(--faint);font-size:9px}
   .indice .toc li .dots{flex:1;border-bottom:1px dotted #C9C6BD;transform:translateY(-3px)}
   .indice .toc li .pg{font:400 10px var(--sans);color:var(--faint);font-variant-numeric:tabular-nums}
   .indice .foot{position:absolute;left:0;right:0;bottom:9mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
@@ -103,13 +103,13 @@
   .prem .fig{float:right;width:58mm;margin:1mm 0 3mm 7mm}
   .prem .fig .phbox{aspect-ratio:5/6}
   .prem .sub{font-family:var(--sans);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin:4.5mm 0 2mm}
-  .prem .body p{font-size:10px;line-height:1.58;margin:0 0 2.8mm;text-align:justify}
+  .prem .body p{font-size:10px;line-height:1.58;margin:0 0 2.8mm;text-align:left}
   .prem .body p b{font-weight:700;font-style:normal;color:var(--ink)}
   .prem .callout{clear:right;margin:3.5mm 0;padding:2.6mm 3.5mm;border-left:2px solid var(--coral);background:#FBF3EF;border-radius:0 2mm 2mm 0}
   .prem .callout .w{display:block;font-family:var(--sans);font-size:7.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:1.2mm}
   .prem .callout p{font-size:9.5px;line-height:1.5;color:var(--soft);margin:0}
   .prem ol.clin{margin:0;padding:0;list-style:none;counter-reset:c}
-  .prem ol.clin>li{counter-increment:c;position:relative;padding-left:9mm;font-size:10px;line-height:1.58;margin-bottom:3mm;text-align:justify}
+  .prem ol.clin>li{counter-increment:c;position:relative;padding-left:9mm;font-size:10px;line-height:1.58;margin-bottom:3mm;text-align:left}
   .prem ol.clin>li::before{content:counter(c,decimal-leading-zero);position:absolute;left:0;top:.3mm;font-family:var(--sans);font-weight:700;font-size:8.5px;color:var(--teal);font-variant-numeric:tabular-nums}
   .prem ol.clin>li b{font-weight:700;font-style:normal;color:var(--ink)}
   .prem .intro{font-size:9px;line-height:1.5;color:var(--soft);margin:0 0 2mm}
@@ -191,7 +191,9 @@
   <span class="hint">· The lesion node · B5 size (176×250 mm)</span>
   <span class="sp"></span>
   <span class="grp">Zoom <button id="zo" title="Zoom out">–</button><span class="zval" id="zv">62%</span><button id="zi" title="Zoom in">+</button><button id="zr" title="Fit" style="width:auto;padding:0 8px">Fit</button></span>
-  <span class="hint">↔ scroll sideways</span>
+  <span class="grp">Sheet <button id="pp" title="Previous (←)">‹</button><button id="pn" title="Next (→)">›</button></span>
+  <input id="pslider" type="range" min="0" max="1000" value="0" title="Fine scroll" style="width:130px;accent-color:#0F6E56;cursor:pointer">
+  <span class="hint">‹ › or ← → · slider = fine</span>
 </div>
 
 <div class="panel" id="panel">
@@ -203,7 +205,7 @@
       <svg class="wm" viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg>
       <div class="logo"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wordmark">bioelectric <b>regulation</b></span></div>
       <div class="gap-t"></div>
-      <div><p class="kicker">Procedure manual · scanning and regulation</p><h1>The lesion node</h1><p class="sub">Clinical procedure of Bioelectric Regulation for the assessment and regulation of the lesion node.</p></div>
+      <div><p class="kicker">Procedure manual · scanning and regulation</p><h1>The lesion node</h1><p class="sub">A Bioelectric Regulation clinical procedure for assessing and regulating the lesion node.</p></div>
       <div class="gap-b"></div>
       <div class="meta"><div class="who"><b>Dr. Miguel Ojeda Rios</b><br>Instituto Centrobioenergetica</div><div class="ed">Program<br>El Cuerpo Eléctrico<br>2026 Edition</div></div>
       <div class="endfoot">INSTITUTO CENTROBIOENERGETICA</div>
@@ -217,33 +219,32 @@
       <div class="grp">Before you begin</div>
       <ul class="toc">
         <li><span class="n">—</span><span class="t">How to use this manual · materials · safety</span><span class="dots"></span><span class="pg">03</span></li>
-        <li><span class="n">—</span><span class="t">Clinical record <small>· history (SOAP · S)</small></span><span class="dots"></span><span class="pg">04</span></li>
-        <li><span class="n">—</span><span class="t">Clinical record <small>· examination (O · A · P)</small></span><span class="dots"></span><span class="pg">05</span></li>
+        <li><span class="n">—</span><span class="t">Clinical record <small>· patient history</small></span><span class="dots"></span><span class="pg">04</span></li>
+        <li><span class="n">—</span><span class="t">Clinical record <small>· examination</small></span><span class="dots"></span><span class="pg">05</span></li>
         <li><span class="n">—</span><span class="t">Patient position and preparation</span><span class="dots"></span><span class="pg">06</span></li>
         <li><span class="n">—</span><span class="t">Symmetry measurement <small>· left heel as reference</small></span><span class="dots"></span><span class="pg">07</span></li>
-        <li><span class="n">—</span><span class="t">The decision tree</span><span class="dots"></span><span class="pg">08</span></li>
+        <li><span class="n">—</span><span class="t">Session algorithm</span><span class="dots"></span><span class="pg">08</span></li>
       </ul>
       <div class="grp mt">Opening scan <small style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--faint)">· common to every session</small></div>
       <ul class="toc">
         <li><span class="n">—</span><span class="t">Temporary acidosis</span><span class="dots"></span><span class="pg">09</span></li>
-        <li><span class="n">—</span><span class="t">Latent acidosis <small>· renal area–parietal («Goiz phenomenon»)</small></span><span class="dots"></span><span class="pg">10</span></li>
+        <li><span class="n">—</span><span class="t">Latent acidosis <small>· renal–parietal regions («Goiz phenomenon»)</small></span><span class="dots"></span><span class="pg">10</span></li>
       </ul>
       <div class="grp mt">Lesion node</div>
       <ul class="toc">
-        <li><span class="n">01</span><span class="t">Dipoles by zone <small>· local dipole and distant point</small></span><span class="dots"></span><span class="pg">11</span></li>
-        <li><span class="n">02</span><span class="t">Gradient grid <small>· contracture</small></span><span class="dots"></span><span class="pg">13</span></li>
+        <li><span class="n">01</span><span class="t">Local dipole <small>· dipoles by zone</small></span><span class="dots"></span><span class="pg">11</span></li>
+        <li><span class="n">02</span><span class="t">Distant point <small>· regulatory node</small></span><span class="dots"></span><span class="pg">12</span></li>
+        <li><span class="n">03</span><span class="t">Gradient grid <small>· contracture</small></span><span class="dots"></span><span class="pg">13</span></li>
       </ul>
       <div class="grp mt">Closing the session</div>
       <ul class="toc">
         <li><span class="n">—</span><span class="t">Closure and set point integration</span><span class="dots"></span><span class="pg">14</span></li>
         <li><span class="n">—</span><span class="t">Record sheet <small>· map and VAS</small></span><span class="dots"></span><span class="pg">15</span></li>
-        <li><span class="n">—</span><span class="t">Quick reference card <small>· detachable</small></span><span class="dots"></span><span class="pg">16</span></li>
       </ul>
       <div class="grp mt">Appendices</div>
       <ul class="toc">
-        <li><span class="n">—</span><span class="t">Glossary <small>· terms of the technique</small></span><span class="dots"></span><span class="pg">17</span></li>
-        <li><span class="n">—</span><span class="t">References <small>· scientific basis</small></span><span class="dots"></span><span class="pg">18</span></li>
-        <li><span class="n">—</span><span class="t">The author</span><span class="dots"></span><span class="pg">19</span></li>
+        <li><span class="n">—</span><span class="t">Glossary <small>· terms of the technique</small></span><span class="dots"></span><span class="pg">16</span></li>
+        <li><span class="n">—</span><span class="t">References <small>· scientific basis</small></span><span class="dots"></span><span class="pg">17</span></li>
       </ul>
       <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">02</div>
     </section></div></div>
@@ -263,7 +264,7 @@
         <p><b>Coating.</b> They must be coated and fitted with a tab that allows them to be separated.</p>
         <p><b>Identification.</b> Each magnet must be identified beforehand, recognizing the <b>North (negative)</b> face and the <b>South (positive)</b> face prior to application.</p>
         <p><b>Grid.</b> Four identical magnets are used, with polarities alternated in a checkerboard.</p>
-        <div class="signal"><span class="w" style="color:var(--teal)">Note</span><p>Instituto Centrobioenergetica provides regulation-compliant magnets.</p></div>
+        <div class="signal"><span class="w" style="color:var(--teal)">Note</span><p>Approved magnets are available from Instituto Centrobioenergetica.</p></div>
 
         <div class="sub">Other materials</div>
         <p><b>Treatment table</b> without a metallic surface —to avoid interference with the magnets— set <b>at the practitioner's waist height</b> to facilitate the scan. The <b>body map</b> and the <b>0–10 pain scale</b> are used in the case intake (see the clinical record).</p>
@@ -271,7 +272,7 @@
         <div class="sub">Polarity convention</div>
         <p>The <b>negative pole (North)</b> is used for the scan and sustained application over the lesion area; the <b>positive pole (South)</b> is the complementary one. In general application, the <b>negative face</b> contacts the skin; the only exception is technique 1 (temporary acidosis), where the positive face is used.</p>
 
-        <div class="callout"><span class="w">Safety</span><p>Before applying magnets, rule out <b>pacemaker</b>, <b>pregnancy</b>, <b>prostheses</b>, and <b>chemotherapy use</b>. Screening is recorded in the clinical record.</p></div>
+        <div class="callout"><span class="w">Safety</span><p>Before applying magnets, screen for <b>pacemakers</b>, <b>pregnancy</b>, <b>implanted prostheses</b>, and <b>current chemotherapy</b>. Screening is recorded in the clinical record.</p></div>
       </div>
       <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">03</div>
     </section></div></div>
@@ -281,9 +282,9 @@
     <section class="page prem">
       <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">bioelectric <b>regulation</b></span><span class="sp"></span><span class="rh">The lesion node · Before you begin</span></div>
       <p class="eyebrow">Before you begin · Case intake (1/2)</p>
-      <h1>Clinical record · history</h1>
+      <h1>Clinical record · patient history</h1>
       <div class="body">
-        <p class="intro">SOAP-type record. Completed before beginning the lesion-node procedure.</p>
+        <p class="intro">Structured clinical record in SOAP format (subjective · objective · assessment · plan). Completed before beginning the lesion-node procedure.</p>
 
         <div class="shead">S · Subjective</div>
         <div class="frow">
@@ -292,13 +293,13 @@
           <div class="fld"><span class="l">Sex</span><div class="line"></div></div>
           <div class="fld"><span class="l">Date</span><div class="line"></div></div>
         </div>
-        <div class="frow"><div class="fld"><span class="l">Reason for consultation</span><div class="ruled" style="height:15.6mm"></div></div></div>
-        <div class="frow"><div class="fld"><span class="l">Chief symptoms — in the patient's own words</span><div class="ruled" style="height:20.7mm"></div></div></div>
+        <div class="frow"><div class="fld"><span class="l">Reason for visit</span><div class="ruled" style="height:20.7mm"></div></div></div>
+        <div class="frow"><div class="fld"><span class="l">Chief symptoms — in the patient's own words</span><div class="ruled" style="height:46.5mm"></div></div></div>
         <div class="frow">
-          <div class="fld"><span class="l">Current treatments</span><div class="ruled" style="height:15.6mm"></div></div>
-          <div class="fld"><span class="l">Previous treatments</span><div class="ruled" style="height:15.6mm"></div></div>
+          <div class="fld"><span class="l">Current treatments</span><div class="ruled" style="height:30.6mm"></div></div>
+          <div class="fld"><span class="l">Previous treatments</span><div class="ruled" style="height:30.6mm"></div></div>
         </div>
-        <div class="frow"><div class="fld"><span class="l">Medications or supplements</span><div class="ruled" style="height:10.5mm"></div></div></div>
+        <div class="frow"><div class="fld"><span class="l">Medications or supplements</span><div class="ruled" style="height:20.7mm"></div></div></div>
 
         <div class="shead">Safety screening</div>
         <div class="chkrow">
@@ -307,7 +308,7 @@
           <span class="chk"><span class="b"></span> Prostheses</span>
           <span class="chk"><span class="b"></span> Chemotherapy</span>
         </div>
-        <p class="legend" style="margin-top:1.4mm">If any box is checked, assess the contraindication before applying magnets.</p>
+        <p class="legend" style="margin-top:1.4mm">If any box is checked, assess the patient for contraindications before applying magnets.</p>
       </div>
       <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">04</div>
     </section></div></div>
@@ -321,14 +322,15 @@
       <div class="body">
         <div class="shead">O · Objective · body map</div>
         <div class="silrow" style="height:96mm">
-          <div class="sil"><div class="t">Anterior view</div><div class="s">Mark the areas and their finding</div></div>
-          <div class="sil"><div class="t">Posterior view</div><div class="s">Mark the areas and their finding</div></div>
+          <div class="sil"><div class="t">Anterior view</div><div class="s">Mark each area and record the finding</div></div>
+          <div class="sil"><div class="t">Posterior view</div><div class="s">Mark each area and record the finding</div></div>
         </div>
 
         <div class="shead">Findings by area</div>
         <table class="ftab">
           <thead><tr><th class="cz">Area / region</th><th>Finding (type)</th><th class="ci">0–10</th></tr></thead>
           <tbody>
+            <tr><td></td><td></td><td></td></tr>
             <tr><td></td><td></td><td></td></tr>
             <tr><td></td><td></td><td></td></tr>
             <tr><td></td><td></td><td></td></tr>
@@ -360,6 +362,8 @@
       <div class="body">
         <p class="lead">Preparation reduces protective muscle guarding, one of the main sources of measurement variability.</p>
         <ol class="clin">
+          <li>Briefly explain to the patient <b>what will be done</b>: a symmetry assessment and the placement of magnets over various points, painless and non-invasive. This encourages cooperation and reduces anxiety.</li>
+          <li>Ask the patient to <b>remove metal objects and devices</b> (jewelry, watch, belt, keys), <b>loosen clothing</b>, and set aside <b>electronic devices</b> (phone), which can interfere with the magnets and the measurement.</li>
           <li>Place the patient <b>supine</b> on a table without a metallic surface, with the <b>head in a neutral position</b>.</li>
           <li>Hold both lower limbs and <b>apply gentle traction</b> to relax the pelvic joint; move them <b>side to side</b> with the hands to relax the pelvic floor.</li>
           <li>Cover the patient with a <b>blanket</b>: it removes guarding, relaxes the body, and allows a more precise measurement.</li>
@@ -377,68 +381,70 @@
       <h1>Symmetry measurement</h1>
       <div class="body">
         <ol class="clin">
-          <li>Position the patient so that <b>both feet extend beyond the distal edge of the table</b>, with the heels free. Footwear or marked heels makes the difference easier to appreciate.</li>
+          <li>Position the patient so that <b>both feet extend beyond the distal edge of the table</b>, with the heels free. Preferably <b>with footwear on</b>, which makes reading easier; it can also be done <b>without shoes</b>, though the difference is harder to appreciate.</li>
+          <li>Ask the patient to <b>relax</b> and take <b>a few deep breaths</b> before measuring, to settle the tone and stabilize the measurement.</li>
           <li>Hold both limbs by the <b>ankles</b> and raise them about <b>30°</b>, aligned with the body axis —lift and measure only.</li>
-          <li>Compare the length of the heels. The <b>left limb is the reference</b>; the <b>right is the variable limb</b>, appearing shortened or lengthened relative to the left.</li>
+          <li>Compare the position of the heels. The <b>left limb is the reference</b>; the <b>right is the variable limb</b>, appearing shortened or lengthened relative to the left.</li>
         </ol>
 
         <div class="sub">Interpretation</div>
         <p>If the heels are <b>symmetric</b>, there is no active baseline node: proceed to the zone-by-zone scan. If the right shows <b>functional shortening</b>, a node is active and technique 1 (temporary acidosis) is performed.</p>
 
-        <div class="signal"><span class="w" style="color:var(--teal)">Scan semiology</span><p><b>Shortening</b> of a limb: sign of an active node. <b>Symmetry</b> (heels at the same height): resolution.</p></div>
+        <div class="signal"><span class="w" style="color:var(--teal)">Interpreting the scan</span><p><b>Shortening</b> of a limb: sign of an active node. <b>Symmetry</b> (heels at the same height): resolution.</p></div>
       </div>
       <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">07</div>
     </section></div></div>
 
     <!-- 08 ÁRBOL DE DECISIÓN -->
-    <div class="slot"><span class="plabel">08 · Decision tree</span><div class="frame">
+    <div class="slot"><span class="plabel">08 · Algorithm</span><div class="frame">
     <section class="page prem">
       <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">bioelectric <b>regulation</b></span><span class="sp"></span><span class="rh">The lesion node · Before you begin</span></div>
       <p class="eyebrow">Before you begin</p>
-      <h1>The decision tree</h1>
-      <p class="lead">The flow of a session: from the baseline measurement to the opening scan and the lesion-node work, with the decision made at each point.</p>
+      <h1>Session algorithm</h1>
+      <p class="lead">The decision flow of a session, from the baseline measurement to the opening scan and the lesion-node work.</p>
       <div class="flow">
         <div class="fnode strong"><div class="t">Baseline symmetry measurement</div><div class="s">Left limb: fixed reference · right: variable</div></div>
         <div class="fconn"></div>
-        <div class="fdec"><div class="q">Heel symmetry</div>
+        <div class="fdec"><div class="q">Does the right appear shortened?</div>
           <div class="fbranch">
-            <span class="chip"><b>Symmetric</b> → zone-by-zone scan</span>
-            <span class="chip"><b>Functional shortening</b> → opening scan</span>
+            <span class="chip"><b>No, symmetric</b> → go straight to the zone-by-zone scan (lesion node)</span>
+            <span class="chip"><b>Yes, functional shortening</b> → perform the opening scan</span>
           </div>
         </div>
 
-        <div class="phase">Opening scan <span>· common to every session</span></div>
-        <div class="fnode"><div class="t">Temporary acidosis</div><div class="s">Positive pole (South) over the renal region ipsilateral to the shortening; close with a local dipole</div></div>
+        <div class="phase">Opening scan <span>· when there is baseline shortening · common to every session</span></div>
+        <div class="fnode"><div class="t">Temporary acidosis</div><div class="s">Positive pole (South) over the renal region + local dipole</div></div>
         <div class="fconn"></div>
         <div class="fdec"><div class="q">Symmetry reassessment</div>
           <div class="fbranch">
-            <span class="chip"><b>Symmetric</b> → resolution</span>
+            <span class="chip"><b>Symmetric</b> → resolved; continue</span>
             <span class="chip"><b>Shortening recurs</b> → latent acidosis</span>
           </div>
         </div>
         <div class="fconn"></div>
         <div class="fnode"><div class="t">Latent acidosis</div><div class="s">Distant dipole: renal region and contralateral parietal area</div></div>
 
-        <div class="phase">Lesion node <span>· for each area on the map, in decreasing order of intensity</span></div>
-        <div class="fnode"><div class="t">Negative pole (North) over the area of greatest intensity</div></div>
+        <div class="phase">Lesion node <span>· for each area on the map, from greatest to least pain</span></div>
+        <div class="fnode"><div class="t">Place the negative (North) over the most symptomatic area</div></div>
         <div class="fconn"></div>
-        <div class="fdec"><div class="q">Response on the scan</div>
+        <div class="fdec"><div class="q">On placing it, does the limb shorten?</div>
           <div class="fbranch">
-            <span class="chip"><b>No shortening</b> → reposition the magnet; if it persists, another area</span>
-            <span class="chip"><b>Shortening</b> → positive pole (South) adjacent</span>
+            <span class="chip"><b>No</b> → move the magnet across the area and measure again; if no shortening appears anywhere, move to another area</span>
+            <span class="chip"><b>Yes</b> → place the positive (South) adjacent</span>
           </div>
         </div>
         <div class="fconn"></div>
         <div class="fdec"><div class="q">Symmetry reassessment</div>
           <div class="fbranch">
             <span class="chip"><b>Symmetric</b> → local dipole; keep in place</span>
-            <span class="chip"><b>Not symmetric</b> → distant point (fixed order)</span>
+            <span class="chip"><b>Not symmetric</b> → find a distant point (fixed order)</span>
           </div>
         </div>
         <div class="fconn"></div>
-        <div class="fdec"><div class="q">Pain with contracture</div>
+        <div class="fdec"><div class="q">Does the area have contracture? <span style="font-weight:400;color:var(--soft)">(pain with muscle stiffness)</span></div>
           <div class="fbranch">
-            <span class="chip"><b>Present</b> → gradient grid</span>
+            <span class="chip"><b>Yes</b> → reinforce with the gradient grid</span>
+            <span class="chip"><b>No</b> → leave the dipole in place</span>
           </div>
         </div>
 
@@ -474,11 +480,11 @@
           <li><b>Measure again</b>: when the node is the correct one, the shortening resolves and the limbs become symmetric, which confirms the kidney as the node.</li>
         </ol>
 
-        <div class="callout"><span class="w">Anatomical discrepancy</span><p>If the limb remains shortened with the magnet, this is an anatomical discrepancy of the patient: a <b>mark</b> is placed at that length, which becomes the baseline reference for subsequent measurements —lesional shortening will continue to appear over that anatomical baseline.</p></div>
+        <div class="callout"><span class="w">Anatomical discrepancy</span><p>If the limb remains shortened with the magnet in place, this likely reflects the patient's underlying anatomical asymmetry. Mark the current heel position and use it as the baseline for subsequent measurements; any lesion-related shortening will be assessed relative to this anatomical baseline.</p></div>
 
         <ol class="clin" start="4" style="counter-reset:c 3">
           <li>With the node confirmed, <b>without removing the positive pole</b>, the <b>negative pole (North)</b> is placed in the same renal region, <b>adjacent</b> —to one side, without overlapping the magnets—, forming a <b>local dipole</b>. The configuration is kept for <span class="data">20 minutes or more</span>.</li>
-          <li><b>Removal criterion.</b> <b>Only the positive pole</b> is removed and the measurement repeated. If the limb remains shortened, it is replaced and prolonged, repeating the check until, on removal, the limbs are symmetric. Sometimes 20 minutes is enough.</li>
+          <li><b>Removal criterion.</b> <b>Only the positive pole</b> is removed and the measurement repeated. If the limb remains shortened, replace the positive pole and extend the application time, repeating the check until, on removal, the limbs are symmetric. Sometimes 20 minutes is enough.</li>
         </ol>
       </div>
       <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">09</div>
@@ -504,9 +510,9 @@
 
         <div class="sub">Procedure</div>
         <ol class="clin">
-          <li>When the limb <b>shortens again</b> after technique 1, place the <b>positive pole (South)</b> over the <b>renal region on the same side as the shortening</b>.</li>
-          <li><b>Measure again</b> and check whether the limbs become <b>symmetric</b>.</li>
-          <li>If they are symmetric, place the magnet with the <b>negative pole (North)</b> over the <b>skin of the parietal area of the head</b>, on the <b>contralateral</b> side, forming a <b>distant dipole</b> that crosses the body.</li>
+          <li>When the limb <b>shortens again</b> after technique 1, place the <b>positive pole (South)</b> over the <b>renal region</b>, usually the <b>right</b> (the most common case).</li>
+          <li><b>Measure again.</b> If the limbs become <b>symmetric</b>, that side is confirmed. If <b>not</b>, remove it and place the positive over the <b>contralateral renal region</b> (left).</li>
+          <li>Place the <b>negative pole (North)</b> over the <b>skin of the parietal area of the head</b>, <b>contralateral to the renal region used</b>, forming a <b>distant dipole</b> that crosses the body.</li>
           <li>Keep for <span class="data">20 minutes</span>; or, once the dipole is in place, continue in parallel with the <b>zone-by-zone scan</b>.</li>
         </ol>
 
@@ -518,44 +524,44 @@
     <div class="slot"><span class="plabel">11 · Node · T1 local</span><div class="frame">
     <section class="page prem">
       <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">bioelectric <b>regulation</b></span><span class="sp"></span><span class="rh">The lesion node · Technique 1</span></div>
-      <p class="eyebrow">Lesion node · Technique 1 (1/2)</p>
+      <p class="eyebrow">Lesion node · Technique 1</p>
       <h1>Dipoles by zone · local dipole</h1>
-      <p class="lead">Indication: with the body map recorded, each painful area is worked starting with the one of <b>greatest intensity</b>. Each area is resolved as a dipole: <b>local</b>, or at a distance with a <b>regulatory node</b>.</p>
+      <p class="lead">Indication: with the body map recorded, treat each symptomatic area, beginning with the most intense. Each area is treated using either a <b>local dipole</b> or a <b>distant regulatory node</b>.</p>
       <div class="body">
         <div class="fig">
           <div class="plate ph">
             <div class="phbox">
-              <div class="pl">Anatomical illustration · area of greatest pain</div>
+              <div class="pl">Anatomical illustration · most symptomatic area</div>
               <div class="ps">Color image (Visual System · Part C). Symptomatic area with the pole marker (negative over the area, positive adjacent) overlaid in SVG.</div>
             </div>
           </div>
-          <p class="platecap"><b>Plate 3.</b> Placement of the negative pole over the area of greatest pain and closure of the local dipole with the adjacent positive.</p>
+          <p class="platecap"><b>Plate 3.</b> Placement of the negative pole over the most symptomatic area and closure of the local dipole with the adjacent positive.</p>
         </div>
 
-        <div class="sub">Placement over the area of greatest pain</div>
+        <div class="sub">Placement over the most symptomatic area</div>
         <ol class="clin">
-          <li>On the pain map, locate the <b>point of greatest intensity</b> —the most painful or symptomatic area— and place a magnet there with the <b>negative pole (North)</b>, negative face toward the skin.</li>
-          <li><b>Check the scan</b>: measure symmetry again. If, on placing the magnet, the area <b>shortens</b> the limb, leave the magnet fixed there: area confirmed.</li>
+          <li>On the map, locate the <b>most symptomatic area</b> —the highest-intensity finding (pain, tension, contracture, edema, or burning), or the injured/traumatized area— and place a magnet there with the <b>negative pole (North)</b>, negative face toward the skin.</li>
+          <li><b>Check the scan</b>: measure symmetry again. If <b>functional shortening</b> appears after the magnet is placed, leave the magnet fixed there: area confirmed.</li>
           <li>If there is <b>no change</b>, <b>move the magnet across the area</b>, measuring again, until the shortening point is found. If no shortening appears anywhere in the area, <b>move on to another area</b> of the map.</li>
         </ol>
 
         <div class="sub">Closing the local dipole</div>
         <ol class="clin" start="4" style="counter-reset:c 3">
-          <li>Without moving the negative pole, place the <b>positive pole (South)</b> <b>to one side of the magnet</b> —to the opposite side, to the left, or above—, trying positions and measuring again until the limbs are <b>symmetric</b>. This closes a <b>local dipole</b>: leave it in place.</li>
+          <li>Without moving the negative pole, place the <b>positive pole (South)</b> <b>to one side of the magnet</b> —to the opposite side, to the left, or above—, trying positions and measuring again until the limbs are <b>symmetric</b>. This closes a <b>local dipole</b>: leave it in place. It is a <b>gradient dipole</b>: the two opposite, adjacent poles create a <b>steep field gradient</b> in the tissue between them, and it is this gradient —not the intensity— that acts on the area.</li>
         </ol>
 
-        <div class="signal"><span class="w" style="color:var(--teal)">Rule</span><p>Nodes or dipoles are placed only where the scan shows <b>shortening</b>; the rest is left untouched.</p></div>
+        <div class="signal"><span class="w" style="color:var(--teal)">Rule</span><p>A dipole is placed only where the scan responds with <b>shortening</b>; an area that does not shorten is not treated.</p></div>
 
-        <p class="legend" style="margin-top:2.4mm">If symmetry cannot be achieved with the adjacent positive in any position, the area needs a <b>distant point</b> → continues in technique 1 (2/2).</p>
+        <p class="legend" style="margin-top:2.4mm">If symmetry cannot be achieved with the adjacent positive in any position, the area requires a <b>distant point</b> → continue to technique 2 (distant point).</p>
       </div>
       <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">11</div>
     </section></div></div>
 
     <!-- 12 MANIOBRA 3 (2/2) · PUNTO DISTANTE -->
-    <div class="slot"><span class="plabel">12 · Nodo · M1 distante</span><div class="frame">
+    <div class="slot"><span class="plabel">12 · Node · T2 distant</span><div class="frame">
     <section class="page prem">
-      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">bioelectric <b>regulation</b></span><span class="sp"></span><span class="rh">The lesion node · Technique 1</span></div>
-      <p class="eyebrow">Lesion node · Technique 1 (2/2)</p>
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">bioelectric <b>regulation</b></span><span class="sp"></span><span class="rh">The lesion node · Technique 2</span></div>
+      <p class="eyebrow">Lesion node · Technique 2</p>
       <h1>Dipoles by zone · distant point</h1>
       <p class="lead">When the local dipole does not restore symmetry, the confirmed area needs a <b>distant regulatory node</b>: the negative pole stays over the area and the positive searches for that node in a fixed order.</p>
       <div class="body">
@@ -571,13 +577,13 @@
 
         <div class="sub">Search for the distant node</div>
         <ol class="clin">
-          <li>Leave the <b>negative pole (North)</b> fixed over the confirmed area and <b>remove the positive</b> from that side.</li>
-          <li>Test the nodes <b>in the fixed order</b>: place the <b>positive pole (South)</b> over the first node, measure again, and check symmetry. Stop at the first one that <b>restores symmetry</b>: the distant dipole is formed there.</li>
-          <li>If a node does not achieve it, remove the positive and move on to the <b>next in the order</b>, until it is exhausted.</li>
+          <li>On the <b>confirmed area</b> —where the negative (North) was left when the local dipole did not close— keep that negative fixed and remove the positive that was tried to one side.</li>
+          <li>Guided by the table, place the <b>positive pole (South)</b> on the <b>first node in the order</b> (right renal region) and <b>measure again</b>. If the limbs become <b>symmetric</b>, the distant dipole is formed: the negative over the area and the positive over that node.</li>
+          <li>If that node does not restore symmetry, remove the positive and try the <b>next node in the order</b>, until one achieves it.</li>
         </ol>
 
         <table>
-          <caption>Distant nodes · anatomical landmark (fixed test order)</caption>
+          <caption>Distant nodes · surface location (fixed test order)</caption>
           <tbody>
             <tr><th>1 · Renal region</th><td>Posterior lumbar region, below the lower ribs, on each side of the spine. First the <b>right</b>, then the <b>left</b>.</td></tr>
             <tr><th>2 · Adrenal</th><td>Just above the renal region, over its upper pole. First the <b>right</b>, then the <b>left</b>.</td></tr>
@@ -590,7 +596,7 @@
         <div class="sub">Timing, removal criterion, and closure</div>
         <ol class="clin" start="4" style="counter-reset:c 3">
           <li>Keep the configuration <b>as long as the scan indicates</b>, until the area <b>stops shortening</b>. Removal criterion: remove the <b>positive</b> and check; if it shortens again, replace it and prolong.</li>
-          <li>Repeat the entire technique 1 for <b>each area</b> of the map that marks shortening, from greatest to least pain.</li>
+          <li>Repeat the zone procedure for <b>each area</b> of the map that marks shortening, from greatest to least pain.</li>
         </ol>
 
         <p class="legend" style="margin-top:2.4mm">At the close of the session, most areas are resolved as a local dipole; only a few resolve at a distance, usually in the renal region.</p>
@@ -599,27 +605,18 @@
     </section></div></div>
 
     <!-- 13 MANIOBRA 4 · REJILLA -->
-    <div class="slot"><span class="plabel">13 · Node · T2 grid</span><div class="frame">
+    <div class="slot"><span class="plabel">13 · Node · T3 grid</span><div class="frame">
     <section class="page prem">
-      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">bioelectric <b>regulation</b></span><span class="sp"></span><span class="rh">The lesion node · Technique 2</span></div>
-      <p class="eyebrow">Lesion node · Technique 2</p>
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">bioelectric <b>regulation</b></span><span class="sp"></span><span class="rh">The lesion node · Technique 3</span></div>
+      <p class="eyebrow">Lesion node · Technique 3</p>
       <h1>Gradient grid</h1>
-      <p class="lead">Indication: <b>pain with contracture</b>. It is a local reinforcement over a point already confirmed in technique 1: instead of a single dipole, a <b>grid</b> of four magnets with alternating polarities is set up to intensify the gradient.</p>
+      <p class="lead">Indication: <b>pain with contracture</b>. It is a local reinforcement over a point already confirmed (local or distant dipole): instead of a single dipole, a <b>grid</b> of four magnets with alternating polarities is set up to intensify the gradient.</p>
       <div class="body">
         <div class="fig">
           <div class="plate">
-            <svg viewBox="0 0 64 64" style="width:100%;height:auto;display:block" aria-label="Rejilla 2×2 en tablero">
-              <rect x="6" y="6" width="26" height="26" rx="2.5" fill="#4A4643"/>
-              <rect x="32" y="6" width="26" height="26" rx="2.5" fill="#0F6E56"/>
-              <rect x="6" y="32" width="26" height="26" rx="2.5" fill="#0F6E56"/>
-              <rect x="32" y="32" width="26" height="26" rx="2.5" fill="#4A4643"/>
-              <text x="19" y="19" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="12" font-weight="700" fill="#fff">N</text>
-              <text x="45" y="19" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="12" font-weight="700" fill="#fff">S</text>
-              <text x="19" y="45" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="12" font-weight="700" fill="#fff">S</text>
-              <text x="45" y="45" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="12" font-weight="700" fill="#fff">N</text>
-            </svg>
+            <svg viewBox="0 0 150 80" style="width:82%;height:auto;display:block;margin:0 auto" aria-label="2×2 square and circular grid"><rect x="8" y="6" width="24" height="24" rx="2" fill="#847F78"/><rect x="34" y="6" width="24" height="24" rx="2" fill="#4E9384"/><rect x="8" y="32" width="24" height="24" rx="2" fill="#4E9384"/><rect x="34" y="32" width="24" height="24" rx="2" fill="#847F78"/><circle cx="104" cy="18" r="12" fill="#847F78"/><circle cx="130" cy="18" r="12" fill="#4E9384"/><circle cx="104" cy="44" r="12" fill="#4E9384"/><circle cx="130" cy="44" r="12" fill="#847F78"/><text x="20" y="18" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">N</text><text x="46" y="18" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">S</text><text x="20" y="44" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">S</text><text x="46" y="44" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">N</text><text x="104" y="18" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">N</text><text x="130" y="18" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">S</text><text x="104" y="44" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">S</text><text x="130" y="44" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">N</text><text x="33" y="72" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="7" letter-spacing="0.4" fill="#888780">square</text><text x="117" y="72" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="7" letter-spacing="0.4" fill="#888780">circular</text></svg>
           </div>
-          <p class="platecap"><b>Plate 5.</b> 2×2 grid with alternating polarities (N–S / S–N checkerboard): a gradient is created at every boundary between magnets.</p>
+          <p class="platecap"><b>Plate 5.</b> 2×2 checkerboard grid (N–S / S–N) with <b>square or circular</b> magnets; a gradient is created at every boundary between magnets.</p>
         </div>
 
         <div class="sub">Starting point</div>
@@ -630,7 +627,7 @@
         <div class="sub">Setting up the 2×2 grid</div>
         <ol class="clin" start="2" style="counter-reset:c 1">
           <li>Around that dipole, <b>without moving it</b>, arrange <b>four identical magnets</b> forming a <b>2×2</b> grid (two rows and two columns), close around the confirmed point.</li>
-          <li>Orient the polarities in a <b>checkerboard</b>: N–S along one diagonal and S–N along the other, so that each magnet has the <b>opposite polarity</b> to its side and top/bottom neighbors. Thus, at each boundary between two adjacent magnets, opposite poles face each other and a <b>steep gradient</b> is formed.</li>
+          <li>Orient the polarities in a <b>checkerboard</b> so that each magnet has the <b>opposite polarity</b> to its side and top/bottom neighbors — the two magnets on each diagonal share the same pole. Thus, at each boundary between adjacent magnets, opposite poles face each other and a <b>steep gradient</b> is formed.</li>
         </ol>
 
         <div class="sub">Timing and removal criterion</div>
@@ -649,20 +646,20 @@
       <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">bioelectric <b>regulation</b></span><span class="sp"></span><span class="rh">The lesion node · Closing the session</span></div>
       <p class="eyebrow">Closing the session</p>
       <h1>Closure and integration</h1>
-      <p class="lead">Once the zone-by-zone treatment is complete, the session is closed in three stages: the findings are recorded, the patient is assisted in getting up, and the new state is consolidated through the integration questions.</p>
+      <p class="lead">Once the zone-by-zone treatment is complete, the session is closed by recording the findings, assisting the patient in getting up, and consolidating the new state through the integration questions.</p>
       <div class="body">
         <div class="sub">Closing procedure</div>
         <ol class="clin">
-          <li>Record on the <b>body map</b>, with a dot, each area that arose during the scan. This record documents the session and serves as a reference for assessing progress.</li>
+          <li>Record on the <b>body map</b>, with a dot, each area identified during the scan. This record documents the session and serves as a reference for assessing progress.</li>
           <li>Assist the patient in <b>getting up</b> and assess their state. The usual response is relaxation, calm, reduced pain, and greater mobility.</li>
           <li>Ask the <b>integration questions</b> (box). Making the change conscious facilitates the adoption of a new <b>set point</b>.</li>
-          <li>Repeat the full sequence as many times as needed, until the scan <b>shows no shortening</b> or symptoms decrease.</li>
+          <li>The session ends at the <b>time set by the practitioner</b>; treatment may <b>continue in later sessions</b>, repeating the sequence until the scan <b>shows no shortening</b>.</li>
         </ol>
 
         <div class="signal"><span class="w" style="color:var(--teal)">Integration questions</span><p><i>What differences do you notice? · How do you feel? · What has changed?</i></p></div>
 
         <div class="sub">Frequency between sessions</div>
-        <p>Adjusted to the patient's <b>clinical course</b>; there is no fixed interval. Sessions are spaced out as the scan stops registering shortening and symptoms subside.</p>
+        <p>Adjusted to the patient's <b>clinical course</b>; there is no fixed interval. Sessions are spaced out as the scan stops registering shortening. This procedure <b>does not replace</b> medical diagnosis or treatment.</p>
       </div>
       <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">14</div>
     </section></div></div>
@@ -682,7 +679,7 @@
         </div>
 
         <div class="shead">Map of areas · treated and pending</div>
-        <div class="silrow" style="height:52mm">
+        <div class="silrow" style="height:92mm">
           <div class="sil"><div class="t">Anterior view</div></div>
           <div class="sil"><div class="t">Posterior view</div></div>
         </div>
@@ -706,37 +703,16 @@
       <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">15</div>
     </section></div></div>
 
-    <!-- 16 TARJETA -->
-    <div class="slot"><span class="plabel">16 · Card</span><div class="frame">
-    <section class="page prem">
-      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">bioelectric <b>regulation</b></span><span class="sp"></span><span class="rh">The lesion node · Quick reference</span></div>
-      <p class="eyebrow">Quick reference · detachable</p>
-      <h1>Protocol card</h1>
-      <p class="lead">Operational summary of the procedure. Cut along the dotted line for table use.</p>
-      <div class="rcut">
-        <div class="rgrid">
-          <div class="rblock"><div class="rlab">Poles</div><p><b>Negative = North</b> (scan and sustained application) · <b>Positive = South</b> (complementary). The <b>negative</b> face contacts the skin; exception: the opening (temporary acidosis), with the positive face.</p></div>
-          <div class="rblock"><div class="rlab">Measurement</div><p><b>Left</b> limb: fixed reference. <b>Right</b>: variable. <b>Symmetric</b> = resolution · <b>functional shortening</b> = active node.</p></div>
-          <div class="rblock"><div class="rlab">Opening scan · every session</div><p><span class="num">1.</span> <b>Temporary acidosis</b>: positive (South) over the ipsilateral renal region + local dipole.<br><span class="num">2.</span> If it recurs → <b>latent acidosis</b>: distant dipole (renal region + contralateral parietal area).</p></div>
-          <div class="rblock"><div class="rlab">Lesion node · by area (greatest → least)</div><p>Negative (North) over the area of greatest pain → if it shortens, positive (South) <b>adjacent</b> → <b>symmetric</b> = local dipole; if not, <b>distant point</b> (fixed order). <b>Contracture</b> → 2×2 grid (N–S / S–N).</p></div>
-          <div class="rblock"><div class="rlab">Order of distant nodes</div><p>Renal region R → renal region L → adrenal R → adrenal L → liver (hepatic region) → medulla oblongata (hollow below the occiput) → whole body.</p></div>
-          <div class="rblock"><div class="rlab">Parameters and criteria</div><p>Magnets <b>0.1–0.5 T</b> · baseline time <b>20 min</b> · positive-pole removal criterion.</p></div>
-          <div class="rblock"><div class="rlab">Closure</div><p>Record the map · integration questions · frequency per clinical course.</p></div>
-        </div>
-      </div>
-      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">16</div>
-    </section></div></div>
-
     <!-- 17 GLOSARIO -->
-    <div class="slot"><span class="plabel">17 · Glosario</span><div class="frame">
+    <div class="slot"><span class="plabel">16 · Glossary</span><div class="frame">
     <section class="page prem">
       <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">bioelectric <b>regulation</b></span><span class="sp"></span><span class="rh">The lesion node · Glossary</span></div>
       <p class="eyebrow">Glossary</p>
-      <h1>Terms of the technique</h1>
+      <h1>Technical glossary</h1>
       <div class="body">
         <div class="glist">
           <div class="gitem"><b>Lesion node.</b> Traumatized area that behaves as a depolarization island, disconnected from the tissue's bioelectric pattern.</div>
-          <div class="gitem"><b>Depolarization island.</b> Region with altered Vmem, isolated from the collective by the closing of the gap junctions.</div>
+          <div class="gitem"><b>Depolarization island.</b> Region with altered Vmem, isolated from the collective by gap-junction closure.</div>
           <div class="gitem"><b>Vmem (membrane potential).</b> Potential difference across the cell membrane; the primary variable of tissue state.</div>
           <div class="gitem"><b>Scan.</b> Assessment of limb symmetry to locate active nodes.</div>
           <div class="gitem"><b>Functional shortening.</b> Reduced apparent length of the right limb relative to the left (reference); sign of an active node.</div>
@@ -749,11 +725,11 @@
           <div class="gitem"><b>Repolarization.</b> Return of the Vmem toward rest; reconnection of the island with the collective.</div>
         </div>
       </div>
-      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">17</div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">16</div>
     </section></div></div>
 
     <!-- 18 REFERENCIAS -->
-    <div class="slot"><span class="plabel">18 · Referencias</span><div class="frame">
+    <div class="slot"><span class="plabel">17 · References</span><div class="frame">
     <section class="page prem">
       <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">bioelectric <b>regulation</b></span><span class="sp"></span><span class="rh">The lesion node · References</span></div>
       <p class="eyebrow">References</p>
@@ -775,44 +751,25 @@
           <li>Levin M. Bioelectric signaling: reprogrammable circuits underlying embryogenesis, regeneration and cancer. <i>Cell.</i> 2021;184(8):1971-1989.</li>
         </ol>
       </div>
-      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">18</div>
-    </section></div></div>
-
-    <!-- 19 EL AUTOR -->
-    <div class="slot"><span class="plabel">19 · El autor</span><div class="frame">
-    <section class="page prem">
-      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">bioelectric <b>regulation</b></span><span class="sp"></span><span class="rh">The lesion node · The author</span></div>
-      <p class="eyebrow">The author</p>
-      <h1>Dr. Miguel Ojeda Rios</h1>
-      <div class="body">
-        <div class="fig" style="width:44mm">
-          <div class="plate ph"><div class="phbox" style="aspect-ratio:4/5"><div class="pl">Portrait</div><div class="ps">Author's photograph</div></div></div>
-        </div>
-        <p>Founder of the <b>Instituto Centrobioenergetica</b> and creator of <b>Bioelectric Regulation</b>. Director of the training program <b>El Cuerpo Eléctrico</b>.</p>
-        <p>His work brings together the bioelectric reading of tissue —membrane potential (Vmem) and tissue microenvironment— with a reproducible clinical procedure for the lesion node, documented in this manual.</p>
-        <div class="sub" style="margin-top:6mm">Biographical note</div>
-        <p style="color:var(--faint);font-style:italic">Extended author biography: to be added.</p>
-        <p style="margin-top:6mm;font-size:9px;color:var(--soft)">contacto@institutocentrobioenergetica.com</p>
-      </div>
-      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">19</div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">17</div>
     </section></div></div>
 
     <!-- COLOFÓN -->
     <div class="slot"><span class="plabel">Colophon</span><div class="frame">
     <section class="page cover" style="align-items:center;text-align:center">
-      <div style="flex:340 0 0"></div>
+      <div style="flex:382 0 0"></div>
       <div>
         <svg viewBox="0 0 58 24" style="height:7mm;width:auto;margin-bottom:8mm"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg>
         <h1 style="font-size:24px;max-width:none">The lesion node</h1>
-        <p class="sub" style="max-width:44ch;margin:0 auto 8mm">Procedure manual of the technique · Bioelectric Regulation</p>
+        <p class="sub" style="max-width:44ch;margin:0 auto 8mm">Bioelectric Regulation procedure manual</p>
         <p style="font-size:12px;color:var(--soft);margin:0 0 2mm">Dr. Miguel Ojeda Rios · El Cuerpo Eléctrico Program · 2026 Edition</p>
         <p style="font-size:10px;font-style:italic;color:var(--faint);max-width:56ch;margin:8mm auto 0">Scope. This documents a Bioelectric Regulation procedure. It does not replace medical diagnosis or treatment.</p>
         <div style="margin-top:10mm">
           <div style="font:500 8px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:5mm">Published by</div>
-          <svg viewBox="0 0 260 210" style="width:48mm;height:auto;margin:0 auto;display:block"><g transform="translate(130,75)"><circle cx="0" cy="-50" r="8" fill="#B5604A"/><circle cx="25" cy="-43.3" r="8" fill="#8FA87A"/><circle cx="43.3" cy="-25" r="8" fill="#B5604A"/><circle cx="50" cy="0" r="8" fill="#8FA87A"/><circle cx="43.3" cy="25" r="8" fill="#B5604A"/><circle cx="25" cy="43.3" r="8" fill="#8FA87A"/><circle cx="0" cy="50" r="8" fill="#B5604A"/><circle cx="-25" cy="43.3" r="8" fill="#8FA87A"/><circle cx="-43.3" cy="25" r="8" fill="#B5604A"/><circle cx="-50" cy="0" r="8" fill="#8FA87A"/><circle cx="-43.3" cy="-25" r="8" fill="#B5604A"/><circle cx="-25" cy="-43.3" r="8" fill="#8FA87A"/><circle cx="0" cy="0" r="5" fill="#E8A857" opacity="0.5"/><circle cx="0" cy="0" r="3" fill="#E8A857"/></g><text x="130" y="155" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" font-weight="500" letter-spacing="3.5" fill="#888580">INSTITUTO</text><text x="130" y="172" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="500" letter-spacing="1.5" fill="#B5604A">CENTROBIOENERGETICA</text></svg>
+          <svg viewBox="0 0 260 210" style="width:30mm;height:auto;margin:0 auto;display:block"><g transform="translate(130,75)"><circle cx="0" cy="-50" r="8" fill="#B5604A"/><circle cx="25" cy="-43.3" r="8" fill="#8FA87A"/><circle cx="43.3" cy="-25" r="8" fill="#B5604A"/><circle cx="50" cy="0" r="8" fill="#8FA87A"/><circle cx="43.3" cy="25" r="8" fill="#B5604A"/><circle cx="25" cy="43.3" r="8" fill="#8FA87A"/><circle cx="0" cy="50" r="8" fill="#B5604A"/><circle cx="-25" cy="43.3" r="8" fill="#8FA87A"/><circle cx="-43.3" cy="25" r="8" fill="#B5604A"/><circle cx="-50" cy="0" r="8" fill="#8FA87A"/><circle cx="-43.3" cy="-25" r="8" fill="#B5604A"/><circle cx="-25" cy="-43.3" r="8" fill="#8FA87A"/><circle cx="0" cy="0" r="5" fill="#E8A857" opacity="0.5"/><circle cx="0" cy="0" r="3" fill="#E8A857"/></g><text x="130" y="155" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" font-weight="500" letter-spacing="3.5" fill="#888580">INSTITUTO</text><text x="130" y="172" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="500" letter-spacing="1.5" fill="#B5604A">CENTROBIOENERGETICA</text></svg>
         </div>
       </div>
-      <div style="flex:660 0 0"></div>
+      <div style="flex:618 0 0"></div>
       <div class="endfoot" style="bottom:14mm">contacto@institutocentrobioenergetica.com · © 2026</div>
     </section></div></div>
 
@@ -833,6 +790,16 @@
   p.addEventListener('mousedown',function(e){ if(e.target.closest('.page'))return; down=true; sx=e.pageX; sl=p.scrollLeft; });
   window.addEventListener('mouseup',function(){down=false;});
   window.addEventListener('mousemove',function(e){ if(!down)return; p.scrollLeft=sl-(e.pageX-sx); });
+  // per-sheet navigation + fine scroll
+  var track=document.getElementById('track');
+  function step(){ var s=track.querySelector('.slot'); return (s?s.getBoundingClientRect().width:p.clientWidth*0.8)+26; }
+  function maxScroll(){ return Math.max(1,p.scrollWidth-p.clientWidth); }
+  document.getElementById('pn').onclick=function(){ p.scrollBy({left:step(),behavior:'smooth'}); };
+  document.getElementById('pp').onclick=function(){ p.scrollBy({left:-step(),behavior:'smooth'}); };
+  window.addEventListener('keydown',function(e){ if(e.target.tagName==='INPUT')return; if(e.key==='ArrowRight'){e.preventDefault();p.scrollBy({left:step(),behavior:'smooth'});} else if(e.key==='ArrowLeft'){e.preventDefault();p.scrollBy({left:-step(),behavior:'smooth'});} });
+  var slider=document.getElementById('pslider'), lock=false;
+  slider.addEventListener('input',function(){ lock=true; p.scrollLeft=(slider.value/1000)*maxScroll(); lock=false; });
+  p.addEventListener('scroll',function(){ if(lock)return; slider.value=Math.round(p.scrollLeft/maxScroll()*1000); });
   fit();
 })();
 </script>
