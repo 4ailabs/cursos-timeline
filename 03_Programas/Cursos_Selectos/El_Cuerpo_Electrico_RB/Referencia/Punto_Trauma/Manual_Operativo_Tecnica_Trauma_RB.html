@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual operativo · Técnica de RB del trauma</title>
+<style>
+  :root{
+    --bg:#FFFFFF; --sheet:#FFFFFF; --edge:#E7E4DA;
+    --ink:#25241E; --ink-soft:#4C4A42; --muted:#8A897F; --rule:#E7E4DA;
+    --teal:#0F6E56; --teal-soft:#E7F4EF; --teal-line:#C4E4D8;
+    --coral:#B84E27; --card:#F5F3EC;
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  :root[data-mode="bw"]{
+    --teal:#1d1d1b; --teal-soft:#ECEAE4; --teal-line:#CBC9C1; --coral:#4a4a46;
+    --ink:#1a1a18; --ink-soft:#3a3a36; --muted:#6f6d64; --card:#F1EFE9; --edge:#D9D6CD; --rule:#E2DFD6;
+  }
+  :root[data-mode="bw"] .fig svg{filter:grayscale(1) contrast(1.06)}
+  .ctrl{display:flex;justify-content:center;padding:6px 16px 0}
+  .ctrl button{font-family:system-ui,-apple-system,sans-serif;font-size:12px;color:var(--teal);background:#fff;
+    border:1px solid var(--teal-line);border-radius:20px;padding:6px 18px;cursor:pointer}
+  .ctrl button:hover{background:var(--teal-soft)}
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--serif);margin:0;counter-reset:pg 0;
+    -webkit-font-smoothing:antialiased;line-height:1.46}
+  .screen-note{font-family:var(--sans);font-size:12px;color:var(--muted);text-align:center;padding:20px 16px 2px}
+  .book{display:flex;flex-direction:column;align-items:center;gap:18px;padding:8px 14px 40px}
+  .sheet{width:176mm;min-height:250mm;background:var(--sheet);border:1px solid var(--edge);
+    box-shadow:0 6px 26px rgba(30,28,20,.08);padding:13mm 15mm 17mm 22mm;position:relative;
+    display:flex;flex-direction:column;overflow:hidden;counter-increment:pg}
+
+  .hd{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);
+    padding-bottom:4px;margin-bottom:5mm;color:var(--teal)}
+  .hd .brand{display:flex;align-items:center;gap:6px}
+  .hd .dip{width:26px;height:14px;color:var(--teal);flex:none}
+  .hd .eyebrow{font-family:var(--sans);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .hd .tag{font-family:var(--sans);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:600}
+  .ft{position:absolute;left:12mm;right:12mm;bottom:8mm;display:flex;align-items:center;justify-content:space-between;
+    border-top:1px solid var(--rule);padding-top:4px;font-family:var(--sans);font-size:7.6px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted)}
+  .ft .pg{font-size:0}
+  .ft .pg::after{content:counter(pg,decimal-leading-zero);font-size:7.6px;letter-spacing:.1em;font-variant-numeric:tabular-nums;color:var(--muted)}
+  .body{flex:1}
+
+  h2{font-size:23px;line-height:1.16;margin:0 0 2.4mm;text-wrap:balance;font-weight:700;letter-spacing:.002em}
+  h3{font-size:15.5px;margin:3.8mm 0 1.6mm;color:var(--teal);font-weight:700;letter-spacing:.004em}
+  .kicker{font-family:var(--sans);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin:0 0 2.2mm;font-weight:600}
+  p{margin:0 0 2.4mm;font-size:13.5px;color:var(--ink)}
+  .lead{font-size:14.5px;color:var(--ink-soft);line-height:1.5}
+  strong{font-weight:700}
+  em{font-style:italic}
+
+  .nlist{margin:1.4mm 0;padding:0;list-style:none;counter-reset:n;display:flex;flex-direction:column;gap:1.6mm}
+  .nlist>li{position:relative;padding-left:7.5mm;font-size:13.5px}
+  .nlist>li::before{counter-increment:n;content:counter(n);position:absolute;left:0;top:0;width:5mm;height:5mm;
+    border-radius:50%;background:var(--teal-soft);color:var(--teal);font-family:var(--sans);font-size:8px;font-weight:700;
+    display:flex;align-items:center;justify-content:center}
+  .blist{margin:1.4mm 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1.2mm}
+  .blist>li{position:relative;padding-left:5mm;font-size:13.5px}
+  .blist>li::before{content:"";position:absolute;left:.6mm;top:1.9mm;width:4px;height:4px;border-radius:50%;background:var(--teal)}
+  .blist>li b,.nlist>li b{color:var(--teal)}
+
+  table.tbl{width:100%;border-collapse:collapse;margin:1.6mm 0}
+  table.tbl th{text-align:left;font-family:var(--sans);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);border-bottom:1.4px solid var(--teal-line);padding:1.4mm 2mm 1.2mm;font-weight:600}
+  table.tbl td{border-bottom:1px solid var(--rule);padding:1.8mm 2.2mm;font-size:11.5px;color:var(--ink);vertical-align:top}
+  table.tbl td:first-child{font-weight:700;color:var(--teal)}
+
+  .idea{background:var(--card);border-radius:5px;padding:2.2mm 2.8mm;margin:2.4mm 0 0;border:1px solid var(--rule)}
+  .idea .lab{font-family:var(--sans);font-size:7.2px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);
+    font-weight:700;display:flex;align-items:center;gap:5px;margin-bottom:1mm}
+  .idea .lab .dot{width:5px;height:5px;border-radius:50%;background:var(--coral);flex:none}
+  .idea p{margin:0;font-size:13px;font-style:italic;color:var(--ink-soft);line-height:1.46}
+
+  .chain{background:var(--teal-soft);border-left:2.5px solid var(--teal);border-radius:0 5px 5px 0;
+    padding:2.2mm 3mm;margin:2mm 0;font-size:12px;color:var(--ink)}
+  .chain b{color:var(--teal)}
+  .note{border:1px dashed var(--teal-line);border-radius:5px;padding:2mm 2.8mm;margin:2.4mm 0 0;font-size:11px;color:var(--ink-soft);font-style:italic;line-height:1.44}
+
+  /* --- añadidos del manual operativo --- */
+  .warn{background:#FBEEE7;border:1px solid var(--coral);border-left:3px solid var(--coral);border-radius:0 5px 5px 0;
+    padding:2.2mm 3mm;margin:2.4mm 0;font-size:11.5px;color:#7a3417;line-height:1.44}
+  .warn .lab{font-family:var(--sans);font-size:7.2px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:1mm}
+  .warn b{color:var(--coral)}
+  .checklist{margin:1.4mm 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1.8mm}
+  .checklist>li{position:relative;padding-left:6.5mm;font-size:13px}
+  .checklist>li::before{content:"";position:absolute;left:0;top:.4mm;width:3.6mm;height:3.6mm;border:1.4px solid var(--teal);border-radius:2px}
+  .pole{display:inline-block;min-width:14px;text-align:center;font-family:var(--sans);font-size:8px;font-weight:700;border-radius:3px;padding:1px 5px;vertical-align:middle;letter-spacing:.02em}
+  .pole.n{background:#25241E;color:#fff}
+  .pole.s{background:var(--coral);color:#fff}
+  .step{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:2.6mm 3mm;margin:2.4mm 0}
+  .step h3{margin-top:0}
+  .qref{display:grid;grid-template-columns:1fr 1fr;gap:2.6mm;margin-top:2mm}
+  .qcard{border:1px solid var(--teal-line);border-radius:6px;padding:2.4mm 2.8mm}
+  .qcard .qh{font-family:var(--sans);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:1.4mm}
+  .qcard p,.qcard li{font-size:10.5px}
+  .role{border:1px solid var(--rule);border-radius:5px;padding:2mm 2.6mm;margin:1.6mm 0;font-size:11.5px}
+  .role b{color:var(--teal)}
+  .ladder{display:flex;flex-direction:column;gap:1.2mm;margin:1.6mm 0}
+  .ladder .rung{display:flex;align-items:center;gap:3mm;background:var(--teal-soft);border-radius:4px;padding:1.4mm 2.6mm;font-size:11px}
+  .ladder .rung .num{font-family:var(--sans);font-weight:700;color:var(--teal);font-size:10px;min-width:11px}
+  .writein{border-bottom:1px solid var(--teal-line);min-height:5mm;display:block;margin:1.2mm 0}
+
+  .cover{align-items:stretch;justify-content:flex-start;padding-top:16mm;counter-increment:pg 0}
+  .cover .gap-t{flex:382 0 0}.cover .gap-b{flex:618 0 0}
+  .cover .top{display:flex;align-items:center;gap:8px}
+  .cover .top .dip{width:38px;height:20px;color:var(--teal)}
+  .cover .top span{font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .cover .prog{font-family:var(--sans);font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--coral);margin-bottom:5mm;font-weight:600}
+  .cover h1{font-size:47px;line-height:1.03;margin:0 0 4mm;letter-spacing:-.01em;text-wrap:balance}
+  .cover .sub{font-size:16px;color:var(--ink-soft);font-style:italic;max-width:30ch;margin-bottom:6mm}
+  .cover .meta{border-top:1px solid var(--rule);padding-top:4mm;display:flex;justify-content:space-between;align-items:flex-end}
+  .cover .meta .who{font-size:12.5px}.cover .meta .who b{color:var(--teal)}
+  .cover .meta .mod{font-family:var(--sans);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:right}
+  .wm{position:absolute;right:-24mm;bottom:16mm;width:112mm;height:61mm;color:var(--teal);opacity:.08;pointer-events:none}
+
+  @media (max-width:640px){
+    .sheet{width:100%;min-height:0;padding:22px 18px 54px}
+    .ft{left:18px;right:18px;bottom:16px}.cover h1{font-size:32px}.qref{grid-template-columns:1fr}
+  }
+  @media print{
+    @page{size:176mm 250mm;margin:0}
+    .screen-note,.ctrl{display:none}.book{gap:0;padding:0}
+    .sheet{width:auto;min-height:auto;box-shadow:none;border:none;margin:0;page-break-after:always;break-after:page}
+    .sheet:last-child{page-break-after:auto}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="dipolo" viewBox="0 0 44 24"><circle cx="8" cy="12" r="6" fill="currentColor"/><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"/><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.35"/></symbol>
+</svg>
+
+<p class="screen-note">Cuadernillo B5 · tamaño final 176 × 250 mm (imprime 1-up en Carta y recorta, o 2-up en A3) · <b>N</b> = polo negativo (Norte) · <b>S</b> = polo positivo (Sur)</p>
+<div class="ctrl"><button id="bwtoggle" type="button">Ver en blanco y negro</button></div>
+<script>(function(){var b=document.getElementById('bwtoggle');if(!b)return;b.addEventListener('click',function(){var r=document.documentElement;var on=r.getAttribute('data-mode')==='bw';r.setAttribute('data-mode',on?'color':'bw');b.textContent=on?'Ver en blanco y negro':'Ver a color';});})();</script>
+
+<div class="book">
+
+  <!-- COVER -->
+  <section class="sheet cover">
+    <svg class="wm" aria-hidden="true"><use href="#dipolo"/></svg>
+    <div class="top"><svg class="dip"><use href="#dipolo"/></svg><span>el cuerpo eléctrico</span></div>
+    <div class="gap gap-t"></div>
+    <div class="center">
+      <div class="prog">Formación en Regulación Bioeléctrica</div>
+      <h1>Manual operativo · Técnica del trauma</h1>
+      <p class="sub">Medir, rastrear y regular la lesión, paso a paso.</p>
+    </div>
+    <div class="gap gap-b"></div>
+    <div class="meta">
+      <div class="who"><b>Dr. Miguel Ojeda Rios</b><br>Instituto Centrobioenergetica · 2026</div>
+      <div class="mod">Manual de práctica<br>para el estudiante</div>
+    </div>
+  </section>
+
+  <!-- 01 · CÓMO USAR + SEGURIDAD -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Cómo usar · Seguridad</span></div>
+    <div class="body">
+      <p class="kicker">Antes de empezar</p>
+      <h2>Cómo usar este manual</h2>
+      <p class="lead">Este cuadernillo es para <strong>practicar con las manos</strong>, no para leer de corrido. Se aprende en el orden en que está: primero a medir con fiabilidad, luego cada maniobra sobre lo anterior. Cada maniobra cabe en una página y trae una caja <em>“qué está pasando”</em> con el porqué en una línea.</p>
+      <div class="warn"><div class="lab">⚠ Seguridad — leer siempre</div>
+        <b>No aplicar</b> con marcapasos o dispositivos electrónicos implantados; embarazo (abdomen); implantes metálicos ferromagnéticos en la zona; heridas abiertas sin barrera (usar gasa). Alergia al níquel: usar cubierta entre imán y piel.</div>
+      <h3>La convención de polaridad</h3>
+      <p>En toda la técnica se trabaja con dos polos. Memorízalos:</p>
+      <table class="tbl">
+        <tr><th>Chip</th><th>Polo</th><th>Papel</th><th>Cara a la piel</th></tr>
+        <tr><td><span class="pole n">N</span></td><td>Negativo = Norte</td><td>Rastreo / impactación sobre la lesión</td><td>cara negativa</td></tr>
+        <tr><td><span class="pole s">S</span></td><td>Positivo = Sur</td><td>Complementario (par o nodo distante)</td><td>cara positiva</td></tr>
+      </table>
+      <div class="warn"><div class="lab">⚠ La única excepción</div>
+        En la <b>corrección renal</b> (Maniobra 1) se empieza con el <b>positivo <span class="pole s">S</span></b> y su cara positiva va a la piel. En todo lo demás, primero el <b>negativo <span class="pole n">N</span></b>.</div>
+      <div class="note">Camilla de masaje u otra <b>sin superficie metálica externa</b>. Imanes de 0.1–0.5 T; el tamaño se elige según la zona y el tamaño de la persona.</div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 02 · PANORAMA -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Panorama</span></div>
+    <div class="body">
+      <p class="kicker">El mapa de la técnica</p>
+      <h2>Qué vas a aprender y en qué orden</h2>
+      <p>La técnica lee el estado del cuerpo por la <strong>simetría de las piernas</strong> (acortamiento = zona activa) y lo regula con imanes. Se aprende por bloques, sumando:</p>
+      <div class="ladder">
+        <div class="rung"><span class="num">A</span> Montaje y relajación del paciente</div>
+        <div class="rung"><span class="num">B</span> Medir la simetría con fiabilidad</div>
+        <div class="rung"><span class="num">1</span> Maniobra 1 · Corrección renal</div>
+        <div class="rung"><span class="num">2</span> Maniobra 2 · Riñón–parietal</div>
+        <div class="rung"><span class="num">3</span> Maniobra 3 · Mapa corporal y dipolos por zona</div>
+        <div class="rung"><span class="num">4</span> Maniobra 4 · Rejilla (contractura)</div>
+        <div class="rung"><span class="num">✓</span> Cierre e integración del nuevo equilibrio</div>
+      </div>
+      <div class="idea"><div class="lab"><span class="dot"></span>El modelo en una caja</div>
+        <p>El trauma deja una <b>isla</b> de tejido “desconectada” del resto (célula despolarizada, con potasio alto). El cuerpo se comporta como un <b>agente</b> que defiende un equilibrio (set point). La técnica no “cura” la zona: le devuelve las condiciones para <b>reconectarse</b> y sostener un equilibrio nuevo.</p></div>
+      <p style="margin-top:2.4mm">No memorices puntos: aprende a <strong>leer</strong> (medir) y a <strong>seguir la señal</strong> (el acortamiento). El porqué completo está en el documento fundacional; aquí vamos a las manos.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 03 · BLOQUE A · MONTAJE -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque A</span></div>
+    <div class="body">
+      <p class="kicker">Montaje y relajación</p>
+      <h2>Preparar al paciente</h2>
+      <p>Un cuerpo en defensa no se deja leer. La preparación relaja el piso pélvico y baja el tono de guardia: así la medición es <strong>fiable</strong>.</p>
+      <div class="step">
+        <h3>Checklist de montaje</h3>
+        <ul class="checklist">
+          <li>Camilla <b>sin superficie metálica</b>; paciente en <b>decúbito supino</b>, cabeza en posición neutra.</li>
+          <li>Sujetar ambas piernas y <b>traccionarlas</b> suavemente para relajar la articulación pélvica.</li>
+          <li>Movilizar las piernas con las manos <b>hacia los lados</b> para soltar el piso pélvico.</li>
+          <li>Cubrir con una <b>manta</b>: relaja el cuerpo y retira los mecanismos de defensa.</li>
+          <li>Verificar que la persona lleve <b>zapatos</b> o <b>marcar los talones</b> para leer mejor.</li>
+        </ul>
+      </div>
+      <div class="idea"><div class="lab"><span class="dot"></span>Qué está pasando</div>
+        <p>La relajación reduce el tono de <b>defensa muscular</b>, que es la principal fuente de lecturas falsas. Preparar bien = medir bien.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 04 · BLOQUE B · MEDIR -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Bloque B</span></div>
+    <div class="body">
+      <p class="kicker">Medir la simetría</p>
+      <h2>Leer los talones</h2>
+      <ol class="nlist">
+        <li>Toma ambas piernas con las manos, por los tobillos/pies.</li>
+        <li><b>Levántalas ~30°</b> y bájalas suave. Solo levantar y medir —no jalar de más—.</li>
+        <li>Compara la <b>línea de los talones</b>. Referencia: el talón <b>izquierdo</b>.</li>
+      </ol>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Acortamiento vs simétricos</span></div>
+        <svg viewBox="0 0 520 150" role="img" aria-label="Comparación de talones: acortamiento a la izquierda, simétricos a la derecha">
+          <!-- ACORTAMIENTO -->
+          <line x1="20" y1="118" x2="230" y2="118" stroke="#B84E27" stroke-width="2" stroke-dasharray="7 5"/>
+          <rect x="70" y="60" width="26" height="58" rx="6" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.4"/>
+          <rect x="140" y="60" width="26" height="44" rx="6" fill="#F7E9D1" stroke="#B84E27" stroke-width="1.4"/>
+          <line x1="153" y1="104" x2="153" y2="118" stroke="#B84E27" stroke-width="1.4" marker-end="url(#am)"/>
+          <text x="125" y="140" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#4C4A42">Acortamiento</text>
+          <!-- SIMÉTRICOS -->
+          <line x1="290" y1="118" x2="500" y2="118" stroke="#0F6E56" stroke-width="2" stroke-dasharray="7 5"/>
+          <rect x="345" y="60" width="26" height="58" rx="6" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.4"/>
+          <rect x="415" y="60" width="26" height="58" rx="6" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.4"/>
+          <text x="395" y="140" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#4C4A42">Simétricos</text>
+          <defs><marker id="am" markerWidth="7" markerHeight="7" refX="3.5" refY="6" orient="auto"><path d="M0,0 L7,0 L3.5,7 Z" fill="#B84E27"/></marker></defs>
+        </svg>
+        <figcaption><b>Fig. 1.</b> Un talón más corto = zona activa. Talones a la misma línea = simetría.</figcaption>
+      </figure>
+      <table class="tbl">
+        <tr><th>Errores comunes</th><th>Cómo evitarlo</th></tr>
+        <tr><td>Jalar una pierna más que la otra</td><td>Fuerza igual en ambas manos; solo levantar</td></tr>
+        <tr><td>Paciente en defensa</td><td>Repetir la relajación del Bloque A</td></tr>
+        <tr><td>Cabeza girada</td><td>Recolocar en posición neutra</td></tr>
+      </table>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 05 · ÁRBOL DE DECISIÓN -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Decisión</span></div>
+    <div class="body">
+      <p class="kicker">Qué hacer según lo que mides</p>
+      <h2>El árbol de decisión</h2>
+      <figure class="fig">
+        <svg viewBox="0 0 520 250" role="img" aria-label="Árbol de decisión de la técnica">
+          <defs><marker id="dm" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0F6E56"/></marker></defs>
+          <rect x="185" y="8" width="150" height="30" rx="8" fill="#0F6E56"/><text x="260" y="27" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#fff">Mide la simetría</text>
+          <line x1="260" y1="38" x2="260" y2="56" stroke="#0F6E56" stroke-width="1.6" marker-end="url(#dm)"/>
+          <text x="260" y="52" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#8A897F">¿acortamiento?</text>
+          <!-- NO -->
+          <line x1="260" y1="58" x2="110" y2="80" stroke="#8A897F" stroke-width="1.4" marker-end="url(#dm)"/>
+          <text x="150" y="72" font-family="system-ui,sans-serif" font-size="9" fill="#4C4A42">No</text>
+          <rect x="30" y="82" width="150" height="30" rx="8" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.3"/><text x="105" y="101" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E">Mapa corporal (M3)</text>
+          <!-- SÍ -->
+          <line x1="260" y1="58" x2="410" y2="80" stroke="#0F6E56" stroke-width="1.6" marker-end="url(#dm)"/>
+          <text x="360" y="72" font-family="system-ui,sans-serif" font-size="9" fill="#4C4A42">Sí</text>
+          <rect x="335" y="82" width="160" height="30" rx="8" fill="#F7E9D1" stroke="#B84E27" stroke-width="1.3"/><text x="415" y="101" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#7a3417">Maniobra 1 · riñón</text>
+          <line x1="415" y1="112" x2="415" y2="130" stroke="#0F6E56" stroke-width="1.6" marker-end="url(#dm)"/>
+          <text x="415" y="126" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#8A897F">al retirar, ¿recorta otra vez?</text>
+          <rect x="335" y="132" width="160" height="28" rx="8" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.3"/><text x="415" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E">Maniobra 2 · parietal</text>
+          <line x1="335" y1="146" x2="185" y2="146" stroke="#8A897F" stroke-width="1.2"/><line x1="185" y1="146" x2="185" y2="180" stroke="#8A897F" stroke-width="1.2" marker-end="url(#dm)"/>
+          <rect x="30" y="130" width="150" height="30" rx="8" fill="#EAF4EF" stroke="#0F6E56" stroke-width="1.3"/><text x="105" y="149" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#25241E">Mapa corporal (M3)</text>
+          <line x1="105" y1="112" x2="105" y2="130" stroke="#0F6E56" stroke-width="1.6" marker-end="url(#dm)"/>
+          <rect x="120" y="182" width="280" height="30" rx="8" fill="#0F6E56"/><text x="260" y="201" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#fff">Dipolos por zona → nodo distante</text>
+          <line x1="260" y1="212" x2="260" y2="228" stroke="#0F6E56" stroke-width="1.6" marker-end="url(#dm)"/>
+          <rect x="150" y="220" width="220" height="26" rx="8" fill="#F7E9D1" stroke="#B84E27" stroke-width="1.3"/><text x="260" y="237" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#7a3417">Contractura → Rejilla (M4) · Cierre</text>
+        </svg>
+        <figcaption><b>Fig. 2.</b> La ruta completa. Se repite hasta que ninguna zona acorte o bajen los síntomas.</figcaption>
+      </figure>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 06 · MANIOBRA 1 -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Maniobra 1</span></div>
+    <div class="body">
+      <p class="kicker">Corrección renal · “acidosis temporal”</p>
+      <h2>Nivelar por el riñón</h2>
+      <div class="warn"><div class="lab">⚠ Excepción de polaridad</div>Aquí se empieza con el <b>positivo <span class="pole s">S</span></b> (cara positiva a la piel). Es la única maniobra que invierte el orden.</div>
+      <ol class="nlist">
+        <li>Coloca el <b>positivo <span class="pole s">S</span></b> sobre el <b>riñón del lado de la pierna acortada</b> (≈80% mismo lado; si no nivela, prueba el otro riñón).</li>
+        <li>Vuelve a medir: debe <b>nivelar</b>. Eso confirma el riñón.</li>
+        <li>Sin retirar el positivo, pon el <b>negativo <span class="pole n">N</span></b> <b>al lado</b> (adyacente), en la misma zona. Deja <b>20 min o más</b>.</li>
+        <li><b>Tiempo:</b> retira el positivo y comprueba. Si sigue acortada, vuelve a ponerlo y deja más. Repite hasta que, al retirar, quede nivelada.</li>
+      </ol>
+      <div class="idea"><div class="lab"><span class="dot"></span>Qué está pasando</div>
+        <p>El riñón regula el ambiente iónico de todo el cuerpo. Al trabajarlo, se recalibra ese ambiente y la asimetría de fondo se resuelve. “Temporal” = si se sostiene, listo; si recorta, hay algo más profundo (Maniobra 2).</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 07 · MANIOBRA 2 -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Maniobra 2</span></div>
+    <div class="body">
+      <p class="kicker">Riñón–parietal · “fenómeno Goiz / acidosis latente”</p>
+      <h2>El dipolo a distancia</h2>
+      <p><em>Cuándo:</em> la pierna <strong>vuelve a acortarse</strong> tras la Maniobra 1.</p>
+      <ol class="nlist">
+        <li>Pon de nuevo el <b>positivo <span class="pole s">S</span></b> en el <b>riñón</b> del lado afectado.</li>
+        <li>Pon el <b>negativo <span class="pole n">N</span></b> sobre el <b>hueso parietal contralateral al riñón</b> (riñón derecho → parietal izquierdo).</li>
+        <li>Deja <b>20 min</b>, o sigue rastreando zonas (Maniobra 3) en paralelo.</li>
+      </ol>
+      <div class="idea"><div class="lab"><span class="dot"></span>Qué está pasando</div>
+        <p>Un dipolo que cruza el cuerpo engancha el control autonómico central además del riñón. Corresponde a una desregulación más sostenida que la de la Maniobra 1.</p></div>
+      <div class="note">El nombre viene de la tradición (Goiz). Aquí lo leemos en clave de voltaje de membrana y eje autonómico, no de neutralizar patógenos.</div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 08 · MANIOBRA 3 -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Maniobra 3</span></div>
+    <div class="body">
+      <p class="kicker">Mapa corporal y dipolos por zona</p>
+      <h2>El corazón de la técnica</h2>
+      <ol class="nlist">
+        <li>Marca en el <b>mapa corporal</b> las zonas de dolor (escala 0–10).</li>
+        <li>Explora el <b>perímetro</b> de la zona de dolor con el <b>negativo <span class="pole n">N</span></b> (cara negativa a la piel) hasta que un punto <b>acorte</b>. Ahí lo dejas.</li>
+        <li>Pon el <b>positivo <span class="pole s">S</span></b> <b>a un lado</b>. Si <b>nivela</b> → dipolo local, déjalo.</li>
+        <li>Si <b>no nivela</b> → busca <b>nodo distante</b> en este orden fijo:</li>
+      </ol>
+      <div class="ladder">
+        <div class="rung"><span class="num">1</span> Riñón derecho &nbsp;→&nbsp; <span class="num">2</span> Riñón izquierdo</div>
+        <div class="rung"><span class="num">3</span> Suprarrenal derecha &nbsp;→&nbsp; <span class="num">4</span> Suprarrenal izquierda</div>
+        <div class="rung"><span class="num">5</span> Hígado (toda la zona hepática, sobre la piel)</div>
+        <div class="rung"><span class="num">6</span> Bulbo (hueco debajo del occipucio)</div>
+        <div class="rung"><span class="num">7</span> Si ninguno nivela → rastrear todo el cuerpo</div>
+      </div>
+      <p style="margin-top:2mm">Deja el tiempo que marque el rastreo; retira el positivo y, si recorta, deja más. Repite con <b>todas</b> las zonas. Al terminar, la mayoría quedan como dipolo local sobre la zona.</p>
+      <div class="idea"><div class="lab"><span class="dot"></span>Qué está pasando</div>
+        <p>El negativo interroga la <b>isla</b>; el dipolo local trabaja por gradiente y microcirculación; el nodo distante engancha el efector autonómico que corresponde.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 09 · MANIOBRA 4 -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Maniobra 4</span></div>
+    <div class="body">
+      <p class="kicker">Rejilla de gradiente · “ajedrez”</p>
+      <h2>Reforzar la contractura</h2>
+      <p><em>Cuándo:</em> <strong>dolor con contractura</strong>, sobre un punto ya confirmado.</p>
+      <ol class="nlist">
+        <li>En el punto del <b>negativo <span class="pole n">N</span></b>, coloca el <b>positivo <span class="pole s">S</span></b> para fijar el par.</li>
+        <li>Alrededor, <b>sin mover los puntos</b>, monta una <b>rejilla de 4 imanes en 2×2</b> con polaridades alternadas (tablero de ajedrez).</li>
+      </ol>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Rejilla 2×2 en ajedrez</span></div>
+        <svg viewBox="0 0 200 110" role="img" aria-label="Rejilla de cuatro imanes en tablero de ajedrez, polaridades alternadas">
+          <rect x="60" y="15" width="36" height="36" rx="4" fill="#25241E"/><text x="78" y="38" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#fff">N</text>
+          <rect x="100" y="15" width="36" height="36" rx="4" fill="#B84E27"/><text x="118" y="38" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#fff">S</text>
+          <rect x="60" y="55" width="36" height="36" rx="4" fill="#B84E27"/><text x="78" y="78" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#fff">S</text>
+          <rect x="100" y="55" width="36" height="36" rx="4" fill="#25241E"/><text x="118" y="78" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#fff">N</text>
+        </svg>
+        <figcaption><b>Fig. 3.</b> Las fronteras entre polos opuestos crean gradientes empinados: es donde el campo actúa sobre las fibras del dolor.</figcaption>
+      </figure>
+      <div class="idea"><div class="lab"><span class="dot"></span>Qué está pasando</div>
+        <p>La alternancia de polos crea <b>gradientes</b> en cada frontera —la configuración con mejor respaldo para bloquear la señal del dolor—.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 10 · CIERRE -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Cierre</span></div>
+    <div class="body">
+      <p class="kicker">Integración</p>
+      <h2>Cerrar la sesión</h2>
+      <ol class="nlist">
+        <li>Marca con un <b>punto en el mapa</b> cada zona que surgió (registro).</li>
+        <li>Ayuda a la persona a incorporarse y pregunta cómo se siente.</li>
+        <li>Haz las <b>preguntas de integración</b>.</li>
+      </ol>
+      <div class="chain"><b>¿Qué diferencias sientes? · ¿Cómo te sientes? · ¿Qué ha cambiado?</b></div>
+      <p>Repite toda la secuencia las veces necesarias hasta que el rastreo <strong>ya no marque</strong> o los síntomas bajen. Frecuencia entre sesiones: <strong>según la evolución</strong> del paciente.</p>
+      <div class="idea"><div class="lab"><span class="dot"></span>Qué está pasando</div>
+        <p>Hacer consciente el cambio ayuda a <b>fijar un set point nuevo</b>: el sistema no se empuja, se le crean las condiciones para que sostenga el equilibrio. La isla se re-enrola en el conjunto.</p></div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 11 · ERRORES COMUNES -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Errores</span></div>
+    <div class="body">
+      <p class="kicker">Lo que más falla</p>
+      <h2>Errores comunes y solución</h2>
+      <table class="tbl">
+        <tr><th>Error</th><th>Solución</th></tr>
+        <tr><td>Medir con el paciente en defensa</td><td>Repetir la relajación (tracción, manta) antes de leer</td></tr>
+        <tr><td>Confundir la polaridad</td><td><span class="pole n">N</span> negativo = rastreo; <span class="pole s">S</span> positivo = complementario. Excepción: riñón</td></tr>
+        <tr><td>Empezar el riñón con el negativo</td><td>En Maniobra 1 va primero el positivo <span class="pole s">S</span></td></tr>
+        <tr><td>Retirar antes de tiempo</td><td>Comprobar quitando el positivo; si recorta, dejar más</td></tr>
+        <tr><td>Buscar el nodo distante “a ojo”</td><td>Seguir el orden fijo: riñón→suprarrenal→hígado→bulbo</td></tr>
+        <tr><td>Mover los puntos al montar la rejilla</td><td>Fijar el par y construir el 2×2 sin moverlos</td></tr>
+        <tr><td>Parietal del lado equivocado</td><td>Contralateral al <b>riñón</b>, no a la pierna</td></tr>
+      </table>
+      <div class="warn"><div class="lab">⚠ Recordatorio de seguridad</div>Marcapasos, embarazo (abdomen), implantes ferromagnéticos, heridas abiertas sin gasa: no aplicar.</div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 12 · PRÁCTICA EN PAREJAS -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Práctica</span></div>
+    <div class="body">
+      <p class="kicker">Ejercicio en parejas</p>
+      <h2>Practicar por bloques</h2>
+      <div class="role"><b>Operador.</b> Prepara, mide y aplica. Verbaliza cada paso en voz alta.</div>
+      <div class="role"><b>Paciente.</b> Se relaja; reporta sensaciones y dolor 0–10 cuando se le pregunta.</div>
+      <div class="role"><b>Observador.</b> Sigue el checklist y anota en la ficha de registro; señala errores al final.</div>
+      <h3>Rúbrica de autoevaluación</h3>
+      <ul class="checklist">
+        <li>Preparé y relajé antes de medir</li>
+        <li>Medí levantando ~30°, sin jalar de más</li>
+        <li>Identifiqué bien acortamiento / simetría</li>
+        <li>Usé la polaridad correcta (y la excepción del riñón)</li>
+        <li>Seguí el orden fijo de nodos distantes</li>
+        <li>Comprobé el tiempo retirando el positivo</li>
+        <li>Registré las zonas en el mapa y cerré con las preguntas</li>
+      </ul>
+      <div class="note">Empieza practicando solo <b>Bloque A + B</b> (montaje y medición) hasta que la lectura sea estable entre operadores. Después suma una maniobra por sesión.</div>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 13 · FICHA DE REGISTRO -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Registro</span></div>
+    <div class="body">
+      <p class="kicker">Ficha de sesión</p>
+      <h2>Mapa corporal y registro</h2>
+      <table class="tbl">
+        <tr><th>Fecha</th><th>Paciente (código)</th><th>Sesión n.º</th></tr>
+        <tr><td><span class="writein"></span></td><td><span class="writein"></span></td><td><span class="writein"></span></td></tr>
+      </table>
+      <figure class="fig">
+        <div class="fighd"><span class="figt">Marca las zonas (0–10) · frente y espalda</span></div>
+        <svg viewBox="0 0 300 190" role="img" aria-label="Silueta corporal frente y espalda para marcar zonas">
+          <g fill="none" stroke="#0F6E56" stroke-width="1.4">
+            <!-- frente -->
+            <circle cx="75" cy="24" r="12"/>
+            <path d="M63,38 L87,38 L94,96 L84,150 L74,150 L75,104 L66,150 L56,150 L56,96 Z"/>
+            <path d="M63,42 L44,86 M87,42 L106,86"/>
+            <!-- espalda -->
+            <circle cx="215" cy="24" r="12"/>
+            <path d="M203,38 L227,38 L234,96 L224,150 L214,150 L215,104 L206,150 L196,150 L196,96 Z"/>
+            <path d="M203,42 L184,86 M227,42 L246,86"/>
+          </g>
+          <text x="75" y="176" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#8A897F">Frente</text>
+          <text x="215" y="176" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#8A897F">Espalda</text>
+        </svg>
+      </figure>
+      <table class="tbl">
+        <tr><th>Zona</th><th>Dolor pre</th><th>Dipolo (local / nodo)</th><th>Dolor post</th></tr>
+        <tr><td><span class="writein"></span></td><td><span class="writein"></span></td><td><span class="writein"></span></td><td><span class="writein"></span></td></tr>
+        <tr><td><span class="writein"></span></td><td><span class="writein"></span></td><td><span class="writein"></span></td><td><span class="writein"></span></td></tr>
+        <tr><td><span class="writein"></span></td><td><span class="writein"></span></td><td><span class="writein"></span></td><td><span class="writein"></span></td></tr>
+        <tr><td><span class="writein"></span></td><td><span class="writein"></span></td><td><span class="writein"></span></td><td><span class="writein"></span></td></tr>
+      </table>
+      <p style="font-size:11px;color:var(--muted);margin-top:1.6mm">Observaciones (movilidad, ánimo, cómo se siente): <span class="writein"></span><span class="writein"></span></p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 14 · TARJETA DE REFERENCIA -->
+  <section class="sheet">
+    <div class="hd"><div class="brand"><svg class="dip"><use href="#dipolo"/></svg><span class="eyebrow">el cuerpo eléctrico</span></div><span class="tag">Referencia rápida</span></div>
+    <div class="body">
+      <p class="kicker">Una página · para la camilla</p>
+      <h2>Tarjeta de referencia</h2>
+      <div class="qref">
+        <div class="qcard"><div class="qh">Polaridad</div>
+          <p><span class="pole n">N</span> negativo (Norte) = rastreo/lesión · cara negativa a piel<br><span class="pole s">S</span> positivo (Sur) = complementario · cara positiva a piel</p></div>
+        <div class="qcard"><div class="qh">Excepción</div>
+          <p>Maniobra 1 (riñón): empieza con <span class="pole s">S</span>, cara positiva a piel.</p></div>
+        <div class="qcard"><div class="qh">Secuencia</div>
+          <p>Montaje → medir → ¿acortamiento? → riñón (M1) → parietal (M2) → mapa + dipolos (M3) → rejilla si contractura (M4) → cierre.</p></div>
+        <div class="qcard"><div class="qh">Tiempos</div>
+          <p>20 min o más. Comprobar retirando el positivo; si recorta, dejar más. Repetir hasta que no marque.</p></div>
+        <div class="qcard"><div class="qh">Orden de nodos distantes</div>
+          <p>Riñón D → Riñón I → Suprarrenal D → Suprarrenal I → Hígado → Bulbo → todo el cuerpo.</p></div>
+        <div class="qcard"><div class="qh">Puntos</div>
+          <p>Parietal: hueso parietal contralateral al riñón. Hígado: toda la zona hepática. Bulbo: hueco bajo el occipucio.</p></div>
+      </div>
+      <div class="warn" style="margin-top:2.6mm"><div class="lab">⚠ No aplicar</div>Marcapasos/implantes electrónicos · embarazo (abdomen) · implantes ferromagnéticos · heridas abiertas sin gasa.</div>
+      <p style="font-size:10px;color:var(--muted);margin-top:2mm">Referencia canónica y fundamento: <em>Protocolo_Clinico_Tecnica_Trauma_RB.md</em> y <em>Documento_Fundacional_Punto_Trauma_2026.md</em>.</p>
+    </div>
+    <div class="ft"><span>Regulación Bioeléctrica</span><span class="pg"></span></div>
+  </section>
+
+</div>
+</body>
+</html>

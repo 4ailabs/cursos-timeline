@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muestra de diseño · Manual operativo</title>
+<style>
+  :root{
+    --paper:#FDFCFA; --ink:#1A1A17; --soft:#57544D; --faint:#918E85;
+    --line:#E3E1D8; --hair:#D6D3C9;
+    --accent:#0F6E56; --accent-2:#0C5946; --accent-tint:#EEF5F2;
+    --danger:#AD4327; --danger-tint:#F9EFEA;
+    --serif:"Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    --sans:-apple-system,"Segoe UI",system-ui,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#EDECE8;color:var(--ink);font-family:var(--serif);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .stage{padding:26px 16px 44px;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .snote{font-family:var(--sans);font-size:12px;color:#6d6a62;text-align:center;max-width:520px;line-height:1.5}
+  .snote b{color:var(--accent-2)}
+
+  /* ---- PÁGINA B5 ---- */
+  .page{width:176mm;min-height:250mm;background:var(--paper);position:relative;
+    box-shadow:0 10px 40px rgba(20,18,12,.14);
+    padding:20mm 16mm 17mm 22mm;display:flex;flex-direction:column}
+
+  /* encabezado editorial */
+  .rhead{display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:1.5px solid var(--ink);padding-bottom:3mm;margin-bottom:8mm}
+  .rhead .l{font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);font-weight:600}
+  .rhead .l b{color:var(--accent)}
+  .rhead .r{font-family:var(--sans);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+
+  /* titular */
+  .kick{font-family:var(--sans);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 3mm}
+  h1{font-size:34px;line-height:1.06;letter-spacing:-.012em;margin:0 0 4mm;font-weight:600;max-width:15ch}
+  .deck{font-size:15px;color:var(--soft);line-height:1.55;max-width:44ch;margin:0 0 9mm}
+  .deck em{color:var(--accent-2);font-style:normal}
+
+  /* rejilla de 2 columnas */
+  .grid{display:grid;grid-template-columns:1fr 44mm;column-gap:11mm;flex:1;align-content:start}
+
+  /* pasos */
+  .steps{list-style:none;margin:0;padding:0;counter-reset:s}
+  .steps>li{counter-increment:s;display:grid;grid-template-columns:11mm 1fr;column-gap:2mm;
+    padding:4mm 0;border-top:1px solid var(--hair);align-items:start}
+  .steps>li:first-child{border-top:none;padding-top:0}
+  .steps>li::before{content:counter(s,decimal-leading-zero);font-family:var(--sans);font-size:15px;font-weight:600;
+    color:var(--accent);font-variant-numeric:tabular-nums;line-height:1.2;padding-top:.3mm}
+  .steps .t{font-size:14px;line-height:1.5;color:var(--ink)}
+  .steps .t b{font-weight:600}
+
+  /* píldoras de polaridad */
+  .pole{display:inline-block;font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.02em;
+    border-radius:3px;padding:1.5px 5px;vertical-align:baseline;position:relative;top:-.5px}
+  .pole.n{background:var(--ink);color:#fff}
+  .pole.s{background:var(--danger);color:#fff}
+
+  /* "qué está pasando" — tipográfico, no una caja */
+  .why{margin-top:9mm;padding-top:4mm;border-top:1.5px solid var(--ink);max-width:46ch}
+  .why .lab{font-family:var(--sans);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:2mm}
+  .why p{margin:0;font-size:13px;line-height:1.55;color:var(--soft)}
+  .why p b{color:var(--ink);font-weight:600}
+
+  /* columna de notas al margen */
+  .aside{display:flex;flex-direction:column;gap:7mm;padding-top:1mm}
+  .mnote{border-left:2px solid var(--accent);padding:0 0 0 4mm}
+  .mnote.warn{border-left-color:var(--danger)}
+  .mnote .lab{font-family:var(--sans);font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--accent);margin-bottom:1.6mm}
+  .mnote.warn .lab{color:var(--danger)}
+  .mnote p{margin:0;font-size:11.5px;line-height:1.5;color:var(--soft)}
+  .mnote p b{color:var(--ink);font-weight:600}
+  .legend{display:flex;flex-direction:column;gap:2mm;margin-top:1mm}
+  .legend div{font-size:10.5px;color:var(--soft);display:flex;align-items:baseline;gap:5px}
+
+  /* mini-esquema */
+  .diag{margin-top:1mm}
+  .diag svg{width:100%;height:auto;display:block}
+  .diag .cap{font-family:var(--sans);font-size:9px;color:var(--faint);margin-top:1.5mm;line-height:1.4}
+
+  /* pie */
+  .rfoot{margin-top:6mm;border-top:1px solid var(--hair);padding-top:2.5mm;display:flex;justify-content:space-between;
+    font-family:var(--sans);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+
+  @media print{
+    @page{size:176mm 250mm;margin:0}
+    body{background:#fff}.stage{padding:0;gap:0}.snote{display:none}
+    .page{box-shadow:none;margin:0}
+  }
+  @media (max-width:620px){
+    .page{width:100%;min-height:0;padding:24px 20px}
+    .grid{grid-template-columns:1fr;row-gap:8mm}h1{font-size:28px}
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <p class="snote">Muestra de diseño · dirección <b>clínico editorial</b> · página B5 (176×250 mm). Una sola maniobra para aprobar el <i>look</i> antes de maquetar las 15 páginas.</p>
+
+  <!-- ===== PÁGINA DE MUESTRA: MANIOBRA 1 ===== -->
+  <section class="page">
+    <div class="rhead">
+      <div class="l">Maniobra <b>01</b> &nbsp;·&nbsp; Corrección renal</div>
+      <div class="r">El cuerpo eléctrico · RB</div>
+    </div>
+
+    <p class="kick">Acidosis temporal</p>
+    <h1>Nivelar por el riñón</h1>
+    <p class="deck">Cuando la medición basal muestra una pierna acortada y aún no hay zona de dolor localizada, se corrige primero el riñón: el regulador del ambiente iónico de todo el cuerpo. <em>Es la única maniobra que invierte la polaridad.</em></p>
+
+    <div class="grid">
+      <!-- columna principal -->
+      <div class="main">
+        <ol class="steps">
+          <li><span class="t">Coloca el <span class="pole s">S</span> positivo sobre el <b>riñón del lado de la pierna acortada</b> —cara positiva a la piel—. Es el mismo lado en ~80% de los casos.</span></li>
+          <li><span class="t">Vuelve a medir: la pierna debe <b>nivelar</b>. Eso confirma el riñón como nodo. Si no nivela, prueba el riñón contrario.</span></li>
+          <li><span class="t">Sin retirar el positivo, coloca el <span class="pole n">N</span> negativo <b>adyacente</b>, en la misma zona. Deja <b>20 minutos o más</b>.</span></li>
+          <li><span class="t">Retira el positivo y comprueba. Si la pierna <b>sigue acortada</b>, vuelve a colocarlo y deja más tiempo; repite hasta que quede nivelada.</span></li>
+        </ol>
+
+        <div class="why">
+          <div class="lab">Qué está pasando</div>
+          <p>El riñón fija el punto de referencia iónico de cada célula. Al trabajarlo, ese ambiente se recalibra y la asimetría de fondo se resuelve. <b>«Temporal»</b> significa que si se sostiene, terminó; si vuelve a acortar, hay un componente más profundo — que resuelve la Maniobra 2.</p>
+        </div>
+      </div>
+
+      <!-- notas al margen -->
+      <aside class="aside">
+        <div class="mnote warn">
+          <div class="lab">⚠ Excepción</div>
+          <p>Única maniobra que <b>empieza con el positivo</b> <span class="pole s">S</span>. En todo lo demás va primero el negativo <span class="pole n">N</span>.</p>
+        </div>
+
+        <div class="mnote">
+          <div class="lab">Polaridad</div>
+          <div class="legend">
+            <div><span class="pole n">N</span> negativo · Norte · rastreo</div>
+            <div><span class="pole s">S</span> positivo · Sur · complementario</div>
+          </div>
+        </div>
+
+        <div class="mnote">
+          <div class="lab">Disposición</div>
+          <div class="diag">
+            <svg viewBox="0 0 120 66" role="img" aria-label="Los dos imanes adyacentes sobre el riñón">
+              <rect x="6" y="8" width="108" height="50" rx="9" fill="none" stroke="#D6D3C9" stroke-width="1.4"/>
+              <text x="60" y="20" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="7" fill="#918E85" letter-spacing=".08em">RIÑÓN</text>
+              <rect x="30" y="28" width="22" height="22" rx="4" fill="#AD4327"/><text x="41" y="43" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#fff">S</text>
+              <rect x="56" y="28" width="22" height="22" rx="4" fill="#1A1A17"/><text x="67" y="43" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#fff">N</text>
+            </svg>
+            <p class="cap">Positivo primero; negativo al lado.</p>
+          </div>
+        </div>
+
+        <div class="mnote">
+          <div class="lab">Tiempo</div>
+          <p>20 min o más. El criterio lo da la <b>retirada del positivo</b>: si recorta, aún no.</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="rfoot">
+      <span>Regulación Bioeléctrica · Instituto Centrobioenergetica</span>
+      <span>06</span>
+    </div>
+  </section>
+</div>
+</body>
+</html>

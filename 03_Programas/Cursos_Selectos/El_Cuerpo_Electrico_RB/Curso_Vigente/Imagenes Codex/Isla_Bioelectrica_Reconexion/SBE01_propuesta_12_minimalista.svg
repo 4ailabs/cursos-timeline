@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="460" viewBox="0 0 1100 460" role="img" aria-labelledby="title desc">
+  <title id="title">Isla bioeléctrica y reconexión — versión minimalista</title>
+  <desc id="desc">A la izquierda, tres células ámbar están desacopladas mediante enlaces discontinuos. A la derecha, las mismas células se integran a la red mediante enlaces continuos.</desc>
+  <defs>
+    <style>
+      .type{font-family:Arial,Helvetica,sans-serif}.label{fill:#24333A;font-weight:700}
+      .cell{fill:#FCFCFA;stroke:#138A86;stroke-width:2.5}.island{fill:#F5DFC2;stroke:#D98B2B;stroke-width:2.7}
+      .restored{fill:#CFE9E6;stroke:#138A86;stroke-width:2.7}.link{fill:none;stroke:#138A86;stroke-width:2.7;stroke-linecap:round}
+    </style>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1 1l6 3.5L1 8" fill="none" stroke="#24333A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <g id="outer">
+      <circle cx="-132" cy="-82" r="25"/><circle cx="0" cy="-100" r="25"/><circle cx="132" cy="-82" r="25"/>
+      <circle cx="-132" cy="82" r="25"/><circle cx="0" cy="100" r="25"/><circle cx="132" cy="82" r="25"/>
+    </g>
+    <g id="inner">
+      <circle cx="-38" cy="-22" r="31"/><circle cx="38" cy="-22" r="31"/><circle cx="0" cy="42" r="31"/>
+    </g>
+  </defs>
+
+  <rect width="1100" height="460" fill="#FCFCFA"/>
+
+  <!-- Isla bioeléctrica -->
+  <g transform="translate(280 252)">
+    <text x="0" y="-176" text-anchor="middle" class="type label" font-size="21">Isla bioeléctrica</text>
+    <g class="link" opacity=".42">
+      <path d="M-132-82L0-100 132-82M-132 82L0 100 132 82"/>
+    </g>
+    <g class="link" stroke="#D98B2B" stroke-dasharray="5 8" opacity=".78">
+      <path d="M-132-82L-58-39M0-100L-19-52M132-82L58-39M-132 82L-30 62M0 100V73M132 82L30 62"/>
+    </g>
+    <g class="cell"><use href="#outer"/></g>
+    <g class="island"><use href="#inner"/></g>
+  </g>
+
+  <!-- Transición -->
+  <g transform="translate(484 252)">
+    <path d="M0 0h132" stroke="#24333A" stroke-width="1.7" marker-end="url(#arrow)"/>
+    <text x="64" y="-18" text-anchor="middle" class="type label" font-size="11" letter-spacing=".8">REPOLARIZACIÓN</text>
+  </g>
+
+  <!-- Reconexión -->
+  <g transform="translate(820 252)">
+    <text x="0" y="-176" text-anchor="middle" class="type label" font-size="21">Reconexión</text>
+    <g class="link">
+      <path d="M-132-82L0-100 132-82M-132 82L0 100 132 82"/>
+      <path d="M-132-82L-58-39M0-100L-19-52M132-82L58-39M-132 82L-30 62M0 100V73M132 82L30 62"/>
+      <path d="M-38-22H38M-38-22L0 42M38-22L0 42"/>
+    </g>
+    <g class="cell"><use href="#outer"/></g>
+    <g class="restored"><use href="#inner"/></g>
+  </g>
+</svg>

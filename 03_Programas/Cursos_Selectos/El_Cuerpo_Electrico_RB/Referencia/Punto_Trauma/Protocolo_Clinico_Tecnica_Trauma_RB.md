@@ -11,7 +11,7 @@
 - **Posición:** decúbito supino, **cabeza en posición neutra**, relajado.
 - **Referencia de simetría:** siempre el **talón de la extremidad inferior izquierda**.
 - **Ayuda de lectura:** que la persona lleve **zapatos** o **marcar los talones** para apreciar mejor la diferencia.
-- **Signo de rastreo:** *acortamiento* de una extremidad = señal de nodo activo. *Nivelación* (emparejamiento) = resolución.
+- **Signo de rastreo:** *acortamiento* de una extremidad = señal de nodo activo. *Isometría* (talones a la misma altura) = resolución.
 - **Polaridad (confirmada por el autor):** polo **negativo = Norte**; polo **positivo = Sur**. El polo **negativo (Norte)** es el de **rastreo/impactación** sobre la zona de lesión; el **positivo (Sur)** es el **complementario** (par local o nodo distante).
 - **Cara del imán hacia la piel:** en la aplicación general, la **cara negativa** es la que contacta la piel sobre la lesión. **Única excepción:** la corrección renal (Fase 1), donde la **cara positiva** va hacia la piel.
 - **Imanes:** intensidad **0.1–0.5 T** (100–500 mT ≈ 1 000–5 000 gauss) en superficie. El **tamaño** del imán se elige según la **zona** a tratar y el **tamaño de la persona**. Para la rejilla, 4 imanes iguales. *(El rango de intensidad coincide con la ventana de la anisotropía diamagnética documentada, 100–500 mT — Rosen 2003.)*
@@ -42,12 +42,12 @@
 
 > **Excepción a la regla general.** En el resto de la técnica se coloca **primero el polo negativo** (rastreo/impactación). La corrección renal es la **única excepción**: se empieza con el **polo positivo**.
 
-1. Colocar el **polo positivo (Sur)** sobre el **riñón del lado de la extremidad acortada**, con la **cara positiva hacia la piel**. El riñón es el del mismo lado en ≈**80%** de los casos; si ese no nivela, usar el **riñón contralateral**.
-2. Volver a medir la simetría: debe **emparejar/nivelar**. Esto confirma el riñón como nodo.
+1. Colocar el **polo positivo (Sur)** sobre el **riñón del lado de la extremidad acortada**, con la **cara positiva hacia la piel**. El riñón es el del mismo lado en ≈**80%** de los casos; si con ese no quedan isométricas, usar el **riñón contralateral**.
+2. Volver a medir la simetría: las extremidades deben quedar **isométricas**. Esto confirma el riñón como nodo.
 3. Sin retirar el positivo, colocar el **polo negativo (Norte)** en la **misma zona, adyacente (a un lado)** del positivo. Dejar **20 minutos o más** (ver criterio de tiempo).
-4. **Criterio de tiempo.** Retirar el **polo positivo** y comprobar: si la extremidad **sigue acortada**, volver a colocarlo y dejar **más tiempo**; repetir hasta que, al retirar el positivo, la extremidad quede nivelada. **A veces 20 minutos bastan.**
+4. **Criterio de tiempo.** Retirar el **polo positivo** y comprobar: si la extremidad **sigue acortada**, volver a colocarlo y dejar **más tiempo**; repetir hasta que, al retirar el positivo, las extremidades queden isométricas. **A veces 20 minutos bastan.**
 
-> **Tradición:** "acidosis temporal" —el emparejamiento rápido, comparable a la marea alcalina posprandial—.
+> **Tradición:** "acidosis temporal" —la rápida recuperación de la isometría, comparable a la marea alcalina posprandial—.
 > **Lectura bioeléctrica (P4 + P2):** el polo positivo sobre el riñón recalibra el nodo iónico maestro y resuelve la asimetría basal; el par adyacente sostenido durante la impactación busca fijar ese reajuste. "Temporal" describe que el Vmem se normaliza pero el set point aún no se sostiene: si se mantiene, se resolvió; si recorta, hay un componente más profundo (Fase 2).
 
 ---
@@ -79,23 +79,23 @@
 
 *Se aplica a cada zona del mapa, empezando por la de mayor dolor.*
 
-1. Explorar con el **polo negativo (Norte)** (cara negativa hacia la piel) **varios puntos del perímetro** del área de dolor.
-2. Comprobar el rastreo en cada punto:
-   - Si **ningún** punto del perímetro **acorta**, pasar a otra zona.
-   - Si un punto **acorta**, dejar ahí el imán (zona confirmada).
-3. Colocar un **polo positivo (Sur)** **a un lado**:
-   - Si **nivela** → es un **dipolo local** (par en la zona). Dejar.
-   - Si **no nivela** → buscar **punto distante** siguiendo este **orden fijo de preferencia**, hasta que uno nivele:
-     1. **Riñón derecho**
-     2. **Riñón izquierdo**
+1. En el mapa de dolor, localizar el **punto de mayor intensidad** (la zona más dolorosa o sintomática) y colocar allí un imán con el **polo negativo (Norte)**, cara negativa hacia la piel.
+2. Comprobar el rastreo (volver a medir la simetría):
+   - Si la zona **acorta** la extremidad, dejar ahí fijo el imán (zona confirmada).
+   - Si **no hay cambio**, ir **moviendo el imán por la zona** y midiendo hasta encontrar el punto que acorta. Si en toda la zona no aparece acortamiento, **pasar a otra zona**.
+3. Sin mover el negativo, colocar un **polo positivo (Sur)** **a un lado del imán** (al lado opuesto, a la izquierda o arriba), probando posiciones y volviendo a medir:
+   - Si las extremidades quedan **isométricas** → es un **dipolo local**. Dejar.
+   - Si no se consigue la isometría → buscar **punto distante** siguiendo este **orden fijo de preferencia**, hasta que uno restablezca la isometría:
+     1. **Zona renal derecha**
+     2. **Zona renal izquierda**
      3. **Suprarrenal derecha**
      4. **Suprarrenal izquierda**
      5. **Hígado** (se rastrea sobre la piel en **toda la zona hepática**)
      6. **Bulbo raquídeo** (en el **hueco debajo del occipucio**)
-     7. Si ninguno nivela → **rastrear en todo el cuerpo**.
+     7. Si ninguno restablece la isometría → **rastrear en todo el cuerpo**.
 4. Mantener la configuración **el tiempo que marque el rastreo** hasta que **deje de acortar**. Retirar el polo positivo; si vuelve a acortar, dejar más tiempo.
-5. Repetir con **todas las zonas** halladas.
-6. Al terminar, dejar los imanes colocados: **la mayoría de los puntos quedan como dos polos sobre la zona**; solo alguno se resuelve en el riñón.
+5. Repetir con **todas las zonas** del mapa, de mayor a menor dolor.
+6. Al terminar, dejar los imanes colocados: **la mayoría de los puntos quedan como un dipolo local sobre la zona**; solo alguno se resuelve a distancia en la zona renal.
 
 > **Lectura bioeléctrica:** el polo negativo interroga la **isla de despolarización** (zona de máximo dolor). El **dipolo local** actúa por gradiente y normalización de canales/microcirculación (**P1 + P2 + P3**); el **punto distante** engancha el **nodo autonómico** (**P4**). El **orden fijo** confirmado (riñón → suprarrenal → hígado → bulbo) **corrobora la tríada autonómica** propuesta en la investigación (ver `Nodo_de_Lesion_Nodos_Reguladores.md`): efector iónico (riñón), efector neuroendocrino (suprarrenal), efector metabólico (hígado) y control central (bulbo). Es un orden de preferencia empírico, no una selección por variable dominante —matiz importante que ajusta la hipótesis previa.
 
@@ -151,7 +151,7 @@
 
 ## Estado del protocolo
 
-**Confirmado por el autor:** polaridad (neg=Norte, pos=Sur); cara del imán hacia la piel (negativa en general, positiva en Fase 1); imanes 0.1–0.5 T, tamaño según zona/persona; Fase 1 completa (riñón mismo lado ~80%, par adyacente, criterio de tiempo); parietal (hueso parietal contralateral al riñón); orden fijo de nodos distantes (riñón D → riñón I → suprarrenal D → suprarrenal I → hígado → bulbo → cuerpo entero); hígado (toda la zona hepática sobre la piel); bulbo (hueco bajo el occipucio); rejilla de 4 imanes 2×2; rastreo por perímetro; frecuencia según evolución.
+**Confirmado por el autor:** polaridad (neg=Norte, pos=Sur); cara del imán hacia la piel (negativa en general, positiva en Fase 1); imanes 0.1–0.5 T, tamaño según zona/persona; Fase 1 completa (riñón mismo lado ~80%, par adyacente, criterio de tiempo); parietal (hueso parietal contralateral al riñón); orden fijo de nodos distantes (riñón D → riñón I → suprarrenal D → suprarrenal I → hígado → bulbo → cuerpo entero); hígado (toda la zona hepática sobre la piel); bulbo (hueco bajo el occipucio); rejilla de 4 imanes 2×2; rastreo de la zona (imán sobre el punto de mayor dolor, moviéndolo hasta hallar el acortamiento); frecuencia según evolución.
 
 **Protocolo completo.** Todos los parámetros del procedimiento están confirmados por el autor.
 
@@ -164,7 +164,7 @@
 | Acidosis temporal | recalibración iónica transitoria vía riñón; set point aún no sostenido |
 | Acidosis latente / fenómeno Goiz | desregulación sostenida; dipolo distante sobre eje autonómico amplio |
 | Marea alcalina | percepción del reajuste del microambiente (el pH acompaña al Vmem, no lo dirige) |
-| Acortamiento / nivelación | señal somática de incoherencia / resolución del patrón bioeléctrico |
+| Acortamiento / isometría | señal somática de incoherencia / resolución del patrón bioeléctrico |
 | Dejar los imanes 20 min | ventana de impactación (cinética lenta de la modulación del Vmem) |
 
 ---

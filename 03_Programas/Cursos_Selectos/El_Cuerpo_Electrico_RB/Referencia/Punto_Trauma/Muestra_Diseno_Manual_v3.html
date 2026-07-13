@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muestra v3 · instrumento</title>
+<style>
+  :root{
+    --paper:#F6F7F6; --panel:#FFFFFF; --ink:#181B1E; --soft:#565B60; --faint:#989D9C;
+    --line:#E1E4E1; --hair:#D2D6D2; --grid:#EBEEEB;
+    --accent:#0B7A6B; --accent-deep:#075E52; --accent-tint:#E8F2F0;
+    --pos:#B8842B; --pos-tint:#F6EEDC; --neg:#23262B;
+    --alert:#9B2D2D;
+    --sans:"Helvetica Neue","Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+    --mono:"SF Mono","JetBrains Mono","Roboto Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#E7E9E7;color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .stage{padding:26px 16px 44px;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .snote{font-family:var(--mono);font-size:11px;color:#6a6f6c;text-align:center;max-width:560px;line-height:1.6}
+  .snote b{color:var(--accent-deep)} .snote .k{color:var(--pos)}
+
+  .page{width:176mm;min-height:250mm;background:var(--paper);position:relative;overflow:hidden;
+    box-shadow:0 12px 46px rgba(20,22,18,.16);padding:16mm 16mm 14mm 18mm;display:flex;flex-direction:column}
+
+  /* cabecera datasheet */
+  .dhead{display:flex;align-items:center;gap:4mm;padding-bottom:3mm;border-bottom:1.5px solid var(--ink)}
+  .dhead .motif{width:15mm;height:9mm;flex:none}
+  .dhead .code{font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:var(--ink);font-weight:600}
+  .dhead .code b{color:var(--accent-deep)}
+  .dhead .sp{flex:1}
+  .dhead .pgc{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.05em}
+
+  .ey{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--pos);font-weight:600;margin:8mm 0 3mm}
+  h1{font-family:var(--sans);font-size:32px;line-height:1.02;letter-spacing:-.02em;font-weight:700;margin:0 0 4.5mm}
+  .deck{font-size:13.5px;color:var(--soft);line-height:1.6;max-width:60ch;margin:0 0 8mm;font-weight:400}
+
+  /* pasos · flujo de señal */
+  .flow{position:relative;margin:0 0 8mm;padding:0}
+  .flow::before{content:"";position:absolute;left:4.25mm;top:4mm;bottom:4mm;width:1.5px;background:var(--hair)}
+  .flow .st{position:relative;display:grid;grid-template-columns:9mm 1fr;gap:4mm;padding:0 0 5mm}
+  .flow .st:last-child{padding-bottom:0}
+  .flow .sn{width:8.5mm;height:8.5mm;border-radius:50%;background:var(--panel);border:1.5px solid var(--accent);
+    color:var(--accent-deep);font-family:var(--mono);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;z-index:1}
+  .flow .tx{font-size:13.5px;line-height:1.58;color:var(--ink);padding-top:1mm;max-width:58ch}
+  .flow .tx b{font-weight:600}
+
+  .pole{display:inline-block;font-family:var(--mono);font-size:9.5px;font-weight:700;
+    border-radius:3px;padding:1px 5px;color:#fff;vertical-align:baseline}
+  .pole.n{background:var(--neg)} .pole.s{background:var(--pos)}
+
+  /* bloque de parámetros · lectura de instrumento */
+  .spec{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:0 0 7mm}
+  .spec .cap{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+    padding:2.4mm 4mm;border-bottom:1px solid var(--line);background:var(--grid)}
+  .spec .row{display:grid;grid-template-columns:26mm 1fr;gap:3mm;padding:2.6mm 4mm;border-bottom:1px solid var(--grid)}
+  .spec .row:last-child{border-bottom:none}
+  .spec .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-deep);font-weight:600;padding-top:.4mm}
+  .spec .v{font-size:12px;color:var(--ink);line-height:1.5}
+  .spec .v b{font-weight:600}
+  .spec .row.exc{background:var(--pos-tint)}
+  .spec .row.exc .k{color:var(--pos)}
+
+  /* qué está pasando */
+  .why{border-top:1.5px solid var(--ink);padding-top:4mm;max-width:62ch}
+  .why .lab{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);font-weight:600;margin-bottom:2.5mm}
+  .why p{margin:0;font-size:12.5px;line-height:1.6;color:var(--soft)}
+  .why p b{color:var(--ink);font-weight:600}
+
+  .dfoot{margin-top:auto;padding-top:4mm;display:flex;justify-content:space-between;
+    font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;color:var(--faint)}
+
+  @media print{ @page{size:176mm 250mm;margin:0} body{background:#fff}.stage{padding:0;gap:0}.snote{display:none}.page{box-shadow:none} }
+  @media (max-width:620px){ .page{width:100%;min-height:0;padding:20px 18px}h1{font-size:26px}.spec .row{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="stage">
+  <p class="snote">MUESTRA <b>v3</b> · instrumento / datasheet · sans + monoespaciada · polo positivo en <span class="k">ámbar</span> · B5 176×250</p>
+
+  <section class="page">
+    <div class="dhead">
+      <svg class="motif" viewBox="0 0 60 36" aria-hidden="true">
+        <g fill="none" stroke="#B8C4C1" stroke-width="1.1">
+          <path d="M18,18 C18,4 42,4 42,18 C42,32 18,32 18,18"/>
+          <path d="M18,18 C14,8 46,8 42,18 C46,28 14,28 18,18"/>
+          <path d="M18,18 C10,12 50,12 42,18 C50,24 10,24 18,18"/>
+        </g>
+        <circle cx="18" cy="18" r="5.4" fill="#23262B"/><text x="18" y="21.4" text-anchor="middle" font-family="monospace" font-size="7" font-weight="700" fill="#fff">N</text>
+        <circle cx="42" cy="18" r="5.4" fill="#B8842B"/><text x="42" y="21.4" text-anchor="middle" font-family="monospace" font-size="7" font-weight="700" fill="#fff">S</text>
+      </svg>
+      <span class="code">M&#8209;01 &nbsp;·&nbsp; <b>CORRECCIÓN RENAL</b></span>
+      <span class="sp"></span>
+      <span class="pgc">RB · P.06</span>
+    </div>
+
+    <p class="ey">Acidosis temporal</p>
+    <h1>Nivelar por el riñón</h1>
+    <p class="deck">Cuando la medición basal muestra una pierna acortada y aún no hay zona de dolor localizada, se corrige primero el riñón — el regulador del ambiente iónico de todo el cuerpo.</p>
+
+    <div class="flow">
+      <div class="st"><div class="sn">01</div><div class="tx">Coloca el <span class="pole s">S</span> positivo sobre el <b>riñón del lado de la pierna acortada</b> (mismo lado en ~80%; si no nivela, prueba el contrario).</div></div>
+      <div class="st"><div class="sn">02</div><div class="tx">Vuelve a medir: la pierna debe <b>nivelar</b>. Confirma el riñón como nodo.</div></div>
+      <div class="st"><div class="sn">03</div><div class="tx">Sin retirar el positivo, coloca el <span class="pole n">N</span> negativo <b>adyacente</b>, en la misma zona. Deja <b>20 min o más</b>.</div></div>
+      <div class="st"><div class="sn">04</div><div class="tx">Retira el positivo y comprueba. Si <b>sigue acortada</b>, vuelve a colocarlo y deja más; repite hasta nivelar.</div></div>
+    </div>
+
+    <div class="spec">
+      <div class="cap">Parámetros de la maniobra</div>
+      <div class="row exc"><div class="k">Excepción</div><div class="v">Única maniobra que <b>empieza con el positivo <span class="pole s">S</span></b> (cara positiva a la piel). En las demás va primero el <span class="pole n">N</span>.</div></div>
+      <div class="row"><div class="k">Polaridad</div><div class="v"><span class="pole n">N</span> negativo · Norte · rastreo &nbsp;&nbsp; <span class="pole s">S</span> positivo · Sur · complementario</div></div>
+      <div class="row"><div class="k">Punto</div><div class="v">Riñón del lado acortado (~80%); si no, riñón contralateral.</div></div>
+      <div class="row"><div class="k">Tiempo</div><div class="v">≥ 20 min. Criterio: retira el positivo; si recorta, aún no.</div></div>
+    </div>
+
+    <div class="why">
+      <div class="lab">Qué está pasando</div>
+      <p>El riñón fija el punto de referencia iónico de cada célula. Al trabajarlo, ese ambiente se recalibra y la asimetría de fondo se resuelve. <b>«Temporal»</b> significa que si se sostiene, terminó; si vuelve a acortar, hay un componente más profundo —que resuelve la Maniobra 2—.</p>
+    </div>
+
+    <div class="dfoot"><span>REGULACIÓN BIOELÉCTRICA · INSTITUTO CENTROBIOENERGETICA</span><span>06 / 15</span></div>
+  </section>
+</div>
+</body>
+</html>

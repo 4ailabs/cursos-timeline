@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Isla bioeléctrica y reconexión: esquema editorial</title>
+  <desc id="desc">Dos estados de una red celular. A la izquierda, una zona despolarizada queda aislada por uniones cerradas. A la derecha, la zona repolarizada reabre sus uniones y comparte señal con el colectivo.</desc>
+  <defs>
+    <style>
+      .sans{font-family:Inter,Arial,sans-serif}.serif{font-family:Georgia,'Times New Roman',serif}
+      .link{fill:none;stroke:#0F6E56;stroke-width:3;stroke-linecap:round}
+      .cell{fill:#fff;stroke:#0F6E56;stroke-width:3}
+      .island{fill:#F5E6CA;stroke:#BA7517;stroke-width:3}
+    </style>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1 1l6 3.5L1 8" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text x="70" y="58" class="sans" font-size="14" font-weight="700" letter-spacing="2.1" fill="#0F6E56">ESTADO BIOELÉCTRICO DEL TEJIDO</text>
+  <line x1="70" y1="78" x2="1130" y2="78" stroke="#DEDCD4"/>
+
+  <!-- A · isla -->
+  <g transform="translate(70 112)">
+    <text x="0" y="18" class="sans" font-size="13" font-weight="700" fill="#BA7517">A</text>
+    <text x="28" y="19" class="serif" font-size="25" font-weight="700" fill="#2D332D">Isla bioeléctrica</text>
+    <text x="28" y="45" class="sans" font-size="14" fill="#706F68">Zona despolarizada · gap junctions cerradas</text>
+
+    <g transform="translate(235 210)">
+      <g class="link" opacity=".44">
+        <path d="M-190-55l75-76 89 25M-190-55l20 102 76 70M-115-131l3-55M-170 47l-61 23M-94 117l-20 61M93-124l80 54 28 101M93-124l17-58M201 31l55 27M201 31l-26 100-82 48M175 131l20 53"/>
+      </g>
+      <g class="link" stroke="#BA7517">
+        <path d="M-26-106l32 38M-94 117l46-34M93-124L55-77M201 31l-70 5M93 179L52 93"/>
+      </g>
+      <ellipse cx="36" cy="18" rx="91" ry="105" fill="#F5E6CA" opacity=".32" stroke="#BA7517" stroke-width="2" stroke-dasharray="7 8"/>
+      <g class="cell">
+        <circle cx="-190" cy="-55" r="25"/><circle cx="-115" cy="-131" r="25"/><circle cx="-170" cy="47" r="25"/><circle cx="-94" cy="117" r="25"/>
+        <circle cx="93" cy="-124" r="25"/><circle cx="173" cy="-70" r="25"/><circle cx="201" cy="31" r="25"/><circle cx="175" cy="131" r="25"/><circle cx="93" cy="179" r="25"/>
+      </g>
+      <g class="island"><circle cx="8" cy="-35" r="31"/><circle cx="70" cy="-23" r="31"/><circle cx="38" cy="42" r="31"/></g>
+      <g fill="#BA7517" opacity=".25"><circle cx="8" cy="-35" r="8"/><circle cx="70" cy="-23" r="8"/><circle cx="38" cy="42" r="8"/></g>
+      <g stroke="#B94E37" stroke-width="4" stroke-linecap="round">
+        <path d="M-41-80l12 12m0-12l-12 12M45-89l12 12m0-12l-12 12M112 24l12 12m0-12l-12 12M39 83l12 12m0-12l-12 12M-55 70l12 12m0-12l-12 12"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- transición -->
+  <g transform="translate(565 275)">
+    <path d="M0 0h70" stroke="#0F6E56" stroke-width="2" marker-end="url(#arr)"/>
+    <text x="33" y="-18" text-anchor="middle" class="sans" font-size="11" font-weight="700" letter-spacing="1.2" fill="#0F6E56">REPOLARIZA</text>
+  </g>
+
+  <!-- B · reconexión -->
+  <g transform="translate(650 112)">
+    <text x="0" y="18" class="sans" font-size="13" font-weight="700" fill="#0F6E56">B</text>
+    <text x="28" y="19" class="serif" font-size="25" font-weight="700" fill="#2D332D">Reconexión al colectivo</text>
+    <text x="28" y="45" class="sans" font-size="14" fill="#706F68">Zona repolarizada · gap junctions abiertas</text>
+
+    <g transform="translate(235 210)">
+      <g class="link">
+        <path d="M-190-55l75-76 123 96 85-89 80 54 28 101M-190-55l20 102 76 70 132-75 137 89M-94 117l132-75 55 137 82-48M8-35l62 12-32 65M-115-131l3-55M-170 47l-61 23M-94 117l-20 61M93-124l17-58M201 31l55 27M175 131l20 53"/>
+      </g>
+      <g class="cell">
+        <circle cx="-190" cy="-55" r="25"/><circle cx="-115" cy="-131" r="25"/><circle cx="-170" cy="47" r="25"/><circle cx="-94" cy="117" r="25"/>
+        <circle cx="93" cy="-124" r="25"/><circle cx="173" cy="-70" r="25"/><circle cx="201" cy="31" r="25"/><circle cx="175" cy="131" r="25"/><circle cx="93" cy="179" r="25"/>
+        <circle cx="8" cy="-35" r="31"/><circle cx="70" cy="-23" r="31"/><circle cx="38" cy="42" r="31"/>
+      </g>
+      <path d="M-215 46h39l17-27 22 56 21-38h39l18-31 24 64 22-39h42l18-32 23 63 24-42h41l18-30 22 57h42" fill="none" stroke="#D39732" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <line x1="70" y1="474" x2="1130" y2="474" stroke="#DEDCD4"/>
+  <text x="70" y="500" class="sans" font-size="13" fill="#706F68"><tspan font-weight="700" fill="#2D332D">Principio:</tspan> regular es devolver las condiciones para reabrir las uniones y compartir información bioeléctrica.</text>
+</svg>

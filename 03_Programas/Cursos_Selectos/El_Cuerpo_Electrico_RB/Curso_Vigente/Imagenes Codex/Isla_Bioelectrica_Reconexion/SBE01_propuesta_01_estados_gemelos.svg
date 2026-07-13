@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+  <title id="title">Isla bioeléctrica y reconexión — estados gemelos</title>
+  <desc id="desc">La misma arquitectura tisular muestra una región funcionalmente aislada y, después, la región reconectada al colectivo.</desc>
+  <defs>
+    <style>
+      .t{font-family:Arial,Helvetica,sans-serif}.h{font-weight:700;fill:#24333A}.s{fill:#69777C}
+      .mem{fill:#E8EEF0;stroke:#AAB8BD;stroke-width:2}.focus{fill:#F5DFC2;stroke:#D98B2B;stroke-width:2.4}
+      .restored{fill:#CFE9E6;stroke:#138A86;stroke-width:2.4}.link{stroke:#AAB8BD;stroke-width:3;stroke-linecap:round}
+    </style>
+    <marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M1 1l6 3.5L1 8" fill="none" stroke="#24333A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <rect width="1200" height="600" fill="#FCFCFA"/>
+  <text x="60" y="48" class="t h" font-size="14" letter-spacing="1.8">ACOPLAMIENTO BIOELÉCTRICO DEL TEJIDO</text>
+  <line x1="60" y1="68" x2="1140" y2="68" stroke="#D8DFE1"/>
+
+  <g transform="translate(60 104)">
+    <text x="0" y="18" class="t h" font-size="22">Isla bioeléctrica</text>
+    <text x="0" y="43" class="t s" font-size="14">uniones cerradas</text>
+    <g transform="translate(227 226)">
+      <path d="M-205-69l67-91 104 30 83-49 101 46 73 88-15 113-84 79-105 18-103-39-94-76Z" fill="#E8EEF0" opacity=".34"/>
+      <g class="link"><path d="M-171-68L-90-131M-171-68l-9 95M-180 27l65 76M-115 103l98 31M-90-131l92 25M92-132l75 62M167-70l31 91M198 21l-55 83M143 104l-92 27"/></g>
+      <g class="mem">
+        <path d="M-205-93q34-31 68 0v50q-34 31-68 0Z"/><path d="M-124-156q34-31 68 0v50q-34 31-68 0Z"/>
+        <path d="M-214 2q34-31 68 0v50q-34 31-68 0Z"/><path d="M-149 78q34-31 68 0v50q-34 31-68 0Z"/>
+        <path d="M58-157q34-31 68 0v50q-34 31-68 0Z"/><path d="M133-95q34-31 68 0v50q-34 31-68 0Z"/>
+        <path d="M164-4q34-31 68 0v50q-34 31-68 0Z"/><path d="M109 79q34-31 68 0v50q-34 31-68 0Z"/>
+        <path d="M17 106q34-31 68 0v50q-34 31-68 0Z"/>
+      </g>
+      <ellipse cx="23" cy="-22" rx="94" ry="91" fill="none" stroke="#D98B2B" stroke-width="2" stroke-dasharray="6 7"/>
+      <g class="focus"><path d="M-54-69q37-34 74 0v56q-37 34-74 0Z"/><path d="M25-74q37-34 74 0v56q-37 34-74 0Z"/><path d="M-14-3q37-34 74 0v56q-37 34-74 0Z"/></g>
+      <g stroke="#D98B2B" stroke-width="3" stroke-linecap="round"><path d="M-70-88l18 0M-71-45l18 0M97-91l18 0M99-48l18 0M-43 56l10 15M62 54l10 15"/></g>
+      <path d="M-224 3h42l18-24 24 48 21-29h29" fill="none" stroke="#24333A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M-89-2h19" stroke="#24333A" stroke-width="3" stroke-dasharray="3 6"/>
+    </g>
+  </g>
+
+  <g transform="translate(552 326)"><path d="M0 0h75" stroke="#24333A" stroke-width="1.8" marker-end="url(#a)"/><text x="36" y="-15" class="t h" font-size="11" text-anchor="middle">REPOLARIZACIÓN</text></g>
+
+  <g transform="translate(660 104)">
+    <text x="0" y="18" class="t h" font-size="22">Reconexión</text>
+    <text x="0" y="43" class="t s" font-size="14">uniones restablecidas</text>
+    <g transform="translate(227 226)">
+      <path d="M-205-69l67-91 104 30 83-49 101 46 73 88-15 113-84 79-105 18-103-39-94-76Z" fill="#CFE9E6" opacity=".25"/>
+      <g class="link" stroke="#138A86"><path d="M-171-68L-90-131M-171-68l-9 95M-180 27l65 76M-115 103l98 31M-90-131l92 25M2-106l90-26M92-132l75 62M167-70l31 91M198 21l-55 83M143 104l-92 27M-90-2l50-39M61-43l73-27M23 52l-40 82M61-43L23 52M-40-41L23 52"/></g>
+      <g class="mem">
+        <path d="M-205-93q34-31 68 0v50q-34 31-68 0Z"/><path d="M-124-156q34-31 68 0v50q-34 31-68 0Z"/>
+        <path d="M-214 2q34-31 68 0v50q-34 31-68 0Z"/><path d="M-149 78q34-31 68 0v50q-34 31-68 0Z"/>
+        <path d="M58-157q34-31 68 0v50q-34 31-68 0Z"/><path d="M133-95q34-31 68 0v50q-34 31-68 0Z"/>
+        <path d="M164-4q34-31 68 0v50q-34 31-68 0Z"/><path d="M109 79q34-31 68 0v50q-34 31-68 0Z"/>
+        <path d="M17 106q34-31 68 0v50q-34 31-68 0Z"/>
+      </g>
+      <g class="restored"><path d="M-54-69q37-34 74 0v56q-37 34-74 0Z"/><path d="M25-74q37-34 74 0v56q-37 34-74 0Z"/><path d="M-14-3q37-34 74 0v56q-37 34-74 0Z"/></g>
+      <path d="M-224 3h42l18-24 24 48 21-29h47l20-26 25 53 23-32h46l20-26 24 53 20-29h49l18-23 22 45h46" fill="none" stroke="#138A86" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <line x1="60" y1="540" x2="1140" y2="540" stroke="#D8DFE1"/>
+  <text x="60" y="568" class="t s" font-size="13"><tspan class="h">Idea clave.</tspan> La arquitectura permanece; cambia la continuidad de las uniones y de la información compartida.</text>
+</svg>

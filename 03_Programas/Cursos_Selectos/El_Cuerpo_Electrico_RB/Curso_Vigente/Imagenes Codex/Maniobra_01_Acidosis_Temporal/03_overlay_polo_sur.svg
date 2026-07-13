@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1536" viewBox="0 0 1024 1536" role="img" aria-labelledby="title desc">
+  <title id="title">Polo positivo Sur · proyección renal derecha</title>
+  <desc id="desc">Marcador editable sobre el imán colocado en la proyección posterior del riñón derecho.</desc>
+  <circle cx="636" cy="890" r="31" fill="#FCFCFA" opacity=".9"/>
+  <circle cx="636" cy="890" r="26" fill="#D98B2B" stroke="#FCFCFA" stroke-width="3"/>
+  <text x="636" y="899" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="700" fill="#FCFCFA">S</text>
+</svg>

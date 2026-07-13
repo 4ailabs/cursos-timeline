@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">Lectura e interpretación de la simetría de los talones</title>
+  <desc id="desc">Comparación desde el extremo distal. En la isometría ambos talones coinciden con la línea de referencia. En el acortamiento funcional, el talón derecho queda por encima del izquierdo.</desc>
+  <defs>
+    <style>
+      .type{font-family:Arial,Helvetica,sans-serif}.ink{fill:#24333A}.muted{fill:#69777C}
+      .foot{fill:#F5F7F6;stroke:#536268;stroke-width:2.5;stroke-linejoin:round}.sole{fill:none;stroke:#536268;stroke-width:3;stroke-linecap:round}
+      .good{fill:#138A86}.alert{fill:#D98B2B}
+    </style>
+    <marker id="down" markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto"><path d="M1 1l3 5 3-5" fill="none" stroke="#D98B2B" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="up" markerWidth="8" markerHeight="8" refX="4" refY="2" orient="auto"><path d="M1 7l3-5 3 5" fill="none" stroke="#D98B2B" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <g id="heel">
+      <path class="foot" d="M-42-118C-38-151-19-168 0-168s38 17 42 50l9 95C54 9 34 29 0 29S-54 9-51-23Z"/>
+      <path class="sole" d="M-40 6C-20 18 20 18 40 6"/>
+      <path d="M-24-120C-11-128 11-128 24-120" fill="none" stroke="#AAB8BD" stroke-width="2" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <rect width="1200" height="560" fill="#FCFCFA"/>
+
+  <text x="60" y="50" class="type ink" font-size="14" font-weight="700" letter-spacing="1.8">LECTURA DE LOS TALONES</text>
+  <text x="60" y="91" class="type ink" font-size="26" font-weight="700">La izquierda es la referencia · la derecha expresa la variación</text>
+  <line x1="60" y1="112" x2="1140" y2="112" stroke="#D8DFE1"/>
+
+  <!-- Isometría -->
+  <g transform="translate(304 318)">
+    <text x="0" y="-174" text-anchor="middle" class="type ink" font-size="20" font-weight="700">Isometría</text>
+    <g transform="translate(-78 0)"><use href="#heel"/><text x="0" y="60" text-anchor="middle" class="type ink" font-size="12" font-weight="700">I · referencia</text></g>
+    <g transform="translate(78 0)"><use href="#heel"/><text x="0" y="60" text-anchor="middle" class="type ink" font-size="12" font-weight="700">D · variable</text></g>
+    <path d="M-150 12H150" stroke="#138A86" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="0" cy="118" r="5" class="good"/>
+    <text x="14" y="123" class="type ink" font-size="13" font-weight="700">talones parejos · pasar al rastreo</text>
+  </g>
+
+  <line x1="600" y1="142" x2="600" y2="500" stroke="#D8DFE1"/>
+
+  <!-- Acortamiento funcional -->
+  <g transform="translate(896 318)">
+    <text x="0" y="-174" text-anchor="middle" class="type ink" font-size="20" font-weight="700">Acortamiento funcional</text>
+    <g transform="translate(-78 0)"><use href="#heel"/><text x="0" y="60" text-anchor="middle" class="type ink" font-size="12" font-weight="700">I · referencia</text></g>
+    <!-- el talón derecho se desplaza 28 unidades hacia arriba -->
+    <g transform="translate(78 -28)"><use href="#heel"/><text x="0" y="88" text-anchor="middle" class="type ink" font-size="12" font-weight="700">D · variable</text></g>
+    <path d="M-150 12H22" stroke="#536268" stroke-width="1.6" stroke-dasharray="5 6"/>
+    <path d="M132-16h26M132 12h26" stroke="#D98B2B" stroke-width="2" stroke-linecap="round"/>
+    <path d="M150-10V6" stroke="#D98B2B" stroke-width="2" marker-start="url(#up)" marker-end="url(#down)"/>
+    <text x="170" y="2" class="type alert" font-size="12" font-weight="700">Δ</text>
+    <circle cx="0" cy="118" r="5" class="alert"/>
+    <text x="14" y="123" class="type ink" font-size="13" font-weight="700">derecha acortada · nodo activo</text>
+  </g>
+
+  <line x1="60" y1="510" x2="1140" y2="510" stroke="#D8DFE1"/>
+  <text x="60" y="536" class="type muted" font-size="12.5">Comparar siempre el talón derecho contra la extremidad izquierda de referencia.</text>
+</svg>

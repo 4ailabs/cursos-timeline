@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Overlay editable de polos magnéticos</title>
+  <desc id="desc">Marcador Sur visible sobre el polo positivo aplicado en la proyección renal derecha. El grupo Norte permanece oculto y puede activarse para representar el dipolo local.</desc>
+
+  <defs>
+    <filter id="legibility" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#24333A" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- POLO POSITIVO · SUR: visible en Lámina 1 -->
+  <g id="polo-positivo-sur" aria-label="Polo positivo Sur" filter="url(#legibility)">
+    <circle cx="770" cy="520" r="26" fill="#F8F4EC" fill-opacity="0.96" stroke="#D98B2B" stroke-width="4"/>
+    <text x="770" y="529" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" fill="#D98B2B">S</text>
+  </g>
+
+  <!-- POLO NEGATIVO · NORTE: oculto por defecto; activar eliminando display="none" -->
+  <g id="polo-negativo-norte" aria-label="Posición adyacente opcional del polo negativo Norte" display="none" filter="url(#legibility)">
+    <circle cx="842" cy="542" r="26" fill="#F8F4EC" fill-opacity="0.96" stroke="#138A86" stroke-width="4"/>
+    <text x="842" y="551" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" fill="#138A86">N</text>
+  </g>
+</svg>

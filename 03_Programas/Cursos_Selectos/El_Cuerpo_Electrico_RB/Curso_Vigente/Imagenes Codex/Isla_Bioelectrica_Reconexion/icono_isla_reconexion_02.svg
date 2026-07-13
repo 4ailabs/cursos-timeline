@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Secuencia de reconexión bioeléctrica</title>
+  <desc id="desc">Secuencia editorial de tres símbolos: aislamiento de una zona, reapertura de la unión y recuperación de la señal compartida.</desc>
+  <defs>
+    <style>.sans{font-family:Inter,Arial,sans-serif}.serif{font-family:Georgia,'Times New Roman',serif}</style>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1l7 4-7 4" fill="none" stroke="#8A897F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+
+  <text x="70" y="58" class="sans" font-size="14" font-weight="700" letter-spacing="2.1" fill="#0F6E56">SECUENCIA DE RECONEXIÓN</text>
+  <line x1="70" y1="78" x2="1130" y2="78" stroke="#DEDCD4"/>
+
+  <!-- 1 -->
+  <g transform="translate(215 245)">
+    <circle r="105" fill="#F5E6CA" opacity=".28" stroke="#BA7517" stroke-width="2.5" stroke-dasharray="8 9"/>
+    <g fill="#fff" stroke="#0F6E56" stroke-width="4"><circle cx="-65" cy="-50" r="27"/><circle cx="-72" cy="43" r="27"/><circle cx="68" cy="-47" r="27"/><circle cx="76" cy="46" r="27"/></g>
+    <g fill="#F5E6CA" stroke="#BA7517" stroke-width="4"><circle cx="0" cy="-7" r="31"/><circle cx="7" cy="57" r="31"/></g>
+    <g stroke="#B94E37" stroke-width="5" stroke-linecap="round"><path d="M-43-31l14 14m0-14l-14 14M36-29l14 14m0-14l-14 14M-42 33l14 14m0-14l-14 14M42 35l14 14m0-14l-14 14"/></g>
+    <text x="0" y="147" text-anchor="middle" class="sans" font-size="12" font-weight="700" letter-spacing="1.4" fill="#BA7517">1 · AISLAMIENTO</text>
+    <text x="0" y="174" text-anchor="middle" class="serif" font-size="18" fill="#3F433D">Uniones cerradas</text>
+  </g>
+
+  <path d="M350 245h85" stroke="#8A897F" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 2 -->
+  <g transform="translate(600 245)">
+    <circle r="105" fill="#F5E6CA" opacity=".13" stroke="#BA7517" stroke-width="2.5" stroke-dasharray="8 9"/>
+    <circle cx="-50" r="41" fill="#F5E6CA" stroke="#BA7517" stroke-width="4"/>
+    <circle cx="50" r="41" fill="#EFF6F2" stroke="#0F6E56" stroke-width="4"/>
+    <path d="M-8 0h16" stroke="#0F6E56" stroke-width="8" stroke-linecap="round"/>
+    <path d="M-25-67C-8-85 9-85 26-67" fill="none" stroke="#0F6E56" stroke-width="3" stroke-linecap="round"/>
+    <path d="M17-75l10 8-11 7" fill="none" stroke="#0F6E56" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="0" y="147" text-anchor="middle" class="sans" font-size="12" font-weight="700" letter-spacing="1.4" fill="#0F6E56">2 · REPOLARIZACIÓN</text>
+    <text x="0" y="174" text-anchor="middle" class="serif" font-size="18" fill="#3F433D">La unión se reabre</text>
+  </g>
+
+  <path d="M735 245h85" stroke="#8A897F" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 3 -->
+  <g transform="translate(985 245)">
+    <circle r="105" fill="#0F6E56" opacity=".055"/>
+    <g fill="#fff" stroke="#0F6E56" stroke-width="4"><circle cx="-65" cy="-50" r="27"/><circle cx="-72" cy="43" r="27"/><circle cx="68" cy="-47" r="27"/><circle cx="76" cy="46" r="27"/><circle cx="0" cy="-7" r="31"/><circle cx="7" cy="57" r="31"/></g>
+    <g fill="none" stroke="#0F6E56" stroke-width="4" stroke-linecap="round"><path d="M-42-35L-25-19M25-24l20-10M-45 34l23-20M33 42l19 5M4 24l2 2"/></g>
+    <path d="M-90 4h35l13-23 18 48 17-30h31l14-23 18 48 17-30h28" fill="none" stroke="#D39732" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="0" y="147" text-anchor="middle" class="sans" font-size="12" font-weight="700" letter-spacing="1.4" fill="#0F6E56">3 · RECONEXIÓN</text>
+    <text x="0" y="174" text-anchor="middle" class="serif" font-size="18" fill="#3F433D">La señal vuelve a circular</text>
+  </g>
+
+  <line x1="70" y1="474" x2="1130" y2="474" stroke="#DEDCD4"/>
+  <g transform="translate(70 500)" class="sans" font-size="13" fill="#706F68">
+    <circle cx="5" cy="-5" r="5" fill="#BA7517"/><text x="20" y="0">despolarización</text>
+    <circle cx="174" cy="-5" r="5" fill="#0F6E56"/><text x="189" y="0">red conectada</text>
+    <path d="M326-5h30" stroke="#D39732" stroke-width="4" stroke-linecap="round"/><text x="370" y="0">información compartida</text>
+  </g>
+</svg>

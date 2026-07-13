@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Isla bioeléctrica y reconexión</title>
+  <desc id="desc">Comparación minimalista. Una región celular despolarizada aparece aislada por uniones cerradas; después de repolarizarse, reabre sus uniones y vuelve a compartir señal con el colectivo.</desc>
+
+  <defs>
+    <style>
+      .label { font-family: Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: .16em; }
+      .title { font-family: Georgia, 'Times New Roman', serif; }
+      .network { fill: none; stroke: #176B5B; stroke-width: 5; stroke-linecap: round; opacity: .38; }
+      .network-live { fill: none; stroke: #176B5B; stroke-width: 6; stroke-linecap: round; }
+      .cell { fill: #F8FAF7; stroke: #176B5B; stroke-width: 5; }
+      .cell-island { fill: #F3D9A8; stroke: #B87418; stroke-width: 5; }
+      .nucleus { fill: #176B5B; opacity: .16; }
+      .nucleus-island { fill: #B87418; opacity: .24; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M1 1l9 5-9 5" fill="none" stroke="#73776F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F6F3EC"/>
+
+  <text x="800" y="92" text-anchor="middle" class="label" font-size="20" font-weight="700" fill="#176B5B">DEL AISLAMIENTO A LA RECONEXIÓN</text>
+  <text x="800" y="148" text-anchor="middle" class="title" font-size="42" fill="#20251F">La información vuelve a circular</text>
+
+  <!-- Estado 1: isla -->
+  <g aria-label="Isla bioeléctrica aislada">
+    <text x="410" y="226" text-anchor="middle" class="label" font-size="18" font-weight="700" fill="#B87418">ISLA BIOELÉCTRICA</text>
+    <text x="410" y="260" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20" fill="#73776F">despolarizada · uniones cerradas</text>
+
+    <circle cx="410" cy="490" r="214" fill="none" stroke="#B87418" stroke-width="4" stroke-dasharray="10 15" opacity=".55"/>
+    <circle cx="410" cy="490" r="150" fill="#DDA445" opacity=".12" filter="url(#soft)"/>
+
+    <g class="network">
+      <path d="M180 405L278 350M180 405l48 120M228 525l-30 112M198 637l120 36M318 673l92-42M506 676l116-42M622 634l-18-116M604 518l54-112M658 406l-88-58"/>
+      <path d="M278 350l-8-94M570 348l18-96M228 525l-106 10M604 518l99 22"/>
+    </g>
+
+    <!-- conexiones que llegan a la frontera y se interrumpen -->
+    <g stroke="#B87418" stroke-width="5" stroke-linecap="round">
+      <path d="M278 350l50 48M228 525l72-13M318 673l35-80M570 348l-61 50M604 518l-69-11M506 676l-43-82"/>
+    </g>
+    <g stroke="#B94E37" stroke-width="7" stroke-linecap="round">
+      <path d="M315 389l22 22m0-22l-22 22M286 500l22 22m0-22l-22 22M341 580l22 22m0-22l-22 22M497 389l22 22m0-22l-22 22M522 496l22 22m0-22l-22 22M451 580l22 22m0-22l-22 22"/>
+    </g>
+
+    <g>
+      <circle class="cell" cx="180" cy="405" r="34"/><circle class="nucleus" cx="180" cy="405" r="10"/>
+      <circle class="cell" cx="278" cy="350" r="34"/><circle class="nucleus" cx="278" cy="350" r="10"/>
+      <circle class="cell" cx="228" cy="525" r="34"/><circle class="nucleus" cx="228" cy="525" r="10"/>
+      <circle class="cell" cx="198" cy="637" r="34"/><circle class="nucleus" cx="198" cy="637" r="10"/>
+      <circle class="cell" cx="318" cy="673" r="34"/><circle class="nucleus" cx="318" cy="673" r="10"/>
+      <circle class="cell" cx="506" cy="676" r="34"/><circle class="nucleus" cx="506" cy="676" r="10"/>
+      <circle class="cell" cx="622" cy="634" r="34"/><circle class="nucleus" cx="622" cy="634" r="10"/>
+      <circle class="cell" cx="604" cy="518" r="34"/><circle class="nucleus" cx="604" cy="518" r="10"/>
+      <circle class="cell" cx="658" cy="406" r="34"/><circle class="nucleus" cx="658" cy="406" r="10"/>
+      <circle class="cell" cx="570" cy="348" r="34"/><circle class="nucleus" cx="570" cy="348" r="10"/>
+    </g>
+
+    <g>
+      <circle class="cell-island" cx="373" cy="432" r="42"/><circle class="nucleus-island" cx="373" cy="432" r="12"/>
+      <circle class="cell-island" cx="465" cy="432" r="42"/><circle class="nucleus-island" cx="465" cy="432" r="12"/>
+      <circle class="cell-island" cx="419" cy="520" r="42"/><circle class="nucleus-island" cx="419" cy="520" r="12"/>
+      <path d="M393 454l9 18m44-18l-9 18" stroke="#B87418" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+    </g>
+  </g>
+
+  <!-- transición -->
+  <g aria-label="Proceso de repolarización">
+    <path d="M710 490H865" fill="none" stroke="#73776F" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="786" y="456" text-anchor="middle" class="label" font-size="15" font-weight="700" fill="#176B5B">REPOLARIZACIÓN</text>
+    <text x="786" y="530" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="17" fill="#73776F">se reabren las uniones</text>
+  </g>
+
+  <!-- Estado 2: reconexión -->
+  <g aria-label="Red bioeléctrica reconectada">
+    <text x="1190" y="226" text-anchor="middle" class="label" font-size="18" font-weight="700" fill="#176B5B">RECONEXIÓN</text>
+    <text x="1190" y="260" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20" fill="#73776F">repolarizada · comparte información</text>
+
+    <circle cx="1190" cy="490" r="214" fill="#176B5B" opacity=".045"/>
+    <g class="network-live">
+      <path d="M960 405L1058 350l95 82 92-84 93 58M960 405l48 120 72-13 73-80M1008 525l-30 112 120 36 92-153M1098 673l92-153 87 156 116-42-18-116M1375 518l54-112M1190 520l-12-88M1190 520l87 156M1190 520l185-2M1058 350l-8-94M1245 348l18-96M1008 525l-106 10M1375 518l99 22"/>
+    </g>
+
+    <!-- señal compartida -->
+    <path d="M922 535C1000 535 1018 512 1080 512s82-80 110-80 54 86 87 86 82-112 98-112 27 108 66 108" fill="none" stroke="#D5962C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <g>
+      <circle class="cell" cx="960" cy="405" r="34"/><circle class="nucleus" cx="960" cy="405" r="10"/>
+      <circle class="cell" cx="1058" cy="350" r="34"/><circle class="nucleus" cx="1058" cy="350" r="10"/>
+      <circle class="cell" cx="1008" cy="525" r="34"/><circle class="nucleus" cx="1008" cy="525" r="10"/>
+      <circle class="cell" cx="978" cy="637" r="34"/><circle class="nucleus" cx="978" cy="637" r="10"/>
+      <circle class="cell" cx="1098" cy="673" r="34"/><circle class="nucleus" cx="1098" cy="673" r="10"/>
+      <circle class="cell" cx="1277" cy="676" r="34"/><circle class="nucleus" cx="1277" cy="676" r="10"/>
+      <circle class="cell" cx="1393" cy="634" r="34"/><circle class="nucleus" cx="1393" cy="634" r="10"/>
+      <circle class="cell" cx="1375" cy="518" r="34"/><circle class="nucleus" cx="1375" cy="518" r="10"/>
+      <circle class="cell" cx="1429" cy="406" r="34"/><circle class="nucleus" cx="1429" cy="406" r="10"/>
+      <circle class="cell" cx="1245" cy="348" r="34"/><circle class="nucleus" cx="1245" cy="348" r="10"/>
+      <circle class="cell" cx="1153" cy="432" r="42"/><circle class="nucleus" cx="1153" cy="432" r="12"/>
+      <circle class="cell" cx="1245" cy="432" r="42"/><circle class="nucleus" cx="1245" cy="432" r="12"/>
+      <circle class="cell" cx="1190" cy="520" r="42"/><circle class="nucleus" cx="1190" cy="520" r="12"/>
+    </g>
+  </g>
+
+  <g transform="translate(800 810)">
+    <circle cx="-246" cy="0" r="7" fill="#B87418"/>
+    <text x="-228" y="6" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="18" fill="#5D625B">zona aislada</text>
+    <circle cx="-55" cy="0" r="7" fill="#176B5B"/>
+    <text x="-37" y="6" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="18" fill="#5D625B">red conectada</text>
+    <path d="M125 0h46" stroke="#D5962C" stroke-width="6" stroke-linecap="round"/>
+    <text x="187" y="6" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="18" fill="#5D625B">señal compartida</text>
+  </g>
+</svg>

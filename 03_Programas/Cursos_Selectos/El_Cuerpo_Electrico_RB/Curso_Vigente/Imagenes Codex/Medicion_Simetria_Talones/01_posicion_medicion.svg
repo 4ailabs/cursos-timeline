@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">Posición para medir la simetría de los talones</title>
+  <desc id="desc">Vista lateral de un paciente sobre una camilla. Los pies quedan fuera del borde distal y el operador eleva las extremidades aproximadamente treinta grados sujetándolas por los tobillos.</desc>
+  <defs>
+    <style>
+      .type{font-family:Arial,Helvetica,sans-serif}.ink{fill:#24333A}.muted{fill:#69777C}.accent{fill:#138A86}
+      .body{fill:none;stroke:#24333A;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .guide{fill:none;stroke:#138A86;stroke-width:2;stroke-linecap:round}.secondary{fill:none;stroke:#AAB8BD;stroke-width:2}
+    </style>
+    <marker id="lead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M1 1l5 3-5 3" fill="none" stroke="#138A86" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <rect width="1200" height="560" fill="#FCFCFA"/>
+
+  <text x="60" y="50" class="type ink" font-size="14" font-weight="700" letter-spacing="1.8">ANTES DE EMPEZAR · MEDICIÓN</text>
+  <text x="60" y="91" class="type ink" font-size="26" font-weight="700">Posición para leer los talones</text>
+  <line x1="60" y1="112" x2="1140" y2="112" stroke="#D8DFE1"/>
+
+  <!-- camilla -->
+  <g>
+    <path d="M92 354H864" stroke="#AAB8BD" stroke-width="8" stroke-linecap="round"/>
+    <path d="M126 360v108M820 360v108" class="secondary" stroke-width="5"/>
+    <path d="M94 468h764" class="secondary"/>
+    <text x="868" y="374" class="type muted" font-size="12">borde distal</text>
+  </g>
+
+  <!-- paciente, vista lateral esquemática -->
+  <g class="body">
+    <circle cx="196" cy="284" r="31"/>
+    <path d="M227 292C315 303 415 300 520 302 576 303 624 302 665 294"/>
+    <path d="M226 313C325 327 436 324 548 320 599 318 633 310 665 294" opacity=".45"/>
+    <!-- extremidades alineadas y elevadas -->
+    <path d="M665 294L1008 96"/>
+    <path d="M675 311L1018 113" opacity=".62"/>
+    <!-- pies fuera del borde -->
+    <path d="M1008 96l51-4 31 19-72 2"/>
+    <path d="M1018 113l51-3 29 18-70 2" opacity=".62"/>
+  </g>
+
+  <!-- manos del operador en tobillos -->
+  <g fill="none" stroke="#138A86" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M985 77c18 2 30 12 34 29M992 132c15-3 27-12 31-25"/>
+    <path d="M972 67l18 12M982 141l13-12"/>
+  </g>
+
+  <!-- eje y ángulo -->
+  <path d="M665 294h210" stroke="#AAB8BD" stroke-width="1.5" stroke-dasharray="5 6"/>
+  <path d="M745 294A80 80 0 0 0 734 254" class="guide"/>
+  <text x="760" y="264" class="type accent" font-size="16" font-weight="700">≈30°</text>
+
+  <!-- llamadas mínimas -->
+  <g class="type" font-size="13">
+    <path d="M958 175l38-45" class="guide" marker-end="url(#lead)"/>
+    <text x="880" y="191" class="ink" font-weight="700">sujetar por los tobillos</text>
+
+    <path d="M974 274l77-132" class="guide" marker-end="url(#lead)"/>
+    <text x="908" y="294" class="ink" font-weight="700">talones libres</text>
+
+    <path d="M557 404l88-91" class="guide" marker-end="url(#lead)"/>
+    <text x="398" y="424" class="ink" font-weight="700">extremidades alineadas</text>
+  </g>
+
+  <line x1="60" y1="510" x2="1140" y2="510" stroke="#D8DFE1"/>
+  <text x="60" y="536" class="type muted" font-size="12.5">Solo levantar y medir · sin tracción ni rotación de las extremidades.</text>
+</svg>

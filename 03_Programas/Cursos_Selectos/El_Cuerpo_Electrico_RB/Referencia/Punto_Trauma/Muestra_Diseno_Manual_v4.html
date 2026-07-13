@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muestra v4 · artículo de protocolo</title>
+<style>
+  :root{
+    --paper:#FFFFFF; --ink:#111417; --soft:#3F444A; --faint:#8B9097;
+    --line:#D9DCE0; --hair:#E7E9EC; --rule:#111417;
+    --accent:#0B5C6E; --accent-deep:#083F4C; --accent-tint:#EAF2F4;
+    --pos:#B0801F; --pos-tint:#F6EFD9; --neg:#20242A;
+    --alert:#9B2D2D;
+    --serif:"Source Serif Pro","Palatino Linotype","Book Antiqua",Georgia,"Times New Roman",serif;
+    --sans:"Helvetica Neue","Arial",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#E9EAEC;color:var(--ink);font-family:var(--serif);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .stage{padding:26px 16px 44px;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .snote{font-family:var(--sans);font-size:11.5px;color:#6a6f74;text-align:center;max-width:560px;line-height:1.55}
+  .snote b{color:var(--accent-deep)}
+
+  .page{width:176mm;min-height:250mm;background:var(--paper);position:relative;overflow:hidden;
+    box-shadow:0 12px 46px rgba(20,22,25,.16);padding:14mm 15mm 13mm 15mm;display:flex;flex-direction:column}
+
+  /* masthead */
+  .mast{display:flex;align-items:baseline;justify-content:space-between;
+    border-bottom:2px solid var(--rule);padding-bottom:2.4mm}
+  .mast .j{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--ink)}
+  .mast .j span{color:var(--accent);font-weight:600}
+  .mast .vol{font-family:var(--sans);font-size:9px;letter-spacing:.08em;color:var(--faint);text-transform:uppercase}
+  .cat{font-family:var(--sans);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:6mm 0 2.5mm}
+
+  h1{font-size:27px;line-height:1.1;letter-spacing:-.006em;font-weight:600;margin:0 0 3mm;max-width:26ch}
+  .byline{font-family:var(--sans);font-size:10px;color:var(--soft);border-bottom:1px solid var(--hair);padding-bottom:4mm;margin-bottom:5mm}
+  .byline b{color:var(--ink);font-weight:600}
+
+  /* highlights */
+  .high{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;
+    padding:3.5mm 4.5mm;margin-bottom:6mm;background:#fff}
+  .high .h{font-family:var(--sans);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);font-weight:700;margin-bottom:2.4mm}
+  .high ul{margin:0;padding:0;list-style:none;display:grid;gap:1.8mm}
+  .high li{position:relative;padding-left:5mm;font-size:11.5px;line-height:1.45;color:var(--ink)}
+  .high li::before{content:"";position:absolute;left:0;top:2mm;width:2.4mm;height:2.4mm;background:var(--accent);border-radius:50%}
+  .high li b{font-weight:600}
+
+  /* dos columnas de artículo */
+  .cols{display:grid;grid-template-columns:1fr 1fr;column-gap:8mm;flex:1}
+  .col{min-width:0}
+  h2{font-family:var(--sans);font-size:12px;font-weight:700;color:var(--ink);margin:0 0 2.4mm;letter-spacing:.01em}
+  h2 .s{color:var(--accent);margin-right:2mm}
+  .col p{font-size:11px;line-height:1.55;color:var(--ink);margin:0 0 3mm;text-align:justify;hyphens:auto}
+  .col p.tight{margin-bottom:4mm}
+
+  ol.proc{margin:0 0 4mm;padding:0;list-style:none;counter-reset:p}
+  ol.proc>li{counter-increment:p;position:relative;padding-left:6.5mm;font-size:11px;line-height:1.5;margin-bottom:2.6mm;text-align:justify;hyphens:auto}
+  ol.proc>li::before{content:counter(p);position:absolute;left:0;top:0;font-family:var(--sans);font-weight:700;font-size:10px;color:var(--accent);
+    background:var(--accent-tint);width:4.6mm;height:4.6mm;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  ol.proc>li b{font-weight:600}
+
+  .pole{display:inline-block;font-family:var(--sans);font-size:8.5px;font-weight:700;border-radius:2px;padding:.5px 4px;color:#fff;vertical-align:baseline}
+  .pole.n{background:var(--neg)} .pole.s{background:var(--pos)}
+
+  /* box tipo Nature */
+  .box{background:var(--accent-tint);border-radius:4px;padding:3.2mm 4mm;margin:0 0 5mm}
+  .box .bh{font-family:var(--sans);font-size:10px;font-weight:700;color:var(--accent-deep);margin-bottom:1.8mm}
+  .box .bh .n{color:var(--accent)}
+  .box p{font-size:10.5px;line-height:1.5;margin:0;color:var(--ink);text-align:left}
+
+  /* figura */
+  figure{margin:0 0 5mm}
+  figure .frame{border:1px solid var(--line);border-radius:3px;padding:3mm;background:#fff}
+  figure svg{width:100%;height:auto;display:block}
+  figcaption{font-size:9.5px;line-height:1.45;color:var(--soft);margin-top:2mm}
+  figcaption b{font-family:var(--sans);color:var(--ink);font-weight:700}
+
+  /* tabla de parámetros */
+  table{width:100%;border-collapse:collapse;margin:0 0 5mm}
+  table caption{font-family:var(--sans);font-size:10px;font-weight:700;color:var(--ink);text-align:left;margin-bottom:1.6mm}
+  table caption b{color:var(--accent)}
+  th,td{text-align:left;padding:1.8mm 2mm;font-size:10px;line-height:1.4;border-bottom:1px solid var(--hair);vertical-align:top}
+  thead th{font-family:var(--sans);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);border-bottom:1.4px solid var(--ink)}
+  tbody th{font-family:var(--sans);font-weight:600;color:var(--accent-deep);font-size:9.5px;width:24mm}
+
+  .foot{border-top:1px solid var(--line);margin-top:3mm;padding-top:2.4mm;display:flex;justify-content:space-between;
+    font-family:var(--sans);font-size:8px;letter-spacing:.04em;color:var(--faint)}
+
+  @media print{ @page{size:176mm 250mm;margin:0} body{background:#fff}.stage{padding:0;gap:0}.snote{display:none}.page{box-shadow:none} }
+  @media (max-width:640px){ .page{width:100%;min-height:0;padding:20px 16px}.cols{grid-template-columns:1fr;gap:0}h1{font-size:24px} }
+</style>
+</head>
+<body>
+<div class="stage">
+  <p class="snote">Muestra <b>v4</b> · artículo de protocolo (código tipo Nature / Elsevier) · dos columnas justificadas, Highlights, Box y Figure rotuladas · B5 176×250</p>
+
+  <section class="page">
+    <div class="mast">
+      <div class="j">Regulación Bioeléctrica <span>· Protocolos Clínicos</span></div>
+      <div class="vol">Vol. 1 · Maniobra 01 · e06</div>
+    </div>
+
+    <p class="cat">Protocolo clínico · Técnica del trauma</p>
+    <h1>Corrección renal: nivelar por el riñón</h1>
+    <div class="byline"><b>Instituto Centrobioenergetica</b> · Dr. Miguel Ojeda Rios · 2026 &nbsp;|&nbsp; Tradición: «acidosis temporal»</div>
+
+    <div class="high">
+      <div class="h">Puntos clave</div>
+      <ul>
+        <li>Indicada cuando la <b>medición basal</b> muestra pierna acortada sin zona de dolor localizada.</li>
+        <li><b>Única maniobra</b> que empieza con el polo positivo <span class="pole s">S</span> (cara positiva a la piel).</li>
+        <li>El riñón es el del <b>lado acortado</b> en ~80% de los casos; el tiempo lo fija la retirada del positivo.</li>
+      </ul>
+    </div>
+
+    <div class="cols">
+      <div class="col">
+        <h2><span class="s">1 |</span>Indicación</h2>
+        <p class="tight">Tras la medición basal, una pierna acortada sin dolor localizado indica un desajuste sistémico. Se corrige primero el riñón —regulador del ambiente iónico de todo el cuerpo— antes de mapear zonas.</p>
+
+        <h2><span class="s">2 |</span>Procedimiento</h2>
+        <ol class="proc">
+          <li>Coloca el <span class="pole s">S</span> positivo sobre el <b>riñón del lado de la pierna acortada</b>; si no nivela, prueba el contralateral.</li>
+          <li>Vuelve a medir: la pierna debe <b>nivelar</b>. Confirma el riñón como nodo.</li>
+          <li>Sin retirar el positivo, coloca el <span class="pole n">N</span> negativo <b>adyacente</b>. Deja <b>20 min o más</b>.</li>
+          <li>Retira el positivo y comprueba; si sigue acortada, vuelve a colocarlo y deja más, hasta nivelar.</li>
+        </ol>
+
+        <div class="box">
+          <div class="bh"><span class="n">Box 1 |</span> Excepción de polaridad</div>
+          <p>Esta es la única maniobra que se inicia con el positivo <span class="pole s">S</span>. En el resto de la técnica se coloca primero el negativo <span class="pole n">N</span> (rastreo) sobre la lesión.</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <figure>
+          <div class="frame">
+            <svg viewBox="0 0 150 66" role="img" aria-label="Disposición de los imanes sobre el riñón">
+              <rect x="6" y="8" width="138" height="50" rx="7" fill="none" stroke="#D9DCE0" stroke-width="1.3"/>
+              <text x="75" y="20" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="7" fill="#8B9097" letter-spacing=".1em">RIÑÓN · LADO ACORTADO</text>
+              <rect x="52" y="28" width="20" height="20" rx="3.5" fill="#B0801F"/><text x="62" y="42" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="10" font-weight="700" fill="#fff">S</text>
+              <rect x="76" y="28" width="20" height="20" rx="3.5" fill="#20242A"/><text x="86" y="42" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="10" font-weight="700" fill="#fff">N</text>
+            </svg>
+          </div>
+          <figcaption><b>Figure 1 |</b> Disposición del par sobre el riñón. El positivo <span class="pole s">S</span> se coloca primero; el negativo <span class="pole n">N</span> queda adyacente, en la misma zona.</figcaption>
+        </figure>
+
+        <table>
+          <caption><b>Table 1 |</b> Parámetros de la maniobra</caption>
+          <thead><tr><th>Parámetro</th><th>Valor</th></tr></thead>
+          <tbody>
+            <tr><th>Polaridad</th><td><span class="pole n">N</span> neg·Norte·rastreo · <span class="pole s">S</span> pos·Sur·complementario</td></tr>
+            <tr><th>Punto</th><td>Riñón del lado acortado (~80%); si no, contralateral</td></tr>
+            <tr><th>Tiempo</th><td>≥ 20 min; criterio por retirada del positivo</td></tr>
+            <tr><th>Campo</th><td>0.1–0.5 T; tamaño según zona y persona</td></tr>
+          </tbody>
+        </table>
+
+        <h2><span class="s">3 |</span>Fundamento</h2>
+        <p>El riñón fija el punto de referencia iónico de cada célula. Al trabajarlo, ese ambiente se recalibra y la asimetría de fondo se resuelve. «Temporal» indica que, si el efecto se sostiene, la maniobra concluyó; si la pierna vuelve a acortar, existe un componente más profundo que aborda la Maniobra 2 (riñón–parietal).</p>
+      </div>
+    </div>
+
+    <div class="foot"><span>REGUL. BIOELÉCTRICA · PROTOCOLOS CLÍNICOS · INSTITUTO CENTROBIOENERGETICA</span><span>e06 · 6/15</span></div>
+  </section>
+</div>
+</body>
+</html>

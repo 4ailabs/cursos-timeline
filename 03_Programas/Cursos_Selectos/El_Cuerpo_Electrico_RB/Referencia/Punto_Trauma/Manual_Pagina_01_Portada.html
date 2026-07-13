@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual · Portada</title>
+<style>
+  :root{
+    --ink:#2C2C2A; --soft:#4A4643; --faint:#888780;
+    --paper:#FCFBF7; --line:#DEDBD2; --card:#F1EFE8;
+    --teal:#0F6E56; --teal-deep:#0B5644;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:system-ui,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#E9E8E3;color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+  .stage{padding:26px 16px 44px;display:flex;flex-direction:column;align-items:center}
+  .snote{font-family:var(--sans);font-size:11.5px;color:#6a6864;text-align:center;margin-bottom:14px}
+
+  .page{width:176mm;height:250mm;background:var(--paper);position:relative;overflow:hidden;
+    box-shadow:0 12px 46px rgba(20,20,16,.16);padding:22mm 24mm 18mm 24mm;display:flex;flex-direction:column}
+
+  /* marca de agua dipolo ~0.08 (convención de portadas) */
+  .wm{position:absolute;right:-30mm;bottom:34mm;width:150mm;height:auto;opacity:.08;pointer-events:none}
+
+  .logo{display:flex;align-items:center;gap:4mm}
+  .logo svg{height:9mm;width:auto;display:block}
+  .logo .wordmark{font-size:16px;letter-spacing:.02em;line-height:1;color:var(--ink)}
+  .logo .wordmark b{color:var(--teal);font-weight:400}
+
+  .gap-t{flex:382 0 0}
+  .gap-b{flex:618 0 0}
+
+  .title .kicker{font-family:var(--sans);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);font-weight:600;margin:0 0 6mm}
+  .title h1{font-weight:700;font-size:38px;line-height:1.08;letter-spacing:-.012em;margin:0 0 5mm;max-width:16ch}
+  .title .sub{font-size:15px;font-style:italic;color:var(--soft);line-height:1.5;max-width:34ch;margin:0}
+
+  .meta{border-top:1px solid var(--line);padding-top:5mm;display:flex;justify-content:space-between;align-items:flex-end}
+  .meta .who{font-size:12px;line-height:1.5}
+  .meta .who b{color:var(--teal);font-weight:400}
+  .meta .ed{font-family:var(--sans);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);text-align:right;line-height:1.7}
+
+  .endfoot{position:absolute;left:0;right:0;bottom:9mm;text-align:center;
+    font-size:8px;letter-spacing:.25em;color:var(--faint)}
+
+  @media print{ @page{size:176mm 250mm;margin:0} body{background:#fff}.stage{padding:0}.snote{display:none}.page{box-shadow:none} }
+  @media (max-width:640px){ .page{width:100%;height:auto;min-height:80vh;padding:26px 22px}.title h1{font-size:30px} }
+</style>
+</head>
+<body>
+<div class="stage">
+  <p class="snote">Portada · B5 176×250 mm · marca de agua dipolo 8 % · título en proporción áurea</p>
+
+  <section class="page">
+    <svg class="wm" viewBox="0 0 58 24" aria-hidden="true"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg>
+
+    <div class="logo">
+      <svg viewBox="0 0 58 24" aria-label="Regulación Bioeléctrica"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg>
+      <span class="wordmark">regulación <b>bioeléctrica</b></span>
+    </div>
+
+    <div class="gap-t"></div>
+
+    <div class="title">
+      <p class="kicker">Manual operativo · rastreo y regulación</p>
+      <h1>El nodo de lesión</h1>
+      <p class="sub">Leer el perfil bioeléctrico y regular la lesión, paso a paso. Protocolo clínico de la Regulación Bioeléctrica.</p>
+    </div>
+
+    <div class="gap-b"></div>
+
+    <div class="meta">
+      <div class="who"><b>Dr. Miguel Ojeda Rios</b><br>Instituto Centrobioenergetica</div>
+      <div class="ed">Programa<br>El Cuerpo Eléctrico<br>Edición 2026</div>
+    </div>
+
+    <div class="endfoot">INSTITUTO CENTROBIOENERGETICA</div>
+  </section>
+</div>
+</body>
+</html>

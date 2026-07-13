@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Overlay de polos · maniobra 01 en decúbito supino</title>
+  <desc id="desc">Marcador Sur visible sobre el imán colocado en la proyección renal derecha. Marcador Norte adyacente oculto por defecto.</desc>
+  <defs>
+    <filter id="halo" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="3"/></filter>
+  </defs>
+  <g id="polo-positivo-sur" aria-label="Polo positivo Sur">
+    <circle cx="429" cy="553" r="28" fill="#FCFCFA" opacity=".9" filter="url(#halo)"/>
+    <circle cx="429" cy="553" r="23" fill="#D98B2B" stroke="#FCFCFA" stroke-width="3"/>
+    <text x="429" y="561" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="#FCFCFA">S</text>
+  </g>
+  <g id="polo-negativo-norte" aria-label="Polo negativo Norte adyacente" display="none">
+    <circle cx="493" cy="553" r="28" fill="#FCFCFA" opacity=".9" filter="url(#halo)"/>
+    <circle cx="493" cy="553" r="23" fill="#24333A" stroke="#FCFCFA" stroke-width="3"/>
+    <text x="493" y="561" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="#FCFCFA">N</text>
+  </g>
+</svg>

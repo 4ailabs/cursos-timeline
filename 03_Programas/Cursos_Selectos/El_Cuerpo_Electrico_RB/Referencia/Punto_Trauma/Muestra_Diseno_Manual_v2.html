@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muestra v2 · Manual operativo</title>
+<style>
+  :root{
+    --paper:#FCFBF8; --ink:#17181A; --soft:#54565A; --faint:#97968D;
+    --line:#E5E3DB; --hair:#DAD8CE;
+    --accent:#0F6E56; --accent-deep:#0A5643; --accent-tint:#EDF4F1; --accent-ghost:#DCEAE4;
+    --pos:#B4832A; --pos-tint:#F6EEDD;        /* polo positivo · ámbar (ya no rojo) */
+    --neg:#1D2024;                              /* polo negativo · tinta */
+    --alert:#9B2D2D;                            /* rojo SOLO para seguridad */
+    --serif:"Palatino Linotype","Book Antiqua",Palatino,"Iowan Old Style",Georgia,serif;
+    --sans:"Helvetica Neue","Segoe UI",-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#ECEBE6;color:var(--ink);font-family:var(--serif);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .stage{padding:26px 16px 44px;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .snote{font-family:var(--sans);font-size:12px;color:#6d6a62;text-align:center;max-width:560px;line-height:1.55}
+  .snote b{color:var(--accent-deep)} .snote .k{color:var(--pos);font-weight:600}
+
+  .page{width:176mm;min-height:250mm;background:var(--paper);position:relative;
+    box-shadow:0 12px 44px rgba(20,18,12,.15);
+    padding:19mm 18mm 15mm 20mm;display:flex;flex-direction:column}
+
+  /* strip de encabezado */
+  .strip{display:flex;align-items:center;gap:4mm;font-family:var(--sans);
+    font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);
+    border-bottom:1px solid var(--hair);padding-bottom:3mm;margin-bottom:9mm}
+  .strip .no{color:var(--paper);background:var(--accent);font-weight:700;letter-spacing:.08em;
+    padding:1.4mm 2.4mm;border-radius:2px}
+  .strip .nm{color:var(--ink);font-weight:600}
+  .strip .sp{flex:1}
+
+  .kick{font-family:var(--sans);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--pos);font-weight:700;margin:0 0 3.5mm}
+  h1{font-size:33px;line-height:1.05;letter-spacing:-.012em;margin:0 0 4.5mm;font-weight:600}
+  .deck{font-size:14.5px;color:var(--soft);line-height:1.6;max-width:58ch;margin:0 0 7mm}
+
+  /* aviso de excepción — franja horizontal, marcada con acento (no rojo) */
+  .flag{display:grid;grid-template-columns:auto 1fr;gap:4mm;align-items:center;
+    background:var(--accent-tint);border-radius:4px;padding:3mm 4mm;margin:0 0 8mm}
+  .flag .tag{font-family:var(--sans);font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--accent-deep);white-space:nowrap}
+  .flag p{margin:0;font-size:12.5px;color:var(--ink);line-height:1.5}
+  .flag b{font-weight:600}
+
+  /* pasos · numeral fantasma + texto a medida cómoda */
+  .steps{list-style:none;margin:0;padding:0;counter-reset:s;flex:1}
+  .steps>li{counter-increment:s;display:grid;grid-template-columns:18mm 1fr;gap:3mm;
+    padding:4.5mm 0;border-top:1px solid var(--hair);align-items:baseline}
+  .steps>li:first-child{border-top:none;padding-top:1mm}
+  .steps>li::before{content:counter(s,decimal-leading-zero);font-family:var(--sans);font-weight:700;
+    font-size:30px;line-height:.9;color:var(--accent-ghost);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .steps .t{font-size:14px;line-height:1.6;color:var(--ink);max-width:56ch}
+  .steps .t b{font-weight:600}
+
+  .pole{display:inline-block;font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.02em;
+    border-radius:3px;padding:1.5px 5px;color:#fff;vertical-align:baseline;position:relative;top:-.5px}
+  .pole.n{background:var(--neg)} .pole.s{background:var(--pos)}
+
+  /* "qué está pasando" — banda de cierre a todo el ancho */
+  .why{margin-top:7mm;background:var(--accent-tint);border-radius:5px;padding:5mm 5.5mm}
+  .why .lab{font-family:var(--sans);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-deep);font-weight:700;margin-bottom:2.5mm}
+  .why p{margin:0;font-size:13px;line-height:1.6;color:var(--soft)}
+  .why p b{color:var(--ink);font-weight:600}
+
+  /* franja de clave · horizontal */
+  .key{display:grid;grid-template-columns:1.2fr 1fr .9fr;margin-top:7mm;border-top:1.5px solid var(--ink)}
+  .key .cell{padding:4mm 5mm 0 0;border-left:1px solid var(--hair)}
+  .key .cell:first-child{padding-left:0;border-left:none}
+  .key .cell:not(:first-child){padding-left:5mm}
+  .key .lab{font-family:var(--sans);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2mm}
+  .key .cell p{margin:0;font-size:11px;line-height:1.5;color:var(--soft)}
+  .key .cell p b{color:var(--ink);font-weight:600}
+  .legend div{display:flex;align-items:baseline;gap:5px;font-size:10.5px;color:var(--soft);margin-bottom:1.6mm}
+  .diag svg{width:100%;max-width:42mm;height:auto;display:block}
+  .diag .cap{font-family:var(--sans);font-size:8.5px;color:var(--faint);margin-top:1.5mm}
+
+  .rfoot{margin-top:auto;padding-top:4mm;display:flex;justify-content:space-between;
+    font-family:var(--sans);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+
+  @media print{ @page{size:176mm 250mm;margin:0} body{background:#fff}.stage{padding:0;gap:0}.snote{display:none}.page{box-shadow:none} }
+  @media (max-width:620px){ .page{width:100%;min-height:0;padding:22px 18px}.key{grid-template-columns:1fr;gap:5mm}.key .cell{border-left:none;padding-left:0!important} h1{font-size:27px} }
+</style>
+</head>
+<body>
+<div class="stage">
+  <p class="snote">Muestra <b>v2</b> · columna única editorial, sin las dos columnas · polo positivo en <span class="k">ámbar</span> (ya no rojo) · B5 176×250 mm. Documento de impresión, un solo tema (papel).</p>
+
+  <section class="page">
+    <div class="strip">
+      <span class="no">M 01</span><span class="nm">Corrección renal</span><span class="sp"></span><span>El cuerpo eléctrico · RB</span>
+    </div>
+
+    <p class="kick">Acidosis temporal</p>
+    <h1>Nivelar por el riñón</h1>
+    <p class="deck">Cuando la medición basal muestra una pierna acortada y aún no hay zona de dolor localizada, se corrige primero el riñón —el regulador del ambiente iónico de todo el cuerpo—.</p>
+
+    <div class="flag">
+      <span class="tag">Excepción</span>
+      <p>Única maniobra que <b>empieza con el positivo</b> <span class="pole s">S</span>, con su cara positiva hacia la piel. En todas las demás va primero el negativo <span class="pole n">N</span>.</p>
+    </div>
+
+    <ol class="steps">
+      <li><span class="t">Coloca el <span class="pole s">S</span> positivo sobre el <b>riñón del lado de la pierna acortada</b>. Es el mismo lado en ~80% de los casos; si no nivela, prueba el riñón contrario.</span></li>
+      <li><span class="t">Vuelve a medir: la pierna debe <b>nivelar</b>. Eso confirma el riñón como nodo.</span></li>
+      <li><span class="t">Sin retirar el positivo, coloca el <span class="pole n">N</span> negativo <b>adyacente</b>, en la misma zona. Deja <b>20 minutos o más</b>.</span></li>
+      <li><span class="t">Retira el positivo y comprueba. Si la pierna <b>sigue acortada</b>, vuelve a colocarlo y deja más tiempo; repite hasta que quede nivelada.</span></li>
+    </ol>
+
+    <div class="why">
+      <div class="lab">Qué está pasando</div>
+      <p>El riñón fija el punto de referencia iónico de cada célula. Al trabajarlo, ese ambiente se recalibra y la asimetría de fondo se resuelve. <b>«Temporal»</b> quiere decir que si se sostiene, terminó; si vuelve a acortar, hay un componente más profundo —que resuelve la Maniobra 2—.</p>
+    </div>
+
+    <div class="key">
+      <div class="cell">
+        <div class="lab">Polaridad</div>
+        <div class="legend">
+          <div><span class="pole n">N</span> negativo · Norte · rastreo</div>
+          <div><span class="pole s">S</span> positivo · Sur · complementario</div>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="lab">Disposición</div>
+        <div class="diag">
+          <svg viewBox="0 0 130 54" role="img" aria-label="Los dos imanes adyacentes sobre el riñón">
+            <rect x="4" y="6" width="122" height="42" rx="8" fill="none" stroke="#DAD8CE" stroke-width="1.4"/>
+            <text x="65" y="17" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="7" fill="#97968D" letter-spacing=".1em">RIÑÓN</text>
+            <rect x="38" y="24" width="20" height="20" rx="4" fill="#B4832A"/><text x="48" y="38" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="10" font-weight="700" fill="#fff">S</text>
+            <rect x="62" y="24" width="20" height="20" rx="4" fill="#1D2024"/><text x="72" y="38" text-anchor="middle" font-family="Helvetica,sans-serif" font-size="10" font-weight="700" fill="#fff">N</text>
+          </svg>
+          <p class="cap">Positivo primero; negativo al lado.</p>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="lab">Tiempo</div>
+        <p>20 min o más. El criterio lo da la <b>retirada del positivo</b>: si recorta, aún no.</p>
+      </div>
+    </div>
+
+    <div class="rfoot"><span>Regulación Bioeléctrica · Instituto Centrobioenergetica</span><span>06</span></div>
+  </section>
+</div>
+</body>
+</html>

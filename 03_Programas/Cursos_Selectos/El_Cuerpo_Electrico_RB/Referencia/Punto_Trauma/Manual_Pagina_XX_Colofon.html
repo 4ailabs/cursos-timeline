@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual · Colofón</title>
+<style>
+  :root{
+    --ink:#2C2C2A; --soft:#4A4643; --faint:#888780;
+    --paper:#FCFBF7; --line:#DEDBD2; --hair:#ECEAE1;
+    --teal:#0F6E56; --teal-deep:#0B5644;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:system-ui,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#E9E8E3;color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+  .stage{padding:26px 16px 44px;display:flex;flex-direction:column;align-items:center}
+  .snote{font-family:var(--sans);font-size:11.5px;color:#6a6864;text-align:center;margin-bottom:14px}
+  .page{width:176mm;height:250mm;background:var(--paper);position:relative;overflow:hidden;
+    box-shadow:0 12px 46px rgba(20,20,16,.16);padding:22mm 26mm 16mm 26mm;display:flex;flex-direction:column;align-items:center;text-align:center}
+
+  .dip{margin-top:4mm}
+  .dip svg{height:7mm;width:auto}
+  .gap-t{flex:340 0 0}.gap-b{flex:660 0 0}
+
+  .colo .k{font-family:var(--sans);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);font-weight:600;margin:0 0 5mm}
+  .colo h1{font-weight:700;font-size:20px;line-height:1.2;margin:0 0 2mm}
+  .colo .sub{font-size:11px;font-style:italic;color:var(--soft);margin:0 0 8mm}
+  .colo p{font-size:10.5px;line-height:1.6;color:var(--soft);margin:0 0 2mm;max-width:52ch}
+  .colo p b{color:var(--ink);font-weight:400}
+  .colo .rule{width:34mm;height:1px;background:var(--line);margin:7mm auto}
+
+  .alcance{font-size:9.5px;line-height:1.6;color:var(--faint);font-style:italic;max-width:56ch;margin:0 auto}
+
+  /* emisor · logo del Instituto (marca madre) */
+  .emisor{margin-top:9mm}
+  .emisor .lab{font-family:var(--sans);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:4mm}
+  .emisor svg{width:44mm;height:auto;display:block;margin:0 auto}
+
+  .legal{margin-top:auto;font-family:var(--sans);font-size:8px;letter-spacing:.04em;color:var(--faint);line-height:1.7}
+
+  @media print{ @page{size:176mm 250mm;margin:0} body{background:#fff}.stage{padding:0}.snote{display:none}.page{box-shadow:none} }
+  @media (max-width:640px){ .page{width:100%;height:auto;min-height:80vh;padding:26px 22px} }
+</style>
+</head>
+<body>
+<div class="stage">
+  <p class="snote">Colofón / créditos · B5 176×250 mm · logo del Instituto como emisor</p>
+  <section class="page">
+    <div class="dip">
+      <svg viewBox="0 0 58 24" aria-label="Regulación Bioeléctrica"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg>
+    </div>
+
+    <div class="gap-t"></div>
+
+    <div class="colo">
+      <p class="k">Colofón</p>
+      <h1>El nodo de lesión</h1>
+      <p class="sub">Manual operativo de la técnica · Regulación Bioeléctrica</p>
+
+      <p><b>Autor y titular del método:</b> Dr. Miguel Ojeda Rios</p>
+      <p><b>Programa:</b> El Cuerpo Eléctrico — Formación en Regulación Bioeléctrica</p>
+      <p><b>Edición:</b> Primera · 2026</p>
+
+      <div class="rule"></div>
+
+      <p class="alcance">Alcance y límites. Este manual documenta un procedimiento de la Regulación Bioeléctrica en desarrollo e investigación clínica. No constituye diagnóstico ni sustituye el criterio ni el tratamiento médico. Ver contraindicaciones en «Cómo usar este manual».</p>
+
+      <div class="emisor">
+        <div class="lab">Editado por</div>
+        <svg viewBox="0 0 260 210" role="img" aria-label="Instituto Centrobioenergetica">
+          <g transform="translate(130,75)">
+            <circle cx="0" cy="-50" r="8" fill="#B5604A"/><circle cx="25" cy="-43.3" r="8" fill="#8FA87A"/>
+            <circle cx="43.3" cy="-25" r="8" fill="#B5604A"/><circle cx="50" cy="0" r="8" fill="#8FA87A"/>
+            <circle cx="43.3" cy="25" r="8" fill="#B5604A"/><circle cx="25" cy="43.3" r="8" fill="#8FA87A"/>
+            <circle cx="0" cy="50" r="8" fill="#B5604A"/><circle cx="-25" cy="43.3" r="8" fill="#8FA87A"/>
+            <circle cx="-43.3" cy="25" r="8" fill="#B5604A"/><circle cx="-50" cy="0" r="8" fill="#8FA87A"/>
+            <circle cx="-43.3" cy="-25" r="8" fill="#B5604A"/><circle cx="-25" cy="-43.3" r="8" fill="#8FA87A"/>
+            <circle cx="0" cy="0" r="5" fill="#E8A857" opacity="0.5"/><circle cx="0" cy="0" r="3" fill="#E8A857"/>
+          </g>
+          <text x="130" y="155" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" font-weight="500" letter-spacing="3.5" fill="#888580">INSTITUTO</text>
+          <text x="130" y="172" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="500" letter-spacing="1.5" fill="#B5604A">CENTROBIOENERGETICA</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="gap-b"></div>
+
+    <div class="legal">
+      contacto@institutocentrobioenergetica.com · WhatsApp +52 55 7907 6626<br>
+      © 2026 Instituto Centrobioenergetica · Todos los derechos reservados
+    </div>
+  </section>
+</div>
+</body>
+</html>
