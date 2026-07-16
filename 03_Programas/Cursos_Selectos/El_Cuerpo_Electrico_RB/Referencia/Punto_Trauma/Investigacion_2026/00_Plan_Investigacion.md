@@ -22,11 +22,21 @@
 - **T2 · Campos magnéticos estáticos (CME).** Gradiente vs intensidad (Vanderbilt), Morris-Skalak, 3 mecanismos moleculares, consenso clínico real (revisiones/meta-análisis).
 - **T3 · Eje trauma-riñón y nodos reguladores.** Regulación renal del K⁺, inervación T10-L2, reflejo renorenal, reflejo inflamatorio de Tracey, tríada bulbo/suprarrenal/hígado. Eslabón crítico: ¿puede un imán externo modular el eje autonómico?
 
-### Oleada 2 — marco y comparadores (⏸ pendiente de aprobación)
+### Oleada 2 — marco y comparadores (✅ completada)
 
 - **T4 · Marco Levin / TAME y bioelectricidad regenerativa.** Estado del arte 2024-2026: memoria de patrón, colectivo bioeléctrico, agencia; aplicabilidad y límites al trauma humano.
 - **T5 · Vía vagal, REM/PGO y trauma.** Cadena vago→PGO→REM, VNS/tVNS en PTSD y dolor, movimientos oculares en estados profundos; conexión con EMDR.
 - **T6 · Técnicas alternativas y comparables (multiidioma).** Magnetoterapia/PEMF, biomagnetismo (par de Goiz), terapia neural (Neuraltherapie), EMDR, neuromodulación no invasiva, homotoxicología. Para posicionar el método y extraer elementos de apoyo.
+
+### Oleada 3 — dolor e inflamación como conducta del agente (✅ completada)
+
+*Síntesis integrada en `Sintesis/Sintesis_Oleada3.md`. Tesis: la inflamación leída como conducta de un agente que defiende un set point de emergencia; nudo unificador = "colapso del gradiente de K⁺" (una causa, dos firmas). Aval nosológico: Lyndon 2026, dolor crónico como enfermedad de sistemas.*
+
+- **T7 · Cibernética del dolor y la inflamación.** Alostasis, inferencia activa/predictiva, interocepción (EPIC), set point neuro-inmune; extiende la capa 4 (Friston) del Ojo Adaptativo.
+- **T8 · Dolor e inflamación como agente biológico.** Neuromatriz; resolución activa (SPMs) y fallo de resolución como sustrato del "General Japonés"; puente dolor–resolución (Ji 2022).
+- **T9 · Speransky y la teoría neurógena.** Principio neurógeno (establecido) vs monismo (histórico/no replicado); inflamación neurógena, terapia neural; genealogía de "el golpe de Speransky".
+- **T10 · Conflictos bioeléctricos del proceso.** Puente K⁺→NLRP3; hemicanal→ATP→P2X7→NLRP3; corriente de lesión; mapeo lesión→nodo por variable dominante (extiende LI-3).
+- **T11 · Conflicto psico-emocional (conflictología / NMG).** Reencuadre en psiconeuroinmunología (establecida); NMG doctrinal no validada y con riesgo clínico. Uso heurístico-anamnésico, no sustitutivo.
 
 ---
 

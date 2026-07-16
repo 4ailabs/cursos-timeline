@@ -11,6 +11,7 @@
     --teal:#0F6E56; --teal-deep:#0B5644; --teal-tint:#E1F5EE; --coral:#D85A30;
     --serif:Georgia,"Times New Roman",serif;
     --sans:system-ui,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --display:"Avenir Next","Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
     --bg:#E7E7E3; --z:0.72;
   }
   @media (prefers-color-scheme:dark){ :root{ --bg:#24242A; } }
@@ -63,23 +64,33 @@
   .cover .meta .ed{font:500 8px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);text-align:right;line-height:1.7}
   .cover .endfoot{position:absolute;left:0;right:0;bottom:9mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
 
-  /* ÍNDICE */
-  .indice{padding:11mm 22mm 11mm 22mm}
+  /* ÍNDICE — híbrido RB × Karger */
+  .indice{padding:12mm 22mm 12mm 22mm}
   .indice .brand{display:flex;align-items:center;gap:3mm;margin-bottom:5.5mm;padding-bottom:2.6mm;border-bottom:1px solid var(--hair)}
   .indice .brand svg{height:5.6mm}
   .indice .wordmark{font-size:10.5px;color:var(--ink)}.indice .wordmark b{color:var(--teal);font-weight:400}
   .indice .sp{flex:1}
   .indice .rh{font:400 8px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
-  .indice .eyebrow{font:600 9px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:0 0 2.5mm}
-  .indice h1{font-family:var(--serif);font-weight:700;font-size:22px;margin:0 0 5mm}
-  .indice .grp{font:600 8.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 1.8mm}
-  .indice .grp.mt{margin-top:4.4mm}
+  /* apertura de sección: barra corta (firma Karger) + eyebrow + título */
+  .indice .opener{margin:0 0 5mm}
+  .indice .kbar{width:16mm;height:2.2mm;background:var(--teal);border-radius:1px;margin:0 0 3mm}
+  .indice .eyebrow{font:600 9px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:0 0 1.6mm}
+  .indice h1{font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-.015em;margin:0}
+  /* etiqueta de grupo con filete fino */
+  .indice .grp{font:700 8px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--faint);
+    margin:0 0 1mm;padding-bottom:1.2mm;border-bottom:.5px solid var(--line)}
+  .indice .grp.mt{margin-top:3.8mm}
+  .indice .grp small{text-transform:none;letter-spacing:0;font-weight:400;color:var(--faint)}
+  /* TOC estilo Karger: folio a la izquierda, sin puntos suspensivos */
   .indice .toc{list-style:none;margin:0;padding:0}
-  .indice .toc li{display:flex;align-items:baseline;gap:2.5mm;padding:1.5mm 0;border-bottom:1px solid var(--hair)}
-  .indice .toc li .n{font:700 9px var(--sans);color:var(--teal);width:8mm;flex:none;font-variant-numeric:tabular-nums}
-  .indice .toc li .t{font-size:11px;color:var(--ink)}.indice .toc li .t small{color:var(--faint);font-size:9px}
-  .indice .toc li .dots{flex:1;border-bottom:1px dotted #C9C6BD;transform:translateY(-3px)}
-  .indice .toc li .pg{font:400 10px var(--sans);color:var(--faint);font-variant-numeric:tabular-nums}
+  .indice .toc li{display:flex;align-items:baseline;gap:4mm;padding:0.95mm 0;border-bottom:1px solid var(--hair)}
+  .indice .toc li .pg{font:700 10.5px var(--sans);color:var(--teal);width:9mm;flex:none;
+    font-variant-numeric:tabular-nums;text-align:left}
+  .indice .toc li .body{flex:1;min-width:0}
+  .indice .toc li .t{font-family:var(--display);font-weight:600;font-size:11px;color:var(--ink);line-height:1.3}
+  .indice .toc li .t .step{font:700 8px var(--sans);color:#fff;background:var(--teal);
+    border-radius:2px;padding:.4mm 1.6mm;margin-right:2mm;vertical-align:1.5px;letter-spacing:.04em}
+  .indice .toc li .t small{display:block;color:var(--faint);font-size:9.5px;font-style:italic;margin-top:.2mm}
   .indice .foot{position:absolute;left:0;right:0;bottom:9mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
   .indice .folio{position:absolute;bottom:8mm;right:22mm;font:400 8.5px var(--sans);color:var(--faint)}
 
@@ -195,36 +206,36 @@
 </head>
 <body><div class="wrap"><section class="page indice">
       <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wordmark">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Manual operativo</span></div>
-      <p class="eyebrow">Manual operativo</p><h1>Índice</h1>
+      <div class="opener"><div class="kbar"></div><p class="eyebrow">Manual operativo</p><h1>Índice</h1></div>
       <div class="grp">Antes de empezar</div>
       <ul class="toc">
-        <li><span class="n">—</span><span class="t">Cómo usar este manual · materiales · seguridad</span><span class="dots"></span><span class="pg">03</span></li>
-        <li><span class="n">—</span><span class="t">Ficha clínica <small>· anamnesis</small></span><span class="dots"></span><span class="pg">04</span></li>
-        <li><span class="n">—</span><span class="t">Ficha clínica <small>· exploración</small></span><span class="dots"></span><span class="pg">05</span></li>
-        <li><span class="n">—</span><span class="t">Posición y preparación del paciente</span><span class="dots"></span><span class="pg">06</span></li>
-        <li><span class="n">—</span><span class="t">Medición de la simetría <small>· talón izquierdo de referencia</small></span><span class="dots"></span><span class="pg">07</span></li>
-        <li><span class="n">—</span><span class="t">Algoritmo de la sesión</span><span class="dots"></span><span class="pg">08</span></li>
+        <li><span class="pg">03</span><span class="body"><span class="t">Cómo usar este manual<small>materiales · seguridad</small></span></span></li>
+        <li><span class="pg">04</span><span class="body"><span class="t">Ficha clínica<small>anamnesis</small></span></span></li>
+        <li><span class="pg">05</span><span class="body"><span class="t">Ficha clínica<small>exploración</small></span></span></li>
+        <li><span class="pg">06</span><span class="body"><span class="t">Posición y preparación del paciente</span></span></li>
+        <li><span class="pg">07</span><span class="body"><span class="t">Medición de la simetría<small>talón izquierdo de referencia</small></span></span></li>
+        <li><span class="pg">08</span><span class="body"><span class="t">Algoritmo de la sesión</span></span></li>
       </ul>
-      <div class="grp mt">Apertura del rastreo <small style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--faint)">· común a toda sesión</small></div>
+      <div class="grp mt">Apertura del rastreo <small>· común a toda sesión</small></div>
       <ul class="toc">
-        <li><span class="n">—</span><span class="t">Acidosis temporal</span><span class="dots"></span><span class="pg">09</span></li>
-        <li><span class="n">—</span><span class="t">Acidosis latente <small>· zona renal–parietal («fenómeno Goiz»)</small></span><span class="dots"></span><span class="pg">10</span></li>
+        <li><span class="pg">09</span><span class="body"><span class="t">Acidosis temporal</span></span></li>
+        <li><span class="pg">10</span><span class="body"><span class="t">Acidosis latente<small>zona renal–parietal («fenómeno Goiz»)</small></span></span></li>
       </ul>
       <div class="grp mt">Nodo de lesión</div>
       <ul class="toc">
-        <li><span class="n">01</span><span class="t">Dipolo local <small>· dipolos por zona</small></span><span class="dots"></span><span class="pg">11</span></li>
-        <li><span class="n">02</span><span class="t">Punto distante <small>· nodo regulador</small></span><span class="dots"></span><span class="pg">12</span></li>
-        <li><span class="n">03</span><span class="t">Rejilla de gradiente <small>· contractura</small></span><span class="dots"></span><span class="pg">13</span></li>
+        <li><span class="pg">11</span><span class="body"><span class="t"><span class="step">01</span>Dipolo local<small>dipolos por zona</small></span></span></li>
+        <li><span class="pg">12</span><span class="body"><span class="t"><span class="step">02</span>Punto distante<small>nodo regulador</small></span></span></li>
+        <li><span class="pg">13</span><span class="body"><span class="t"><span class="step">03</span>Rejilla de gradiente<small>contractura</small></span></span></li>
       </ul>
       <div class="grp mt">Cerrar la sesión</div>
       <ul class="toc">
-        <li><span class="n">—</span><span class="t">Cierre e integración del set point</span><span class="dots"></span><span class="pg">14</span></li>
-        <li><span class="n">—</span><span class="t">Ficha de registro <small>· mapa y EVA</small></span><span class="dots"></span><span class="pg">15</span></li>
+        <li><span class="pg">14</span><span class="body"><span class="t">Cierre e integración del set point</span></span></li>
+        <li><span class="pg">15</span><span class="body"><span class="t">Ficha de registro<small>mapa y EVA</small></span></span></li>
       </ul>
       <div class="grp mt">Apéndices</div>
       <ul class="toc">
-        <li><span class="n">—</span><span class="t">Glosario <small>· términos de la técnica</small></span><span class="dots"></span><span class="pg">16</span></li>
-        <li><span class="n">—</span><span class="t">Referencias <small>· fundamento científico</small></span><span class="dots"></span><span class="pg">17</span></li>
+        <li><span class="pg">16</span><span class="body"><span class="t">Glosario<small>términos de la técnica</small></span></span></li>
+        <li><span class="pg">17</span><span class="body"><span class="t">Referencias<small>fundamento científico</small></span></span></li>
       </ul>
       <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">02</div>
     </section></div></body></html>
