@@ -1,6 +1,6 @@
 // Exporta cada página del Manual "El nodo de lesión" (B5) a PNG en alta resolución (4x ≈ 380 dpi).
 // Uso: node exportar_manual_nodo_lesion.js   ·   Salida: ./export_manual/*.png
-const puppeteer = require('/Users/miguel/Centrobioenergetica-Instituto/Cursos_Selectos/Taller_Actos_que_Mueven/Programa_Final/node_modules/puppeteer');
+const puppeteer = require('/Users/miguelojedarios/node_modules/puppeteer');
 const path = require('path'); const fs = require('fs');
 const SCALE = 4;
 const OUT_DIR = path.resolve(__dirname, 'export_manual');
