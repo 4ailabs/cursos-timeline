@@ -1,0 +1,687 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>El nodo de lesion - imprimible</title>
+<style>
+  /* ============ HOJA DE ESTILO B5 — aislada bajo .b5 (fuente B) ============ */
+  .b5{
+    --ink:#2C2C2A; --soft:#4A4643; --faint:#888888;
+    --paper:#FFFFFF; --line:#CCCCCC; --hair:#E0E0E0; --card:#EFEFEF;
+    --teal:#333333; --teal-deep:#242424; --teal-tint:#E4E4E4; --coral:#5A5A5A;
+    /* sin Georgia: todo el manual en la familia humanista (Avenir) */
+    --serif:"Avenir Next","Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+    --sans:system-ui,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --display:"Avenir Next","Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);
+  }
+  .b5 .page{box-sizing:border-box;width:176mm;height:250mm;background:var(--paper);position:relative;overflow:hidden;color:var(--ink);
+    font-family:var(--serif);display:flex;flex-direction:column}
+
+  /* PORTADA */
+  .b5 .cover{padding:22mm 24mm 18mm 24mm}
+  .b5 .cover .wm{position:absolute;right:-30mm;bottom:34mm;width:150mm;height:auto;opacity:.08}
+  .b5 .cover .logo{display:flex;align-items:center;gap:4mm}
+  .b5 .cover .logo svg{height:9mm}
+  .b5 .cover .wordmark{font-size:16px;letter-spacing:.02em;color:var(--ink)} .b5 .cover .wordmark b{color:var(--teal);font-weight:400}
+  .b5 .cover .gap-t{flex:382 0 0}.b5 .cover .gap-b{flex:618 0 0}
+  .b5 .cover .kicker{font:600 11px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--teal);margin:0 0 6mm}
+  .b5 .cover h1{font-family:var(--display);font-weight:600;font-size:40px;line-height:1.06;letter-spacing:-.015em;margin:0 0 5mm;max-width:16ch}
+  .b5 .cover .sub{font-size:16px;font-style:italic;color:var(--soft);line-height:1.5;max-width:34ch;margin:0}
+  .b5 .cover .meta{border-top:1px solid var(--line);padding-top:5mm;display:flex;justify-content:space-between;align-items:flex-end}
+  .b5 .cover .meta .who{font-size:12px;line-height:1.5}.b5 .cover .meta .who b{color:var(--teal);font-weight:400}
+  .b5 .cover .meta .ed{font:500 8px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);text-align:right;line-height:1.7}
+  .b5 .cover .endfoot{position:absolute;left:0;right:0;bottom:9mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+
+  /* ÍNDICE — variante B */
+  .b5 .indice{padding:12mm 22mm 12mm 22mm}
+  .b5 .indice .brand{display:flex;align-items:center;gap:3mm;margin-bottom:5.5mm;padding-bottom:2.6mm;border-bottom:1px solid var(--hair)}
+  .b5 .indice .brand svg{height:5.6mm}
+  .b5 .indice .wordmark{font-size:10.5px;color:var(--ink)}.b5 .indice .wordmark b{color:var(--teal);font-weight:400}
+  .b5 .indice .sp{flex:1}
+  .b5 .indice .rh{font:400 8px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  .b5 .indice .opener{margin:0 0 4mm}
+  .b5 .indice .kbar{width:16mm;height:2.2mm;background:var(--teal);border-radius:1px;margin:0 0 2.6mm}
+  .b5 .indice .eyebrow{font:600 10px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:0 0 1.6mm}
+  .b5 .indice h1{font-family:var(--display);font-weight:600;font-size:23px;letter-spacing:-.005em;margin:0}
+  .b5 .indice .grp{font:700 9.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:0 0 1.6mm;padding-bottom:1.8mm;border-bottom:.5px solid var(--line)}
+  .b5 .indice .grp.mt{margin-top:5.5mm}
+  .b5 .indice .grp small{text-transform:none;letter-spacing:0;font-weight:400;color:var(--faint)}
+  .b5 .indice .toc{list-style:none;margin:0;padding:0}
+  .b5 .indice .toc li{display:flex;align-items:baseline;gap:4mm;padding:1.6mm 0;border-bottom:1px solid var(--hair)}
+  .b5 .indice .toc li .pg{font:700 12px var(--sans);color:var(--teal);width:9mm;flex:none;font-variant-numeric:tabular-nums;text-align:left}
+  .b5 .indice .toc li .body{flex:1;min-width:0}
+  .b5 .indice .toc li .t{font-family:var(--display);font-weight:600;font-size:12px;color:var(--ink);line-height:1.3}
+  .b5 .indice .toc li .t .step{font:700 9px var(--sans);color:#fff;background:var(--teal);border-radius:2px;padding:.4mm 1.8mm;margin-right:2mm;vertical-align:1.5px;letter-spacing:.04em}
+  .b5 .indice .toc li .t small{display:block;color:var(--faint);font-size:10.5px;font-style:italic;margin-top:.3mm}
+  .b5 .indice .foot{position:absolute;left:0;right:0;bottom:9mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+  .b5 .indice .folio{position:absolute;bottom:8mm;right:22mm;font:400 8.5px var(--sans);color:var(--faint)}
+
+  /* PREMIUM / PROCEDIMIENTO */
+  .b5 .prem{padding:15mm 20mm 13mm 20mm}
+  .b5 .prem .brand{display:flex;align-items:center;gap:3mm;margin-bottom:6mm;padding-bottom:3mm;border-bottom:1px solid var(--hair)}
+  .b5 .prem .brand svg{height:6mm}
+  .b5 .prem .wm2{font-size:11px;color:var(--ink)}.b5 .prem .wm2 b{color:var(--teal);font-weight:400}
+  .b5 .prem .sp{flex:1}
+  .b5 .prem .rh{font:400 8.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  .b5 .prem .eyebrow{font:600 10px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:0 0 2.5mm}
+  .b5 .prem h1{font-family:var(--display);font-weight:600;font-size:22px;line-height:1.12;margin:0 0 5mm;max-width:26ch;letter-spacing:-.005em}
+  .b5 .prem .hero{display:grid;grid-template-columns:1fr 1fr;gap:7mm;align-items:start}
+  .b5 .prem .plate{border:1px solid var(--line);border-radius:2.5mm;background:#fff;padding:4mm;position:relative}
+  .b5 .prem .plate .tag{position:absolute;top:2.5mm;left:4mm;font:400 7.5px var(--sans);letter-spacing:.1em;color:var(--faint)}
+  .b5 .prem .plate svg{width:100%;height:auto;display:block}
+  .b5 .prem .platecap{font:400 10.5px var(--sans);line-height:1.5;color:var(--soft);margin-top:2.8mm}
+  .b5 .prem .platecap b{color:var(--ink);font-weight:700}
+  .b5 .prem ol.proc{margin:0;padding:0;list-style:none;counter-reset:p}
+  .b5 .prem ol.proc>li{counter-increment:p;position:relative;padding-left:8mm;font-size:12px;line-height:1.5;margin-bottom:2.6mm}
+  .b5 .prem ol.proc>li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:.2mm;font:700 9px var(--sans);color:var(--teal);font-variant-numeric:tabular-nums}
+  .b5 .prem ol.proc>li b{font-weight:400;font-style:italic}
+  .b5 .prem .signal{margin:3.5mm 0 0;padding:2.4mm 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .b5 .prem .signal .w{font:700 9px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);margin-right:3mm}
+  .b5 .prem .signal p{display:inline;font-size:12px;color:var(--soft);margin:0}
+  .b5 .prem .lead{font-size:13px;line-height:1.5;color:var(--soft);font-style:italic;margin:0 0 4.5mm}
+  .b5 .prem .fig{float:right;width:58mm;margin:1mm 0 3mm 7mm}
+  .b5 .prem .fig .phbox{aspect-ratio:5/6}
+  .b5 .prem .sub{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:700;margin:5mm 0 2.4mm}
+  .b5 .prem .body p{font-size:12px;line-height:1.5;margin:0 0 2.8mm;text-align:left}
+  .b5 .prem .body p b{font-weight:400;font-style:normal;color:inherit}
+  .b5 .prem .callout{clear:right;margin:3.5mm 0;padding:2.6mm 3.5mm;border-left:2px solid var(--teal);background:#F0F0F0;border-radius:0 2mm 2mm 0}
+  .b5 .prem .callout .w{display:block;font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:1.4mm}
+  .b5 .prem .callout p{font-size:12px;line-height:1.5;color:var(--soft);margin:0}
+  .b5 .prem .intro{font-size:12px;line-height:1.5;color:var(--soft);margin:0 0 3mm}
+  .b5 .prem .shead{font:700 9.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--soft);padding-bottom:1.4mm;margin:4mm 0 2.4mm}
+  .b5 .prem .frow{display:flex;gap:5mm;margin-bottom:2.2mm}
+  .b5 .prem .fld{flex:1}
+  .b5 .prem .fld .l{font:600 9px var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:1.3mm}
+  .b5 .prem .fld .line{border-bottom:.5px solid var(--soft);height:4.2mm}
+  .b5 .prem .chkrow{display:flex;gap:5mm;flex-wrap:wrap;margin:.5mm 0 0}
+  .b5 .prem .chk{display:flex;align-items:center;gap:1.8mm;font-size:11px;color:var(--ink)}
+  .b5 .prem .chk .b{width:3mm;height:3mm;border:1px solid var(--soft);display:inline-block;flex:none}
+  .b5 .prem .legend{font-size:9.5px;color:var(--soft);margin:0;line-height:1.45}
+  .b5 .prem .ruled{background:repeating-linear-gradient(to bottom,transparent 0,transparent 5.1mm,var(--line) 5.1mm,var(--line) 5.3mm)}
+  .b5 .prem .foot{position:absolute;left:0;right:0;bottom:8mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+  .b5 .prem .folio{position:absolute;bottom:7mm;right:20mm;font:400 8.5px var(--sans);color:var(--faint)}
+  .b5 .data{font-family:ui-monospace,Menlo,monospace;font-size:11px;background:var(--teal-tint);padding:0 3px;border-radius:2px}
+  .b5 .prem ol.clin{margin:0;padding:0;list-style:none;counter-reset:c}
+  .b5 .prem ol.clin>li{counter-increment:c;position:relative;padding-left:9mm;font-size:12px;line-height:1.5;margin-bottom:3mm;text-align:left}
+  .b5 .prem ol.clin>li::before{content:counter(c,decimal-leading-zero);position:absolute;left:0;top:.3mm;font-family:var(--sans);font-weight:700;font-size:8.5px;color:var(--teal);font-variant-numeric:tabular-nums}
+  .b5 .prem ol.clin>li b{font-weight:400;font-style:normal;color:inherit}
+  .b5 .prem .ftab{width:100%;border-collapse:collapse;margin:0 0 1.4mm}
+  .b5 .prem .ftab th{font:600 8.5px var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--faint);text-align:left;border-bottom:1px solid var(--soft);padding:0 0 1.4mm}
+  .b5 .prem .ftab td{height:6mm;border-bottom:.5px solid var(--line);padding:0}
+  .b5 .prem .ftab .cz{width:36%}.b5 .prem .ftab .ci{width:14%;text-align:center}
+  .b5 .prem .silrow{display:flex;gap:6mm;margin:1mm 0 2mm}
+  .b5 .prem .sil{flex:1;border:1px dashed #C0C0C0;border-radius:2mm;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#999999;padding:4mm}
+  .b5 .prem .sil .t{font:600 10.5px var(--sans);letter-spacing:.04em;color:#757575}
+  .b5 .prem .sil .s{font:400 9px var(--sans);color:#A8A8A8;margin-top:1.2mm}
+  .b5 .prem .flow{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:1mm}
+  .b5 .prem .fnode{width:104mm;max-width:100%;border:1px solid var(--line);border-radius:2mm;background:#fff;padding:2.2mm 3mm;text-align:center}
+  .b5 .prem .fnode.strong{background:var(--teal-tint);border-color:#C4C4C4}
+  .b5 .prem .fnode .t{font-weight:700;color:var(--ink);font-size:11.5px;line-height:1.25}
+  .b5 .prem .fnode .s{font-size:9.5px;color:var(--soft);margin-top:.6mm;line-height:1.3}
+  .b5 .prem .fconn{width:1px;height:3mm;background:var(--soft)}
+  .b5 .prem .fdec{width:104mm;max-width:100%;border:1px dashed var(--soft);border-radius:2mm;padding:2mm 3mm;text-align:center}
+  .b5 .prem .fdec .q{font-weight:700;color:var(--teal);font-size:11px}
+  .b5 .prem .fbranch{display:flex;gap:3mm;justify-content:center;margin-top:1.4mm;flex-wrap:wrap}
+  .b5 .prem .chip{font-size:9.5px;background:#EFEFEF;border-radius:8px;padding:.9mm 2.8mm;color:var(--ink);line-height:1.3}
+  .b5 .prem .chip b{color:var(--teal-deep);font-weight:700}
+  .b5 .prem .phase{font-family:var(--sans);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:700;margin:2.6mm 0 1.6mm;width:104mm;max-width:100%;text-align:center;border-top:1px solid var(--hair);padding-top:2mm}
+  .b5 .prem .phase span{color:var(--faint);font-weight:400;text-transform:none;letter-spacing:0}
+  .b5 .prem .plate.ph{border:none;padding:0;background:none}
+  .b5 .prem .phbox{aspect-ratio:5/6;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px dashed #C0C0C0;border-radius:2.5mm;background:#FFFFFF;padding:6mm;gap:2mm}
+  .b5 .prem .phbox .pl{font-family:var(--sans);font-size:11px;letter-spacing:.04em;color:#757575;font-weight:600}
+  .b5 .prem .phbox .ps{font-family:var(--sans);font-size:9px;line-height:1.5;color:#A8A8A8;max-width:34ch}
+  .b5 .prem table{width:100%;border-collapse:collapse;margin:5mm 0 0}
+  .b5 .prem table caption{font:700 10px var(--sans);letter-spacing:.03em;color:var(--ink);text-align:left;margin-bottom:2mm}
+  .b5 .prem th,.b5 .prem td{text-align:left;padding:1.8mm 3mm 1.8mm 0;font-size:11.5px;line-height:1.4;border-bottom:.5px solid var(--hair);vertical-align:top}
+  .b5 .prem tbody th{font:600 11px var(--sans);color:var(--soft);width:22mm}
+  .b5 .prem table.nodos td,.b5 .prem table.nodos th{padding-top:2.4mm;padding-bottom:2.4mm}
+  .b5 .prem table.nodos th{width:auto;white-space:nowrap;padding-right:6mm}
+  /* tabla de especificaciones (rótulo → dato): rótulo teal escaneable, sin negrita fantasma */
+  .b5 .prem table.spec{margin:0}
+  .b5 .prem table.spec th{width:40mm;color:var(--teal-deep);font-weight:600;vertical-align:top;padding-right:5mm;white-space:normal}
+  .b5 .prem table.spec td{color:var(--soft)}
+  .b5 .prem .glist{column-count:2;column-gap:7mm}
+  .b5 .prem .gitem{break-inside:avoid;margin-bottom:3.2mm;font-size:11px;line-height:1.45}
+  .b5 .prem .glist .gitem b{font-weight:700;color:var(--teal-deep)}
+  .b5 .prem .refs{list-style:none;margin:0;padding:0;counter-reset:r}
+  .b5 .prem .refs li{counter-increment:r;position:relative;padding-left:6mm;font-size:10.5px;line-height:1.45;margin-bottom:2.6mm;color:var(--soft)}
+  .b5 .prem .refs li::before{content:counter(r);position:absolute;left:0;top:0;font-family:var(--sans);font-weight:700;font-size:8px;color:var(--teal)}
+  .b5 .prem .refs li i{color:inherit;font-style:italic;font-weight:400}
+  /* sistema tipográfico coherente: estructura en sans, cuerpo en serif, títulos en display */
+  .b5 .cover .endfoot,.b5 .indice .foot,.b5 .prem .foot,
+  .b5 .cover .wordmark,.b5 .indice .wordmark,.b5 .prem .wm2,
+  .b5 .cover .meta .who{font-family:var(--sans)}
+  /* énfasis retirado del cuerpo: la estructura (pasos, subtítulos, «En breve», tablas) carga el peso.
+     Los <b> se conservan en el HTML por si se reactivan; aquí solo se muestran en redonda.
+     Excepción: el glosario mantiene la negrita del término definido (.gitem b). */
+  .b5 .prem .body b,.b5 .prem .lead b,.b5 .prem .intro b,.b5 .prem .legend b,
+  .b5 .prem li b,.b5 .prem td b,.b5 .prem .synth li b,.b5 .prem .signal p b,
+  .b5 .prem .callout p b{
+    font-weight:400;color:inherit}
+@page{size:176mm 250mm;margin:0} html,body{margin:0;background:#fff} .b5 .page{box-shadow:none !important;margin:0 auto;page-break-after:always;break-after:page} .b5 .page.blank{background:#fff} .b5 .page:last-child{page-break-after:auto} .pg-recto .prem{padding-left:32mm}.pg-recto .indice{padding-left:34mm}.pg-recto .cover{padding-left:36mm} .pg-verso .prem{padding-right:32mm}.pg-verso .indice{padding-right:34mm}.pg-verso .cover{padding-right:36mm} @media screen{body{background:#E8E8E8;padding:20px 0} .b5 .page{box-shadow:0 8px 30px rgba(0,0,0,.16) !important;margin:0 auto 14px} .b5 .page.blank{border:1px dashed #ccc}}</style></head>
+<body class="b5">
+<section class="page pg-recto cover">
+      <svg class="wm" viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg>
+      <div class="logo"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wordmark">regulación <b>bioeléctrica</b></span></div>
+      <div class="gap-t"></div>
+      <div><p class="kicker">Manual operativo · rastreo y regulación</p><h1>El nodo de lesión</h1><p class="sub">Procedimiento clínico de la Regulación Bioeléctrica para la valoración y regulación del nodo de lesión.</p></div>
+      <div class="gap-b"></div>
+      <div class="meta"><div class="who"><b>Dr. Miguel Ojeda Rios</b><br>Instituto Centrobioenergetica</div><div class="ed">Programa<br>El Cuerpo Eléctrico<br>Edición 2026</div></div>
+      <div class="endfoot">INSTITUTO CENTROBIOENERGETICA</div>
+    </section><section class="page blank pg-verso"></section><section class="page pg-recto indice">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wordmark">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Manual operativo</span></div>
+      <div class="opener"><div class="kbar"></div><p class="eyebrow">Manual operativo</p><h1>Índice</h1></div>
+      <div class="grp">Antes de empezar</div>
+      <ul class="toc">
+        <li><span class="pg">04</span><span class="body"><span class="t">Cómo usar este manual<small>materiales · seguridad</small></span></span></li>
+        <li><span class="pg">05</span><span class="body"><span class="t">Ficha clínica<small>anamnesis</small></span></span></li>
+        <li><span class="pg">06</span><span class="body"><span class="t">Ficha clínica<small>exploración</small></span></span></li>
+        <li><span class="pg">07</span><span class="body"><span class="t">Posición y preparación del paciente</span></span></li>
+        <li><span class="pg">08</span><span class="body"><span class="t">Medición de la simetría<small>talón izquierdo de referencia</small></span></span></li>
+        <li><span class="pg">09</span><span class="body"><span class="t">Algoritmo de la sesión</span></span></li>
+      </ul>
+      <div class="grp mt">Apertura del rastreo <small>· común a toda sesión</small></div>
+      <ul class="toc">
+        <li><span class="pg">11</span><span class="body"><span class="t">Acidosis temporal</span></span></li>
+        <li><span class="pg">13</span><span class="body"><span class="t">Acidosis latente<small>zona renal–parietal («fenómeno Goiz»)</small></span></span></li>
+      </ul>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">02</div>
+    </section><section class="page pg-verso indice">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wordmark">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Manual operativo</span></div>
+      <div class="opener"><div class="kbar"></div><p class="eyebrow">Manual operativo</p><h1>Índice · continuación</h1></div>
+      <div class="grp mt">Nodo de lesión</div>
+      <ul class="toc">
+        <li><span class="pg">14</span><span class="body"><span class="t"><span class="step">01</span>Dipolo local<small>dipolos por zona</small></span></span></li>
+        <li><span class="pg">16</span><span class="body"><span class="t"><span class="step">02</span>Punto distante<small>nodo regulador</small></span></span></li>
+        <li><span class="pg">18</span><span class="body"><span class="t"><span class="step">03</span>Rejilla de gradiente<small>contractura</small></span></span></li>
+      </ul>
+      <div class="grp mt">Cerrar la sesión</div>
+      <ul class="toc">
+        <li><span class="pg">19</span><span class="body"><span class="t">Cierre e integración del set point</span></span></li>
+        <li><span class="pg">20</span><span class="body"><span class="t">Ficha de registro<small>mapa y EVA</small></span></span></li>
+      </ul>
+      <div class="grp mt">Apéndices</div>
+      <ul class="toc">
+        <li><span class="pg">22</span><span class="body"><span class="t">Glosario<small>términos de la técnica</small></span></span></li>
+        <li><span class="pg">23</span><span class="body"><span class="t">Referencias<small>fundamento científico</small></span></span></li>
+      </ul>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">03</div>
+    </section><section class="page pg-recto prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Antes de empezar</span></div>
+      <p class="eyebrow">Antes de empezar</p>
+      <h1>Cómo usar este manual</h1>
+      <div class="body">
+        <p>Este manual documenta el procedimiento de la Regulación Bioeléctrica para el <b>nodo de lesión</b>. Cada técnica se presenta con su medición, la colocación de los imanes y su criterio de tiempo. Antes de la primera técnica deben conocerse la <b>preparación</b> del paciente y la <b>medición de la simetría</b>, base de toda la técnica.</p>
+        <div class="sub">Los imanes</div>
+        <table class="spec">
+          <tbody>
+            <tr><th>Forma y tamaño</th><td>Cuadrados, rectangulares o circulares; el tamaño se elige según la zona a tratar y la complexión del paciente.</td></tr>
+            <tr><th>Intensidad en superficie</th><td><span class="data">0.1–0.5 T</span> (100–500 mT; ≈ 1 000–5 000 gauss).</td></tr>
+            <tr><th>Recubrimiento</th><td>Deben estar cubiertos y provistos de una lengüeta que permita separarlos.</td></tr>
+            <tr><th>Identificación</th><td>Reconocer la cara Norte (negativo) y la cara Sur (positivo) antes de aplicar cada imán.</td></tr>
+            <tr><th>Rejilla</th><td>Se emplean 4 imanes iguales con polaridades alternadas en tablero.</td></tr>
+          </tbody>
+        </table>
+        <div class="signal"><span class="w" style="color:var(--teal)">Nota</span><p>El Instituto Centrobioenergetica dispone de imanes reglamentarios.</p></div>
+        <div class="sub">Otros materiales</div>
+        <p><b>Camilla</b> sin superficie metálica —evita la interferencia con los imanes— y situada <b>a la altura de la cintura del operador</b>, para facilitar el rastreo. El <b>mapa corporal</b> y la <b>escala de dolor 0–10</b> se emplean en la toma del caso (véase la ficha clínica).</p>
+        <div class="sub">Convención de polos</div>
+        <p>El <b>polo negativo (Norte)</b> es el de rastreo e impactación sobre la zona de lesión; el <b>positivo (Sur)</b> es el complementario. En la aplicación general, la <b>cara negativa</b> contacta la piel; la única excepción es la técnica 1 (acidosis temporal), donde va la cara positiva.</p>
+        <div class="callout"><span class="w">Seguridad</span><p>Antes de aplicar imanes, descartar <b>marcapasos</b>, <b>embarazo</b>, <b>prótesis</b> y <b>uso de quimioterapia</b>. El cribado se registra en la ficha clínica.</p></div>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">04</div>
+    </section><section class="page pg-verso prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Antes de empezar</span></div>
+      <p class="eyebrow">Antes de empezar · Toma del caso (1/2)</p>
+      <h1>Ficha clínica · anamnesis</h1>
+      <div class="body">
+        <p class="intro">Registro clínico en formato SOAP (subjetivo · objetivo · valoración · plan). Se completa antes de iniciar el procedimiento del nodo de lesión.</p>
+        <div class="shead">S · Subjetivo</div>
+        <div class="frow">
+          <div class="fld" style="flex:2.6"><span class="l">Nombre</span><div class="line"></div></div>
+          <div class="fld"><span class="l">Edad</span><div class="line"></div></div>
+          <div class="fld"><span class="l">Sexo</span><div class="line"></div></div>
+          <div class="fld"><span class="l">Fecha</span><div class="line"></div></div>
+        </div>
+        <div class="frow"><div class="fld"><span class="l">Motivo de consulta</span><div class="ruled" style="height:20.7mm"></div></div></div>
+        <div class="frow"><div class="fld"><span class="l">Síntomas principales — en el lenguaje del paciente</span><div class="ruled" style="height:34mm"></div></div></div>
+        <div class="frow">
+          <div class="fld"><span class="l">Tratamientos actuales</span><div class="ruled" style="height:24mm"></div></div>
+          <div class="fld"><span class="l">Tratamientos previos</span><div class="ruled" style="height:24mm"></div></div>
+        </div>
+        <div class="frow"><div class="fld"><span class="l">Medicamentos o suplementos</span><div class="ruled" style="height:20.7mm"></div></div></div>
+        <div class="shead">Cribado de seguridad</div>
+        <div class="chkrow">
+          <span class="chk"><span class="b"></span> Marcapasos</span>
+          <span class="chk"><span class="b"></span> Embarazo</span>
+          <span class="chk"><span class="b"></span> Prótesis</span>
+          <span class="chk"><span class="b"></span> Quimioterapia</span>
+        </div>
+        <p class="legend" style="margin-top:1.4mm">Ante cualquier casilla marcada, valorar la contraindicación antes de aplicar imanes.</p>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">05</div>
+    </section><section class="page pg-recto prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Antes de empezar</span></div>
+      <p class="eyebrow">Antes de empezar · Toma del caso (2/2)</p>
+      <h1>Ficha clínica · exploración</h1>
+      <div class="body">
+        <div class="shead">O · Objetivo · mapa corporal</div>
+        <div class="silrow" style="height:82mm">
+          <div class="sil"><div class="t">Vista anterior</div><div class="s">Marcar las zonas y su hallazgo</div></div>
+          <div class="sil"><div class="t">Vista posterior</div><div class="s">Marcar las zonas y su hallazgo</div></div>
+        </div>
+        <div class="shead">Hallazgos por zona</div>
+        <table class="ftab">
+          <thead><tr><th class="cz">Zona / región</th><th>Hallazgo (tipo)</th><th class="ci">0–10</th></tr></thead>
+          <tbody>
+            <tr><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+        <p class="legend">Tipo de hallazgo: dolor · tensión · contractura · edema · ardor · otro. Regístrese en el lenguaje del paciente o en términos clínicos. Intensidad en escala 0–10 (EVA basal).</p>
+        <div class="frow" style="margin-top:2.4mm">
+          <div class="fld" style="flex:none;min-width:60mm"><span class="l">Simetría basal</span>
+            <div class="chkrow"><span class="chk"><span class="b"></span> Isométricas</span><span class="chk"><span class="b"></span> Acortamiento funcional · lado ___</span></div>
+          </div>
+        </div>
+        <div class="shead">A · Valoración &nbsp;·&nbsp; P · Plan</div>
+        <div class="frow">
+          <div class="fld"><span class="l">Valoración (nodos hallados)</span><div class="ruled" style="height:10.5mm"></div></div>
+          <div class="fld"><span class="l">Plan (técnicas / seguimiento)</span><div class="ruled" style="height:10.5mm"></div></div>
+        </div>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">06</div>
+    </section><section class="page pg-verso prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Antes de empezar</span></div>
+      <p class="eyebrow">Antes de empezar · Preparación</p>
+      <h1>Posición y preparación del paciente</h1>
+      <div class="body">
+        <p class="lead">La preparación reduce el tono de defensa muscular, una de las principales fuentes de variabilidad de la medición.</p>
+        <ol class="clin">
+          <li>Explicar brevemente al paciente <b>qué se le va a realizar</b>: una evaluación de la simetría y la colocación de imanes sobre distintos puntos, indolora y no invasiva. Facilita su colaboración y reduce la ansiedad.</li>
+          <li>Pedirle que <b>retire objetos y dispositivos metálicos</b> (joyas, reloj, cinturón, llaves), <b>afloje la ropa</b> y deje aparte los <b>dispositivos electrónicos</b> (móvil), que pueden interferir con los imanes y con la medición.</li>
+          <li>Acostar al paciente en <b>decúbito supino</b> sobre una camilla sin superficie metálica, con la <b>cabeza en posición neutra</b>.</li>
+          <li>Sujetar ambas extremidades inferiores y <b>traccionarlas suavemente</b> para relajar la articulación pélvica; movilizarlas con las manos <b>hacia los lados</b> para relajar el piso pélvico.</li>
+          <li>Cubrir al paciente con una <b>manta</b>: retira los mecanismos de defensa, relaja el cuerpo y permite una medición más precisa.</li>
+        </ol>
+        <div class="signal"><span class="w" style="color:var(--teal)">Fundamento</span><p>El tono de defensa muscular altera la longitud aparente de las extremidades; relajarlo estabiliza la medición basal.</p></div>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">07</div>
+    </section><section class="page pg-recto prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Antes de empezar</span></div>
+      <p class="eyebrow">Antes de empezar · Medición</p>
+      <h1>Medición de la simetría</h1>
+      <div class="body">
+        <ol class="clin">
+          <li>Situar al paciente de modo que <b>ambos pies queden por fuera del borde distal de la camilla</b>, con los talones libres. Preferiblemente con calzado, que facilita la lectura; también puede hacerse sin zapatos, aunque la apreciación es más difícil.</li>
+          <li>Pedir al paciente que se relaje y realice unas <b>respiraciones profundas</b> antes de medir, para regular el tono y estabilizar la medición.</li>
+          <li>Sujetar ambas extremidades por los tobillos y elevarlas unos <b>30°</b>, alineadas con el eje del cuerpo —solo levantar y medir.</li>
+          <li>Comparar la posición de los talones. La <b>extremidad izquierda es la referencia</b>; la derecha es la variable, que aparece acortada o alargada respecto a la izquierda.</li>
+        </ol>
+        <div class="sub">Interpretación</div>
+        <p>Si los talones quedan <b>isométricos</b>, no hay nodo basal activo: se pasa al rastreo por zonas. Si la derecha muestra <b>acortamiento funcional</b>, hay un nodo activo y se procede con la técnica 1 (acidosis temporal).</p>
+        <div class="signal"><span class="w" style="color:var(--teal)">Semiología del rastreo</span><p><b>Acortamiento</b>: signo de nodo activo. <b>Isometría</b> (talones a la misma altura): resolución.</p></div>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">08</div>
+    </section><section class="page pg-verso prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Antes de empezar</span></div>
+      <p class="eyebrow">Antes de empezar</p>
+      <h1>Algoritmo de la sesión</h1>
+      <p class="lead">El flujo de decisiones de una sesión, de la medición basal a la apertura del rastreo y al trabajo del nodo de lesión.</p>
+      <svg viewBox="0 0 680 720" font-family='Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif style="width:88%;height:auto;display:block;margin:3mm auto 0" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="arw" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M2,2 L9,6 L2,10" fill="none" stroke="#4A4643" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+  <rect x="150" y="8" width="380" height="80" rx="10" fill="#E4E4E4" stroke="#333333" stroke-width="1.5"/>
+  <foreignObject x="150" y="8" width="380" height="80"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 14px;box-sizing:border-box"><div style="font-weight:600;font-size:14.5px;color:#2C2C2A;line-height:1.15">Medición basal de la simetría</div><div style="font-size:12px;color:#4A4643;margin-top:2px;line-height:1.22">Izquierda: referencia fija · derecha: variable</div></div></foreignObject>
+  <line x1="340" y1="88" x2="340" y2="120" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <rect x="120" y="120" width="440" height="60" rx="30" fill="#fff" stroke="#333333" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <foreignObject x="120" y="120" width="440" height="60"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 14px;box-sizing:border-box"><div style="font-weight:700;font-size:14.5px;color:#242424;line-height:1.15">¿La derecha aparece acortada?</div></div></foreignObject>
+  <line x1="230" y1="180" x2="230" y2="210" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <line x1="450" y1="180" x2="450" y2="210" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <rect x="120" y="210" width="232" height="74" rx="7" fill="#EFEFEF" stroke="#B0AEA6" stroke-width="1"/><foreignObject x="120" y="210" width="232" height="74"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 10px;box-sizing:border-box;font-size:11.5px;line-height:1.22;color:#2C2C2A"><b style="color:#242424">No, isométricas</b><br>pasar directo al rastreo por zonas</div></foreignObject>
+  <rect x="360" y="210" width="200" height="74" rx="7" fill="#EFEFEF" stroke="#B0AEA6" stroke-width="1"/><foreignObject x="360" y="210" width="200" height="74"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 10px;box-sizing:border-box;font-size:11.5px;line-height:1.22;color:#2C2C2A"><b style="color:#242424">Sí, acortamiento funcional</b><br>hacer la apertura</div></foreignObject>
+  <line x1="60" y1="318" x2="620" y2="318" stroke="#E0E0E0" stroke-width="1.5"/>
+  <text x="340" y="311" text-anchor="middle" font-size="12" font-weight="700" letter-spacing="1.4" fill="#333333">APERTURA DEL RASTREO</text>
+  <rect x="150" y="332" width="380" height="80" rx="10" fill="#fff" stroke="#CCCCCC" stroke-width="1.5"/>
+  <foreignObject x="150" y="332" width="380" height="80"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 14px;box-sizing:border-box"><div style="font-weight:600;font-size:14.5px;color:#2C2C2A;line-height:1.15">Acidosis temporal</div><div style="font-size:12px;color:#4A4643;margin-top:2px;line-height:1.22">Polo positivo (Sur) sobre la zona renal + dipolo local</div></div></foreignObject>
+  <line x1="340" y1="412" x2="340" y2="442" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <rect x="120" y="442" width="440" height="60" rx="30" fill="#fff" stroke="#333333" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <foreignObject x="120" y="442" width="440" height="60"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 14px;box-sizing:border-box"><div style="font-weight:700;font-size:14.5px;color:#242424;line-height:1.15">Reevaluación de la simetría</div></div></foreignObject>
+  <line x1="230" y1="502" x2="230" y2="532" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <line x1="450" y1="502" x2="450" y2="532" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <rect x="120" y="532" width="232" height="66" rx="7" fill="#EFEFEF" stroke="#B0AEA6" stroke-width="1"/><foreignObject x="120" y="532" width="232" height="66"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 10px;box-sizing:border-box;font-size:11.5px;line-height:1.22;color:#2C2C2A"><b style="color:#242424">Isométricas</b><br>resuelto; continuar</div></foreignObject>
+  <rect x="360" y="532" width="200" height="66" rx="7" fill="#EFEFEF" stroke="#B0AEA6" stroke-width="1"/><foreignObject x="360" y="532" width="200" height="66"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 10px;box-sizing:border-box;font-size:11.5px;line-height:1.22;color:#2C2C2A"><b style="color:#242424">Reaparece</b><br>acidosis latente</div></foreignObject>
+  <line x1="340" y1="598" x2="340" y2="632" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)" stroke-dasharray="2 4"/>
+  <rect x="150" y="632" width="380" height="80" rx="10" fill="#fff" stroke="#CCCCCC" stroke-width="1.5"/>
+  <foreignObject x="150" y="632" width="380" height="80"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 14px;box-sizing:border-box"><div style="font-weight:600;font-size:14.5px;color:#2C2C2A;line-height:1.15">Acidosis latente</div><div style="font-size:12px;color:#4A4643;margin-top:2px;line-height:1.22">Dipolo a distancia: zona renal + área parietal contralateral</div></div></foreignObject>
+</svg>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">09</div>
+    </section><section class="page pg-recto prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Antes de empezar</span></div>
+      <p class="eyebrow">Antes de empezar</p>
+      <h1>Algoritmo de la sesión</h1>
+      <p class="lead">Continúa el flujo desde la apertura del rastreo: el trabajo del nodo de lesión, zona por zona, y el cierre de la sesión.</p>
+      <svg viewBox="0 0 680 748" font-family="'Avenir Next','Segoe UI',system-ui,sans-serif" style="width:86%;height:auto;display:block;margin:2mm auto 0" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="arw" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M2,2 L9,6 L2,10" fill="none" stroke="#4A4643" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+  <line x1="60" y1="18" x2="620" y2="18" stroke="#E0E0E0" stroke-width="1.5"/>
+  <text x="340" y="11" text-anchor="middle" font-size="12" font-weight="700" letter-spacing="1.4" fill="#333333">NODO DE LESIÓN · POR CADA ZONA, DE MAYOR A MENOR DOLOR</text>
+  <rect x="140" y="30" width="400" height="70" rx="10" fill="#fff" stroke="#CCCCCC" stroke-width="1.5"/>
+  <foreignObject x="140" y="30" width="400" height="70"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 14px;box-sizing:border-box"><div style="font-weight:600;font-size:14px;color:#2C2C2A;line-height:1.15">Colocar el negativo (Norte) sobre la zona más sintomática</div></div></foreignObject>
+  <line x1="340" y1="100" x2="340" y2="128" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <rect x="120" y="128" width="440" height="56" rx="28" fill="#fff" stroke="#333333" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <foreignObject x="120" y="128" width="440" height="56"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 14px;box-sizing:border-box"><div style="font-weight:700;font-size:14px;color:#242424;line-height:1.15">Al colocarlo, ¿la extremidad se acorta?</div></div></foreignObject>
+  <line x1="230" y1="184" x2="230" y2="212" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <line x1="450" y1="184" x2="450" y2="212" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <rect x="120" y="212" width="232" height="74" rx="7" fill="#EFEFEF" stroke="#B0AEA6" stroke-width="1"/><foreignObject x="120" y="212" width="232" height="74"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 9px;box-sizing:border-box;font-size:11px;line-height:1.2;color:#2C2C2A"><b style="color:#242424">No</b><br>mover el imán por la zona; si nunca acorta, pasar a otra zona</div></foreignObject>
+  <rect x="360" y="212" width="200" height="74" rx="7" fill="#EFEFEF" stroke="#B0AEA6" stroke-width="1"/><foreignObject x="360" y="212" width="200" height="74"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 9px;box-sizing:border-box;font-size:11px;line-height:1.2;color:#2C2C2A"><b style="color:#242424">Sí</b><br>colocar el positivo (Sur) adyacente</div></foreignObject>
+  <line x1="450" y1="286" x2="450" y2="308" stroke="#4A4643" stroke-width="1.2"/><line x1="450" y1="308" x2="340" y2="308" stroke="#4A4643" stroke-width="1.2"/><line x1="340" y1="308" x2="340" y2="322" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <rect x="120" y="322" width="440" height="56" rx="28" fill="#fff" stroke="#333333" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <foreignObject x="120" y="322" width="440" height="56"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 14px;box-sizing:border-box"><div style="font-weight:700;font-size:14px;color:#242424;line-height:1.15">Reevaluación de la simetría</div></div></foreignObject>
+  <line x1="230" y1="378" x2="230" y2="406" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <line x1="450" y1="378" x2="450" y2="406" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <rect x="120" y="406" width="232" height="66" rx="7" fill="#EFEFEF" stroke="#B0AEA6" stroke-width="1"/><foreignObject x="120" y="406" width="232" height="66"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 9px;box-sizing:border-box;font-size:11px;line-height:1.2;color:#2C2C2A"><b style="color:#242424">Isométricas</b><br>dipolo local; mantener</div></foreignObject>
+  <rect x="360" y="406" width="200" height="66" rx="7" fill="#EFEFEF" stroke="#B0AEA6" stroke-width="1"/><foreignObject x="360" y="406" width="200" height="66"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 9px;box-sizing:border-box;font-size:11px;line-height:1.2;color:#2C2C2A"><b style="color:#242424">Sin isometría</b><br>buscar un punto distante</div></foreignObject>
+  <line x1="230" y1="472" x2="230" y2="494" stroke="#4A4643" stroke-width="1.2"/><line x1="230" y1="494" x2="340" y2="494" stroke="#4A4643" stroke-width="1.2"/><line x1="340" y1="494" x2="340" y2="508" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <rect x="120" y="508" width="440" height="56" rx="28" fill="#fff" stroke="#333333" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <foreignObject x="120" y="508" width="440" height="56"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 14px;box-sizing:border-box"><div style="font-weight:700;font-size:14px;color:#242424;line-height:1.15">¿La zona tiene contractura?</div></div></foreignObject>
+  <line x1="230" y1="564" x2="230" y2="592" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <line x1="450" y1="564" x2="450" y2="592" stroke="#4A4643" stroke-width="1.4" marker-end="url(#arw)"/>
+  <rect x="120" y="592" width="232" height="58" rx="7" fill="#EFEFEF" stroke="#B0AEA6" stroke-width="1"/><foreignObject x="120" y="592" width="232" height="58"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 9px;box-sizing:border-box;font-size:11px;line-height:1.2;color:#2C2C2A"><b style="color:#242424">Sí</b><br>reforzar con rejilla de gradiente</div></foreignObject>
+  <rect x="360" y="592" width="200" height="58" rx="7" fill="#EFEFEF" stroke="#B0AEA6" stroke-width="1"/><foreignObject x="360" y="592" width="200" height="58"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 9px;box-sizing:border-box;font-size:11px;line-height:1.2;color:#2C2C2A"><b style="color:#242424">No</b><br>dejar el dipolo colocado</div></foreignObject>
+  <line x1="60" y1="678" x2="620" y2="678" stroke="#E0E0E0" stroke-width="1.5"/>
+  <text x="340" y="671" text-anchor="middle" font-size="12" font-weight="700" letter-spacing="1.4" fill="#333333">CIERRE DE LA SESIÓN</text>
+  <rect x="140" y="690" width="400" height="56" rx="10" fill="#E4E4E4" stroke="#333333" stroke-width="1.5"/>
+  <foreignObject x="140" y="690" width="400" height="56"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Avenir Next','Segoe UI',system-ui,'Helvetica Neue',sans-serif;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 14px;box-sizing:border-box"><div style="font-weight:600;font-size:14px;color:#2C2C2A;line-height:1.15">Cierre e integración</div><div style="font-size:12px;color:#4A4643;margin-top:2px;line-height:1.22">Registro del mapa e integración del nuevo set point</div></div></foreignObject>
+</svg>
+      
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">10</div>
+    </section><section class="page pg-verso prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Apertura</span></div>
+      <p class="eyebrow">Apertura del rastreo · común a toda sesión</p>
+      <h1>Acidosis temporal</h1>
+      <p class="lead">Indicación: acortamiento funcional en la medición basal. Es la única técnica que se inicia con el polo positivo; en las demás se coloca primero el negativo (rastreo).</p>
+      <div class="body">
+        <div class="fig" style="width:66mm;margin:1mm 0 3mm 8mm">
+          <div class="plate ph">
+            <div class="phbox">
+              <div class="pl">Polo positivo sobre el riñón</div>
+              <div class="ps">Ilustración a color (Sistema Visual · Parte C): el marcador de polos S · N superpuesto en SVG sobre el riñón.</div>
+            </div>
+          </div>
+          <p class="platecap"><b>Lámina 1.</b> Colocación del polo positivo sobre el riñón del lado del acortamiento.</p>
+        </div>
+        <div class="sub">Procedimiento</div>
+        <ol class="clin">
+          <li>El operador eleva ambas extremidades por los tobillos unos <b>30°</b>, alineadas con el eje del cuerpo, y compara la longitud de los talones. La <b>extremidad izquierda es siempre la referencia</b>; la <b>derecha es la que presenta el cambio</b>, apareciendo acortada o alargada respecto a la izquierda. Si los talones quedan isométricos, no hay nodo basal activo y se pasa al rastreo por zonas; si la derecha muestra <b>acortamiento funcional</b>, hay un nodo activo y se procede con esta técnica.</li>
+          <li style="clear:right">Se coloca el <b>polo positivo (Sur)</b> sobre el <b>riñón del lado del acortamiento</b>, con la <b>cara positiva en contacto con la piel</b> —homolateral en ≈80 % de los casos; si no responde, sobre el riñón contralateral.</li>
+          <li>Se <b>vuelve a medir</b>: cuando el nodo es el correcto, el acortamiento se resuelve y las extremidades quedan isométricas, lo que confirma el riñón como nodo.</li>
+        </ol>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">11</div>
+    </section><section class="page pg-recto prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Apertura</span></div>
+      <p class="eyebrow">Apertura del rastreo · común a toda sesión</p>
+      <h1>Acidosis temporal</h1>
+      <div class="body">
+        <div class="sub">Procedimiento (continuación)</div>
+        <ol class="clin" start="4" style="counter-reset:c 3">
+          <li>Confirmado el nodo, <b>sin retirar el positivo</b>, se coloca el <b>polo negativo (Norte)</b> en la misma zona renal, <b>adyacente</b> —a un lado, sin superponer los imanes—, formando un <b>dipolo local</b>. Se mantiene la configuración durante <span class="data">20 minutos o más</span>.</li>
+          <li><b>Criterio de retirada.</b> Se retira <b>únicamente el polo positivo</b> y se vuelve a medir. Si la extremidad persiste acortada, se recoloca y se prolonga, repitiendo la comprobación hasta que, al retirarlo, las extremidades queden isométricas. En ocasiones bastan 20 minutos.</li>
+        </ol>
+        <div class="callout"><span class="w">Discrepancia anatómica</span><p>Si con el imán la extremidad sigue acortada, se trata de una discrepancia anatómica propia del paciente: se coloca una <b>marca</b> en esa longitud, que pasa a ser la referencia basal para las mediciones siguientes —el acortamiento lesional se seguirá manifestando sobre esa base anatómica.</p></div>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">12</div>
+    </section><section class="page pg-verso prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Apertura</span></div>
+      <p class="eyebrow">Apertura del rastreo · común a toda sesión</p>
+      <h1>Acidosis latente</h1>
+      <p class="lead">Indicación: la extremidad <b>vuelve a acortarse</b> tras la corrección de la técnica 1. Señala una desregulación más sostenida, que se aborda con un dipolo a distancia entre la zona renal y el área parietal contralateral.</p>
+      <div class="body">
+        <div class="fig" style="width:64mm;margin:1mm 0 3mm 8mm">
+          <div class="plate ph">
+            <div class="phbox">
+              <div class="pl">Dipolo distante · renal ↔ parietal</div>
+              <div class="ps">Ilustración a color (Sistema Visual · Parte C): marcador de polos S (zona renal) · N (área parietal contralateral) superpuesto en SVG.</div>
+            </div>
+          </div>
+          <p class="platecap"><b>Lámina 2.</b> Zona renal del lado del acortamiento (polo positivo) y área parietal contralateral de la cabeza (polo negativo): el dipolo cruza el cuerpo.</p>
+        </div>
+        <div class="sub">Procedimiento</div>
+        <ol class="clin">
+          <li>Cuando la extremidad <b>vuelve a acortarse</b> tras la técnica 1, colocar el <b>polo positivo (Sur)</b> sobre la <b>zona renal</b>, habitualmente la <b>derecha</b> (el caso más frecuente).</li>
+          <li><b>Volver a medir.</b> Si las extremidades quedan <b>isométricas</b>, se confirma ese lado. Si <b>no</b>, retirar y colocar el positivo sobre la <b>zona renal contralateral</b> (izquierda).</li>
+          <li>Colocar el <b>polo negativo (Norte)</b> sobre la <b>piel del área parietal de la cabeza</b>, <b>contralateral a la zona renal utilizada</b>, formando un <b>dipolo distante</b> que atraviesa el cuerpo.</li>
+          <li>Mantener <span class="data">20 minutos</span>; o bien, una vez colocado el dipolo, continuar en paralelo con el <b>rastreo por zonas</b>.</li>
+        </ol>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">13</div>
+    </section><section class="page pg-recto prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Técnica 1</span></div>
+      <p class="eyebrow">Nodo de lesión · Técnica 1</p>
+      <h1>Dipolos por zona · dipolo local</h1>
+      <p class="lead">Indicación: registrado el mapa corporal, se trabaja cada <b>zona sintomática</b>, empezando por la de <b>mayor intensidad</b>. Cada zona se resuelve como un dipolo: <b>local</b>, o a distancia con un <b>nodo regulador</b>.</p>
+      <div class="body">
+        <div class="sub">Colocación sobre la zona más sintomática</div>
+        <ol class="clin">
+          <li>En el mapa, localizar la <b>zona más sintomática</b> —el hallazgo de mayor intensidad (dolor, tensión, contractura, edema o ardor), o la zona lesionada/traumatizada— y colocar allí un imán con el <b>polo negativo (Norte)</b>, cara negativa hacia la piel.</li>
+          <li><b>Comprobar el rastreo</b>: volver a medir la simetría. Si al colocar el imán la zona <b>acorta</b> la extremidad, dejar el imán fijo ahí: zona confirmada.</li>
+          <li>Si <b>no hay cambio</b>, ir <b>moviendo el imán por la zona</b> y volviendo a medir hasta encontrar el punto que acorta. Si en toda la zona no aparece acortamiento, <b>continuar con otra zona</b> del mapa.</li>
+        </ol>
+        <div class="sub">Cierre del dipolo local</div>
+        <ol class="clin" start="4" style="counter-reset:c 3">
+          <li>Sin mover el negativo, colocar el <b>polo positivo (Sur)</b> <b>a un lado del imán</b> —al lado opuesto, a la izquierda o arriba—, probando posiciones y volviendo a medir hasta que las extremidades queden <b>isométricas</b>. Así se cierra un <b>dipolo local</b>: se deja colocado. Es un <b>dipolo de gradiente</b>: los dos polos opuestos, adyacentes, crean un <b>gradiente de campo empinado</b> en el tejido entre ellos, y es ese gradiente —no la intensidad— el que actúa sobre la zona.</li>
+        </ol>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">14</div>
+    </section><section class="page pg-verso prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Técnica 1</span></div>
+      <p class="eyebrow">Nodo de lesión · Técnica 1</p>
+      <h1>Dipolos por zona · dipolo local</h1>
+      <div class="body">
+        <div class="signal"><span class="w" style="color:var(--teal)">Regla</span><p>Solo se coloca un dipolo donde el rastreo responde con <b>acortamiento</b>; una zona que no acorta no se trabaja.</p></div>
+        <p class="legend" style="margin-top:2.4mm">Si con el positivo adyacente no se consigue la isometría en ninguna posición, la zona necesita un <b>punto distante</b> → continúa en la técnica 2 (punto distante).</p>
+        <div class="sub">Lectura bioeléctrica</div>
+        <p>El polo negativo <b>interroga la isla de despolarización</b> —la zona de máximo dolor—. El dipolo local actúa por <b>gradiente</b> y por la normalización de los canales iónicos y la microcirculación (el gradiente empinado entre los dos polos opuestos, no la intensidad del imán, es lo que actúa sobre el tejido). El <b>punto distante</b>, en cambio, engancha el nodo autonómico regulador.</p>
+        <div class="fig" style="float:none;width:100%;margin:6mm 0 0">
+          <div class="plate ph">
+            <div class="phbox" style="aspect-ratio:auto;height:78mm">
+              <div class="pl">Zona más sintomática</div>
+              <div class="ps">Ilustración a color (Sistema Visual · Parte C): negativo sobre la zona, positivo adyacente, con el marcador de polos en SVG.</div>
+            </div>
+          </div>
+          <p class="platecap"><b>Lámina 3.</b> Colocación del negativo sobre la zona más sintomática y cierre del dipolo local con el positivo adyacente.</p>
+        </div>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">15</div>
+    </section><section class="page pg-recto prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Técnica 2</span></div>
+      <p class="eyebrow">Nodo de lesión · Técnica 2</p>
+      <h1>Dipolos por zona · punto distante</h1>
+      <p class="lead">Cuando el dipolo local no restablece la isometría, la zona confirmada necesita un <b>nodo regulador a distancia</b>: el negativo permanece sobre la zona y el positivo busca ese nodo en un orden fijo.</p>
+      <div class="body">
+        <div class="fig" style="width:44mm;margin:1mm 0 2mm 8mm">
+          <div class="plate ph">
+            <div class="phbox" style="aspect-ratio:1/1">
+              <div class="pl">Dipolo a distancia</div>
+              <div class="ps">Ilustración a color (Sistema Visual · Parte C): zona confirmada (negativo) y nodo regulador (positivo) con el marcador de polos en SVG.</div>
+            </div>
+          </div>
+          <p class="platecap"><b>Lámina 4.</b> El negativo sobre la zona y el positivo sobre el nodo regulador que restablece la isometría.</p>
+        </div>
+        <div class="sub">Búsqueda del nodo distante</div>
+        <ol class="clin">
+          <li>Sobre la <b>zona confirmada</b> —donde quedó el negativo (Norte) al no cerrar el dipolo local— dejar ese negativo fijo y retirar el positivo que se probó a un lado.</li>
+          <li>Guiándose por la tabla, colocar el <b>polo positivo (Sur)</b> sobre el <b>primer nodo del orden</b> (zona renal derecha) y <b>volver a medir</b>. Si las extremidades quedan <b>isométricas</b>, el dipolo a distancia está formado: el negativo sobre la zona y el positivo sobre ese nodo.</li>
+          <li>Si ese nodo no restablece la isometría, retirar el positivo y probar el <b>siguiente nodo del orden</b>, hasta encontrar el que lo consiga.</li>
+        </ol>
+        <table class="nodos">
+          <caption>Nodos distantes · ubicación en superficie (orden fijo de prueba)</caption>
+          <tbody>
+            <tr><th>1 · Zona renal</th><td>Región lumbar posterior, bajo las últimas costillas, a cada lado de la columna. Primero la <b>derecha</b>, luego la <b>izquierda</b>.</td></tr>
+            <tr><th>2 · Suprarrenal</th><td>Justo por encima de la zona renal, sobre su polo superior. Primero la <b>derecha</b>, luego la <b>izquierda</b>.</td></tr>
+            <tr><th>3 · Hígado</th><td>Hipocondrio derecho; sobre la piel, rastreando toda la <b>zona hepática</b>.</td></tr>
+            <tr><th>4 · Bulbo raquídeo</th><td>Nuca, en el <b>hueco por debajo del occipucio</b>.</td></tr>
+            <tr><th>5 · Cuerpo entero</th><td>Si ninguno restablece la isometría, <b>rastrear el resto del cuerpo</b>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">16</div>
+    </section><section class="page pg-verso prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Técnica 2</span></div>
+      <p class="eyebrow">Nodo de lesión · Técnica 2</p>
+      <h1>Dipolos por zona · punto distante</h1>
+      <div class="body">
+        <div class="sub">Tiempo, criterio de retirada y cierre</div>
+        <p>Mantener la configuración el tiempo que marque el rastreo, hasta que la zona deje de acortar. Criterio por retirada: retirar el positivo y comprobar; si vuelve a acortar, recolocarlo y prolongar.</p>
+        <p>Repetir el procedimiento por zonas con cada zona del mapa que marque acortamiento, de mayor a menor dolor.</p>
+        <p class="legend" style="margin-top:2.4mm">Al cerrar la sesión, la mayoría de las zonas quedan resueltas como un dipolo local; solo alguna se resuelve a distancia, habitualmente en la zona renal.</p>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">17</div>
+    </section><section class="page pg-recto prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Técnica 3</span></div>
+      <p class="eyebrow">Nodo de lesión · Técnica 3</p>
+      <h1>Rejilla de gradiente</h1>
+      <p class="lead">Indicación: <b>dolor con contractura</b>. Es un refuerzo local sobre un punto ya confirmado (dipolo local o a distancia): en lugar de un solo dipolo, se monta una <b>rejilla</b> de cuatro imanes con polaridades alternadas para intensificar el gradiente.</p>
+      <div class="body">
+        <div class="fig">
+          <div class="plate">
+            <svg viewBox="0 0 150 80" style="width:82%;height:auto;display:block;margin:0 auto" aria-label="Rejilla 2×2 cuadrada y circular"><rect x="8" y="6" width="24" height="24" rx="2" fill="#54524C"/><rect x="34" y="6" width="24" height="24" rx="2" fill="#C0C0C0"/><rect x="8" y="32" width="24" height="24" rx="2" fill="#C0C0C0"/><rect x="34" y="32" width="24" height="24" rx="2" fill="#54524C"/><circle cx="104" cy="18" r="12" fill="#54524C"/><circle cx="130" cy="18" r="12" fill="#C0C0C0"/><circle cx="104" cy="44" r="12" fill="#C0C0C0"/><circle cx="130" cy="44" r="12" fill="#54524C"/><text x="20" y="18" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">N</text><text x="46" y="18" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#2C2C2A">S</text><text x="20" y="44" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#2C2C2A">S</text><text x="46" y="44" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">N</text><text x="104" y="18" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">N</text><text x="130" y="18" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#2C2C2A">S</text><text x="104" y="44" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#2C2C2A">S</text><text x="130" y="44" text-anchor="middle" dominant-baseline="central" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">N</text><text x="33" y="72" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="7" letter-spacing="0.4" fill="#888888">cuadrados</text><text x="117" y="72" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="7" letter-spacing="0.4" fill="#888888">circulares</text></svg>
+          </div>
+          <p class="platecap"><b>Lámina 5.</b> Rejilla 2×2 en tablero (N–S / S–N), con imanes <b>cuadrados o circulares</b>; en cada frontera entre imanes se crea un gradiente.</p>
+        </div>
+        <div class="sub">Punto de partida</div>
+        <ol class="clin">
+          <li>Trabajar sobre un <b>punto ya confirmado</b> en la técnica 1 del nodo (dipolos por zona), donde quedó el <b>polo negativo (Norte)</b> sobre la zona. Sobre ese punto, colocar el <b>positivo (Sur)</b> a un lado para dejar fijado el dipolo local, que será el centro de la rejilla.</li>
+        </ol>
+        <div class="sub">Montaje de la rejilla 2×2</div>
+        <ol class="clin" start="2" style="counter-reset:c 1">
+          <li style="clear:right">Alrededor de ese dipolo, <b>sin moverlo</b>, disponer <b>cuatro imanes iguales</b> formando una cuadrícula de <b>2×2</b> (dos filas y dos columnas), ceñida al punto confirmado.</li>
+          <li>Orientar las polaridades en <b>tablero de ajedrez</b>, de modo que cada imán quede con la <b>polaridad opuesta</b> a sus vecinos de lado y de arriba/abajo —los dos imanes de cada diagonal comparten el mismo polo—. Así, en cada frontera entre imanes contiguos se enfrentan polos opuestos y se forma un <b>gradiente empinado</b>.</li>
+        </ol>
+        <div class="sub">Tiempo y criterio de retirada</div>
+        <ol class="clin" start="4" style="counter-reset:c 3">
+          <li>Mantener la rejilla <b>el tiempo que marque el rastreo</b> (base <span class="data">20 min</span>). Criterio por retirada: retirar y comprobar la simetría; si la zona vuelve a acortar, recolocar la rejilla y prolongar.</li>
+        </ol>
+        <div class="callout"><span class="w">Variante combinada</span><p>Si el punto forma además un <b>dipolo con la zona renal</b> a distancia, puede montarse la rejilla sobre el negativo <b>manteniendo ese dipolo distante</b>: se combinan el gradiente local (rejilla) y la recalibración a distancia (nodo renal) en una sola configuración.</p></div>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">18</div>
+    </section><section class="page pg-verso prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Cerrar la sesión</span></div>
+      <p class="eyebrow">Cerrar la sesión</p>
+      <h1>Cierre e integración</h1>
+      <p class="lead">Concluido el tratamiento por zonas, la sesión se cierra registrando los <b>hallazgos</b>, acompañando la reincorporación del paciente y consolidando el nuevo estado mediante las preguntas de integración.</p>
+      <div class="body">
+        <div class="sub">Procedimiento de cierre</div>
+        <ol class="clin">
+          <li>Registrar en el <b>mapa corporal</b>, con un punto, cada zona que surgió durante el rastreo. Este registro documenta la sesión y sirve de referencia para valorar la evolución.</li>
+          <li>Asistir al paciente en la <b>reincorporación</b> y valorar su estado. La respuesta habitual es de relajación, calma, disminución del dolor y mayor movilidad.</li>
+          <li>Formular las <b>preguntas de integración</b> (véase abajo). Al hacer consciente el cambio se facilita la adopción de un nuevo <b>set point</b>.</li>
+          <li>La sesión termina en el <b>tiempo fijado por el operador</b>; el tratamiento puede <b>continuarse en sesiones posteriores</b>, repitiendo la secuencia hasta que el rastreo <b>no marque acortamiento</b>.</li>
+        </ol>
+        <div class="signal"><span class="w" style="color:var(--teal)">Preguntas de integración</span><p>¿Qué diferencias percibes? · ¿Cómo te encuentras? · ¿Qué ha cambiado?</p></div>
+        <div class="sub">Frecuencia entre sesiones</div>
+        <p>Se ajusta a la <b>evolución clínica</b> del paciente; no hay un intervalo fijo. Se espacian las sesiones a medida que el rastreo deja de marcar. Este procedimiento <b>no sustituye</b> el diagnóstico ni el tratamiento médico.</p>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">19</div>
+    </section><section class="page pg-recto prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Cerrar la sesión</span></div>
+      <p class="eyebrow">Cerrar la sesión</p>
+      <h1>Ficha de registro · mapa de zonas</h1>
+      <p class="intro">Registro de la sesión y seguimiento entre sesiones: qué se halló, qué se trató y cómo evoluciona cada zona en la reevaluación.</p>
+      <div class="body">
+        <div class="frow">
+          <div class="fld"><span class="l">N.º de sesión</span><div class="line"></div></div>
+          <div class="fld"><span class="l">Fecha</span><div class="line"></div></div>
+          <div class="fld" style="flex:2"><span class="l">Operador</span><div class="line"></div></div>
+        </div>
+        <div class="shead">Mapa de zonas · tratadas y pendientes</div>
+        <div class="silrow" style="height:92mm">
+          <div class="sil"><div class="t">Vista anterior</div></div>
+          <div class="sil"><div class="t">Vista posterior</div></div>
+        </div>
+        <p class="legend">Marcar sobre la silueta: <b>●</b> zona tratada · <b>○</b> zona pendiente · <b>⊘</b> reaparece en la reevaluación. Sirve de referencia para la siguiente sesión.</p>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">20</div>
+    </section><section class="page pg-verso prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Cerrar la sesión</span></div>
+      <p class="eyebrow">Cerrar la sesión</p>
+      <h1>Ficha de registro · hallazgos y plan</h1>
+      <p class="intro">Continúa la ficha: hallazgos por zona, su seguimiento en la reevaluación y el plan de la próxima sesión.</p>
+      <div class="body">
+        <div class="shead">Hallazgos y seguimiento</div>
+        <table class="ftab">
+          <thead><tr><th style="width:26%">Zona / región</th><th>Hallazgo (tipo)</th><th style="width:9%;text-align:center">0–10</th><th style="width:13%;text-align:center">Tratada</th><th style="width:17%;text-align:center">Reevaluación</th></tr></thead>
+          <tbody>
+            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+        <p class="legend">Tipo: dolor · tensión · contractura · edema · ardor · otro. En «Reevaluación» anotar si la zona <b>vuelve a marcar acortamiento</b> (y su 0–10) o queda resuelta.</p>
+        <div class="shead">Puntos pendientes y plan de la próxima sesión</div>
+        <div class="ruled" style="height:52.5mm"></div>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">21</div>
+    </section><section class="page pg-recto prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Glosario</span></div>
+      <p class="eyebrow">Glosario</p>
+      <h1>Términos de la técnica</h1>
+      <div class="body">
+        <div class="glist">
+          <div class="gitem"><b>Nodo de lesión.</b> Zona traumatizada que se comporta como una isla de despolarización, desconectada del patrón bioeléctrico del tejido.</div>
+          <div class="gitem"><b>Isla de despolarización.</b> Región con el Vmem alterado, aislada del colectivo por el cierre de las uniones comunicantes (gap junctions).</div>
+          <div class="gitem"><b>Vmem (potencial de membrana).</b> Diferencia de potencial a través de la membrana celular; variable primaria del estado del tejido.</div>
+          <div class="gitem"><b>Rastreo.</b> Exploración de la simetría de las extremidades para localizar nodos activos.</div>
+          <div class="gitem"><b>Acortamiento funcional.</b> Menor longitud aparente de la extremidad derecha respecto a la izquierda (referencia); signo de nodo activo.</div>
+          <div class="gitem"><b>Isometría.</b> Igualdad de longitud de ambas extremidades; signo de resolución.</div>
+          <div class="gitem"><b>Dipolo.</b> Par de polos magnéticos opuestos sobre el tejido; local (sobre la zona) o a distancia (con un nodo regulador).</div>
+          <div class="gitem"><b>Nodo regulador.</b> Punto cuyo eje autonómico regula la variable dominante de la lesión: zona renal, suprarrenal, hígado, bulbo.</div>
+          <div class="gitem"><b>Microambiente tisular.</b> Entorno iónico y bioquímico local que determina el Vmem.</div>
+          <div class="gitem"><b>Set point.</b> Punto de equilibrio funcional que el sistema adopta y sostiene tras la regulación.</div>
+          <div class="gitem"><b>Gradiente.</b> Variación espacial del campo entre polos; la rejilla lo intensifica en cada frontera.</div>
+          <div class="gitem"><b>Repolarización.</b> Retorno del Vmem hacia el reposo; reconexión de la isla con el colectivo.</div>
+        </div>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">22</div>
+    </section><section class="page pg-verso prem">
+      <div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El nodo de lesión · Referencias</span></div>
+      <p class="eyebrow">Referencias</p>
+      <h1>Fundamento científico</h1>
+      <p class="lead">Selección de la evidencia fisiológica y biofísica que fundamenta el modelo. Referencias verificadas (indexadas en PubMed).</p>
+      <div class="body">
+        <ol class="refs">
+          <li>Nilsson P, et al. Regional changes in interstitial K⁺ and Ca²⁺ following cortical contusion trauma. <i>J Cereb Blood Flow Metab.</i> 1993;13(2):183-92.</li>
+          <li>Katayama Y, et al. Massive increases in extracellular potassium after concussive brain injury. <i>J Neurosurg.</i> 1990;73(6):889-900.</li>
+          <li>Peracchia C. Calmodulin-mediated regulation of gap junction channels. <i>Int J Mol Sci.</i> 2020;21(2):485.</li>
+          <li>McLean MJ, et al. Blockade of sensory neuron action potentials by a static magnetic field in the 10 mT range. <i>Bioelectromagnetics.</i> 1995;16(1):20-32.</li>
+          <li>Cavopol AV, et al. Static magnetic fields that block action potentials in cultured neurons. <i>Bioelectromagnetics.</i> 1995;16(3):197-206.</li>
+          <li>Morris C, Skalak T. Static magnetic fields alter arteriolar tone in vivo. <i>Bioelectromagnetics.</i> 2005;26(1):1-9.</li>
+          <li>Rosen AD. Mechanism of action of moderate-intensity static magnetic fields on biological systems. <i>Cell Biochem Biophys.</i> 2003;39(2):163-173.</li>
+          <li>Fan Y, et al. The analgesic effects of static magnetic fields. <i>Bioelectromagnetics.</i> 2021;42(2):115-127.</li>
+          <li>Rosas-Ballina M, et al. Acetylcholine-synthesizing T cells relay neural signals in a vagus nerve circuit. <i>Science.</i> 2011;334(6052):98-101.</li>
+          <li>Palmer BF. Regulation of potassium homeostasis. <i>Clin J Am Soc Nephrol.</i> 2014;10(6):1050-1060.</li>
+          <li>Milano S, et al. β3-adrenoceptor in the sympathetic regulation of renal acid-base homeostasis. <i>Front Physiol.</i> 2024;15:1304375.</li>
+          <li>Levin M. Bioelectric signaling: reprogrammable circuits underlying embryogenesis, regeneration and cancer. <i>Cell.</i> 2021;184(8):1971-1989.</li>
+        </ol>
+      </div>
+      <div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">23</div>
+    </section><section class="page pg-recto cover" style="align-items:center;text-align:center">
+      <div style="flex:382 0 0"></div>
+      <div>
+        <svg viewBox="0 0 58 24" style="height:7mm;width:auto;margin-bottom:8mm"><circle cx="8" cy="12" r="6" fill="#333333"/><line x1="16" y1="12" x2="28" y2="12" stroke="#333333" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#333333" opacity="0.35"/></svg>
+        <h1 style="font-size:24px;max-width:none">El nodo de lesión</h1>
+        <p class="sub" style="max-width:44ch;margin:0 auto 8mm">Manual operativo de la técnica · Regulación Bioeléctrica</p>
+        <p style="font-size:12px;color:var(--soft);margin:0 0 2mm">Dr. Miguel Ojeda Rios · Programa El Cuerpo Eléctrico · Edición 2026</p>
+        <p style="font-size:10px;font-style:italic;color:var(--faint);max-width:56ch;margin:8mm auto 0">Alcance. Documenta un procedimiento de la Regulación Bioeléctrica. No sustituye el diagnóstico ni el tratamiento médico.</p>
+        <div style="margin-top:10mm">
+          <div style="font:500 8px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:5mm">Editado por</div>
+          <svg viewBox="0 0 260 210" style="width:30mm;height:auto;margin:0 auto;display:block"><g transform="translate(130,75)"><circle cx="0" cy="-50" r="8" fill="#6E6E6E"/><circle cx="25" cy="-43.3" r="8" fill="#9A9A9A"/><circle cx="43.3" cy="-25" r="8" fill="#6E6E6E"/><circle cx="50" cy="0" r="8" fill="#9A9A9A"/><circle cx="43.3" cy="25" r="8" fill="#6E6E6E"/><circle cx="25" cy="43.3" r="8" fill="#9A9A9A"/><circle cx="0" cy="50" r="8" fill="#6E6E6E"/><circle cx="-25" cy="43.3" r="8" fill="#9A9A9A"/><circle cx="-43.3" cy="25" r="8" fill="#6E6E6E"/><circle cx="-50" cy="0" r="8" fill="#9A9A9A"/><circle cx="-43.3" cy="-25" r="8" fill="#6E6E6E"/><circle cx="-25" cy="-43.3" r="8" fill="#9A9A9A"/><circle cx="0" cy="0" r="5" fill="#B5B5B5" opacity="0.5"/><circle cx="0" cy="0" r="3" fill="#B5B5B5"/></g><text x="130" y="155" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" font-weight="500" letter-spacing="3.5" fill="#888888">INSTITUTO</text><text x="130" y="172" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="500" letter-spacing="1.5" fill="#6E6E6E">CENTROBIOENERGETICA</text></svg>
+        </div>
+      </div>
+      <div style="flex:618 0 0"></div>
+      <div class="endfoot" style="bottom:14mm">contacto@institutocentrobioenergetica.com · © 2026</div>
+    </section>
+</body></html>
