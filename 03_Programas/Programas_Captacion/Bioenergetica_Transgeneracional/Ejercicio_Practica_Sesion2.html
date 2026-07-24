@@ -1,0 +1,308 @@
+<style>
+  :root {
+    --ink:        #141414;
+    --ink-soft:   #333333;
+    --muted:      #5E5E5E;
+    --faint:      #8A8A8A;
+    --rule:       #C9C9C9;
+    --rule-soft:  #E0E0E0;
+    --box:        #F0F0F0;
+    --box-line:   #BDBDBD;
+    --paper:      #FFFFFF;
+    --write:      #999999;
+    --terra:      #9E4028;
+    --sage:       #5A6E48;
+    --gold:       #B5822C;
+    --serif: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, 'Times New Roman', serif;
+    --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', 'Courier New', monospace;
+    --u: 0.07in;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #DADADA; }
+  body {
+    font-family: var(--sans); color: var(--ink);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 2.5rem 1rem; gap: 2rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    position: relative;
+    width: 11in; height: 8.5in;
+    background: var(--paper);
+    box-shadow: 0 1.4rem 3rem rgba(0,0,0,.28);
+    padding: 0.5in 0.55in 0.42in;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+
+  .mast {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: calc(var(--u) * 3);
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: calc(var(--u) * 1.3);
+    margin-bottom: calc(var(--u) * 1.8);
+    flex-shrink: 0;
+  }
+  .mast .eyebrow {
+    font-size: 8.5px; font-weight: 700; letter-spacing: 2.2px;
+    text-transform: uppercase; color: var(--terra);
+    margin-bottom: calc(var(--u) * 0.7);
+  }
+  .mast h1 {
+    font-family: var(--serif); font-size: 21px; line-height: 1.08;
+    font-weight: 600; letter-spacing: -.2px; color: var(--ink);
+    text-wrap: balance; max-width: 8in;
+  }
+  .mast .rightmark { display: flex; align-items: center; gap: calc(var(--u) * 1.6); padding-bottom: 2px; }
+  .mast .isotipo { width: 30px; height: 30px; }
+  .mast .rmtext { text-align: right; }
+  .mast .rmtext .inst { font-size: 8.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .mast .rmtext .pg { font-family: var(--mono); font-size: 8.5px; color: var(--faint); letter-spacing: 1px; margin-top: 2px; }
+
+  .content { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+  .lede { font-family: var(--serif); font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
+  p { font-size: 11px; line-height: 1.5; color: var(--ink-soft); }
+  b, strong { color: var(--ink); font-weight: 600; }
+
+  .foot {
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--rule); padding-top: calc(var(--u) * 1.1);
+    margin-top: calc(var(--u) * 1.4); flex-shrink: 0;
+    font-size: 8.5px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--faint);
+  }
+  .foot .fno { font-family: var(--mono); }
+
+  .campos { display: flex; gap: calc(var(--u)*5); margin-bottom: calc(var(--u)*2); }
+  .campo { flex: 1; }
+  .campo .cl { font-size: 8.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .campo .cf { border-bottom: 1px solid var(--rule); height: 0; margin-top: calc(var(--u)*2.6); }
+
+  /* ---- pasos del ejercicio ---- */
+  .pasos { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--u)*1.3); }
+  .paso { border: 1px solid var(--rule); border-radius: 3px; padding: calc(var(--u)*1.4); display: flex; flex-direction: column; gap: 4px; }
+  .paso .pn { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--terra); }
+  .paso h4 { font-family: var(--serif); font-size: 12px; font-weight: 600; line-height: 1.1; color: var(--ink); }
+  .paso p { font-size: 10px; line-height: 1.36; }
+  .paso .frase { font-size: 9.5px; font-style: italic; color: var(--muted); border-top: 1px solid var(--rule-soft); padding-top: 5px; margin-top: auto; line-height: 1.32; }
+
+  /* ---- registro ---- */
+  .caja { border: 1.2px solid var(--box-line); border-radius: 3px; padding: calc(var(--u)*1.6) calc(var(--u)*2); display: flex; flex-direction: column; gap: calc(var(--u)*1.3); }
+  .caja .cjl { font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .caja .pista { font-size: 10px; font-style: italic; color: var(--write); line-height: 1.42; }
+  .renglones { display: flex; flex-direction: column; gap: calc(var(--u)*2.6); flex: 1; justify-content: space-around; padding-top: calc(var(--u)*1.2); }
+  .renglones .r { border-bottom: 1px solid var(--rule); height: 0; }
+
+  .rosacaja { border: 1.2px solid var(--box-line); border-radius: 3px; padding: calc(var(--u)*1.4); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .rosacaja .rl { font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 700; align-self: flex-start; }
+  .rosacaja svg { flex: 1; width: 100%; }
+  .rosacaja .rp { font-size: 9.5px; font-style: italic; color: var(--write); line-height: 1.38; text-align: center; }
+
+  .cualidades { display: grid; grid-template-columns: repeat(5, 1fr); gap: calc(var(--u)*1.6); }
+  .cual { display: flex; flex-direction: column; gap: 4px; }
+  .cual .cn { font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); font-weight: 700; text-align: center; }
+  .cual .cb { border: 1px solid var(--rule); border-radius: 3px; height: 0.32in; }
+
+  /* ---- preguntas por dirección ---- */
+  .preguntas { display: flex; flex-direction: column; gap: calc(var(--u)*2); flex: 1; }
+  .pregunta { display: grid; grid-template-columns: 1.35in 1fr; gap: calc(var(--u)*2.4); align-items: start; padding-bottom: calc(var(--u)*1.6); border-bottom: 1px solid var(--rule-soft); }
+  .pregunta .pdir { display: flex; align-items: baseline; gap: 7px; }
+  .pregunta .pdot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; transform: translateY(-1px); }
+  .pregunta .pnom { font-family: var(--serif); font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1; }
+  .pregunta .pcard { font-family: var(--mono); font-size: 8.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 700; display: block; margin-top: 3px; }
+  .pregunta .ptexto { font-family: var(--serif); font-size: 12px; font-style: italic; color: var(--ink); line-height: 1.35; }
+  .pregunta .prenglones { display: flex; flex-direction: column; gap: calc(var(--u)*2.4); margin-top: calc(var(--u)*2); }
+  .pregunta .prenglones .r { border-bottom: 1px solid var(--rule); height: 0; }
+
+  /* ---- rejilla de registro ---- */
+  .rejilla { display: flex; flex-direction: column; border: 1.2px solid var(--box-line); border-radius: 3px; overflow: hidden; flex: 1; }
+  .rejilla .rhd { display: grid; grid-template-columns: 1fr 1.25fr; background: var(--box); border-bottom: 1.2px solid var(--box-line); }
+  .rejilla .rhd > div { padding: calc(var(--u)*1.3) calc(var(--u)*1.6); font-size: 9.5px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .rejilla .rhd > div + div { border-left: 1px solid var(--box-line); }
+  .rejilla .rcuerpo { display: flex; flex-direction: column; flex: 1; }
+  .rejilla .rfila { display: grid; grid-template-columns: 1fr 1.25fr; flex: 1; border-bottom: 1px solid var(--rule-soft); }
+  .rejilla .rfila:last-child { border-bottom: 0; }
+  .rejilla .rfila > div + div { border-left: 1px solid var(--rule-soft); }
+
+  .nota { border-left: 3px solid var(--terra); background: var(--box); padding: calc(var(--u)*1.4) calc(var(--u)*2); border-radius: 0 3px 3px 0; }
+  .nota .nl { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--terra); font-weight: 700; margin-bottom: 5px; }
+  .nota p { font-size: 11px; line-height: 1.46; }
+
+  @media print {
+    @page { size: letter landscape; margin: 0; }
+    html, body { background: #fff; }
+    body { padding: 0; gap: 0; }
+    .page { box-shadow: none; page-break-after: always; width: 100%; height: 100vh; }
+    .page:last-child { page-break-after: avoid; }
+  }
+</style>
+
+<!-- ========== HOJA 1 · EL EJERCICIO ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Ejercicio · Sesión 2 · Hoja 1 de 2</div>
+      <h1>Hacia dónde cae tu línea paterna</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">La línea paterna · S2</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="campos">
+      <div class="campo"><div class="cl">Nombre</div><div class="cf"></div></div>
+      <div class="campo"><div class="cl">Fecha</div><div class="cf"></div></div>
+    </div>
+    <p class="lede" style="margin-bottom:calc(var(--u)*1.8);">El acceso es somático, sin test muscular. El ejercicio no se comparte en voz alta: lo que registres aquí es tuyo.</p>
+    <div class="pasos" style="margin-bottom:calc(var(--u)*1.8);">
+      <div class="paso"><span class="pn">1</span><h4>Nombrar</h4><p>Ambas manos sobre las piernas, sintiendo su peso.</p><div class="frase">"Traigo una línea de hombres en el cuerpo. Algo de lo que soy no empezó conmigo."</div></div>
+      <div class="paso"><span class="pn">2</span><h4>Regular</h4><p>Respiración 4-4-6, tres veces.</p><div class="frase">"Mi cuerpo está aquí, en esta silla, ahora."</div></div>
+      <div class="paso"><span class="pn">3</span><h4>Recursos</h4><p>Pies en el piso, el peso del cuerpo sobre la silla.</p><div class="frase">"Tengo un cuerpo que puede mirar esta línea sin quebrarse."</div></div>
+      <div class="paso"><span class="pn">4</span><h4>Ampliar</h4><p>Sin buscar imagen ni recuerdo: solo sentir la pregunta.</p><div class="frase">"Los hombres de mi línea, ¿hacia dónde caminaron? ¿Y yo, hacia el mismo lado o hacia el opuesto?"</div></div>
+      <div class="paso"><span class="pn">5</span><h4>Dónde aparece</h4><p>Localizar dónde se hizo presente algo, sin corregirlo.</p><div class="frase">"Llevo la atención ahí y la dejo."</div></div>
+      <div class="paso"><span class="pn">6</span><h4>La cualidad</h4><p>Forma, peso, temperatura, movimiento, color.</p><div class="frase">"No hay respuesta correcta. Dejo que el cuerpo conteste."</div></div>
+      <div class="paso"><span class="pn">7</span><h4>El gesto y la pausa</h4><p>Una mano se extiende en la dirección que sientes; la otra al pecho. Y no hacer nada.</p><div class="frase">"Esta es la dirección que siento, y esto es lo que mi cuerpo trae de la línea."</div></div>
+      <div class="paso"><span class="pn">8</span><h4>Diferenciar</h4><p>Las manos giran, palmas hacia arriba: el gesto de recibir.</p><div class="frase">"Esto lo traigo. No todo lo que traigo es mío. Hoy solo lo miro."</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:2.35in 1fr;gap:calc(var(--u)*3);flex:1;min-height:0;">
+      <div class="rosacaja">
+        <span class="rl">La dirección que sentí</span>
+        <svg viewBox="0 0 190 160" fill="none">
+          <rect x="14" y="16" width="162" height="128" rx="3" stroke="#C9C9C9" stroke-width="1.2"/>
+          <g stroke="#E0E0E0" stroke-width="1"><line x1="95" y1="22" x2="95" y2="138"/><line x1="20" y1="80" x2="170" y2="80"/></g>
+          <circle cx="95" cy="80" r="3" fill="#BDBDBD"/>
+          <g font-family="ui-sans-serif, Helvetica, Arial, sans-serif" font-size="8" font-weight="700" letter-spacing=".9" fill="#5E5E5E" text-anchor="middle">
+            <text x="95" y="31">DEBER · OESTE</text><text x="95" y="134">PLACER · ESTE</text>
+          </g>
+          <text x="47" y="77" font-family="ui-sans-serif, Helvetica, Arial, sans-serif" font-size="8" font-weight="700" letter-spacing=".9" fill="#5E5E5E" text-anchor="middle">SUFRIM. · SUR</text>
+          <text x="143" y="77" font-family="ui-sans-serif, Helvetica, Arial, sans-serif" font-size="8" font-weight="700" letter-spacing=".9" fill="#5E5E5E" text-anchor="middle">MIGRANTE · NORTE</text>
+        </svg>
+        <div class="rp">Traza una flecha desde el centro hacia la dirección que sentiste.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2);min-height:0;">
+        <div class="caja" style="flex:0 0 auto;">
+          <span class="cjl">Dónde se hizo presente en el cuerpo</span>
+          <div class="pista">Pecho, garganta, vientre, espalda, hombros. Anota el lugar y qué notaste ahí.</div>
+          <div class="renglones" style="flex:0;"><div class="r"></div><div class="r"></div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:calc(var(--u)*1.2);">
+          <span class="cjl" style="font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;">La cualidad — una palabra en cada casilla, la que el cuerpo conteste</span>
+          <div class="cualidades">
+            <div class="cual"><span class="cn">Forma</span><div class="cb"></div></div>
+            <div class="cual"><span class="cn">Peso</span><div class="cb"></div></div>
+            <div class="cual"><span class="cn">Temperatura</span><div class="cb"></div></div>
+            <div class="cual"><span class="cn">Movimiento</span><div class="cb"></div></div>
+            <div class="cual"><span class="cn">Color</span><div class="cb"></div></div>
+          </div>
+        </div>
+        <div class="caja" style="flex:1;">
+          <span class="cjl">Si algo se movió al ponerle nombre</span>
+          <div class="pista">La respiración se hace más honda, algo se afloja. Solo se registra. Si nada se movió, también es información.</div>
+          <div class="renglones" style="flex:1;"><div class="r"></div><div class="r"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Ejercicio de práctica · Sesión 2 · Instituto Centrobioenergetica</span><span class="fno">1 / 2</span></div>
+</div>
+
+<!-- ========== HOJA 2 · LAS PREGUNTAS ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Ejercicio · Sesión 2 · Hoja 2 de 2</div>
+      <h1>Las preguntas de la lectura</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">La línea paterna · S2</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <p class="lede" style="margin-bottom:calc(var(--u)*1.8);">Cada dirección abre una pregunta distinta. Se responde con la historia de la línea: fechas, oficios, migraciones, pérdidas.</p>
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:calc(var(--u)*4);flex:1;min-height:0;">
+      <div class="preguntas">
+        <div class="pregunta">
+          <div class="pdir"><span class="pdot" style="background:#9E4028;"></span><div><span class="pnom">Migrante</span><span class="pcard">Norte</span></div></div>
+          <div>
+            <div class="ptexto">"¿Hay migraciones en tu familia? ¿Alguien tuvo que irse de su tierra?"</div>
+            <div class="prenglones"><div class="r"></div><div class="r"></div></div>
+          </div>
+        </div>
+        <div class="pregunta">
+          <div class="pdir"><span class="pdot" style="background:#5A6E48;"></span><div><span class="pnom">Sufrimiento</span><span class="pcard">Sur</span></div></div>
+          <div>
+            <div class="ptexto">"¿Hay historias de sufrimiento en tu familia que nunca se han hablado?"</div>
+            <div class="prenglones"><div class="r"></div><div class="r"></div></div>
+          </div>
+        </div>
+        <div class="pregunta">
+          <div class="pdir"><span class="pdot" style="background:#9E4028;"></span><div><span class="pnom">Deber</span><span class="pcard">Oeste</span></div></div>
+          <div>
+            <div class="ptexto">"¿Quién en tu familia fue el que más se sacrificó? ¿Te identificas con esa persona?"</div>
+            <div class="prenglones"><div class="r"></div><div class="r"></div></div>
+          </div>
+        </div>
+        <div class="pregunta" style="border-bottom:0;">
+          <div class="pdir"><span class="pdot" style="background:#5A6E48;"></span><div><span class="pnom">Placer</span><span class="pcard">Este</span></div></div>
+          <div>
+            <div class="ptexto">"¿En tu familia se permitía disfrutar, o el placer se veía como algo negativo?"</div>
+            <div class="prenglones"><div class="r"></div><div class="r"></div></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:calc(var(--u)*2);min-height:0;">
+        <div class="rejilla">
+          <div class="rhd">
+            <div>La pregunta que se hizo</div>
+            <div>Qué la disparó</div>
+          </div>
+          <div class="rcuerpo">
+            <div class="rfila"><div></div><div></div></div>
+            <div class="rfila"><div></div><div></div></div>
+            <div class="rfila"><div></div><div></div></div>
+            <div class="rfila"><div></div><div></div></div>
+            <div class="rfila"><div></div><div></div></div>
+          </div>
+        </div>
+        <div class="caja" style="flex:0 0 auto;">
+          <span class="cjl">La dirección que apuesto para esta línea, y en qué la apoyo</span>
+          <div class="pista">Una migración, un oficio, una muerte temprana, un sacrificio. Es una hipótesis de trabajo para seguir observando, no una conclusión.</div>
+          <div class="renglones" style="flex:0;"><div class="r"></div><div class="r"></div><div class="r"></div></div>
+        </div>
+        <div class="nota">
+          <div class="nl">Cuando la caída y la historia no coinciden</div>
+          <p>Si las respuestas no confirman la dirección que cayó, se suelta esa hipótesis y se mira el cuadrante vecino. La técnica propone la lectura y la verifica contra la vida real de la persona.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Ejercicio de práctica · Sesión 2 · Instituto Centrobioenergetica</span><span class="fno">2 / 2</span></div>
+</div>
+
+<script>
+  // Isotipo del Instituto — anillo de 12 círculos + centro.
+  (function () {
+    function iso(size) {
+      var pts = [];
+      for (var k = 0; k < 12; k++) {
+        var ang = (k * 30 - 90) * Math.PI / 180;
+        var x = (48 * Math.cos(ang)).toFixed(1);
+        var y = (48 * Math.sin(ang)).toFixed(1);
+        var fill = k % 2 === 0 ? '#A94D36' : '#8FA87A';
+        pts.push('<circle cx="' + x + '" cy="' + y + '" r="11" fill="' + fill + '"/>');
+      }
+      return '<svg width="' + size + '" height="' + size + '" viewBox="-80 -80 160 160" aria-hidden="true">'
+        + pts.join('')
+        + '<circle cx="0" cy="0" r="14" fill="#E8A857" opacity="0.28"/><circle cx="0" cy="0" r="7" fill="#E8A857"/></svg>';
+    }
+    document.querySelectorAll('[data-iso]').forEach(function (el) {
+      var w = el.clientWidth || 30;
+      el.innerHTML = iso(w);
+      el.style.display = 'inline-flex';
+    });
+  })();
+</script>

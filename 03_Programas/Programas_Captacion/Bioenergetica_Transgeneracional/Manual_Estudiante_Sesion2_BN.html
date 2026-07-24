@@ -1,0 +1,899 @@
+<style>
+  :root {
+    --ink:        #141414;
+    --ink-soft:   #333333;
+    --muted:      #5E5E5E;
+    --faint:      #8A8A8A;
+    --rule:       #C9C9C9;
+    --rule-soft:  #E0E0E0;
+    --box:        #F0F0F0;
+    --box-line:   #BDBDBD;
+    --paper:      #FFFFFF;
+    --write:      #999999;
+    /* acentos del Instituto — elegidos para dar grises nítidos en impresión B&N */
+    --terra:      #2A2A2A;
+    --terra-deep: #000000;
+    --sage:       #767676;
+    --gold:       #B0B0B0;
+    --terra-tint: #F2F2F2;
+    --serif: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, 'Times New Roman', serif;
+    --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', 'Courier New', monospace;
+    --u: 0.07in;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #DADADA; }
+  body {
+    font-family: var(--sans); color: var(--ink);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 2.5rem 1rem; gap: 2rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    position: relative;
+    width: 11in; height: 8.5in;
+    background: var(--paper);
+    box-shadow: 0 1.4rem 3rem rgba(0,0,0,.28);
+    padding: 0.5in 0.55in 0.42in;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ---------- masthead ---------- */
+  .mast {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: calc(var(--u) * 3);
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: calc(var(--u) * 1.3);
+    margin-bottom: calc(var(--u) * 1.8);
+    flex-shrink: 0;
+  }
+  .mast .eyebrow {
+    font-size: 8.5px; font-weight: 700; letter-spacing: 2.2px;
+    text-transform: uppercase; color: var(--terra);
+    margin-bottom: calc(var(--u) * 0.7);
+  }
+  .mast h1 {
+    font-family: var(--serif); font-size: 21px; line-height: 1.08;
+    font-weight: 600; letter-spacing: -.2px; color: var(--ink);
+    text-wrap: balance; max-width: 8in;
+  }
+  .mast .rightmark { display: flex; align-items: center; gap: calc(var(--u) * 1.6); padding-bottom: 2px; }
+  .mast .isotipo { width: 30px; height: 30px; }
+  .mast .rmtext { text-align: right; }
+  .mast .rmtext .inst { font-size: 8.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .mast .rmtext .pg { font-family: var(--mono); font-size: 8.5px; color: var(--faint); letter-spacing: 1px; margin-top: 2px; }
+
+  /* ---------- content scaffold ---------- */
+  .content { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+
+  .kick {
+    font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--terra); display: flex; align-items: center; gap: 9px; margin-bottom: calc(var(--u) * 1.4);
+  }
+  .kick::before { content: ""; width: 20px; height: 2px; background: var(--terra); flex: 0 0 auto; }
+
+  h2 { font-family: var(--serif); font-size: 17px; font-weight: 600; line-height: 1.15; color: var(--ink); text-wrap: balance; }
+  h3 { font-size: 11.5px; font-weight: 700; color: var(--ink); letter-spacing: .2px; }
+  p  { font-size: 11px; line-height: 1.5; color: var(--ink-soft); }
+  .lede { font-family: var(--serif); font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
+  b, strong { color: var(--ink); font-weight: 600; }
+  em { font-style: italic; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 5); flex: 1; min-height: 0; }
+  .two.wide-left { grid-template-columns: 1.25fr 1fr; }
+  .two.wide-right { grid-template-columns: 1fr 1.3fr; }
+  .col { display: flex; flex-direction: column; gap: calc(var(--u) * 2); min-height: 0; }
+
+  /* ---------- write-in areas ---------- */
+  .writebox {
+    border: 1.2px solid var(--box-line); border-radius: 3px;
+    padding: calc(var(--u) * 1.6) calc(var(--u) * 2); flex: 1;
+    display: flex; flex-direction: column; gap: calc(var(--u) * 1.4);
+  }
+  .writebox .wblabel { font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .writebox .wbhint { font-size: 10px; font-style: italic; color: var(--write); line-height: 1.42; }
+  .writebox .wbhint b { color: var(--muted); font-style: normal; font-weight: 700; }
+  /* Los renglones se reparten en el alto disponible: si la caja crece, crece el espacio para escribir. */
+  .lines { display: flex; flex-direction: column; gap: calc(var(--u) * 2.6); flex: 1; justify-content: space-around; padding-top: calc(var(--u)*1.2); }
+  .lines .ln { border-bottom: 1px solid var(--rule); height: 0; }
+
+  /* ---------- info boxes ---------- */
+  .note {
+    border-left: 3px solid var(--terra); background: var(--box);
+    padding: calc(var(--u) * 1.4) calc(var(--u) * 2); border-radius: 0 3px 3px 0;
+  }
+  .note .nl { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--terra); font-weight: 700; margin-bottom: 5px; }
+  .note p { font-size: 11px; line-height: 1.46; }
+
+  ul.clean { list-style: none; display: flex; flex-direction: column; gap: calc(var(--u) * 1.2); }
+  ul.clean li { position: relative; padding-left: 16px; font-size: 11px; line-height: 1.42; color: var(--ink-soft); }
+  ul.clean li::before { content: ""; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--ink); }
+  ul.clean li b { color: var(--ink); }
+
+  /* ---------- cover ---------- */
+  .cover { justify-content: space-between; }
+  .cover .top { display: flex; align-items: center; gap: calc(var(--u)*2); }
+  .cover .top .isotipo { width: 34px; height: 34px; }
+  .cover .top .w { font-size: 10px; letter-spacing: 2.4px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .cover .mid { display: flex; flex-direction: column; gap: calc(var(--u)*2); }
+  .cover .prog { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--terra); font-weight: 700; }
+  .cover h1.big { font-family: var(--serif); font-size: 52px; line-height: 1; font-weight: 600; letter-spacing: -1px; color: var(--ink); }
+  .cover .subt { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--ink-soft); }
+  .cover .namefield { display: flex; gap: calc(var(--u)*6); margin-top: calc(var(--u)*3); }
+  .cover .namefield .f { flex: 1; }
+  .cover .namefield .f .flabel { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: calc(var(--u)*2.5); }
+  .cover .namefield .f .fline { border-bottom: 1.2px solid var(--rule); height: 0; }
+  .cover .bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .cover .sesh-rail { display: grid; grid-template-columns: repeat(4, auto); gap: calc(var(--u)*4); }
+  .cover .sr .srn { font-size: 8.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .cover .sr.on .srn { color: var(--terra); }
+  .cover .sr .srt { font-size: 10px; color: var(--ink-soft); margin-top: 3px; max-width: 15ch; line-height: 1.25; }
+  .cover .sr.on { border-top: 2.5px solid var(--terra); padding-top: 6px; }
+  .cover .sr:not(.on) { border-top: 1.5px solid var(--rule); padding-top: 6px; }
+  .cover .sr.done .srt { color: var(--faint); }
+
+  /* ---------- footer ---------- */
+  .foot {
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--rule); padding-top: calc(var(--u) * 1.1);
+    margin-top: calc(var(--u) * 1.4); flex-shrink: 0;
+    font-size: 8px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--faint);
+  }
+  .foot .fno { font-family: var(--mono); }
+
+  /* ---------- tarjetas de marco (heredado de S1) ---------- */
+  .fcard { border: 1.2px solid var(--box-line); border-radius: 3px; padding: calc(var(--u)*1.8) calc(var(--u)*2); display: flex; flex-direction: column; gap: 5px; }
+  .fcard .fnum { font-family: var(--mono); font-size: 9px; color: var(--terra); font-weight: 700; letter-spacing: 1px; }
+  .fcard h3 { font-family: var(--serif); font-weight: 600; font-size: 13px; }
+  .fcard p { font-size: 11px; line-height: 1.42; }
+  .fcard .cue { font-size: 10px; line-height: 1.4; color: var(--muted); margin-top: auto; padding-top: 6px; border-top: 1px dotted var(--rule); }
+  .fcard .cue .cuel { font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .8px; font-size: 8.5px; }
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(var(--u)*2.4); }
+
+  /* ---------- pasos del método (heredado de S1) ---------- */
+  .stp { border: 1.2px solid var(--box-line); border-radius: 3px; padding: calc(var(--u)*1.5); display: flex; flex-direction: column; gap: 4px; }
+  .stp .code { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--terra); border: 1.5px solid var(--terra); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 4px; margin-bottom: 2px; }
+  .stp .sname { font-family: var(--serif); font-size: 12.5px; font-weight: 600; color: var(--ink); line-height: 1.12; }
+  .stp p { font-size: 10.5px; line-height: 1.38; }
+
+  /* ---------- pasos del momento somático (heredado de S1) ---------- */
+  .rst { border: 1px solid var(--rule); border-radius: 3px; padding: calc(var(--u)*1.4); display: flex; flex-direction: column; gap: 4px; }
+  .rst .rn { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--ink); }
+  .rst h4 { font-family: var(--serif); font-size: 12px; font-weight: 600; line-height: 1.1; }
+  .rst p { font-size: 10px; line-height: 1.36; }
+  .rst .rq { font-size: 9.5px; font-style: italic; color: var(--muted); border-top: 1px solid var(--rule-soft); padding-top: 5px; margin-top: auto; line-height: 1.32; }
+
+  /* ================= componentes propios de la Sesión 2 ================= */
+
+  /* Tabla de los Cuatro Caminos — renglón por camino */
+  .camtab { display: flex; flex-direction: column; border-top: 1.5px solid var(--ink); }
+  .camrow { display: grid; grid-template-columns: 1.5in 1fr; gap: calc(var(--u)*2.4); padding: calc(var(--u)*2) 0; border-bottom: 1px solid var(--rule-soft); align-items: start; }
+  .camrow .cnm { display: flex; align-items: baseline; gap: 7px; }
+  .camrow .cdot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; transform: translateY(-1px); }
+  .camrow .cnm .cn { font-family: var(--serif); font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1; }
+  .camrow .cnm .cdir { font-family: var(--mono); font-size: 8.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .camrow .cbody p { font-size: 11.5px; line-height: 1.42; }
+  .camrow .cev { font-size: 10.5px; line-height: 1.4; color: var(--muted); margin-top: 4px; }
+  .camrow .cev .evl { font-weight: 700; text-transform: uppercase; letter-spacing: .9px; font-size: 8.5px; color: var(--terra); }
+
+  /* Matriz caminos × tres marcos */
+  .mtx { display: grid; grid-template-columns: 1.15in 1fr 1fr 1fr; border-top: 1.5px solid var(--ink); }
+  .mtx > div { padding: calc(var(--u)*1.9) calc(var(--u)*1.5); border-bottom: 1px solid var(--rule-soft); font-size: 10.5px; line-height: 1.4; color: var(--ink-soft); }
+  .mtx > div.hd { padding-top: calc(var(--u)*1.2); padding-bottom: calc(var(--u)*1.2); }
+  .mtx .hd { font-size: 9px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--terra); font-weight: 700; border-bottom: 1px solid var(--rule); }
+  .mtx .rw { display: flex; align-items: baseline; gap: 6px; font-family: var(--serif); font-size: 13px; font-weight: 600; color: var(--ink); }
+  .mtx .rw .cdot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; }
+  .mtx .rw span.d { font-family: var(--mono); font-size: 8.5px; letter-spacing: 1.2px; color: var(--muted); font-weight: 700; }
+
+  /* Cuadrantes */
+  /* Las tarjetas se ajustan a su contenido y el sobrante se reparte entre filas. */
+  .quadg { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u)*2.2); align-content: space-evenly; }
+  .qc { border: 1.2px solid var(--box-line); border-radius: 3px; padding: calc(var(--u)*2) calc(var(--u)*1.8); display: flex; flex-direction: column; gap: 7px; }
+  .qc .qcode { font-family: var(--mono); font-size: 9.5px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--terra); font-weight: 700; }
+  .qc h4 { font-family: var(--serif); font-size: 13.5px; font-weight: 600; color: var(--ink); line-height: 1.1; }
+  .qc .qline { display: grid; grid-template-columns: 0.56in 1fr; gap: 8px; font-size: 10.5px; line-height: 1.38; color: var(--ink-soft); }
+  .qc .qline .ql { font-size: 8.5px; letter-spacing: 1.1px; text-transform: uppercase; color: var(--muted); font-weight: 700; padding-top: 1px; }
+
+  /* Improntas i1–i7 */
+  .imprg { display: flex; flex-direction: column; border-top: 1.5px solid var(--ink); }
+  .impr { display: grid; grid-template-columns: 0.32in 1.4in 1.6in 1fr; gap: calc(var(--u)*1.8); align-items: baseline; padding: calc(var(--u)*2.35) 0; border-bottom: 1px solid var(--rule-soft); }
+  .impr .ic { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--terra); }
+  .impr .inm { font-family: var(--serif); font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.1; }
+  .impr .ibl { font-family: var(--serif); font-size: 11.5px; font-style: italic; color: var(--ink-soft); line-height: 1.28; }
+  .impr .idc { font-size: 10.5px; line-height: 1.38; color: var(--ink-soft); }
+
+  /* Rejilla de observación de la demostración */
+  .obsgrid { display: flex; flex-direction: column; border: 1.2px solid var(--box-line); border-radius: 3px; overflow: hidden; flex: 1; }
+  .obsgrid .ohd { display: grid; grid-template-columns: 1fr 1.25fr; background: var(--box); border-bottom: 1.2px solid var(--box-line); }
+  .obsgrid .ohd > div { padding: calc(var(--u)*1.3) calc(var(--u)*1.6); font-size: 9.5px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .obsgrid .ohd > div + div { border-left: 1px solid var(--box-line); }
+  .obsgrid .obody { display: flex; flex-direction: column; flex: 1; }
+  .obsgrid .orow { display: grid; grid-template-columns: 1fr 1.25fr; flex: 1; border-bottom: 1px solid var(--rule-soft); }
+  .obsgrid .orow:last-child { border-bottom: 0; }
+  .obsgrid .orow > div + div { border-left: 1px solid var(--rule-soft); }
+
+  /* Rosa de marcaje del alumno */
+  .rosebox { border: 1.2px solid var(--box-line); border-radius: 3px; padding: calc(var(--u)*1.4); display: flex; flex-direction: column; align-items: center; gap: 5px; }
+  .rosebox .rl { font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 700; align-self: flex-start; }
+  .rosebox svg { flex: 1; width: 100%; }
+  .rosebox .rh { font-size: 9.5px; font-style: italic; color: var(--write); line-height: 1.38; text-align: center; }
+
+  /* Cualidades del felt sense — casillas para escribir una palabra */
+  .qualrow { display: grid; grid-template-columns: repeat(5, 1fr); gap: calc(var(--u)*1.6); }
+  .qual { display: flex; flex-direction: column; gap: 4px; }
+  .qual .qn { font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); font-weight: 700; text-align: center; }
+  .qual .qb { border: 1px solid var(--rule); border-radius: 3px; height: 0.3in; }
+
+  /* Preguntas ancla por camino */
+  .ancl { display: flex; flex-direction: column; border-top: 1.5px solid var(--ink); }
+  .anrow { display: grid; grid-template-columns: 1.25in 1fr; gap: calc(var(--u)*2); padding: calc(var(--u)*2) 0; border-bottom: 1px solid var(--rule-soft); align-items: baseline; }
+  .anrow .an { display: flex; align-items: baseline; gap: 6px; font-family: var(--serif); font-size: 12.5px; font-weight: 600; color: var(--ink); }
+  .anrow .an .cdot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; }
+  .anrow .aq { font-family: var(--serif); font-size: 11.5px; font-style: italic; color: var(--ink-soft); line-height: 1.38; }
+
+  /* Dos puertas del cierre */
+  .doors { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u)*2.4); }
+  .door { border: 1.2px solid var(--box-line); border-top: 2.5px solid var(--terra); border-radius: 0 0 3px 3px; padding: calc(var(--u)*1.6) calc(var(--u)*1.8); display: flex; flex-direction: column; gap: 4px; }
+  .door .dk { font-size: 9px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--terra); font-weight: 700; }
+  .door h4 { font-family: var(--serif); font-size: 13.5px; font-weight: 600; color: var(--ink); line-height: 1.12; }
+  .door p { font-size: 10.5px; line-height: 1.42; }
+
+
+  @media print {
+    @page { size: letter landscape; margin: 0; }
+    html, body { background: #fff; }
+    body { padding: 0; gap: 0; }
+    .page { box-shadow: none; page-break-after: always; width: 100%; height: 100vh; }
+    .page:last-child { page-break-after: avoid; }
+  }
+</style>
+
+<!-- ========== PAGE 1 · PORTADA ========== -->
+<div class="page">
+  <div class="content cover">
+    <div class="top">
+      <span class="isotipo" data-iso></span>
+      <span class="w">Instituto Centrobioenergetica</span>
+    </div>
+    <div class="mid">
+      <div class="prog">Actualización en Bioenergética Transgeneracional</div>
+      <h1 class="big">La línea paterna y el camino que caminas</h1>
+      <div class="subt">Manual del estudiante — Sesión 2</div>
+      <div style="font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:10px;">Dr. Miguel Ojeda Rios · Instituto Centrobioenergetica</div>
+      <div style="display:flex;gap:calc(var(--u)*5);margin-top:calc(var(--u)*2);max-width:8.5in;">
+        <div style="flex:1;">
+          <div style="font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px;">Lo que trabajas hoy</div>
+          <ul class="clean">
+            <li>El marco: la vía biológica de la línea paterna, los <b>Cuatro Caminos</b> y las <b>siete primeras improntas</b></li>
+            <li>Identificas en el cuerpo la dirección de tu propia línea</li>
+            <li>Observas un caso real completo y <b>registras el razonamiento</b> del terapeuta</li>
+          </ul>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px;">Cómo usar este cuaderno</div>
+          <ul class="clean">
+            <li>Las páginas 2 a 6 acompañan la <b>Hora 1</b> (marco) y quedan como referencia</li>
+            <li>Las páginas 7, 8 y 10 son de <b>trabajo</b> — las llenas tú</li>
+            <li>Trae el <b>genograma de la Sesión 1</b>: hoy se marca encima</li>
+          </ul>
+        </div>
+      </div>
+      <div class="namefield">
+        <div class="f"><div class="flabel">Nombre</div><div class="fline"></div></div>
+        <div class="f"><div class="flabel">Fecha</div><div class="fline"></div></div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="sesh-rail">
+        <div class="sr done"><div class="srn">Sesión 1</div><div class="srt">El mapa: genograma y genosociograma</div></div>
+        <div class="sr on"><div class="srn">Sesión 2 · Hoy</div><div class="srt">Línea paterna · Los Caminos de la Vida</div></div>
+        <div class="sr"><div class="srn">Sesión 3</div><div class="srt">Línea materna · Campos Mórficos</div></div>
+        <div class="sr"><div class="srn">Sesión 4</div><div class="srt">Herencia metabólica transgeneracional</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PAGE 2 · POR QUÉ LA PATERNA SE LEE APARTE ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Marco conceptual · Hora 1</div>
+      <h1>Por qué la línea paterna se lee aparte</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">La línea paterna · S2</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <p class="lede" style="margin-bottom:calc(var(--u)*2);">Solo <b>dos</b> líneas genéticas pasan intactas de una generación a otra, sin mezclarse con el aporte del otro progenitor. Son las únicas que permiten hablar, en sentido literal, de línea materna y línea paterna.</p>
+    <div class="two wide-left" style="flex:0 0 auto;">
+      <div class="col">
+        <div class="three" style="grid-template-columns:1fr 1fr;">
+          <div class="fcard">
+            <div class="fnum" style="color:var(--sage);">Línea materna</div>
+            <h3>ADN mitocondrial</h3>
+            <p>Genoma circular. Pasa de la madre a todos sus hijos; solo las hijas lo transmiten a la siguiente generación.</p>
+          </div>
+          <div class="fcard">
+            <div class="fnum">Línea paterna</div>
+            <h3>Cromosoma Y</h3>
+            <p>Región lineal no recombinante. Pasa de padre a hijo varón, letra por letra, sin mezclarse jamás.</p>
+          </div>
+        </div>
+        <div class="note">
+          <div class="nl">Implicación clínica</div>
+          <p>El cromosoma Y <b>no se recombina</b>. Lo que marcó a un ancestro varón desciende por esa línea hasta el presente sin diluirse. Es la base de la genealogía genética: los haplogrupos paterno (Y) y materno (mtADN) que leen los test comerciales de ancestría son exactamente estas dos líneas.</p>
+        </div>
+      </div>
+      <div class="col">
+        <h2 style="margin-bottom:calc(var(--u)*0.6);">La línea llega a hijos e hijas</h2>
+        <p style="margin-bottom:calc(var(--u)*1.4);">El cromosoma Y marca la línea directa de varones. La línea paterna —el sistema del padre y de sus ancestros— alcanza a todos sus descendientes, por más de una vía.</p>
+        <div class="camtab" style="border-top-color:var(--rule);">
+          <div class="camrow" style="grid-template-columns:1.05in 1fr;padding:calc(var(--u)*1.7) 0;">
+            <div class="cnm"><span class="cdot" style="background:#2A2A2A;"></span><span class="cn" style="font-size:12.5px;">El hijo varón</span></div>
+            <div class="cbody"><p>Recibe el cromosoma Y del padre: el hilo directo de varón a varón.</p></div>
+          </div>
+          <div class="camrow" style="grid-template-columns:1.05in 1fr;padding:calc(var(--u)*1.7) 0;">
+            <div class="cnm"><span class="cdot" style="background:#767676;"></span><span class="cn" style="font-size:12.5px;">La hija</span></div>
+            <div class="cbody"><p>Recibe el cromosoma X del padre y sus autosomas. Está en la línea paterna, por otra vía biológica.</p></div>
+          </div>
+          <div class="camrow" style="grid-template-columns:1.05in 1fr;padding:calc(var(--u)*1.7) 0;border-bottom:0;">
+            <div class="cnm"><span class="cdot" style="background:#2A2A2A;"></span><span class="cn" style="font-size:12.5px;">Hijos e hijas</span></div>
+            <div class="cbody"><p>Reciben la carga epigenética del espermatozoide —lo que vimos en la Sesión 1— y la transmisión sistémica de toda la línea.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="two wide-left" style="flex:1;align-items:center;margin-top:calc(var(--u)*2.5);">
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <svg viewBox="0 0 300 150" style="width:100%;max-height:2.1in;" fill="none">
+            <line x1="30" y1="75" x2="270" y2="75" stroke="#2A2A2A" stroke-width="2"/>
+            <g stroke="#2A2A2A" stroke-width="1.6" fill="#FFFFFF">
+              <circle cx="42" cy="75" r="10"/><circle cx="118" cy="75" r="10"/><circle cx="194" cy="75" r="10"/><circle cx="270" cy="75" r="10"/>
+            </g>
+            <g fill="#2A2A2A"><circle cx="42" cy="75" r="3.4"/><circle cx="118" cy="75" r="3.4"/><circle cx="194" cy="75" r="3.4"/><circle cx="270" cy="75" r="3.4"/></g>
+            <g fill="#333333" font-family="Palatino, Georgia, serif" font-size="12" text-anchor="middle">
+              <text x="42" y="103">bisabuelo</text><text x="118" y="103">abuelo</text><text x="194" y="103">padre</text><text x="270" y="103">tú</text>
+            </g>
+            <text x="150" y="46" fill="#5E5E5E" font-family="ui-monospace, monospace" font-size="9.5" letter-spacing="1.6" text-anchor="middle">LA MISMA REGIÓN DEL Y, SIN MEZCLARSE</text>
+          </svg>
+        </div>
+      </div>
+      <div class="note" style="align-self:center;">
+        <div class="nl">Para el trabajo</div>
+        <p>La línea paterna es el sistema del padre y de sus ancestros. <b>Ese sistema se lee igual en un hombre y en una mujer.</b></p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 2</span><span class="fno">02</span></div>
+</div>
+
+<!-- ========== PAGE 3 · LOS CUATRO CAMINOS ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Marco conceptual · Hora 1</div>
+      <h1>Los Cuatro Caminos de la Vida</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">La línea paterna · S2</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <p class="lede" style="margin-bottom:calc(var(--u)*2);">Una línea familiar se orienta en una dirección. Cada camino describe un patrón de motivación y de conducta, y tiene detrás un tipo de evento en la historia de la línea.</p>
+    <div class="two wide-right" style="min-height:0;">
+      <div class="col" style="justify-content:center;">
+        <svg viewBox="0 0 300 240" style="width:100%;max-height:4.4in;" fill="none">
+          <rect x="18" y="26" width="264" height="188" rx="4" stroke="#C9C9C9" stroke-width="1.4" data-rose/>
+          <g stroke="#E0E0E0" stroke-width="1"><line x1="150" y1="32" x2="150" y2="208"/><line x1="24" y1="120" x2="276" y2="120"/></g>
+          <circle cx="150" cy="120" r="34" stroke="#E0E0E0" stroke-width="1"/>
+          <path d="M150 90 L144 113 L150 120 Z" fill="#767676"/><path d="M150 90 L156 113 L150 120 Z" fill="#2A2A2A"/>
+          <path d="M150 150 L144 127 L150 120 Z" fill="#2A2A2A"/><path d="M150 150 L156 127 L150 120 Z" fill="#767676"/>
+          <path d="M180 120 L157 114 L150 120 Z" fill="#767676"/><path d="M180 120 L157 126 L150 120 Z" fill="#2A2A2A"/>
+          <path d="M120 120 L143 114 L150 120 Z" fill="#2A2A2A"/><path d="M120 120 L143 126 L150 120 Z" fill="#767676"/>
+          <circle cx="150" cy="120" r="4.5" fill="#B0B0B0" opacity="0.35"/><circle cx="150" cy="120" r="2.6" fill="#B0B0B0"/>
+          <g text-anchor="middle" font-family="ui-sans-serif, Helvetica, Arial, sans-serif" font-weight="700" font-size="11.5" letter-spacing="1.1" fill="#141414">
+            <text x="150" y="49">DEBER</text><text x="150" y="207">PLACER</text>
+          </g>
+          <g text-anchor="middle" font-family="ui-monospace, monospace" font-size="8.5" letter-spacing="1" fill="#5E5E5E">
+            <text x="150" y="62">OESTE · responsabilidad</text><text x="150" y="194">ESTE · bienestar</text>
+          </g>
+          <g text-anchor="middle" font-family="ui-sans-serif, Helvetica, Arial, sans-serif" font-weight="700" font-size="11.5" letter-spacing="1.1" fill="#141414">
+            <text x="70" y="116">SUFRIMIENTO</text><text x="232" y="116">MIGRANTE</text>
+          </g>
+          <g text-anchor="middle" font-family="ui-monospace, monospace" font-size="8.5" letter-spacing="1" fill="#5E5E5E">
+            <text x="70" y="129">SUR · supervivencia</text><text x="232" y="129">NORTE · lo nuevo</text>
+          </g>
+        </svg>
+        <div class="note">
+          <div class="nl">Cómo se hace visible</div>
+          <p>Esa misma hoja con los ejes es la que se usa en la demostración: el muñeco cae sobre ella, y <b>la dirección de los pies</b> indica el camino.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="camtab">
+          <div class="camrow">
+            <div class="cnm"><span class="cdot" style="background:#2A2A2A;"></span><div><div class="cn">Migrante</div><div class="cdir">Norte</div></div></div>
+            <div class="cbody">
+              <p>Exploración y búsqueda de lo nuevo: el deseo de cambio, o el impulso de dejar atrás lo que ya no satisface.</p>
+              <div class="cev"><span class="evl">Evento sistémico detrás</span> · historias familiares de migración o desplazamiento, con lealtad inconsciente a seguir moviéndose; la pérdida de una figura clave.</div>
+            </div>
+          </div>
+          <div class="camrow">
+            <div class="cnm"><span class="cdot" style="background:#767676;"></span><div><div class="cn">Sufrimiento</div><div class="cdir">Sur</div></div></div>
+            <div class="cbody">
+              <p>Reactividad, miedo y supervivencia: la lucha constante como estado de base.</p>
+              <div class="cev"><span class="evl">Evento sistémico detrás</span> · historias de guerra o conflicto que transmiten una mentalidad de supervivencia; lealtad al sufrimiento de los antepasados como forma de pertenencia.</div>
+            </div>
+          </div>
+          <div class="camrow">
+            <div class="cnm"><span class="cdot" style="background:#2A2A2A;"></span><div><div class="cn">Deber</div><div class="cdir">Oeste</div></div></div>
+            <div class="cbody">
+              <p>Responsabilidad, compromiso y estabilidad: un fuerte sentido de obligación con los demás.</p>
+              <div class="cev"><span class="evl">Evento sistémico detrás</span> · seguir los pasos de padres o abuelos honrando la tradición; patrones de sacrificio — renunciar a lo propio por el sistema familiar.</div>
+            </div>
+          </div>
+          <div class="camrow">
+            <div class="cnm"><span class="cdot" style="background:#767676;"></span><div><div class="cn">Placer</div><div class="cdir">Este</div></div></div>
+            <div class="cbody">
+              <p>Búsqueda de bienestar y satisfacción: comodidad, disfrute y gratificación.</p>
+              <div class="cev"><span class="evl">Evento sistémico detrás</span> · herencias familiares de comodidad y recursos; patrones de dependencia del bienestar de otros, repetidos entre generaciones.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 2</span><span class="fno">03</span></div>
+</div>
+
+<!-- ========== PAGE 4 · LOS TRES MARCOS ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Marco conceptual · Hora 1</div>
+      <h1>Los tres marcos que sostienen cada camino</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">La línea paterna · S2</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <p class="lede" style="margin-bottom:calc(var(--u)*1.8);">Un camino es el cruce de tres dimensiones que el terapeuta ya trabaja por separado. Aquí se leen de forma integrada.</p>
+    <div class="three" style="margin-bottom:calc(var(--u)*2.2);">
+      <div class="fcard">
+        <div class="fnum">MARCO 1</div><h3>El metaprograma</h3>
+        <p>El filtro mental inconsciente con el que la persona procesa la información y toma sus decisiones.</p>
+      </div>
+      <div class="fcard">
+        <div class="fnum">MARCO 2</div><h3>El mecanismo de supervivencia</h3>
+        <p>La respuesta del sistema nervioso autónomo — del mismo tipo que la impronta de la Sesión 1.</p>
+      </div>
+      <div class="fcard">
+        <div class="fnum">MARCO 3</div><h3>El movimiento sistémico</h3>
+        <p>La lealtad familiar invisible: una historia de la línea que empuja hacia un lado.</p>
+      </div>
+    </div>
+    <div class="mtx">
+      <div class="hd"></div>
+      <div class="hd">1 · Metaprograma</div>
+      <div class="hd">2 · Mecanismo de supervivencia</div>
+      <div class="hd">3 · Movimiento sistémico</div>
+
+      <div><div class="rw"><span class="cdot" style="background:#2A2A2A;"></span>Migrante <span class="d">N</span></div></div>
+      <div>Se mueve hacia lo que desea; busca opciones.</div>
+      <div>Simpático de exploración: el sistema se moviliza hacia lo nuevo — no huye por miedo.</div>
+      <div>Migraciones y exilios reales; el desarraigo que se repite.</div>
+
+      <div><div class="rw"><span class="cdot" style="background:#767676;"></span>Sufrimiento <span class="d">S</span></div></div>
+      <div>Se aleja de lo que teme; vive en el detalle, en la hipervigilancia.</div>
+      <div>Simpático en amenaza crónica: lucha, huida o congelación, con el eje del estrés sobreactivado.</div>
+      <div>La lealtad al dolor de los que sufrieron antes.</div>
+
+      <div><div class="rw"><span class="cdot" style="background:#2A2A2A;"></span>Deber <span class="d">O</span></div></div>
+      <div>Decide por criterio externo; sigue procedimientos.</div>
+      <div>Vago ventral: la cooperación social, el vínculo.</div>
+      <div>Un rol o una misión heredada de alguien que se sacrificó.</div>
+
+      <div style="border-bottom:0;"><div class="rw"><span class="cdot" style="background:#767676;"></span>Placer <span class="d">E</span></div></div>
+      <div style="border-bottom:0;">Se mueve hacia el disfrute; también busca opciones.</div>
+      <div style="border-bottom:0;">Parasimpático restaurativo: descanso, digestión, conservación.</div>
+      <div style="border-bottom:0;">La compensación —"yo sí voy a disfrutar"— por generaciones de escasez.</div>
+    </div>
+    <div class="two" style="flex:0 0 auto;margin-top:calc(var(--u)*2.2);gap:calc(var(--u)*3);">
+      <div class="note">
+        <div class="nl">Norte y Sur: cómo se distinguen</div>
+        <p>Ambos cursan con activación simpática. Los distingue su finalidad: la <b>búsqueda de oportunidad</b> en el Migrante, la <b>defensa ante la amenaza</b> en el Sufrimiento.</p>
+      </div>
+      <div class="note">
+        <div class="nl">El puente</div>
+        <p>Cuando los tres marcos coinciden en una dirección, definen el <b>camino predominante</b>: un patrón que la persona hereda de su línea.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 2</span><span class="fno">04</span></div>
+</div>
+
+<!-- ========== PAGE 5 · LOS CUADRANTES ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Marco conceptual · Hora 1</div>
+      <h1>Los cuadrantes: cuando caen dos caminos a la vez</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">La línea paterna · S2</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <p class="lede" style="margin-bottom:calc(var(--u)*2);">Una dirección diagonal combina dos caminos. Cada combinación tiene su propio recurso y su propio costo.</p>
+    <div class="two wide-right" style="min-height:0;">
+      <div class="col" style="justify-content:center;">
+        <svg viewBox="0 0 300 220" style="width:100%;max-height:4in;" fill="none">
+          <rect x="20" y="20" width="130" height="90" fill="#767676" fill-opacity="0.07"/>
+          <rect x="150" y="20" width="130" height="90" fill="#2A2A2A" fill-opacity="0.06"/>
+          <rect x="20" y="110" width="130" height="90" fill="#2A2A2A" fill-opacity="0.06"/>
+          <rect x="150" y="110" width="130" height="90" fill="#B0B0B0" fill-opacity="0.10"/>
+          <rect x="20" y="20" width="260" height="180" rx="4" stroke="#C9C9C9" stroke-width="1.4"/>
+          <g stroke="#C9C9C9" stroke-width="1"><line x1="150" y1="26" x2="150" y2="194"/><line x1="26" y1="110" x2="274" y2="110"/></g>
+          <circle cx="150" cy="110" r="4.5" fill="#B0B0B0" opacity="0.35"/><circle cx="150" cy="110" r="2.6" fill="#B0B0B0"/>
+          <g font-family="ui-monospace, monospace" font-size="9" font-weight="700" letter-spacing="1" fill="#5E5E5E" text-anchor="middle">
+            <text x="268" y="107">N</text><text x="32" y="107">S</text><text x="150" y="15">O</text><text x="150" y="214">E</text>
+          </g>
+          <g text-anchor="middle" font-family="ui-monospace, monospace" font-size="7.5" letter-spacing=".8" fill="#2A2A2A">
+            <text x="85" y="52">SO · Sufrimiento + Deber</text><text x="215" y="52">NO · Migrante + Deber</text>
+            <text x="85" y="142">SE · Sufrimiento + Placer</text><text x="215" y="142">NE · Migrante + Placer</text>
+          </g>
+          <g text-anchor="middle" font-family="ui-sans-serif, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#141414">
+            <text x="85" y="70">Sacrificio total</text><text x="215" y="70">Exploración al servicio</text>
+            <text x="85" y="160">Placer culpable</text><text x="215" y="160">Exploración hedonista</text>
+          </g>
+        </svg>
+        <div class="note">
+          <div class="nl">Cómo se combinan</div>
+          <p>Los cuadrantes del <b>Norte</b> combinan direcciones que empujan en el mismo sentido. Los del <b>Sur</b> combinan direcciones que tiran hacia lados opuestos, y concentran la mayor parte del trabajo clínico.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="quadg" style="flex:1;">
+          <div class="qc">
+            <div class="qcode">NE · Migrante + Placer</div>
+            <h4>Exploración hedonista</h4>
+            <div class="qline"><span class="ql">Recurso</span><span>Gozo en la exploración; adaptabilidad con disfrute.</span></div>
+            <div class="qline"><span class="ql">Costo</span><span>Superficialidad en las búsquedas; inconstancia.</span></div>
+          </div>
+          <div class="qc">
+            <div class="qcode">NO · Migrante + Deber</div>
+            <h4>Exploración al servicio</h4>
+            <div class="qline"><span class="ql">Recurso</span><span>Innovación al servicio de la comunidad; liderazgo por misión.</span></div>
+            <div class="qline"><span class="ql">Costo</span><span>Agotamiento por buscar nuevas formas de servir; dispersión.</span></div>
+          </div>
+          <div class="qc">
+            <div class="qcode">SE · Sufrimiento + Placer</div>
+            <h4>Placer culpable</h4>
+            <div class="qline"><span class="ql">Recurso</span><span>Profundidad emocional con capacidad de gozo; transformar el dolor en creatividad.</span></div>
+            <div class="qline"><span class="ql">Costo</span><span>Culpa al disfrutar; adicciones como escape del sufrimiento.</span></div>
+          </div>
+          <div class="qc">
+            <div class="qcode">SO · Sufrimiento + Deber</div>
+            <h4>Sacrificio total</h4>
+            <div class="qline"><span class="ql">Recurso</span><span>Resistencia y servicio extremos; profundo sentido de propósito.</span></div>
+            <div class="qline"><span class="ql">Costo</span><span>Martirio como identidad; incapacidad de recibir; burnout existencial.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 2</span><span class="fno">05</span></div>
+</div>
+
+<!-- ========== PAGE 6 · LAS SIETE PRIMERAS IMPRONTAS ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Marco conceptual · Hora 1</div>
+      <h1>Las siete primeras improntas</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">La línea paterna · S2</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <p class="lede" style="margin-bottom:calc(var(--u)*1.6);">Una impronta es el <b>ciclo defensivo que quedó activo</b> cuando no pudo descargarse: el programa de supervivencia que sobrevive a la escena que lo originó.</p>
+    <div class="two" style="flex:0 0 auto;gap:calc(var(--u)*3);margin-bottom:calc(var(--u)*2);">
+      <div class="note" style="border-left-color:var(--rule); background:#FAFAFA;">
+        <div class="nl" style="color:var(--muted);">El evento</div>
+        <p>Lo que le pasó al ancestro. <b>No se transmite.</b></p>
+      </div>
+      <div class="note">
+        <div class="nl">El umbral</div>
+        <p>La facilidad con la que el sistema activa esa respuesta. <b>Esto es lo que desciende por la línea</b>, sin haber vivido el evento.</p>
+      </div>
+    </div>
+    <div class="imprg">
+      <div class="impr" style="border-bottom:1px solid var(--rule);padding-bottom:calc(var(--u)*0.9);">
+        <div style="font-size:9px;letter-spacing:1.3px;text-transform:uppercase;color:var(--terra);font-weight:700;">Cód.</div>
+        <div style="font-size:9px;letter-spacing:1.3px;text-transform:uppercase;color:var(--terra);font-weight:700;">Impronta</div>
+        <div style="font-size:9px;letter-spacing:1.3px;text-transform:uppercase;color:var(--terra);font-weight:700;">Creencia que la sostiene</div>
+        <div style="font-size:9px;letter-spacing:1.3px;text-transform:uppercase;color:var(--terra);font-weight:700;">Qué hace el sistema</div>
+      </div>
+      <div class="impr"><span class="ic">i1</span><span class="inm">Desacople</span><span class="ibl">"no estoy realmente aquí"</span><span class="idc">Fragmentar la experiencia para sobrevivir a un impacto que no se pudo integrar.</span></div>
+      <div class="impr"><span class="ic">i2</span><span class="inm">Acorazamiento</span><span class="ibl">"no vuelvo a bajar la guardia"</span><span class="idc">Blindar la zona vulnerable tras una traición del vínculo.</span></div>
+      <div class="impr"><span class="ic">i3</span><span class="inm">Retracción</span><span class="ibl">"no soy suficiente"</span><span class="idc">Retirarse de la exposición para no ser juzgado, tras una humillación.</span></div>
+      <div class="impr"><span class="ic">i4</span><span class="inm">Fijación Externa</span><span class="ibl">"la vida es injusta"</span><span class="idc">Fijar la energía en una causa que está afuera; el resentimiento que busca culpable.</span></div>
+      <div class="impr"><span class="ic">i5</span><span class="inm">Compresión</span><span class="ibl">"no tiene caso hablar"</span><span class="idc">Cerrar el canal de la expresión; la voz que se calla, lo no dicho que se guarda.</span></div>
+      <div class="impr"><span class="ic">i6</span><span class="inm">Camuflaje</span><span class="ibl">"yo soy el error"</span><span class="idc">Volverse invisible como protección, cuando ser visto resultó peligroso.</span></div>
+      <div class="impr" style="border-bottom:0;"><span class="ic">i7</span><span class="inm">Hibernación</span><span class="ibl">"la vida no tiene sentido"</span><span class="idc">Apagarse hasta el mínimo vital ante una amenaza que superó lo que el sistema podía sostener. <b>La de mayor incidencia transgeneracional.</b></span></div>
+    </div>
+    <div class="note" style="margin-top:auto;">
+      <div class="nl">Cómo se usan en la lectura</div>
+      <p>Son trece improntas; hoy trabajamos las siete primeras. En la demostración, <b>el muñeco da la dirección</b> — una de estas siete es el patrón que empujó a la línea hacia ella.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 2</span><span class="fno">06</span></div>
+</div>
+
+<!-- ========== PAGE 7 · MOMENTO SOMÁTICO (trabajo) ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Momento somático · Hora 1</div>
+      <h1>Hacia dónde cae tu propia línea</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">La línea paterna · S2</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <p class="lede" style="margin-bottom:calc(var(--u)*1.8);">El acceso de hoy es somático, sin test muscular. El ejercicio no se comparte en voz alta: lo que registres aquí es tuyo, y después lo pasas a tu genograma.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:calc(var(--u)*1.3);margin-bottom:calc(var(--u)*1.6);">
+      <div class="rst"><span class="rn">1</span><h4>Nombrar</h4><p>Ambas manos sobre las piernas, sintiendo su peso.</p><div class="rq">"Traigo una línea de hombres en el cuerpo. Algo de lo que soy no empezó conmigo."</div></div>
+      <div class="rst"><span class="rn">2</span><h4>Regular</h4><p>Respiración 4-4-6, tres veces.</p><div class="rq">"Mi cuerpo está aquí, en esta silla, ahora."</div></div>
+      <div class="rst"><span class="rn">3</span><h4>Recursos</h4><p>Pies en el piso, el peso del cuerpo sobre la silla.</p><div class="rq">"Tengo un cuerpo que puede mirar esta línea sin quebrarse."</div></div>
+      <div class="rst"><span class="rn">4</span><h4>Ampliar</h4><p>Sin buscar imagen ni recuerdo: solo sentir la pregunta.</p><div class="rq">"Los hombres de mi línea, ¿hacia dónde caminaron? ¿Y yo, hacia el mismo lado o hacia el opuesto?"</div></div>
+      <div class="rst"><span class="rn">5</span><h4>Dónde aparece</h4><p>Localizar dónde se hizo presente algo, sin corregirlo.</p><div class="rq">"Llevo la atención ahí y la dejo."</div></div>
+      <div class="rst"><span class="rn">6</span><h4>La cualidad</h4><p>Forma, peso, temperatura, movimiento, color.</p><div class="rq">"No hay respuesta correcta. Dejo que el cuerpo conteste."</div></div>
+      <div class="rst"><span class="rn">7</span><h4>El gesto y la pausa</h4><p>Una mano se extiende en la dirección que sientes; la otra al pecho. Y no hacer nada.</p><div class="rq">"Esta es la dirección que siento, y esto es lo que mi cuerpo trae de la línea."</div></div>
+      <div class="rst"><span class="rn">8</span><h4>Diferenciar</h4><p>Las manos giran, palmas hacia arriba: el gesto de recibir.</p><div class="rq">"Esto lo traigo. No todo lo que traigo es mío. Hoy solo lo miro."</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:2.15in 1fr;gap:calc(var(--u)*3);flex:1;min-height:0;">
+      <div class="rosebox">
+        <span class="rl">La dirección que sentí</span>
+        <svg viewBox="0 0 180 150" fill="none">
+          <rect x="14" y="16" width="152" height="118" rx="3" stroke="#C9C9C9" stroke-width="1.2"/>
+          <g stroke="#E0E0E0" stroke-width="1"><line x1="90" y1="22" x2="90" y2="128"/><line x1="20" y1="75" x2="160" y2="75"/></g>
+          <circle cx="90" cy="75" r="3" fill="#BDBDBD"/>
+          <g font-family="ui-sans-serif, Helvetica, Arial, sans-serif" font-size="7.5" font-weight="700" letter-spacing=".9" fill="#5E5E5E" text-anchor="middle">
+            <text x="90" y="30">DEBER · O</text><text x="90" y="124">PLACER · E</text>
+          </g>
+          <text x="45" y="72" font-family="ui-sans-serif, Helvetica, Arial, sans-serif" font-size="7.5" font-weight="700" letter-spacing=".9" fill="#5E5E5E" text-anchor="middle">SUFRIM. · S</text>
+          <text x="135" y="72" font-family="ui-sans-serif, Helvetica, Arial, sans-serif" font-size="7.5" font-weight="700" letter-spacing=".9" fill="#5E5E5E" text-anchor="middle">MIGRANTE · N</text>
+        </svg>
+        <div class="rh">Traza una flecha desde el centro hacia la dirección que sentiste.</div>
+      </div>
+      <div class="col" style="gap:calc(var(--u)*2);">
+        <div class="writebox" style="flex:0;">
+          <span class="wblabel">Dónde se hizo presente en el cuerpo</span>
+          <div class="wbhint"><b>Ej.</b> "El pecho, del lado izquierdo. Un peso que no estaba antes de la pregunta."</div>
+          <div class="lines" style="flex:0;"><div class="ln"></div><div class="ln"></div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:calc(var(--u)*1.2);">
+          <span class="wblabel" style="font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;">La cualidad — una palabra en cada casilla, la que el cuerpo conteste</span>
+          <div class="qualrow">
+            <div class="qual"><span class="qn">Forma</span><div class="qb"></div></div>
+            <div class="qual"><span class="qn">Peso</span><div class="qb"></div></div>
+            <div class="qual"><span class="qn">Temperatura</span><div class="qb"></div></div>
+            <div class="qual"><span class="qn">Movimiento</span><div class="qb"></div></div>
+            <div class="qual"><span class="qn">Color</span><div class="qb"></div></div>
+          </div>
+        </div>
+        <div class="writebox" style="flex:1;">
+          <span class="wblabel">Si algo se movió al ponerle nombre</span>
+          <div class="wbhint">La respiración se hace más honda, algo se afloja. Solo se registra. <b>Si nada se movió, también es información.</b></div>
+          <div class="lines" style="flex:1;"><div class="ln"></div><div class="ln"></div></div>
+        </div>
+        <div class="note">
+          <div class="nl">Se lleva al genograma</div>
+          <p>Con lápiz, en el margen de tu árbol de la Sesión 1: <b>la flecha de la dirección</b> y <b>una palabra de la cualidad</b>. Ese árbol marcado es lo que te llevas hoy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 2</span><span class="fno">07</span></div>
+</div>
+
+<!-- ========== PAGE 8 · REGISTRO DE LA DEMOSTRACIÓN (trabajo) ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">La demostración · Hora 2</div>
+      <h1>Qué observar, qué registrar</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">La línea paterna · S2</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <p class="lede" style="margin-bottom:calc(var(--u)*1.8);">Tres focos de atención durante la demostración. El segundo es el que se registra en la tabla de esta página.</p>
+    <div class="three" style="margin-bottom:calc(var(--u)*2);">
+      <div class="fcard">
+        <div class="fnum">FOCO 01</div><h3>La dirección de la caída</h3>
+        <p>Hacia dónde apuntan los pies del muñeco sobre la hoja con los ejes: Norte, Sur, Este, Oeste o un cuadrante. Es el dato de entrada.</p>
+      </div>
+      <div class="fcard">
+        <div class="fnum">FOCO 02</div><h3>Las preguntas, y por qué esas</h3>
+        <p>El razonamiento clínico está en las preguntas que siguen a la caída. El Dr. Ojeda Rios lo verbaliza mientras trabaja.</p>
+      </div>
+      <div class="fcard">
+        <div class="fnum">FOCO 03</div><h3>El cruce con el genosociograma</h3>
+        <p>La caída adquiere sentido al cruzarse con las fechas, los oficios y los eventos de la línea paterna.</p>
+      </div>
+    </div>
+    <div class="note" style="margin-bottom:calc(var(--u)*1.8);">
+      <div class="nl">Tu ejercicio de hoy</div>
+      <p>La historia del voluntario no se registra. Anota <b>una sola cosa: cada vez que el Dr. Ojeda Rios hace una pregunta, qué crees que se la disparó.</b> Al final se comparan las lecturas.</p>
+    </div>
+    <div class="obsgrid">
+      <div class="ohd">
+        <div>La pregunta que hizo</div>
+        <div>Qué creo que se la disparó</div>
+      </div>
+      <div class="obody">
+        <div class="orow"><div></div><div></div></div>
+        <div class="orow"><div></div><div></div></div>
+        <div class="orow"><div></div><div></div></div>
+        <div class="orow"><div></div><div></div></div>
+        <div class="orow"><div></div><div></div></div>
+        <div class="orow"><div></div><div></div></div>
+        <div class="orow"><div></div><div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 2</span><span class="fno">08</span></div>
+</div>
+
+<!-- ========== PAGE 9 · CÓMO SE LEE LA CAÍDA ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">La demostración · Hora 2</div>
+      <h1>Cómo se lee la caída</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">La línea paterna · S2</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <p class="lede" style="margin-bottom:calc(var(--u)*1.6);">Tres piezas sobre la mesa: el lienzo con los ejes, la tabla giratoria y un muñeco por cada miembro de la familia. El trabajo clínico está en la secuencia y en la lectura.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:calc(var(--u)*1.8);margin-bottom:calc(var(--u)*2);">
+      <div class="stp"><span class="code">1</span><span class="sname">Selección de muñecos</span><p>El consultante elige, de forma intuitiva, un muñeco por cada miembro de la familia.</p></div>
+      <div class="stp"><span class="code">2</span><span class="sname">Colocación en el centro</span><p>Todos los muñecos de pie sobre la intersección de los ejes.</p></div>
+      <div class="stp"><span class="code">3</span><span class="sname">La caída</span><p>Se levanta unos centímetros y se suelta cada muñeco, empezando por el del consultante. No se lanza ni se empuja.</p></div>
+      <div class="stp"><span class="code">4</span><span class="sname">Determinación del camino</span><p>La dirección de los pies define el camino de cada figura.</p></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*1.8);margin-bottom:calc(var(--u)*2.2);">
+      <div class="stp"><span class="code">5</span><span class="sname">Análisis de patrones</span><p>Se comparan los caminos de toda la familia: iguales (lealtad compartida), opuestos (conflicto sistémico), cruzados.</p></div>
+      <div class="stp"><span class="code">6</span><span class="sname">Diálogo terapéutico</span><p>Se exploran las emociones y las lealtades que revelan las posiciones — con las preguntas de abajo.</p></div>
+      <div class="stp"><span class="code">7</span><span class="sname">Interpretación simbólica</span><p>Distancia del centro, posición del cuerpo y relación entre los muñecos.</p></div>
+    </div>
+    <div class="two wide-right" style="flex:1;min-height:0;gap:calc(var(--u)*4);">
+      <div class="col">
+        <div class="note" style="border-left-color:var(--terra);">
+          <div class="nl">El principio</div>
+          <p>La caída refleja una tendencia del sistema familiar. Pero la técnica <b>no impone la lectura — la propone y la verifica</b> contra la vida real de la persona.</p>
+        </div>
+        <div class="note" style="border-left-color:var(--rule);background:#FAFAFA;margin-top:auto;">
+          <div class="nl" style="color:var(--muted);">Alcance de hoy</div>
+          <p>Hoy observas la técnica trabajada por un terapeuta formado. Estas páginas documentan la secuencia para que sigas el razonamiento durante la demostración; el método completo se enseña en la formación.</p>
+        </div>
+      </div>
+      <div class="col">
+        <h3 style="margin-bottom:calc(var(--u)*0.8);">Las preguntas ancla, por dirección</h3>
+        <div class="ancl">
+          <div class="anrow"><div class="an"><span class="cdot" style="background:#2A2A2A;"></span>Migrante · N</div><div class="aq">"¿Hay migraciones en tu familia? ¿Alguien tuvo que irse de su tierra?"</div></div>
+          <div class="anrow"><div class="an"><span class="cdot" style="background:#767676;"></span>Sufrimiento · S</div><div class="aq">"¿Hay historias de sufrimiento en tu familia que nunca se han hablado?"</div></div>
+          <div class="anrow"><div class="an"><span class="cdot" style="background:#2A2A2A;"></span>Deber · O</div><div class="aq">"¿Quién en tu familia fue el que más se sacrificó? ¿Te identificas con esa persona?"</div></div>
+          <div class="anrow" style="border-bottom:0;"><div class="an"><span class="cdot" style="background:#767676;"></span>Placer · E</div><div class="aq">"¿En tu familia se permitía disfrutar, o el placer se veía como algo negativo?"</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 2</span><span class="fno">09</span></div>
+</div>
+
+<!-- ========== PAGE 10 · CIERRE (trabajo) ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Cierre de sesión</div>
+      <h1>Tu hipótesis, y lo que sigue</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">La línea paterna · S2</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="two wide-left" style="min-height:0;">
+      <div class="col">
+        <div>
+          <div class="kick">Lo que ahora sabes</div>
+          <ul class="clean">
+            <li>La línea paterna se transmite por una vía biológica literal — el <b>cromosoma Y</b>, que no se recombina.</li>
+            <li>Se lee como una <b>dirección de vida</b>: uno de los Cuatro Caminos, o un cuadrante entre dos.</li>
+            <li>Esa dirección la originó una <b>impronta</b> concreta, que desciende por la línea hasta que se hace consciente.</li>
+          </ul>
+        </div>
+        <div class="writebox" style="flex:1;">
+          <span class="wblabel">Si tuvieras que apostar una dirección para tu propia línea paterna, ¿cuál sería?</span>
+          <div class="wbhint">Sin muñecos, con lo que viste hoy. Es una hipótesis de trabajo para seguir observando, no una conclusión. Anota también <b>en qué del genosociograma la apoyas</b> — una migración, un oficio, una muerte temprana, un sacrificio.</div>
+          <div class="lines" style="flex:1;"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+        </div>
+        <div class="note">
+          <div class="nl">Para la Sesión 3</div>
+          <p>Trae <b>el mismo genograma</b>, ya marcado con la flecha de hoy. La próxima sesión trabaja lo complementario —la línea materna— con una vía de acceso distinta: el campo familiar, los Campos Mórficos.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div>
+          <div class="kick">Dos maneras de seguir</div>
+          <p style="margin-bottom:calc(var(--u)*1.8);">Hoy trabajaste una muestra de dos formaciones distintas: viste la técnica aplicada a un caso real, e hiciste el ejercicio somático sobre tu propia línea.</p>
+        </div>
+        <div class="doors" style="flex:0;">
+          <div class="door">
+            <div class="dk">Formación en la técnica</div>
+            <h4>Los Caminos de la Vida &amp; Playmobil Pro</h4>
+            <p>Aprendes a conducir la técnica con un consultante: los siete pasos completos, la lectura de la familia entera sobre el tablero, los cuadrantes, y las preguntas que confirman o descartan cada hipótesis.</p>
+          </div>
+          <div class="door">
+            <div class="dk">Taller vivencial</div>
+            <h4>Actos que Mueven</h4>
+            <p>Diseño y conducción de actos físicos, con objetos cotidianos, que el sistema nervioso registra como experiencia real. Trabajo corporal, no conversacional.</p>
+          </div>
+        </div>
+        <div class="writebox" style="flex:1;">
+          <span class="wblabel">Lo que me llevo de la demostración</span>
+          <div class="wbhint">Una decisión de método que viste tomar y que quieres recordar: qué preguntó, qué descartó, y por qué.</div>
+          <div class="lines" style="flex:1;"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Manual del estudiante · Sesión 2 · Instituto Centrobioenergetica · edición B&amp;N</span><span class="fno">10</span></div>
+</div>
+
+<script>
+  // Isotipo del Instituto — anillo de 12 círculos + centro.
+  (function () {
+    function iso(size) {
+      var pts = [];
+      for (var k = 0; k < 12; k++) {
+        var ang = (k * 30 - 90) * Math.PI / 180;
+        var x = (48 * Math.cos(ang)).toFixed(1);
+        var y = (48 * Math.sin(ang)).toFixed(1);
+        var fill = k % 2 === 0 ? '#2A2A2A' : '#8A8A8A';
+        pts.push('<circle cx="' + x + '" cy="' + y + '" r="11" fill="' + fill + '"/>');
+      }
+      return '<svg width="' + size + '" height="' + size + '" viewBox="-80 -80 160 160" aria-hidden="true">'
+        + pts.join('')
+        + '<circle cx="0" cy="0" r="14" fill="#B0B0B0" opacity="0.28"/><circle cx="0" cy="0" r="7" fill="#B0B0B0"/></svg>';
+    }
+    document.querySelectorAll('[data-iso]').forEach(function (el) {
+      var w = el.clientWidth || 30;
+      el.innerHTML = iso(w);
+      el.style.display = 'inline-flex';
+    });
+  })();
+</script>
