@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tu Mapa Hormonal · Wellkitt</title>
+  <style>
+    :root {
+      --forest: #145842;
+      --forest-2: #0f3d2f;
+      --green: #3f8f61;
+      --mint: #dfeee4;
+      --mint-2: #edf5ef;
+      --red: #c84c3b;
+      --red-soft: #f8e4df;
+      --blue: #2f6fa3;
+      --blue-soft: #e4eef7;
+      --olive: #6d8b4f;
+      --olive-soft: #e9f0df;
+      --gold: #b78a39;
+      --gold-soft: #f8efd8;
+      --ink: #17211d;
+      --ink-2: #39463f;
+      --muted: #78847d;
+      --line: #d6dfd8;
+      --paper: #f8faf7;
+      --paper-2: #eef3ee;
+      --white: #ffffff;
+      --sans: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: "SF Mono", "Cascadia Code", Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; }
+    body {
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #10251d;
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .scaler { position: absolute; left: 50%; top: 50%; width: 1280px; height: 720px; transform-origin: center center; }
+    .stage {
+      position: relative;
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 30px 90px rgba(0,0,0,.4);
+    }
+    .stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(70% 80% at 100% 0%, rgba(63,143,97,.11), transparent 60%),
+        radial-gradient(60% 70% at 0% 100%, rgba(183,138,57,.08), transparent 55%);
+    }
+
+    .chrome, .nav, .dots, .progress { position: absolute; z-index: 50; }
+    .chrome { top: 34px; left: 64px; right: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 11px; }
+    .brand img { width: 28px; height: 28px; object-fit: contain; }
+    .brand span, .section-label, .folio {
+      font-size: 12px; letter-spacing: 2.2px; text-transform: uppercase; font-weight: 700;
+    }
+    .brand span { color: var(--forest); }
+    .folio { color: var(--muted); font-variant-numeric: tabular-nums; }
+    .folio b { color: var(--ink); }
+    .rule-top { position: absolute; z-index: 20; top: 72px; left: 64px; right: 64px; height: 1px; background: var(--line); }
+    .progress { left: 0; top: 0; height: 3px; background: var(--forest); width: 0; transition: width .45s ease; }
+    .nav { right: 64px; bottom: 28px; display: flex; align-items: center; gap: 12px; }
+    .nav button {
+      width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%;
+      background: rgba(255,255,255,.72); color: var(--forest); font-size: 23px; line-height: 1;
+      cursor: pointer; transition: .2s ease;
+    }
+    .nav button:hover, .nav button:focus-visible { background: var(--forest); color: var(--white); outline: none; }
+    .nav .count { min-width: 62px; text-align: center; color: var(--muted); font: 12px var(--mono); }
+    .nav .count b { color: var(--ink); }
+    .dots { left: 64px; bottom: 43px; display: flex; gap: 6px; }
+    .dots i { width: 7px; height: 7px; border-radius: 50%; background: #cbd5ce; cursor: pointer; transition: .2s ease; }
+    .dots i.on { background: var(--forest); transform: scale(1.45); }
+    .stage.bare .chrome, .stage.bare .rule-top, .stage.bare .nav, .stage.bare .dots { display: none; }
+    .stage.on-dark .brand span, .stage.on-dark .folio { color: rgba(255,255,255,.72); }
+    .stage.on-dark .folio b { color: var(--white); }
+    .stage.on-dark .dots i { background: rgba(255,255,255,.28); }
+    .stage.on-dark .dots i.on { background: #f2c875; }
+    .stage.on-dark .progress { background: #f2c875; }
+
+    .deck { position: absolute; inset: 0; z-index: 10; }
+    .slide {
+      position: absolute; inset: 0; padding: 106px 64px 82px;
+      display: flex; flex-direction: column; opacity: 0; visibility: hidden;
+      transition: opacity .45s ease, visibility .45s ease;
+    }
+    .slide.active { opacity: 1; visibility: visible; }
+    .slide > .inner { width: 100%; margin: auto 0; }
+    .slide .inner > * { opacity: 0; transform: translateY(12px); }
+    .slide.active .inner > * { animation: rise .6s cubic-bezier(.2,.7,.25,1) forwards; }
+    .slide.active .inner > *:nth-child(1) { animation-delay: .05s; }
+    .slide.active .inner > *:nth-child(2) { animation-delay: .14s; }
+    .slide.active .inner > *:nth-child(3) { animation-delay: .23s; }
+    .slide.active .inner > *:nth-child(4) { animation-delay: .32s; }
+    .slide.active .inner > *:nth-child(5) { animation-delay: .41s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .slide { transition: none; }
+      .slide .inner > *, .slide.active .inner > * { opacity: 1; transform: none; animation: none; }
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; }
+    h1 { font-size: 86px; line-height: .96; letter-spacing: -3px; }
+    h2 { font-size: 54px; line-height: 1.02; letter-spacing: -1.8px; }
+    h3 { font-size: 29px; line-height: 1.05; }
+    p { font-size: 20px; line-height: 1.42; color: var(--ink-2); }
+    .eyebrow { color: var(--forest); font-size: 13px; font-weight: 800; letter-spacing: 2.8px; text-transform: uppercase; }
+    .eyebrow::before { content: ""; display: inline-block; width: 28px; height: 2px; margin: 0 11px 4px 0; background: currentColor; }
+    .lead { max-width: 690px; font-family: var(--serif); font-size: 27px; line-height: 1.35; color: var(--ink-2); }
+    .muted { color: var(--muted); }
+    .accent { color: var(--forest); }
+    .red { color: var(--red); }
+    .blue { color: var(--blue); }
+    .olive { color: var(--olive); }
+    .gold { color: var(--gold); }
+
+    /* Cover */
+    .cover { padding: 0; background: linear-gradient(135deg, #fbfcf9 0%, #eef5ef 100%); }
+    .cover .cover-copy { position: absolute; left: 82px; top: 100px; width: 560px; z-index: 2; }
+    .cover .brand-lockup { display: flex; align-items: center; gap: 12px; color: var(--forest); font-weight: 800; letter-spacing: 3px; font-size: 14px; text-transform: uppercase; }
+    .cover .brand-lockup img { width: 38px; height: 38px; object-fit: contain; }
+    .cover .cover-copy .eyebrow { margin-top: 116px; }
+    .cover h1 { margin-top: 21px; max-width: 560px; color: var(--forest-2); }
+    .cover h1 em { font-style: normal; color: var(--green); }
+    .cover .sub { margin-top: 25px; max-width: 470px; font-family: var(--serif); font-size: 26px; line-height: 1.35; color: var(--ink-2); }
+    .cover .meta { display: flex; gap: 28px; margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; letter-spacing: 1.3px; text-transform: uppercase; }
+    .cover .orbital { position: absolute; right: 46px; top: 28px; width: 660px; height: 660px; }
+    .cover .orbital::before, .cover .orbital::after { content: ""; position: absolute; border: 1px solid rgba(20,88,66,.14); border-radius: 50%; }
+    .cover .orbital::before { inset: 65px; }
+    .cover .orbital::after { inset: 140px; }
+    .cover .orbit-line { position: absolute; left: 50%; top: 0; width: 1px; height: 100%; background: linear-gradient(transparent, rgba(20,88,66,.25), transparent); transform: rotate(34deg); }
+    .cover .zone-orb { position: absolute; display: grid; place-items: center; width: 218px; height: 218px; border-radius: 50%; color: var(--white); text-align: center; box-shadow: 0 18px 40px rgba(20,88,66,.13); }
+    .cover .zone-orb strong { display: block; font-family: var(--serif); font-size: 32px; font-weight: 400; }
+    .cover .zone-orb span { display: block; margin-top: 6px; font-size: 13px; letter-spacing: 1.2px; text-transform: uppercase; opacity: .9; }
+    .cover .orb-a { right: 275px; top: 76px; background: var(--red); }
+    .cover .orb-b { right: 86px; top: 238px; background: var(--blue); }
+    .cover .orb-c { right: 276px; top: 400px; background: var(--olive); }
+    .cover .orbit-label { position: absolute; right: 54px; bottom: 37px; color: var(--forest); font: 12px var(--mono); letter-spacing: 1px; text-transform: uppercase; }
+
+    /* Shared panels */
+    .section-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 32px; }
+    .section-head h2 { max-width: 800px; }
+    .section-head .aside { max-width: 270px; color: var(--muted); font-size: 14px; line-height: 1.35; text-align: right; }
+    .rule { width: 74px; height: 3px; margin: 21px 0; background: var(--forest); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { padding: 24px 23px 22px; border: 1px solid var(--line); background: rgba(255,255,255,.66); }
+    .card p { margin-top: 10px; font-size: 17px; line-height: 1.42; }
+    .dark { background: var(--forest-2); color: var(--white); }
+    .dark::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 100% at 100% 0%, rgba(63,143,97,.28), transparent 65%); pointer-events: none; }
+    .dark .eyebrow { color: #f2c875; }
+    .dark h2, .dark h3 { color: var(--white); }
+    .dark p { color: rgba(255,255,255,.76); }
+    .dark .rule { background: #f2c875; }
+
+    /* Opening */
+    .opening .inner { display: grid; grid-template-columns: 1fr 1.05fr; gap: 62px; align-items: center; }
+    .opening h2 { max-width: 550px; }
+    .opening h2 em { color: var(--green); font-style: normal; }
+    .opening .promise { padding: 26px 28px; border-left: 4px solid var(--green); background: var(--mint-2); font-family: var(--serif); font-size: 27px; line-height: 1.3; }
+    .opening .promise b { color: var(--forest); font-weight: 400; }
+    .opening .mini-zones { display: grid; gap: 12px; }
+    .opening .mini-zone { display: grid; grid-template-columns: 52px 1fr; gap: 16px; align-items: center; padding: 17px 20px; border: 1px solid var(--line); background: rgba(255,255,255,.7); }
+    .opening .mini-zone .tag { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; color: var(--white); font: 700 16px var(--mono); }
+    .opening .mini-zone strong { display: block; font-family: var(--serif); font-size: 26px; font-weight: 400; }
+    .opening .mini-zone span { display: block; margin-top: 3px; color: var(--muted); font-size: 14px; }
+    .tag.red-bg { background: var(--red); } .tag.blue-bg { background: var(--blue); } .tag.olive-bg { background: var(--olive); }
+
+    /* Medical frame */
+    .medical .inner { display: grid; grid-template-columns: 1.1fr .9fr; gap: 70px; align-items: center; }
+    .medical h2 { max-width: 600px; }
+    .medical h2 em { color: #f2c875; font-style: normal; }
+    .medical .med-note { margin-top: 30px; padding: 21px 25px; border: 1px solid rgba(242,200,117,.5); background: rgba(255,255,255,.06); color: rgba(255,255,255,.84); font-size: 17px; line-height: 1.45; }
+    .medical .med-note strong { color: #fff; }
+    .medical .warning-list { display: grid; gap: 13px; }
+    .medical .warning { display: grid; grid-template-columns: 13px 1fr; gap: 13px; align-items: start; padding: 16px 18px; border: 1px solid rgba(255,255,255,.15); background: rgba(255,255,255,.07); }
+    .medical .warning i { width: 10px; height: 10px; margin-top: 5px; border-radius: 50%; background: #f2c875; }
+    .medical .warning span { color: rgba(255,255,255,.78); font-size: 16px; line-height: 1.35; }
+
+    /* Test */
+    .test .inner { display: grid; grid-template-columns: .88fr 1.12fr; gap: 65px; align-items: center; }
+    .test h2 { max-width: 490px; }
+    .test .steps { display: grid; gap: 15px; margin-top: 28px; }
+    .test .step { display: grid; grid-template-columns: 35px 1fr; gap: 15px; align-items: start; }
+    .test .step-num { width: 29px; height: 29px; display: grid; place-items: center; border-radius: 50%; background: var(--forest); color: white; font: 700 13px var(--mono); }
+    .test .step strong { display: block; font-size: 17px; color: var(--ink); }
+    .test .step span { display: block; margin-top: 3px; color: var(--muted); font-size: 15px; line-height: 1.35; }
+    .test-sheet { padding: 22px 25px; border: 1px solid var(--line); background: white; box-shadow: 0 18px 38px rgba(30,70,48,.10); transform: rotate(1.3deg); }
+    .test-sheet .sheet-top { display: flex; justify-content: space-between; align-items: start; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+    .test-sheet .sheet-title { font-family: var(--serif); font-size: 29px; color: var(--forest); }
+    .test-sheet .sheet-sub { color: var(--muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+    .scale { display: flex; align-items: center; gap: 7px; margin-top: 19px; color: var(--muted); font: 11px var(--mono); }
+    .scale b { display: grid; place-items: center; width: 25px; height: 25px; border: 1px solid #b9c8bd; border-radius: 50%; color: var(--forest); font-weight: 600; }
+    .sheet-zones { display: grid; gap: 12px; margin-top: 19px; }
+    .sheet-zone { padding: 12px 13px; border: 1px solid var(--line); }
+    .sheet-zone .zone-name { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; }
+    .sheet-zone .zone-name i { width: 9px; height: 9px; border-radius: 50%; }
+    .sheet-zone .fake-line { height: 8px; margin-top: 10px; background: linear-gradient(90deg, #dce8df 0%, #dce8df 64%, transparent 64%); }
+    .sheet-zone .fake-score { margin-top: 9px; color: var(--muted); font: 11px var(--mono); text-align: right; }
+    .sheet-bottom { margin-top: 17px; padding: 11px 13px; border: 1px dashed var(--green); background: var(--mint-2); color: var(--forest); font-size: 14px; font-weight: 700; }
+
+    /* Zone slides */
+    .zone-slide { padding-right: 0; }
+    .zone-slide .inner { display: grid; grid-template-columns: 48% 52%; align-items: stretch; height: 100%; margin: 0; }
+    .zone-slide .zone-copy { display: flex; flex-direction: column; justify-content: center; padding-right: 70px; }
+    .zone-slide .zone-letter { font: 700 14px var(--mono); letter-spacing: 2px; text-transform: uppercase; }
+    .zone-slide h2 { margin-top: 17px; font-size: 67px; }
+    .zone-slide h2 em { font-style: normal; }
+    .zone-slide .mechanism { margin-top: 26px; padding: 20px 23px; border-left: 4px solid currentColor; background: rgba(255,255,255,.68); font-size: 18px; line-height: 1.4; }
+    .zone-slide .mechanism strong { color: var(--ink); }
+    .zone-slide .zone-visual { position: relative; display: grid; place-items: center; overflow: hidden; }
+    .zone-slide .zone-visual::before { content: ""; position: absolute; width: 470px; height: 470px; border-radius: 50%; border: 1px solid currentColor; opacity: .18; }
+    .zone-slide .zone-visual::after { content: ""; position: absolute; width: 340px; height: 340px; border-radius: 50%; border: 1px solid currentColor; opacity: .22; }
+    .zone-slide .visual-core { position: relative; z-index: 2; display: grid; place-items: center; width: 240px; height: 240px; border-radius: 50%; color: white; text-align: center; box-shadow: 0 25px 55px rgba(20,45,30,.15); }
+    .zone-slide .visual-core .big { display: block; font: 72px var(--serif); line-height: .9; }
+    .zone-slide .visual-core .small { display: block; margin-top: 10px; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; }
+    .zone-slide .visual-caption { position: absolute; left: 84px; bottom: 68px; z-index: 3; max-width: 250px; color: currentColor; font-size: 14px; line-height: 1.4; }
+    .zone-a { background: var(--red-soft); color: var(--red); }
+    .zone-a h2 em { color: var(--red); }
+    .zone-a .visual-core { background: var(--red); }
+    .zone-b { background: var(--blue-soft); color: var(--blue); }
+    .zone-b h2 em { color: var(--blue); }
+    .zone-b .visual-core { background: var(--blue); }
+    .zone-c { background: var(--olive-soft); color: var(--olive); }
+    .zone-c h2 em { color: var(--olive); }
+    .zone-c .visual-core { background: var(--olive); }
+    .zone-slide p { color: var(--ink-2); }
+
+    /* Grouping */
+    .group .inner { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center; }
+    .group .group-ring { position: relative; height: 370px; }
+    .group .ring { position: absolute; border: 1px solid rgba(20,88,66,.22); border-radius: 50%; }
+    .group .ring.r1 { width: 310px; height: 310px; left: 68px; top: 27px; }
+    .group .ring.r2 { width: 218px; height: 218px; left: 114px; top: 73px; }
+    .group .bubble { position: absolute; display: grid; place-items: center; width: 130px; height: 130px; border-radius: 50%; color: white; text-align: center; box-shadow: 0 15px 30px rgba(25,70,42,.12); }
+    .group .bubble b { display: block; font: 39px var(--serif); }
+    .group .bubble span { display: block; margin-top: 5px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+    .group .b1 { left: 12px; top: 35px; background: var(--red); }
+    .group .b2 { right: 26px; top: 112px; background: var(--blue); }
+    .group .b3 { left: 96px; bottom: 8px; background: var(--olive); }
+    .group .center-note { position: absolute; left: 138px; top: 142px; width: 170px; color: var(--forest); font-family: var(--serif); font-size: 24px; line-height: 1.1; text-align: center; }
+    .group .group-points { display: grid; gap: 13px; }
+    .group .point { display: grid; grid-template-columns: 12px 1fr; gap: 14px; align-items: start; padding: 15px 18px; border: 1px solid var(--line); background: rgba(255,255,255,.72); }
+    .group .point i { width: 10px; height: 10px; margin-top: 4px; border-radius: 50%; background: var(--green); }
+    .group .point strong { display: block; font-size: 17px; }
+    .group .point span { display: block; margin-top: 4px; color: var(--muted); font-size: 15px; line-height: 1.35; }
+
+    /* Breathing */
+    .breathing .inner { display: grid; grid-template-columns: 1fr 1.1fr; gap: 65px; align-items: center; }
+    .breathing h2 { max-width: 500px; }
+    .breathing h2 em { color: #f2c875; font-style: normal; }
+    .breathing .instruction { margin-top: 27px; padding: 19px 22px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.08); color: rgba(255,255,255,.82); font-size: 17px; line-height: 1.45; }
+    .breathing .instruction strong { color: #fff; }
+    .breath-visual { position: relative; height: 340px; display: grid; place-items: center; }
+    .breath-visual .circle { position: absolute; width: 260px; height: 260px; border: 1px solid rgba(242,200,117,.65); border-radius: 50%; }
+    .breath-visual .circle::before, .breath-visual .circle::after { content: ""; position: absolute; inset: 30px; border: 1px solid rgba(242,200,117,.35); border-radius: 50%; }
+    .breath-visual .breath-number { position: relative; z-index: 2; text-align: center; color: #f2c875; }
+    .breath-visual .breath-number strong { display: block; font: 90px var(--serif); line-height: .8; }
+    .breath-visual .breath-number span { display: block; margin-top: 16px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+    .breath-visual .path { position: absolute; left: 75px; right: 75px; bottom: 6px; display: grid; grid-template-columns: 4fr 6fr; gap: 10px; }
+    .breath-visual .path div { padding-top: 10px; border-top: 3px solid #f2c875; color: rgba(255,255,255,.7); font: 12px var(--mono); text-transform: uppercase; letter-spacing: 1px; }
+    .breath-visual .path div:last-child { border-color: rgba(255,255,255,.35); }
+
+    /* Products */
+    .products .section-head { margin-bottom: 20px; }
+    .products .route-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .route { position: relative; min-height: 400px; padding: 20px 19px 19px; border: 1px solid var(--line); background: rgba(255,255,255,.76); overflow: hidden; }
+    .route .route-head { display: flex; align-items: center; gap: 10px; }
+    .route .route-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .route h3 { font-size: 31px; }
+    .route .route-sub { margin-top: 6px; color: var(--muted); font-size: 14px; }
+    .route .product-img { position: absolute; right: -13px; bottom: -10px; width: 190px; height: 190px; object-fit: cover; border-radius: 50%; opacity: .98; }
+    .route .product-list { position: relative; z-index: 2; display: grid; gap: 9px; margin-top: 30px; max-width: 195px; }
+    .route .product { padding: 10px 12px; border-left: 3px solid currentColor; background: rgba(255,255,255,.82); font-weight: 700; font-size: 16px; }
+    .route .product small { display: block; margin-top: 3px; color: var(--muted); font-weight: 400; font-size: 12px; line-height: 1.25; }
+    .route-a { color: var(--red); background: linear-gradient(145deg, rgba(248,228,223,.8), rgba(255,255,255,.8)); }
+    .route-b { color: var(--blue); background: linear-gradient(145deg, rgba(228,238,247,.8), rgba(255,255,255,.8)); }
+    .route-c { color: var(--olive); background: linear-gradient(145deg, rgba(233,240,223,.8), rgba(255,255,255,.8)); }
+    .products .footnote { margin-top: 15px; color: var(--muted); font-size: 13px; }
+
+    /* Recap + close */
+    .recap .inner { display: grid; grid-template-columns: .85fr 1.15fr; gap: 65px; align-items: center; }
+    .recap h2 { max-width: 470px; }
+    .recap .route-map { display: grid; gap: 13px; }
+    .recap .map-row { display: grid; grid-template-columns: 160px 1fr; align-items: center; min-height: 66px; border-top: 1px solid var(--line); }
+    .recap .map-row:last-child { border-bottom: 1px solid var(--line); }
+    .recap .map-zone { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 24px; }
+    .recap .map-zone i { width: 12px; height: 12px; border-radius: 50%; }
+    .recap .map-products { font-size: 18px; color: var(--ink-2); }
+    .recap .recap-note { margin-top: 25px; padding: 16px 19px; background: var(--mint-2); border-left: 4px solid var(--green); color: var(--forest); font-size: 16px; line-height: 1.4; }
+    /* Reset Hormonal */
+    .reset-intro .inner { display: grid; grid-template-columns: 1.15fr .85fr; gap: 70px; align-items: center; }
+    .reset-intro h2 { max-width: 700px; font-size: 70px; }
+    .reset-intro h2 em { color: #f2c875; font-style: normal; }
+    .reset-intro .program-line { margin-top: 26px; max-width: 650px; color: rgba(255,255,255,.8); font-family: var(--serif); font-size: 25px; line-height: 1.35; }
+    .reset-intro .program-points { display: grid; gap: 12px; }
+    .reset-intro .program-point { display: grid; grid-template-columns: 12px 1fr; gap: 13px; align-items: start; padding: 15px 17px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.07); }
+    .reset-intro .program-point i { width: 9px; height: 9px; margin-top: 5px; border-radius: 50%; background: #f2c875; }
+    .reset-intro .program-point strong { display: block; color: #fff; font-size: 17px; }
+    .reset-intro .program-point span { display: block; margin-top: 4px; color: rgba(255,255,255,.66); font-size: 14px; line-height: 1.35; }
+    .reset-route .inner { display: grid; grid-template-columns: .75fr 1.25fr; gap: 55px; align-items: center; }
+    .reset-route h2 { max-width: 440px; }
+    .reset-route h2 em { color: var(--green); font-style: normal; }
+    .reset-route .route-intro { margin-top: 20px; max-width: 400px; font-family: var(--serif); font-size: 24px; line-height: 1.35; color: var(--ink-2); }
+    .reset-route .days { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .reset-route .day { min-height: 245px; padding: 22px 21px; border: 1px solid var(--line); background: white; }
+    .reset-route .day .day-label { color: var(--forest); font: 700 12px var(--mono); letter-spacing: 1.6px; text-transform: uppercase; }
+    .reset-route .day h3 { margin-top: 16px; font-size: 35px; color: var(--forest); }
+    .reset-route .day p { margin-top: 12px; font-size: 16px; line-height: 1.4; }
+    .reset-route .phase-band { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 18px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .reset-route .phase-item { padding: 14px 17px; border-left: 1px solid var(--line); }
+    .reset-route .phase-item:first-child { border-left: 0; }
+    .reset-route .phase-item b { display: block; color: var(--forest); font: 700 12px var(--mono); letter-spacing: 1.2px; text-transform: uppercase; }
+    .reset-route .phase-item span { display: block; margin-top: 6px; color: var(--muted); font-size: 14px; line-height: 1.3; }
+    .close { background: linear-gradient(135deg, var(--forest-2), var(--forest)); color: white; text-align: left; justify-content: center; }
+    .close .inner { max-width: 900px; margin: 0 auto; }
+    .close .eyebrow { color: #f2c875; }
+    .close h2 { margin-top: 18px; max-width: 780px; font-size: 72px; }
+    .close h2 em { color: #f2c875; font-style: normal; }
+    .close .close-sub { margin-top: 24px; color: rgba(255,255,255,.78); font-family: var(--serif); font-size: 27px; line-height: 1.35; max-width: 650px; }
+    .close .cta { display: inline-flex; align-items: center; gap: 12px; margin-top: 34px; padding: 13px 19px; border: 1px solid rgba(242,200,117,.65); color: #f2c875; font: 700 14px var(--mono); letter-spacing: 1.2px; text-transform: uppercase; }
+    .close .fine { margin-top: 38px; color: rgba(255,255,255,.52); font-size: 12px; }
+
+    @page { size: 16in 9in; margin: 0; }
+    @media print {
+      html, body { background: white; overflow: visible; }
+      body { display: block; }
+      .scaler { position: static; width: 1280px; height: 720px; transform: none !important; }
+      .stage { box-shadow: none; }
+      .slide { position: relative; opacity: 1 !important; visibility: visible !important; break-after: page; }
+      .slide .inner > * { opacity: 1 !important; transform: none !important; animation: none !important; }
+      .chrome, .rule-top, .nav, .dots, .progress { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scaler" id="scaler">
+    <main class="stage" id="stage">
+      <div class="progress" id="progress"></div>
+      <div class="chrome">
+        <div class="brand"><img src="assets/wellkitt.png" alt="Wellkitt"><span>Salud femenina</span></div>
+        <div class="folio"><b id="folio-current">01</b> / <span id="folio-total">14</span></div>
+      </div>
+      <div class="rule-top"></div>
+      <div class="deck" id="deck">
+
+        <section class="slide cover active" data-tone="light">
+          <div class="cover-copy">
+            <div class="brand-lockup"><img src="assets/wellkitt.png" alt="Wellkitt"><span>Wellkitt</span></div>
+            <div class="eyebrow">Jueves · sesión dinámica</div>
+            <h1>Tu <em>Mapa</em><br>Hormonal</h1>
+            <p class="sub">Una lectura práctica de cómo se está reacomodando tu cuerpo.</p>
+            <div class="meta"><span>45 minutos</span><span>Presencial + Zoom</span><span>HORMONAS</span></div>
+          </div>
+          <div class="orbital" aria-hidden="true">
+            <div class="orbit-line"></div>
+            <div class="zone-orb orb-a"><div><strong>Calor</strong><span>el termostato</span></div></div>
+            <div class="zone-orb orb-b"><div><strong>Sueño</strong><span>el sistema nervioso</span></div></div>
+            <div class="zone-orb orb-c"><div><strong>Estructura</strong><span>piel y energía</span></div></div>
+            <div class="orbit-label">Tres zonas · una fotografía de hoy</div>
+          </div>
+        </section>
+
+        <section class="slide opening" data-tone="light">
+          <div class="inner">
+            <div>
+              <div class="eyebrow">La idea central</div>
+              <h2>Los síntomas no vienen todos del mismo lugar.</h2>
+              <div class="rule"></div>
+              <div class="promise">Hoy vas a descubrir <b>por dónde te está pegando más a ti</b> y cuál puede ser tu primer punto de atención.</div>
+            </div>
+            <div class="mini-zones">
+              <div class="mini-zone"><span class="tag red-bg">A</span><div><strong>Calor</strong><span>Sofocos, sudoración, termostato interno.</span></div></div>
+              <div class="mini-zone"><span class="tag blue-bg">B</span><div><strong>Sueño y ánimo</strong><span>Insomnio, irritabilidad, ansiedad, agotamiento mental.</span></div></div>
+              <div class="mini-zone"><span class="tag olive-bg">C</span><div><strong>Piel, energía y estructura</strong><span>Sequedad, cansancio, articulaciones y sensación de fragilidad.</span></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide dark medical" data-tone="dark">
+          <div class="inner">
+            <div>
+              <div class="eyebrow">Marco de cuidado</div>
+              <h2>Antes de leer tu mapa, <em>lee estas señales.</em></h2>
+              <div class="rule"></div>
+              <p class="lead">Lo de hoy orienta. No sustituye una valoración médica ni convierte un síntoma en diagnóstico.</p>
+              <div class="med-note"><strong>Busca valoración médica</strong> ante sangrado después de que la regla ya se había ido, sangrado abundante o irregular sin explicación, o dolor pélvico severo.</div>
+            </div>
+            <div class="warning-list">
+              <div class="warning"><i></i><span>El mapa es una autolectura para reconocer patrones recientes.</span></div>
+              <div class="warning"><i></i><span>La terapia hormonal y los fármacos se deciden con un profesional de salud.</span></div>
+              <div class="warning"><i></i><span>Si aparece sequedad íntima o molestia urinaria como tema principal, coméntalo al final.</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide test" data-tone="light">
+          <div class="inner">
+            <div>
+              <div class="eyebrow">Paso 01 · Autotest</div>
+              <h2>Haz tu mapa en cinco minutos.</h2>
+              <p class="lead" style="margin-top:20px">Puntúa cada frase del 0 al 4 según cuánto la sentiste esta última semana.</p>
+              <div class="steps">
+                <div class="step"><span class="step-num">1</span><div><strong>Responde rápido.</strong><span>La primera respuesta suele ser la más útil.</span></div></div>
+                <div class="step"><span class="step-num">2</span><div><strong>Suma cada zona por separado.</strong><span>Cada bloque llega hasta 16 puntos.</span></div></div>
+                <div class="step"><span class="step-num">3</span><div><strong>Encuentra tu zona dominante.</strong><span>La suma más alta es tu primer punto de atención hoy.</span></div></div>
+              </div>
+            </div>
+            <div class="test-sheet">
+              <div class="sheet-top"><div class="sheet-title">Tu Mapa Hormonal</div><div class="sheet-sub">Autolectura</div></div>
+              <div class="scale"><span>nada</span><b>0</b><b>1</b><b>2</b><b>3</b><b>4</b><span>muy fuerte</span></div>
+              <div class="sheet-zones">
+                <div class="sheet-zone"><div class="zone-name"><i style="background:var(--red)"></i> ZONA A · CALOR</div><div class="fake-line"></div><div class="fake-score">SUMA ZONA A · ____ / 16</div></div>
+                <div class="sheet-zone"><div class="zone-name"><i style="background:var(--blue)"></i> ZONA B · SUEÑO Y ÁNIMO</div><div class="fake-line"></div><div class="fake-score">SUMA ZONA B · ____ / 16</div></div>
+                <div class="sheet-zone"><div class="zone-name"><i style="background:var(--olive)"></i> ZONA C · ESTRUCTURA</div><div class="fake-line"></div><div class="fake-score">SUMA ZONA C · ____ / 16</div></div>
+              </div>
+              <div class="sheet-bottom">TU ZONA DOMINANTE: ______________________________</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide zone-slide zone-a" data-tone="light">
+          <div class="inner">
+            <div class="zone-copy">
+              <div class="zone-letter">Zona A · el termostato</div>
+              <h2>Cuando el cuerpo<br><em>sube el calor.</em></h2>
+              <div class="mechanism"><strong>Qué puede estar pasando:</strong> el hipotálamo recibe una señal más sensible y dispara la respuesta de enfriamiento aunque el ambiente no haya cambiado.</div>
+              <p style="margin-top:18px; font-size:16px">Sofocos · sudoración nocturna · palpitaciones · empeora con desvelo o estrés.</p>
+            </div>
+            <div class="zone-visual"><div class="visual-core"><div><span class="big">A</span><span class="small">calor</span></div></div><div class="visual-caption">Un circuito real del termostato interno; no una falla de voluntad.</div></div>
+          </div>
+        </section>
+
+        <section class="slide zone-slide zone-b" data-tone="light">
+          <div class="inner">
+            <div class="zone-copy">
+              <div class="zone-letter">Zona B · el sistema nervioso</div>
+              <h2>Cuando la noche<br><em>no alcanza.</em></h2>
+              <div class="mechanism"><strong>Qué puede estar pasando:</strong> al cambiar la progesterona, el sistema nervioso pierde parte del freno que ayudaba a bajar la activación.</div>
+              <p style="margin-top:18px; font-size:16px">Despertares · irritabilidad · ansiedad · agotamiento mental · poca paciencia.</p>
+            </div>
+            <div class="zone-visual"><div class="visual-core"><div><span class="big">B</span><span class="small">sueño + ánimo</span></div></div><div class="visual-caption">Insomnio e irritabilidad pueden compartir una misma ruta de activación.</div></div>
+          </div>
+        </section>
+
+        <section class="slide zone-slide zone-c" data-tone="light">
+          <div class="inner">
+            <div class="zone-copy">
+              <div class="zone-letter">Zona C · el tejido de sostén</div>
+              <h2>Cuando cambia la<br><em>estructura.</em></h2>
+              <div class="mechanism"><strong>Qué puede estar pasando:</strong> al bajar el estímulo estrogénico, la piel y el tejido conectivo reciben menos señal para conservar firmeza y densidad.</div>
+              <p style="margin-top:18px; font-size:16px">Piel seca · cansancio físico · molestias musculares o articulares · sensación de fragilidad.</p>
+            </div>
+            <div class="zone-visual"><div class="visual-core"><div><span class="big">C</span><span class="small">piel + energía</span></div></div><div class="visual-caption">La estructura cambia de forma gradual; por eso conviene observarla antes de exigirle.</div></div>
+          </div>
+        </section>
+
+        <section class="slide group" data-tone="light">
+          <div class="inner">
+            <div class="group-ring">
+              <div class="ring r1"></div><div class="ring r2"></div>
+              <div class="bubble b1"><div><b>A</b><span>calor</span></div></div>
+              <div class="bubble b2"><div><b>B</b><span>sueño</span></div></div>
+              <div class="bubble b3"><div><b>C</b><span>estructura</span></div></div>
+              <div class="center-note">Tu cuerpo puede estar en más de una zona.</div>
+            </div>
+            <div>
+              <div class="eyebrow">Paso 02 · Agrupación</div>
+              <h2>Mira alrededor: no eres la única en tu zona.</h2>
+              <div class="rule"></div>
+              <div class="group-points">
+                <div class="point"><i></i><div><strong>Levanta tu color.</strong><span>Rojo para calor, azul para sueño y ánimo, verde para piel y estructura.</span></div></div>
+                <div class="point"><i></i><div><strong>Si hay empate, elige lo que más te pesa.</strong><span>El mapa es una fotografía de esta semana, no una etiqueta permanente.</span></div></div>
+                <div class="point"><i></i><div><strong>El mecanismo ayuda a ordenar la experiencia.</strong><span>Entender por dónde empieza tu ruta cambia la forma de acompañarte.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide dark breathing" data-tone="dark">
+          <div class="inner">
+            <div>
+              <div class="eyebrow">Paso 03 · Experiencia</div>
+              <h2>Una herramienta para llevarte <em>hoy.</em></h2>
+              <div class="rule"></div>
+              <p class="lead">Respiración pausada: baja el volumen de la reacción de estrés y del malestar asociado.</p>
+              <div class="instruction"><strong>Inhala por la nariz en 4.</strong> Exhala más largo, en 6. Repite 4–5 ciclos. No se presenta como una cura del sofoco.</div>
+            </div>
+            <div class="breath-visual"><div class="circle"></div><div class="breath-number"><strong>4 / 6</strong><span>inhalar · exhalar</span></div><div class="path"><div>4 · entra</div><div>6 · suelta</div></div></div>
+          </div>
+        </section>
+
+        <section class="slide products" data-tone="light">
+          <div class="inner">
+            <div class="section-head"><div><div class="eyebrow">Paso 04 · Tu ruta</div><h2>Empieza por tu zona dominante.</h2></div><div class="aside">La ruta orienta el primer paso. No necesitas empezar por los cinco productos.</div></div>
+            <div class="route-grid">
+              <div class="route route-a"><div class="route-head"><i class="route-dot" style="background:var(--red)"></i><h3>Calor</h3></div><div class="route-sub">El termostato</div><div class="product-list"><div class="product">Calciflavon<small>isoflavonas + soporte mineral</small></div><div class="product">Fem-vit · Salvia<small>acompañamiento para bochornos</small></div></div><img class="product-img" src="assets/calciflavon-salud-femenina.png" alt="Calciflavon"></div>
+              <div class="route route-b"><div class="route-head"><i class="route-dot" style="background:var(--blue)"></i><h3>Sueño y ánimo</h3></div><div class="route-sub">El sistema nervioso</div><div class="product-list"><div class="product">Fem-vit<small>Melisa, Valeriana, Galphimia y más</small></div><div class="product">Barbasco<small>modulación del eje suprarrenal</small></div></div><img class="product-img" src="assets/femvit-salud-femenina.png" alt="Fem-vit"></div>
+              <div class="route route-c"><div class="route-head"><i class="route-dot" style="background:var(--olive)"></i><h3>Piel y estructura</h3></div><div class="route-sub">El tejido de sostén</div><div class="product-list"><div class="product">Diatonato 5.1<small>zinc + cobre</small></div><div class="product">Calciflavon<small>calcio, silicio y vitamina D</small></div></div><img class="product-img" src="assets/diatonato-5-1-salud-femenina.png" alt="Diatonato 5.1"></div>
+            </div>
+            <div class="footnote">Si todavía tienes ciclo irregular, Milenrama se conversa como una ruta aparte.</div>
+          </div>
+        </section>
+
+        <section class="slide recap" data-tone="light">
+          <div class="inner">
+            <div><div class="eyebrow">Recapitulación</div><h2>Tu primer paso puede ser específico.</h2><div class="rule"></div><p class="lead">El mapa no pretende definirte. Sirve para dejar de empezar desde un consejo genérico.</p><div class="recap-note">Lleva tu hoja y registra durante 7 días cuándo aparece el síntoma, qué sentías y qué estaba pasando alrededor.</div></div>
+            <div class="route-map">
+              <div class="map-row"><div class="map-zone"><i style="background:var(--red)"></i> Roja</div><div class="map-products">Calor → Calciflavon + Salvia de Fem-vit</div></div>
+              <div class="map-row"><div class="map-zone"><i style="background:var(--blue)"></i> Azul</div><div class="map-products">Sueño y ánimo → Fem-vit + Barbasco de apoyo</div></div>
+              <div class="map-row"><div class="map-zone"><i style="background:var(--olive)"></i> Verde</div><div class="map-products">Piel y estructura → Diatonato 5.1 + Calciflavon</div></div>
+              <div class="map-row"><div class="map-zone"><i style="background:var(--gold)"></i> Aparte</div><div class="map-products">Ciclo irregular → conversar Milenrama</div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide dark reset-intro" data-tone="dark">
+          <div class="inner">
+            <div>
+              <div class="eyebrow">El programa</div>
+              <h2>Tenemos un programa para trabajar este mapa a fondo: <em>Reset Hormonal.</em></h2>
+              <p class="program-line">La Cartografía Hormonal Femenina organiza la transición, el reset y el nuevo equilibrio en una ruta que puedes volver a consultar cuando tu cuerpo cambie.</p>
+            </div>
+            <div class="program-points">
+              <div class="program-point"><i></i><div><strong>9 mapas de regulación</strong><span>Una lectura más amplia que la fotografía rápida de esta sesión.</span></div></div>
+              <div class="program-point"><i></i><div><strong>3 fases del proceso</strong><span>Funcional, estructural y nuevo equilibrio.</span></div></div>
+              <div class="program-point"><i></i><div><strong>Fitoterapia por fase</strong><span>Plantas y protocolos con una lógica específica, no una receta única.</span></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide reset-route" data-tone="light">
+          <div class="inner">
+            <div>
+              <div class="eyebrow">Cómo se recorre</div>
+              <h2>Del mapa a un <em>sistema de mantenimiento.</em></h2>
+              <p class="route-intro">Aprendes a identificar la fase, reconocer los ejes activos y ajustar tu ruta cuando tu cuerpo vuelve a cambiar.</p>
+            </div>
+            <div class="days">
+              <div class="day"><div class="day-label">Día 01 · El mapa</div><h3>Cartografía Hormonal</h3><p>Fases, ejes y mapas de regulación para entender qué está activo en tu cuerpo.</p></div>
+              <div class="day"><div class="day-label">Día 02 · El método</div><h3>Protocolos y botica</h3><p>Fitoterapia y herramientas organizadas por fase y por necesidad.</p></div>
+              <div class="phase-band"><div class="phase-item"><b>01 · Transición</b><span>Calor, sueño y ánimo.</span></div><div class="phase-item"><b>02 · Reset</b><span>Hueso, corazón y piel.</span></div><div class="phase-item"><b>03 · Equilibrio</b><span>Energía vital y mantenimiento.</span></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide close" data-tone="dark">
+          <div class="inner">
+            <div class="eyebrow">Siguiente paso</div>
+            <h2>Tu mapa de hoy es una <em>puerta de entrada.</em></h2>
+            <p class="close-sub">El programa Reset Hormonal profundiza en tu perfil, tus ejes y una ruta por fases.</p>
+            <div class="cta">Escribe HORMONAS por WhatsApp</div>
+            <div class="fine">Sesión Wellkitt · Material educativo · Orientación, no diagnóstico ni tratamiento</div>
+          </div>
+        </section>
+
+      </div>
+      <div class="dots" id="dots"></div>
+      <div class="nav"><button id="prev" aria-label="Anterior">‹</button><span class="count"><b id="current">1</b> / <span id="total">14</span></span><button id="next" aria-label="Siguiente">›</button></div>
+    </main>
+  </div>
+  <script>
+    (() => {
+      const scaler = document.getElementById('scaler');
+      const stage = document.getElementById('stage');
+      const slides = [...document.querySelectorAll('.slide')];
+      const dotsBox = document.getElementById('dots');
+      const current = document.getElementById('current');
+      const total = document.getElementById('total');
+      const folioCurrent = document.getElementById('folio-current');
+      const folioTotal = document.getElementById('folio-total');
+      const progress = document.getElementById('progress');
+      let index = 0;
+
+      total.textContent = slides.length;
+      folioTotal.textContent = slides.length;
+      slides.forEach((_, i) => {
+        const dot = document.createElement('i');
+        dot.setAttribute('aria-label', `Ir a la slide ${i + 1}`);
+        dot.addEventListener('click', () => go(i));
+        dotsBox.appendChild(dot);
+      });
+      const dots = [...dotsBox.children];
+
+      function fit() {
+        const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+        scaler.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      }
+      function go(next) {
+        index = Math.max(0, Math.min(slides.length - 1, next));
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('on', i === index));
+        current.textContent = index + 1;
+        folioCurrent.textContent = String(index + 1).padStart(2, '0');
+        progress.style.width = `${(index / (slides.length - 1)) * 100}%`;
+        stage.classList.toggle('bare', index === 0 || index === slides.length - 1);
+        stage.classList.toggle('on-dark', slides[index].dataset.tone === 'dark');
+      }
+      document.getElementById('prev').addEventListener('click', () => go(index - 1));
+      document.getElementById('next').addEventListener('click', () => go(index + 1));
+      window.addEventListener('keydown', event => {
+        if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); go(index + 1); }
+        if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); go(index - 1); }
+        if (event.key === 'Home') go(0);
+        if (event.key === 'End') go(slides.length - 1);
+      });
+      window.addEventListener('resize', fit);
+      fit();
+      go(0);
+    })();
+  </script>
+</body>
+</html>

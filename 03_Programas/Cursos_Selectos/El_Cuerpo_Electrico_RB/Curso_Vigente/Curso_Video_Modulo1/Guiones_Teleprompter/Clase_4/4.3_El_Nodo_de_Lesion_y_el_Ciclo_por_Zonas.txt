@@ -1,0 +1,58 @@
+CLASE 4 · LECCIÓN 4.3 — EL NODO DE LESIÓN Y EL CICLO POR ZONAS
+El Cuerpo Eléctrico · Formación en Regulación Bioeléctrica
+
+
+[ SLIDE 1 ]
+
+Recuperemos la lección anterior: con el cero puesto —corregida la asimetría de base—, ya podemos leer el cuerpo por zonas. Esta lección es ese trabajo por zonas, y trae un cambio de nombre importante.
+
+El objetivo: al terminar sabrás qué es un nodo de lesión, cómo levantar el mapa de dolor, y cómo ejecutar el ciclo que encuentra el complementario de cada zona.
+
+[ SLIDE 2 ]
+
+Antes de trabajar, se levanta el mapa. Se le entrega a la persona una silueta del cuerpo —o se le pide que la dibuje— y se registra cada zona de dolor en una escala de cero a diez: cero es ausencia, diez es el máximo. Se registra por lo que la persona siente, por palpación, o por evidencia visible: una herida, una inflamación. Ese mapa es la referencia basal de la sesión: es lo que hace el trabajo registrable y comparable de una sesión a otra.
+
+[ SLIDE 3 ]
+
+Aquí el cambio de nombre. La tradición hablaba del "punto trauma" como una zona que "guarda la energía atrapada del golpe" —una imagen sin mecanismo. La Regulación Bioeléctrica lo lee de otro modo, y lo renombra por lo que es: un nodo de lesión. Y tres piezas que ya conoces convergen en ese nombre. La corriente de lesión de Becker, de la Clase 1: la lesión tiene voltaje. La isla de despolarización de la Clase 3: ese voltaje desconecta la zona del colectivo. Y el nodo del rastreo: una zona desregulada que responde al polo negativo. Un nodo de lesión es una sola zona —es decir, un polo, no un dipolo. El dipolo se forma cuando lo rastreas.
+
+[ SLIDE 4 ]
+
+Empieza la Técnica 1, el dipolo local. El trabajo empieza por la zona más sintomática del mapa —la de mayor intensidad, sea dolor, tensión, contractura, edema o ardor, o bien la zona lesionada. Se coloca ahí un imán con el polo negativo, cara negativa a la piel, y se comprueba midiendo las piernas. Si la zona acorta la pierna, ahí hay un nodo: se deja el imán fijo. Si no hay cambio, se va moviendo el imán por la zona, midiendo, hasta encontrar el punto que acorta. Y si en toda la zona no aparece acortamiento, se pasa a la siguiente. El cuerpo confirma dónde está el nodo; el operador no lo supone.
+
+[ SLIDE 5 ]
+
+Encontrado el nodo, se busca su pareja. Sin mover el negativo, se coloca un polo positivo a un lado —al lado opuesto, a la izquierda o arriba, probando posiciones— y se vuelve a medir. Si las piernas quedan isométricas, has cerrado un dipolo local: los dos polos en la misma zona. Se deja así. La mayoría de los puntos se resuelven de esta forma.
+
+Y una regla que ordena todo: solo se coloca un dipolo donde el rastreo responde con acortamiento; una zona que no acorta, no se trabaja. Este dipolo local es un dipolo de gradiente: los dos polos opuestos y adyacentes crean un gradiente de campo empinado en el tejido entre ellos, y es ese gradiente —no la intensidad— el que actúa sobre la zona.
+
+[ SLIDE 6 ]
+
+Si con el positivo adyacente no se consigue la isometría en ninguna posición, la zona necesita un nodo regulador a distancia: es la Técnica 2, el punto distante. El negativo permanece sobre la zona, y el positivo busca ese nodo en un orden fijo, que se sigue en secuencia hasta que uno restablezca la simetría. Primero, el riñón derecho. Luego el riñón izquierdo. Después la suprarrenal derecha y la izquierda —la suprarrenal es la glándula que está justo encima del riñón. Luego el hígado —que se rastrea sobre toda la zona hepática. Después el bulbo raquídeo —en el hueco bajo la nuca. Y si ninguno restablece la simetría, se rastrea en todo el cuerpo.
+
+[ SLIDE 7 ]
+
+Ese orden no es arbitrario: recorre los nodos que regulan el sistema, del más frecuente al más central. El riñón, que regula el potasio —es el único nodo regulador establecido. La suprarrenal, que regula sales y también el estrés y la inflamación. El hígado, por vía del nervio vago. Y el bulbo, el centro que coordina todo el tono autonómico. Los últimos tres son una línea de investigación; el riñón es lo establecido. Y algo del método: el operador no elige el complementario, lo encuentra siguiendo la señal de la pierna.
+
+[ SLIDE 8 ]
+
+Toda la sesión se guía por una respuesta neuromuscular con cuatro rasgos, que conviene tener presentes para no confundirla con una expectativa. Es inmediata —aparece en segundos. Es reversible —desaparece al retirar el imán. Es reproducible —reaparece si repites la colocación. Y es específica —solo en las zonas desreguladas. Ante cualquier duda, la regla es una: volver a rastrear. Un nodo verdadero da la misma respuesta cada vez.
+
+[ PAUSA — comprobación · deja 3 o 4 segundos ]
+
+Detén la reproducción y responde: si al colocar el positivo a un lado del nodo no se consigue la isometría, ¿cuál es el primer complementario distante que se prueba? … El riñón derecho. Y si no, se sigue el orden fijo: riñón izquierdo, suprarrenales, hígado, bulbo, y por último todo el cuerpo.
+
+[ SLIDE 9 ]
+
+Este ciclo —nodo, comprobar, complementario, dejar los imanes— se repite con todas las zonas del mapa, de la de mayor dolor a la de menor. Los imanes de los dipolos confirmados se van quedando en el cuerpo, todos en aplicación a la vez. La mayoría quedan como dipolo local; solo alguno se resuelve a distancia, en el riñón.
+
+[ SLIDE 10 ]
+
+La idea que queda: el nodo de lesión es una zona lesionada que responde al polo negativo; al rastrearla forma un dipolo, local o distante. Y el complementario distante se busca en un orden fijo que empieza siempre por el riñón.
+
+[ SLIDE 11 ]
+
+En síntesis: se levanta el mapa de dolor, se trabaja de mayor a menor, se confirma cada nodo con el polo negativo, y se le encuentra su pareja —la Técnica 1, dipolo local, o la Técnica 2, punto distante en su orden fijo. La lección siguiente cierra el Módulo 1 con la Técnica 3 —la rejilla, con su variante combinada—, una técnica sistémica, y el cierre de la sesión.
+
+
+— FIN DE LA LECCIÓN 4.3 —

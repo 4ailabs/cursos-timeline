@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Rejilla de cuatro imanes cuadrados sobre muñeca</title>
+  <desc id="desc">Diagrama superior de una muñeca de seis por cuatro centímetros con cuatro imanes de dieciocho milímetros en patrón alternado norte-sur.</desc>
+  <rect width="1200" height="800" fill="#F7F3EA"/>
+  <text x="600" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#263B37">Muñeca 6 × 4 cm · rejilla 2 × 2</text>
+  <line x1="270" y1="155" x2="930" y2="155" stroke="#6F7773" stroke-width="3"/>
+  <line x1="270" y1="142" x2="270" y2="168" stroke="#6F7773" stroke-width="3"/>
+  <line x1="930" y1="142" x2="930" y2="168" stroke="#6F7773" stroke-width="3"/>
+  <text x="600" y="136" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" fill="#4C5753">6 cm</text>
+  <rect x="270" y="210" width="660" height="440" rx="210" fill="#DFE6E0" stroke="#263B37" stroke-width="5"/>
+  <line x1="220" y1="210" x2="220" y2="650" stroke="#6F7773" stroke-width="3"/>
+  <line x1="207" y1="210" x2="233" y2="210" stroke="#6F7773" stroke-width="3"/>
+  <line x1="207" y1="650" x2="233" y2="650" stroke="#6F7773" stroke-width="3"/>
+  <text x="190" y="430" text-anchor="middle" transform="rotate(-90 190 430)" font-family="Arial, sans-serif" font-size="25" fill="#4C5753">4 cm</text>
+  <rect x="399" y="228" width="198" height="198" fill="#0F6E56" stroke="#263B37" stroke-width="4"/>
+  <rect x="619" y="228" width="198" height="198" fill="#B9BDB6" stroke="#263B37" stroke-width="4"/>
+  <rect x="399" y="448" width="198" height="198" fill="#B9BDB6" stroke="#263B37" stroke-width="4"/>
+  <rect x="619" y="448" width="198" height="198" fill="#0F6E56" stroke="#263B37" stroke-width="4"/>
+  <g font-family="Arial, sans-serif" font-size="54" font-weight="700" text-anchor="middle" fill="#FFFFFF"><text x="498" y="330">N</text><text x="718" y="550">N</text></g>
+  <g font-family="Arial, sans-serif" font-size="54" font-weight="700" text-anchor="middle" fill="#263B37"><text x="718" y="330">S</text><text x="498" y="550">S</text></g>
+  <circle cx="498" cy="360" r="12" fill="#E36C5C" stroke="#263B37" stroke-width="3"/>
+  <text x="600" y="720" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#4C5753">Imanes de 18 × 18 mm · 2 mm entre bordes · huella 38 × 38 mm</text>
+</svg>

@@ -1,0 +1,76 @@
+CLASE 3 · LECCIÓN 3.2 — CÓMO SE REGULA UN AGENTE: PERSUADIBILIDAD, EL OJO Y LOS CUATRO NIVELES
+El Cuerpo Eléctrico · Formación en Regulación Bioeléctrica
+
+
+[ SLIDE 1 ]
+
+Recuperemos la lección anterior: ¿qué es, en el modelo del agente, una enfermedad crónica? … Un set point atascado en una realidad que ya cambió. Bien. La pregunta que sigue es operativa: si el cuerpo es un agente, ¿cómo se le cambia la conducta?
+
+El objetivo de esta lección: al terminar podrás clasificar a un agente según cómo se le regula, y usar una plantilla para razonar cualquier órgano en lugar de memorizar listas.
+
+[ SLIDE 2 ]
+
+Distintos sistemas se dejan "persuadir" de maneras distintas. Ordenémoslos en cuatro clases.
+
+Clase A: un reloj mecánico. Para cambiar su conducta hay que abrirlo y recablear las piezas. Es puro hardware.
+
+Clase B: un termostato. No se le abre nada; se le cambia el punto de ajuste, el set point, y todo el sistema se reacomoda solo.
+
+Clase C: un animal. Se le cambia la conducta con recompensa y castigo.
+
+Clase D: un ser humano. Con argumento, con razonamiento.
+
+[ SLIDE 3 ]
+
+Detengámonos un segundo en la clase B, porque es la nuestra. El set point es el punto de referencia que un sistema defiende. Piensa en la regadera de tu casa: no le explicas al agua que salga caliente, ni le cambias la tubería; mueves la perilla a la temperatura que quieres, y el sistema mantiene solo esa temperatura. Ese es un set point. Cambiar la perilla es regular un sistema de clase B.
+
+[ SLIDE 4 ]
+
+Y aquí la tesis que define el método: los agentes del cuerpo son de clase B. No los recableamos —no somos cirujanos del hardware— ni les argumentamos. Se regulan reescribiendo su señal de referencia. Por eso regular no es suprimir el síntoma ni forzar un resultado: es cambiar la información desde la cual el agente se calibra.
+
+[ SLIDE 5 ]
+
+El ejemplo más limpio, y está publicado, es el ojo. Nos sirve para ver el marco completo antes de aplicarlo al cuerpo.
+
+Su meta es la emetropía —enfocar la imagen justo en la retina, a toda distancia. Su manera de lograrlo: el ojo regula su propia forma según la imagen que le llega. Si la imagen cae detrás de la retina, se alarga para traerla al plano; si cae delante, se acorta. Se gestiona solo, sin instrucciones externas. Es un agente.
+
+[ SLIDE 6 ]
+
+¿Cuál es su set point sano? Un ojo entrenado para ver de lejos y de cerca: el niño que juega en la calle, mira a distancia, recibe luz natural.
+
+¿Y el atascado? El niño en interiores, con poca luz y la vista siempre cerca. El ojo se entrena solo para ver de cerca, se alarga, y deja de ver de lejos. Esto es clave, y encaja con todo lo que venimos diciendo: la miopía no es una "enfermedad del ojo"; es un agente que se recalibró para un mundo distinto —y se quedó ahí. Su clase es B: no se le recablea, se le reescribe la referencia con la señal adecuada —luz natural, desenfoque periférico.
+
+[ SLIDE 7 ]
+
+Un apunte para que no haya confusión: el ojo enseña la lógica, no la técnica. Su regulación —luz al aire libre, ciertos lentes— no usa los imanes de la Regulación Bioeléctrica. Lo traemos porque muestra el marco entero en un caso reconocible. El puente con el imán lo tiende el siguiente caso, en la próxima lección.
+
+[ SLIDE 8 ]
+
+Del ojo extraemos un método que sirve para cualquier agente del cuerpo. En vez de "la lista de puntos del órgano", cuatro niveles de razonamiento.
+
+Nivel uno, el circuito: con qué piezas reales el órgano cumple su meta.
+
+Nivel dos, la arquitectura de control: describirlo como un termostato —qué variable controla, cuál es su set point, qué error lee— y clasificarlo en el eje de persuadibilidad.
+
+Nivel tres, la agencia y el sustrato bioeléctrico: el agente guarda su estado en un voltaje real, el Vmem, y ahí es donde el campo magnético encuentra su punto de acción.
+
+Nivel cuatro, la predicción: el síntoma como un error de predicción; el agente sostiene una realidad que quedó obsoleta, y al actualizar la información, la predicción se corrige.
+
+[ SLIDE 9 ]
+
+Con el ojo, la plantilla se llena así: meta, la emetropía; circuito, retina–coroides–esclera; set point, la longitud que enfoca; error, el desenfoque; clase, B; nodo bioeléctrico, el voltaje de la retina; condición que lo atascó, ver de cerca con poca luz; regulación, luz y desenfoque periférico. Ese mismo formulario lo vas a llenar para cada órgano que trabajes.
+
+[ PAUSA — comprobación · deja 3 o 4 segundos ]
+
+Detén la reproducción y clasifica: si a un sistema le cambias la conducta ajustando su punto de referencia —sin abrirlo ni argumentarle—, ¿de qué clase es? … De clase B. Y esa es, justamente, la clase de los agentes que regula la técnica.
+
+[ SLIDE 10 ]
+
+La idea que queda: los agentes del cuerpo son de clase B, y se regulan reescribiendo su set point. El ojo lo muestra completo —meta, set point que se reescribe, y una clase que define cómo se regula—; y la plantilla de cuatro niveles reemplaza a la lista de puntos.
+
+[ SLIDE 11 ]
+
+En síntesis: hay cuatro maneras de cambiar la conducta de un sistema, y la del cuerpo es la del termostato —reescribir el set point. El ojo enseña el marco; la plantilla de cuatro niveles lo vuelve una herramienta de razonamiento. La lección siguiente lleva este marco a la clínica con el primer agente que conecta con el imán: el macrófago.
+
+
+— FIN DE LA LECCIÓN 3.2 —

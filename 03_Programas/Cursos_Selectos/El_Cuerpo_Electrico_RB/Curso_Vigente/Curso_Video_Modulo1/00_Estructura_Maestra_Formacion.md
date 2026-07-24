@@ -37,6 +37,9 @@ Cada módulo abre recuperando el anterior y cierra anunciando el siguiente. Ning
 
 Lo que hace que sea "de clase mundial" no cambia entre módulos. Es el mismo en todos:
 
+- **Audiencia mixta.** El curso lo ven médicos, psicólogos, kinesiólogos, terapeutas corporales y personas interesadas. Registro profesional pero **accesible**, sin jerga médico-exclusiva; los términos se explican lo suficiente para cualquier terapeuta del cuerpo. Se evita el marco médico-céntrico como marco principal.
+- **Nunca asumir el vocabulario.** No se da por sabido ningún término técnico. La primera vez que aparece —tesla, homeostasis, Vmem, FCD, electroquímico, glicación…— se **glosa en el momento** con una frase breve en lenguaje llano. Regla operativa: si un kinesiólogo, un psicólogo o una persona interesada no lo entendería sin explicación, se explica. Explicar no baja el rigor; lo hace accesible.
+- **Enfoque en la regulación, no en la enfermedad.** La RB lee y regula un *estado*, y todo mundo tiene estado: el que se recupera y también el sano que se mantiene. El encuadre es salutogénesis y mantenimiento tanto como recuperación; "regular no es curar" (umbral de la Clase 3) ya se anticipa desde el tono del Módulo 1.
 - **Diseño inverso** (Harvard Bok / UbD): cada clase parte de "¿qué debe poder hacer el estudiante?".
 - **Molde de lección de 8 momentos:** recuperación de entrada → objetivo explícito → gancho → concepto en trozos → imagen/ejemplo trabajado → fundamento → anclaje clínico → checkpoint → cierre metacognitivo.
 - **Mente y mano (MIT):** cada lección lleva 2–4 **"pausa y hazlo"** con retroalimentación inmediata. La RB es mente y mano; cada módulo prepara la mano.
@@ -74,9 +77,9 @@ Cada módulo se organiza en **Clases → Lecciones → Secciones**, con su mapeo
 ### Módulo 1 · El Cuerpo Eléctrico — *Comprender* ✅
 - **C1** El Cuerpo Eléctrico (1.1 qué es · 1.2 linaje · 1.3 MEC · 1.4 Vmem)
 - **C2** El Instrumento y el Sustrato (2.1 campo↔tejido · 2.2 el imán · 2.3 sustrato)
-- **C3** El Agente y la Regulación (3.1 cuerpo-agente/TAME · 3.2 persuadibilidad · 3.3 regular no es curar)
-- **C4** El Rastreo y el Nodo de Lesión (4.1 rastreo/calibración · 4.2 ciclo · 4.3 nodo y técnicas)
-- **Tratado:** Cap. 1–11, 13. **Estado:** C1 completa y seccionada; C2–C4 pendientes.
+- **C3** El Agente y la Regulación (3.1 cuerpo-agente/TAME · 3.2 persuadibilidad, el ojo y los 4 niveles · 3.3 el macrófago y regular no es curar · 3.4 mantenimiento y el punto trauma) — *ampliada a 4 lecciones por densidad*
+- **C4** El Rastreo y el Nodo de Lesión (4.1 el rastreo · 4.2 acidosis temporal y latente · 4.3 nodo de lesión, Técnica 1 local y Técnica 2 distante · 4.4 Técnica 3 rejilla + variante combinada y cierre) — *4 lecciones; alineadas al **manual B5 "El nodo de lesión"** (`Referencia/Punto_Trauma/Manual/`). La inducción de tono vagal se traslada al Módulo 2 (no se cubrió en el M1 en vivo).*
+- **Tratado:** Cap. 1–11, 13, 16. **Estado: MÓDULO 1 COMPLETO** — C1 (4) + C2 (3) + C3 (4) + C4 (4) = **15 lecciones**, todas fundamentadas y en el registro calibrado. Pendiente: versión EN, seccionar C2–C4, y derivados.
 
 ### Módulo 2 · Leer y regular — *Aplicar*
 - **C1** El instrumento en la mano: seguridad, agarre, la aplicación paso a paso.

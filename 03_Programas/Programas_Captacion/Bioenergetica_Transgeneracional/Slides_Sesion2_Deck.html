@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sesión 2 — La Línea Paterna · Slides</title>
+<style>
+  :root{
+    --ground:#FAF6F0;
+    --ground-2:#F1E9DB;
+    --ink:#201B16;
+    --ink-2:#574E44;
+    --accent:#B5604A;          /* terracota — primario de marca */
+    --accent-soft:#B5604A22;
+    --sage:#8FA87A;            /* verde salvia — secundario */
+    --gold:#E8A857;            /* dorado — acento/centro */
+    --line:#DBD1BF;
+    --line-soft:#EAE1D2;
+    --photo-overlay:rgba(250,246,240,.88);
+    --photo-overlay-soft:rgba(250,246,240,.58);
+    --photo-overlay-faint:rgba(250,246,240,.26);
+    --serif: ui-serif,"New York",Georgia,"Times New Roman",serif;
+    --sans: ui-sans-serif,system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono: ui-monospace,"SF Mono","SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#2C2C2A;        /* carbón del branding Ritual Experiencing */
+      --ground-2:#3A3835;
+      --ink:#E8E6DE;
+      --ink-2:#D9D3C8;
+      --accent:#C4926A;        /* siena claro del branding */
+      --accent-soft:#C4926A26;
+      --sage:#A8C8A0;          /* salvia claro (fondo oscuro) */
+      --gold:#E8A857;
+      --line:rgba(232,230,222,.20);
+      --line-soft:rgba(232,230,222,.11);
+      --photo-overlay:rgba(44,44,42,.82);
+      --photo-overlay-soft:rgba(44,44,42,.50);
+      --photo-overlay-faint:rgba(44,44,42,.22);
+    }
+  }
+  :root[data-theme="light"]{
+    --ground:#FAF6F0;--ground-2:#F1E9DB;--ink:#201B16;--ink-2:#574E44;--accent:#B5604A;--accent-soft:#B5604A22;--sage:#8FA87A;--gold:#E8A857;--line:#DBD1BF;--line-soft:#EAE1D2;--photo-overlay:rgba(250,246,240,.88);--photo-overlay-soft:rgba(250,246,240,.62);--photo-overlay-faint:rgba(250,246,240,.45);
+  }
+  :root[data-theme="dark"]{
+    --ground:#2C2C2A;--ground-2:#3A3835;--ink:#E8E6DE;--ink-2:#D9D3C8;--accent:#C4926A;--accent-soft:#C4926A26;--sage:#A8C8A0;--gold:#E8A857;--line:rgba(232,230,222,.20);--line-soft:rgba(232,230,222,.11);--photo-overlay:rgba(44,44,42,.82);--photo-overlay-soft:rgba(44,44,42,.50);--photo-overlay-faint:rgba(44,44,42,.22);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:
+      radial-gradient(120% 120% at 50% -10%, var(--ground-2), var(--ground) 60%);
+    color:var(--ink);
+    font-family:var(--sans);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-height:100dvh;padding:clamp(10px,2.4vw,34px);gap:16px;
+    overflow:hidden;
+  }
+
+  /* ---- Stage: fixed 16:9, scales to viewport ---- */
+  .stage{
+    position:relative;width:min(96vw, calc((100dvh - 96px) * 16 / 9));
+    aspect-ratio:16/9;background:var(--ground);
+    border:1px solid var(--line);
+    box-shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 30px 80px -40px rgba(0,0,0,.55);
+    container-type:size;overflow:hidden;
+  }
+
+  /* ---- Anclas visuales: imagen completa o lateral ---- */
+  .has-visual{isolation:isolate;overflow:hidden}
+  .has-visual::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--photo-overlay) 0%,var(--photo-overlay-soft) 66%,var(--photo-overlay-faint) 100%)}
+  .has-visual.visual-side-layout::before{background:linear-gradient(90deg,var(--ground) 0%,var(--photo-overlay) 46%,var(--photo-overlay-soft) 100%)}
+  .has-visual.visual-centered::before{background:var(--photo-overlay)}
+  .has-visual > .slide-bg{position:absolute!important;inset:0!important;z-index:0!important;width:100%!important;height:100%!important;object-fit:cover;filter:saturate(.9) contrast(1.05)}
+  .has-visual.visual-side-layout > .slide-bg{left:auto!important;right:0!important;width:44%!important;object-position:50% 50%}
+  .has-visual > :not(.slide-bg){position:relative;z-index:2}
+  .has-visual > .foot{position:absolute;z-index:3}
+  /* Todo layout lateral reserva el 61% izquierdo para el texto; el 44% derecho es la foto. */
+  .visual-side-layout .midwrap{width:61%}
+
+  .slide{
+    position:absolute;inset:0;
+    padding:8.2cqh 8.6cqw;
+    display:flex;flex-direction:column;
+    opacity:0;visibility:hidden;
+    transition:opacity .5s ease, transform .5s ease;
+    transform:translateY(1.2cqh);
+  }
+  .slide.is-active{opacity:1;visibility:visible;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .slide{transition:opacity .01s}
+    .slide{transform:none}
+  }
+
+  /* ---- Shared furniture ---- */
+  .eyebrow{
+    font-family:var(--mono);font-size:2cqh;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--ink-2);display:flex;align-items:center;gap:1.1cqw;
+  }
+  .eyebrow .tick{width:2.8cqw;height:2px;background:var(--accent);display:inline-block}
+  .foot{
+    position:absolute;left:8.6cqw;right:8.6cqw;bottom:4.6cqh;
+    display:flex;justify-content:space-between;align-items:flex-end;
+    font-family:var(--mono);font-size:1.7cqh;letter-spacing:.16em;color:var(--ink-2);
+  }
+  .foot .brand{text-transform:uppercase;letter-spacing:.24em;display:inline-flex;align-items:center;gap:1.1cqw}
+  .progress{position:absolute;left:0;bottom:0;height:3px;background:var(--accent);transition:width .5s ease}
+
+  .display{font-family:var(--serif);font-weight:500;line-height:1.03;letter-spacing:-.012em;text-wrap:balance;color:var(--ink)}
+  .lede{font-size:3.1cqh;line-height:1.45;color:var(--ink-2);max-width:60cqw;font-weight:380}
+  .accent{color:var(--accent)}
+  .em{color:var(--ink);font-style:italic}
+  /* Cuerpo centrado dejando el eyebrow siempre arriba (posición fija de "Concepto") */
+  .midwrap{flex:1;display:flex;flex-direction:column;justify-content:center;width:100%}
+
+  /* ---- Slide 1 · Portada (golden-ratio title) ---- */
+  .s1{justify-content:flex-start}
+  .s1 .spacer{height:6.5cqh}            /* golden-ratio title line, tras el logotipo */
+  .s1 h1{font-size:10.4cqh;max-width:80cqw}
+  .s1 .sub{margin-top:3.2cqh;font-size:3.3cqh;color:var(--ink-2);letter-spacing:.01em;font-weight:400;max-width:74cqw}
+  .sessions{margin-top:auto;display:flex;gap:0;border-top:1px solid var(--line);padding-top:2.6cqh}
+  .sess{flex:1;padding-right:2.4cqw;position:relative}
+  .sess + .sess{border-left:1px solid var(--line-soft);padding-left:2.4cqw}
+  .sess .n{font-family:var(--mono);font-size:1.8cqh;letter-spacing:.2em;color:var(--ink-2)}
+  .sess .t{font-family:var(--serif);font-size:2.7cqh;margin-top:.7cqh;line-height:1.14;color:var(--ink)}
+  .sess.done .t{color:var(--ink-2)}
+  .sess.now .n{color:var(--accent)}
+  .sess .dot{position:absolute;top:.2cqh;right:1.4cqw;width:1cqh;height:1cqh;border-radius:50%}
+  .sess.done .dot{background:var(--ink-2)}
+  .sess.now .dot{background:var(--accent);box-shadow:0 0 0 .5cqh var(--accent-soft)}
+
+  /* ---- Slide 2 · Objetivo ---- */
+  .s2{justify-content:center}
+  .s2 .kick{font-family:var(--sans);font-size:2.9cqh;letter-spacing:.01em;color:var(--ink-2);margin-bottom:2cqh;font-weight:440}
+  .s2 h2{font-size:7.2cqh;max-width:90cqw}
+  .s2 .split{margin-top:5.5cqh;display:grid;grid-template-columns:1fr 1fr;gap:6cqw;max-width:82cqw}
+  .col .lbl{font-family:var(--mono);font-size:1.9cqh;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:flex;gap:1cqw;align-items:center}
+  .col .lbl b{color:var(--ink-2);font-weight:400}
+  .col p{margin-top:1.3cqh;font-size:3cqh;line-height:1.36;color:var(--ink);font-weight:400}
+  .col{border-top:1px solid var(--line);padding-top:2cqh}
+
+  /* ---- Slide 3 · Cromosoma Y ---- */
+  .s3{justify-content:flex-start}
+  .body3{margin-top:2cqh;flex:1;display:grid;grid-template-columns:1.5fr 1fr;gap:5cqw;align-items:center}
+  .col3-main{display:flex;flex-direction:column;gap:2cqh}
+  .s3h{font-size:5.2cqh;line-height:1.04}
+  .s3lead{font-size:2.4cqh;line-height:1.42;color:var(--ink-2)}
+  .s3lead b{color:var(--accent);font-weight:700}
+  .s3compare{display:grid;grid-template-columns:1fr 1fr;gap:2.6cqw}
+  .cmp{border-top:2px solid var(--line);padding-top:1.3cqh;display:flex;flex-direction:column;gap:.6cqh}
+  .cmp-h{font-family:var(--mono);font-size:1.45cqh;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+  .cmp-t{font-family:var(--serif);font-size:2.6cqh;color:var(--ink);line-height:1}
+  .cmp-d{font-size:1.85cqh;line-height:1.34;color:var(--ink-2)}
+  .s3key{background:var(--ground-2);border-left:3px solid var(--accent);padding:1.5cqh 2cqw;font-size:2.15cqh;line-height:1.38;color:var(--ink)}
+  .s3key-b{color:var(--accent);font-weight:700}
+  .s3key b{font-weight:600}
+  .s3fund{font-size:1.85cqh;line-height:1.36;color:var(--ink-2);font-style:italic;font-family:var(--serif)}
+  .col3-dia{display:flex;flex-direction:column;align-items:center;gap:1.4cqh}
+  .dia-cap{font-size:1.7cqh;line-height:1.35;color:var(--ink-2);text-align:center;max-width:34cqw}
+
+  /* ---- Dipole watermark ---- */
+  .lockup{display:flex;align-items:center;gap:1.7cqw;margin-bottom:2.8cqh}
+  .lockup .iso{height:6.6cqh;width:6.6cqh;display:block;flex:0 0 auto}
+  .wm{display:flex;flex-direction:column;line-height:1.06;font-family:var(--sans);font-weight:600}
+  .wm1{font-size:1.55cqh;letter-spacing:.36em;color:var(--ink-2)}
+  .wm2{font-size:1.55cqh;letter-spacing:.17em;color:var(--accent)}
+  .footiso{height:2.7cqh;width:2.7cqh;display:block;flex:0 0 auto}
+
+  /* ---- Controls ---- */
+  .bar{display:flex;align-items:center;gap:18px;color:var(--ink-2);font-family:var(--mono);font-size:12px;letter-spacing:.14em}
+  .nav{appearance:none;background:transparent;border:1px solid var(--line);color:var(--ink);
+    width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:15px;display:grid;place-items:center;
+    transition:border-color .2s, color .2s, background .2s}
+  .nav:hover{border-color:var(--accent);color:var(--accent)}
+  .nav:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .count b{color:var(--ink)}
+  .hint{font-size:11px;letter-spacing:.1em;opacity:.7}
+  .zone{position:absolute;top:0;bottom:0;width:22%;cursor:pointer;z-index:3}
+  .zone.left{left:0}.zone.right{right:0}
+
+  /* ---- Slide 4 · Rosa náutica ---- */
+  .s4{justify-content:flex-start}
+  .s4wrap{flex:1;display:flex;align-items:center;justify-content:center;margin-top:.5cqh}
+  .rose{width:80cqw;height:auto;max-height:74cqh;display:block}
+  .rose .rp{font-size:15px;font-weight:700;letter-spacing:1.4px;fill:var(--ink);font-family:var(--sans)}
+  .rose .re{font-size:11px;letter-spacing:.4px;fill:var(--ink-2);font-family:var(--mono)}
+
+  /* ---- Slide 5 · Tabla de caminos ---- */
+  .s5{justify-content:flex-start}
+  .s5h{font-size:5.6cqh;margin-bottom:1cqh}
+  .caminos{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .crow{display:grid;grid-template-columns:auto 1fr 1.618fr 1fr;gap:3.4cqw;align-items:center;padding:2.7cqh 0;border-bottom:1px solid var(--line-soft)}
+  .cdot{width:1.7cqh;height:1.7cqh;border-radius:50%;flex:0 0 auto}
+  .cname{font-family:var(--serif);font-size:3.5cqh;color:var(--ink);line-height:1}
+  .cname em{display:block;font-family:var(--mono);font-style:normal;font-size:1.5cqh;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2);margin-top:.9cqh}
+  .cdesc{font-size:2.5cqh;color:var(--ink-2);line-height:1.3}
+  .ccost{font-family:var(--serif);font-style:italic;font-size:2.4cqh;color:var(--accent);text-align:right}
+
+  /* ---- Slide 6 · Venn ---- */
+  .s6{justify-content:flex-start}
+  .s6h{font-size:5cqh;margin:2.2cqh 0 1.2cqh;line-height:1.03}
+  .s6lead{font-size:2.15cqh;line-height:1.4;color:var(--ink-2);margin-bottom:2.4cqh;max-width:94cqw}
+  .s6lead b{color:var(--ink);font-weight:600}
+  /* ---- Cuadrantes (detalle) ---- */
+  .cuad{justify-content:flex-start}
+  .cuadh{font-size:5.2cqh;margin-bottom:1cqh;line-height:1.04}
+  .cuadlead{font-size:2.4cqh;color:var(--ink-2);margin-bottom:3cqh;max-width:84cqw;line-height:1.4}
+  .cuadcols{display:grid;grid-template-columns:1fr 1fr;gap:4cqw}
+  .cuadcard{border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:5px;background:var(--ground-2);padding:2.4cqh 2.2cqw;display:flex;flex-direction:column;gap:1.5cqh}
+  .cuadcode{font-family:var(--mono);font-size:1.55cqh;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .cuadcard h3{font-family:var(--serif);font-size:3.2cqh;color:var(--ink);line-height:1.05}
+  .cuadrow{display:grid;grid-template-columns:auto 1fr;gap:1.6cqw;align-items:baseline;font-size:2.05cqh;line-height:1.3;color:var(--ink-2)}
+  .cuadrow .cl{font-family:var(--mono);font-size:1.4cqh;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);white-space:nowrap;padding-top:.3cqh}
+
+  /* ---- Slides de camino (detalle) ---- */
+  .cam{justify-content:flex-start}
+  .camkick{display:flex;align-items:center;gap:1.1cqw;font-family:var(--mono);font-size:1.7cqh;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);margin-bottom:1.2cqh}
+  .camkick .cdot{width:1.4cqh;height:1.4cqh;border-radius:50%;flex:0 0 auto}
+  .camh{font-size:5.4cqh;line-height:1.04;margin-bottom:1cqh}
+  .camlead{font-size:2.5cqh;line-height:1.4;color:var(--ink-2);margin-bottom:3cqh;max-width:82cqw}
+  .camcols{display:grid;grid-template-columns:1fr 1fr;gap:5cqw;border-top:1px solid var(--line);padding-top:2.6cqh}
+  .camcol h5{font-family:var(--mono);font-size:1.6cqh;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.8cqh;font-weight:700}
+  .camcol ul{list-style:none;display:flex;flex-direction:column;gap:1.5cqh}
+  .camcol li{font-size:2.3cqh;line-height:1.32;color:var(--ink-2);padding-left:2.6cqw;position:relative}
+  .camcol li::before{content:"";position:absolute;left:0;top:.95cqh;width:1cqh;height:1cqh;border-radius:50%;background:var(--accent)}
+
+  .s6cards{margin-top:1cqh}
+  .s6m{justify-content:flex-start}
+  .mkick{font-family:var(--mono);font-size:1.7cqh;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2cqh}
+  .s6mh{font-size:5.4cqh;margin-bottom:1.2cqh;line-height:1.04}
+  .s6msub{font-size:2.4cqh;line-height:1.4;color:var(--ink-2);margin-bottom:3cqh;max-width:84cqw}
+  .marco-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .mrow{display:grid;grid-template-columns:23cqw 1fr;gap:3cqw;align-items:baseline;padding:2.4cqh 0;border-bottom:1px solid var(--line-soft)}
+  .mrow .mname{display:flex;align-items:center;gap:1.2cqw;font-family:var(--serif);font-size:3cqh;color:var(--ink)}
+  .mrow .mname .cdot{width:1.5cqh;height:1.5cqh;border-radius:50%;flex:0 0 auto}
+  .mrow .mtext{font-size:2.5cqh;line-height:1.36;color:var(--ink-2)}
+  .s6key,.s8key{margin-top:2.4cqh;background:var(--ground-2);border-left:3px solid var(--accent);padding:1.5cqh 2cqw;font-size:2.1cqh;line-height:1.38;color:var(--ink)}
+  .s6key b,.s8key b{font-weight:600}
+
+  /* ---- Slide 7 · Cuadrantes (lienzo) ---- */
+  .s7{justify-content:flex-start}
+  .board-wrap{flex:1;display:flex;align-items:center;justify-content:center;margin-top:.5cqh}
+  .board{width:82cqw;height:auto;max-height:72cqh;display:block}
+  .board .ql{font-size:15px;font-weight:700;letter-spacing:.4px;fill:var(--ink);font-family:var(--sans)}
+  .board .qd{font-size:11px;fill:var(--ink-2);font-family:var(--serif);font-style:italic}
+  .board .qc{font-size:10.5px;fill:var(--accent);font-family:var(--mono);letter-spacing:.6px}
+  .board .ed{font-size:11px;fill:var(--ink-2);font-family:var(--mono);letter-spacing:1px;font-weight:700}
+
+  /* ---- Slide 8 · Improntas ---- */
+  .s8{justify-content:flex-start}
+  .s8h{font-size:5.4cqh;margin-bottom:1.6cqh}
+  .s8lead{font-size:2.5cqh;line-height:1.42;color:var(--ink-2);margin-bottom:2.8cqh;max-width:96cqw}
+  .s8lead b{color:var(--ink);font-weight:600}
+  .s8grid{display:grid;grid-template-columns:auto 1fr;gap:1.4cqh 3cqw;border-top:1px solid var(--line);padding-top:2cqh}
+  .s8gk{font-family:var(--mono);font-size:1.6cqh;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;padding-top:.4cqh}
+  .s8gv{font-size:2.4cqh;line-height:1.34;color:var(--ink)}
+  .s8note{margin-top:2.6cqh;font-family:var(--serif);font-style:italic;font-size:2.2cqh;color:var(--ink-2)}
+  /* Improntas · detalle */
+  .s8d{justify-content:flex-start}
+  .improntas2{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .iprow{display:grid;grid-template-columns:26cqw 1fr;gap:3cqw;align-items:baseline;padding:2.3cqh 0;border-bottom:1px solid var(--line-soft)}
+  .iphead{display:flex;align-items:baseline;gap:1.2cqw}
+  .ipcode{font-family:var(--mono);font-size:2cqh;color:var(--accent);font-weight:700}
+  .ipname{font-family:var(--serif);font-size:3cqh;color:var(--ink)}
+  .ipbelief{font-family:var(--serif);font-style:italic;font-size:2.4cqh;color:var(--ink);margin-bottom:.6cqh}
+  .ipdesc{font-size:2.1cqh;line-height:1.32;color:var(--ink-2)}
+  .pasos .iprow{grid-template-columns:5cqw 1fr}
+  /* Hora 2 · El cierre del caso */
+  .cierrecaso{justify-content:flex-start}
+  .bigq{font-size:5.6cqh;line-height:1.16;font-style:italic;max-width:94cqw;margin-bottom:3cqh}
+  .cierrenote{font-size:2.5cqh;line-height:1.42;color:var(--ink-2);max-width:82cqw}
+
+  /* ---- Momento somático (respiro) ---- */
+  .ssom{justify-content:flex-start}
+  .ssom-mid{align-items:center;text-align:center}
+  .ssom-iso{height:7.4cqh;width:7.4cqh;display:block;margin-bottom:3.2cqh}
+  .ssom p{font-family:var(--serif);font-style:italic;font-size:4.4cqh;color:var(--ink);max-width:66cqw;line-height:1.2;text-wrap:balance}
+  .ssom-guide{margin-top:2.8cqh;font-size:2.6cqh;color:var(--ink-2);max-width:58cqw;line-height:1.4}
+  .ssom-qual{margin-top:4cqh;display:flex;gap:1.8cqw;flex-wrap:wrap;justify-content:center}
+  .ssom-qual span{font-family:var(--mono);font-size:1.65cqh;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line);border-radius:20px;padding:.9cqh 2cqw}
+
+  /* ---- Slide 9 · Dos puertas ---- */
+  .s9{justify-content:flex-start}
+  .s9h{font-size:5.8cqh;margin-bottom:1.4cqh}
+  .s9recap{display:flex;flex-wrap:wrap;gap:1.4cqh 3.2cqw;margin:.8cqh 0 4.6cqh}
+  .s9recap span{display:inline-flex;align-items:center;gap:1.1cqw;font-family:var(--sans);font-size:2.15cqh;color:var(--ink-2)}
+  .s9recap span::before{content:"";width:1.1cqh;height:1.1cqh;border-radius:50%;background:var(--accent);flex:0 0 auto}
+  .doors{display:grid;grid-template-columns:1fr 1fr;gap:4cqw;max-width:92cqw}
+  .door{border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:5px;background:var(--ground-2);padding:2.6cqh 2.4cqw;display:flex;flex-direction:column;gap:1.1cqh}
+  .door .dtop{display:flex;align-items:baseline;gap:1.3cqw}
+  .door .dnum{font-family:var(--serif);font-size:2.9cqh;color:var(--accent);opacity:.5;line-height:1}
+  .door .dk{font-family:var(--mono);font-size:1.6cqh;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+  .door h3{font-family:var(--serif);font-size:3.3cqh;color:var(--ink);line-height:1.08}
+  .door p{font-size:2.2cqh;color:var(--ink-2);line-height:1.34}
+  .closingline{margin-top:3.4cqh;font-family:var(--serif);font-style:italic;font-size:2.6cqh;color:var(--ink-2);max-width:74cqw;text-wrap:balance}
+
+  /* ---- Hora 2 · Divisor ---- */
+  .h2kick{font-family:var(--mono);font-size:2cqh;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:1.6cqh}
+  .h2title{font-size:9cqh;margin-bottom:2.6cqh}
+  .h2sub{font-size:2.9cqh;color:var(--ink-2);max-width:78cqw;line-height:1.42}
+
+  /* ---- Hora 2 · Guía de observación ---- */
+  .s2oh{font-size:5.6cqh;margin-bottom:4cqh}
+  .focos{display:grid;grid-template-columns:repeat(3,1fr);gap:3.6cqw}
+  .foco{border-top:3px solid var(--accent);padding-top:2cqh;display:flex;flex-direction:column;gap:1cqh}
+  .foco .fn{font-family:var(--serif);font-size:3cqh;color:var(--accent);opacity:.5;line-height:1}
+  .foco h4{font-family:var(--serif);font-weight:500;font-size:3cqh;color:var(--ink);line-height:1.1}
+  .foco p{font-size:2.1cqh;color:var(--ink-2);line-height:1.35}
+
+  /* ---- Hora 2 · Preguntas por camino ---- */
+  .s2ph{font-size:5.6cqh;margin-bottom:2cqh}
+  .preguntas{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .prow{display:grid;grid-template-columns:auto 1.5fr;gap:3.4cqw;align-items:center;padding:2.4cqh 0;border-bottom:1px solid var(--line-soft)}
+  .pname{display:flex;align-items:center;gap:1.4cqw;font-family:var(--serif);font-size:3cqh;color:var(--ink);white-space:nowrap}
+  .pname em{font-family:var(--mono);font-style:normal;font-size:1.5cqh;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-2)}
+  .pq{font-family:var(--serif);font-style:italic;font-size:2.7cqh;color:var(--ink-2);line-height:1.3}
+</style>
+</head>
+<body>
+
+<main class="stage" id="stage" aria-label="Presentación Sesión 2">
+  <div class="zone left" id="zL" aria-hidden="true"></div>
+  <div class="zone right" id="zR" aria-hidden="true"></div>
+
+  <!-- Isotipo oficial (símbolo reutilizable) — Instituto Centrobioenergetica V3 -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="iso" viewBox="0 0 160 160"><g transform="translate(80,80)">
+    <circle cx="0" cy="-50" r="8" fill="var(--accent)"/><circle cx="25" cy="-43.3" r="8" fill="var(--sage)"/><circle cx="43.3" cy="-25" r="8" fill="var(--accent)"/><circle cx="50" cy="0" r="8" fill="var(--sage)"/><circle cx="43.3" cy="25" r="8" fill="var(--accent)"/><circle cx="25" cy="43.3" r="8" fill="var(--sage)"/><circle cx="0" cy="50" r="8" fill="var(--accent)"/><circle cx="-25" cy="43.3" r="8" fill="var(--sage)"/><circle cx="-43.3" cy="25" r="8" fill="var(--accent)"/><circle cx="-50" cy="0" r="8" fill="var(--sage)"/><circle cx="-43.3" cy="-25" r="8" fill="var(--accent)"/><circle cx="-25" cy="-43.3" r="8" fill="var(--sage)"/>
+    <circle cx="0" cy="0" r="5" fill="var(--gold)" opacity="0.5"/><circle cx="0" cy="0" r="3" fill="var(--gold)"/>
+  </g></symbol></svg>
+
+  <!-- ===== SLIDE 1 · PORTADA ===== -->
+  <section class="slide s1 has-visual visual-full is-active" data-i="0">
+    <img class="slide-bg" src="Imagenes_Sesion2_Generadas/01_linaje_paterno.png" alt="" aria-hidden="true">
+    <div class="lockup">
+      <svg class="iso"><use href="#iso"/></svg>
+      <div class="wm"><span class="wm1">INSTITUTO</span><span class="wm2">CENTROBIOENERGETICA</span></div>
+    </div>
+    <div class="eyebrow"><span class="tick"></span>Sesión 2 · Actualización en Bioenergética Transgeneracional</div>
+    <div class="spacer"></div>
+    <h1 class="display">La línea paterna y el camino que caminas</h1>
+    <div class="sub">Leer una línea de hombres como una dirección — y reconocer lo que la marcó.</div>
+    <div class="sessions">
+      <div class="sess done"><span class="dot"></span><div class="n">S1</div><div class="t">El mapa que cargas</div></div>
+      <div class="sess now"><span class="dot"></span><div class="n">S2 · Hoy</div><div class="t">La línea paterna</div></div>
+      <div class="sess"><div class="n">S3</div><div class="t">La línea materna</div></div>
+      <div class="sess"><div class="n">S4</div><div class="t">El cuerpo que sobrevive</div></div>
+    </div>
+    <div class="foot"><span class="brand">Instituto Centrobioenergetica</span><span>Dr. Miguel Ojeda Rios</span></div>
+  </section>
+
+  <!-- ===== SLIDE 2 · OBJETIVO ===== -->
+  <section class="slide s2" data-i="1">
+    <div class="eyebrow"><span class="tick"></span>Objetivo de hoy</div>
+    <div style="margin-top:auto"></div>
+    <div class="kick">Al terminar esta sesión vas a poder</div>
+    <h2 class="display">Leer la línea paterna como una <span class="accent">dirección</span>, y reconocer la <span class="accent">impronta</span> que la marcó.</h2>
+    <div class="split">
+      <div class="col"><div class="lbl">El marco</div><p>Por qué la paterna se lee aparte, y con qué mapa se lee.</p></div>
+      <div class="col"><div class="lbl">La demostración</div><p>Un caso real, trabajado en vivo, de principio a fin.</p></div>
+    </div>
+    <div style="margin-top:auto"></div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Objetivo</span></div>
+  </section>
+
+  <!-- ===== SLIDE 3 · CROMOSOMA Y ===== -->
+  <section class="slide s3" data-i="2">
+    <div class="eyebrow"><span class="tick"></span>Concepto 1 · El linaje</div>
+    <div class="body3">
+      <div class="col3-main">
+        <h2 class="display s3h">“Línea paterna” es una descripción literal.</h2>
+        <p class="s3lead">Solo <b>dos</b> líneas genéticas pasan intactas de una generación a otra, sin mezclarse con el aporte del otro progenitor. Son las únicas que permiten hablar, en sentido literal, de línea materna y línea paterna.</p>
+        <div class="s3compare">
+          <div class="cmp"><div class="cmp-h" style="color:var(--sage)">Línea materna</div><div class="cmp-t">ADN mitocondrial</div><div class="cmp-d">Genoma circular. Pasa de la madre a todos sus hijos; solo las hijas lo transmiten a la siguiente generación.</div></div>
+          <div class="cmp"><div class="cmp-h" style="color:var(--accent)">Línea paterna</div><div class="cmp-t">Cromosoma Y</div><div class="cmp-d">Región lineal no recombinante. Pasa de padre a hijo varón, letra por letra, sin mezclarse jamás.</div></div>
+        </div>
+        <div class="s3key"><span class="s3key-b">Implicación clínica:</span> el cromosoma Y <b>no se recombina</b>. Lo que marcó a un ancestro varón desciende por esa línea hasta el presente sin diluirse.</div>
+        <div class="s3fund">Es la base de la genealogía genética: los haplogrupos paterno (Y) y materno (mtADN) —23andMe, MyHeritage— leen exactamente estas dos líneas.</div>
+      </div>
+      <div class="col3-dia">
+        <svg viewBox="0 0 240 300" width="100%" style="max-height:56cqh;display:block" fill="none" stroke-linecap="round">
+          <!-- MATERNA · mtADN: genoma circular (tenue) -->
+          <circle cx="192" cy="150" r="21" stroke="var(--sage)" stroke-width="2" stroke-dasharray="3 6.5" opacity="0.85"/>
+          <circle cx="192" cy="150" r="2.2" fill="var(--sage)" stroke="none"/>
+          <text x="192" y="188" fill="var(--ink-2)" font-family="var(--mono)" font-size="10.5" letter-spacing="1.5" text-anchor="middle">MATERNA</text>
+          <text x="192" y="202" fill="var(--ink-2)" font-family="var(--mono)" font-size="8.8" letter-spacing="1" text-anchor="middle">mtADN · circular</text>
+
+          <!-- PATERNA · cromosoma Y (origen, acrocéntrico) -->
+          <g stroke="var(--accent)" stroke-width="3.6">
+            <path d="M74 48 Q65 35 67 24"/>
+            <path d="M74 48 Q83 35 81 24"/>
+            <path d="M74 48 Q63 63 65 78"/>
+            <path d="M74 48 Q85 63 83 78"/>
+          </g>
+          <circle cx="74" cy="48" r="2.8" fill="var(--accent)" stroke="none"/>
+          <text x="74" y="14" fill="var(--ink-2)" font-family="var(--mono)" font-size="10" letter-spacing="2" text-anchor="middle">Y ♂</text>
+
+          <!-- descenso intacto -->
+          <line x1="74" y1="80" x2="74" y2="278" stroke="var(--accent)" stroke-width="2.6"/>
+          <g stroke="var(--accent)" stroke-width="2.2">
+            <circle cx="74" cy="100" r="8.5" fill="var(--ground)"/>
+            <circle cx="74" cy="158" r="8.5" fill="var(--ground)"/>
+            <circle cx="74" cy="216" r="8.5" fill="var(--ground)"/>
+            <circle cx="74" cy="272" r="8.5" fill="var(--ground)"/>
+          </g>
+          <g fill="var(--accent)" stroke="none">
+            <circle cx="74" cy="100" r="3"/><circle cx="74" cy="158" r="3"/><circle cx="74" cy="216" r="3"/><circle cx="74" cy="272" r="3"/>
+          </g>
+          <g fill="var(--ink)" font-family="var(--serif)" font-size="16.5">
+            <text x="92" y="105">padre</text><text x="92" y="163">hijo</text><text x="92" y="221">nieto</text><text x="92" y="277">bisnieto</text>
+          </g>
+        </svg>
+        <div class="dia-cap">La misma región del Y en todos los varones de la línea, hacia atrás cuantas generaciones se pueda rastrear.</div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Cromosoma Y</span></div>
+  </section>
+
+  <!-- ===== LA LÍNEA EN HOMBRES Y MUJERES ===== -->
+  <section class="slide cam has-visual visual-side-layout linea-visual" data-i="3">
+    <img class="slide-bg" src="Imagenes_Sesion2_Generadas/09_linea_paterna_hero.png" alt="" aria-hidden="true">
+    <div class="eyebrow"><span class="tick"></span>Concepto 1 · La línea llega a todos</div>
+    <div class="midwrap">
+      <h2 class="display camh">La línea paterna llega a hijos e hijas.</h2>
+      <p class="camlead">El cromosoma Y marca la línea directa de varones. La línea paterna —el sistema del padre— alcanza a todos sus descendientes, por más de una vía.</p>
+      <div class="marco-list">
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--accent)"></span>El hijo varón</div><div class="mtext">Recibe el cromosoma Y del padre: el hilo directo de varón a varón.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--sage)"></span>La hija</div><div class="mtext">Recibe el cromosoma X del padre y sus autosomas. Está en la línea paterna, por otra vía biológica.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--accent)"></span>Hijos e hijas</div><div class="mtext">Reciben la carga epigenética del espermatozoide, que vimos en la Sesión 1, y la transmisión sistémica de toda la línea.</div></div>
+      </div>
+      <div class="s6key"><span class="s3key-b">Para el trabajo:</span> la línea paterna es el sistema del padre y de sus ancestros. Ese sistema se lee igual en un hombre y en una mujer.</div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>La línea en todos</span></div>
+  </section>
+
+  <!-- ===== SLIDE 4 · CUATRO CAMINOS (rosa náutica) ===== -->
+  <section class="slide s4 has-visual visual-full" data-i="4">
+    <img class="slide-bg" src="Imagenes_Sesion2_Generadas/06_cuatro_caminos_hero.png" alt="" aria-hidden="true">
+    <div class="eyebrow"><span class="tick"></span>Concepto 2 · Los Cuatro Caminos</div>
+    <div class="s4wrap">
+      <svg class="rose" viewBox="0 0 520 360" aria-hidden="true">
+        <!-- El lienzo: hoja rectangular con ejes cardinales -->
+        <rect x="40" y="44" width="440" height="272" rx="6" fill="none" stroke="var(--line-2, var(--line))" stroke-width="2"/>
+        <g stroke="var(--line)" stroke-width="1.2">
+          <line x1="260" y1="52" x2="260" y2="308"/>
+          <line x1="52" y1="180" x2="468" y2="180"/>
+        </g>
+        <!-- La roseta, al centro (donde caen los muñecos) -->
+        <circle cx="260" cy="180" r="48" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+        <path d="M260 138 L252 170 L260 180 Z" fill="var(--sage)"/><path d="M260 138 L268 170 L260 180 Z" fill="var(--accent)"/>
+        <path d="M260 222 L252 190 L260 180 Z" fill="var(--accent)"/><path d="M260 222 L268 190 L260 180 Z" fill="var(--sage)"/>
+        <path d="M302 180 L270 172 L260 180 Z" fill="var(--sage)"/><path d="M302 180 L270 188 L260 180 Z" fill="var(--accent)"/>
+        <path d="M218 180 L250 172 L260 180 Z" fill="var(--accent)"/><path d="M218 180 L250 188 L260 180 Z" fill="var(--sage)"/>
+        <circle cx="260" cy="180" r="6" fill="var(--gold)" opacity="0.5"/><circle cx="260" cy="180" r="3.4" fill="var(--gold)"/>
+        <!-- Caminos en los bordes -->
+        <g text-anchor="middle">
+          <text x="260" y="70" class="rp">DEBER</text><text x="260" y="86" class="re">OESTE · responsabilidad</text>
+          <text x="260" y="292" class="re">ESTE · bienestar</text><text x="260" y="308" class="rp">PLACER</text>
+        </g>
+        <text x="112" y="174" class="rp" text-anchor="middle">SUFRIMIENTO</text><text x="112" y="190" class="re" text-anchor="middle">SUR · supervivencia</text>
+        <text x="408" y="174" class="rp" text-anchor="middle">MIGRANTE</text><text x="408" y="190" class="re" text-anchor="middle">NORTE · lo nuevo</text>
+      </svg>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Cuatro Caminos</span></div>
+  </section>
+
+  <!-- ===== SLIDE 5 · TABLA DE CAMINOS ===== -->
+  <section class="slide s5 has-visual visual-full" data-i="5">
+    <img class="slide-bg" src="Imagenes_Sesion2_Generadas/10_tablero_caminos.png" alt="" aria-hidden="true">
+    <div class="eyebrow"><span class="tick"></span>Concepto 2 · Los caminos</div>
+    <div class="midwrap">
+    <h2 class="display s5h">Detrás de cada camino, un evento de la línea.</h2>
+    <div class="caminos">
+      <div class="crow"><span class="cdot" style="background:var(--accent)"></span><div class="cname">Migrante<em>Norte</em></div><div class="cdesc">Exploración y búsqueda de lo nuevo.</div><div class="ccost">historias familiares de migración</div></div>
+      <div class="crow"><span class="cdot" style="background:var(--sage)"></span><div class="cname">Sufrimiento<em>Sur</em></div><div class="cdesc">Reactividad, miedo y supervivencia.</div><div class="ccost">historias de guerra o conflicto</div></div>
+      <div class="crow"><span class="cdot" style="background:var(--accent)"></span><div class="cname">Deber<em>Oeste</em></div><div class="cdesc">Responsabilidad, compromiso y estabilidad.</div><div class="ccost">lealtades y patrones de sacrificio</div></div>
+      <div class="crow"><span class="cdot" style="background:var(--sage)"></span><div class="cname">Placer<em>Este</em></div><div class="cdesc">Búsqueda de bienestar y satisfacción.</div><div class="ccost">herencias familiares de comodidad</div></div>
+    </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Los caminos</span></div>
+  </section>
+
+  <!-- ===== CAMINO · MIGRANTE ===== -->
+  <section class="slide cam" data-i="6">
+    <div class="eyebrow"><span class="tick"></span>Los Cuatro Caminos · Migrante (Norte)</div>
+    <div class="midwrap">
+      <div class="camkick"><span class="cdot" style="background:var(--accent)"></span>Migrante · Norte</div>
+      <h2 class="display camh">Exploración y búsqueda de lo nuevo.</h2>
+      <p class="camlead">La búsqueda de algo nuevo, o el impulso de dejar atrás lo que ya no satisface.</p>
+      <div class="camcols">
+        <div class="camcol"><h5>Motivaciones</h5><ul><li>Deseo de cambio y de renovación.</li><li>Curiosidad y exploración de nuevos territorios.</li><li>Búsqueda de sentido ante el vacío o la crisis.</li></ul></div>
+        <div class="camcol"><h5>Eventos sistémicos</h5><ul><li>Historias familiares de migración o desplazamiento, con lealtad inconsciente a seguir moviéndose.</li><li>Pérdida de una figura clave (la muerte de un padre o un mentor).</li></ul></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Migrante</span></div>
+  </section>
+
+  <!-- ===== CAMINO · SUFRIMIENTO ===== -->
+  <section class="slide cam" data-i="7">
+    <div class="eyebrow"><span class="tick"></span>Los Cuatro Caminos · Sufrimiento (Sur)</div>
+    <div class="midwrap">
+      <div class="camkick"><span class="cdot" style="background:var(--sage)"></span>Sufrimiento · Sur</div>
+      <h2 class="display camh">Reactividad, miedo y supervivencia.</h2>
+      <p class="camlead">La lucha constante, el miedo y la reactividad como estado de base.</p>
+      <div class="camcols">
+        <div class="camcol"><h5>Motivaciones</h5><ul><li>Necesidad de sobrevivir ante una amenaza percibida.</li><li>Repetición de patrones de dolor y trauma del pasado.</li><li>Evitar el conflicto desde una postura defensiva.</li></ul></div>
+        <div class="camcol"><h5>Eventos sistémicos</h5><ul><li>Historias de guerra o conflicto que transmiten una mentalidad de supervivencia.</li><li>Lealtad al sufrimiento de los antepasados, como forma de pertenencia.</li></ul></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Sufrimiento</span></div>
+  </section>
+
+  <!-- ===== CAMINO · DEBER ===== -->
+  <section class="slide cam" data-i="8">
+    <div class="eyebrow"><span class="tick"></span>Los Cuatro Caminos · Deber (Oeste)</div>
+    <div class="midwrap">
+      <div class="camkick"><span class="cdot" style="background:var(--accent)"></span>Deber · Oeste</div>
+      <h2 class="display camh">Responsabilidad, compromiso y estabilidad.</h2>
+      <p class="camlead">Un fuerte sentido de responsabilidad y compromiso con los demás.</p>
+      <div class="camcols">
+        <div class="camcol"><h5>Motivaciones</h5><ul><li>Cumplir con las expectativas de la familia o el entorno.</li><li>Priorizar la seguridad y la estructura.</li><li>Lealtad a los roles y responsabilidades heredados.</li></ul></div>
+        <div class="camcol"><h5>Eventos sistémicos</h5><ul><li>Seguir los pasos de padres o abuelos, honrando la tradición familiar.</li><li>Patrones de sacrificio: renunciar a lo propio por el sistema familiar.</li></ul></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Deber</span></div>
+  </section>
+
+  <!-- ===== CAMINO · PLACER ===== -->
+  <section class="slide cam" data-i="9">
+    <div class="eyebrow"><span class="tick"></span>Los Cuatro Caminos · Placer (Este)</div>
+    <div class="midwrap">
+      <div class="camkick"><span class="cdot" style="background:var(--sage)"></span>Placer · Este</div>
+      <h2 class="display camh">Búsqueda de bienestar y satisfacción.</h2>
+      <p class="camlead">La búsqueda de satisfacción, comodidad y disfrute de la vida.</p>
+      <div class="camcols">
+        <div class="camcol"><h5>Motivaciones</h5><ul><li>Deseo de bienestar: maximizar el disfrute.</li><li>Comodidad y estabilidad emocional.</li><li>Búsqueda de gratificación a corto plazo.</li></ul></div>
+        <div class="camcol"><h5>Eventos sistémicos</h5><ul><li>Herencias familiares de comodidad y recursos.</li><li>Patrones de dependencia del bienestar de otros, repetidos entre generaciones.</li></ul></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Placer</span></div>
+  </section>
+
+  <!-- ===== SLIDE 6 · LOS TRES MARCOS (Venn) ===== -->
+  <section class="slide s6" data-i="10">
+    <div class="eyebrow"><span class="tick"></span>Concepto 3 · Los tres marcos</div>
+    <h2 class="display s6h">Un camino es el cruce de tres cosas.</h2>
+    <p class="s6lead">Cada camino es el cruce de tres dimensiones que el terapeuta ya trabaja por separado: <b>un metaprograma</b>, <b>un mecanismo de supervivencia</b> y <b>un movimiento sistémico</b>. Aquí se leen de forma integrada.</p>
+    <div class="focos s6cards">
+      <div class="foco"><span class="fn">1</span><h4>El metaprograma</h4><p>El filtro mental inconsciente con el que la persona procesa la información y decide.</p></div>
+      <div class="foco"><span class="fn">2</span><h4>El mecanismo de supervivencia</h4><p>La respuesta del sistema nervioso autónomo — del mismo tipo que la impronta.</p></div>
+      <div class="foco"><span class="fn">3</span><h4>El movimiento sistémico</h4><p>La lealtad familiar invisible: una historia de familia que empuja hacia un lado.</p></div>
+    </div>
+    <div class="s6key"><span class="s3key-b">El puente:</span> el camino <b>desciende por la línea familiar</b>. La pregunta que abre la lectura clínica es “¿hacia dónde cae tu línea?”.</div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Los tres marcos</span></div>
+  </section>
+
+  <!-- ===== MARCO 1 · METAPROGRAMA ===== -->
+  <section class="slide s6m" data-i="11">
+    <div class="eyebrow"><span class="tick"></span>Los tres marcos · 1 de 3</div>
+    <div class="midwrap">
+      <div class="mkick">Marco 1 · El metaprograma</div>
+      <h2 class="display s6mh">El filtro mental de cada camino.</h2>
+      <p class="s6msub">El patrón inconsciente con el que la persona procesa la información y toma sus decisiones.</p>
+      <div class="marco-list">
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--accent)"></span>Migrante</div><div class="mtext">Se mueve hacia lo que desea; busca opciones.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--sage)"></span>Sufrimiento</div><div class="mtext">Se aleja de lo que teme; vive en el detalle, en la hipervigilancia.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--accent)"></span>Deber</div><div class="mtext">Decide por criterio externo; sigue procedimientos.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--sage)"></span>Placer</div><div class="mtext">Se mueve hacia el disfrute; también busca opciones.</div></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Los tres marcos · 1</span></div>
+  </section>
+
+  <!-- ===== MARCO 2 · SUPERVIVENCIA ===== -->
+  <section class="slide s6m" data-i="12">
+    <div class="eyebrow"><span class="tick"></span>Los tres marcos · 2 de 3</div>
+    <div class="midwrap">
+      <div class="mkick">Marco 2 · El mecanismo de supervivencia</div>
+      <h2 class="display s6mh">La respuesta del sistema nervioso.</h2>
+      <p class="s6msub">Una respuesta del sistema nervioso autónomo, del mismo tipo que la impronta de la Sesión 1.</p>
+      <div class="marco-list">
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--accent)"></span>Migrante</div><div class="mtext">Simpático de exploración: el sistema se moviliza hacia lo nuevo — no huye por miedo.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--sage)"></span>Sufrimiento</div><div class="mtext">Simpático en amenaza crónica: lucha, huida o congelación, con el eje del estrés sobreactivado.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--accent)"></span>Deber</div><div class="mtext">Vago ventral: la cooperación social, el vínculo.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--sage)"></span>Placer</div><div class="mtext">Parasimpático restaurativo: descanso, digestión, conservación.</div></div>
+      </div>
+      <div class="s6key"><span class="s3key-b">Norte y Sur:</span> ambos cursan con activación simpática. Los distingue su finalidad: la <b>búsqueda de oportunidad</b> en el Migrante, la <b>defensa ante la amenaza</b> en el Sufrimiento.</div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Los tres marcos · 2</span></div>
+  </section>
+
+  <!-- ===== MARCO 3 · MOVIMIENTO SISTÉMICO ===== -->
+  <section class="slide s6m s6m-line has-visual visual-side-layout" data-i="13">
+    <img class="slide-bg" src="Imagenes_Sesion2_Generadas/05_cuatro_direcciones.png" alt="" aria-hidden="true">
+    <div class="eyebrow"><span class="tick"></span>Los tres marcos · 3 de 3</div>
+    <div class="midwrap">
+      <div class="mkick">Marco 3 · El movimiento sistémico</div>
+      <h2 class="display s6mh">La lealtad familiar que empuja.</h2>
+      <p class="s6msub">Cada camino tiene detrás una historia familiar que lo sostiene: la lealtad invisible.</p>
+      <div class="marco-list">
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--accent)"></span>Migrante</div><div class="mtext">Migraciones y exilios reales; el desarraigo que se repite.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--sage)"></span>Sufrimiento</div><div class="mtext">La lealtad al dolor de los que sufrieron antes.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--accent)"></span>Deber</div><div class="mtext">Un rol o una misión heredada de alguien que se sacrificó.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--sage)"></span>Placer</div><div class="mtext">La compensación —“yo sí voy a disfrutar”— por generaciones de escasez.</div></div>
+      </div>
+      <div class="s6key"><span class="s3key-b">El puente:</span> cuando los tres marcos coinciden en una dirección, definen el camino predominante: <b>un patrón que la persona hereda de su línea</b>.</div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Los tres marcos · 3</span></div>
+  </section>
+
+  <!-- ===== SLIDE 7 · LOS CUADRANTES (mismo lienzo) ===== -->
+  <section class="slide s7" data-i="14">
+    <div class="eyebrow"><span class="tick"></span>Concepto 4 · Los cuadrantes</div>
+    <div class="board-wrap">
+      <svg class="board" viewBox="0 0 520 360" aria-hidden="true">
+        <rect x="40" y="44" width="220" height="136" fill="var(--sage)" fill-opacity="0.07"/>
+        <rect x="260" y="44" width="220" height="136" fill="var(--accent)" fill-opacity="0.06"/>
+        <rect x="40" y="180" width="220" height="136" fill="var(--accent)" fill-opacity="0.06"/>
+        <rect x="260" y="180" width="220" height="136" fill="var(--gold)" fill-opacity="0.09"/>
+        <rect x="40" y="44" width="440" height="272" rx="6" fill="none" stroke="var(--line-2, var(--line))" stroke-width="2"/>
+        <g stroke="var(--line)" stroke-width="1.2"><line x1="260" y1="52" x2="260" y2="308"/><line x1="52" y1="180" x2="468" y2="180"/></g>
+        <circle cx="260" cy="180" r="7" fill="var(--gold)" opacity="0.5"/><circle cx="260" cy="180" r="4" fill="var(--gold)"/>
+        <g class="ed" text-anchor="middle"><text x="460" y="176">N</text><text x="60" y="176">S</text><text x="260" y="40">O</text><text x="260" y="326">E</text></g>
+        <g text-anchor="middle">
+          <text x="150" y="98" class="qc">SO · Sufrimiento + Deber</text><text x="150" y="116" class="ql">Sacrificio total</text><text x="150" y="134" class="qd">el sufrimiento como misión y obligación</text>
+          <text x="370" y="98" class="qc">NO · Migrante + Deber</text><text x="370" y="116" class="ql">Exploración al servicio</text><text x="370" y="134" class="qd">lo nuevo como misión o responsabilidad</text>
+          <text x="150" y="228" class="qc">SE · Sufrimiento + Placer</text><text x="150" y="246" class="ql">Placer culpable</text><text x="150" y="264" class="qd">el gozo y la culpa por disfrutar</text>
+          <text x="370" y="228" class="qc">NE · Migrante + Placer</text><text x="370" y="246" class="ql">Exploración hedonista</text><text x="370" y="264" class="qd">lo nuevo que proporcione placer</text>
+        </g>
+      </svg>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Los cuadrantes</span></div>
+  </section>
+
+  <!-- ===== CUADRANTES DEL NORTE ===== -->
+  <section class="slide cuad" data-i="15">
+    <div class="eyebrow"><span class="tick"></span>Los cuadrantes · del Norte</div>
+    <div class="midwrap">
+      <h2 class="display cuadh">Dos tendencias que se acompañan.</h2>
+      <p class="cuadlead">Los cuadrantes del Norte combinan direcciones que empujan en el mismo sentido.</p>
+      <div class="cuadcols">
+        <div class="cuadcard">
+          <div class="cuadcode">NE · Migrante + Placer</div>
+          <h3>Exploración hedonista</h3>
+          <div class="cuadrow"><span class="cl">Recurso</span><span>Gozo en la exploración; adaptabilidad con disfrute.</span></div>
+          <div class="cuadrow"><span class="cl">Costo</span><span>Superficialidad en las búsquedas; inconstancia.</span></div>
+        </div>
+        <div class="cuadcard">
+          <div class="cuadcode">NO · Migrante + Deber</div>
+          <h3>Exploración al servicio</h3>
+          <div class="cuadrow"><span class="cl">Recurso</span><span>Innovación al servicio de la comunidad; liderazgo por misión.</span></div>
+          <div class="cuadrow"><span class="cl">Costo</span><span>Agotamiento por buscar nuevas formas de servir; dispersión.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Cuadrantes · Norte</span></div>
+  </section>
+
+  <!-- ===== CUADRANTES DEL SUR ===== -->
+  <section class="slide cuad" data-i="16">
+    <div class="eyebrow"><span class="tick"></span>Los cuadrantes · del Sur</div>
+    <div class="midwrap">
+      <h2 class="display cuadh">Dos tendencias en tensión.</h2>
+      <p class="cuadlead">Los cuadrantes del Sur combinan direcciones que tiran hacia lados opuestos. Ahí vive la mayor parte del trabajo clínico.</p>
+      <div class="cuadcols">
+        <div class="cuadcard">
+          <div class="cuadcode">SE · Sufrimiento + Placer</div>
+          <h3>Placer culpable</h3>
+          <div class="cuadrow"><span class="cl">Recurso</span><span>Profundidad emocional con capacidad de gozo; transformar el dolor en creatividad.</span></div>
+          <div class="cuadrow"><span class="cl">Costo</span><span>Culpa al disfrutar; adicciones como escape del sufrimiento.</span></div>
+        </div>
+        <div class="cuadcard">
+          <div class="cuadcode">SO · Sufrimiento + Deber</div>
+          <h3>Sacrificio total</h3>
+          <div class="cuadrow"><span class="cl">Recurso</span><span>Resistencia y servicio extremos; profundo sentido de propósito.</span></div>
+          <div class="cuadrow"><span class="cl">Costo</span><span>Martirio como identidad; incapacidad de recibir; burnout existencial.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Cuadrantes · Sur</span></div>
+  </section>
+
+  <!-- ===== SLIDE 8 · LAS 7 IMPRONTAS (umbral) ===== -->
+  <section class="slide s8 has-visual visual-side-layout" data-i="17">
+    <img class="slide-bg" src="Imagenes_Sesion2_Generadas/02_impronta_umbral.png" alt="" aria-hidden="true">
+    <div class="eyebrow"><span class="tick"></span>Concepto 5 · Las improntas</div>
+    <div class="midwrap">
+    <h2 class="display s8h">Se hereda el umbral, no el evento.</h2>
+    <p class="s8lead">Una impronta es el <b>ciclo defensivo que quedó activo</b> cuando no pudo descargarse: el programa de supervivencia que sobrevive a la escena que lo originó. En lo transgeneracional, el descendiente hereda el <b>umbral</b> con el que su sistema dispara esa respuesta, sin haber vivido el evento.</p>
+    <div class="s8grid">
+      <div class="s8gk">El evento</div><div class="s8gv">Lo que le pasó al ancestro. No se transmite.</div>
+      <div class="s8gk">El umbral</div><div class="s8gv">La facilidad con la que el sistema activa esa respuesta. Esto es lo que desciende por la línea.</div>
+    </div>
+    <p class="s8note">Son trece improntas. Aquí trabajamos las siete primeras.</p>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Las improntas</span></div>
+  </section>
+
+  <!-- ===== IMPRONTAS i1–i4 ===== -->
+  <section class="slide s8d" data-i="18">
+    <div class="eyebrow"><span class="tick"></span>Las improntas · i1 – i4</div>
+    <div class="midwrap">
+      <div class="improntas2">
+        <div class="iprow"><div class="iphead"><span class="ipcode">i1</span><span class="ipname">Desacople</span></div><div class="ipbody"><div class="ipbelief">“no estoy realmente aquí”</div><div class="ipdesc">Fragmentar la experiencia para sobrevivir a un impacto que no se pudo integrar.</div></div></div>
+        <div class="iprow"><div class="iphead"><span class="ipcode">i2</span><span class="ipname">Acorazamiento</span></div><div class="ipbody"><div class="ipbelief">“no vuelvo a bajar la guardia”</div><div class="ipdesc">Blindar la zona vulnerable tras una traición del vínculo.</div></div></div>
+        <div class="iprow"><div class="iphead"><span class="ipcode">i3</span><span class="ipname">Retracción</span></div><div class="ipbody"><div class="ipbelief">“no soy suficiente”</div><div class="ipdesc">Retirarse de la exposición para no ser juzgado, tras una humillación.</div></div></div>
+        <div class="iprow"><div class="iphead"><span class="ipcode">i4</span><span class="ipname">Fijación Externa</span></div><div class="ipbody"><div class="ipbelief">“la vida es injusta”</div><div class="ipdesc">Fijar la energía en una causa que está afuera; el resentimiento que busca culpable.</div></div></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Improntas · i1–i4</span></div>
+  </section>
+
+  <!-- ===== IMPRONTAS i5–i7 ===== -->
+  <section class="slide s8d" data-i="19">
+    <div class="eyebrow"><span class="tick"></span>Las improntas · i5 – i7</div>
+    <div class="midwrap">
+      <div class="improntas2">
+        <div class="iprow"><div class="iphead"><span class="ipcode">i5</span><span class="ipname">Compresión</span></div><div class="ipbody"><div class="ipbelief">“no tiene caso hablar”</div><div class="ipdesc">Cerrar el canal de la expresión; la voz que se calla, lo no dicho que se guarda.</div></div></div>
+        <div class="iprow"><div class="iphead"><span class="ipcode">i6</span><span class="ipname">Camuflaje</span></div><div class="ipbody"><div class="ipbelief">“yo soy el error”</div><div class="ipdesc">Volverse invisible como protección, cuando ser visto resultó peligroso.</div></div></div>
+        <div class="iprow"><div class="iphead"><span class="ipcode">i7</span><span class="ipname">Hibernación</span></div><div class="ipbody"><div class="ipbelief">“la vida no tiene sentido”</div><div class="ipdesc">Apagarse hasta el mínimo vital ante una amenaza que superó lo que el sistema podía sostener. La de mayor incidencia transgeneracional.</div></div></div>
+      </div>
+      <div class="s8key"><span class="s3key-b">En la lectura:</span> el muñeco da la dirección; una de estas siete improntas es el patrón que empujó la línea hacia ella.</div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Improntas · i5–i7</span></div>
+  </section>
+
+  <!-- ===== MOMENTO SOMÁTICO (vivencia) ===== -->
+  <section class="slide ssom has-visual visual-full visual-centered" data-i="20">
+    <img class="slide-bg" src="Imagenes_Sesion2_Generadas/03_checkin_somatico.png" alt="" aria-hidden="true">
+    <div class="eyebrow"><span class="tick"></span>Vivencia · Momento somático</div>
+    <div class="midwrap ssom-mid">
+      <svg class="iso ssom-iso"><use href="#iso"/></svg>
+      <p>No interrogamos al cuerpo. Lo escuchamos.</p>
+      <div class="ssom-guide">Cierra los ojos. Siente hacia dónde caminó tu línea — no lo pienses. Deja que el cuerpo conteste.</div>
+      <div class="ssom-qual"><span>forma</span><span>peso</span><span>temperatura</span><span>movimiento</span><span>color</span></div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Momento somático</span></div>
+  </section>
+
+  <!-- ===== HORA 2 · DIVISOR ===== -->
+  <section class="slide s2h has-visual visual-full" data-i="21">
+    <img class="slide-bg" src="Imagenes_Sesion2_Generadas/04_demostracion_playmobil.png" alt="" aria-hidden="true">
+    <div class="eyebrow"><span class="tick"></span>Hora 2 · En vivo</div>
+    <div class="midwrap">
+      <div class="h2kick">Segunda parte</div>
+      <h2 class="display h2title">La demostración.</h2>
+      <div class="h2sub">Un caso real, trabajado en vivo, de principio a fin.</div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>La demostración</span></div>
+  </section>
+
+  <!-- ===== HORA 2 · EL INSTRUMENTO ===== -->
+  <section class="slide cam has-visual visual-side-layout caida-visual" data-i="22">
+    <img class="slide-bg" src="Imagenes_Sesion2_Generadas/07_caida_muneco.png" alt="" aria-hidden="true">
+    <div class="eyebrow"><span class="tick"></span>Hora 2 · El instrumento</div>
+    <div class="midwrap">
+      <h2 class="display camh">El material sobre la mesa.</h2>
+      <p class="camlead">Tres piezas sencillas. El poder no está en el objeto, sino en la secuencia y en la lectura.</p>
+      <div class="focos">
+        <div class="foco"><span class="fn">01</span><h4>El lienzo</h4><p>Una hoja con los cuatro ejes cardinales trazados, y los cuadrantes marcados en las diagonales.</p></div>
+        <div class="foco"><span class="fn">02</span><h4>La tabla giratoria</h4><p>Sostiene el lienzo y permite mirar la caída desde distintos ángulos sin mover los muñecos.</p></div>
+        <div class="foco"><span class="fn">03</span><h4>Los muñecos</h4><p>Uno por cada miembro de la familia que se trabaja, etiquetado con su nombre.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>El instrumento</span></div>
+  </section>
+
+  <!-- ===== HORA 2 · LA CAÍDA ===== -->
+  <section class="slide cam" data-i="23">
+    <div class="eyebrow"><span class="tick"></span>Hora 2 · La técnica</div>
+    <div class="midwrap">
+      <h2 class="display camh">La caída del muñeco.</h2>
+      <p class="camlead">Se coloca el muñeco de pie en el centro, se levanta unos centímetros y se suelta. No se lanza ni se empuja. La dirección de los pies indica el camino.</p>
+      <div class="marco-list">
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--accent)"></span>Pies al Norte</div><div class="mtext">Camino del Migrante.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--sage)"></span>Pies al Sur</div><div class="mtext">Camino del Sufrimiento.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--accent)"></span>Pies al Este / Oeste</div><div class="mtext">Placer y Deber.</div></div>
+        <div class="mrow"><div class="mname"><span class="cdot" style="background:var(--sage)"></span>Pies a una diagonal</div><div class="mtext">Un cuadrante: la combinación de dos caminos.</div></div>
+      </div>
+      <div class="s6key"><span class="s3key-b">El principio:</span> la caída no es aleatoria. Refleja una tendencia sistémica, un movimiento del sistema familiar.</div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>La caída</span></div>
+  </section>
+
+  <!-- ===== HORA 2 · LOS 7 PASOS ===== -->
+  <section class="slide s8d" data-i="24">
+    <div class="eyebrow"><span class="tick"></span>Hora 2 · La técnica en 7 pasos</div>
+    <div class="midwrap">
+      <div class="improntas2 pasos">
+        <div class="iprow"><div class="iphead"><span class="ipcode">1</span></div><div class="ipbody"><div class="ipbelief">Selección de muñecos</div><div class="ipdesc">El consultante elige, de forma intuitiva, un muñeco por cada miembro de la familia.</div></div></div>
+        <div class="iprow"><div class="iphead"><span class="ipcode">2</span></div><div class="ipbody"><div class="ipbelief">Colocación en el centro</div><div class="ipdesc">Todos los muñecos de pie sobre la intersección de los ejes.</div></div></div>
+        <div class="iprow"><div class="iphead"><span class="ipcode">3</span></div><div class="ipbody"><div class="ipbelief">La caída</div><div class="ipdesc">Se levanta y se suelta cada muñeco, empezando por el del consultante.</div></div></div>
+        <div class="iprow"><div class="iphead"><span class="ipcode">4</span></div><div class="ipbody"><div class="ipbelief">Determinación del camino</div><div class="ipdesc">La dirección de los pies define el camino de cada figura.</div></div></div>
+        <div class="iprow"><div class="iphead"><span class="ipcode">5</span></div><div class="ipbody"><div class="ipbelief">Análisis de patrones</div><div class="ipdesc">Se comparan los caminos de toda la familia: iguales, opuestos, cruzados.</div></div></div>
+        <div class="iprow"><div class="iphead"><span class="ipcode">6</span></div><div class="ipbody"><div class="ipbelief">Diálogo terapéutico</div><div class="ipdesc">Se exploran las emociones y las lealtades que revelan las posiciones.</div></div></div>
+        <div class="iprow"><div class="iphead"><span class="ipcode">7</span></div><div class="ipbody"><div class="ipbelief">Interpretación simbólica</div><div class="ipdesc">Distancia del centro, posición del cuerpo y relación entre muñecos.</div></div></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Los 7 pasos</span></div>
+  </section>
+
+  <!-- ===== HORA 2 · GUÍA DE OBSERVACIÓN ===== -->
+  <section class="slide s2o" data-i="25">
+    <div class="eyebrow"><span class="tick"></span>Hora 2 · Qué observar</div>
+    <div class="midwrap">
+      <h2 class="display s2oh">Tres cosas que observar.</h2>
+      <div class="focos">
+        <div class="foco"><span class="fn">01</span><h4>La dirección de la caída</h4><p>Hacia dónde apuntan los pies del muñeco sobre el lienzo.</p></div>
+        <div class="foco"><span class="fn">02</span><h4>Las preguntas y su porqué</h4><p>Lo decisivo está en las preguntas que siguen a la caída.</p></div>
+        <div class="foco"><span class="fn">03</span><h4>La conexión familiar</h4><p>Cómo la caída se cruza con la historia de la línea.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Cómo observar</span></div>
+  </section>
+
+  <!-- ===== HORA 2 · PREGUNTAS POR CAMINO ===== -->
+  <section class="slide s2p" data-i="26">
+    <div class="eyebrow"><span class="tick"></span>Hora 2 · La lectura</div>
+    <div class="midwrap">
+      <h2 class="display s2ph">Cada dirección abre una pregunta.</h2>
+      <div class="preguntas">
+        <div class="prow"><div class="pname"><span class="cdot" style="background:var(--accent)"></span>Migrante <em>Norte</em></div><div class="pq">“¿Hay migraciones en tu familia? ¿Alguien tuvo que irse de su tierra?”</div></div>
+        <div class="prow"><div class="pname"><span class="cdot" style="background:var(--sage)"></span>Sufrimiento <em>Sur</em></div><div class="pq">“¿Hay historias de sufrimiento en tu familia que nunca se han hablado?”</div></div>
+        <div class="prow"><div class="pname"><span class="cdot" style="background:var(--accent)"></span>Deber <em>Oeste</em></div><div class="pq">“¿Quién en tu familia fue el que más se sacrificó? ¿Te identificas con esa persona?”</div></div>
+        <div class="prow"><div class="pname"><span class="cdot" style="background:var(--sage)"></span>Placer <em>Este</em></div><div class="pq">“¿En tu familia se permitía disfrutar, o el placer se veía como algo negativo?”</div></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>La lectura</span></div>
+  </section>
+
+  <!-- ===== HORA 2 · LEER LA FAMILIA ===== -->
+  <section class="slide cam has-visual visual-side-layout family-visual" data-i="27">
+    <img class="slide-bg" src="Imagenes_Sesion2_Generadas/08_familia_configuracion.png" alt="" aria-hidden="true">
+    <div class="eyebrow"><span class="tick"></span>Hora 2 · Leer la familia completa</div>
+    <div class="midwrap">
+      <h2 class="display camh">La imagen de toda la familia junta.</h2>
+      <p class="camlead">La lectura es del conjunto: qué dice la posición de todos los muñecos juntos, no de uno aislado.</p>
+      <div class="focos">
+        <div class="foco nofn"><h4>Caminos iguales</h4><p>Lealtad compartida: la familia entera se mueve en la misma dirección.</p></div>
+        <div class="foco nofn"><h4>Caminos opuestos</h4><p>Conflicto sistémico: una parte de la familia compensa a la otra.</p></div>
+        <div class="foco nofn"><h4>Las posiciones</h4><p>Quién mira a quién, quién ocupa el lugar de poder, quién queda excluido.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Leer la familia</span></div>
+  </section>
+
+  <!-- ===== HORA 2 · EL CIERRE DEL CASO ===== -->
+  <section class="slide cierrecaso" data-i="28">
+    <div class="eyebrow"><span class="tick"></span>Hora 2 · El cierre del caso</div>
+    <div class="midwrap cierrecaso-mid">
+      <div class="mkick">La pregunta final</div>
+      <h2 class="display bigq">“Ahora que ves este patrón, ¿quieres seguir en este camino, o elegir una dirección distinta?”</h2>
+      <p class="cierrenote">Nombrar el patrón es, en sí mismo, un acto terapéutico: lo que se hace consciente puede elegirse, en lugar de repetirse en automático.</p>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>El cierre del caso</span></div>
+  </section>
+
+  <!-- ===== SLIDE 13 · CIERRE · DOS PUERTAS ===== -->
+  <section class="slide s9 has-visual visual-full" data-i="29">
+    <img class="slide-bg" src="Imagenes_Sesion2_Generadas/01_linaje_paterno.png" alt="" aria-hidden="true">
+    <div class="eyebrow"><span class="tick"></span>Cierre — El camino hacia adelante</div>
+    <div class="midwrap">
+    <h2 class="display s9h">Dos formaciones para seguir después de hoy.</h2>
+    <div class="s9recap">
+      <span>Hoy leíste tu línea como una dirección</span>
+      <span>Reconociste las improntas que la marcan</span>
+      <span>Viste la técnica trabajada en vivo</span>
+    </div>
+    <div class="doors">
+      <div class="door">
+        <div class="dtop"><span class="dnum">01</span><span class="dk">Leer la línea</span></div>
+        <h3>Los Caminos de la Vida<br>&amp; Playmobil Pro</h3>
+        <p>Los siete pasos, los cuadrantes, la familia entera sobre el lienzo — leer la línea a fondo.</p>
+      </div>
+      <div class="door">
+        <div class="dtop"><span class="dnum">02</span><span class="dk">Mover el patrón</span></div>
+        <h3>Actos que Mueven</h3>
+        <p>Actos físicos que el cuerpo registra como experiencia real. No se habla de rituales: se hacen.</p>
+      </div>
+    </div>
+    <div class="closingline">Hoy tocaron un poco de las dos. Al cierre abrimos conversación para quienes quieran entrar.</div>
+    </div>
+    <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Cierre</span></div>
+  </section>
+
+  <div class="progress" id="prog"></div>
+</main>
+
+<div class="bar">
+  <button class="nav" id="prev" aria-label="Slide anterior">‹</button>
+  <span class="count"><b id="cur">01</b> / <span id="tot">30</span></span>
+  <button class="nav" id="next" aria-label="Slide siguiente">›</button>
+  <span class="hint">← →  para navegar · T  cambia tema</span>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var i=0, n=slides.length;
+  document.getElementById('tot').textContent=String(n).padStart(2,'0');
+  function show(k){
+    i=(k+n)%n;
+    slides.forEach(function(s,idx){s.classList.toggle('is-active',idx===i)});
+    document.getElementById('cur').textContent=String(i+1).padStart(2,'0');
+    document.getElementById('prog').style.width=((i+1)/n*100)+'%';
+  }
+  function next(){show(i+1)} function prev(){show(i-1)}
+  document.getElementById('next').onclick=next;
+  document.getElementById('prev').onclick=prev;
+  document.getElementById('zR').onclick=next;
+  document.getElementById('zL').onclick=prev;
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '){next();e.preventDefault();}
+    else if(e.key==='ArrowLeft'){prev();}
+    else if(e.key==='t'||e.key==='T'){
+      var r=document.documentElement;
+      var cur=r.getAttribute('data-theme')|| (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+      r.setAttribute('data-theme', cur==='dark'?'light':'dark');
+    }
+  });
+  show(0);
+})();
+</script>
+</body>
+</html>
