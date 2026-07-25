@@ -18,6 +18,8 @@ SRC = pathlib.Path("Manual_Modulo_2_Leer_y_Regular.md")
 FORMATOS = {
     "b5":     dict(css="estilo_b5.css",     out="Manual_Modulo_2_B5.html",     util=208.0, entradas=17),
     "letter": dict(css="estilo_letter.css", out="Manual_Modulo_2_Letter.html", util=236.0, entradas=20),
+    "bn-b5":     dict(css="estilo_bn_b5.css",     out="Manual_Modulo_2_B5_BN.html",     util=208.0, entradas=17, logo="#000000"),
+    "bn-letter": dict(css="estilo_bn_letter.css", out="Manual_Modulo_2_Letter_BN.html", util=236.0, entradas=20, logo="#000000"),
 }
 FMT = sys.argv[1] if len(sys.argv) > 1 else "b5"
 if FMT not in FORMATOS: raise SystemExit(f"formato: {' | '.join(FORMATOS)}")
@@ -324,6 +326,13 @@ def main():
 <div class="endfoot">INSTITUTO CENTROBIOENERGETICA</div>
 </section>'''
 
+    if CFG.get("logo"):
+        doc_dipolo = CFG["logo"]
+    else:
+        doc_dipolo = "#0F6E56"
+    portada = portada.replace("#0F6E56", doc_dipolo)
+    paginas_html = [p.replace("#0F6E56", doc_dipolo) for p in paginas_html]
+    colofon = colofon.replace("#0F6E56", doc_dipolo)
     doc = (f'<!doctype html><html lang="es"><head><meta charset="utf-8">'
            f'<title>Manual Módulo 2 — Leer y regular</title>\n<style>\n{css}\n</style></head>\n'
            f'<body class="b5">\n{portada}\n' + "\n".join(paginas_html) + f"\n{colofon}\n</body></html>\n")
