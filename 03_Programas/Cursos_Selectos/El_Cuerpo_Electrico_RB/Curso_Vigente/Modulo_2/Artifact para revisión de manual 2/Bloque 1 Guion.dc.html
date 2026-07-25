@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="rb-fonts.css">
+<style>
+  :root{
+    --ink:#201F1C; --paper:#FCFBF7; --paper2:#F4F1E8;
+    --teal:#0F6E56; --teal-deep:#0A4A3A; --teal-tint:#E1F5EE; --coral:#D85A30;
+    --line:#DEDBD2; --faint:#8B8A83;
+    --serif:'SS4',Georgia,'Times New Roman',serif;
+    --sans:'Plex',system-ui,'Helvetica Neue',Arial,sans-serif;
+    --mono:'PlexMono',ui-monospace,Menlo,monospace;
+    --t-kicker:24px; --t-title:76px; --t-huge:154px; --t-sub:44px; --t-body:33px; --t-small:25px;
+    --pad:104px;
+  }
+  *{box-sizing:border-box}
+  @keyframes ring{0%{transform:scale(.35);opacity:.55}100%{transform:scale(2.6);opacity:0}}
+  @keyframes lineTravel{0%{transform:translateX(0);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateX(96px);opacity:0}}
+  @keyframes breathe{0%,100%{fill-opacity:.28}50%{fill-opacity:.95}}
+  @keyframes cut{0%,100%{opacity:.5}50%{opacity:0}}
+  @keyframes islandRing{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+  @keyframes legLen{0%,42%{x2:404}58%,100%{x2:470}}
+  @keyframes heelDot{0%,42%{cx:404}58%,100%{cx:470}}
+  @keyframes gapFade{0%,42%{opacity:1}58%,100%{opacity:0}}
+  @keyframes lblShort{0%,42%{opacity:1}58%,100%{opacity:0}}
+  @keyframes lblEqual{0%,42%{opacity:0}58%,100%{opacity:1}}
+  @keyframes flow{0%{transform:translateY(-6px);opacity:0}8%{opacity:1}92%{opacity:1}100%{transform:translateY(286px);opacity:0}}
+  @keyframes gradPulse{0%,100%{opacity:.25}50%{opacity:.8}}
+  @keyframes fieldDot{0%{transform:translateX(0);opacity:0}20%{opacity:1}80%{opacity:1}100%{transform:translateX(120px);opacity:0}}
+  @keyframes glow{0%,100%{fill-opacity:.22}12%,22%{fill-opacity:1}}
+  @keyframes ripple{0%{r:14;opacity:.7}100%{r:52;opacity:0}}
+  @keyframes shimmer{0%,100%{opacity:.15}50%{opacity:.9}}
+  @keyframes settle{0%{transform:translateX(112px);opacity:.35}55%{transform:translateX(0);opacity:1}100%{transform:translateX(0);opacity:1}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  @keyframes dash{to{stroke-dashoffset:-72}}
+  @keyframes tick{0%,100%{transform:scale(1)}8%{transform:scale(1.75)}}
+  @keyframes scan{0%{transform:translateX(-300px)}100%{transform:translateX(1760px)}}
+  @keyframes ringFill{0%{stroke-dashoffset:565}82%,100%{stroke-dashoffset:82}}
+  @keyframes stepUp{0%,100%{opacity:.35}50%{opacity:1}}
+
+  @keyframes secIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes markIn{from{opacity:0;transform:translateX(-14px)}to{opacity:.62;transform:translateX(0)}}
+  @keyframes markPulse{0%,100%{opacity:.42}50%{opacity:1}}
+  @keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+  <section data-label="Portada" data-speaker-notes="Buenos días. Bienvenidos al segundo módulo. En el primero trabajamos el marco: qué es el cuerpo eléctrico, con qué instrumento se trabaja, cómo se interpreta y cuál es el procedimiento. Hoy lo ejecutan." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);position:relative;overflow:hidden;font-family:var(--sans)">
+    <svg viewBox="0 0 600 600" style="position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:760px;height:760px;opacity:.9">
+      <g transform="translate(300,300)">
+        <circle r="120" fill="none" stroke="#5FBFA6" stroke-width="1.5" style="transform-box:fill-box;transform-origin:center;animation:ring 5s ease-out infinite"></circle>
+        <circle r="120" fill="none" stroke="#5FBFA6" stroke-width="1.5" style="transform-box:fill-box;transform-origin:center;animation:ring 5s ease-out infinite 1.6s"></circle>
+        <circle r="120" fill="none" stroke="#5FBFA6" stroke-width="1.5" style="transform-box:fill-box;transform-origin:center;animation:ring 5s ease-out infinite 3.2s"></circle>
+        <circle cx="-96" cy="0" r="46" fill="#2FA98A"></circle>
+        <line x1="-50" y1="0" x2="50" y2="0" stroke="#5FBFA6" stroke-width="3"></line>
+        <circle cx="96" cy="0" r="46" fill="#2FA98A" opacity="0.4"></circle>
+        <circle cx="-50" cy="0" r="9" fill="var(--paper2)" style="animation:lineTravel 3.4s ease-in-out infinite"></circle>
+      </g>
+    </svg>
+    <div style="position:relative;z-index:2;max-width:1150px">
+      <div style="display:flex;align-items:center;gap:14px;font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#8FD6C2">
+        <svg viewBox="0 0 58 24" style="height:26px"><circle cx="8" cy="12" r="6" fill="#8FD6C2"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="#8FD6C2" stroke-width="1.5"></line><circle cx="36" cy="12" r="6" fill="#8FD6C2" opacity="0.4"></circle></svg>
+        <span>Módulo 2 · Leer y regular</span>
+      </div>
+      <h1 style="font:400 var(--t-huge)/.98 var(--serif);letter-spacing:-.02em;margin:34px 0 0">Bloque 1</h1>
+      <p style="font:400 var(--t-sub)/1.4 var(--serif);font-style:italic;color:#CFE6DD;margin:36px 0 0;max-width:24ch">De la descripción del procedimiento a su ejecución.</p>
+      <div style="margin-top:64px;display:flex;align-items:center;gap:26px;font:500 var(--t-small)/1.6 var(--sans);color:#9FCFBF;letter-spacing:.02em">
+        <span style="font-family:var(--mono);color:#8FD6C2;font-size:30px">10:00 – 12:00</span>
+        <span>Dr. Miguel Ojeda Rios · Instituto Centrobioenergetica</span>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Ejecución supervisada" data-speaker-notes="En el primero trabajamos el marco. Describimos el procedimiento de principio a fin. Hoy lo ejecutan." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="display:flex;align-items:center;gap:80px">
+      <div style="flex:1">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--faint)">Módulo 1</div>
+        <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:22px 0 0;color:var(--faint)">Describimos el<br>procedimiento</h2>
+        <p style="font:400 var(--t-body)/1.5 var(--sans);color:var(--faint);margin:28px 0 0;max-width:24ch">El marco, el instrumento, la interpretación.</p>
+      </div>
+      <svg viewBox="0 0 120 60" style="width:200px;flex:none"><path d="M6,30 L104,30" stroke="var(--coral)" stroke-width="4" stroke-linecap="round"></path><path d="M92,16 L110,30 L92,44" fill="none" stroke="var(--coral)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="flex:1">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--coral)">Módulo 2 · hoy</div>
+        <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:22px 0 0">Ejecución supervisada</h2>
+        <p style="font:400 var(--t-body)/1.5 var(--sans);color:#413E39;margin:28px 0 0;max-width:26ch">Al terminar el día levantan un <b style="color:var(--teal-deep);font-weight:700">perfil bioeléctrico completo</b>, con el eje del estrés como marco de trabajo.</p>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Recuperación" data-speaker-notes="Antes de empezar, recuperemos el módulo pasado. Lo van a decir ustedes. Preguntas al grupo; confirmar o corregir en una frase. Al pizarrón: escribir la columna con huecos y que el grupo la complete." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Recuperación de contenidos previos</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 0">Ocho preguntas</h2>
+    <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);gap:20px 60px;align-content:center;margin-top:34px">
+      <div style="border-top:2px solid var(--line);padding-top:14px"><div style="font:500 var(--t-small)/1.35 var(--sans);color:#413E39">¿Qué señal indica nodo activo y cuál resolución?</div><div style="font:700 26px/1.3 var(--sans);color:var(--teal-deep);margin-top:7px">Acortamiento / isometría</div></div>
+      <div style="border-top:2px solid var(--line);padding-top:14px"><div style="font:500 var(--t-small)/1.35 var(--sans);color:#413E39">¿Cuál es la pierna de referencia?</div><div style="font:700 26px/1.3 var(--sans);color:var(--teal-deep);margin-top:7px">La izquierda</div></div>
+      <div style="border-top:2px solid var(--line);padding-top:14px"><div style="font:500 var(--t-small)/1.35 var(--sans);color:#413E39">¿Qué actúa: la intensidad o el gradiente?</div><div style="font:700 26px/1.3 var(--sans);color:var(--teal-deep);margin-top:7px">El gradiente, en la frontera entre polos</div></div>
+      <div style="border-top:2px solid var(--line);padding-top:14px"><div style="font:500 var(--t-small)/1.35 var(--sans);color:#413E39">¿Qué organiza: el Vmem o el pH?</div><div style="font:700 26px/1.3 var(--sans);color:var(--teal-deep);margin-top:7px">El Vmem. El pH acompaña</div></div>
+      <div style="border-top:2px solid var(--line);padding-top:14px"><div style="font:500 var(--t-small)/1.35 var(--sans);color:#413E39">¿Qué es un agente biológico?</div><div style="font:700 26px/1.3 var(--sans);color:var(--teal-deep);margin-top:7px">Persigue una meta y defiende un set point</div></div>
+      <div style="border-top:2px solid var(--line);padding-top:14px"><div style="font:500 var(--t-small)/1.35 var(--sans);color:#413E39">En persuadibilidad, ¿de qué clase son?</div><div style="font:700 26px/1.3 var(--sans);color:var(--teal-deep);margin-top:7px">Clase B. Se les reescribe la referencia</div></div>
+      <div style="border-top:2px solid var(--line);padding-top:14px"><div style="font:500 var(--t-small)/1.35 var(--sans);color:#413E39">¿Qué es una isla de despolarización?</div><div style="font:700 26px/1.3 var(--sans);color:var(--teal-deep);margin-top:7px">Zona despolarizada que cerró sus uniones</div></div>
+      <div style="border-top:2px solid var(--line);padding-top:14px"><div style="font:500 var(--t-small)/1.35 var(--sans);color:#413E39">¿Qué significa que regular no es curar?</div><div style="font:700 26px/1.3 var(--sans);color:var(--teal-deep);margin-top:7px">Recalibrar el punto de ajuste, no suprimir</div></div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Fundamentos" data-speaker-notes="Dejemos esto escrito, porque lo vamos a usar todo el día. Hay un estado bioeléctrico. Lo tocamos con un instrumento. Lo interpretamos con un marco. Y lo operamos con un procedimiento. Ese último paso es el de hoy." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Fundamentos del método</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 46px">Cuatro pasos · hoy es el cuarto</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:26px">
+      <div style="background:var(--paper);border-radius:18px;padding:36px 30px;border-top:6px solid var(--line)"><div style="font:700 24px/1 var(--mono);color:var(--faint);letter-spacing:.1em">01</div><div style="font:400 40px/1.15 var(--serif);margin-top:18px;color:var(--faint)">Un estado bioeléctrico</div></div>
+      <div style="background:var(--paper);border-radius:18px;padding:36px 30px;border-top:6px solid var(--line)"><div style="font:700 24px/1 var(--mono);color:var(--faint);letter-spacing:.1em">02</div><div style="font:400 40px/1.15 var(--serif);margin-top:18px;color:var(--faint)">Lo tocamos con un instrumento</div></div>
+      <div style="background:var(--paper);border-radius:18px;padding:36px 30px;border-top:6px solid var(--line)"><div style="font:700 24px/1 var(--mono);color:var(--faint);letter-spacing:.1em">03</div><div style="font:400 40px/1.15 var(--serif);margin-top:18px;color:var(--faint)">Lo interpretamos con un marco</div></div>
+      <div style="background:var(--teal-deep);border-radius:18px;padding:36px 30px;border-top:6px solid var(--coral);color:var(--paper2)"><div style="font:700 24px/1 var(--mono);color:#8FD6C2;letter-spacing:.1em">04</div><div style="font:400 40px/1.15 var(--serif);margin-top:18px">Lo operamos con un procedimiento</div><div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#8FD6C2;margin-top:22px">Hoy</div></div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="§ La sesión" data-speaker-notes="10:20. Con el manual abierto, ir pasando páginas con el grupo. Les entrego tres cosas: el manual operativo, la hoja de valoración previa y siluetas de mapa corporal." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans);position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;opacity:.14"><svg viewBox="0 0 1920 1080" style="width:100%;height:100%"><g stroke="#5FBFA6" stroke-width="1.5" fill="none"><circle cx="1560" cy="540" r="180"></circle><circle cx="1560" cy="540" r="300"></circle><circle cx="1560" cy="540" r="420"></circle></g></svg></div>
+    <div style="position:relative;z-index:2">
+      <div style="font-family:var(--mono);font-size:34px;color:#8FD6C2;letter-spacing:.06em">10:20</div>
+      <h2 style="font:400 var(--t-huge)/1 var(--serif);letter-spacing:-.02em;margin:26px 0 0">La sesión del<br>nodo de lesión</h2>
+      <div style="display:flex;gap:20px;margin-top:56px">
+        <span style="border:2px solid #2FA98A;border-radius:999px;padding:14px 30px;font:500 var(--t-small)/1 var(--sans);color:#CFE6DD">Manual operativo</span>
+        <span style="border:2px solid #2FA98A;border-radius:999px;padding:14px 30px;font:500 var(--t-small)/1 var(--sans);color:#CFE6DD">Hoja de valoración previa</span>
+        <span style="border:2px solid #2FA98A;border-radius:999px;padding:14px 30px;font:500 var(--t-small)/1 var(--sans);color:#CFE6DD">Siluetas de mapa corporal</span>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Materiales" data-speaker-notes="Los imanes pueden ser cuadrados, rectangulares o circulares. El tamaño se elige por la zona y por la complexión. La misma zona pide un calibre distinto en un paciente delgado que en uno robusto. Intensidad 0.1 a 0.5 tesla. Van cubiertos y con lengüeta: a esas fuerzas, dos imanes que se juntan de golpe pueden pinzar tejido o fracturarse. Para la rejilla, cuatro imanes iguales entre sí." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;align-items:center;gap:80px;padding:var(--pad);font-family:var(--sans)">
+    <div style="flex:1.1">
+      <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Materiales · especificación</div>
+      <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 0">Especificación del instrumento</h2>
+      <div style="display:flex;flex-direction:column;gap:24px;margin-top:38px">
+        <div style="display:flex;gap:22px;align-items:baseline"><span style="width:12px;height:12px;border-radius:50%;background:var(--teal);flex:none;margin-top:12px"></span><div style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39"><b style="font-weight:700;color:var(--ink)">Forma y tamaño.</b> Cuadrados, rectangulares o circulares. El calibre se elige por la zona y por la complexión del paciente.</div></div>
+        <div style="display:flex;gap:22px;align-items:baseline"><span style="width:12px;height:12px;border-radius:50%;background:var(--teal);flex:none;margin-top:12px"></span><div style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39"><b style="font-weight:700;color:var(--ink)">Recubrimiento y lengüeta.</b> A estas fuerzas, dos imanes que se juntan de golpe pueden pinzar tejido o fracturarse.</div></div>
+        <div style="display:flex;gap:22px;align-items:baseline"><span style="width:12px;height:12px;border-radius:50%;background:var(--teal);flex:none;margin-top:12px"></span><div style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39"><b style="font-weight:700;color:var(--ink)">Rejilla.</b> Cuatro imanes iguales entre sí.</div></div>
+        <div style="display:flex;gap:22px;align-items:baseline"><span style="width:12px;height:12px;border-radius:50%;background:var(--teal);flex:none;margin-top:12px"></span><div style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39"><b style="font-weight:700;color:var(--ink)">Camilla.</b> Sin superficie metálica y a la altura de su cintura: van a medir muchas veces.</div></div>
+      </div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:34px">
+      <div style="background:var(--teal-tint);border-radius:24px;padding:52px 60px;text-align:center">
+        <div style="font:400 130px/1 var(--serif);color:var(--teal-deep);letter-spacing:-.02em">0.1–0.5</div>
+        <div style="font:700 34px/1 var(--sans);color:var(--teal);letter-spacing:.06em;margin-top:14px">TESLA</div>
+        <div style="font:400 var(--t-small)/1.5 var(--sans);color:#4A6B60;margin-top:18px">100 – 500 militesla<br>en superficie</div>
+      </div>
+      <img src="../Bloque_3/B1_assets/materiales_imanes_estudio.png" alt="Imanes terapéuticos de distintas formas, cubierta protectora y regla de escala" style="width:340px;height:230px;object-fit:cover;border-radius:18px;border:1px solid var(--line);box-shadow:0 16px 38px rgba(32,31,28,.12);display:block">
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Cribado de seguridad" data-speaker-notes="El cribado de seguridad: cuatro casillas. Marcapasos, embarazo, prótesis y quimioterapia. Cualquiera marcada obliga a valorar antes de aplicar, y se registra en la ficha." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--coral)">Antes de aplicar imanes</div>
+    <h2 style="font:400 var(--t-title)/1.04 var(--serif);margin:20px 0 0">Cribado de seguridad · contraindicaciones</h2>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:48px">
+      <div style="position:relative;overflow:hidden;display:flex;gap:34px">
+        <div style="position:absolute;top:0;bottom:0;left:0;width:300px;background:linear-gradient(90deg,transparent,rgba(216,90,48,.16),transparent);animation:scan 4.4s ease-in-out infinite;z-index:0"></div>
+        <div style="position:relative;z-index:1;flex:1;background:var(--paper2);border-radius:18px;padding:46px 30px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center"><svg viewBox="0 0 48 48" style="width:74px;height:74px"><circle cx="24" cy="24" r="20" fill="none" stroke="var(--coral)" stroke-width="4"></circle><line x1="10.5" y1="10.5" x2="37.5" y2="37.5" stroke="var(--coral)" stroke-width="4" stroke-linecap="round"></line></svg><div style="font:700 var(--t-body)/1.15 var(--sans);color:var(--ink)">Marcapasos</div></div>
+        <div style="position:relative;z-index:1;flex:1;background:var(--paper2);border-radius:18px;padding:46px 30px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center"><svg viewBox="0 0 48 48" style="width:74px;height:74px"><circle cx="24" cy="24" r="20" fill="none" stroke="var(--coral)" stroke-width="4"></circle><line x1="10.5" y1="10.5" x2="37.5" y2="37.5" stroke="var(--coral)" stroke-width="4" stroke-linecap="round"></line></svg><div style="font:700 var(--t-body)/1.15 var(--sans);color:var(--ink)">Embarazo</div></div>
+        <div style="position:relative;z-index:1;flex:1;background:var(--paper2);border-radius:18px;padding:46px 30px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center"><svg viewBox="0 0 48 48" style="width:74px;height:74px"><circle cx="24" cy="24" r="20" fill="none" stroke="var(--coral)" stroke-width="4"></circle><line x1="10.5" y1="10.5" x2="37.5" y2="37.5" stroke="var(--coral)" stroke-width="4" stroke-linecap="round"></line></svg><div style="font:700 var(--t-body)/1.15 var(--sans);color:var(--ink)">Prótesis</div></div>
+        <div style="position:relative;z-index:1;flex:1;background:var(--paper2);border-radius:18px;padding:46px 30px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center"><svg viewBox="0 0 48 48" style="width:74px;height:74px"><circle cx="24" cy="24" r="20" fill="none" stroke="var(--coral)" stroke-width="4"></circle><line x1="10.5" y1="10.5" x2="37.5" y2="37.5" stroke="var(--coral)" stroke-width="4" stroke-linecap="round"></line></svg><div style="font:700 var(--t-body)/1.15 var(--sans);color:var(--ink)">Quimioterapia</div></div>
+      </div>
+      <p style="font:400 var(--t-small)/1.5 var(--sans);color:#5C5852;max-width:70ch">Cualquier casilla marcada obliga a valorar la contraindicación antes de aplicar. El cribado se registra en la ficha clínica.</p>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Polaridad" data-speaker-notes="El polo negativo, Norte, es el de rastreo e impactación sobre la zona. El positivo, Sur, es el complementario. En la aplicación general la cara negativa contacta la piel. Hay una sola excepción: la acidosis temporal. Ahí va la cara positiva contra la piel, y se inicia con el positivo." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Convención de polaridad</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 44px">La convención de polaridad</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px">
+      <div style="background:var(--paper);border-radius:20px;padding:44px 40px;border-left:8px solid var(--ink)">
+        <div style="font:700 34px/1 var(--sans);color:var(--ink)">Negativo · Norte</div>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39;margin:20px 0 0">El de <b style="font-weight:700">rastreo e impactación</b> sobre la zona. En la aplicación general, la cara negativa contacta la piel.</p>
+      </div>
+      <div style="background:var(--paper);border-radius:20px;padding:44px 40px;border-left:8px solid var(--teal)">
+        <div style="font:700 34px/1 var(--sans);color:var(--teal)">Positivo · Sur</div>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39;margin:20px 0 0">El <b style="font-weight:700">complementario</b>, que cierra el dipolo.</p>
+      </div>
+    </div>
+    <div style="margin-top:40px;background:#FBF0EC;border-left:8px solid var(--coral);border-radius:0 20px 20px 0;padding:36px 40px">
+      <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--coral)">Una sola excepción</div>
+      <p style="font:400 var(--t-body)/1.45 var(--sans);color:#413E39;margin:18px 0 0"><b style="font-weight:700;color:var(--ink)">Acidosis temporal:</b> la cara positiva contra la piel, y se inicia con el positivo.</p>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Punto crítico" data-speaker-notes="El error aparece siempre en el mismo punto de la secuencia: no al ejecutar la maniobra renal, sino inmediatamente después, al pasar al trabajo por zonas. Ahí es donde el imán entra invertido. Verifiquen polo y cara en esa transición." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--coral);color:#FFF6F2;display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#FFD9C9">Punto crítico de la secuencia</div>
+    <h2 style="font:400 var(--t-title)/1.1 var(--serif);margin:26px 0 0;max-width:34ch">No falla la maniobra renal. Falla la transición.</h2>
+    <div style="display:flex;align-items:center;gap:32px;margin-top:56px">
+      <div style="background:rgba(255,255,255,.16);border-radius:16px;padding:28px 36px;font:500 var(--t-body)/1.2 var(--sans)">Maniobra renal</div>
+      <svg viewBox="0 0 100 40" style="width:120px;flex:none"><path d="M4,20 L84,20" stroke="#FFD9C9" stroke-width="4" stroke-linecap="round"></path><path d="M74,8 L92,20 L74,32" fill="none" stroke="#FFD9C9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="background:#fff;color:var(--coral);border-radius:16px;padding:28px 36px;font:700 var(--t-body)/1.2 var(--sans);box-shadow:0 12px 40px rgba(0,0,0,.18)">Trabajo por zonas</div>
+      <div style="font:400 var(--t-small)/1.4 var(--sans);color:#FFE6DC;max-width:24ch">Aquí es donde el imán entra invertido.</div>
+    </div>
+    <p style="font:400 var(--t-body)/1.45 var(--sans);color:#FFE6DC;margin:56px 0 0;max-width:44ch">Verifiquen <b style="color:#fff;font-weight:700">polo y cara</b> en esa transición.</p>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Mapa corporal" data-speaker-notes="Formato SOAP. El mapa lo dibuja el paciente: ustedes entregan la silueta y él marca. La razón es operativa. El mapa es la agenda de la sesión y la referencia basal. Levantado por el terapeuta, registra lo que el terapeuta esperaba encontrar; levantado por el paciente, lo que su cuerpo señala. Esas dos listas no siempre coinciden." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;align-items:center;gap:76px;padding:var(--pad);font-family:var(--sans)">
+    <div style="flex:1">
+      <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Registro SOAP · exploración objetiva</div>
+      <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 0">Mapa corporal<br>autorreferido</h2>
+      <p style="font:400 var(--t-body)/1.5 var(--sans);color:#413E39;margin:32px 0 0;max-width:30ch">Ustedes entregan la silueta. Él marca. La razón es operativa.</p>
+      <div style="display:flex;flex-direction:column;gap:22px;margin-top:38px">
+        <div style="background:var(--paper2);border-radius:16px;padding:26px 30px"><div style="font:700 26px/1.2 var(--sans);color:var(--teal-deep)">Es la agenda de la sesión</div><div style="font:400 var(--t-small)/1.45 var(--sans);color:#4C4A42;margin-top:8px">Qué se interroga y en qué orden.</div></div>
+        <div style="background:var(--paper2);border-radius:16px;padding:26px 30px"><div style="font:700 26px/1.2 var(--sans);color:var(--teal-deep)">Es la referencia basal</div><div style="font:400 var(--t-small)/1.45 var(--sans);color:#4C4A42;margin-top:8px">Para comparar con las sesiones siguientes.</div></div>
+      </div>
+    </div>
+    <div style="flex:1">
+      <div style="background:var(--paper2);border-radius:22px;padding:40px;display:flex;flex-direction:column;gap:26px">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)">El hallazgo no se limita al dolor</div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px">
+          <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:12px 24px;font:500 var(--t-small)/1 var(--sans)">tensión</span>
+          <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:12px 24px;font:500 var(--t-small)/1 var(--sans)">contractura</span>
+          <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:12px 24px;font:500 var(--t-small)/1 var(--sans)">edema</span>
+          <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:12px 24px;font:500 var(--t-small)/1 var(--sans)">ardor</span>
+          <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:12px 24px;font:500 var(--t-small)/1 var(--sans)">molestia inespecífica</span>
+          <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:12px 24px;font:500 var(--t-small)/1 var(--sans)">zona lesionada hoy asintomática</span>
+        </div>
+        <div style="border-top:2px solid var(--line);padding-top:24px;display:flex;align-items:center;gap:24px">
+          <div style="font:400 76px/1 var(--serif);color:var(--teal-deep)">0–10</div>
+          <div style="font:400 var(--t-small)/1.45 var(--sans);color:#4C4A42">A cada hallazgo, intensidad. Es lo que hace comparable esta sesión con la siguiente.</div>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Preparación del paciente" data-speaker-notes="La preparación forma parte del procedimiento. La tensión de defensa muscular es una de las principales fuentes de variabilidad. Se explica al paciente, se le pide retirar joyas y dispositivos. Decúbito supino, cabeza neutra, tracción suave, movilización lateral y manta. Un paciente sin relajar produce una lectura no fiable, y esa lectura los lleva a colocar imanes donde no corresponde." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Forma parte del procedimiento</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 12px">Preparación del paciente</h2>
+    <p style="font:400 var(--t-body)/1.45 var(--sans);color:#413E39;margin:0 0 44px;max-width:56ch">La tensión de defensa muscular es una de las principales fuentes de variabilidad de la prueba.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+      <div style="background:var(--paper);border-radius:18px;padding:34px 28px"><div style="font:700 24px/1 var(--mono);color:var(--teal);letter-spacing:.1em">01</div><div style="font:700 27px/1.25 var(--sans);margin-top:16px">Se explica</div><div style="font:400 26px/1.45 var(--sans);color:#4C4A42;margin-top:10px">Evaluación de simetría y colocación de imanes: indolora y no invasiva.</div></div>
+      <div style="background:var(--paper);border-radius:18px;padding:34px 28px"><div style="font:700 24px/1 var(--mono);color:var(--teal);letter-spacing:.1em">02</div><div style="font:700 27px/1.25 var(--sans);margin-top:16px">Se retira</div><div style="font:400 26px/1.45 var(--sans);color:#4C4A42;margin-top:10px">Joyas, reloj, cinturón, llaves y dispositivos electrónicos.</div></div>
+      <div style="background:var(--paper);border-radius:18px;padding:34px 28px"><div style="font:700 24px/1 var(--mono);color:var(--teal);letter-spacing:.1em">03</div><div style="font:700 27px/1.25 var(--sans);margin-top:16px">Se posiciona</div><div style="font:400 26px/1.45 var(--sans);color:#4C4A42;margin-top:10px">Decúbito supino, cabeza neutra. Tracción suave y movilización lateral.</div></div>
+      <div style="background:var(--teal-tint);border-radius:18px;overflow:hidden;border-top:6px solid var(--teal)"><img src="../Bloque_3/B1_assets/preparacion_paciente_estudio.png" alt="Preparación del paciente en decúbito supino con cabeza neutra y manta" style="width:100%;height:182px;object-fit:cover;display:block"><div style="padding:22px 24px 24px"><div style="font:700 24px/1 var(--mono);color:var(--teal);letter-spacing:.1em">04</div><div style="font:700 27px/1.25 var(--sans);margin-top:12px">Se cubre con manta</div><div style="font:400 24px/1.4 var(--sans);color:#3C5C52;margin-top:8px">Reduce el tono de defensa y estabiliza la medición basal.</div></div></div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Valoración de la simetría" data-speaker-notes="Los pies por fuera del borde distal, talones libres, de preferencia con calzado. Unas respiraciones profundas antes de medir. Se toman por los tobillos y se elevan unos 30 grados, alineadas con el eje del cuerpo. Solo elevar y medir: sin traccionar en ese momento y sin corregir. Izquierda de referencia, derecha como variable." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;align-items:center;gap:70px;padding:var(--pad);font-family:var(--sans)">
+    <div style="flex:1">
+      <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Procedimiento de valoración de la simetría</div>
+      <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 0">Valoración de la simetría</h2>
+      <div style="display:flex;flex-direction:column;gap:20px;margin-top:36px">
+        <div style="display:flex;gap:20px;align-items:baseline"><span style="font:700 26px/1 var(--mono);color:var(--teal);flex:none;margin-top:6px">30°</span><div style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39">Se toman por los <b style="font-weight:700">tobillos</b> y se elevan alineadas con el eje del cuerpo.</div></div>
+        <div style="display:flex;gap:20px;align-items:baseline"><span style="width:12px;height:12px;border-radius:50%;background:var(--teal);flex:none;margin-top:12px"></span><div style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39">Talones libres, por fuera del borde distal, de preferencia con calzado.</div></div>
+        <div style="display:flex;gap:20px;align-items:baseline"><span style="width:12px;height:12px;border-radius:50%;background:var(--coral);flex:none;margin-top:12px"></span><div style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39"><b style="font-weight:700;color:var(--ink)">Solo elevar y medir.</b> Sin traccionar en ese momento y sin corregir.</div></div>
+      </div>
+      <div style="display:flex;gap:24px;margin-top:40px">
+        <div style="flex:1;background:var(--paper2);border-radius:16px;padding:24px 26px"><div style="font:700 24px/1.2 var(--sans);color:var(--teal-deep)">Izquierda</div><div style="font:400 24px/1.4 var(--sans);color:#4C4A42;margin-top:6px">referencia</div></div>
+        <div style="flex:1;background:var(--paper2);border-radius:16px;padding:24px 26px"><div style="font:700 24px/1.2 var(--sans);color:var(--coral)">Derecha</div><div style="font:400 24px/1.4 var(--sans);color:#4C4A42;margin-top:6px">variable</div></div>
+      </div>
+    </div>
+    <div style="flex:1.05;position:relative">
+      <img src="../Bloque_3/B1_assets/valoracion_talones_estudio.png" alt="Medición de simetría de talones con elevación suave y guía de alineación" style="width:100%;height:360px;object-fit:cover;border-radius:22px;border:1px solid var(--line);box-shadow:0 18px 42px rgba(32,31,28,.12);display:block">
+      <div style="position:absolute;left:24px;bottom:20px;background:rgba(252,251,247,.92);border-radius:999px;padding:11px 18px;font:700 22px/1 var(--mono);color:var(--coral);letter-spacing:.04em">30° · elevación suave</div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Bifurcación del algoritmo" data-speaker-notes="De ahí sale la primera bifurcación. Talones isométricos: se pasa directo al rastreo por zonas. Acortamiento funcional: primero se establece la línea base. Todo lo que van a hacer hoy está en este diagrama, y cada rama la decide una medición." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Criterio de decisión en cada rama</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 50px">Primera bifurcación del algoritmo</h2>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:0">
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:16px;padding:26px 46px;font:500 var(--t-body)/1.2 var(--sans)">Medición basal de la simetría</div>
+      <svg viewBox="0 0 700 90" style="width:760px"><g fill="none" stroke="var(--faint)" stroke-width="3"><path d="M350,4 L350,30"></path><path d="M350,30 L150,30 L150,80"></path><path d="M350,30 L550,30 L550,80"></path></g></svg>
+      <div style="display:flex;gap:120px;margin-top:-6px">
+        <div style="width:470px;background:var(--paper);border-radius:20px;padding:34px 36px;border-top:6px solid var(--teal)">
+          <div style="font:700 30px/1.2 var(--sans);color:var(--teal-deep)">Talones isométricos</div>
+          <div style="font:400 var(--t-small)/1.45 var(--sans);color:#4C4A42;margin-top:14px">Directo al <b style="font-weight:700;color:var(--ink)">rastreo por zonas</b>.</div>
+        </div>
+        <div style="width:470px;background:var(--paper);border-radius:20px;padding:34px 36px;border-top:6px solid var(--coral)">
+          <div style="font:700 30px/1.2 var(--sans);color:var(--coral)">Acortamiento funcional</div>
+          <div style="font:400 var(--t-small)/1.45 var(--sans);color:#4C4A42;margin-top:14px">Primero se establece la <b style="font-weight:700;color:var(--ink)">línea base</b>.</div>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Acidosis temporal" data-speaker-notes="Con acortamiento basal y sin zona de dolor localizada, se abre con la acidosis temporal. Polo positivo, cara positiva a la piel, sobre el riñón del lado del acortamiento. Homolateral en cerca del 80 por ciento; si no responde, contralateral. Se vuelve a medir: isometría confirma el riñón como nodo. Sin retirar el positivo se coloca el negativo adyacente, sin superponer. Dipolo local, veinte minutos o más." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Establecimiento de la línea base</div>
+    <h2 style="font:400 var(--t-title)/1.04 var(--serif);margin:20px 0 0">Acidosis temporal</h2>
+    <div style="flex:1;display:flex;align-items:center;gap:26px;margin-top:30px">
+      <div style="flex:1;background:var(--paper2);border-radius:18px;padding:32px 28px"><div style="font:700 24px/1 var(--mono);color:var(--teal);letter-spacing:.1em">01</div><div style="font:400 30px/1.25 var(--serif);margin-top:16px">Positivo sobre el riñón del lado del acortamiento</div><div style="font:400 25px/1.45 var(--sans);color:#4C4A42;margin-top:12px">Cara positiva a la piel. Homolateral en ≈80 %; si no responde, contralateral.</div></div>
+      <svg viewBox="0 0 40 30" style="width:44px;flex:none"><path d="M4,15 L28,15" stroke="var(--faint)" stroke-width="3" stroke-linecap="round"></path><path d="M22,7 L34,15 L22,23" fill="none" stroke="var(--faint)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="flex:1;background:var(--paper2);border-radius:18px;padding:32px 28px"><div style="font:700 24px/1 var(--mono);color:var(--teal);letter-spacing:.1em">02</div><div style="font:400 30px/1.25 var(--serif);margin-top:16px">Se vuelve a medir</div><div style="font:400 25px/1.45 var(--sans);color:#4C4A42;margin-top:12px">La <b style="font-weight:700;color:var(--ink)">isometría confirma</b> el riñón como nodo.</div></div>
+      <svg viewBox="0 0 40 30" style="width:44px;flex:none"><path d="M4,15 L28,15" stroke="var(--faint)" stroke-width="3" stroke-linecap="round"></path><path d="M22,7 L34,15 L22,23" fill="none" stroke="var(--faint)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="flex:1;background:var(--paper2);border-radius:18px;padding:32px 28px"><div style="font:700 24px/1 var(--mono);color:var(--teal);letter-spacing:.1em">03</div><div style="font:400 30px/1.25 var(--serif);margin-top:16px">Negativo adyacente, sin superponer</div><div style="font:400 25px/1.45 var(--sans);color:#4C4A42;margin-top:12px">Dipolo local. Veinte minutos o más.</div></div>
+      <svg viewBox="0 0 40 30" style="width:44px;flex:none"><path d="M4,15 L28,15" stroke="var(--faint)" stroke-width="3" stroke-linecap="round"></path><path d="M22,7 L34,15 L22,23" fill="none" stroke="var(--faint)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="flex:1;background:var(--teal-tint);border-radius:18px;padding:32px 28px;border-top:6px solid var(--teal)"><div style="font:700 24px/1 var(--mono);color:var(--teal);letter-spacing:.1em">04</div><div style="font:400 30px/1.25 var(--serif);margin-top:16px">Criterio de retirada</div><div style="font:400 25px/1.45 var(--sans);color:#3C5C52;margin-top:12px">Se retira <b style="font-weight:700">solo el positivo</b> y se mide. Si persiste, se recoloca y se prolonga.</div></div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Reaparición del acortamiento" data-speaker-notes="Si con el imán colocado la extremidad continúa acortada, es una discrepancia anatómica del paciente: se coloca una marca y esa marca pasa a ser la referencia basal. Si la extremidad vuelve a acortarse tras la corrección, la desregulación es más sostenida y corresponde la acidosis latente: positivo sobre zona renal, habitualmente derecha; negativo sobre el área parietal contralateral al riñón utilizado." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Hallazgos en la fase de apertura</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:16px 0 22px">Reaparición del acortamiento</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:34px">
+      <div style="background:var(--paper);border-radius:20px;padding:24px 30px;border-left:8px solid var(--faint)">
+        <div style="font:400 38px/1.15 var(--serif);color:var(--ink)">Discrepancia anatómica</div>
+        <svg viewBox="0 0 210 210" style="width:300px;display:block;margin:10px auto 0" role="img" aria-label="Marca de referencia basal sobre la longitud persistente">
+          <line x1="24" y1="70" x2="176" y2="70" stroke="var(--teal)" stroke-width="9" stroke-linecap="round"></line>
+          <circle cx="176" cy="70" r="8" fill="var(--teal-deep)"></circle>
+          <text x="24" y="52" font-family="var(--sans)" font-size="20.6" font-weight="700" fill="var(--teal-deep)">izquierda</text>
+          <line x1="24" y1="124" x2="142" y2="124" stroke="var(--coral)" stroke-width="9" stroke-linecap="round"></line>
+          <circle cx="142" cy="124" r="8" fill="#B4442A"></circle>
+          <text x="24" y="106" font-family="var(--sans)" font-size="20.6" font-weight="700" fill="#B4442A">derecha · persiste acortada</text>
+          <line x1="142" y1="46" x2="142" y2="156" stroke="var(--ink)" stroke-width="2.4" stroke-dasharray="6 5"></line>
+          <text x="142" y="180" text-anchor="middle" font-family="var(--sans)" font-size="22.1" font-weight="700" fill="var(--ink)">marca</text>
+          <text x="142" y="200" text-anchor="middle" font-family="var(--sans)" font-size="20.6" fill="var(--faint)">nueva referencia basal</text>
+        </svg>
+        <p style="font:400 26px/1.45 var(--sans);color:#413E39;margin:16px 0 0">Con el imán colocado la extremidad <b style="font-weight:700">continúa acortada</b>. Se coloca una marca en esa longitud y esa marca pasa a ser la referencia basal: el acortamiento lesional se manifestará sobre esa base.</p>
+      </div>
+      <div style="background:var(--paper);border-radius:20px;padding:24px 30px;border-left:8px solid var(--coral)">
+        <div style="font:400 38px/1.15 var(--serif);color:var(--ink)">Acidosis latente</div>
+        <p style="font:400 26px/1.45 var(--sans);color:#413E39;margin:16px 0 0">La extremidad <b style="font-weight:700">vuelve a acortarse</b> tras la corrección: desregulación más sostenida. Positivo sobre zona renal, habitualmente derecha; negativo sobre el área parietal contralateral al riñón utilizado.</p>
+        <svg viewBox="0 0 210 250" style="width:300px;display:block;margin:10px auto 0" role="img" aria-label="Dipolo a distancia entre zona renal y área parietal contralateral">
+          <circle cx="105" cy="28" r="18" fill="#E9E5DA"></circle>
+          <path d="M89,48 L121,48 C131,48 139,56 141,70 L145,116 L137,120 L131,90 L131,146 L129,174 L125,232 L115,232 L109,156 L101,156 L95,232 L85,232 L81,174 L79,146 L79,90 L73,120 L65,116 L69,70 C71,56 79,48 89,48 Z" fill="#E9E5DA"></path>
+          <path d="M79,90 L131,90 L131,122 L79,122 Z" fill="#DCD7C9"></path>
+          <path d="M105,120 C86,104 84,66 90,36" fill="none" stroke="var(--coral)" stroke-width="2.4" stroke-dasharray="6 5"></path>
+          <g stroke="#fff" stroke-width="2.4">
+            <circle cx="122" cy="114" r="13" fill="var(--teal)"></circle>
+            <circle cx="90" cy="26" r="12" fill="var(--ink)"></circle>
+          </g>
+          <text x="122" y="119" text-anchor="middle" font-family="var(--sans)" font-size="24" font-weight="700" fill="#fff">S</text>
+          <text x="90" y="31" text-anchor="middle" font-family="var(--sans)" font-size="22.3" font-weight="700" fill="#fff">N</text>
+          <text x="152" y="118" font-family="var(--sans)" font-size="20.5" fill="var(--teal)">zona renal</text>
+          <text x="8" y="22" font-family="var(--sans)" font-size="20.5" fill="var(--ink)">área parietal</text>
+          <text x="8" y="36" font-family="var(--sans)" font-size="20.5" fill="var(--faint)">contralateral</text>
+          <text x="105" y="248" text-anchor="middle" font-family="var(--sans)" font-size="20.5" fill="var(--faint)">el dipolo atraviesa el cuerpo</text>
+        </svg>
+        <div style="font:500 24px/1.35 var(--sans);color:var(--faint);margin-top:14px">Veinte minutos, o se deja colocado y se continúa el rastreo en paralelo.</div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Regla general" data-speaker-notes="La regla que gobierna todo el trabajo: solo se coloca un dipolo donde el rastreo responde con acortamiento. Una zona que no acorta, no se trabaja. Ustedes proponen la zona; el rastreo confirma el punto." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#8FD6C2">Regla general de aplicación</div>
+    <h2 style="font:400 var(--t-title)/1.1 var(--serif);margin:28px 0 0;max-width:40ch">Solo se coloca un dipolo donde el rastreo responde con acortamiento.</h2>
+    <p style="font:400 var(--t-sub)/1.4 var(--serif);font-style:italic;color:#CFE6DD;margin:44px 0 0">Una zona que no acorta, no se trabaja.</p>
+    <div style="display:flex;align-items:center;gap:34px;margin-top:64px;padding-top:44px;border-top:2px solid rgba(143,214,194,.35)">
+      <div style="font:500 var(--t-body)/1.35 var(--sans);color:#CFE6DD">Ustedes <b style="color:#fff;font-weight:700">proponen</b> la zona</div>
+      <svg viewBox="0 0 80 30" style="width:80px;flex:none"><path d="M4,15 L62,15" stroke="#8FD6C2" stroke-width="3" stroke-linecap="round"></path><path d="M54,7 L70,15 L54,23" fill="none" stroke="#8FD6C2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="font:500 var(--t-body)/1.35 var(--sans);color:#CFE6DD">El rastreo <b style="color:#fff;font-weight:700">confirma</b> el punto</div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Dipolo local" data-speaker-notes="Se localiza la zona más sintomática y se coloca ahí el negativo. Se comprueba midiendo. Si acorta, el imán queda fijo; si no hay cambio, se mueve por la zona midiendo. Confirmado el nodo, sin mover el negativo se coloca el positivo a un lado, probando posiciones. Cuando quedan isométricas, el dipolo local está cerrado. Y es un dipolo de gradiente: los dos polos opuestos y adyacentes generan un gradiente empinado en el tejido intermedio. Es ese gradiente, y no la intensidad, el que actúa." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;align-items:center;gap:80px;padding:var(--pad);font-family:var(--sans)">
+    <div style="flex:1">
+      <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#8FD6C2">Mecanismo de acción</div>
+      <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:22px 0 0">El dipolo<br>de gradiente</h2>
+      <p style="font:400 var(--t-body)/1.5 var(--sans);color:#CFE6DD;margin:34px 0 0;max-width:30ch">Dos polos opuestos y adyacentes generan un <b style="color:#fff;font-weight:700">gradiente de campo empinado</b> en el tejido intermedio.</p>
+      <p style="font:400 var(--t-sub)/1.35 var(--serif);font-style:italic;color:#8FD6C2;margin:34px 0 0;max-width:26ch">Es ese gradiente, no la intensidad del imán, el que actúa.</p>
+    </div>
+    <div style="flex:1.1">
+      <svg viewBox="0 0 460 300" style="width:100%">
+        <rect x="40" y="100" width="110" height="100" rx="12" fill="#E9E5DA"></rect>
+        <rect x="310" y="100" width="110" height="100" rx="12" fill="#2FA98A"></rect>
+        <text x="95" y="162" text-anchor="middle" font-family="var(--sans)" font-size="47.2" font-weight="700" fill="#201F1C">N</text>
+        <text x="365" y="162" text-anchor="middle" font-family="var(--sans)" font-size="47.2" font-weight="700" fill="#fff">S</text>
+        <rect x="150" y="100" width="160" height="100" fill="#5FBFA6" opacity=".3" style="animation:gradPulse 3s ease-in-out infinite"></rect>
+        <g fill="none" stroke="#EFE9DC" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="5 13">
+          <path d="M154 150 C 200 150 254 150 306 150" style="animation:dash 1.8s linear infinite"></path>
+          <path d="M154 122 C 204 96 250 96 306 122" style="animation:dash 1.8s linear infinite .2s"></path>
+          <path d="M154 178 C 204 204 250 204 306 178" style="animation:dash 1.8s linear infinite .2s"></path>
+        </g>
+        <text x="230" y="248" text-anchor="middle" font-family="var(--serif)" font-size="28.8" fill="#8FD6C2">gradiente empinado</text>
+        <text x="230" y="278" text-anchor="middle" font-family="var(--sans)" font-size="20.5" fill="#9FCFBF">en el tejido intermedio</text>
+      </svg>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Orden fijo de nodos" data-speaker-notes="Si el positivo adyacente no restablece la isometría en ninguna posición, la zona requiere un nodo regulador a distancia. El negativo permanece sobre la zona, se retira el positivo y se busca en orden fijo, midiendo en cada paso. Señalar en el propio cuerpo mientras se enumera." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Criterio de búsqueda a distancia</div>
+    <h2 style="font:400 var(--t-title)/1.04 var(--serif);margin:20px 0 8px">El orden fijo de nodos reguladores</h2>
+    <p style="font:400 var(--t-small)/1.5 var(--sans);color:#5C5852;margin:0 0 34px">El negativo permanece sobre la zona. Se retira el positivo probado al lado y se busca en orden, midiendo en cada paso.</p>
+    <div style="flex:1;display:flex;align-items:center;gap:60px">
+      <svg viewBox="0 0 200 300" style="height:100%;max-height:520px;flex:none" role="img" aria-label="Vista posterior con la localización de los nodos reguladores">
+        <circle cx="100" cy="30" r="19" fill="#E9E5DA"></circle>
+        <path d="M84,52 L116,52 C126,52 134,60 136,74 L140,124 L132,128 L126,96 L126,154 L124,184 L120,248 L110,248 L104,166 L96,166 L90,248 L80,248 L76,184 L74,154 L74,96 L68,128 L60,124 L64,74 C66,60 74,52 84,52 Z" fill="#E9E5DA"></path>
+        <path d="M74,96 L126,96 L126,130 L74,130 Z" fill="#DCD7C9"></path>
+        <line x1="100" y1="56" x2="100" y2="150" stroke="#C9C3B2" stroke-width="2"></line>
+        <g stroke="#fff" stroke-width="2.4">
+          <circle cx="118" cy="122" r="11" fill="var(--teal-deep)"></circle>
+          <circle cx="82" cy="122" r="11" fill="var(--teal-deep)"></circle>
+          <circle cx="118" cy="101" r="9" fill="var(--teal)"></circle>
+          <circle cx="82" cy="101" r="9" fill="var(--teal)"></circle>
+          <circle cx="100" cy="50" r="10" fill="#7E4576"></circle>
+        </g>
+        <g font-family="var(--sans)" font-size="20.5" font-weight="700" fill="#fff" text-anchor="middle">
+          <text x="118" y="126">1</text><text x="82" y="126">1</text>
+          <text x="118" y="105">2</text><text x="82" y="105">2</text>
+          <text x="100" y="54">4</text>
+        </g>
+        <circle cx="152" cy="104" r="10" fill="none" stroke="#B07A22" stroke-width="2.4" stroke-dasharray="3 3"></circle>
+        <text x="152" y="108" text-anchor="middle" font-family="var(--sans)" font-size="20.5" font-weight="700" fill="#B07A22">3</text>
+        <line x1="142" y1="104" x2="128" y2="104" stroke="#B07A22" stroke-width="1.6" stroke-dasharray="3 3"></line>
+        <text x="100" y="282" text-anchor="middle" font-family="var(--sans)" font-size="24.3" fill="var(--faint)">vista posterior</text>
+        <text x="100" y="296" text-anchor="middle" font-family="var(--sans)" font-size="20.5" fill="var(--faint)">3 · hígado, acceso anterior</text>
+      </svg>
+      <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:28px;background:var(--paper2);border-radius:14px;padding:24px 32px"><span style="font:700 24px/1 var(--mono);color:var(--teal);flex:none;width:34px">01</span><span style="font:700 30px/1.2 var(--sans);flex:none;width:340px">Zona renal · D → I</span><span style="font:400 24px/1.4 var(--sans);color:#4C4A42">Región lumbar posterior, bajo las últimas costillas, lateral a la columna.</span></div>
+      <div style="display:flex;align-items:center;gap:28px;background:var(--paper2);border-radius:14px;padding:24px 32px"><span style="font:700 24px/1 var(--mono);color:var(--teal);flex:none;width:34px">02</span><span style="font:700 30px/1.2 var(--sans);flex:none;width:340px">Suprarrenal · D → I</span><span style="font:400 24px/1.4 var(--sans);color:#4C4A42">Sobre el polo superior de la zona renal.</span></div>
+      <div style="display:flex;align-items:center;gap:28px;background:var(--paper2);border-radius:14px;padding:24px 32px"><span style="font:700 24px/1 var(--mono);color:var(--teal);flex:none;width:34px">03</span><span style="font:700 30px/1.2 var(--sans);flex:none;width:340px">Hígado</span><span style="font:400 24px/1.4 var(--sans);color:#4C4A42">Hipocondrio derecho, rastreando toda la zona hepática.</span></div>
+      <div style="display:flex;align-items:center;gap:28px;background:var(--paper2);border-radius:14px;padding:24px 32px"><span style="font:700 24px/1 var(--mono);color:var(--teal);flex:none;width:34px">04</span><span style="font:700 30px/1.2 var(--sans);flex:none;width:340px">Bulbo raquídeo</span><span style="font:400 24px/1.4 var(--sans);color:#4C4A42">Nuca, en el hueco por debajo del occipucio.</span></div>
+      <div style="display:flex;align-items:center;gap:28px;border:2px dashed var(--line);border-radius:14px;padding:24px 32px"><span style="font:700 24px/1 var(--mono);color:var(--faint);flex:none;width:34px">05</span><span style="font:700 30px/1.2 var(--sans);color:var(--faint);flex:none;width:340px">Cuerpo entero</span><span style="font:400 24px/1.4 var(--sans);color:var(--faint)">Si ninguno restablece la isometría.</span></div>
+    </div></div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Estatus de la evidencia" data-speaker-notes="El orden está construido por prevalencia. El riñón es el nodo regulador principal y el único establecido, porque regula el potasio, la variable que domina en la despolarización aguda. Suprarrenal, hígado y bulbo son nodos propuestos, en investigación. Eso se los digo con ese estatus: uno establecido, tres en investigación." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--coral)">Estatus de la evidencia</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 46px">Uno establecido, tres en investigación</h2>
+    <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:24px">
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:38px 34px">
+        <div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#8FD6C2">Establecido</div>
+        <div style="font:400 52px/1.1 var(--serif);margin-top:18px">Zona renal</div>
+        <p style="font:400 26px/1.45 var(--sans);color:#CFE6DD;margin:18px 0 0">Nodo regulador principal: regula el <b style="color:#fff;font-weight:700">potasio</b>, la variable que domina en la despolarización aguda.</p>
+      </div>
+      <div style="background:var(--paper);border-radius:20px;padding:38px 30px;border-top:6px solid var(--line)"><div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--faint)">Propuesto</div><div style="font:400 38px/1.15 var(--serif);margin-top:16px">Suprarrenal</div><p style="font:400 26px/1.45 var(--sans);color:#4C4A42;margin:14px 0 0">Efector neuroendocrino.</p></div>
+      <div style="background:var(--paper);border-radius:20px;padding:38px 30px;border-top:6px solid var(--line)"><div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--faint)">Propuesto</div><div style="font:400 38px/1.15 var(--serif);margin-top:16px">Hígado</div><p style="font:400 26px/1.45 var(--sans);color:#4C4A42;margin:14px 0 0">Efector metabólico.</p></div>
+      <div style="background:var(--paper);border-radius:20px;padding:38px 30px;border-top:6px solid var(--line)"><div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--faint)">Propuesto</div><div style="font:400 38px/1.15 var(--serif);margin-top:16px">Bulbo</div><p style="font:400 26px/1.45 var(--sans);color:#4C4A42;margin:14px 0 0">Control autonómico central.</p></div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Rejilla de gradiente" data-speaker-notes="Para dolor con contractura, la rejilla: sobre un punto ya confirmado, cuatro imanes en cuadro de 2x2 con polaridades alternadas en tablero. Cada imán opuesto a sus vecinos de lado y de arriba." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;align-items:center;gap:90px;padding:var(--pad);font-family:var(--sans)">
+    <div style="flex:1">
+      <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--coral)">Indicación · dolor con contractura</div>
+      <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:22px 0 0">La rejilla<br>2 × 2</h2>
+      <p style="font:400 var(--t-body)/1.5 var(--sans);color:#413E39;margin:34px 0 0;max-width:30ch">Sobre un punto <b style="color:var(--teal-deep);font-weight:700">ya confirmado</b>: cuatro imanes en cuadro con polaridades alternadas en tablero.</p>
+      <p style="font:400 var(--t-small)/1.5 var(--sans);color:#5C5852;margin:26px 0 0;max-width:36ch">Cada imán opuesto a sus vecinos de lado y de arriba. En cada frontera se enfrentan polos opuestos: una malla de gradientes.</p>
+    </div>
+    <div style="flex:1;display:flex;justify-content:center">
+      <svg viewBox="0 0 300 300" style="width:400px">
+        <rect x="20" y="20" width="126" height="126" rx="12" fill="#E9E5DA"></rect>
+        <rect x="154" y="20" width="126" height="126" rx="12" fill="var(--teal)"></rect>
+        <rect x="20" y="154" width="126" height="126" rx="12" fill="var(--teal)"></rect>
+        <rect x="154" y="154" width="126" height="126" rx="12" fill="#E9E5DA"></rect>
+        <text x="83" y="98" text-anchor="middle" font-family="var(--sans)" font-size="54" font-weight="700" fill="#201F1C">N</text>
+        <text x="217" y="98" text-anchor="middle" font-family="var(--sans)" font-size="54" font-weight="700" fill="#fff">S</text>
+        <text x="83" y="232" text-anchor="middle" font-family="var(--sans)" font-size="54" font-weight="700" fill="#fff">S</text>
+        <text x="217" y="232" text-anchor="middle" font-family="var(--sans)" font-size="54" font-weight="700" fill="#201F1C">N</text>
+        <g fill="var(--coral)" opacity=".9">
+          <rect x="146" y="20" width="8" height="126" style="animation:gradPulse 2.6s ease-in-out infinite"></rect>
+          <rect x="146" y="154" width="8" height="126" style="animation:gradPulse 2.6s ease-in-out infinite .4s"></rect>
+          <rect x="20" y="146" width="126" height="8" style="animation:gradPulse 2.6s ease-in-out infinite .8s"></rect>
+          <rect x="154" y="146" width="126" height="8" style="animation:gradPulse 2.6s ease-in-out infinite 1.2s"></rect>
+        </g>
+      </svg>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Criterio de tiempo" data-speaker-notes="Veinte minutos como base, veinte a treinta en el trabajo por zonas. Es la ventana de impactación de una configuración. El criterio de cierre de una zona no es el tiempo transcurrido: es la verificación por retirada. Se retira el positivo y se mide. Si vuelve a acortar, se recoloca y se prolonga." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;align-items:center;gap:80px;padding:var(--pad);font-family:var(--sans)">
+    <div style="flex:1;max-width:820px">
+      <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Criterio de cierre</div>
+      <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:26px 0 0">No cierra el reloj.<br>Cierra la medición.</h2>
+      <p style="font:400 var(--t-body)/1.5 var(--sans);color:#413E39;margin:34px 0 0;max-width:30ch">Veinte minutos como base, veinte a treinta en el trabajo por zonas: es la <b style="color:var(--teal-deep);font-weight:700">ventana de impactación</b>.</p>
+      <div style="display:flex;flex-direction:column;gap:20px;margin-top:38px">
+        <div style="display:flex;align-items:center;gap:20px"><span style="width:15px;height:15px;border-radius:50%;background:var(--teal);flex:none"></span><span style="font:500 var(--t-small)/1.4 var(--sans);color:#413E39">Se retira el positivo</span></div>
+        <div style="display:flex;align-items:center;gap:20px"><span style="width:15px;height:15px;border-radius:50%;background:var(--teal);flex:none"></span><span style="font:500 var(--t-small)/1.4 var(--sans);color:#413E39">Se mide</span></div>
+        <div style="display:flex;align-items:center;gap:20px"><span style="width:15px;height:15px;border-radius:50%;background:var(--coral);flex:none"></span><span style="font:500 var(--t-small)/1.4 var(--sans);color:#413E39">Si vuelve a acortar: se recoloca y se prolonga</span></div>
+      </div>
+    </div>
+    <div style="flex:1;display:flex;justify-content:center">
+      <svg viewBox="0 0 220 220" style="width:100%;max-width:440px">
+        <circle cx="110" cy="110" r="90" fill="none" stroke="var(--line)" stroke-width="12"></circle>
+        <circle cx="110" cy="110" r="90" fill="none" stroke="var(--teal)" stroke-width="12" stroke-linecap="round" stroke-dasharray="565" style="transform-box:fill-box;transform-origin:center;transform:rotate(-90deg);animation:ringFill 5s cubic-bezier(.45,0,.55,1) infinite"></circle>
+        <text x="110" y="104" text-anchor="middle" dominant-baseline="central" font-family="var(--serif)" font-size="64" fill="var(--ink)">20</text>
+        <text x="110" y="150" text-anchor="middle" font-family="var(--mono)" font-size="24" letter-spacing="2" fill="var(--faint)">MIN · BASE</text>
+      </svg>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Alivio y resolución" data-speaker-notes="Al incorporarse, lo habitual es que haya alivio: relajación, calma, menor dolor, mejor movilidad. El alivio no cierra el caso. Esto se trabaja en serie. Y la pregunta de seguimiento no es ¿le quitó el dolor?. Es ¿cuánto le duró?" style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--coral);color:#FFF6F2;display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#FFD9C9">Consideración clínica central</div>
+    <h2 style="font:400 var(--t-huge)/1 var(--serif);letter-spacing:-.02em;margin:26px 0 0">El alivio no<br>equivale a resolución</h2>
+    <p style="font:400 var(--t-body)/1.5 var(--sans);color:#FFE6DC;margin:44px 0 0;max-width:52ch">Se trabaja en serie: se vuelve a evaluar ese mismo punto en los días siguientes, hasta que deje de marcar. La frecuencia la determina la evolución, no un intervalo fijo.</p>
+    <div style="display:flex;gap:40px;margin-top:56px;padding-top:44px;border-top:2px solid rgba(255,255,255,.3)">
+      <div style="flex:1"><div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#FFD9C9">No preguntes</div><div style="font:400 var(--t-sub)/1.3 var(--serif);font-style:italic;color:#FFD9C9;margin-top:16px;text-decoration:line-through">¿Le quitó el dolor?</div></div>
+      <div style="flex:1"><div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#fff">Pregunta</div><div style="font:400 var(--t-sub)/1.3 var(--serif);color:#fff;margin-top:16px">¿Cuánto le duró?</div></div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="§ Tipos y niveles" data-speaker-notes="11:05. Con lo que llevamos pueden recorrer una sesión completa. Ahora un hallazgo que van a encontrar y conviene tener previsto." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans);position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;opacity:.14"><svg viewBox="0 0 1920 1080" style="width:100%;height:100%"><g stroke="#5FBFA6" stroke-width="1.5" fill="none"><path d="M1180,900 L1420,900 L1420,700 L1660,700 L1660,500 L1900,500"></path><path d="M1180,960 L1480,960 L1480,760 L1720,760 L1720,560 L1900,560"></path></g></svg></div>
+    <div style="position:relative;z-index:2">
+      <div style="font-family:var(--mono);font-size:34px;color:#8FD6C2;letter-spacing:.06em">11:05</div>
+      <h2 style="font:400 var(--t-huge)/1 var(--serif);letter-spacing:-.02em;margin:26px 0 0">Los tipos de dolor<br>y sus niveles</h2>
+      <p style="font:400 var(--t-sub)/1.4 var(--serif);font-style:italic;color:#CFE6DD;margin:38px 0 0;max-width:30ch">Un repertorio de preguntas, no una lista de diagnósticos.</p>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Discordancia rastreo–dolor" data-speaker-notes="Una zona que el paciente marcó, con dolor claro, y al colocar el imán no marca. Preguntar al grupo: ¿a quién le ha pasado? ¿qué hicieron? La lectura correcta: que no marque no indica ausencia de daño. Indica que el mecanismo está operando en otro nivel. Y el caso inverso: el punto se trabajó, dejó de marcar, y el paciente sigue con dolor." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--coral)">Dos hallazgos frecuentes</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 46px">Discordancia entre rastreo y dolor</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px">
+      <div style="background:var(--paper2);border-radius:20px;padding:44px 40px">
+        <div style="font:400 42px/1.2 var(--serif)">Duele y no marca</div>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#4C4A42;margin:20px 0 24px">Zona marcada en el mapa, dolor claro, y al colocar el imán no hay cambio en la medición.</p>
+        <div style="background:var(--paper);border-left:6px solid var(--teal);border-radius:0 12px 12px 0;padding:22px 26px;font:500 24px/1.45 var(--sans);color:var(--teal-deep)">Que no marque no indica ausencia de daño: el mecanismo opera en <b style="font-weight:700">otro nivel</b>.</div>
+      </div>
+      <div style="background:var(--paper2);border-radius:20px;padding:44px 40px">
+        <div style="font:400 42px/1.2 var(--serif)">Marcó, cerró y sigue doliendo</div>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#4C4A42;margin:20px 0 24px">El punto se trabajó, dejó de marcar, y el paciente sigue con dolor.</p>
+        <div style="background:var(--paper);border-left:6px solid var(--teal);border-radius:0 12px 12px 0;padding:22px 26px;font:500 24px/1.45 var(--sans);color:var(--teal-deep)">Si el nivel local está resuelto y el dolor persiste, el proceso <b style="font-weight:700">vive más arriba</b>.</div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Tipos de dolor" data-speaker-notes="Son tres mecanismos distintos, no tres grados de gravedad. Y el mecanismo determina a qué nivel se dirige la pregunta. El nociplástico se incorporó en 2017 y sus criterios se publicaron en 2021: es el descriptor que faltaba." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Tres mecanismos, no tres grados de gravedad</div>
+    <h2 style="font:400 var(--t-title)/1.04 var(--serif);margin:16px 0 24px">Los tres tipos de dolor</h2>
+    <div style="flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+      <div style="background:var(--paper);border-radius:20px;padding:30px 28px;border-top:8px solid #9BB3CF;display:flex;flex-direction:column">
+        <div style="font:400 40px/1.15 var(--serif)">Nociceptivo</div>
+        <svg viewBox="0 0 120 256" style="height:252px;display:block;margin:14px auto 10px" role="img" aria-label="Distribución discreta, localizada">
+          <circle cx="60" cy="26" r="18" fill="#E9E5DA"></circle>
+          <path d="M44,48 L76,48 C86,48 94,56 96,70 L100,120 L92,124 L86,92 L86,150 L84,180 L80,244 L70,244 L64,164 L56,164 L50,244 L40,244 L36,180 L34,150 L34,92 L28,124 L20,120 L24,70 C26,56 34,48 44,48 Z" fill="#E9E5DA"></path>
+          <circle cx="74" cy="178" r="15" fill="#3E648A" opacity=".9"></circle>
+          <circle cx="74" cy="178" r="24" fill="none" stroke="#3E648A" stroke-width="1.6" stroke-dasharray="3 4"></circle>
+        </svg>
+        <div style="font:700 var(--t-small)/1.3 var(--sans);color:#3E648A;text-align:center">discreta · localizada</div>
+        <p style="font:400 26px/1.4 var(--sans);color:#413E39;margin:14px 0 0">Daño real o amenazado a tejido no neural, por activación de nociceptores.</p>
+        <div style="font:500 26px/1.5 var(--sans);color:#5C5852;margin-top:auto;padding-top:16px">Distribución discreta, proporcional al hallazgo, patrón mecánico. Evoluciona con el tejido.</div>
+        <div style="font:700 25px/1.4 var(--sans);color:#3E648A;margin-top:12px">Artrosis · esguince · contractura</div>
+      </div>
+      <div style="background:var(--paper);border-radius:20px;padding:30px 28px;border-top:8px solid #E5B478;display:flex;flex-direction:column">
+        <div style="font:400 40px/1.15 var(--serif)">Neuropático</div>
+        <svg viewBox="0 0 120 256" style="height:252px;display:block;margin:14px auto 10px" role="img" aria-label="Distribución por trayecto neuroanatómico">
+          <circle cx="60" cy="26" r="18" fill="#E9E5DA"></circle>
+          <path d="M44,48 L76,48 C86,48 94,56 96,70 L100,120 L92,124 L86,92 L86,150 L84,180 L80,244 L70,244 L64,164 L56,164 L50,244 L40,244 L36,180 L34,150 L34,92 L28,124 L20,120 L24,70 C26,56 34,48 44,48 Z" fill="#E9E5DA"></path>
+          <path d="M76,132 C80,160 80,196 76,240" fill="none" stroke="#B07A22" stroke-width="11" stroke-linecap="round" opacity=".9"></path>
+          <path d="M76,132 C80,160 80,196 76,240" fill="none" stroke="#E5B478" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 8"></path>
+        </svg>
+        <div style="font:700 var(--t-small)/1.3 var(--sans);color:#B07A22;text-align:center">trayecto neuroanatómico</div>
+        <p style="font:400 26px/1.4 var(--sans);color:#413E39;margin:14px 0 0">Lesión o enfermedad del sistema somatosensorial.</p>
+        <div style="font:500 26px/1.5 var(--sans);color:#5C5852;margin-top:auto;padding-top:16px">Distribución neuroanatómicamente plausible, calidad quemante o eléctrica. Exige lesión demostrable.</div>
+        <div style="font:700 25px/1.4 var(--sans);color:#B07A22;margin-top:12px">Neuropatía diabética · radiculopatía</div>
+      </div>
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:30px 28px;border-top:8px solid var(--coral);display:flex;flex-direction:column">
+        <div style="font:400 40px/1.15 var(--serif)">Nociplástico</div>
+        <svg viewBox="0 0 120 256" style="height:252px;display:block;margin:14px auto 10px" role="img" aria-label="Distribución regional o multifocal">
+          <circle cx="60" cy="26" r="18" fill="#14604C"></circle>
+          <path d="M44,48 L76,48 C86,48 94,56 96,70 L100,120 L92,124 L86,92 L86,150 L84,180 L80,244 L70,244 L64,164 L56,164 L50,244 L40,244 L36,180 L34,150 L34,92 L28,124 L20,120 L24,70 C26,56 34,48 44,48 Z" fill="#14604C"></path>
+          <g fill="var(--coral)" opacity=".92">
+            <circle cx="48" cy="70" r="11" style="animation:shimmer 3.4s ease-in-out infinite"></circle>
+            <circle cx="78" cy="96" r="9" style="animation:shimmer 3.4s ease-in-out infinite .4s"></circle>
+            <circle cx="40" cy="112" r="10" style="animation:shimmer 3.4s ease-in-out infinite .8s"></circle>
+            <circle cx="72" cy="140" r="8" style="animation:shimmer 3.4s ease-in-out infinite 1.2s"></circle>
+            <circle cx="46" cy="186" r="10" style="animation:shimmer 3.4s ease-in-out infinite 1.6s"></circle>
+            <circle cx="76" cy="210" r="9" style="animation:shimmer 3.4s ease-in-out infinite 2s"></circle>
+            <circle cx="60" cy="32" r="9" style="animation:shimmer 3.4s ease-in-out infinite 2.4s"></circle>
+          </g>
+        </svg>
+        <div style="font:700 var(--t-small)/1.3 var(--sans);color:#8FD6C2;text-align:center">regional · multifocal</div>
+        <p style="font:400 26px/1.4 var(--sans);color:#CFE6DD;margin:14px 0 0">Nocicepción alterada, sin daño tisular ni lesión somatosensorial que lo expliquen.</p>
+        <div style="font:500 26px/1.5 var(--sans);color:#9FCFBF;margin-top:auto;padding-top:16px">Término incorporado en 2017; criterios clínicos en 2021. Es el descriptor que faltaba.</div>
+        <div style="font:700 25px/1.4 var(--sans);color:#8FD6C2;margin-top:12px">Fibromialgia · SDRC · migraña crónica</div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Criterios nociplásticos" data-speaker-notes="Cuatro criterios de entrada. Después, hipersensibilidad evocada en la región. Y un grupo de comorbilidades que rinde mucho y que rara vez se interroga. Cuando esas comorbilidades acompañan al dolor crónico, no son cuatro problemas independientes: corresponden a un solo sistema con la ganancia aumentada." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Nociplástico</div>
+    <h2 style="font:400 var(--t-title)/1.04 var(--serif);margin:20px 0 34px">Criterios diagnósticos</h2>
+    <div style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:34px">
+      <div>
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:20px">Entrada</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="background:var(--paper2);border-radius:12px;padding:20px 24px;font:500 24px/1.4 var(--sans)">Tres meses o más</div>
+          <div style="background:var(--paper2);border-radius:12px;padding:20px 24px;font:500 24px/1.4 var(--sans)">Distribución regional o multifocal, no discreta</div>
+          <div style="background:var(--paper2);border-radius:12px;padding:20px 24px;font:500 24px/1.4 var(--sans)">No explicado del todo por hallazgo tisular ni lesión neural</div>
+          <div style="background:var(--paper2);border-radius:12px;padding:20px 24px;font:500 24px/1.4 var(--sans)">Desproporción respecto a lo que se encuentra</div>
+        </div>
+      </div>
+      <div>
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:20px">Hipersensibilidad evocada</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="background:var(--teal-tint);border-radius:12px;padding:20px 24px;font:500 24px/1.4 var(--sans);color:var(--teal-deep)">Alodinia</div>
+          <div style="background:var(--teal-tint);border-radius:12px;padding:20px 24px;font:500 24px/1.4 var(--sans);color:var(--teal-deep)">Hiperalgesia</div>
+          <div style="background:var(--teal-tint);border-radius:12px;padding:20px 24px;font:500 24px/1.4 var(--sans);color:var(--teal-deep)">Post-sensación</div>
+        </div>
+      </div>
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:34px 32px;display:flex;flex-direction:column">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#8FD6C2;margin-bottom:20px">Comorbilidades · rara vez se interrogan</div>
+        <div style="display:flex;flex-direction:column;gap:12px;font:500 26px/1.4 var(--sans);color:#CFE6DD">
+          <div>Sueño no reparador, con despertares</div>
+          <div>Fatiga que no cede con el descanso</div>
+          <div>Quejas cognitivas: concentración y memoria de trabajo</div>
+          <div>Hipersensibilidad a luz, sonido y olores</div>
+        </div>
+        <div style="margin-top:auto;padding-top:26px;font:400 28px/1.35 var(--serif);color:#fff">No son cuatro problemas independientes: es un solo sistema con la <b style="font-weight:700">ganancia aumentada</b>.</div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Respuesta esperada" data-speaker-notes="En dolor predominantemente nociceptivo el rastreo marca en la zona y cierra con dipolo local o renal: es el terreno habitual de la técnica. En neuropático puede marcar sobre el trayecto, con respuesta menos limpia. En predominantemente nociplástico puede no marcar donde duele. Los fenotipos se mezclan: no se busca la categoría pura, sino cuál pesa hoy." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Respuesta esperada según fenotipo</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 44px">El fenotipo predice la respuesta</h2>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;align-items:center;gap:36px;background:var(--paper);border-radius:16px;padding:32px 38px;border-left:8px solid #9BB3CF"><span style="font:700 32px/1.2 var(--sans);flex:none;width:320px">Nociceptivo</span><span style="font:400 var(--t-small)/1.45 var(--sans);color:#413E39">Marca en la zona y cierra con dipolo local o renal. <b style="font-weight:700;color:var(--ink)">Es el terreno habitual de la técnica.</b></span></div>
+      <div style="display:flex;align-items:center;gap:36px;background:var(--paper);border-radius:16px;padding:32px 38px;border-left:8px solid #E5B478"><span style="font:700 32px/1.2 var(--sans);flex:none;width:320px">Neuropático</span><span style="font:400 var(--t-small)/1.45 var(--sans);color:#413E39">Puede marcar sobre el trayecto, con respuesta menos limpia.</span></div>
+      <div style="display:flex;align-items:center;gap:36px;background:var(--paper);border-radius:16px;padding:32px 38px;border-left:8px solid var(--coral)"><span style="font:700 32px/1.2 var(--sans);flex:none;width:320px">Nociplástico</span><span style="font:400 var(--t-small)/1.45 var(--sans);color:#413E39">Puede <b style="font-weight:700;color:var(--ink)">no marcar donde duele</b>. El rastreo responde con precisión a una pregunta dirigida al nivel equivocado.</span></div>
+    </div>
+    <p style="font:400 var(--t-body)/1.45 var(--sans);color:#5C5852;margin:40px 0 0;max-width:62ch">Los fenotipos se mezclan: lo habitual es una lesión nociceptiva real con un componente nociplástico encima. No se busca la categoría pura, sino <b style="color:var(--ink);font-weight:700">cuál pesa hoy</b>.</p>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Contraindicaciones" data-speaker-notes="Saquen la hoja. Se completa en la toma del caso, antes de tocar al paciente. Lo primero es cuándo no se trabaja. Leer completas. Ante cualquiera de estas: no se rastrea, no se aplican imanes, se deriva. Y esto está dentro del método, no fuera." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--coral);color:#FFF6F2;display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#FFD9C9">Criterios de derivación · signos de alarma</div>
+    <h2 style="font:400 var(--t-title)/1.04 var(--serif);margin:20px 0 30px">Contraindicaciones de la sesión</h2>
+    <div style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px 30px;align-content:center;font:500 25px/1.4 var(--sans)">
+      <div style="border-top:2px solid rgba(255,255,255,.4);padding-top:14px">Dolor que despierta por la noche de forma persistente</div>
+      <div style="border-top:2px solid rgba(255,255,255,.4);padding-top:14px">Pérdida de peso no explicada, fiebre o sudoración nocturna</div>
+      <div style="border-top:2px solid rgba(255,255,255,.4);padding-top:14px">Déficit neurológico progresivo</div>
+      <div style="border-top:2px solid rgba(255,255,255,.4);padding-top:14px">Alteración de esfínteres o anestesia en silla de montar</div>
+      <div style="border-top:2px solid rgba(255,255,255,.4);padding-top:14px">Traumatismo con sospecha de fractura</div>
+      <div style="border-top:2px solid rgba(255,255,255,.4);padding-top:14px">Antecedente de cáncer con dolor nuevo</div>
+      <div style="border-top:2px solid rgba(255,255,255,.4);padding-top:14px">Inicio en mayores de 50 años sin causa mecánica</div>
+      <div style="border-top:2px solid rgba(255,255,255,.4);padding-top:14px">Signos de infección</div>
+      <div style="border-top:2px solid rgba(255,255,255,.4);padding-top:14px">Dolor visceral agudo</div>
+    </div>
+    <div style="background:#fff;color:var(--coral);border-radius:16px;padding:30px 38px;font:700 var(--t-body)/1.3 var(--sans);display:flex;align-items:center;gap:28px">
+      <span>No se rastrea · no se aplican imanes · se deriva</span>
+      <span style="font:400 24px/1.4 var(--sans);color:#8E3A22;border-left:2px solid #F0C4B4;padding-left:28px">Está dentro del método, no fuera: reconocer el borde forma parte del criterio clínico.</span>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Los cuatro niveles" data-speaker-notes="Al pizarrón: escalera de cuatro niveles con dos columnas laterales. Nivel uno el tejido, nivel dos el segmento, nivel tres la modulación descendente, nivel cuatro la red. Y dos moduladores transversales a toda la cascada." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Cómo el dolor cambia de nivel</div>
+    <h2 style="font:400 var(--t-title)/1.04 var(--serif);margin:20px 0 30px">Los cuatro niveles</h2>
+    <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;align-items:end">
+      <div style="background:var(--paper2);border-radius:18px;padding:34px 28px;height:64%;display:flex;flex-direction:column;border-top:8px solid #9BB3CF">
+        <div style="font:700 24px/1 var(--mono);color:#3E648A;letter-spacing:.1em">01</div>
+        <div style="font:400 40px/1.15 var(--serif);margin-top:14px">El tejido</div>
+        <div style="font:700 25px/1.3 var(--sans);color:#3E648A;margin-top:10px">Sensibilización periférica</div>
+        <p style="font:400 25px/1.45 var(--sans);color:#4C4A42;margin:16px 0 0">Los mediadores reducen el umbral del nociceptor: hiperalgesia y alodinia, con desregulación de canales.</p>
+        <div style="margin-top:auto;padding-top:18px;font:500 24px/1.35 var(--sans);color:var(--teal-deep)">Aquí el rastreo marca en la zona.</div>
+      </div>
+      <div style="background:var(--paper2);border-radius:18px;padding:34px 28px;height:76%;display:flex;flex-direction:column;border-top:8px solid #E5B478">
+        <div style="font:700 24px/1 var(--mono);color:#B07A22;letter-spacing:.1em">02</div>
+        <div style="font:400 40px/1.15 var(--serif);margin-top:14px">El segmento</div>
+        <div style="font:700 25px/1.3 var(--sans);color:#B07A22;margin-top:10px">Sensibilización central espinal</div>
+        <p style="font:400 25px/1.45 var(--sans);color:#4C4A42;margin:16px 0 0">LTP vía NMDA, activación glial, pérdida de GABA y glicina, sumación temporal.</p>
+        <div style="margin-top:auto;padding-top:18px;font:500 24px/1.35 var(--sans);color:var(--teal-deep)">El dolor se independiza de su origen.</div>
+      </div>
+      <div style="background:var(--paper2);border-radius:18px;padding:34px 28px;height:88%;display:flex;flex-direction:column;border-top:8px solid #B98BB0">
+        <div style="font:700 24px/1 var(--mono);color:#7E4576;letter-spacing:.1em">03</div>
+        <div style="font:400 40px/1.15 var(--serif);margin-top:14px">La modulación</div>
+        <div style="font:700 25px/1.3 var(--sans);color:#7E4576;margin-top:10px">PAG–RVM: de inhibir a facilitar</div>
+        <p style="font:400 25px/1.45 var(--sans);color:#4C4A42;margin:16px 0 0">Se debilita la inhibición descendente y las células de facilitación de la RVM amplifican.</p>
+        <div style="margin-top:auto;padding-top:18px;font:500 24px/1.35 var(--sans);color:var(--teal-deep)">Tono simpático, poca relación con la carga.</div>
+      </div>
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:18px;padding:34px 28px;height:100%;display:flex;flex-direction:column;border-top:8px solid var(--coral)">
+        <div style="font:700 24px/1 var(--mono);color:#8FD6C2;letter-spacing:.1em">04</div>
+        <div style="font:400 40px/1.15 var(--serif);margin-top:14px">La red</div>
+        <div style="font:700 25px/1.3 var(--sans);color:#8FD6C2;margin-top:10px">Reorganización cortical y límbica</div>
+        <p style="font:400 25px/1.45 var(--sans);color:#CFE6DD;margin:16px 0 0">El dolor se incrusta en circuitos de memoria y emoción; se alteran saliencia y red por defecto. Pérdida medible de sustancia gris, parcialmente reversible.</p>
+        <div style="margin-top:auto;padding-top:18px;font:500 24px/1.35 var(--sans);color:#fff">Dolor con aferencia periférica mínima.</div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Moduladores transversales" data-speaker-notes="Y dos moduladores transversales a toda la cascada. El diálogo neuroinmune: glía y células inmunes perpetúan la neuroinflamación; hay dimorfismo sexual, autoanticuerpos en algunos cuadros y un eje intestino-inmune-dolor. Y los factores psicosociales biológicamente arraigados: operan como mecanismo, no como acompañamiento." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Transversales a toda la cascada</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 20px">Dos moduladores transversales</h2>
+    <svg viewBox="0 0 1600 60" style="width:100%;margin-bottom:26px"><g stroke="var(--faint)" stroke-width="2" fill="none"><path d="M200,50 L200,14"></path><path d="M600,50 L600,14"></path><path d="M1000,50 L1000,14"></path><path d="M1400,50 L1400,14"></path></g><g fill="var(--faint)"><path d="M194,20 L200,6 L206,20 Z"></path><path d="M594,20 L600,6 L606,20 Z"></path><path d="M994,20 L1000,6 L1006,20 Z"></path><path d="M1394,20 L1400,6 L1406,20 Z"></path></g><text x="800" y="46" text-anchor="middle" font-family="var(--sans)" font-size="20.5" fill="var(--faint)">actúan sobre los cuatro niveles</text></svg>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px">
+      <div style="background:var(--paper);border-radius:20px;padding:44px 40px;border-top:8px solid #7E8C99">
+        <div style="font:400 46px/1.15 var(--serif)">Diálogo neuroinmune</div>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39;margin:22px 0 0">Glía y células inmunes perpetúan la neuroinflamación.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:24px">
+          <span style="background:var(--paper2);border-radius:999px;padding:12px 22px;font:500 25px/1 var(--sans)">dimorfismo sexual</span>
+          <span style="background:var(--paper2);border-radius:999px;padding:12px 22px;font:500 25px/1 var(--sans)">autoanticuerpos</span>
+          <span style="background:var(--paper2);border-radius:999px;padding:12px 22px;font:500 25px/1 var(--sans)">eje intestino–inmune–dolor</span>
+        </div>
+      </div>
+      <div style="background:var(--paper);border-radius:20px;padding:44px 40px;border-top:8px solid #B07A22">
+        <div style="font:400 46px/1.15 var(--serif)">Factores psicosociales</div>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39;margin:22px 0 0">Estrés, trauma y adversidad modifican el eje hipotálamo–hipófisis–suprarrenal, las monoaminas y los umbrales.</p>
+        <div style="background:var(--teal-tint);border-radius:12px;padding:22px 26px;margin-top:24px;font:700 25px/1.4 var(--sans);color:var(--teal-deep)">Operan como mecanismo, no como acompañamiento.</div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Dos inflamaciones" data-speaker-notes="La inflamación involucra dos sistemas inmunes, y hasta ahora habíamos trabajado uno. El compartimento periférico es la isla del trauma. El central: microglía y astrocitos, que ante señalización persistente liberan TNF-alfa, IL-1beta, IL-6 y BDNF. Este compartimento sostiene el dolor con aferencia periférica mínima." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Dos sistemas inmunes · hasta ahora trabajamos uno</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 44px">Inflamación periférica y central</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px">
+      <div style="background:var(--paper2);border-radius:20px;padding:44px 40px">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)">Compartimento periférico</div>
+        <div style="font:400 46px/1.15 var(--serif);margin-top:16px">La isla del trauma</div>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39;margin:20px 0 0">Células inmunes en el sitio de lesión, con colapso del gradiente de potasio, inflamasoma y corriente de lesión.</p>
+      </div>
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:44px 40px">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#8FD6C2">Compartimento central</div>
+        <div style="font:400 46px/1.15 var(--serif);margin-top:16px">Microglía y astrocitos</div>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#CFE6DD;margin:20px 0 0">Ante señalización nociceptiva persistente liberan TNF-α, IL-1β, IL-6 y BDNF, que incrementan la excitabilidad y remodelan la sinapsis.</p>
+        <div style="font:500 26px/1.45 var(--sans);color:#8FD6C2;margin-top:22px">Sostiene el dolor con aferencia periférica mínima. Sello de la fibromialgia, el SDRC y la migraña crónica.</div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Poda microglial" data-speaker-notes="Y el dato central: la microglía poda las sinapsis inhibitorias. Es una remoción estructural del control inhibitorio. El sistema central no solo deja de recibir la señal de alto; pierde el sustrato que la ejecutaría." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;align-items:center;gap:80px;padding:var(--pad);font-family:var(--sans)">
+    <div style="flex:1.1">
+      <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#8FD6C2">El dato central</div>
+      <h2 style="font:400 var(--t-title)/1.08 var(--serif);margin:26px 0 0;max-width:24ch">La microglía poda las sinapsis inhibitorias</h2>
+      <p style="font:400 var(--t-body)/1.5 var(--sans);color:#CFE6DD;margin:36px 0 0;max-width:34ch">Es una <b style="color:#fff;font-weight:700">remoción estructural</b> del control inhibitorio.</p>
+      <p style="font:400 var(--t-sub)/1.35 var(--serif);font-style:italic;color:#8FD6C2;margin:32px 0 0;max-width:30ch">No solo deja de recibir la señal de alto: pierde el sustrato que la ejecutaría.</p>
+    </div>
+    <div style="flex:1;display:flex;justify-content:center">
+      <img src="../Bloque_3/B1_assets/microglia_poda_sinapsis.png" alt="Visualización microscópica editorial de una microglía alrededor de contactos sinápticos" style="width:100%;max-width:560px;height:360px;object-fit:cover;border-radius:22px;border:1px solid rgba(143,214,194,.35);box-shadow:0 18px 42px rgba(0,0,0,.24);display:block">
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Mecanismo de ascenso" data-speaker-notes="La descripción convencional plantea que el dolor asciende porque el daño se extiende. No es lo que ocurre. Cada nivel que no puede cumplir su meta entrega la protección al siguiente, y el siguiente la asume. Regular no consiste en detener el ascenso, sino en devolverle a cada nivel las condiciones para retomar lo que entregó." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--coral)">No es que el daño se extienda</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 44px">El dolor asciende por delegación de la meta</h2>
+    <div style="display:flex;align-items:center;gap:18px">
+      <div style="flex:1;background:var(--paper);border-radius:16px;padding:30px 26px;text-align:center"><div style="font:400 34px/1.2 var(--serif)">El tejido</div><div style="font:500 25px/1.35 var(--sans);color:var(--faint);margin-top:10px">no resuelve</div></div>
+      <svg viewBox="0 0 40 30" style="width:40px;flex:none"><path d="M4,15 L28,15" stroke="var(--coral)" stroke-width="3" stroke-linecap="round"></path><path d="M22,7 L34,15 L22,23" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="flex:1;background:var(--paper);border-radius:16px;padding:30px 26px;text-align:center"><div style="font:400 34px/1.2 var(--serif)">El segmento</div><div style="font:500 25px/1.35 var(--sans);color:var(--faint);margin-top:10px">asume, y no resuelve</div></div>
+      <svg viewBox="0 0 40 30" style="width:40px;flex:none"><path d="M4,15 L28,15" stroke="var(--coral)" stroke-width="3" stroke-linecap="round"></path><path d="M22,7 L34,15 L22,23" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="flex:1;background:var(--paper);border-radius:16px;padding:30px 26px;text-align:center"><div style="font:400 34px/1.2 var(--serif)">La modulación</div><div style="font:500 25px/1.35 var(--sans);color:var(--faint);margin-top:10px">asume, y no resuelve</div></div>
+      <svg viewBox="0 0 40 30" style="width:40px;flex:none"><path d="M4,15 L28,15" stroke="var(--coral)" stroke-width="3" stroke-linecap="round"></path><path d="M22,7 L34,15 L22,23" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="flex:1;background:var(--teal-deep);color:var(--paper2);border-radius:16px;padding:30px 26px;text-align:center"><div style="font:400 34px/1.2 var(--serif)">La red</div><div style="font:500 25px/1.35 var(--sans);color:#8FD6C2;margin-top:10px">lo incrusta</div></div>
+    </div>
+    <p style="font:400 var(--t-sub)/1.4 var(--serif);color:var(--ink);margin:52px 0 0;max-width:60ch">Regular no consiste en detener el ascenso, sino en <b style="color:var(--teal-deep);font-weight:700">devolverle a cada nivel las condiciones para retomar lo que entregó</b>.</p>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Sustrato de la respuesta" data-speaker-notes="El imán no mide potasio ni voltaje en esa zona. Lo que se lee es la respuesta del propio sistema a esa perturbación: una zona fuera de su rango homeostático. La pierna no contiene información sobre el hombro. La red responde, y la vía motora es el canal de salida. De ahí sale lo que distingue el desempeño de un operador: no la sensibilidad de la mano, sino qué preguntas sabe formular y en qué orden." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">La segunda pregunta abierta</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 0;max-width:40ch">Qué responde cuando la pierna se acorta</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:44px">
+      <div>
+        <div style="background:var(--paper2);border-radius:16px;padding:30px 34px;font:400 var(--t-small)/1.5 var(--sans);color:#413E39">El imán <b style="font-weight:700;color:var(--ink)">no mide</b> potasio ni voltaje en esa zona.</div>
+        <div style="background:var(--teal-tint);border-radius:16px;padding:30px 34px;margin-top:20px;font:400 var(--t-small)/1.5 var(--sans);color:var(--teal-deep)">Lo que se lee es la <b style="font-weight:700">respuesta del propio sistema</b> a esa perturbación: una zona fuera de su rango homeostático.</div>
+        <div style="background:var(--paper2);border-radius:16px;padding:30px 34px;margin-top:20px;font:400 var(--t-small)/1.5 var(--sans);color:#413E39">La pierna no contiene información sobre el hombro. <b style="font-weight:700;color:var(--ink)">La red responde</b>, y la vía motora es el canal de salida.</div>
+      </div>
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:44px 40px;display:flex;flex-direction:column;justify-content:center">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#8FD6C2">Lo que distingue a un operador</div>
+        <p style="font:400 var(--t-sub)/1.35 var(--serif);color:#fff;margin:26px 0 0">No la sensibilidad de la mano, sino <b style="font-weight:700">qué preguntas sabe formular y en qué orden</b>.</p>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#CFE6DD;margin:30px 0 0">Los tipos de dolor, los niveles, los compartimentos: todo es repertorio de preguntas. Cada concepto es una pregunta que ahora pueden hacer.</p>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Formulación de preguntas" data-speaker-notes="Cinco reglas para formularlas. Una variable por pregunta. Predecir antes de comprobar. Repreguntar de otra forma cuando la respuesta sea dudosa. Cambiar de nivel cuando el nivel se agota: insistir es el error más frecuente. Y registrar la trayectoria, no solo el desenlace." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Cómo se formulan</div>
+    <h2 style="font:400 var(--t-title)/1.04 var(--serif);margin:18px 0 22px">Reglas de formulación</h2>
+    <div style="flex:1;display:flex;flex-direction:column;gap:12px;justify-content:center">
+      <div style="display:flex;gap:32px;align-items:baseline;background:var(--paper);border-radius:14px;padding:22px 32px"><span style="font:700 26px/1 var(--mono);color:var(--teal);flex:none;width:44px">01</span><div><div style="font:700 30px/1.2 var(--sans)">Una variable por pregunta</div><div style="font:400 26px/1.45 var(--sans);color:#4C4A42;margin-top:8px">Si se modifican dos condiciones a la vez, la respuesta no discrimina cuál la produjo.</div></div></div>
+      <div style="display:flex;gap:32px;align-items:baseline;background:var(--paper);border-radius:14px;padding:22px 32px"><span style="font:700 26px/1 var(--mono);color:var(--teal);flex:none;width:44px">02</span><div><div style="font:700 30px/1.2 var(--sans)">Predecir antes de comprobar</div><div style="font:400 26px/1.45 var(--sans);color:#4C4A42;margin-top:8px">Enunciar en voz alta qué se espera, y después medir. Es lo que construye criterio.</div></div></div>
+      <div style="display:flex;gap:32px;align-items:baseline;background:var(--paper);border-radius:14px;padding:22px 32px"><span style="font:700 26px/1 var(--mono);color:var(--teal);flex:none;width:44px">03</span><div><div style="font:700 30px/1.2 var(--sans)">Repreguntar de otra forma</div><div style="font:400 26px/1.45 var(--sans);color:#4C4A42;margin-top:8px">Cuando la respuesta sea dudosa: el canal tiene ruido, y la redundancia lo compensa.</div></div></div>
+      <div style="display:flex;gap:32px;align-items:baseline;background:#FBF0EC;border-radius:14px;padding:22px 32px;border-left:6px solid var(--coral)"><span style="font:700 26px/1 var(--mono);color:var(--coral);flex:none;width:44px">04</span><div><div style="font:700 30px/1.2 var(--sans)">Cambiar de nivel cuando el nivel se agota</div><div style="font:400 26px/1.45 var(--sans);color:#4C4A42;margin-top:8px">En lugar de insistir. <b style="font-weight:700;color:var(--ink)">Insistir es el error más frecuente.</b></div></div></div>
+      <div style="display:flex;gap:32px;align-items:baseline;background:var(--paper);border-radius:14px;padding:22px 32px"><span style="font:700 26px/1 var(--mono);color:var(--teal);flex:none;width:44px">05</span><div><div style="font:700 30px/1.2 var(--sans)">Registrar la trayectoria, no solo el desenlace</div><div style="font:400 26px/1.45 var(--sans);color:#4C4A42;margin-top:8px">Qué niveló, en qué orden, y cuándo dejó de nivelar.</div></div></div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Receso" data-speaker-notes="Vamos a un receso de veinte minutos. Al volver, levantan un perfil bioeléctrico completo, dos rondas, para que cada uno opere una vez." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:var(--pad);font-family:var(--sans);position:relative;overflow:hidden">
+    <svg viewBox="0 0 600 600" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:900px;opacity:.16"><g transform="translate(300,300)"><circle r="120" fill="none" stroke="#5FBFA6" stroke-width="1.5" style="transform-box:fill-box;transform-origin:center;animation:ring 6s ease-out infinite"></circle><circle r="120" fill="none" stroke="#5FBFA6" stroke-width="1.5" style="transform-box:fill-box;transform-origin:center;animation:ring 6s ease-out infinite 2s"></circle><circle r="120" fill="none" stroke="#5FBFA6" stroke-width="1.5" style="transform-box:fill-box;transform-origin:center;animation:ring 6s ease-out infinite 4s"></circle></g></svg>
+    <div style="position:relative;z-index:2">
+      <div style="font-family:var(--mono);font-size:34px;color:#8FD6C2;letter-spacing:.06em">12:00</div>
+      <h2 style="font:400 var(--t-huge)/1 var(--serif);letter-spacing:-.02em;margin:26px 0 0">Receso</h2>
+      <p style="font:400 var(--t-sub)/1.4 var(--serif);font-style:italic;color:#CFE6DD;margin:34px 0 0">Veinte minutos.</p>
+      <p style="font:400 var(--t-body)/1.5 var(--sans);color:#9FCFBF;margin:44px 0 0;max-width:40ch">Al volver: un perfil bioeléctrico completo, dos rondas, para que cada uno opere una vez.</p>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+</x-import>
+</x-dc>
+</body>
+</html>

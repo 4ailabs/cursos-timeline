@@ -142,7 +142,7 @@ La mayoría de las personas presentan una **combinación** de terrenos, no uno p
 
 Un eje, cinco terrenos, un dominante por sesión. Ese es el carril.
 
-### Delimitación honesta inflamatorio ↔ redox
+### Delimitación inflamatorio ↔ redox
 Comparten mecanismo (ROS y NF-κB se retroalimentan — "oxinflammation"). Se distinguen por tres ejes: *driver* (inmune/resolución vs daño acumulado), *tiempo* (rápido y oscilante vs lento y acumulativo), y *reversibilidad* (alta vs baja, terreno de fondo). Sin esta separación se solapan demasiado para ser dos carriles.
 
 ---
@@ -156,7 +156,7 @@ Comparten mecanismo (ROS y NF-κB se retroalimentan — "oxinflammation"). Se di
 
 ---
 
-## 7. Límites honestos
+## 7. Los límites
 
 - El mantenimiento salutogénico **no previene enfermedades específicas** como afirmación clínica; sostiene condiciones de terreno cuya relación con la salud está documentada.
 - Es **complementario**, nunca sustituto del cuidado médico ni de la vigilancia diagnóstica.

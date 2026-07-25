@@ -33,7 +33,7 @@ Ruta dentro de la estructura de carpetas:
 
 ---
 
-## Lo que ya se investigó (parcial, con huecos honestos)
+## Lo que ya se investigó (parcial, con sus huecos)
 
 Se hizo una primera investigación (con fuentes primarias vía PubMed/web) para encontrar, en cada uno de los 3 perfiles, el equivalente al circuito del ojo (nodos moleculares reales + clasificación TAME + el elemento bioeléctrico literal más fuerte posible). Resultado, resumido:
 
@@ -64,7 +64,7 @@ Antes de seguir buscando nodos órgano por órgano, hay que construir **la estru
 1. ¿Cómo se identifica el circuito real (los nodos moleculares/celulares) de un órgano dado, con el mismo estándar de rigor y de fuentes primarias que el paper del ojo?
 2. ¿Cómo se mapea sistemáticamente ese circuito a la arquitectura cibernética (variable controlada, set-point, señal de error, actuador)?
 3. ¿Cómo se decide la clase TAME (A/B/C/D) de un órgano dado, y qué se hace cuando el sistema no es puramente clase B (como pasó con la mitocondria, que tiene componentes de clase A cuando hay daño estructural)?
-4. ¿Cómo se busca honestamente el nodo bioeléctrico literal, y qué se hace cuando no existe (como con el hígado) — se documenta la ausencia, o se busca más, o se reformula el argumento sin depender de un nodo bioeléctrico exclusivo?
+4. ¿Cómo se busca el nodo bioeléctrico literal, y qué se hace cuando no existe (como con el hígado) — se documenta la ausencia, o se busca más, o se reformula el argumento sin depender de un nodo bioeléctrico exclusivo?
 5. ¿Cómo se aplica la inferencia activa/error de predicción de forma que no se vuelva una metáfora forzada en cada órgano?
 
 El resultado de esta fase debería ser un documento tipo "metodología" o "plantilla" (ej. `metodologia-agente-biologico-4-niveles.md`) que sirva como checklist/receta para investigar y redactar cada órgano-agente adicional con consistencia, ANTES de seguir generando más perfiles.

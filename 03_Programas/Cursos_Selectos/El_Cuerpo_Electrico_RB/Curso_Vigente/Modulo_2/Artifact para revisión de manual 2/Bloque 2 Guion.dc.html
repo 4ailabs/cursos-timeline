@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="rb-fonts.css">
+<style>
+  :root{
+    --ink:#201F1C; --paper:#FCFBF7; --paper2:#F4F1E8;
+    --teal:#0F6E56; --teal-deep:#0A4A3A; --teal-tint:#E1F5EE; --coral:#D85A30;
+    --line:#DEDBD2; --faint:#8B8A83;
+    --serif:'SS4',Georgia,'Times New Roman',serif;
+    --sans:'Plex',system-ui,'Helvetica Neue',Arial,sans-serif;
+    --mono:'PlexMono',ui-monospace,Menlo,monospace;
+    --t-kicker:24px; --t-title:76px; --t-huge:154px; --t-sub:44px; --t-body:33px; --t-small:25px;
+    --pad:104px;
+  }
+  *{box-sizing:border-box}
+  @keyframes ring{0%{transform:scale(.35);opacity:.55}100%{transform:scale(2.6);opacity:0}}
+  @keyframes lineTravel{0%{transform:translateX(0);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateX(96px);opacity:0}}
+  @keyframes breathe{0%,100%{fill-opacity:.28}50%{fill-opacity:.95}}
+  @keyframes cut{0%,100%{opacity:.5}50%{opacity:0}}
+  @keyframes flow{0%{transform:translateY(-6px);opacity:0}8%{opacity:1}92%{opacity:1}100%{transform:translateY(286px);opacity:0}}
+  @keyframes gradPulse{0%,100%{opacity:.25}50%{opacity:.8}}
+  @keyframes glow{0%,100%{fill-opacity:.22}12%,22%{fill-opacity:1}}
+  @keyframes shimmer{0%,100%{opacity:.15}50%{opacity:.9}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  @keyframes dash{to{stroke-dashoffset:-72}}
+  @keyframes tick{0%,100%{transform:scale(1)}8%{transform:scale(1.75)}}
+  @keyframes ringFill{0%{stroke-dashoffset:565}82%,100%{stroke-dashoffset:82}}
+  @keyframes toneUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
+  @keyframes swing{0%,100%{transform:rotate(-16deg)}50%{transform:rotate(16deg)}}
+  @keyframes drain{0%{height:96px;y:24}100%{height:16px;y:104}}
+
+  @keyframes secIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes markIn{from{opacity:0;transform:translateX(-14px)}to{opacity:.62;transform:translateX(0)}}
+  @keyframes markPulse{0%,100%{opacity:.42}50%{opacity:1}}
+  @keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+  <section data-label="Portada" data-speaker-notes="Retomemos dónde quedamos. Esta mañana establecimos que lo desregulado es el punto de ajuste. En la escalera de niveles quedó una idea que ahora se cobra: hay procesos que sostienen el dolor con mínimo aporte desde el tejido. Ese proceso tiene un agente concreto: el sistema de defensa." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);position:relative;overflow:hidden;font-family:var(--sans)">
+    <svg viewBox="0 0 600 600" style="position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:760px;height:760px;opacity:.9">
+      <g transform="translate(300,300)">
+        <circle r="120" fill="none" stroke="#5FBFA6" stroke-width="1.5" style="transform-box:fill-box;transform-origin:center;animation:ring 5s ease-out infinite"></circle>
+        <circle r="120" fill="none" stroke="#5FBFA6" stroke-width="1.5" style="transform-box:fill-box;transform-origin:center;animation:ring 5s ease-out infinite 1.6s"></circle>
+        <circle r="120" fill="none" stroke="#5FBFA6" stroke-width="1.5" style="transform-box:fill-box;transform-origin:center;animation:ring 5s ease-out infinite 3.2s"></circle>
+        <circle cx="0" cy="0" r="54" fill="#2FA98A"></circle>
+        <g stroke="#5FBFA6" stroke-width="3">
+          <line x1="0" y1="-54" x2="0" y2="-104"></line><line x1="0" y1="54" x2="0" y2="104"></line>
+          <line x1="-54" y1="0" x2="-104" y2="0"></line><line x1="54" y1="0" x2="104" y2="0"></line>
+        </g>
+        <circle cx="0" cy="0" r="18" fill="var(--paper2)" style="animation:toneUp 3.6s ease-in-out infinite"></circle>
+      </g>
+    </svg>
+    <div style="position:relative;z-index:2;max-width:1180px">
+      <div style="display:flex;align-items:center;gap:14px;font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#8FD6C2">
+        <svg viewBox="0 0 58 24" style="height:26px"><circle cx="8" cy="12" r="6" fill="#8FD6C2"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="#8FD6C2" stroke-width="1.5"></line><circle cx="36" cy="12" r="6" fill="#8FD6C2" opacity="0.4"></circle></svg>
+        <span>Módulo 2 · Leer y regular</span>
+      </div>
+      <h1 style="font:400 118px/1 var(--serif);letter-spacing:-.02em;margin:34px 0 0">El programa de defensa<br>y su tono</h1>
+      <p style="font:400 var(--t-sub)/1.4 var(--serif);font-style:italic;color:#CFE6DD;margin:36px 0 0;max-width:30ch">Lo que esta mañana llamamos ganancia aumentada recibe aquí su nombre propio.</p>
+      <div style="margin-top:60px;display:flex;align-items:center;gap:26px;font:500 var(--t-small)/1.6 var(--sans);color:#9FCFBF">
+        <span style="font-family:var(--mono);color:#8FD6C2;font-size:30px">Bloque 2</span>
+        <span>Dr. Miguel Ojeda Rios · Instituto Centrobioenergetica</span>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Retomemos" data-speaker-notes="Esta mañana: lo desregulado es el punto de ajuste, y cuando el rastreo marca señala una zona fuera de su rango. Quedó pendiente que hay procesos que sostienen el dolor con mínimo aporte del tejido. Ese proceso tiene un agente concreto, y es el que vamos a trabajar." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Retomemos dónde quedamos</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 46px;max-width:38ch">La ganancia aumentada tiene un agente</h2>
+    <div style="display:flex;align-items:center;gap:34px">
+      <div style="flex:1;background:var(--paper2);border-radius:18px;padding:36px 34px">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)">Esta mañana</div>
+        <p style="font:400 27px/1.45 var(--sans);color:#413E39;margin:18px 0 0">Lo desregulado es el <b style="font-weight:700;color:var(--ink)">punto de ajuste</b>. Cuando el rastreo marca, señala una zona fuera de su rango.</p>
+      </div>
+      <div style="flex:1;background:var(--paper2);border-radius:18px;padding:36px 34px">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)">Quedó pendiente</div>
+        <p style="font:400 27px/1.45 var(--sans);color:#413E39;margin:18px 0 0">Hay procesos que sostienen el dolor con <b style="font-weight:700;color:var(--ink)">mínimo aporte desde el tejido</b>.</p>
+      </div>
+      <svg viewBox="0 0 60 40" style="width:70px;flex:none"><path d="M4,20 L44,20" stroke="var(--coral)" stroke-width="4" stroke-linecap="round"></path><path d="M36,9 L52,20 L36,31" fill="none" stroke="var(--coral)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="flex:1.05;background:var(--teal-deep);color:var(--paper2);border-radius:18px;padding:36px 34px">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#8FD6C2">Ahora</div>
+        <p style="font:400 30px/1.4 var(--serif);margin:18px 0 0">Ese proceso tiene un agente concreto: <b style="font-weight:700">el sistema de defensa</b>.</p>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Tres frases" data-speaker-notes="Tres frases ordenan el bloque, y las voy a dejar enunciadas desde el principio para que las vean venir. Al pizarrón." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#8FD6C2">Tres frases ordenan el bloque</div>
+    <div style="display:flex;flex-direction:column;gap:38px;margin-top:52px">
+      <div style="display:flex;gap:36px;align-items:baseline;border-bottom:2px solid rgba(143,214,194,.3);padding-bottom:32px"><span style="font:700 30px/1 var(--mono);color:#8FD6C2;flex:none">01</span><div style="font:400 58px/1.18 var(--serif)">La inflamación no se apaga: <b style="font-weight:700;color:#fff">se le apaga</b>.</div></div>
+      <div style="display:flex;gap:36px;align-items:baseline;border-bottom:2px solid rgba(143,214,194,.3);padding-bottom:32px"><span style="font:700 30px/1 var(--mono);color:#8FD6C2;flex:none">02</span><div style="font:400 58px/1.18 var(--serif)">La cicatriz es la huella de una <b style="font-weight:700;color:#fff">orden de terminar que nunca llegó</b>.</div></div>
+      <div style="display:flex;gap:36px;align-items:baseline"><span style="font:700 30px/1 var(--mono);color:#8FD6C2;flex:none">03</span><div style="font:400 58px/1.18 var(--serif)">El tono de defensa <b style="font-weight:700;color:#fff">se puede subir con palabras</b>.</div></div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="§ Parte 1" data-speaker-notes="Parte 1. El programa de defensa. La inflamación es lo que el cuerpo hace cuando detecta amenaza, y lo hace siguiendo una secuencia que no improvisa." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans);position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;opacity:.14"><svg viewBox="0 0 1920 1080" style="width:100%;height:100%"><g stroke="#5FBFA6" stroke-width="1.5" fill="none"><circle cx="1580" cy="540" r="160"></circle><circle cx="1580" cy="540" r="280"></circle><circle cx="1580" cy="540" r="400"></circle></g></svg></div>
+    <div style="position:relative;z-index:2">
+      <div style="font-family:var(--mono);font-size:32px;color:#8FD6C2;letter-spacing:.06em">Parte 1</div>
+      <h2 style="font:400 var(--t-huge)/1 var(--serif);letter-spacing:-.02em;margin:26px 0 0">El programa<br>de defensa</h2>
+      <p style="font:400 var(--t-sub)/1.4 var(--serif);font-style:italic;color:#CFE6DD;margin:38px 0 0;max-width:32ch">Una secuencia que no improvisa.</p>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Programa con meta" data-speaker-notes="Tiene todo lo que define a un agente en el marco que usamos. Su meta: detectar la amenaza, contenerla, retirar lo dañado y reparar. Su agencia depende de recursos, señales e historia previa. Y tiene un set point: el umbral desde el cual decide que hay amenaza. Ese umbral es su tono, y es la variable de todo este bloque." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">La inflamación como agente</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 42px">Un programa con meta</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:30px">
+      <div style="background:var(--paper2);border-radius:18px;padding:38px 34px">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)">Su meta</div>
+        <div style="font:400 34px/1.3 var(--serif);margin-top:18px">Detectar la amenaza, contenerla, retirar lo dañado y reparar.</div>
+      </div>
+      <div style="background:var(--paper2);border-radius:18px;padding:38px 34px">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)">Su agencia</div>
+        <div style="font:400 34px/1.3 var(--serif);margin-top:18px">Depende de sus recursos, de las señales que recibe y de su historia previa.</div>
+      </div>
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:18px;padding:38px 34px;border-top:8px solid var(--coral)">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#8FD6C2">Su punto de ajuste</div>
+        <div style="font:400 34px/1.3 var(--serif);margin-top:18px">El umbral desde el cual decide que hay amenaza.</div>
+        <div style="font:700 28px/1.3 var(--sans);color:#fff;margin-top:22px">Ese umbral es su <b style="font-weight:700">tono</b>: la variable de todo el bloque.</div>
+      </div>
+    </div>
+    <div style="margin-top:36px;background:#FBF0EC;border-left:8px solid var(--coral);border-radius:0 18px 18px 0;padding:32px 38px">
+      <p style="font:400 var(--t-body)/1.45 var(--sans);color:#413E39;margin:0">Si es un programa con meta, <b style="font-weight:700;color:var(--ink)">suprimirlo queda fuera de lo que llamamos regular</b>. Regularlo consiste en ayudarlo a cumplir su meta — y su meta incluye terminar.</p>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Programa antiguo" data-speaker-notes="La maquinaria del inflamasoma está desde las esponjas. Los receptores tipo NLR aparecen en los animales más primitivos, y la caspasa-1 se encuentra en filos muy distantes, con sitios de activación conservados y dominios CARD semejantes desde la esponja hasta el humano. Matiz: el uso del inflamasoma como plataforma para procesar citoquinas proinflamatorias parece haber surgido después de la divergencia entre peces y tetrápodos. Un programa tan conservado está altamente regulado precisamente porque es peligroso." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Herencia filogenética</div>
+    <h2 style="font:400 var(--t-title)/1.04 var(--serif);margin:20px 0 8px">Un programa antiguo</h2>
+    <p style="font:400 var(--t-small)/1.5 var(--sans);color:#5C5852;margin:0 0 26px;max-width:74ch">El aparato de la defensa está en animales sin sistema nervioso, sin sangre y sin órganos. Es anterior a casi todo lo demás.</p>
+    <div style="flex:1;display:flex;align-items:center">
+      <svg viewBox="0 0 1660 380" style="width:100%" role="img" aria-label="Árbol filogenético con la conservación del inflamasoma">
+        <line x1="60" y1="330" x2="1600" y2="330" stroke="#C9C3B2" stroke-width="2.5"></line>
+        <g stroke="var(--teal)" stroke-width="4" fill="none">
+          <path d="M120,330 L120,268 L1520,268"></path>
+        </g>
+        <g stroke="#C9C3B2" stroke-width="2.5" fill="none">
+          <path d="M280,268 L280,200"></path><path d="M480,268 L480,200"></path><path d="M680,268 L680,200"></path>
+          <path d="M880,268 L880,200"></path><path d="M1080,268 L1080,200"></path><path d="M1280,268 L1280,200"></path><path d="M1520,268 L1520,140"></path>
+        </g>
+        <g font-family="var(--sans)" font-size="22.8" fill="var(--ink)" text-anchor="middle">
+          <text x="280" y="188">poríferos</text><text x="480" y="188">cnidarios</text><text x="680" y="188">moluscos</text>
+          <text x="880" y="188">anélidos</text><text x="1080" y="188">artrópodos</text><text x="1280" y="188">nematodos</text>
+        </g>
+        <text x="280" y="164" text-anchor="middle" font-family="var(--sans)" font-size="20.6" fill="var(--faint)">esponjas</text>
+        <g stroke="#fff" stroke-width="2.5" fill="var(--teal)">
+          <circle cx="280" cy="268" r="11"></circle><circle cx="480" cy="268" r="11"></circle><circle cx="680" cy="268" r="11"></circle>
+          <circle cx="880" cy="268" r="11"></circle><circle cx="1080" cy="268" r="11"></circle><circle cx="1280" cy="268" r="11"></circle>
+        </g>
+        <circle cx="1520" cy="268" r="14" fill="var(--teal-deep)" stroke="#fff" stroke-width="2.5"></circle>
+        <text x="1520" y="126" text-anchor="middle" font-family="var(--sans)" font-size="26.3" font-weight="700" fill="var(--teal-deep)">tetrápodos · humano</text>
+        <text x="120" y="356" font-family="var(--sans)" font-size="22.8" font-weight="700" fill="var(--teal)">NLR · caspasa-1 · dominio CARD conservados</text>
+        <g stroke="var(--coral)" stroke-width="3.5" fill="none" stroke-dasharray="8 6"><path d="M1380,268 L1380,60"></path></g>
+        <text x="1396" y="54" font-family="var(--sans)" font-size="24" font-weight="700" fill="var(--coral)">divergencia peces / tetrápodos</text>
+        <text x="1396" y="82" font-family="var(--sans)" font-size="21.7" fill="#8E3A22">aquí aparece el procesamiento de citoquinas</text>
+      </svg>
+    </div>
+    <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:22px;align-items:stretch">
+      <div style="background:var(--paper);border-left:8px solid var(--teal);border-radius:0 16px 16px 0;padding:26px 30px">
+        <p style="font:400 25px/1.42 var(--sans);color:#413E39;margin:0">La maquinaria es antiquísima; la función que hoy le atribuimos es más reciente. Un programa tan conservado <b style="font-weight:700;color:var(--ink)">está altamente regulado porque es peligroso</b>. Por eso tiene un freno propio.</p>
+      </div>
+      <div style="background:var(--paper);border-radius:16px;padding:24px 26px"><div style="font:700 24px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)">Conservado</div><div style="font:700 27px/1.25 var(--sans);color:var(--teal-deep);margin-top:12px">Receptores NLR</div><div style="font:400 25px/1.4 var(--sans);color:#4C4A42;margin-top:8px">en los animales más primitivos</div></div>
+      <div style="background:var(--paper);border-radius:16px;padding:24px 26px"><div style="font:700 24px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)">Conservado</div><div style="font:700 27px/1.25 var(--sans);color:var(--teal-deep);margin-top:12px">Caspasa-1</div><div style="font:400 25px/1.4 var(--sans);color:#4C4A42;margin-top:8px">con sitios de activación conservados</div></div>
+      <div style="background:var(--paper);border-radius:16px;padding:24px 26px"><div style="font:700 24px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)">Conservado</div><div style="font:700 27px/1.25 var(--sans);color:var(--teal-deep);margin-top:12px">Dominio CARD</div><div style="font:400 25px/1.4 var(--sans);color:#4C4A42;margin-top:8px">semejante desde la esponja hasta el humano</div></div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Tres tiempos" data-speaker-notes="Al pizarrón: dibujarlo como secuencia, con tres cajas, no como una curva que sube y baja. Tiempo uno el inicio: reconocimiento, inflamasoma, mediadores. Tiempo dos la ejecución: citoquinas, interleucinas, reclutamiento, fenotipos celulares. Tiempo tres la resolución, y aquí está el punto que reencuadra el bloque: es un programa activo propio, con sus propios mediadores especializados." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Una secuencia, no una curva</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 44px">Los tres tiempos del programa</h2>
+    <div style="display:flex;align-items:stretch;gap:26px">
+      <div style="flex:1;background:var(--paper2);border-radius:20px;padding:40px 34px;display:flex;flex-direction:column;border-top:8px solid var(--line)">
+        <div style="font:700 26px/1 var(--mono);color:var(--faint);letter-spacing:.1em">Tiempo 1</div>
+        <div style="font:400 46px/1.15 var(--serif);margin-top:18px">El inicio</div>
+        <p style="font:400 25px/1.45 var(--sans);color:#4C4A42;margin:20px 0 0">Reconocimiento del daño o de la amenaza. El <b style="font-weight:700;color:var(--ink)">inflamasoma</b> —el sensor intracelular que detecta daño y activa la caspasa-1— libera los mediadores.</p>
+        <div style="margin-top:auto;padding-top:22px;font:500 26px/1.4 var(--sans);color:var(--faint)">Es la señal de inicio: la que el estrés degrada.</div>
+      </div>
+      <div style="display:flex;align-items:center;flex:none"><svg viewBox="0 0 40 30" style="width:44px"><path d="M4,15 L28,15" stroke="var(--faint)" stroke-width="3" stroke-linecap="round"></path><path d="M22,7 L34,15 L22,23" fill="none" stroke="var(--faint)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="flex:1;background:var(--paper2);border-radius:20px;padding:40px 34px;display:flex;flex-direction:column;border-top:8px solid var(--line)">
+        <div style="font:700 26px/1 var(--mono);color:var(--faint);letter-spacing:.1em">Tiempo 2</div>
+        <div style="font:400 46px/1.15 var(--serif);margin-top:18px">La ejecución</div>
+        <p style="font:400 25px/1.45 var(--sans);color:#4C4A42;margin:20px 0 0">La cascada química y celular: citoquinas, interleucinas, reclutamiento, fenotipos celulares.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:22px">
+          <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:9px 18px;font:500 25px/1 var(--sans)">TNF-α</span>
+          <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:9px 18px;font:500 25px/1 var(--sans)">IL-1β</span>
+          <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:9px 18px;font:500 25px/1 var(--sans)">IL-6</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;flex:none"><svg viewBox="0 0 40 30" style="width:44px"><path d="M4,15 L28,15" stroke="var(--coral)" stroke-width="3" stroke-linecap="round"></path><path d="M22,7 L34,15 L22,23" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="flex:1.2;background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:40px 34px;display:flex;flex-direction:column;border-top:8px solid var(--coral)">
+        <div style="font:700 26px/1 var(--mono);color:#8FD6C2;letter-spacing:.1em">Tiempo 3</div>
+        <div style="font:400 46px/1.15 var(--serif);margin-top:18px">La resolución</div>
+        <p style="font:400 25px/1.45 var(--sans);color:#CFE6DD;margin:20px 0 0">Un <b style="color:#fff;font-weight:700">programa activo propio</b>, con sus propios mediadores especializados.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:24px">
+          <span style="border:2px solid #2FA98A;border-radius:999px;padding:10px 20px;font:500 26px/1 var(--sans);color:#CFE6DD">lipoxinas</span>
+          <span style="border:2px solid #2FA98A;border-radius:999px;padding:10px 20px;font:500 26px/1 var(--sans);color:#CFE6DD">resolvinas</span>
+          <span style="border:2px solid #2FA98A;border-radius:999px;padding:10px 20px;font:500 26px/1 var(--sans);color:#CFE6DD">protectinas</span>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="No se apaga" data-speaker-notes="Durante décadas se asumió que la inflamación termina porque los estímulos se agotan. Hoy sabemos que la resolución es un proceso activo y programado, con su propia bioquímica. Pregunta al grupo, esperar la respuesta: si la resolución es un programa aparte, ¿qué significa que un paciente lleve años inflamado? Respuesta: que el tercer tiempo no está ocurriendo. El estímulo no necesariamente persiste; la orden de terminar no llega." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--coral);color:#FFF6F2;display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#FFD9C9">El reencuadre del bloque</div>
+    <h2 style="font:400 var(--t-huge)/1.02 var(--serif);letter-spacing:-.02em;margin:26px 0 0">La inflamación<br>no se apaga:<br>se le apaga</h2>
+    <div style="display:flex;gap:44px;margin-top:52px;padding-top:40px;border-top:2px solid rgba(255,255,255,.32)">
+      <div style="flex:1"><div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#FFD9C9">Se asumía</div><p style="font:400 28px/1.45 var(--sans);color:#FFE6DC;margin:16px 0 0">Que termina porque los estímulos se agotan.</p></div>
+      <div style="flex:1.3"><div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#fff">Hoy sabemos</div><p style="font:400 28px/1.45 var(--sans);color:#fff;margin:16px 0 0">Que la resolución es un proceso <b style="font-weight:700">activo y programado</b>, con su propia bioquímica. Hay una orden de terminar, y esa orden se emite.</p></div>
+      <div style="flex:1.2;background:rgba(255,255,255,.16);border-radius:16px;padding:28px 30px"><div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#fff">Pregunta al grupo</div><p style="font:400 26px/1.4 var(--serif);font-style:italic;color:#fff;margin:16px 0 0">¿Qué significa que un paciente lleve años inflamado?</p></div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Dos formas de fallar" data-speaker-notes="Conviene separarlas, porque tienen conducta clínica distinta. Rigidez: el sistema queda atascado en un modo y no puede conmutar; es la polarización TH1/TH2 y el balance M1/M2. Aquí no falta ningún sustrato: falta flexibilidad. Déficit: falta el mediador o el sustrato de la resolución. Aquí sí falta algo, y es de los pocos puntos del modelo con una vía nutricional plausible." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Conducta clínica distinta</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 40px">Las dos formas de fallar</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px">
+      <div style="background:var(--paper);border-radius:20px;padding:40px 38px;border-top:8px solid #B07A22">
+        <div style="display:flex;align-items:center;gap:26px">
+          <svg viewBox="0 0 110 70" style="width:130px;flex:none" role="img" aria-label="Conmutador atascado">
+            <rect x="6" y="18" width="98" height="34" rx="17" fill="#F3E4CC" stroke="#B07A22" stroke-width="2.5"></rect>
+            <circle cx="30" cy="35" r="13" fill="#B07A22"></circle>
+            <g stroke="#B07A22" stroke-width="2.5"><path d="M74,26 L92,44"></path><path d="M92,26 L74,44"></path></g>
+          </svg>
+          <div style="font:400 48px/1.1 var(--serif)">Rigidez</div>
+        </div>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39;margin:26px 0 0">El sistema queda atascado en un modo y <b style="font-weight:700;color:var(--ink)">no puede conmutar</b>.</p>
+        <div style="display:flex;gap:12px;margin-top:22px">
+          <span style="background:var(--paper2);border-radius:999px;padding:12px 22px;font:500 26px/1 var(--sans)">TH1 / TH2</span>
+          <span style="background:var(--paper2);border-radius:999px;padding:12px 22px;font:500 26px/1 var(--sans)">M1 / M2</span>
+        </div>
+        <div style="font:400 25px/1.4 var(--sans);color:#5C5852;margin-top:12px">Pares de fenotipos entre los que el sistema debe poder alternar: linfocito T colaborador y macrófago (M1 inflamatorio ↔ M2 reparador).</div>
+        <div style="font:700 25px/1.4 var(--sans);color:#8A6510;margin-top:24px">No falta ningún sustrato: falta flexibilidad.</div>
+      </div>
+      <div style="background:var(--paper);border-radius:20px;padding:40px 38px;border-top:8px solid var(--coral)">
+        <div style="display:flex;align-items:center;gap:26px">
+          <svg viewBox="0 0 110 70" style="width:130px;flex:none" role="img" aria-label="Reservorio vacío">
+            <path d="M18,10 L92,10 L82,60 L28,60 Z" fill="none" stroke="var(--coral)" stroke-width="2.5"></path>
+            <path d="M26,48 L84,48 L82,60 L28,60 Z" fill="var(--coral)" opacity=".55"></path>
+          </svg>
+          <div style="font:400 48px/1.1 var(--serif)">Déficit</div>
+        </div>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39;margin:26px 0 0">Falta el <b style="font-weight:700;color:var(--ink)">mediador o el sustrato</b> de la resolución.</p>
+        <div style="background:var(--teal-tint);border-radius:12px;padding:20px 24px;margin-top:22px;font:500 26px/1.4 var(--sans);color:var(--teal-deep)">De los pocos puntos del modelo con una vía nutricional plausible.</div>
+        <div style="font:700 25px/1.4 var(--sans);color:#8E3A22;margin-top:24px">Aquí sí falta algo: no tiene con qué terminar.</div>
+      </div>
+    </div>
+    <p style="font:400 var(--t-body)/1.45 var(--sans);color:#5C5852;margin:34px 0 0">Un programa rígido y uno deficitario <b style="color:var(--ink);font-weight:700">se ven parecido en consulta</b>. Uno no puede cambiar de modo; el otro no tiene con qué terminar.</p>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="El general japonés" data-speaker-notes="Y aquí enuncio algo que se cobra en la siguiente parte. El general japonés no es una metáfora psicológica. Es esto: un programa de defensa correctamente ejecutado, al que nunca le llegó la orden de terminar." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#8FD6C2">No es una metáfora psicológica</div>
+    <h2 style="font:400 104px/1.04 var(--serif);letter-spacing:-.02em;margin:24px 0 40px">El general japonés</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:stretch">
+      <div style="background:rgba(255,255,255,.1);border-radius:20px;padding:38px 36px">
+        <div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#8FD6C2">El caso</div>
+        <p style="font:400 32px/1.38 var(--serif);color:#fff;margin:22px 0 0">Soldados japoneses que siguieron combatiendo en la jungla <b style="font-weight:700">décadas después</b> del final de la guerra.</p>
+        <p style="font:400 25px/1.5 var(--sans);color:#CFE6DD;margin:22px 0 0">No estaban confundidos ni obcecados: ejecutaban correctamente su orden. Lo que nunca llegó fue <b style="color:#fff;font-weight:700">la orden de deponer las armas</b>.</p>
+      </div>
+      <div style="background:var(--coral);border-radius:20px;padding:38px 36px;display:flex;flex-direction:column">
+        <div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#FFD9C9">En el tejido</div>
+        <p style="font:400 32px/1.38 var(--serif);color:#fff;margin:22px 0 0">Un programa de defensa <b style="font-weight:700">correctamente ejecutado</b>, al que nunca le llegó la orden de terminar.</p>
+        <div style="margin-top:auto;padding-top:26px;font:700 26px/1.4 var(--sans);color:#fff">El tercer tiempo no ocurrió. El estímulo no necesariamente persiste: la orden no se emitió.</div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="§ Parte 2" data-speaker-notes="Parte 2. La cicatriz. Plantear la pregunta y dejar que discutan antes de responder, dos o tres minutos: toda inflamación termina en cicatriz. Si quitáramos el mecanismo de defensa, ¿el tejido regeneraría en lugar de cicatrizar? Escuchar. La mayoría dirá que sí." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font-family:var(--mono);font-size:32px;color:#8FD6C2;letter-spacing:.06em">Parte 2</div>
+    <h2 style="font:400 var(--t-huge)/1 var(--serif);letter-spacing:-.02em;margin:26px 0 0">La cicatriz</h2>
+    <div style="margin-top:52px;background:rgba(255,255,255,.1);border-left:8px solid var(--coral);border-radius:0 20px 20px 0;padding:38px 44px;max-width:1300px">
+      <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#FFD9C9">Pregunta al grupo · dos o tres minutos</div>
+      <p style="font:400 46px/1.3 var(--serif);color:#fff;margin:22px 0 0">Si quitáramos el mecanismo de defensa, ¿el tejido regeneraría en lugar de cicatrizar?</p>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="La salamandra" data-speaker-notes="En la salamandra adulta se eliminaron los macrófagos antes de amputar el miembro. Si la intuición fuera correcta, sin defensa habría regeneración limpia. Resultado: bloqueo completo de la regeneración, en todos los casos. Los muñones formaron tejido fibrótico con cicatriz permanente, todavía presente a los noventa días. Y el detalle que más enseña: aunque los macrófagos repoblaron el tejido a las dos semanas, el miembro ya no volvió a formar blastema. Godwin, Pinto y Rosenthal. PNAS 2013." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">El resultado contradice la intuición</div>
+    <h2 style="font:400 var(--t-title)/1.04 var(--serif);margin:20px 0 12px">El experimento de la salamandra</h2>
+    <p style="font:400 var(--t-small)/1.5 var(--sans);color:#5C5852;margin:0 0 22px;max-width:96ch">En la salamandra adulta se eliminaron los macrófagos <b style="color:var(--ink);font-weight:700">antes</b> de amputar el miembro. El <b style="color:var(--ink);font-weight:700">blastema</b> es la masa de células indiferenciadas que inicia la regeneración: sin él no hay miembro nuevo.</p>
+    <div style="flex:1;display:flex;align-items:center;gap:44px">
+      <svg viewBox="0 0 780 340" style="flex:1.3" role="img" aria-label="Curso temporal del experimento de depleción de macrófagos">
+        <line x1="40" y1="200" x2="740" y2="200" stroke="#C9C3B2" stroke-width="3"></line>
+        <g stroke="#C9C3B2" stroke-width="2"><path d="M90,192 L90,208"></path><path d="M270,192 L270,208"></path><path d="M450,192 L450,208"></path><path d="M690,192 L690,208"></path></g>
+        <g font-family="var(--sans)" font-size="21.6" fill="var(--faint)" text-anchor="middle">
+          <text x="90" y="238">depleción</text><text x="270" y="238">amputación</text><text x="450" y="238">2 semanas</text><text x="690" y="238">90 días</text>
+        </g>
+        <circle cx="90" cy="200" r="12" fill="var(--coral)"></circle>
+        <text x="90" y="160" text-anchor="middle" font-family="var(--sans)" font-size="22.7" font-weight="700" fill="var(--coral)">sin macrófagos</text>
+        <circle cx="270" cy="200" r="12" fill="var(--ink)"></circle>
+        <circle cx="450" cy="200" r="12" fill="var(--teal)"></circle>
+        <text x="450" y="152" text-anchor="middle" font-family="var(--sans)" font-size="21.6" fill="var(--teal-deep)">repoblación</text>
+        <text x="450" y="130" text-anchor="middle" font-family="var(--sans)" font-size="21.6" fill="var(--teal-deep)">de macrófagos</text>
+        <text x="450" y="290" text-anchor="middle" font-family="var(--sans)" font-size="22.7" font-weight="700" fill="var(--coral)">ya no forma blastema</text>
+        <circle cx="690" cy="200" r="14" fill="var(--coral)"></circle>
+        <text x="690" y="160" text-anchor="middle" font-family="var(--sans)" font-size="22.7" font-weight="700" fill="var(--coral)">cicatriz</text>
+        <text x="690" y="136" text-anchor="middle" font-family="var(--sans)" font-size="22.7" font-weight="700" fill="var(--coral)">permanente</text>
+        <path d="M300,200 C340,200 400,200 430,200" stroke="var(--coral)" stroke-width="0"></path>
+        <g stroke="var(--coral)" stroke-width="3" stroke-dasharray="7 6" fill="none"><path d="M470,200 L668,200"></path></g>
+        <rect x="40" y="304" width="700" height="2" fill="#ECEAE1"></rect>
+        <text x="40" y="332" font-family="var(--sans)" font-size="20.6" fill="var(--faint)">Godwin, Pinto y Rosenthal · PNAS 2013 · PMID 23690624</text>
+      </svg>
+      <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+        <div style="background:var(--paper2);border-radius:18px;padding:24px 28px;border-left:8px solid var(--coral)">
+          <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--coral)">Conclusión 1</div>
+          <div style="font:400 36px/1.25 var(--serif);margin-top:16px">Quitar la defensa impide la regeneración.</div>
+        </div>
+        <div style="background:var(--teal-deep);color:var(--paper2);border-radius:18px;padding:24px 28px">
+          <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#8FD6C2">Conclusión 2</div>
+          <div style="font:400 36px/1.25 var(--serif);margin-top:16px">Hay una <b style="font-weight:700">ventana</b>. El programa tiene que estar presente en su momento; si no lo estuvo, después ya no sirve.</div>
+        </div>
+        <div style="display:flex;gap:18px">
+          <div style="flex:1;background:var(--paper2);border-radius:16px;padding:22px 24px;text-align:center"><div style="font:400 52px/1 var(--serif);color:var(--coral)">100 %</div><div style="font:500 25px/1.35 var(--sans);color:#4C4A42;margin-top:10px">bloqueo de la regeneración, en todos los casos</div></div>
+          <div style="flex:1;background:var(--paper2);border-radius:16px;padding:22px 24px;text-align:center"><div style="font:400 52px/1 var(--serif);color:var(--coral)">90 d</div><div style="font:500 25px/1.35 var(--sans);color:#4C4A42;margin-top:10px">tejido fibrótico y cicatriz aún presentes</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="El caso fetal" data-speaker-notes="La piel fetal repara sin cicatriz, con regeneración completa de anexos, y su perfil inflamatorio es distinto: menor producción de IL-6 e IL-8. Pero el dato que decide la interpretación es otro: la piel fetal deficiente en IL-10 cicatriza. La misma piel, con IL-10 normal, regenera. IL-10 es antiinflamatoria: pertenece al brazo de resolución. Así que la piel fetal regenera porque tiene el tercer tiempo operando." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">El dato que decide la interpretación</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 40px">El caso fetal</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px">
+      <div style="background:var(--paper);border-radius:20px;padding:40px 38px;border-top:8px solid var(--coral)">
+        <div style="font:700 26px/1.2 var(--sans);color:var(--coral)">Piel fetal deficiente en IL-10</div>
+        <svg viewBox="0 0 320 120" style="width:100%;margin:26px 0" role="img" aria-label="Piel que cicatriza">
+          <rect x="10" y="30" width="300" height="26" rx="6" fill="#E9E5DA"></rect>
+          <rect x="10" y="56" width="300" height="34" rx="6" fill="#DCD7C9"></rect>
+          <path d="M160,26 L152,94 L168,94 Z" fill="var(--coral)"></path>
+          <text x="160" y="114" text-anchor="middle" font-family="var(--sans)" font-size="20.6" font-weight="700" fill="var(--coral)">cicatriza</text>
+        </svg>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39;margin:0">Sin el mediador de resolución, la misma piel forma cicatriz.</p>
+      </div>
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:40px 38px;border-top:8px solid #2FA98A">
+        <div style="font:700 26px/1.2 var(--sans);color:#8FD6C2">Piel fetal con IL-10 normal</div>
+        <svg viewBox="0 0 320 120" style="width:100%;margin:26px 0" role="img" aria-label="Piel que regenera con anexos">
+          <rect x="10" y="30" width="300" height="26" rx="6" fill="#1B6B56"></rect>
+          <rect x="10" y="56" width="300" height="34" rx="6" fill="#155A48"></rect>
+          <g stroke="#8FD6C2" stroke-width="3" stroke-linecap="round"><path d="M70,30 L64,14"></path><path d="M130,30 L124,14"></path><path d="M190,30 L184,14"></path><path d="M250,30 L244,14"></path></g>
+          <g fill="#2FA98A"><circle cx="100" cy="74" r="7"></circle><circle cx="220" cy="74" r="7"></circle></g>
+          <text x="160" y="114" text-anchor="middle" font-family="var(--sans)" font-size="20.6" font-weight="700" fill="#8FD6C2">regenera · con anexos</text>
+        </svg>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#CFE6DD;margin:0">IL-10 es antiinflamatoria: pertenece al <b style="color:#fff;font-weight:700">brazo de resolución</b>.</p>
+        <div style="display:flex;gap:14px;margin-top:20px">
+          <span style="border:2px solid #2FA98A;border-radius:999px;padding:11px 20px;font:500 25px/1 var(--sans);color:#CFE6DD">pelo</span>
+          <span style="border:2px solid #2FA98A;border-radius:999px;padding:11px 20px;font:500 25px/1 var(--sans);color:#CFE6DD">glándulas</span>
+          <span style="border:2px solid #2FA98A;border-radius:999px;padding:11px 20px;font:500 25px/1 var(--sans);color:#CFE6DD">↓ IL-6 · ↓ IL-8</span>
+        </div>
+      </div>
+    </div>
+    <p style="font:400 var(--t-body)/1.45 var(--sans);color:var(--ink);margin:36px 0 0;max-width:76ch">La piel fetal regenera <b style="color:var(--teal-deep);font-weight:700">porque tiene el tercer tiempo operando</b> — no por tener menos inflamación.</p>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Cicatriz y regeneración" data-speaker-notes="La regeneración requiere que el programa se complete. La cicatriz es lo que ocurre cuando el programa no resuelve. Formulación para la consulta: la de la izquierda es la que hay que evitar. Y así se cierra el general japonés con una consecuencia física: no deja el tejido intacto esperando, deja fibrosis." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Formulación para la consulta</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 44px">Qué requiere la regeneración</h2>
+    <div style="display:grid;grid-template-columns:1fr 1.25fr;gap:44px;align-items:stretch">
+      <div style="background:var(--paper2);border-radius:20px;padding:40px 38px;opacity:.72">
+        <div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--coral)">Incorrecta · evitar</div>
+        <p style="font:400 38px/1.3 var(--serif);font-style:italic;color:#5C5852;margin:24px 0 0;text-decoration:line-through;text-decoration-color:rgba(216,90,48,.5)">«Si quitamos la inflamación, el tejido regenera.»</p>
+      </div>
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:40px 38px">
+        <div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#8FD6C2">Correcta</div>
+        <p style="font:400 38px/1.32 var(--serif);color:#fff;margin:24px 0 0">«La inflamación no impide la regeneración. La <b style="font-weight:700">inflamación que no termina</b> es la que la impide — y la marca que deja se llama cicatriz.»</p>
+      </div>
+    </div>
+    <div style="margin-top:38px;background:#FBF0EC;border-left:8px solid var(--coral);border-radius:0 18px 18px 0;padding:32px 38px">
+      <p style="font:400 var(--t-body)/1.45 var(--sans);color:#413E39;margin:0">El general japonés, con su consecuencia física: <b style="font-weight:700;color:var(--ink)">no deja el tejido intacto esperando. Deja fibrosis.</b></p>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="El estado modula" data-speaker-notes="Mujeres cuidadoras de familiares con demencia, y controles pareados. A todas la misma biopsia por punción de tres milímetros y medio. Cicatrización: 48.7 días en cuidadoras frente a 39.3 en controles. Y el correlato mecanístico: sus leucocitos produjeron significativamente menos ARNm de IL-1beta ante estímulo. Kiecolt-Glaser, Lancet 1995. Fíjense en lo que dice el dato: el estrés degradó la señal de inicio del programa. El programa arrancó peor, y por eso tardó." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;align-items:center;gap:70px;padding:var(--pad);font-family:var(--sans)">
+    <div style="flex:1">
+      <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Lo que está demostrado</div>
+      <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:22px 0 0">El estado defensivo<br>modula la reparación</h2>
+      <p style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39;margin:30px 0 0;max-width:38ch">Mujeres cuidadoras de familiares con demencia y controles pareados. A todas, la misma biopsia por punción de 3,5 mm.</p>
+      <div style="background:var(--paper);border-left:8px solid var(--teal);border-radius:0 16px 16px 0;padding:28px 32px;margin-top:32px">
+        <div style="font:700 25px/1.4 var(--sans);color:var(--teal-deep)">Correlato mecanístico</div>
+        <p style="font:400 24px/1.45 var(--sans);color:#413E39;margin:12px 0 0">Sus leucocitos produjeron significativamente <b style="font-weight:700;color:var(--ink)">menos ARNm de IL-1β</b> ante estímulo.</p>
+      </div>
+      <p style="font:400 27px/1.45 var(--sans);color:var(--ink);margin:30px 0 0;max-width:40ch">El estrés <b style="color:var(--coral);font-weight:700">degradó la señal de inicio</b>. El programa arrancó peor, y por eso tardó.</p>
+      <div style="font:400 24px/1.4 var(--sans);color:var(--faint);margin-top:26px">Kiecolt-Glaser y cols. · Lancet 1995 · PMID 7475659</div>
+    </div>
+    <div style="flex:1">
+      <svg viewBox="0 0 480 400" style="width:100%" role="img" aria-label="Días hasta la cicatrización en cuidadoras y controles">
+        <line x1="120" y1="330" x2="450" y2="330" stroke="#C9C3B2" stroke-width="2.5"></line>
+        <g stroke="#ECEAE1" stroke-width="1.5">
+          <line x1="120" y1="270" x2="450" y2="270"></line><line x1="120" y1="210" x2="450" y2="210"></line>
+          <line x1="120" y1="150" x2="450" y2="150"></line><line x1="120" y1="90" x2="450" y2="90"></line>
+        </g>
+        <g font-family="var(--sans)" font-size="20.6" fill="var(--faint)" text-anchor="end">
+          <text x="108" y="336">0</text><text x="108" y="276">15</text><text x="108" y="216">30</text><text x="108" y="156">45</text><text x="108" y="96">60</text>
+        </g>
+        <text transform="rotate(-90 46 210)" x="46" y="210" text-anchor="middle" font-family="var(--sans)" font-size="20.6" fill="var(--faint)">días hasta cicatrizar</text>
+        <rect x="168" y="173" width="84" height="157" rx="6" fill="var(--teal)"></rect>
+        <text x="210" y="160" text-anchor="middle" font-family="var(--serif)" font-size="38.8" fill="var(--teal-deep)">39,3</text>
+        <text x="210" y="358" text-anchor="middle" font-family="var(--sans)" font-size="22.8" font-weight="700" fill="var(--ink)">controles</text>
+        <rect x="316" y="135" width="84" height="195" rx="6" fill="var(--coral)"></rect>
+        <text x="358" y="122" text-anchor="middle" font-family="var(--serif)" font-size="38.8" fill="#8E3A22">48,7</text>
+        <text x="358" y="358" text-anchor="middle" font-family="var(--sans)" font-size="22.8" font-weight="700" fill="var(--ink)">cuidadoras</text>
+        <g stroke="var(--ink)" stroke-width="2" fill="none"><path d="M264,120 L304,120"></path></g>
+        <text x="284" y="108" text-anchor="middle" font-family="var(--sans)" font-size="22.8" font-weight="700" fill="var(--ink)">+9,4 días</text>
+        <text x="284" y="390" text-anchor="middle" font-family="var(--sans)" font-size="20.6" fill="var(--faint)">misma biopsia · 3,5 mm</text>
+      </svg>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="El quirófano" data-speaker-notes="Ahora la pregunta del quirófano: ¿cicatriza distinto una mujer que desea un implante y una a la que le practican una biopsia? La formulación defendible: lo que modula la reparación es el estado defensivo de la persona. El significado que le atribuye al procedimiento puede importar, pero importaría a través de ese estado. Esta versión es mejor porque señala una diana sobre la que sí se puede trabajar. Nota de rigor: la comparación arrastra variables ajenas al significado. Se presenta como hipótesis." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--coral)">La pregunta del quirófano</div>
+    <h2 style="font:400 60px/1.14 var(--serif);margin:20px 0 40px;max-width:46ch">¿Cicatriza distinto una mujer que desea un implante y una a la que le practican una biopsia?</h2>
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:44px;align-items:start">
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:40px 38px">
+        <div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#8FD6C2">La formulación defendible</div>
+        <p style="font:400 34px/1.35 var(--serif);color:#fff;margin:22px 0 0">Lo que modula la reparación es el <b style="font-weight:700">estado defensivo</b> de la persona. El significado puede importar, pero importaría <b style="font-weight:700">a través de ese estado</b>.</p>
+        <div style="font:500 25px/1.45 var(--sans);color:#CFE6DD;margin-top:26px;padding-top:24px;border-top:2px solid rgba(143,214,194,.35)">Es más honesta y además señala una diana sobre la que sí se puede trabajar: quien llega en calma cicatriza mejor porque su programa de defensa no compite con el de reparación.</div>
+      </div>
+      <div style="background:var(--paper2);border-radius:20px;padding:36px 34px">
+        <div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--faint)">Nota de rigor</div>
+        <p style="font:400 24px/1.5 var(--sans);color:#4C4A42;margin:20px 0 0">La comparación implante / biopsia arrastra variables ajenas al significado: técnica quirúrgica, tensión de la piel, tipo de cierre, localización y enfermedad de base.</p>
+        <div style="font:700 24px/1.4 var(--sans);color:var(--coral);margin-top:22px">Se presenta como hipótesis.</div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="§ Parte 3" data-speaker-notes="Parte 3. El tono de defensa. Al pizarrón, las dos líneas separadas. Programa de defensa es el proceso: arranca, ejecuta, resuelve. Tono de defensa es el nivel en el que ese programa queda ajustado." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font-family:var(--mono);font-size:32px;color:#8FD6C2;letter-spacing:.06em">Parte 3</div>
+    <h2 style="font:400 var(--t-huge)/1 var(--serif);letter-spacing:-.02em;margin:26px 0 0">El tono<br>de defensa</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:56px;max-width:1500px">
+      <div style="border-top:4px solid rgba(143,214,194,.5);padding-top:26px">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#8FD6C2">Programa de defensa</div>
+        <p style="font:400 38px/1.3 var(--serif);color:#CFE6DD;margin:18px 0 0">Es el proceso: arranca, ejecuta, resuelve.</p>
+      </div>
+      <div style="border-top:4px solid var(--coral);padding-top:26px">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#FFD9C9">Tono de defensa</div>
+        <p style="font:400 38px/1.3 var(--serif);color:#fff;margin:18px 0 0">Es el <b style="font-weight:700">nivel</b> en el que ese programa queda ajustado.</p>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Por qué tono" data-speaker-notes="El término ya está en la técnica: el protocolo dice que la tracción y la manta reducen el tono de defensa muscular. La palabra llevaba ahí todo el tiempo; lo que hacemos hoy es ampliarle el alcance. Tres razones: un tono es un nivel de ajuste, eso evita psicologizar; es graduable, y eso es exactamente un set point; y se puede decir en consulta sin acusar a nadie. Deslinde explícito: mecanismos de defensa no se usa aquí." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">El término ya está en el protocolo</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 20px">Tres razones para el término</h2>
+    <p style="font:400 var(--t-small)/1.5 var(--sans);color:#5C5852;margin:0 0 40px;max-width:78ch">El protocolo ya dice que la tracción y la manta reducen el <b style="color:var(--ink);font-weight:700">tono de defensa muscular</b>. Hoy solo le ampliamos el alcance.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+      <div style="background:var(--paper2);border-radius:18px;padding:36px 32px"><div style="font:700 26px/1 var(--mono);color:var(--teal);letter-spacing:.1em">01</div><div style="font:400 38px/1.2 var(--serif);margin-top:16px">Es un nivel de ajuste</div><p style="font:400 24px/1.45 var(--sans);color:#4C4A42;margin:16px 0 0">Evita psicologizar al paciente.</p></div>
+      <div style="background:var(--paper2);border-radius:18px;padding:36px 32px"><div style="font:700 26px/1 var(--mono);color:var(--teal);letter-spacing:.1em">02</div><div style="font:400 38px/1.2 var(--serif);margin-top:16px">Es graduable</div><p style="font:400 24px/1.45 var(--sans);color:#4C4A42;margin:16px 0 0">Se tiene más o menos tono. Eso es exactamente un punto de ajuste.</p></div>
+      <div style="background:var(--paper2);border-radius:18px;padding:36px 32px"><div style="font:700 26px/1 var(--mono);color:var(--teal);letter-spacing:.1em">03</div><div style="font:400 38px/1.2 var(--serif);margin-top:16px">Se dice sin acusar</div><p style="font:400 24px/1.45 var(--sans);color:#4C4A42;margin:16px 0 0;font-style:italic">«Tu sistema tiene el tono de defensa alto.»</p></div>
+    </div>
+    <div style="margin-top:36px;background:#FBF0EC;border-left:8px solid var(--coral);border-radius:0 18px 18px 0;padding:28px 36px">
+      <p style="font:400 27px/1.45 var(--sans);color:#413E39;margin:0"><b style="font-weight:700;color:var(--ink)">Deslinde explícito:</b> <i>mecanismos de defensa</i> no se usa aquí. Esa expresión pertenece a otra tradición y significa otra cosa. Aquí decimos <b style="font-weight:700;color:var(--ink)">tono</b>.</p>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Tres escalas" data-speaker-notes="Esto es lo que hace del término algo más que una etiqueta: unifica tres cosas que hasta hoy estaban sueltas en el curso. Escala muscular: tensión de defensa, guardia, contractura. Escala autonómica: alerta sostenida, simpático que no baja. Escala inflamatoria: umbral bajo de activación, resolución que no llega. El mismo ajuste, leído a tres alturas. En parejas, tres minutos: ¿en cuál de las tres escalas han visto el tono alto con más frecuencia?" style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;align-items:center;gap:70px;padding:var(--pad);font-family:var(--sans)">
+    <div style="flex:1">
+      <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Una sola variable</div>
+      <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:22px 0 0">Tres escalas</h2>
+      <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
+        <div style="background:var(--paper);border-radius:16px;padding:22px 28px;border-left:8px solid #3E648A"><div style="font:700 27px/1.2 var(--sans);color:#16283A">Muscular</div><p style="font:400 26px/1.4 var(--sans);color:#4C4A42;margin:8px 0 0">Tensión de defensa, guardia, contractura. Es lo que reducen la tracción y la manta antes de medir.</p></div>
+        <div style="background:var(--paper);border-radius:16px;padding:22px 28px;border-left:8px solid #7E4576"><div style="font:700 27px/1.2 var(--sans);color:#3F1C37">Autonómica</div><p style="font:400 26px/1.4 var(--sans);color:#4C4A42;margin:8px 0 0">Alerta sostenida, simpático que no baja. Es el eje del estrés.</p></div>
+        <div style="background:var(--paper);border-radius:16px;padding:22px 28px;border-left:8px solid var(--coral)"><div style="font:700 27px/1.2 var(--sans);color:#8E3A22">Inflamatoria</div><p style="font:400 26px/1.4 var(--sans);color:#4C4A42;margin:8px 0 0">Umbral bajo de activación, resolución que no llega. Es el programa de la primera parte.</p></div>
+      </div>
+      <p style="font:400 25px/1.4 var(--sans);color:var(--ink);margin:22px 0 0;max-width:44ch">Un paciente con el tono alto <b style="color:var(--teal-deep);font-weight:700">se palpa distinto, se mide peor y resuelve más lento</b>.</p>
+    </div>
+    <div style="flex:.85;display:flex;justify-content:center;align-items:center;max-height:872px">
+      <svg viewBox="0 0 340 460" style="height:860px;max-height:860px;width:auto" role="img" aria-label="Un solo ajuste leído a tres alturas">
+        <rect x="150" y="40" width="40" height="380" rx="20" fill="#E4E0D3"></rect>
+        <rect x="150" y="150" width="40" height="270" rx="20" fill="var(--coral)" opacity=".28"></rect>
+        <g style="animation:toneUp 4.2s ease-in-out infinite">
+          <circle cx="170" cy="150" r="26" fill="var(--coral)"></circle>
+          <circle cx="170" cy="150" r="11" fill="#fff"></circle>
+        </g>
+        <text x="170" y="30" text-anchor="middle" font-family="var(--sans)" font-size="24.2" font-weight="700" fill="var(--ink)">tono</text>
+        <text x="170" y="448" text-anchor="middle" font-family="var(--sans)" font-size="23" fill="var(--faint)">línea base</text>
+        <g stroke="#C9C3B2" stroke-width="2" stroke-dasharray="5 5">
+          <line x1="60" y1="126" x2="150" y2="126"></line>
+          <line x1="190" y1="230" x2="286" y2="230"></line>
+          <line x1="60" y1="334" x2="150" y2="334"></line>
+        </g>
+        <circle cx="52" cy="126" r="15" fill="#3E648A"></circle>
+        <text x="52" y="106" text-anchor="middle" font-family="var(--sans)" font-size="20.6" font-weight="700" fill="#16283A">muscular</text>
+        <circle cx="296" cy="230" r="15" fill="#7E4576"></circle>
+        <text x="296" y="210" text-anchor="middle" font-family="var(--sans)" font-size="20.6" font-weight="700" fill="#3F1C37">autonómica</text>
+        <circle cx="52" cy="334" r="15" fill="var(--coral)"></circle>
+        <text x="52" y="314" text-anchor="middle" font-family="var(--sans)" font-size="20.6" font-weight="700" fill="#8E3A22">inflamatoria</text>
+      </svg>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Ganancia descalibrada" data-speaker-notes="El tono tiene un gemelo formal, y viene del mismo autor que escribió la cascada del dolor crónico de esta mañana. En su trabajo sobre trastorno neurológico funcional lo formula como una descalibración temporal de la ganancia, que sobrepondera las predicciones y subpondera la retroalimentación sensorial. Y describe esa ganancia como una cantidad dinámica: puede dispararse con la activación, volver hacia la línea base y recalibrarse lentamente en plazos largos. Ese mismo trabajo identifica tres vías de recalibración." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">El gemelo formal del tono · trastorno neurológico funcional</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 16px">Una ganancia descalibrada</h2>
+    <p style="font:400 var(--t-small)/1.5 var(--sans);color:#5C5852;margin:0 0 36px;max-width:88ch">Viene del <b style="color:var(--ink);font-weight:700">mismo autor de la cascada del dolor crónico</b> que usamos esta mañana, en su trabajo sobre trastorno neurológico funcional. Sobrepondera las predicciones y subpondera la retroalimentación sensorial. Una cantidad dinámica: se dispara con la activación, vuelve hacia la línea base y se recalibra despacio.</p>
+    <svg viewBox="0 0 1620 210" style="width:100%;margin-bottom:34px" role="img" aria-label="La ganancia como cantidad dinámica">
+      <line x1="20" y1="160" x2="1600" y2="160" stroke="#C9C3B2" stroke-width="2.5"></line>
+      <line x1="20" y1="120" x2="1600" y2="120" stroke="#C9C3B2" stroke-width="2" stroke-dasharray="6 6"></line>
+      <text x="20" y="184" font-family="var(--sans)" font-size="20.6" fill="var(--faint)">línea base</text>
+      <path d="M40,120 L300,120 L360,34 L520,96 L700,112 L900,50 L1060,104 L1240,116 L1420,112 L1580,110" fill="none" stroke="var(--coral)" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"></path>
+      <g fill="var(--coral)"><circle cx="360" cy="34" r="9"></circle><circle cx="900" cy="50" r="9"></circle></g>
+      <text x="360" y="22" text-anchor="middle" font-family="var(--sans)" font-size="20.6" font-weight="700" fill="var(--coral)">activación</text>
+      <text x="900" y="38" text-anchor="middle" font-family="var(--sans)" font-size="20.6" font-weight="700" fill="var(--coral)">activación</text>
+      <text x="1500" y="100" text-anchor="end" font-family="var(--sans)" font-size="20.6" font-weight="700" fill="var(--teal-deep)">recalibración lenta</text>
+    </svg>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+      <div style="background:var(--teal-tint);border-radius:18px;padding:32px 30px"><div style="font:700 26px/1 var(--mono);color:var(--teal);letter-spacing:.1em">Vía 1</div><div style="font:400 32px/1.25 var(--serif);margin-top:14px">Amplificar la retroalimentación sensorial</div><p style="font:400 26px/1.4 var(--sans);color:#3C5C52;margin:14px 0 0">Devolverle peso a lo que el cuerpo informa ahora.</p></div>
+      <div style="background:var(--teal-tint);border-radius:18px;padding:32px 30px"><div style="font:700 26px/1 var(--mono);color:var(--teal);letter-spacing:.1em">Vía 2</div><div style="font:400 32px/1.25 var(--serif);margin-top:14px">Reducir la activación</div><p style="font:400 26px/1.4 var(--sans);color:#3C5C52;margin:14px 0 0">Bajar el disparo de la ganancia.</p></div>
+      <div style="background:var(--teal-tint);border-radius:18px;padding:32px 30px"><div style="font:700 26px/1 var(--mono);color:var(--teal);letter-spacing:.1em">Vía 3</div><div style="font:400 32px/1.25 var(--serif);margin-top:14px">Subir el umbral de los picos</div><p style="font:400 26px/1.4 var(--sans);color:#3C5C52;margin:14px 0 0">Que se dispare menos fácil.</p></div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Dónde entra el método" data-speaker-notes="Dónde entra nuestro método, dicho con cuidado. El rastreo es, en esta clave, una entrada sensorial dirigida y verificada. Y la sesión completa, con su preparación y su silencio, opera sobre la activación. Es una lectura coherente. Que el marco encaje no demuestra que el imán recalibre nada." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Lectura coherente, no demostración</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 44px">Dónde entra nuestro método</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px">
+      <div style="background:var(--paper);border-radius:20px;padding:40px 38px;border-top:8px solid var(--teal)">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--teal)">Vía 1</div>
+        <div style="font:400 42px/1.2 var(--serif);margin-top:16px">El rastreo</div>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39;margin:20px 0 0">Una <b style="font-weight:700;color:var(--ink)">entrada sensorial dirigida y verificada</b>.</p>
+      </div>
+      <div style="background:var(--paper);border-radius:20px;padding:40px 38px;border-top:8px solid var(--teal)">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--teal)">Vía 2</div>
+        <div style="font:400 42px/1.2 var(--serif);margin-top:16px">La sesión completa</div>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39;margin:20px 0 0">Con su preparación y su silencio, <b style="font-weight:700;color:var(--ink)">opera sobre la activación</b>.</p>
+      </div>
+    </div>
+    <div style="margin-top:40px;background:var(--ink);color:var(--paper2);border-radius:20px;padding:36px 42px">
+      <p style="font:400 var(--t-body)/1.4 var(--sans);margin:0">Es una lectura coherente. <b style="color:#F0A88C;font-weight:700">Que el marco encaje no demuestra que el imán recalibre nada.</b></p>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="El tono aprende" data-speaker-notes="En un experimento clásico se emparejó sacarina con un inmunosupresor. Después, la sacarina sola produjo inmunosupresión medible. Ader y Cohen, Psychosomatic Medicine 1975, modelo animal. El sistema inmune no tiene ojos, ni corteza, ni creencias. Y adquirió una asociación, y actuó en consecuencia. El tono se fija por el estímulo presente y también por la historia." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#8FD6C2">Cognición basal · aprender sin sistema nervioso</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 40px">El tono tiene memoria</h2>
+    <svg viewBox="0 0 1620 200" style="width:100%;margin-bottom:38px" role="img" aria-label="Condicionamiento inmune: sacarina emparejada con inmunosupresor">
+      <g font-family="var(--sans)" font-size="23" fill="#CFE6DD">
+        <rect x="20" y="50" width="330" height="96" rx="16" fill="rgba(255,255,255,.1)" stroke="#2FA98A" stroke-width="2"></rect>
+        <text x="185" y="92" text-anchor="middle" font-weight="700" fill="#fff">sacarina</text>
+        <text x="185" y="122" text-anchor="middle">+ inmunosupresor</text>
+        <rect x="640" y="50" width="330" height="96" rx="16" fill="rgba(255,255,255,.1)" stroke="#2FA98A" stroke-width="2"></rect>
+        <text x="805" y="92" text-anchor="middle" font-weight="700" fill="#fff">emparejamiento</text>
+        <text x="805" y="122" text-anchor="middle">repetido</text>
+        <rect x="1260" y="50" width="340" height="96" rx="16" fill="var(--coral)"></rect>
+        <text x="1430" y="92" text-anchor="middle" font-weight="700" fill="#fff">sacarina sola</text>
+        <text x="1430" y="122" text-anchor="middle" fill="#FFE6DC">inmunosupresión medible</text>
+      </g>
+      <g stroke="#8FD6C2" stroke-width="4" fill="none">
+        <path d="M360,98 L624,98"></path><path d="M980,98 L1244,98"></path>
+      </g>
+      <g fill="#8FD6C2"><path d="M614,88 L636,98 L614,108 Z"></path><path d="M1234,88 L1256,98 L1234,108 Z"></path></g>
+    </svg>
+    <p style="font:400 var(--t-sub)/1.36 var(--serif);color:#fff;margin:0;max-width:56ch">El sistema inmune no tiene ojos, ni corteza, ni creencias. Y <b style="font-weight:700">adquirió una asociación, y actuó en consecuencia</b>.</p>
+    <p style="font:400 var(--t-body)/1.45 var(--sans);color:#CFE6DD;margin:30px 0 0;max-width:70ch">Eso es <b style="color:#fff;font-weight:700">cognición basal</b> en sentido literal: aprendizaje asociativo en un sistema sin neuronas. Si el tono aprende, entonces se le puede enseñar — y también se le puede enseñar mal.</p>
+    <div style="font:400 24px/1.4 var(--sans);color:#9FCFBF;margin-top:26px">Ader y Cohen · Psychosomatic Medicine 1975 · modelo animal</div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="§ Parte 4" data-speaker-notes="Parte 4. Placebo y nocebo. La palabra placebo arrastra la idea de falso: lo que sobra al descontar lo real. Desde el marco del agente, ese eje está mal puesto. La pregunta útil es por qué canal entró. Un opioide entra por el canal farmacológico; una expectativa entra por el de la información. Los dos terminan en la misma fisiología." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font-family:var(--mono);font-size:32px;color:#8FD6C2;letter-spacing:.06em">Parte 4</div>
+    <h2 style="font:400 var(--t-huge)/1 var(--serif);letter-spacing:-.02em;margin:26px 0 0">Placebo<br>y nocebo</h2>
+    <p style="font:400 var(--t-sub)/1.4 var(--serif);font-style:italic;color:#CFE6DD;margin:38px 0 0;max-width:34ch">La pregunta útil no es si es falso, sino por qué canal entró.</p>
+    <div style="display:flex;align-items:center;gap:34px;margin-top:52px;max-width:1400px">
+      <div style="flex:1;background:rgba(255,255,255,.1);border-radius:16px;padding:28px 32px;font:500 27px/1.35 var(--sans);color:#CFE6DD">Un opioide entra por el canal <b style="color:#fff;font-weight:700">farmacológico</b></div>
+      <div style="flex:1;background:rgba(255,255,255,.1);border-radius:16px;padding:28px 32px;font:500 27px/1.35 var(--sans);color:#CFE6DD">Una expectativa entra por el de la <b style="color:#fff;font-weight:700">información</b></div>
+      <svg viewBox="0 0 60 40" style="width:64px;flex:none"><path d="M4,20 L44,20" stroke="#8FD6C2" stroke-width="4" stroke-linecap="round"></path><path d="M36,9 L52,20 L36,31" fill="none" stroke="#8FD6C2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="flex:.9;background:var(--coral);border-radius:16px;padding:28px 32px;font:700 27px/1.35 var(--sans);color:#fff">La misma fisiología</div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Naloxona" data-speaker-notes="Hecho uno. El efecto lo fabrica el agente. La naloxona, antagonista opioide, revierte la analgesia por placebo. Cuando alguien mejora con una pastilla inerte, lo que baja el dolor es su propio sistema opioide endógeno. Nadie administró el opioide: lo fabricó el paciente, a partir de una instrucción." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;align-items:center;gap:76px;padding:var(--pad);font-family:var(--sans)">
+    <div style="flex:1">
+      <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Evidencia medida · 1</div>
+      <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:22px 0 0">El efecto lo<br>fabrica el agente</h2>
+      <p style="font:400 var(--t-body)/1.5 var(--sans);color:#413E39;margin:34px 0 0;max-width:32ch">La <b style="color:var(--teal-deep);font-weight:700">naloxona</b>, antagonista opioide, revierte la analgesia por placebo.</p>
+      <p style="font:400 var(--t-sub)/1.35 var(--serif);color:var(--ink);margin:34px 0 0;max-width:30ch">Nadie administró el opioide. Lo fabricó el paciente, a partir de una instrucción.</p>
+    </div>
+    <div style="flex:1;display:flex;justify-content:center">
+      <svg viewBox="0 0 460 380" style="width:100%" role="img" aria-label="La naloxona revierte la analgesia por placebo">
+        <rect x="30" y="40" width="180" height="90" rx="16" fill="var(--paper2)" stroke="var(--line)" stroke-width="2"></rect>
+        <text x="120" y="78" text-anchor="middle" font-family="var(--sans)" font-size="25.1" font-weight="700" fill="var(--ink)">pastilla inerte</text>
+        <text x="120" y="106" text-anchor="middle" font-family="var(--sans)" font-size="21.7" fill="var(--faint)">+ instrucción</text>
+        <path d="M120,136 L120,180" stroke="var(--teal)" stroke-width="4"></path>
+        <path d="M110,170 L120,192 L130,170 Z" fill="var(--teal)"></path>
+        <rect x="20" y="200" width="200" height="96" rx="16" fill="var(--teal-deep)"></rect>
+        <text x="120" y="238" text-anchor="middle" font-family="var(--sans)" font-size="24" font-weight="700" fill="#fff">opioide endógeno</text>
+        <text x="120" y="266" text-anchor="middle" font-family="var(--sans)" font-size="21.7" fill="#8FD6C2">del propio paciente</text>
+        <path d="M120,302 L120,336" stroke="var(--teal)" stroke-width="4"></path>
+        <path d="M110,326 L120,348 L130,326 Z" fill="var(--teal)"></path>
+        <text x="120" y="372" text-anchor="middle" font-family="var(--sans)" font-size="25.1" font-weight="700" fill="var(--teal-deep)">analgesia</text>
+        <rect x="270" y="200" width="170" height="96" rx="16" fill="#FBF0EC" stroke="var(--coral)" stroke-width="2.5"></rect>
+        <text x="355" y="248" text-anchor="middle" font-family="var(--sans)" font-size="25.1" font-weight="700" fill="var(--coral)">naloxona</text>
+        <text x="355" y="274" text-anchor="middle" font-family="var(--sans)" font-size="20.6" fill="#8E3A22">antagonista</text>
+        <path d="M266,248 L232,248" stroke="var(--coral)" stroke-width="4"></path>
+        <g stroke="var(--coral)" stroke-width="4"><path d="M214,236 L238,260"></path><path d="M238,236 L214,260"></path></g>
+        <text x="355" y="326" text-anchor="middle" font-family="var(--sans)" font-size="21.7" fill="var(--coral)">revierte el efecto</text>
+      </svg>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Remifentanilo" data-speaker-notes="Hecho dos. La expectativa negativa anuló un opioide potente. Se administró remifentanilo a la misma dosis en tres condiciones. Sin expectativa: analgesia esperable. Con expectativa positiva: el beneficio se duplicó. Con expectativa negativa: el beneficio quedó abolido. Con cambios correspondientes en la actividad de las regiones que codifican intensidad de dolor. Una expectativa anuló un opioide que estaba entrando en vena." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Evidencia medida · 2 · misma dosis, tres condiciones</div>
+    <h2 style="font:400 var(--t-title)/1.04 var(--serif);margin:20px 0 8px">Una expectativa anuló un opioide</h2>
+    <p style="font:400 var(--t-small)/1.5 var(--sans);color:#5C5852;margin:0 0 20px">Remifentanilo intravenoso, con cambios correspondientes en las regiones que codifican intensidad de dolor.</p>
+    <div style="flex:1;display:flex;align-items:center">
+      <svg viewBox="0 0 1600 400" style="width:100%" role="img" aria-label="Beneficio analgésico del remifentanilo en tres condiciones de expectativa">
+        <line x1="150" y1="340" x2="1560" y2="340" stroke="#C9C3B2" stroke-width="2.5"></line>
+        <g stroke="#E4E0D3" stroke-width="1.5"><line x1="150" y1="250" x2="1560" y2="250"></line><line x1="150" y1="160" x2="1560" y2="160"></line><line x1="150" y1="70" x2="1560" y2="70"></line></g>
+        <text transform="rotate(-90 74 200)" x="74" y="200" text-anchor="middle" font-family="var(--sans)" font-size="20.5" fill="var(--faint)">beneficio analgésico</text>
+        <rect x="250" y="250" width="240" height="90" rx="8" fill="#9BB3CF"></rect>
+        <text x="370" y="230" text-anchor="middle" font-family="var(--sans)" font-size="24.6" font-weight="700" fill="#16283A">esperable</text>
+        <text x="370" y="378" text-anchor="middle" font-family="var(--sans)" font-size="23.6" fill="var(--ink)">sin expectativa</text>
+        <rect x="680" y="70" width="240" height="270" rx="8" fill="var(--teal)"></rect>
+        <text x="800" y="50" text-anchor="middle" font-family="var(--sans)" font-size="24.6" font-weight="700" fill="var(--teal-deep)">se duplicó</text>
+        <text x="800" y="378" text-anchor="middle" font-family="var(--sans)" font-size="23.6" fill="var(--ink)">expectativa positiva</text>
+        <rect x="1110" y="330" width="240" height="10" rx="5" fill="var(--coral)"></rect>
+        <text x="1230" y="310" text-anchor="middle" font-family="var(--sans)" font-size="24.6" font-weight="700" fill="#8E3A22">abolido</text>
+        <text x="1230" y="378" text-anchor="middle" font-family="var(--sans)" font-size="23.6" fill="var(--ink)">expectativa negativa</text>
+      </svg>
+    </div>
+    <p style="font:400 var(--t-body)/1.45 var(--sans);color:var(--ink);margin:0;max-width:80ch">Si alguien duda de que la información compita con la farmacología, <b style="color:var(--coral);font-weight:700">este es el dato</b>.</p>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Placebo abierto" data-speaker-notes="Hecho tres. Funciona aunque el paciente sepa que es placebo. En un ensayo con pacientes con intestino irritable se entregaron pastillas presentadas explícitamente como inertes, frente a un control sin tratamiento con la misma calidad de interacción. El grupo con placebo abierto mejoró. Si funciona cuando el paciente sabe, el ingrediente activo no está en el engaño." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Evidencia medida · 3</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 40px;max-width:44ch">Funciona aunque el paciente sepa que es placebo</h2>
+    <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:44px;align-items:center">
+      <div style="background:var(--paper2);border-radius:20px;padding:40px 38px">
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39;margin:0">Pacientes con intestino irritable. Pastillas presentadas <b style="font-weight:700;color:var(--ink)">explícitamente como inertes</b>, frente a un control sin tratamiento con la misma calidad de interacción.</p>
+        <div style="font:700 30px/1.3 var(--sans);color:var(--teal-deep);margin-top:26px">El grupo con placebo abierto mejoró.</div>
+      </div>
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:40px 38px">
+        <p style="font:400 34px/1.35 var(--serif);color:#fff;margin:0">El ingrediente activo <b style="font-weight:700">no está en el engaño</b>.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px">
+          <span style="border:2px solid #2FA98A;border-radius:999px;padding:14px 26px;font:500 25px/1 var(--sans);color:#CFE6DD">el ritual</span>
+          <span style="border:2px solid #2FA98A;border-radius:999px;padding:14px 26px;font:500 25px/1 var(--sans);color:#CFE6DD">la expectativa</span>
+          <span style="border:2px solid #2FA98A;border-radius:999px;padding:14px 26px;font:500 25px/1 var(--sans);color:#CFE6DD">la atención dirigida</span>
+          <span style="border:2px solid #2FA98A;border-radius:999px;padding:14px 26px;font:500 25px/1 var(--sans);color:#CFE6DD">la relación</span>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Placebo sin cerebro" data-speaker-notes="Levin y su equipo publicaron un modelo computacional en el que el efecto placebo ocurre en redes reguladoras de genes, sin cerebro y sin sistema nervioso. El método fue tratarlas como al perro de Pávlov: un gen como estímulo condicionado, otro como incondicionado, un tercero como respuesta. En cuarenta a cincuenta redes encontraron seis tipos de aprendizaje, incluido el asociativo. Decirlo explícitamente: es un modelo computacional, no una demostración en el organismo." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">El aprendizaje asociativo no necesita neuronas</div>
+    <h2 style="font:400 var(--t-title)/1.04 var(--serif);margin:20px 0 30px">El placebo sin cerebro</h2>
+    <div style="flex:1;display:flex;align-items:center;gap:20px">
+      <div style="flex:1;background:var(--paper);border-radius:18px;padding:32px 28px"><div style="font:700 26px/1 var(--mono);color:var(--teal);letter-spacing:.1em">01</div><p style="font:400 26px/1.4 var(--sans);color:#413E39;margin:16px 0 0">Un fármaco <b style="font-weight:700;color:var(--ink)">potente</b> que produce efecto sobre la red.</p></div>
+      <svg viewBox="0 0 40 30" style="width:40px;flex:none"><path d="M4,15 L28,15" stroke="var(--faint)" stroke-width="3" stroke-linecap="round"></path><path d="M22,7 L34,15 L22,23" fill="none" stroke="var(--faint)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="flex:1;background:var(--paper);border-radius:18px;padding:32px 28px"><div style="font:700 26px/1 var(--mono);color:var(--teal);letter-spacing:.1em">02</div><p style="font:400 26px/1.4 var(--sans);color:#413E39;margin:16px 0 0">Un segundo fármaco <b style="font-weight:700;color:var(--ink)">neutro</b>, que no produce nada.</p></div>
+      <svg viewBox="0 0 40 30" style="width:40px;flex:none"><path d="M4,15 L28,15" stroke="var(--faint)" stroke-width="3" stroke-linecap="round"></path><path d="M22,7 L34,15 L22,23" fill="none" stroke="var(--faint)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="flex:1;background:var(--paper);border-radius:18px;padding:32px 28px"><div style="font:700 26px/1 var(--mono);color:var(--teal);letter-spacing:.1em">03</div><p style="font:400 26px/1.4 var(--sans);color:#413E39;margin:16px 0 0">Se presentan juntos, repetidamente. <b style="font-weight:700;color:var(--ink)">La red se entrena.</b></p></div>
+      <svg viewBox="0 0 40 30" style="width:40px;flex:none"><path d="M4,15 L28,15" stroke="var(--coral)" stroke-width="3" stroke-linecap="round"></path><path d="M22,7 L34,15 L22,23" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="flex:1.15;background:var(--teal-deep);color:var(--paper2);border-radius:18px;padding:32px 28px;border-top:6px solid var(--coral)"><div style="font:700 26px/1 var(--mono);color:#8FD6C2;letter-spacing:.1em">04</div><p style="font:400 28px/1.35 var(--serif);margin:16px 0 0">Después, <b style="font-weight:700">el neutro solo basta</b> para activar la respuesta.</p></div>
+    </div>
+    <div style="display:flex;gap:34px;align-items:center;margin-top:8px">
+      <p style="flex:1;font:400 var(--t-body)/1.45 var(--sans);color:var(--ink);margin:0">El método fue tratarlas <b style="color:var(--ink);font-weight:700">como al perro de Pávlov</b>: un gen como estímulo condicionado, otro como incondicionado, un tercero como respuesta. En 40–50 redes biológicas se encontraron <b style="color:var(--teal-deep);font-weight:700">seis tipos de aprendizaje</b>, incluido el asociativo.</p>
+      <div style="flex:none;background:var(--ink);color:#F0A88C;border-radius:14px;padding:22px 30px;font:700 24px/1.35 var(--sans);max-width:34ch">Es un modelo computacional, no una demostración en el organismo.</div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Clase B" data-speaker-notes="La tesis de fondo, en palabras del propio autor: micro-manejar el sistema con fármacos es temporal, y usar la terapia o la hipnosis como interfaz con el sistema celular de bajo nivel tiene que ser el futuro de la medicina. Es la clase B, dicha por el autor del marco. Y un apunte: ya ejercemos control bioeléctrico voluntario sobre nuestro colectivo celular sin llamarlo así. Levantarse de la cama altera el potencial de reposo de cerca del treinta por ciento de las células del cuerpo, las musculares." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#8FD6C2">La clase B, dicha por Levin — el autor del marco</div>
+    <p style="font:400 58px/1.24 var(--serif);color:#fff;margin:34px 0 0;max-width:48ch">Micro-manejar el sistema con fármacos es temporal. Usar la terapia como <b style="font-weight:700">interfaz con el sistema celular de bajo nivel</b> tiene que ser el futuro de la medicina.</p>
+    <div style="display:flex;align-items:center;gap:40px;margin-top:56px;padding-top:44px;border-top:2px solid rgba(143,214,194,.35)">
+      <div style="flex:none;font:400 118px/1 var(--serif);color:#8FD6C2">30 %</div>
+      <p style="font:400 var(--t-body)/1.45 var(--sans);color:#CFE6DD;margin:0;max-width:50ch">Ya ejercemos control bioeléctrico voluntario sin llamarlo así: levantarse de la cama altera el potencial de reposo de cerca del <b style="color:#fff;font-weight:700">treinta por ciento de las células del cuerpo</b>, las musculares. Es plausible que tengamos ese control sobre muchas más.</p>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Mason" data-speaker-notes="Albert Mason trataba afecciones graves de la piel con hipnosis. En un caso célebre limpió la lesión de un solo brazo y dejó el otro, para mostrar la especificidad del control por sugestión verbal. Lo que importa no es el caso: es cómo terminó. Ejerció así durante décadas y acabó dejándolo para hacerse psiquiatra, porque los síntomas específicos se limpiaban como debían, pero aparecían en otro lado. Cautela: caso histórico único, de mediados del siglo XX, con diagnóstico discutido después." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--coral)">Advertencia clínica</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 40px">Resolver el síntoma en el nivel equivocado lo desplaza</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start">
+      <div>
+        <p style="font:400 var(--t-small)/1.5 var(--sans);color:#413E39;margin:0">Albert Mason trataba afecciones graves de la piel con hipnosis. En un caso célebre limpió la lesión de <b style="font-weight:700;color:var(--ink)">un solo brazo</b> y dejó el otro, para mostrar la especificidad del control por sugestión verbal.</p>
+        <svg viewBox="0 0 420 150" style="width:100%;margin:26px 0 0" role="img" aria-label="Un brazo tratado y el otro no">
+          <rect x="30" y="40" width="140" height="70" rx="14" fill="var(--teal-tint)" stroke="var(--teal)" stroke-width="2.5"></rect>
+          <text x="100" y="82" text-anchor="middle" font-family="var(--sans)" font-size="22.7" font-weight="700" fill="var(--teal-deep)">brazo tratado</text>
+          <text x="100" y="132" text-anchor="middle" font-family="var(--sans)" font-size="20.6" fill="var(--teal)">se limpió</text>
+          <rect x="250" y="40" width="140" height="70" rx="14" fill="var(--paper2)" stroke="var(--line)" stroke-width="2.5"></rect>
+          <text x="320" y="82" text-anchor="middle" font-family="var(--sans)" font-size="22.7" font-weight="700" fill="var(--faint)">brazo control</text>
+          <text x="320" y="132" text-anchor="middle" font-family="var(--sans)" font-size="20.6" fill="var(--faint)">sin cambio</text>
+        </svg>
+      </div>
+      <div style="background:var(--ink);color:var(--paper2);border-radius:20px;padding:40px 38px">
+        <div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#F0A88C">Lo que importa es cómo terminó</div>
+        <p style="font:400 32px/1.35 var(--serif);color:#fff;margin:22px 0 0">Dejó de ejercerlo para hacerse psiquiatra: los síntomas se limpiaban como debían, <b style="font-weight:700;color:#F0A88C">pero aparecían en otro lado</b>.</p>
+        <p style="font:400 24px/1.5 var(--sans);color:#C9C6BD;margin:24px 0 0">Es la escalera de niveles de esta mañana vista desde otra técnica: si la meta la carga un nivel superior, trabajar solo abajo mueve la manifestación sin mover el ajuste.</p>
+        <div style="font:400 24px/1.4 var(--sans);color:#8B8A83;margin-top:24px;padding-top:20px;border-top:1px solid #3A3833">Caso histórico único, de mediados del siglo XX, con diagnóstico discutido después. Se usa como ilustración de un principio.</div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Qué mueve" data-speaker-notes="Es una intervención de clase B en estado puro. No recablea nada y no repone nada: cambia la referencia, y el sistema se reacomoda. Y de ahí sale una predicción fuerte, que es además su mejor límite: el placebo mueve lo que tiene set point. No mueve lo que no lo tiene. Un sistema de clase A no se persuade. Ese techo es la firma de su mecanismo." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Clase B en estado puro</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 12px;max-width:44ch">El placebo mueve lo que tiene punto de ajuste</h2>
+    <p style="font:400 var(--t-small)/1.5 var(--sans);color:#5C5852;margin:0 0 26px;max-width:76ch">No recablea nada y no repone nada: cambia la referencia, y el sistema se reacomoda.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:34px">
+      <div style="background:var(--paper);border-radius:14px;padding:24px 28px;border-left:8px solid var(--faint)"><div style="font:700 25px/1.2 var(--sans);color:var(--ink)">Clase A · no se persuade</div><div style="font:400 26px/1.4 var(--sans);color:#4C4A42;margin-top:10px">No tiene punto de ajuste que reescribir. Para cambiarlo hay que <b style="font-weight:700;color:var(--ink)">recablearlo o reponerle algo</b>.</div></div>
+      <div style="background:var(--teal-tint);border-radius:14px;padding:24px 28px;border-left:8px solid var(--teal)"><div style="font:700 25px/1.2 var(--sans);color:var(--teal-deep)">Clase B · se le reescribe la referencia</div><div style="font:400 26px/1.4 var(--sans);color:#3C5C52;margin-top:10px">Persigue una meta y defiende un punto de ajuste. Se le <b style="font-weight:700">cambia la referencia</b> y él se reacomoda.</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px">
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:40px 38px">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#8FD6C2">Responde</div>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:26px;font:500 28px/1.3 var(--sans);color:#fff">
+          <div>Dolor</div><div>Náusea</div><div>Función inmune</div><div>Compuerta motora en Parkinson</div><div>Síntomas digestivos</div>
+        </div>
+      </div>
+      <div style="background:var(--paper);border-radius:20px;padding:40px 38px;border-top:8px solid var(--coral)">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--coral)">No responde</div>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:26px;font:500 28px/1.3 var(--sans);color:var(--ink)">
+          <div>El tamaño de un tumor</div><div>La consolidación de una fractura</div>
+        </div>
+        <p style="font:400 25px/1.45 var(--sans);color:#4C4A42;margin:32px 0 0">Un sistema de <b style="font-weight:700;color:var(--ink)">clase A no se persuade</b>. Ese techo es la firma de su mecanismo.</p>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="El nocebo" data-speaker-notes="Aquí aterriza todo el bloque. Una instrucción que anuncia amenaza sube el tono de defensa. Y lo que dice el terapeuta es una instrucción. La palabra es una entrada del programa de defensa, tan real como una citoquina. Frases que suben el tono, y son frecuentes. Y una nuestra, que conviene revisar: vamos a ver todo lo que tienes mal, al levantar el mapa." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--coral);color:#FFF6F2;display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#FFD9C9">Aquí aterriza todo el bloque</div>
+    <h2 style="font:400 var(--t-title)/1.08 var(--serif);margin:22px 0 16px;max-width:40ch">La palabra es una entrada del programa de defensa</h2>
+    <p style="font:400 var(--t-body)/1.45 var(--sans);color:#FFE6DC;margin:0 0 40px;max-width:60ch">Tan real como una citoquina. Y lo que dice el terapeuta es una instrucción.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
+      <div>
+        <div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#FFD9C9;margin-bottom:22px">Frases que suben el tono</div>
+        <div style="display:flex;flex-direction:column;gap:16px;font:400 30px/1.3 var(--serif);font-style:italic;color:#fff">
+          <div>«Esto te va a doler.»</div>
+          <div>«Tienes la columna muy desgastada.»</div>
+          <div>«Tienes el cuerpo muy dañado.»</div>
+          <div style="font-style:normal;font-size:26px;color:#FFE6DC">Imágenes de deterioro irreversible · diagnósticos entregados sin marco</div>
+        </div>
+      </div>
+      <div style="background:rgba(0,0,0,.18);border-radius:20px;padding:36px 38px">
+        <div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-bottom:22px">Y una nuestra, que conviene revisar</div>
+        <p style="font:400 34px/1.3 var(--serif);font-style:italic;color:#fff;margin:0">«Vamos a ver todo lo que tienes mal.»</p>
+        <p style="font:400 25px/1.45 var(--sans);color:#FFE6DC;margin:22px 0 0">Al levantar el mapa.</p>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="El criterio" data-speaker-notes="El criterio, que no obliga a mentir: entre varias cosas verdaderas que se pueden decir, se elige la que no sube el tono, y se dice completa. Ejemplo al pizarrón, las dos versiones. Y el guardarraíl ético, que no se omite: el nocebo no es responsabilidad del paciente. Nunca se dice te estás bloqueando, no te dejas ayudar ni tienes que creer." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Criterio de formulación clínica</div>
+    <h2 style="font:400 60px/1.14 var(--serif);margin:20px 0 40px;max-width:56ch">Entre varias cosas verdaderas, se elige la que no sube el tono — y se dice completa</h2>
+    <div style="display:grid;grid-template-columns:1fr 1.25fr;gap:44px;align-items:stretch">
+      <div style="background:var(--paper2);border-radius:20px;padding:38px 36px;opacity:.75">
+        <div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--coral)">En lugar de</div>
+        <p style="font:400 34px/1.3 var(--serif);font-style:italic;color:#5C5852;margin:22px 0 0;text-decoration:line-through;text-decoration-color:rgba(216,90,48,.5)">«Tienes una degeneración importante.»</p>
+      </div>
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:38px 36px">
+        <div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#8FD6C2">Se dice</div>
+        <p style="font:400 34px/1.32 var(--serif);color:#fff;margin:22px 0 0">«Hay cambios que corresponden a tu edad y a tu historia. Lo que vamos a trabajar es <b style="font-weight:700">cómo está regulado hoy</b>.»</p>
+      </div>
+    </div>
+    <div style="margin-top:38px;background:var(--ink);color:var(--paper2);border-radius:20px;padding:34px 40px">
+      <div style="font:700 24px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#F0A88C">Guardarraíl ético · no se omite</div>
+      <p style="font:400 29px/1.4 var(--sans);margin:18px 0 0">El nocebo <b style="font-weight:700;color:#fff">no es responsabilidad del paciente</b>. Nunca se dice <i>«te estás bloqueando»</i>, <i>«no te dejas ayudar»</i> ni <i>«tienes que creer»</i>: eso traslada al paciente un efecto que produce el contexto — y es, en sí misma, una frase que sube el tono.</p>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="El contexto" data-speaker-notes="La sesión de nuestro método es un contexto potente: ritual definido, contacto, atención dirigida por el propio paciente sobre su cuerpo, un mapa que él dibuja, veinte minutos acostado y cubierto, y preguntas de cierre. Es toda la maquinaria que la literatura del placebo identifica como activa. Dos consecuencias: se conduce con intención; y por eso mismo hace falta comparación con imán simulado." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Un ingrediente activo del procedimiento</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 32px">El contexto de la sesión</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px">
+      <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:14px 26px;font:500 25px/1 var(--sans)">ritual definido</span>
+      <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:14px 26px;font:500 25px/1 var(--sans)">contacto</span>
+      <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:14px 26px;font:500 25px/1 var(--sans)">atención dirigida por el paciente</span>
+      <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:14px 26px;font:500 25px/1 var(--sans)">un mapa que él dibuja</span>
+      <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:14px 26px;font:500 25px/1 var(--sans)">veinte minutos acostado y cubierto</span>
+      <span style="background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:14px 26px;font:500 25px/1 var(--sans)">preguntas de cierre</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px">
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:38px 36px">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#8FD6C2">Consecuencia 1</div>
+        <p style="font:400 34px/1.32 var(--serif);color:#fff;margin:20px 0 0">Se conduce <b style="font-weight:700">con intención</b>, igual que el canal atencional de esta mañana: la atención del paciente sobre su propia zona es una entrada, no un adorno.</p>
+      </div>
+      <div style="background:var(--paper);border-radius:20px;padding:38px 36px;border-top:8px solid var(--coral)">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--coral)">Consecuencia 2</div>
+        <p style="font:400 30px/1.35 var(--serif);color:var(--ink);margin:20px 0 0">Por eso mismo hace falta <b style="font-weight:700">comparación con imán simulado</b>. Que los efectos de contexto sean reales no dice nada sobre si el campo aporta algo específico.</p>
+        <div style="font:700 25px/1.4 var(--sans);color:var(--coral);margin-top:20px">Sube el listón.</div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Recapitulación" data-speaker-notes="Recapitular en cinco líneas. Al pizarrón si hay tiempo." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;padding:var(--pad);font-family:var(--sans)">
+    <div style="font-family:var(--mono);font-size:30px;color:var(--teal);letter-spacing:.06em">Parte 5</div>
+    <h2 style="font:400 var(--t-title)/1.04 var(--serif);margin:18px 0 34px">Cinco líneas</h2>
+    <div style="flex:1;display:flex;flex-direction:column;gap:18px;justify-content:center">
+      <div style="display:flex;gap:32px;align-items:baseline;border-bottom:2px solid var(--line);padding-bottom:18px"><span style="font:700 26px/1 var(--mono);color:var(--teal);flex:none;width:46px">01</span><div style="font:400 34px/1.32 var(--serif)">La inflamación es un programa de defensa con meta, herencia antiquísima y tres tiempos. La resolución es un programa activo: <b style="font-weight:700;color:var(--teal-deep)">no se apaga, se le apaga</b>.</div></div>
+      <div style="display:flex;gap:32px;align-items:baseline;border-bottom:2px solid var(--line);padding-bottom:18px"><span style="font:700 26px/1 var(--mono);color:var(--teal);flex:none;width:46px">02</span><div style="font:400 34px/1.32 var(--serif)">Falla de dos formas: por <b style="font-weight:700;color:var(--teal-deep)">rigidez</b>, cuando no puede conmutar; o por <b style="font-weight:700;color:var(--teal-deep)">déficit</b>, cuando no tiene con qué terminar.</div></div>
+      <div style="display:flex;gap:32px;align-items:baseline;border-bottom:2px solid var(--line);padding-bottom:18px"><span style="font:700 26px/1 var(--mono);color:var(--teal);flex:none;width:46px">03</span><div style="font:400 34px/1.32 var(--serif)">La cicatriz es la marca de un programa que no resolvió. La regeneración pide que el programa <b style="font-weight:700;color:var(--teal-deep)">se complete</b>.</div></div>
+      <div style="display:flex;gap:32px;align-items:baseline;border-bottom:2px solid var(--line);padding-bottom:18px"><span style="font:700 26px/1 var(--mono);color:var(--teal);flex:none;width:46px">04</span><div style="font:400 34px/1.32 var(--serif)">Lo que se regula es el <b style="font-weight:700;color:var(--teal-deep)">tono de defensa</b>: una sola variable a tres escalas — muscular, autonómica e inflamatoria.</div></div>
+      <div style="display:flex;gap:32px;align-items:baseline"><span style="font:700 26px/1 var(--mono);color:var(--coral);flex:none;width:46px">05</span><div style="font:400 34px/1.32 var(--serif)">Y el tono <b style="font-weight:700;color:var(--coral)">tiene memoria</b>, y responde a información. Se sube y se baja con expectativa y con palabras.</div></div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Sin demostrar · Puente" data-speaker-notes="Buena parte de la evidencia mecanística que vimos es experimental: modelos animales, dolor por calor en voluntarios. Su traslación a la consulta es razonable, y no es automática. Y nada de esto demuestra que el campo magnético mueva el tono. Demuestra que el tono existe, que es una variable real y que es movible. Que nuestro método lo mueva es lo que hay que probar. Puente: si el estado defensivo modula la reparación, el eje del estrés opera como el regulador de ganancia del eje inflamatorio. Eso es lo que sigue." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--teal-deep);color:var(--paper2);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+      <div>
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#FFD9C9">Qué queda sin demostrar</div>
+        <p style="font:400 var(--t-body)/1.45 var(--sans);color:#CFE6DD;margin:26px 0 0">Buena parte de la evidencia mecanística es experimental: modelos animales, dolor por calor en voluntarios. Su traslación a la consulta es razonable, y no es automática.</p>
+        <div style="background:rgba(0,0,0,.22);border-left:8px solid var(--coral);border-radius:0 16px 16px 0;padding:30px 34px;margin-top:30px">
+          <p style="font:400 30px/1.4 var(--serif);color:#fff;margin:0">Nada de esto demuestra que el campo mueva el tono. Demuestra que el tono <b style="font-weight:700">existe, es real y es movible</b>. Que nuestro método lo mueva es lo que hay que probar.</p>
+        </div>
+      </div>
+      <div>
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#8FD6C2">Puente</div>
+        <h2 style="font:400 84px/1.06 var(--serif);letter-spacing:-.015em;margin:24px 0 0">El eje<br>del estrés</h2>
+        <p style="font:400 var(--t-sub)/1.36 var(--serif);color:#CFE6DD;margin:32px 0 0;max-width:26ch">Opera como el <b style="color:#fff;font-weight:700">regulador de ganancia</b> del eje inflamatorio.</p>
+        <div style="font:500 var(--t-small)/1.5 var(--sans);color:#9FCFBF;margin-top:34px">Eso es lo que sigue.</div>
+      </div>
+    </div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+  <section data-label="Materiales" data-speaker-notes="Materiales del bloque. Pizarrón: los tres tiempos del programa, las tres escalas del tono, las tres condiciones del remifentanilo y las dos columnas del techo del placebo. Impreso: contraste cicatriz / regeneración para la Parte 2." style="animation:secIn .55s cubic-bezier(.22,.9,.3,1) both;position:relative;width:100%;height:100%;background:var(--paper2);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);font-family:var(--sans)">
+    <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Soportes del bloque</div>
+    <h2 style="font:400 var(--t-title)/1.06 var(--serif);margin:20px 0 44px">Materiales</h2>
+    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:44px;align-items:start">
+      <div style="background:var(--paper);border-radius:20px;padding:40px 38px;border-top:8px solid var(--teal)">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--teal)">Pizarrón</div>
+        <div style="display:flex;flex-direction:column;gap:18px;margin-top:26px">
+          <div style="display:flex;gap:22px;align-items:baseline"><span style="width:12px;height:12px;border-radius:50%;background:var(--teal);flex:none;margin-top:12px"></span><div style="font:400 28px/1.4 var(--sans);color:#413E39">Los <b style="font-weight:700;color:var(--ink)">tres tiempos</b> del programa</div></div>
+          <div style="display:flex;gap:22px;align-items:baseline"><span style="width:12px;height:12px;border-radius:50%;background:var(--teal);flex:none;margin-top:12px"></span><div style="font:400 28px/1.4 var(--sans);color:#413E39">Las <b style="font-weight:700;color:var(--ink)">tres escalas</b> del tono</div></div>
+          <div style="display:flex;gap:22px;align-items:baseline"><span style="width:12px;height:12px;border-radius:50%;background:var(--teal);flex:none;margin-top:12px"></span><div style="font:400 28px/1.4 var(--sans);color:#413E39">Las <b style="font-weight:700;color:var(--ink)">tres condiciones</b> del remifentanilo</div></div>
+          <div style="display:flex;gap:22px;align-items:baseline"><span style="width:12px;height:12px;border-radius:50%;background:var(--teal);flex:none;margin-top:12px"></span><div style="font:400 28px/1.4 var(--sans);color:#413E39">Las <b style="font-weight:700;color:var(--ink)">dos columnas</b> del techo del placebo</div></div>
+        </div>
+      </div>
+      <div style="background:var(--teal-deep);color:var(--paper2);border-radius:20px;padding:40px 38px">
+        <div style="font:700 var(--t-kicker)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#8FD6C2">Impreso</div>
+        <p style="font:400 34px/1.32 var(--serif);color:#fff;margin:26px 0 0">Contraste <b style="font-weight:700">cicatriz / regeneración</b></p>
+        <div style="font:500 var(--t-small)/1.5 var(--sans);color:#CFE6DD;margin-top:18px">Para la Parte 2.</div>
+      </div>
+    </div>
+    <div style="font:400 25px/1.4 var(--sans);color:var(--faint);margin-top:44px">Instituto Centrobioenergetica · 2026</div>
+    <div style="position:absolute;left:104px;bottom:38px;display:flex;align-items:center;gap:13px;opacity:.62;pointer-events:none;z-index:6;animation:markIn .8s ease-out both .25s">
+      <svg viewBox="0 0 58 24" style="height:24px;flex:none"><circle cx="8" cy="12" r="6" fill="currentColor"></circle><line x1="16" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.6"></line><circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.42" style="animation:markPulse 4.4s ease-in-out infinite"></circle></svg>
+      <span style="font:600 24px/1 'Plex',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase">Regulación <b style="font-weight:400">Bioeléctrica</b></span>
+    </div>
+  </section>
+
+</x-import>
+</x-dc>
+</body>
+</html>

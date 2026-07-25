@@ -28,6 +28,10 @@ Referencia/                       ← Materiales de investigación y contexto
 | Documento / carpeta | Qué es |
 |---|---|
 | **`Programa_El_Cuerpo_Electrico_RB.md`** | **El programa del curso** — módulos, horarios, competencias. Canónico, listo para difundir. |
+| **`Modulo_1/`** | **Todo el Módulo 1** (11 jul, completo): manual de trabajo por bloques, slides, curso grabado, interactivos. Lee `Modulo_1/README.md`. |
+| **`Modulo_2/`** | **Todo el Módulo 2** (25 jul, en construcción): guion de la clase en vivo + 4 bloques. Lee `Modulo_2/README.md`. |
+| **`00_Sistema_de_Produccion/`** | **Transversal a los 4 módulos:** estructura maestra de la formación, guía pedagógica de clase mundial, roles de IA y arquitectura modular. |
+| `Imagenes_rb/`, `Imagenes_codex_rb/` | Activos gráficos compartidos entre módulos. |
 | **`Sistema_Vigente/`** | Workspace con la teoría del sistema nuevo (agentes + terrenos). Lee primero `Sistema_Vigente/00_LEEME_Sistema_Vigente.md`. |
 | `Sistema_Vigente/concepto-agente-biologico.md` | Fundacional: qué es un agente, TAME, ejemplos por órgano. |
 | `Sistema_Vigente/Sistema_Nuevo_Regulacion_por_Agentes.md` | Lógica clínica del nuevo sistema (modelo de 4 niveles). |

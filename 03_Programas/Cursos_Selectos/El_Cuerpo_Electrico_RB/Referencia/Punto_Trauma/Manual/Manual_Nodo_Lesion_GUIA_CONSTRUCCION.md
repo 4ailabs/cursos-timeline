@@ -93,7 +93,7 @@ Banda abierta con **filete teal 0.5 pt arriba** (sin caja, sin barrita). Secuenc
 
 ## 5. Terminología (rector)
 
-- **«Nodo de lesión»**, NO «punto trauma» ni «técnica del trauma». El Tratado renombró el «punto trauma» → **nodo de lesión** (una sola zona despolarizada = un nodo/polo; al rastrearla forma un dipolo con su complementario, local o renal). Fuente: `Curso_Vigente/Manual_de_Trabajo/Modulo_1_Bloque_4_El_Rastreo_y_el_Nodo_de_Lesion.md` §6.
+- **«Nodo de lesión»**, NO «punto trauma» ni «técnica del trauma». El Tratado renombró el «punto trauma» → **nodo de lesión** (una sola zona despolarizada = un nodo/polo; al rastrearla forma un dipolo con su complementario, local o renal). Fuente: `Curso_Vigente/Modulo_1/Manual_de_Trabajo/Modulo_1_Bloque_4_El_Rastreo_y_el_Nodo_de_Lesion.md` §6.
 - Convenciones del proyecto (memoria): «microambiente tisular» (no «terreno»); Vmem primario / pH derivado; nombre del autor **«Ojeda Rios» sin acento**.
 - **Polaridad confirmada por el autor:** negativo = **Norte**; positivo = **Sur**. Cara negativa a la piel en general; **excepción**: corrección renal empieza con el positivo (cara positiva a la piel).
 

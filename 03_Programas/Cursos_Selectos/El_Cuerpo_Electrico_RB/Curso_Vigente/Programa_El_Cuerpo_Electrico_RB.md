@@ -107,12 +107,12 @@ Cuatro módulos que te llevan de la mirada al método, y del método a la clíni
 |---|---|
 | 10:00-10:45 | Revisión de la práctica anterior. |
 | 10:45-12:00 | **Eje inflamatorio:** el sistema inmune como agente. El problema no es inflamar, es no resolver. Estados bioeléctricos del macrófago (M1/M2) y su modulación por campo magnético. Marcadores (PCR-us, IL-6). |
-| 12:00-1:00 | **Eje de biotransformación (hígado):** el hígado como agente (Nrf2) y la carga ambiental. Honestidad: aquí no hay nodo bioeléctrico literal — se dice. Marcadores (GGT). |
+| 12:00-1:00 | **Eje de biotransformación (hígado):** el hígado como agente (Nrf2) y la carga ambiental. Aquí no hay nodo bioeléctrico literal, y se dice. Marcadores (GGT). |
 | 1:00-2:00 | Comida |
 | 2:00-2:45 | **Eje redox:** el eje de fondo. Deriva oxidativa del medio interno y cómo cuidarlo a largo plazo. |
 | 2:45-3:30 | El criterio clínico: perfiles combinados y jerarquía. Cuál eje se atiende primero y por qué. |
 | 3:30-5:30 | Práctica completa supervisada: perfil bioeléctrico + aplicación (2 rondas). |
-| 5:30-6:00 | Límites honestos + tarea. |
+| 5:30-6:00 | Los límites + tarea. |
 
 **Al terminar podrás:** reconocer los ejes de regulación, leer sus marcadores, y priorizar con criterio cuando el paciente presenta más de uno.
 

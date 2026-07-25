@@ -10,7 +10,7 @@
 
 Este documento define el sistema con el que se enseñará *El Cuerpo Eléctrico* a partir de la generación 2026, y establece por qué ese sistema no es una versión más del Par Biomagnético con vocabulario nuevo, sino una lógica clínica distinta.
 
-Parte de un diagnóstico honesto del Tratado de Regulación Bioeléctrica (marzo 2026) y propone el giro que faltaba. Al final desarrolla las **tres propuestas** posibles para el papel del rastreo dentro del sistema nuevo, para decisión clínica.
+Parte de un diagnóstico del Tratado de Regulación Bioeléctrica (marzo 2026) y propone el giro que faltaba. Al final desarrolla las **tres propuestas** posibles para el papel del rastreo dentro del sistema nuevo, para decisión clínica.
 
 ---
 
@@ -79,7 +79,7 @@ La tesis clínica: los agentes que trabajamos son **clase B**, y por eso se regu
 | Condición que lo atascó | ¿Qué cambio de entorno lo desreguló? | Visión cercana + poca luz |
 | Regulación | ¿Qué señal correctiva lo recalibra? | Desenfoque periférico, luz, atropina |
 
-### La regla de honestidad bioeléctrica
+### La regla bioeléctrica
 
 No todos los agentes "hablan voltaje" con la misma literalidad, y eso se dice de frente:
 
@@ -87,7 +87,7 @@ No todos los agentes "hablan voltaje" con la misma literalidad, y eso se dice de
 - **Indirecto:** órganos endocrinos (el Vmem regula la exocitosis hormonal, NIS electrogénico, gap junctions — Cap. 17), pero el nodo es la secreción, no una "forma" bioeléctrica.
 - **Ausente o no documentado:** el hígado. No hay, hasta ahora, un nodo bioeléctrico literal robusto publicado. En ese caso el argumento se sostiene en el circuito molecular (Keap1-Nrf2, fases I/II) y se declara la ausencia — no se inventa un voltaje.
 
-Esta honestidad es lo que separa un sistema científico de una idea antigua.
+Eso es lo que separa un sistema científico de una idea antigua.
 
 ---
 
