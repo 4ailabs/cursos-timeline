@@ -22,7 +22,7 @@ Sale: Proyeccion/<nombre>.html
 import re, pathlib, html as H
 
 AQUI   = pathlib.Path(__file__).parent
-DESTINO = AQUI / "Proyeccion"
+DESTINO = AQUI          # misma carpeta: las rutas relativas de las imágenes resuelven
 FUENTES = AQUI / "rb-fonts.css"
 
 
@@ -64,14 +64,14 @@ def extraer(ruta):
 CHROME = """
 /* ══ Proyección · Regulación Bioeléctrica ══ */
 *{box-sizing:border-box}
-html,body{margin:0;height:100%;background:#07120E;overflow:hidden;
+html,body{margin:0;height:100%;background:#12100E;overflow:hidden;
   font-family:system-ui,"Segoe UI","Helvetica Neue",Arial,sans-serif}
 
 #escenario{position:fixed;inset:0;overflow:hidden}
 /* centrado por posición absoluta: con grid, un hijo más ancho que el
    contenedor se desborda por la derecha en vez de centrarse */
 #lienzo{position:absolute;left:50%;top:50%;transform-origin:center center;
-  box-shadow:0 20px 80px rgba(0,0,0,.5)}
+}
 #lienzo>.slide{position:absolute;inset:0;opacity:0;visibility:hidden;
   transition:opacity .28s ease}
 #lienzo>.slide.activa{opacity:1;visibility:visible}
@@ -89,23 +89,23 @@ html,body{margin:0;height:100%;background:#07120E;overflow:hidden;
 #mando button:focus-visible{outline:3px solid #8FD6C2;outline-offset:3px}
 
 #mando .nav{position:absolute;top:50%;transform:translateY(-50%);
-  width:66px;height:66px;border-radius:50%;display:grid;place-items:center;opacity:.60}
-#mando .ant{left:24px} #mando .sig{right:24px}
-#mando .nav svg{width:27px;height:27px}
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;opacity:.45}
+#mando .ant{left:18px} #mando .sig{right:18px}
+#mando .nav svg{width:18px;height:18px}
 #mando .nav[disabled]{opacity:.12;cursor:default}
 
 #mando .pie{position:absolute;left:0;right:0;bottom:0;
-  display:flex;align-items:center;justify-content:center;gap:14px;padding:0 0 20px}
-#mando .cuenta{pointer-events:none;font-variant-numeric:tabular-nums;font-size:15px;
-  letter-spacing:.06em;color:#FCFBF7;opacity:.55;background:rgba(10,74,58,.55);
-  border-radius:999px;padding:7px 17px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  display:flex;align-items:center;justify-content:center;gap:10px;padding:0 0 14px}
+#mando .cuenta{pointer-events:none;font-variant-numeric:tabular-nums;font-size:12.5px;
+  letter-spacing:.06em;color:#FCFBF7;opacity:.5;background:rgba(10,74,58,.5);
+  border-radius:999px;padding:5px 13px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 #mando .cuenta b{font-weight:600}
-#mando .util{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;opacity:.34}
-#mando .util svg{width:18px;height:18px}
+#mando .util{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;opacity:.34}
+#mando .util svg{width:14px;height:14px}
 #mando .barra{position:absolute;left:0;bottom:0;height:3px;background:#8FD6C2;
   opacity:.8;transition:width .24s ease}
 
-#mando.quieto .nav{opacity:.30}
+#mando.quieto .nav{opacity:.20}
 #mando.quieto .cuenta{opacity:.38}
 #mando.quieto .util{opacity:.20}
 
@@ -276,18 +276,17 @@ def construir(datos, nombre):
 
 
 def main():
-    DESTINO.mkdir(exist_ok=True)
     hechos = 0
     for f in sorted(AQUI.glob("*.dc.html")):
         d = extraer(f)
         if not d or not d["secciones"]:
             print(f"—  {f.name}: no es un deck"); continue
         nombre = f.name.replace(".dc.html", "")
-        salida = DESTINO / (nombre.replace(" ", "_") + ".html")
+        salida = DESTINO / (nombre + " — proyectar.html")
         salida.write_text(construir(d, nombre))
         print(f"✓  {salida.name}  ·  {len(d['secciones'])} diapositivas")
         hechos += 1
-    print(f"\n{hechos} decks en {DESTINO.name}/")
+    print(f"\n{hechos} decks · abrir los que terminan en «— proyectar»")
 
 
 if __name__ == "__main__":
