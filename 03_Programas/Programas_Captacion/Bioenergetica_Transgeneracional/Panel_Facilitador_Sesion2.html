@@ -1,0 +1,1389 @@
+<title>Panel del Facilitador — Sesión 2</title>
+
+<style>
+  :root {
+    --ground: #F2ECE1;
+    --panel: #FFFFFF;
+    --panel-2: #F8F3E9;
+    --line: #E0D5C4;
+    --line-soft: #EBE2D4;
+    --ink: #2A231D;
+    --muted: #6E6357;
+    --accent: #A8543B;
+    --accent-soft: rgba(168, 84, 59, 0.10);
+    --voice: #8B4A2A;
+    --do: #62804A;
+    --warn: #9A6A12;
+    --warn-soft: rgba(154, 106, 18, 0.10);
+    --shadow: 0 1px 2px rgba(58, 40, 24, .06), 0 8px 26px rgba(58, 40, 24, .09);
+
+    --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #17130F;
+      --panel: #211B16;
+      --panel-2: #2A221B;
+      --line: #3A3029;
+      --line-soft: #2F2721;
+      --ink: #F0E7DC;
+      --muted: #A8998A;
+      --accent: #D07A57;
+      --accent-soft: rgba(208, 122, 87, 0.14);
+      --voice: #E8D5B8;
+      --do: #9DB489;
+      --warn: #D9A441;
+      --warn-soft: rgba(217, 164, 65, 0.12);
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 30px rgba(0, 0, 0, .34);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #17130F;
+    --panel: #211B16;
+    --panel-2: #2A221B;
+    --line: #3A3029;
+    --line-soft: #2F2721;
+    --ink: #F0E7DC;
+    --muted: #A8998A;
+    --accent: #D07A57;
+    --accent-soft: rgba(208, 122, 87, 0.14);
+    --voice: #E8D5B8;
+    --do: #9DB489;
+    --warn: #D9A441;
+    --warn-soft: rgba(217, 164, 65, 0.12);
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 30px rgba(0, 0, 0, .34);
+  }
+
+  :root[data-theme="light"] {
+    --ground: #F2ECE1;
+    --panel: #FFFFFF;
+    --panel-2: #F8F3E9;
+    --line: #E0D5C4;
+    --line-soft: #EBE2D4;
+    --ink: #2A231D;
+    --muted: #6E6357;
+    --accent: #A8543B;
+    --accent-soft: rgba(168, 84, 59, 0.10);
+    --voice: #8B4A2A;
+    --do: #62804A;
+    --warn: #9A6A12;
+    --warn-soft: rgba(154, 106, 18, 0.10);
+    --shadow: 0 1px 2px rgba(58, 40, 24, .06), 0 8px 26px rgba(58, 40, 24, .09);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--ui);
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none;
+  }
+
+  button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+  button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  .app {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+
+  /* ---------- barra superior ---------- */
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .7rem clamp(.8rem, 3vw, 1.6rem) .5rem;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .iconbtn {
+    display: grid;
+    place-items: center;
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 7px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .iconbtn:hover { background: var(--accent-soft); color: var(--accent); }
+  .iconbtn svg { width: 19px; height: 19px; display: block; }
+
+  .topmeta {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+  }
+  .topmeta .where {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .topmeta .count {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .rail {
+    display: flex;
+    gap: 2px;
+    padding: 0 clamp(.8rem, 3vw, 1.6rem) .6rem;
+  }
+  .rail .tick {
+    height: 3px;
+    flex: 1;
+    background: var(--line);
+    border-radius: 2px;
+    transition: background .2s ease;
+  }
+  .rail .tick.done { background: var(--accent); opacity: .45; }
+  .rail .tick.now { background: var(--accent); opacity: 1; }
+  .rail .gap { width: 10px; flex: 0 0 10px; }
+
+  /* ---------- tarjeta ---------- */
+
+  .stage {
+    overflow-y: auto;
+    padding: clamp(.9rem, 3vw, 1.7rem) clamp(.8rem, 3vw, 1.6rem) 1.2rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .card {
+    max-width: 46rem;
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: clamp(1.1rem, 3.4vw, 1.9rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.05rem;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .card { animation: rise .22s ease-out; }
+    @keyframes rise { from { opacity: 0; transform: translateY(5px); } }
+  }
+
+  .card-head { display: flex; align-items: flex-start; gap: 1rem; }
+  .card-head .h { flex: 1; min-width: 0; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: .35rem;
+  }
+  .card h1 {
+    font-family: var(--display);
+    font-size: clamp(1.45rem, 4.4vw, 1.95rem);
+    font-weight: 600;
+    line-height: 1.13;
+    letter-spacing: -.005em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .slidechip {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .04em;
+    color: var(--muted);
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: .3rem .6rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  ul.cues { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .78rem; }
+  ul.cues li {
+    position: relative;
+    padding-left: 1.15rem;
+    font-size: clamp(1rem, 2.7vw, 1.08rem);
+    line-height: 1.5;
+  }
+  ul.cues li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .58em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--line);
+  }
+  ul.cues li.do::before { background: var(--do); border-radius: 1px; }
+  ul.cues li b, ul.cues li strong { color: var(--accent); font-weight: 650; }
+  ul.cues li em { font-style: italic; }
+
+  li.say {
+    padding-left: .95rem;
+    border-left: 2px solid var(--voice);
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(1.06rem, 2.9vw, 1.18rem);
+    line-height: 1.42;
+    color: var(--voice);
+  }
+  li.say::before { display: none; }
+  li.say .beat {
+    font-family: var(--ui);
+    font-style: normal;
+    font-size: .72em;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-left: .45rem;
+    white-space: nowrap;
+  }
+  li.say b { color: var(--voice); }
+
+  .note {
+    background: var(--warn-soft);
+    border-left: 3px solid var(--warn);
+    border-radius: 0 7px 7px 0;
+    padding: .7rem .85rem;
+    font-size: .95rem;
+    line-height: 1.45;
+  }
+  .note .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--warn);
+    display: block;
+    margin-bottom: .2rem;
+  }
+
+  /* ---------- navegación inferior ---------- */
+
+  .navbar {
+    border-top: 1px solid var(--line-soft);
+    background: var(--ground);
+    padding: .55rem clamp(.8rem, 3vw, 1.6rem) max(.55rem, env(safe-area-inset-bottom));
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+  }
+  .navbtn {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 2.9rem;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: var(--panel);
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+  .navbtn:hover { border-color: var(--accent); color: var(--accent); }
+  .navbtn[disabled] { opacity: .32; cursor: default; }
+  .navbtn[disabled]:hover { border-color: var(--line); color: var(--ink); }
+  .navbtn svg { width: 20px; height: 20px; }
+
+  .next-label {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: .95rem;
+    line-height: 1.3;
+    color: var(--muted);
+  }
+  .next-label b { font-style: normal; font-family: var(--ui); font-weight: 600; color: var(--accent); }
+
+  .reftray { display: flex; gap: .4rem; flex-shrink: 0; }
+  .refbtn {
+    display: grid;
+    place-items: center;
+    width: 2.9rem;
+    height: 2.9rem;
+    border: 1px solid var(--warn);
+    color: var(--warn);
+    border-radius: 9px;
+    background: var(--warn-soft);
+  }
+  .refbtn:hover { background: var(--warn); color: var(--ground); }
+  .refbtn svg { width: 20px; height: 20px; }
+
+  /* ---------- índice ---------- */
+
+  .scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 7, 4, .5);
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .18s ease;
+  }
+  .scrim.on { opacity: 1; pointer-events: auto; }
+
+  .drawer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(21rem, 86vw);
+    background: var(--panel);
+    border-right: 1px solid var(--line);
+    z-index: 50;
+    transform: translateX(-101%);
+    transition: transform .22s cubic-bezier(.3, .8, .4, 1);
+    display: flex;
+    flex-direction: column;
+  }
+  .drawer.on { transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .drawer { transition: none; }
+  }
+
+  .drawer header {
+    padding: 1rem 1.1rem .7rem;
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+  }
+  .drawer header h2 {
+    font-family: var(--display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+  }
+  .drawer .list { overflow-y: auto; padding: .6rem .6rem 1.6rem; }
+  .drawer .grouplbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: .9rem .55rem .35rem;
+  }
+  .drawer .item {
+    display: flex;
+    gap: .6rem;
+    width: 100%;
+    text-align: left;
+    padding: .5rem .55rem;
+    border-radius: 7px;
+    font-size: .95rem;
+    line-height: 1.3;
+    align-items: baseline;
+  }
+  .drawer .item:hover { background: var(--panel-2); }
+  .drawer .item .n {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    min-width: 1.3rem;
+  }
+  .drawer .item.current { background: var(--accent-soft); }
+  .drawer .item.current .t { color: var(--accent); font-weight: 600; }
+  .drawer .item.current .n { color: var(--accent); }
+
+  /* ---------- consulta rápida ---------- */
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    background: var(--ground);
+    display: none;
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .overlay.on { display: grid; }
+  .overlay header {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .8rem clamp(.8rem, 3vw, 1.6rem);
+    border-bottom: 1px solid var(--line);
+  }
+  .overlay header h2 {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+  }
+  .overlay header .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--warn);
+  }
+  .overlay .body {
+    overflow-y: auto;
+    padding: clamp(.9rem, 3vw, 1.5rem);
+  }
+  .overlay .inner { max-width: 46rem; margin: 0 auto; }
+
+  /* rosa */
+  .rosewrap { display: flex; flex-direction: column; gap: 1.1rem; align-items: center; }
+  .rose { width: min(20rem, 78vw); height: auto; display: block; touch-action: manipulation; }
+  .rose .wedge { fill: var(--panel); stroke: var(--line); stroke-width: 1; cursor: pointer; transition: fill .15s ease; }
+  .rose .wedge:hover { fill: var(--accent-soft); }
+  .rose .wedge.sel { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.6; }
+  .rose .quad { fill: var(--panel-2); }
+  .rose text { font-family: var(--ui); pointer-events: none; }
+  .rose .lbl { font-size: 13px; font-weight: 650; fill: var(--ink); }
+  .rose .sub { font-size: 9.5px; fill: var(--muted); letter-spacing: .04em; }
+  .rose .qlbl { font-size: 9.5px; font-weight: 600; fill: var(--muted); }
+  .rose .axis { stroke: var(--line); stroke-width: 1; }
+
+  .rosedetail {
+    width: 100%;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 11px;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+  }
+  .rosedetail .rd-top { display: flex; align-items: baseline; gap: .55rem; flex-wrap: wrap; }
+  .rosedetail h3 { font-family: var(--display); font-size: 1.3rem; margin: 0; font-weight: 600; }
+  .rosedetail .kind {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .rosedetail .marcos { display: grid; gap: .45rem; }
+  .rosedetail .marco { display: flex; gap: .6rem; font-size: .93rem; line-height: 1.4; }
+  .rosedetail .marco .mk {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--do);
+    min-width: 5.4rem;
+    flex-shrink: 0;
+    padding-top: .22em;
+  }
+  .rosedetail .costo { font-size: .93rem; line-height: 1.4; color: var(--muted); }
+  .rosedetail .costo b { color: var(--ink); font-weight: 600; }
+  .rosedetail .ask {
+    border-left: 2px solid var(--voice);
+    padding-left: .9rem;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.08rem;
+    line-height: 1.42;
+    color: var(--voice);
+  }
+  .rosedetail .askhead {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+    display: block;
+    margin-bottom: .25rem;
+  }
+
+  /* improntas */
+  .imp { display: flex; flex-direction: column; gap: .55rem; }
+  .improw {
+    display: grid;
+    grid-template-columns: 7.4rem 1fr;
+    gap: .3rem .9rem;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: .7rem .85rem;
+  }
+  .improw .code { display: flex; flex-direction: column; gap: .1rem; }
+  .improw .code .c { font-family: var(--mono); font-size: 10px; letter-spacing: .09em; color: var(--accent); }
+  .improw .code .nm { font-family: var(--display); font-size: 1.06rem; font-weight: 600; line-height: 1.15; }
+  .improw .txt { font-size: .93rem; line-height: 1.42; }
+  .improw .txt .lin { color: var(--muted); }
+  .improw .txt .her { display: block; margin-top: .2rem; }
+  .improw .txt .her b { color: var(--accent); font-weight: 600; }
+  .improw .cre {
+    grid-column: 1 / -1;
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--voice);
+    font-size: 1rem;
+    margin-top: .15rem;
+  }
+  @media (max-width: 30rem) {
+    .improw { grid-template-columns: 1fr; }
+  }
+
+  /* contingencias */
+  .cont { display: flex; flex-direction: column; gap: .6rem; }
+  .controw {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--warn);
+    border-radius: 0 9px 9px 0;
+    padding: .75rem .9rem;
+  }
+  .controw .if {
+    font-weight: 650;
+    font-size: .98rem;
+    line-height: 1.35;
+    display: block;
+    margin-bottom: .25rem;
+  }
+  .controw .then { font-size: .95rem; line-height: 1.45; color: var(--muted); }
+  .controw .then b { color: var(--ink); font-weight: 600; }
+
+  .hint {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    padding-top: .9rem;
+  }
+</style>
+
+<div class="app">
+  <div class="topbar">
+    <button class="iconbtn" id="btn-index" aria-label="Abrir índice de la sesión">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <div class="topmeta">
+      <span class="where" id="where"></span>
+      <span class="count" id="count"></span>
+    </div>
+    <button class="iconbtn" id="btn-theme" aria-label="Cambiar entre claro y oscuro">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20 13.2A8.2 8.2 0 1 1 10.8 4a6.6 6.6 0 0 0 9.2 9.2Z"/></svg>
+    </button>
+  </div>
+
+  <div class="rail" id="rail"></div>
+
+  <main class="stage" id="stage"></main>
+
+  <nav class="navbar">
+    <button class="navbtn" id="btn-prev" aria-label="Tarjeta anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button class="navbtn" id="btn-next" aria-label="Tarjeta siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <div class="next-label" id="nextlabel"></div>
+    <div class="reftray">
+      <button class="refbtn" data-ref="rosa" aria-label="Consulta: rosa de los cuatro caminos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z"/></svg>
+      </button>
+      <button class="refbtn" data-ref="improntas" aria-label="Consulta: las siete improntas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 5h16M4 10h16M4 15h11M4 20h11"/></svg>
+      </button>
+      <button class="refbtn" data-ref="contingencias" aria-label="Consulta: contingencias de la demostración">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 4.5 2.8 20h18.4L12 4.5Z"/><path d="M12 10v4.2M12 17.2v.1"/></svg>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<div class="scrim" id="scrim"></div>
+
+<aside class="drawer" id="drawer" aria-label="Índice de la sesión">
+  <header>
+    <h2>Sesión 2 — La línea paterna</h2>
+    <button class="iconbtn" id="btn-close-index" aria-label="Cerrar índice">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </header>
+  <div class="list" id="indexlist"></div>
+</aside>
+
+<section class="overlay" id="overlay" aria-label="Tarjeta de consulta">
+  <header>
+    <span class="tag">Consulta</span>
+    <h2 id="ov-title"></h2>
+    <button class="iconbtn" id="btn-close-ov" aria-label="Cerrar consulta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </header>
+  <div class="body"><div class="inner" id="ov-body"></div></div>
+</section>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ============ contenido ============ */
+
+  var CARDS = [
+    {
+      grupo: "Antes de empezar", where: "Preparación",
+      eyebrow: "Antes de empezar", title: "Material y encuadre",
+      cues: [
+        { k: "do", t: "Hoja doble carta con los cuatro ejes trazados: <b>Norte</b> arriba, <b>Sur</b> abajo, <b>Este</b> derecha, <b>Oeste</b> izquierda, cuadrantes en las diagonales." },
+        { k: "do", t: "Hoja sobre la <b>tabla giratoria</b> — permite mirar la caída desde varios ángulos sin mover el muñeco." },
+        { k: "do", t: "Tres muñecos Playmobil etiquetados: voluntario, padre, abuelo paterno." },
+        { k: "do", t: "14 slides proyectando en sala y compartidos en Zoom. Co-facilitador confirmado <b>en voz alta</b> antes de arrancar." },
+        { t: "El material es de trabajo del Dr. — el grupo lo ve, no lo toca." },
+        { t: "Cámara cerca del setup: la caída se filma completa, sin simplificar la maniobra." }
+      ],
+      note: "Registro clínico-terapéutico. Se afirma el hecho directo, sin construcciones defensivas del tipo «no es X, es Y».",
+      next: "Hora 1 — marco (8 bloques) → Hora 2 — demostración (8 secciones)"
+    },
+    {
+      grupo: "Antes de empezar", where: "Preparación",
+      eyebrow: "Antes de empezar", title: "Ruta de las dos horas",
+      cues: [
+        { t: "<b>Hora 1 · marco.</b> Recuperación · objetivo · cromosoma Y · los cuatro caminos · los tres marcos · cuadrantes · siete improntas · momento somático." },
+        { t: "<b>Hora 2 · demostración.</b> Encuadre de observación · material · voluntario · la caída · la lectura · cierre del caso · debrief · cierre y gancho." },
+        { t: "Sin tiempos fijos. Se avanza cuando el grupo está listo." },
+        { t: "Objetivo del día: que cada participante pueda leer una línea paterna como dirección de vida, y que vea la herramienta trabajar un caso real de principio a fin." },
+        { t: "Las tres tarjetas de consulta —rosa de los caminos, siete improntas, contingencias— están abajo a la derecha y se abren sin perder el lugar." }
+      ],
+      next: "Bloque 1 — Recuperación de la Sesión 1"
+    },
+
+    {
+      grupo: "Hora 1 · Marco", where: "Hora 1 · Bloque 1", slide: "Slide 1",
+      eyebrow: "Hora 1 · Bloque 1", title: "Recuperación de la Sesión 1",
+      cues: [
+        { t: "Grupo mixto, sala y Zoom. La sesión se graba." },
+        { k: "do", t: "Genograma de la Sesión 1 a la mano. Se responde <b>mentalmente</b>, sin abrir el chat todavía." },
+        { k: "say", t: "¿Qué código de patrón marcaron con asterisco — <b>A</b> de edad o fecha, <b>R</b> de rol, <b>E</b> de tipo de evento por rama?", beat: "pausa" },
+        { k: "say", t: "¿En qué línea apareció, la materna o la paterna? ¿Lo pudieron explicar en una sola frase?", beat: "pausa breve" },
+        { t: "Quien no traiga el genograma terminado puede seguir la demostración igual. Queda como pendiente para la Sesión 4." }
+      ],
+      note: "Práctica espaciada — es lo que convierte cuatro sesiones sueltas en una formación. No saltarla aunque haya prisa.",
+      next: "Bloque 2 — Objetivo explícito de la sesión"
+    },
+    {
+      grupo: "Hora 1 · Marco", where: "Hora 1 · Bloque 2",
+      eyebrow: "Hora 1 · Bloque 2", title: "Objetivo de la sesión",
+      cues: [
+        { t: "Lo que van a poder hacer al terminar: <b>leer la línea paterna de un genograma como una dirección de vida</b> — un movimiento sostenido a lo largo de generaciones, que apunta hacia algún lado y se puede nombrar." },
+        { t: "Primera hora: por qué la línea paterna se lee aparte, y con qué mapa se lee." },
+        { t: "Segunda hora: un caso real de principio a fin, con el razonamiento clínico dicho en voz alta mientras ocurre." }
+      ],
+      note: "Enunciar el objetivo en voz alta: el estudiante que sabe a qué apunta la sesión aprende más que el que la descubre sobre la marcha.",
+      next: "Bloque 3 — El cromosoma Y"
+    },
+    {
+      grupo: "Hora 1 · Marco", where: "Hora 1 · Bloque 3", slide: "Slide 2",
+      eyebrow: "Hora 1 · Bloque 3", title: "Por qué la línea paterna se trabaja aparte",
+      cues: [
+        { t: "Dos líneas genéticas se transmiten completas sin mezclarse con el otro progenitor. El ADN mitocondrial va la próxima semana; hoy, el <b>cromosoma Y</b>." },
+        { t: "La región que no se recombina con el X pasa completa: padre, hijo, nieto, bisnieto comparten esa región letra por letra. Contraparte exacta del mtDNA materno." },
+        { t: "<b>Con grupo mixto, decirlo siempre:</b> el hijo varón recibe el cromosoma Y; la hija recibe el X paterno y sus autosomas. A ambos les llega la carga epigenética del espermatozoide y la transmisión sistémica de toda la línea." },
+        { t: "El cromosoma Y es el marcador más visible del linaje, y uno entre varios canales por los que ese linaje llega al descendiente." },
+        { t: "Razón clínica de separarlas: dos vías de acceso distintas. Paterna hoy, con movimiento y dirección física. Materna la próxima semana, con el campo familiar." }
+      ],
+      note: "Si la línea paterna se lee como algo «solo de hombres», la mitad de la sala queda fuera. Primer corte natural para 1–2 preguntas del chat.",
+      next: "Bloque 4 — Los Cuatro Caminos de la Vida"
+    },
+    {
+      grupo: "Hora 1 · Marco", where: "Hora 1 · Bloque 4", slide: "Slides 3–4",
+      eyebrow: "Hora 1 · Bloque 4", title: "Los Cuatro Caminos de la Vida",
+      cues: [
+        { t: "Modelo del Instituto: cuatro direcciones sobre los ejes cardinales; cada una, una tendencia predominante en cómo la persona se relaciona con la vida, decide y repite patrones." },
+        { t: "<b>Norte · Migrante</b> — lo nuevo, la exploración. Esperanza con incertidumbre. Expansión." },
+        { t: "<b>Sur · Sufrimiento</b> — supervivencia, conflicto, reactividad. Miedo crónico. Contracción." },
+        { t: "<b>Oeste · Deber</b> — misión, responsabilidad, servicio. Obligación y lealtad." },
+        { t: "<b>Este · Placer</b> — gozo, satisfacción, conservación de la energía. Comodidad y disfrute." },
+        { t: "Principio que ordena todo lo demás: ningún camino es bueno ni malo. El trabajo terapéutico consiste en hacer consciente el que se transita, ver qué lo sostiene e integrar los recursos de los otros tres." }
+      ],
+      note: "Concepto nuclear, en un solo trozo. No abrir preguntas todavía — los tres marcos del bloque siguiente contestan la mayoría antes de que se formulen.",
+      next: "Bloque 5 — Qué sostiene cada camino"
+    },
+    {
+      grupo: "Hora 1 · Marco", where: "Hora 1 · Bloque 5", slide: "Slide 5",
+      eyebrow: "Hora 1 · Bloque 5", title: "Los tres marcos que cruzan en cada camino",
+      cues: [
+        { t: "<b>Filtro mental (metaprograma).</b> Migrante, hacia lo deseado y buscando opciones. Sufrimiento, alejándose de lo temido, en el detalle e hipervigilante. Deber, criterio externo y procedimientos. Placer, hacia el disfrute." },
+        { t: "<b>Mecanismo de supervivencia.</b> Sufrimiento: simpático en amenaza crónica, eje del estrés sobreactivado. Deber: vago ventral, cooperación social. Placer: parasimpático restaurativo. Migrante: activación exploratoria." },
+        { t: "Norte y Sur comparten el movimiento y se separan en su origen — la búsqueda en uno, la amenaza en el otro." },
+        { t: "<b>Movimiento sistémico.</b> Migrante: migraciones y exilios reales. Sufrimiento: lealtad al dolor de los que sufrieron antes. Deber: rol o misión heredada de quien se sacrificó. Placer: compensación por generaciones de escasez." },
+        { t: "Cuando los tres coinciden en una dirección, esa es la predominante. <b>El camino se hereda por la línea y llega a la persona ya trazado.</b>" }
+      ],
+      note: "Estatus distinto por marco: cromosoma Y es biología establecida; metaprogramas y movimientos sistémicos son marcos clínicos; las correspondencias neurobiológicas son el modelo del Instituto. No sobreafirmar el detalle neuroquímico. Segundo corte para preguntas.",
+      next: "Bloque 6 — Cuando caen dos caminos a la vez"
+    },
+    {
+      grupo: "Hora 1 · Marco", where: "Hora 1 · Bloque 6", slide: "Slide 6",
+      eyebrow: "Hora 1 · Bloque 6", title: "Los cuadrantes",
+      cues: [
+        { t: "Casi nadie es de un solo camino puro. El cuadrante opera como una <b>tensión</b> entre los dos caminos que lo forman; ahí ocurre la mayor parte del trabajo clínico." },
+        { t: "<b>Noreste · Migrante + Placer</b> — exploración hedonista. Costo: superficialidad, inconstancia." },
+        { t: "<b>Noroeste · Migrante + Deber</b> — exploración al servicio. Costo: agotamiento de buscar siempre nuevas formas de servir." },
+        { t: "<b>Sureste · Sufrimiento + Placer</b> — placer culpable, oscilación entre gozo y culpa. El cuadrante de las adicciones como escape del dolor." },
+        { t: "<b>Suroeste · Sufrimiento + Deber</b> — el sufrimiento vuelto misión. El martirio como identidad, de quien no puede recibir." },
+        { t: "Nombrar el cuadrante ya tiene efecto terapéutico: el patrón que se hace visible queda disponible para decidir sobre él." }
+      ],
+      note: "Momento de mayor densidad conceptual de la Hora 1. Dejar el Slide 6 proyectado — es el mapa que van a ver aplicarse en la demostración.",
+      next: "Bloque 7 — Las 7 primeras improntas"
+    },
+    {
+      grupo: "Hora 1 · Marco", where: "Hora 1 · Bloque 7 · 1/2", slide: "Slide 7",
+      eyebrow: "Hora 1 · Bloque 7 — 1/2", title: "Qué empuja a una línea: improntas i1–i4",
+      cues: [
+        { t: "Una línea camina hacia una dirección porque en algún punto un ciclo defensivo quedó sin cerrar y se volvió patrón. Son trece en total; hoy, las siete primeras." },
+        { t: "Lente de todo el bloque: el descendiente <b>hereda el umbral, no el evento</b> — la facilidad con la que su sistema activa esa respuesta ante situaciones que a otra persona no le activarían nada." },
+        { t: "<b>i1 Desacople</b> — impacto demasiado grande para integrarlo. Hereda el reflejo de desconectarse ante el estrés. <em>«No estoy realmente aquí.»</em>" },
+        { t: "<b>i2 Acorazamiento</b> — traición del vínculo. Hereda la coraza sin la traición: el cuerpo se cierra justo antes de la intimidad. <em>«No vuelvo a bajar la guardia.»</em>" },
+        { t: "<b>i3 Retracción</b> — humillación o caída pública nunca reparada. Hereda el umbral de la vergüenza, sin un fracaso propio. <em>«No soy suficiente.»</em>" },
+        { t: "<b>i4 Fijación Externa</b> — injusticia real que nunca se reparó. Hereda la fijación en el agravio y la búsqueda del culpable. <em>«La vida es injusta.»</em>" }
+      ],
+      note: "Presentar las siete como rejilla y abrir a fondo solo las dos o tres que aparezcan en la demo y en los genogramas del grupo.",
+      next: "Bloque 7 (2/2) — improntas i5–i7"
+    },
+    {
+      grupo: "Hora 1 · Marco", where: "Hora 1 · Bloque 7 · 2/2", slide: "Slide 7",
+      eyebrow: "Hora 1 · Bloque 7 — 2/2", title: "Improntas i5–i7 y el eje común",
+      cues: [
+        { t: "<b>i5 Compresión</b> — en la línea algo no se pudo decir. Hereda el cierre del canal: la garganta que se aprieta, las palabras que no salen. Típica de las líneas con un secreto. <em>«No tiene caso hablar.»</em>" },
+        { t: "<b>i6 Camuflaje</b> — ser visto era peligroso. Hereda el reflejo de desaparecer: no ocupa su lugar, esconde lo que logra. <em>«Yo soy el error.»</em>" },
+        { t: "<b>i7 Hibernación</b> — hambre, guerra, opresión sostenida. Hereda un umbral bajo para apagarse ante obstáculos manejables. La que con más frecuencia viaja por la línea. <em>«La vida no tiene sentido.»</em>" },
+        { t: "Hacia dónde empujan: <b>i3, i4 y sobre todo i7</b> inclinan una vida entera hacia el Sur." },
+        { t: "Cuando el muñeco caiga, hay dos preguntas encadenadas: qué camino señala la caída, y qué impronta de la línea empujó hasta ahí." }
+      ],
+      note: "Si el tiempo aprieta, las tres del Sur (i3, i4, i7) son las que más van a aparecer al leer líneas paternas.",
+      next: "Bloque 8 — Momento somático"
+    },
+    {
+      grupo: "Hora 1 · Marco", where: "Hora 1 · Bloque 8 · 1/2", slide: "Sin slide",
+      eyebrow: "Hora 1 · Bloque 8 — 1/2", title: "Hacia dónde cae tu propia línea",
+      cues: [
+        { k: "do", t: "Bajar la mirada de la pantalla, pies en el piso. Nadie comparte nada." },
+        { t: "Encuadre: varios están entrenados en rastreo con test. Hoy se deja a un lado — el trabajo es de escucha del cuerpo, sin interrogarlo. Lo que reconozca, lo reconoce; lo que no, también es información." },
+        { k: "do", t: "<b>1 · Nombrar</b> — ambas manos sobre las piernas, sintiendo su peso." },
+        { k: "say", t: "Traigo una línea de hombres en el cuerpo. Algo de lo que soy no empezó conmigo." },
+        { k: "do", t: "<b>2 · Regular</b> — respiración 4-4-6, tres veces." },
+        { k: "say", t: "Mi cuerpo está aquí, en esta silla, ahora." },
+        { k: "do", t: "<b>3 · Recursos</b> — pies apoyados, peso del cuerpo sobre la silla." },
+        { k: "say", t: "Tengo un cuerpo que puede mirar esta línea y sostenerse." },
+        { k: "do", t: "<b>4 · Ampliar</b> — sin buscar imagen ni recuerdo." },
+        { k: "say", t: "Los hombres de mi línea paterna, ¿hacia dónde caminaron? ¿Se fueron? ¿Cargaron dolor? ¿Cumplieron un deber? ¿O buscaron disfrutar?", beat: "pausa" },
+        { k: "say", t: "¿Y yo? ¿Camino hacia el mismo lado que ellos, o hacia el opuesto?", beat: "pausa" }
+      ],
+      next: "Bloque 8 (2/2) — localizar, cualidades y cierre"
+    },
+    {
+      grupo: "Hora 1 · Marco", where: "Hora 1 · Bloque 8 · 2/2", slide: "Sin slide",
+      eyebrow: "Hora 1 · Bloque 8 — 2/2", title: "Localizar, nombrar y marcar el árbol",
+      cues: [
+        { k: "do", t: "<b>5 · Dónde aparece</b> — localizar sin corregir." },
+        { k: "say", t: "Al pensar en la línea, ¿en qué parte del cuerpo se hizo presente algo? Lleven la atención ahí y déjenla.", beat: "pausa" },
+        { k: "do", t: "<b>6 · Cualidades</b> — leer despacio, con pausas largas. No se responde en voz alta." },
+        { k: "say", t: "¿Tiene una forma? ¿Pesa o es liviano? ¿Es frío o cálido? ¿Está quieto o tiene movimiento? Y si tuviera un color, ¿cuál sería?", beat: "pausa larga" },
+        { k: "do", t: "<b>7 · Cuando algo encaja</b> — solo registrarlo." },
+        { k: "say", t: "Si algo se movió al ponerle nombre, no hagan nada con eso. Y si nada se movió, también está bien.", beat: "pausa" },
+        { k: "do", t: "<b>8 · Gesto</b> — una mano se extiende en la dirección que se sienta; la otra queda sobre el pecho." },
+        { k: "say", t: "Esta es la dirección que siento, y esto es lo que mi cuerpo trae de la línea." },
+        { k: "do", t: "<b>La pausa</b> — silencio real de 20 a 30 segundos. Es el punto que no debe saltarse, aunque se sienta largo." },
+        { k: "do", t: "<b>9 · Diferenciar</b> — las palmas giran hacia arriba, gesto de recibir." },
+        { k: "say", t: "Esto lo traigo. No todo lo que traigo es mío. Hoy solo lo miro." },
+        { k: "do", t: "<b>Cierre · el ancla</b> — con lápiz, en el margen del genograma: una flecha con la dirección sentida y una palabra de la cualidad que apareció." }
+      ],
+      note: "Funciona igual en sala y en Zoom — es un gesto de manos, nadie necesita cámara. Si a alguien se le activa algo fuerte, el co-facilitador lo anota y se acerca 1:1 en el receso; no se detiene el ritmo grupal.",
+      next: "Cierre de Hora 1 — transición a la demostración"
+    },
+    {
+      grupo: "Hora 1 · Marco", where: "Hora 1 · Cierre",
+      eyebrow: "Hora 1 · Cierre", title: "Transición a la demostración",
+      cues: [
+        { t: "Recapitular en una sola frase: la línea paterna se transmite por una vía biológica literal, se lee como una dirección de vida, y esa dirección la originó una impronta que viaja por la línea hasta que se hace consciente." },
+        { t: "Anunciar el caso real con voluntario, de principio a fin." },
+        { k: "say", t: "Miren como terapeutas que estudian a otro terapeuta trabajando. Les voy a decir exactamente qué observar." }
+      ],
+      next: "Hora 2 · Sección 1 — Encuadre de la observación"
+    },
+
+    {
+      grupo: "Hora 2 · Demostración", where: "Hora 2 · Sección 1", slide: "Slide 8",
+      eyebrow: "Hora 2 · Sección 1", title: "Encuadre de la observación",
+      cues: [
+        { t: "<b>Foco 1 · La dirección de la caída.</b> Hacia dónde apuntan los pies — un camino o un cuadrante. Es el dato de entrada." },
+        { t: "<b>Foco 2 · Las preguntas y por qué se hacen.</b> El razonamiento va dicho en voz alta mientras ocurre. Qué llevó a esa pregunta y no a otra." },
+        { t: "<b>Foco 3 · El cruce con el genosociograma.</b> Fechas, oficios y eventos de la línea paterna: ahí una dirección sobre un papel se vuelve lectura clínica." },
+        { k: "do", t: "<b>Tarea de registro:</b> papel a un lado. No se anota la historia del voluntario. Cada vez que el Dr. hace una pregunta, se anota qué creen que la disparó. Al final se compara." }
+      ],
+      note: "La atención dirigida es el cuello de botella del aprendizaje por observación — sin foco, el observador retiene anécdota. El Slide 8 permanece visible toda la demostración.",
+      next: "Sección 2 — Preparación del material"
+    },
+    {
+      grupo: "Hora 2 · Demostración", where: "Hora 2 · Sección 2", slide: "Slide 9",
+      eyebrow: "Hora 2 · Sección 2", title: "Preparación del material a la vista",
+      cues: [
+        { k: "do", t: "Montar frente al grupo: hoja con los cuatro ejes y los cuadrantes en las diagonales, sobre la tabla giratoria." },
+        { t: "Nombrar cada eje al trazarlo: Norte Migrante, Sur Sufrimiento, Este Placer, Oeste Deber." },
+        { k: "do", t: "Tres muñecos etiquetados: voluntario, padre, abuelo paterno. Con eso alcanza para mostrar la lectura." },
+        { t: "El grupo lo ve; no lo toca. Es material de trabajo del Dr." }
+      ],
+      note: "Filmar el setup y la caída de cerca. La maniobra se captura completa, sin simplificar en la edición.",
+      next: "Sección 3 — Voluntario y elección de muñecos"
+    },
+    {
+      grupo: "Hora 2 · Demostración", where: "Hora 2 · Sección 3",
+      eyebrow: "Hora 2 · Sección 3", title: "Voluntario y elección de muñecos",
+      cues: [
+        { t: "Se pide alguien con su línea paterna presente: padre y abuelo paterno, de dónde eran, a qué se dedicaron, qué les tocó vivir. Cualquier línea sirve." },
+        { k: "do", t: "Preferentemente de sala, por la manipulación física del material." },
+        { k: "say", t: "Elige los muñecos que sientas que representan a cada uno. No lo pienses mucho, déjate llevar por la intuición." },
+        { t: "<b>Think-aloud al grupo:</b> la elección ya es información — cuál muñeco eligió para el padre, el más grande, el que está de espaldas, el que trae una herramienta. Eso es lo primero que se registra." }
+      ],
+      note: "Regla de oro de esta hora: cada acción va acompañada de por qué se hace, dicho al grupo. El voluntario vive el proceso; el grupo escucha el razonamiento.",
+      next: "Sección 4 — La caída"
+    },
+    {
+      grupo: "Hora 2 · Demostración", where: "Hora 2 · Sección 4", slide: "Slide 10",
+      eyebrow: "Hora 2 · Sección 4", title: "La caída",
+      cues: [
+        { k: "do", t: "Los tres muñecos de pie en el centro, sobre la cruz de los ejes." },
+        { k: "do", t: "Se levanta el del voluntario unos centímetros, <b>verticalmente</b> — sin lanzarlo ni empujarlo — y se suelta. Observar la dirección de los pies." },
+        { t: "<b>Think-aloud:</b> la caída da una hipótesis de dirección, y esa hipótesis se pone a prueba con preguntas antes de sostener nada sobre esta persona. Abre el trabajo y no lo concluye." },
+        { k: "do", t: "Repetir con el padre y con el abuelo. Leer el conjunto." },
+        { t: "Dos generaciones al mismo lado: <b>lealtad</b> que sigue la línea. A lados opuestos: <b>compensación</b> — un hijo que fue en dirección contraria suele estar corrigiendo algo de la línea." }
+      ],
+      note: "Momento imán de la sesión. Filmarlo de cerca. Dejar clarísimo que la caída es hipótesis de entrada; todo el rigor está en lo que viene después.",
+      next: "Sección 5 — La lectura"
+    },
+    {
+      grupo: "Hora 2 · Demostración", where: "Hora 2 · Sección 5", slide: "Slide 11",
+      eyebrow: "Hora 2 · Sección 5", title: "La lectura: las preguntas por dirección",
+      cues: [
+        { t: "La caída dio una dirección. Ahora las preguntas de ese camino, escuchando si la vida del voluntario y de su línea las confirman." },
+        { k: "say", t: "<b>Norte.</b> ¿Hay migraciones en tu familia? ¿Alguien tuvo que irse de su tierra? ¿Sientes tú también esa necesidad de moverte?" },
+        { k: "say", t: "<b>Sur.</b> ¿Hay historias de sufrimiento en tu familia que nunca se hablaron? ¿Sientes que cargas un peso que no empezó contigo?" },
+        { k: "say", t: "<b>Oeste.</b> ¿Quién en tu familia fue el que más se sacrificó? ¿Te identificas con esa persona? ¿Sientes que tu vida está al servicio de otros?" },
+        { k: "say", t: "<b>Este.</b> ¿En tu familia se permitía disfrutar, o el placer se veía mal? ¿Sientes culpa cuando las cosas te van bien?" },
+        { k: "do", t: "Si cayó en diagonal, cruzar las preguntas de los dos caminos del cuadrante. La rosa de consulta está abajo a la derecha." }
+      ],
+      next: "Sección 5 (2/2) — el razonamiento en voz alta"
+    },
+    {
+      grupo: "Hora 2 · Demostración", where: "Hora 2 · Sección 5 · 2/2",
+      eyebrow: "Hora 2 · Sección 5 — 2/2", title: "El razonamiento en voz alta",
+      cues: [
+        { t: "Verbalizar la forma de la pregunta: se le <b>preguntó</b>, en lugar de declararle «cayó al Oeste, entonces eres del Deber»." },
+        { t: "Verbalizar la bifurcación: si hubiera dicho que nadie se sacrificó, que nadie cargó una misión, se suelta esa hipótesis y se mira el cuadrante vecino." },
+        { t: "La técnica propone una lectura y la verifica contra la vida real de la persona. La caída sirve para saber qué preguntar; el rigor está en la verificación." },
+        { k: "do", t: "<b>Cruce con el genosociograma:</b> tomar un dato que el voluntario ya sabe de su familia y mostrar cómo encaja con la dirección — o cómo no encaja." },
+        { t: "Cuando la caída, las preguntas y el genosociograma apuntan al mismo lado, hay una lectura sólida. Cuando no, hay una tensión que vale la pena mirar." }
+      ],
+      note: "Verbalizar cada bifurcación de decisión: «consideré esto, lo descarté por esto». Es el activo más valioso de la sesión para el curso grabado — no se puede reconstruir después.",
+      next: "Sección 6 — Cierre del caso"
+    },
+    {
+      grupo: "Hora 2 · Demostración", where: "Hora 2 · Sección 6", slide: "Slide 12",
+      eyebrow: "Hora 2 · Sección 6", title: "Cierre del caso y devolución",
+      cues: [
+        { t: "Cerrar con el voluntario <b>antes</b> de pasar al debrief grupal." },
+        { k: "say", t: "Viste hacia dónde cae tu línea, y viste que viene de atrás, de antes de ti." },
+        { k: "say", t: "Ahora que puedes ver el patrón, ¿es este el camino en el que quieres seguir, o quieres empezar a caminar hacia otro lado? Esa pregunta es tuya, para las próximas semanas." },
+        { k: "do", t: "Agradecer con calidez. Cierre cálido, sin análisis encima del voluntario." }
+      ],
+      note: "Contención: abrió su línea paterna frente a 50 personas. Si algo quedó activado, el co-facilitador lo acompaña 1:1 en el receso. No se deja al voluntario abierto.",
+      next: "Sección 7 — Debrief del grupo"
+    },
+    {
+      grupo: "Hora 2 · Demostración", where: "Hora 2 · Sección 7",
+      eyebrow: "Hora 2 · Sección 7", title: "Debrief y transferencia",
+      cues: [
+        { k: "do", t: "Dos o tres voluntarios, mezcla de sala y Zoom: qué pregunta vieron hacer, y qué creen que la disparó." },
+        { t: "Confirmar o corregir el razonamiento observado. Reconstruir por qué se preguntó lo que se preguntó es el primer paso para hacerlo ellos." },
+        { k: "do", t: "<b>Transferencia:</b> vuelven a su propio genograma o a la línea que sintieron en el momento somático." },
+        { k: "say", t: "Sin muñecos, con lo que ya vieron: si tuvieran que apostar una dirección para su propia línea paterna, ¿cuál sería? Anótenla al margen de su árbol." }
+      ],
+      note: "Es el paso que convierte la demostración en formación. Sin él, el grupo se lleva la anécdota del voluntario.",
+      next: "Sección 8 — Cierre y las dos puertas"
+    },
+    {
+      grupo: "Hora 2 · Demostración", where: "Hora 2 · Sección 8", slide: "Slides 13–14",
+      eyebrow: "Hora 2 · Sección 8", title: "Cierre de sesión y las dos puertas",
+      cues: [
+        { t: "Puente a la Sesión 3: la línea materna con una vía de acceso distinta, el campo familiar. Traer el mismo genograma. La Sesión 4 vuelve a este árbol para llevarlo dos generaciones más atrás." },
+        { t: "La sesión quedó grabada, disponible para revisar la demostración con calma." },
+        { t: "<b>Puerta 1 · Leer la línea.</b> Los siete pasos, los cuadrantes, la familia entera junta, las preguntas que verifican cada hipótesis: <b>Terapia con Muñecos: Playmobil Pro</b>. El marco completo con sus metaprogramas y movimientos sistémicos: <b>Los Caminos de la Vida</b>." },
+        { t: "<b>Puerta 2 · Mover lo que la línea dejó.</b> El acto completo, con objetos cotidianos, que el sistema nervioso registra como experiencia real: <b>Actos que Mueven</b>, taller vivencial de Ritual Experiencing." },
+        { k: "say", t: "Leer la línea, y mover lo que la línea dejó. Hoy tocaron un poco de las dos." }
+      ],
+      note: "El gancho va al final y una sola vez, después de que la demostración y el momento somático generaron el interés. Cada curso se engancha a una experiencia que el grupo acaba de tener. Tono de invitación.",
+      next: "Fin de la Sesión 2"
+    }
+  ];
+
+  /* ---- rosa de los cuatro caminos ---- */
+
+  var ROSA = {
+    N: {
+      kind: "Camino", name: "Norte · Migrante",
+      esencia: "Búsqueda de lo nuevo, exploración, movimiento hacia lo desconocido. Emoción: esperanza con incertidumbre. Polaridad: expansión.",
+      marcos: [
+        ["Metaprograma", "Hacia lo deseado, buscando opciones."],
+        ["Biológico", "Activación simpática exploratoria: se moviliza hacia lo nuevo buscando oportunidad."],
+        ["Sistémico", "Migraciones y exilios reales; el desarraigo que se repite."]
+      ],
+      costo: "Se reinventa con facilidad y no echa raíces.",
+      ask: "¿Hay migraciones en tu familia? ¿Alguien tuvo que irse de su tierra? ¿Sientes tú también esa necesidad de moverte, de no quedarte en un lugar?"
+    },
+    S: {
+      kind: "Camino", name: "Sur · Sufrimiento",
+      esencia: "Supervivencia pura, conflicto y reactividad. Emoción: miedo crónico, alerta permanente. Polaridad: contracción.",
+      marcos: [
+        ["Metaprograma", "Alejándose de lo temido; vive en el detalle, hipervigilante."],
+        ["Biológico", "Simpático en amenaza crónica: lucha, huida o congelación, con el eje del estrés sobreactivado."],
+        ["Sistémico", "Lealtad al dolor de los que sufrieron antes."]
+      ],
+      costo: "Reactividad permanente; el peso que no empezó en la persona.",
+      ask: "¿Hay historias de sufrimiento en tu familia que nunca se hablaron? ¿Sientes que cargas un peso que no empezó contigo?"
+    },
+    E: {
+      kind: "Camino", name: "Este · Placer",
+      esencia: "Gozo, satisfacción, conservación de la energía. Emoción: comodidad y disfrute. Polaridad: conservación.",
+      marcos: [
+        ["Metaprograma", "Hacia el disfrute, buscando opciones."],
+        ["Biológico", "Parasimpático restaurativo: descanso, digestión, conservación."],
+        ["Sistémico", "Compensación por generaciones de escasez — «yo sí voy a disfrutar»."]
+      ],
+      costo: "La conservación vuelta evasión de lo que exige esfuerzo.",
+      ask: "¿En tu familia se permitía disfrutar, o el placer se veía mal? ¿Sientes culpa cuando las cosas te van bien?"
+    },
+    O: {
+      kind: "Camino", name: "Oeste · Deber",
+      esencia: "Misión, responsabilidad, servicio. Emoción: obligación y lealtad. Polaridad: servicio.",
+      marcos: [
+        ["Metaprograma", "Decide por criterio externo y sigue procedimientos."],
+        ["Biológico", "Vago ventral: cooperación social, vínculo."],
+        ["Sistémico", "Rol o misión heredada de alguien que se sacrificó."]
+      ],
+      costo: "Sostiene a todos y no encuentra permiso para descansar.",
+      ask: "¿Quién en tu familia fue el que más se sacrificó? ¿Te identificas con esa persona? ¿Sientes que tu vida está al servicio de otros?"
+    },
+    NE: {
+      kind: "Cuadrante", name: "Noreste · Migrante + Placer",
+      esencia: "Exploración hedonista: buscar lo nuevo que dé gozo. Combina dos tendencias que se acompañan.",
+      marcos: [["Cruzar", "Preguntas de Norte y de Este."]],
+      costo: "Superficialidad e inconstancia.",
+      ask: "¿Hay migraciones en tu familia? · ¿En tu familia se permitía disfrutar, o el placer se veía mal?"
+    },
+    NO: {
+      kind: "Cuadrante", name: "Noroeste · Migrante + Deber",
+      esencia: "Exploración al servicio: buscar lo nuevo como misión. Dos tendencias que se acompañan.",
+      marcos: [["Cruzar", "Preguntas de Norte y de Oeste."]],
+      costo: "Agotamiento de buscar siempre nuevas formas de servir.",
+      ask: "¿Alguien tuvo que irse de su tierra? · ¿Quién en tu familia fue el que más se sacrificó?"
+    },
+    SE: {
+      kind: "Cuadrante", name: "Sureste · Sufrimiento + Placer",
+      esencia: "Placer culpable: oscila entre el gozo y la culpa por disfrutar. Dos tendencias en tensión. El cuadrante de las adicciones como escape del dolor.",
+      marcos: [["Cruzar", "Preguntas de Sur y de Este."]],
+      costo: "La oscilación entre disfrutar y castigarse por disfrutar.",
+      ask: "¿Sientes que cargas un peso que no empezó contigo? · ¿Sientes culpa cuando las cosas te van bien?"
+    },
+    SO: {
+      kind: "Cuadrante", name: "Suroeste · Sufrimiento + Deber",
+      esencia: "Sacrificio total: el sufrimiento vuelto misión. Dos tendencias en tensión. El martirio como identidad.",
+      marcos: [["Cruzar", "Preguntas de Sur y de Oeste."]],
+      costo: "No encuentra permiso para descansar, y no puede recibir.",
+      ask: "¿Hay historias de sufrimiento que nunca se hablaron? · ¿Quién en tu familia fue el que más se sacrificó?"
+    }
+  };
+
+  var IMPRONTAS = [
+    { c: "i1", n: "Desacople", lin: "Catástrofe súbita, muerte violenta presenciada, accidente sin tiempo de procesar.", her: "El reflejo de desconectarse ante el estrés: piloto automático, la vida vista desde detrás de un vidrio.", cre: "No estoy realmente aquí." },
+    { c: "i2", n: "Acorazamiento", lin: "Traición del vínculo: abandono, infidelidad, deslealtad de quien era de confianza.", her: "La coraza sin la traición: el cuerpo se cierra justo antes de la intimidad.", cre: "No vuelvo a bajar la guardia." },
+    { c: "i3", n: "Retracción", lin: "Humillación o caída pública que nadie reparó; una familia venida a menos.", her: "El umbral de la vergüenza: se achica ante las oportunidades, sin un fracaso propio.", cre: "No soy suficiente." },
+    { c: "i4", n: "Fijación Externa", lin: "Injusticia real nunca reparada: despojo, traición del sistema, culpable que jamás respondió.", her: "Resentimiento de fondo y búsqueda perpetua del culpable. La línea carga una deuda impaga.", cre: "La vida es injusta." },
+    { c: "i5", n: "Compresión", lin: "Algo que no se pudo decir: una voz sin valor, una verdad peligrosa, un secreto castigado.", her: "El cierre del canal: la garganta que se aprieta, las palabras que no salen. Típica de las líneas con un secreto.", cre: "No tiene caso hablar." },
+    { c: "i6", n: "Camuflaje", lin: "Ser visto era peligroso: persecución por lo que se era, identidad escondida, estigma familiar.", her: "El reflejo de desaparecer: no ocupa su lugar, esconde lo que logra.", cre: "Yo soy el error." },
+    { c: "i7", n: "Hibernación", lin: "Hambre, guerra, opresión sostenida, esclavitud. El ancestro llegó al límite y se rindió.", her: "Umbral bajo para apagarse ante obstáculos manejables. La que con más frecuencia viaja por la línea.", cre: "La vida no tiene sentido." }
+  ];
+
+  var CONTINGENCIAS = [
+    { i: "El muñeco rueda o queda ambiguo entre dos direcciones", t: "Se lee el <b>cuadrante</b>. Si sigue sin resolver, se suelta una segunda vez y se dice al grupo por qué se repitió — la decisión también es material de enseñanza." },
+    { i: "Las preguntas del camino no confirman la hipótesis", t: "Se suelta la hipótesis <b>en voz alta</b> y se mira el cuadrante vecino. Es el mejor momento didáctico de la hora: el grupo ve la verificación funcionando." },
+    { i: "El voluntario se activa: llanto, temblor, desconexión", t: "Se cierra el caso ahí. Contención breve, frase de reconocimiento, y el <b>co-facilitador lo acompaña 1:1 en el receso</b>. No se sigue interpretando delante del grupo." },
+    { i: "Nadie se ofrece como voluntario", t: "Trabajar la <b>propia línea paterna</b> del Dr., o un caso de consulta anonimizado con los tres muñecos. La lectura se demuestra igual." },
+    { i: "El tiempo se acorta", t: "Se recorta el debrief largo antes que el cierre del voluntario. <b>El gancho va completo y una sola vez</b>, al final." },
+    { i: "Preguntan si esto es científico", t: "Afirmar el estatus de cada marco: el <b>cromosoma Y</b> es biología establecida; metaprogramas y movimientos sistémicos son <b>marcos clínicos</b> que la audiencia ya usa; las correspondencias neurobiológicas por camino son el <b>modelo del Instituto</b>. Se afirma la dirección clínica, no una medición." },
+    { i: "Zoom no alcanza a ver la caída", t: "El co-facilitador fija el encuadre de la cámara sobre la hoja <b>antes</b> de soltar el primer muñeco, y confirma en voz alta que se ve." },
+    { i: "Alguien pide tocar el material", t: "El material es de trabajo del Dr. y no se reparte. Se ofrece la alternativa real: la manipulación se aprende en <b>Playmobil Pro</b>." }
+  ];
+
+  /* ============ estado y utilidades ============ */
+
+  var stage = document.getElementById("stage");
+  var railEl = document.getElementById("rail");
+  var whereEl = document.getElementById("where");
+  var countEl = document.getElementById("count");
+  var nextEl = document.getElementById("nextlabel");
+  var prevBtn = document.getElementById("btn-prev");
+  var nextBtn = document.getElementById("btn-next");
+  var drawer = document.getElementById("drawer");
+  var scrim = document.getElementById("scrim");
+  var overlay = document.getElementById("overlay");
+  var ovTitle = document.getElementById("ov-title");
+  var ovBody = document.getElementById("ov-body");
+
+  var idx = 0;
+  try {
+    var saved = window.localStorage.getItem("s2-card");
+    if (saved !== null && !isNaN(+saved)) idx = Math.min(Math.max(+saved, 0), CARDS.length - 1);
+  } catch (e) { /* sin almacenamiento disponible */ }
+
+  function save() {
+    try { window.localStorage.setItem("s2-card", String(idx)); } catch (e) {}
+  }
+
+  function el(tag, cls, html) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (html !== undefined) n.innerHTML = html;
+    return n;
+  }
+
+  /* ============ render ============ */
+
+  function renderRail() {
+    railEl.innerHTML = "";
+    var prevGroup = null;
+    CARDS.forEach(function (c, i) {
+      if (prevGroup !== null && c.grupo !== prevGroup) railEl.appendChild(el("div", "gap"));
+      prevGroup = c.grupo;
+      var t = el("div", "tick" + (i < idx ? " done" : i === idx ? " now" : ""));
+      railEl.appendChild(t);
+    });
+  }
+
+  function renderCard() {
+    var c = CARDS[idx];
+    stage.scrollTop = 0;
+    stage.innerHTML = "";
+
+    var card = el("article", "card");
+
+    var head = el("div", "card-head");
+    var h = el("div", "h");
+    h.appendChild(el("span", "eyebrow", c.eyebrow));
+    h.appendChild(el("h1", null, c.title));
+    head.appendChild(h);
+    if (c.slide) head.appendChild(el("span", "slidechip", c.slide));
+    card.appendChild(head);
+
+    var ul = el("ul", "cues");
+    c.cues.forEach(function (q) {
+      var li = el("li", q.k === "say" ? "say" : q.k === "do" ? "do" : null);
+      li.innerHTML = q.t + (q.beat ? ' <span class="beat">' + q.beat + "</span>" : "");
+      ul.appendChild(li);
+    });
+    card.appendChild(ul);
+
+    if (c.note) {
+      var nb = el("div", "note");
+      nb.appendChild(el("span", "lbl", "Nota de facilitación"));
+      nb.appendChild(el("span", null, c.note));
+      card.appendChild(nb);
+    }
+
+    stage.appendChild(card);
+
+    whereEl.textContent = c.where;
+    countEl.textContent = (idx + 1) + " / " + CARDS.length;
+    nextEl.innerHTML = c.next ? (idx < CARDS.length - 1 ? "<b>Sigue</b> · " : "") + c.next : "";
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === CARDS.length - 1;
+
+    renderRail();
+    markIndex();
+    save();
+  }
+
+  function go(n) {
+    var t = Math.min(Math.max(n, 0), CARDS.length - 1);
+    if (t === idx) return;
+    idx = t;
+    renderCard();
+  }
+
+  /* ============ índice ============ */
+
+  var indexList = document.getElementById("indexlist");
+
+  function buildIndex() {
+    var last = null;
+    CARDS.forEach(function (c, i) {
+      if (c.grupo !== last) {
+        indexList.appendChild(el("div", "grouplbl", c.grupo));
+        last = c.grupo;
+      }
+      var b = el("button", "item");
+      b.type = "button";
+      b.dataset.i = String(i);
+      b.appendChild(el("span", "n", String(i + 1).padStart(2, "0")));
+      b.appendChild(el("span", "t", c.title));
+      b.addEventListener("click", function () {
+        go(i);
+        closeDrawer();
+      });
+      indexList.appendChild(b);
+    });
+  }
+
+  function markIndex() {
+    var items = indexList.querySelectorAll(".item");
+    for (var i = 0; i < items.length; i++) {
+      items[i].classList.toggle("current", +items[i].dataset.i === idx);
+    }
+  }
+
+  function openDrawer() {
+    drawer.classList.add("on");
+    scrim.classList.add("on");
+    var cur = indexList.querySelector(".item.current");
+    if (cur) cur.scrollIntoView({ block: "center" });
+  }
+  function closeDrawer() {
+    drawer.classList.remove("on");
+    if (!overlay.classList.contains("on")) scrim.classList.remove("on");
+  }
+
+  /* ============ consulta rápida ============ */
+
+  function polar(cx, cy, r, deg) {
+    var a = (deg * Math.PI) / 180;
+    return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+  }
+
+  function wedgePath(cx, cy, r, a1, a2) {
+    var p1 = polar(cx, cy, r, a1);
+    var p2 = polar(cx, cy, r, a2);
+    return "M" + cx + "," + cy + " L" + p1[0].toFixed(1) + "," + p1[1].toFixed(1) +
+      " A" + r + "," + r + " 0 0 1 " + p2[0].toFixed(1) + "," + p2[1].toFixed(1) + " Z";
+  }
+
+  var SECTORS = [
+    { k: "N", a: -112.5, label: "N", sub: "MIGRANTE", lx: 0, ly: -1 },
+    { k: "NE", a: -67.5, label: "NE", sub: "", lx: 0.72, ly: -0.72 },
+    { k: "E", a: -22.5, label: "E", sub: "PLACER", lx: 1, ly: 0 },
+    { k: "SE", a: 22.5, label: "SE", sub: "", lx: 0.72, ly: 0.72 },
+    { k: "S", a: 67.5, label: "S", sub: "SUFRIMIENTO", lx: 0, ly: 1 },
+    { k: "SO", a: 112.5, label: "SO", sub: "", lx: -0.72, ly: 0.72 },
+    { k: "O", a: 157.5, label: "O", sub: "DEBER", lx: -1, ly: 0 },
+    { k: "NO", a: 202.5, label: "NO", sub: "", lx: -0.72, ly: -0.72 }
+  ];
+
+  function buildRosa() {
+    var wrap = el("div", "rosewrap");
+    var SVGNS = "http://www.w3.org/2000/svg";
+    var size = 300, c = 150, r = 132;
+
+    var svg = document.createElementNS(SVGNS, "svg");
+    svg.setAttribute("viewBox", "0 0 " + size + " " + size);
+    svg.setAttribute("class", "rose");
+    svg.setAttribute("role", "group");
+    svg.setAttribute("aria-label", "Rosa de los cuatro caminos");
+
+    SECTORS.forEach(function (s) {
+      var p = document.createElementNS(SVGNS, "path");
+      p.setAttribute("d", wedgePath(c, c, r, s.a, s.a + 45));
+      p.setAttribute("class", "wedge" + (s.sub ? "" : " quad"));
+      p.dataset.k = s.k;
+      p.setAttribute("tabindex", "0");
+      p.setAttribute("role", "button");
+      p.setAttribute("aria-label", ROSA[s.k].name);
+      p.addEventListener("click", function () { selectSector(s.k); });
+      p.addEventListener("keydown", function (ev) {
+        if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); selectSector(s.k); }
+      });
+      svg.appendChild(p);
+    });
+
+    [[c, c - r, c, c + r], [c - r, c, c + r, c]].forEach(function (ln) {
+      var l = document.createElementNS(SVGNS, "line");
+      l.setAttribute("x1", ln[0]); l.setAttribute("y1", ln[1]);
+      l.setAttribute("x2", ln[2]); l.setAttribute("y2", ln[3]);
+      l.setAttribute("class", "axis");
+      svg.appendChild(l);
+    });
+
+    SECTORS.forEach(function (s) {
+      var rr = s.sub ? 96 : 100;
+      var x = c + s.lx * rr, y = c + s.ly * rr;
+      var t1 = document.createElementNS(SVGNS, "text");
+      t1.setAttribute("x", x); t1.setAttribute("y", y);
+      t1.setAttribute("text-anchor", "middle");
+      t1.setAttribute("class", s.sub ? "lbl" : "qlbl");
+      t1.textContent = s.label;
+      svg.appendChild(t1);
+      if (s.sub) {
+        var t2 = document.createElementNS(SVGNS, "text");
+        t2.setAttribute("x", x); t2.setAttribute("y", y + 13);
+        t2.setAttribute("text-anchor", "middle");
+        t2.setAttribute("class", "sub");
+        t2.textContent = s.sub;
+        svg.appendChild(t2);
+      }
+    });
+
+    wrap.appendChild(svg);
+    var detail = el("div", "rosedetail");
+    detail.id = "rose-detail";
+    wrap.appendChild(detail);
+    wrap.appendChild(el("div", "hint", "Toca la dirección en que cayó el muñeco"));
+    return wrap;
+  }
+
+  function selectSector(k) {
+    var wedges = ovBody.querySelectorAll(".wedge");
+    for (var i = 0; i < wedges.length; i++) {
+      wedges[i].classList.toggle("sel", wedges[i].dataset.k === k);
+    }
+    var d = ROSA[k];
+    var box = document.getElementById("rose-detail");
+    box.innerHTML = "";
+    var top = el("div", "rd-top");
+    top.appendChild(el("h3", null, d.name));
+    top.appendChild(el("span", "kind", d.kind));
+    box.appendChild(top);
+    box.appendChild(el("div", "costo", d.esencia));
+    var m = el("div", "marcos");
+    d.marcos.forEach(function (row) {
+      var line = el("div", "marco");
+      line.appendChild(el("span", "mk", row[0]));
+      line.appendChild(el("span", null, row[1]));
+      m.appendChild(line);
+    });
+    box.appendChild(m);
+    box.appendChild(el("div", "costo", "<b>Costo:</b> " + d.costo));
+    var ask = el("div", "ask");
+    ask.appendChild(el("span", "askhead", "Preguntas ancla"));
+    ask.appendChild(el("span", null, d.ask));
+    box.appendChild(ask);
+  }
+
+  function buildImprontas() {
+    var box = el("div", "imp");
+    IMPRONTAS.forEach(function (im) {
+      var row = el("div", "improw");
+      var code = el("div", "code");
+      code.appendChild(el("span", "c", im.c));
+      code.appendChild(el("span", "nm", im.n));
+      row.appendChild(code);
+      var txt = el("div", "txt");
+      txt.appendChild(el("span", "lin", im.lin));
+      txt.appendChild(el("span", "her", "<b>Hereda:</b> " + im.her));
+      row.appendChild(txt);
+      row.appendChild(el("div", "cre", "«" + im.cre + "»"));
+      box.appendChild(row);
+    });
+    box.appendChild(el("div", "hint", "Se hereda el umbral, no el evento · las tres del Sur: i3, i4, i7"));
+    return box;
+  }
+
+  function buildContingencias() {
+    var box = el("div", "cont");
+    CONTINGENCIAS.forEach(function (x) {
+      var row = el("div", "controw");
+      row.appendChild(el("span", "if", x.i));
+      row.appendChild(el("span", "then", x.t));
+      box.appendChild(row);
+    });
+    return box;
+  }
+
+  var REFS = {
+    rosa: { title: "Rosa de los cuatro caminos", build: buildRosa, after: function () { selectSector("N"); } },
+    improntas: { title: "Las siete improntas", build: buildImprontas },
+    contingencias: { title: "Contingencias de la demostración", build: buildContingencias }
+  };
+
+  function openRef(key) {
+    var r = REFS[key];
+    ovTitle.textContent = r.title;
+    ovBody.innerHTML = "";
+    ovBody.appendChild(r.build());
+    overlay.classList.add("on");
+    scrim.classList.add("on");
+    if (r.after) r.after();
+  }
+  function closeOverlay() {
+    overlay.classList.remove("on");
+    if (!drawer.classList.contains("on")) scrim.classList.remove("on");
+  }
+
+  /* ============ eventos ============ */
+
+  prevBtn.addEventListener("click", function () { go(idx - 1); });
+  nextBtn.addEventListener("click", function () { go(idx + 1); });
+  document.getElementById("btn-index").addEventListener("click", openDrawer);
+  document.getElementById("btn-close-index").addEventListener("click", closeDrawer);
+  document.getElementById("btn-close-ov").addEventListener("click", closeOverlay);
+  scrim.addEventListener("click", function () { closeDrawer(); closeOverlay(); });
+
+  var refBtns = document.querySelectorAll(".refbtn");
+  for (var i = 0; i < refBtns.length; i++) {
+    refBtns[i].addEventListener("click", function (ev) {
+      openRef(ev.currentTarget.dataset.ref);
+    });
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { closeDrawer(); closeOverlay(); return; }
+    if (overlay.classList.contains("on") || drawer.classList.contains("on")) return;
+    if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); go(idx + 1); }
+    if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); go(idx - 1); }
+  });
+
+  var tx = 0, ty = 0;
+  stage.addEventListener("touchstart", function (e) {
+    tx = e.changedTouches[0].clientX;
+    ty = e.changedTouches[0].clientY;
+  }, { passive: true });
+  stage.addEventListener("touchend", function (e) {
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.8) go(dx < 0 ? idx + 1 : idx - 1);
+  }, { passive: true });
+
+  var themeBtn = document.getElementById("btn-theme");
+  themeBtn.addEventListener("click", function () {
+    var root = document.documentElement;
+    var dark = root.getAttribute("data-theme") === "dark" ||
+      (!root.getAttribute("data-theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    root.setAttribute("data-theme", dark ? "light" : "dark");
+  });
+
+  buildIndex();
+  renderCard();
+})();
+</script>
