@@ -18,7 +18,7 @@ Sin tiempos fijos — dividido en bloques secuenciales. El facilitador avanza de
 
 > Bienvenidos a la segunda sesión de Actualización en Bioenergética Transgeneracional. Igual que la semana pasada, somos grupo mixto —sala y Zoom— y la sesión se graba.
 >
-> Antes de entrar en lo de hoy, un momento para recuperar lo que construyeron la semana pasada. No lo voy a repetir yo — lo van a recuperar ustedes, porque lo que se recupera activamente se retiene, y lo que solo se vuelve a escuchar se olvida.
+> Antes de entrar en lo de hoy, un momento para recuperar lo que construyeron la semana pasada. La recuperación la hacen ustedes: el material que se trae de vuelta con esfuerzo propio se retiene mucho mejor que el que solo se vuelve a escuchar.
 
 **Recuperación activa (se hace, no se escucha):**
 
@@ -32,9 +32,9 @@ Sin tiempos fijos — dividido en bloques secuenciales. El facilitador avanza de
 
 ## Bloque 2 — Objetivo explícito de la sesión
 
-> Lo que van a poder hacer al terminar hoy es concreto: **leer la línea paterna de un genograma como una dirección de vida** — no como una lista de nombres y fechas, sino como un movimiento que apunta hacia algún lado. Y van a ver, con un caso real, hasta dónde llega una herramienta del Instituto que hace ese movimiento visible en minutos.
+> Lo que van a poder hacer al terminar hoy es concreto: **leer la línea paterna de un genograma como una dirección de vida** — un movimiento sostenido a lo largo de generaciones, que apunta hacia algún lado y que se puede nombrar. Y van a ver, con un caso real, hasta dónde llega una herramienta del Instituto que hace ese movimiento visible en minutos.
 >
-> La sesión tiene dos partes. La primera hora es el marco: por qué la línea paterna se lee aparte, y cuál es el mapa con el que se lee —los Cuatro Caminos de la Vida—. La segunda hora es la demostración: trabajo un caso real frente a ustedes, de principio a fin, pensando en voz alta para que vean no solo *qué* hago, sino *por qué* lo hago.
+> La sesión tiene dos partes. La primera hora es el marco: por qué la línea paterna se lee aparte, y cuál es el mapa con el que se lee —los Cuatro Caminos de la Vida—. La segunda hora es la demostración: trabajo un caso real frente a ustedes, de principio a fin, pensando en voz alta, con el razonamiento clínico dicho mientras ocurre.
 
 **Nota de facilitación:** enunciar el objetivo en voz alta es el "momento 1" del molde (backward design). El estudiante que sabe a qué apunta la sesión aprende más que el que la descubre sobre la marcha.
 
@@ -48,11 +48,11 @@ Sin tiempos fijos — dividido en bloques secuenciales. El facilitador avanza de
 >
 > El cromosoma Y se transmite de padre a hijo varón, y la región específica que no se recombina con el cromosoma X de la madre pasa completa, generación tras generación. Padre, hijo, nieto, bisnieto — todos los varones de una línea paterna directa comparten esa misma región del cromosoma Y, letra por letra, hacia atrás cuantas generaciones se pueda rastrear. Es la contraparte exacta del ADN mitocondrial de la línea materna.
 >
-> Aquí una precisión importante, sobre todo porque en el grupo hay tantas mujeres como hombres: el cromosoma Y marca la línea directa de varones —padre a hijo varón—, pero la línea paterna alcanza a todos los descendientes. El hijo varón recibe el cromosoma Y. La hija recibe el cromosoma X de su padre y sus autosomas: está en la línea paterna, por otra vía biológica. Y a ambos les llega la carga epigenética del espermatozoide —lo que vimos en la Sesión 1, que alcanza por igual a hijos e hijas— y la transmisión sistémica de toda la línea. El cromosoma Y es el marcador más visible del linaje paterno, no el único canal por el que ese linaje se transmite.
+> Aquí una precisión importante, sobre todo porque en el grupo hay tantas mujeres como hombres: el cromosoma Y marca la línea directa de varones —padre a hijo varón—, pero la línea paterna alcanza a todos los descendientes. El hijo varón recibe el cromosoma Y. La hija recibe el cromosoma X de su padre y sus autosomas: está en la línea paterna, por otra vía biológica. Y a ambos les llega la carga epigenética del espermatozoide —lo que vimos en la Sesión 1, que alcanza por igual a hijos e hijas— y la transmisión sistémica de toda la línea. El cromosoma Y es el marcador más visible del linaje paterno, y uno entre varios canales por los que ese linaje llega al descendiente.
 >
-> Esto tiene una implicación directa para el trabajo de hoy: cuando en el genograma trazan la línea paterna —usted, su padre, su abuelo paterno, su bisabuelo paterno— están señalando el linaje del padre y sus ancestros, un sistema que desciende hasta la persona sea hombre o mujer. "Línea paterna" no es una convención del árbol genealógico. Es una descripción literal de un linaje que se transmite generación tras generación.
+> Esto tiene una implicación directa para el trabajo de hoy: cuando en el genograma trazan la línea paterna —usted, su padre, su abuelo paterno, su bisabuelo paterno— están señalando el linaje del padre y sus ancestros, un sistema que desciende hasta la persona sea hombre o mujer. El término tiene un referente biológico literal: un linaje con continuidad material comprobable, generación tras generación.
 >
-> Y hay una razón clínica para trabajarla por separado de la materna: son dos vías de acceso distintas, con dos herramientas distintas. La línea paterna, hoy, con el movimiento y la dirección física — Los Caminos de la Vida. La línea materna, la próxima semana, con el campo familiar — Campos Mórficos. No es la misma lectura hecha dos veces; son dos lecturas complementarias del mismo árbol.
+> Y hay una razón clínica para trabajarla por separado de la materna: son dos vías de acceso distintas, con dos herramientas distintas. La línea paterna, hoy, con el movimiento y la dirección física — Los Caminos de la Vida. La línea materna, la próxima semana, con el campo familiar — Campos Mórficos. Son dos lecturas complementarias del mismo árbol, y cada una alcanza material que la otra deja fuera.
 
 **Nota de facilitación:** este bloque engancha explícitamente hacia atrás (Concepto 1 de la Sesión 1) y hacia adelante (Sesión 3). Es la "columna de coherencia" — ningún concepto aparece suelto. Primer corte natural para 1-2 preguntas del chat de Zoom. **Con grupo mixto (mitad mujeres):** la aclaración sobre hijos e hijas es esencial, no opcional — si la línea paterna se lee como algo "solo de hombres", la mitad de la sala queda fuera. Decirla siempre, con el cromosoma Y como ejemplo del linaje, no como su límite.
 
@@ -66,7 +66,7 @@ Sin tiempos fijos — dividido en bloques secuenciales. El facilitador avanza de
 >
 > Los cuatro caminos son estos. **Norte, el Migrante:** la búsqueda de lo nuevo, la exploración, el movimiento hacia lo desconocido; su emoción es la esperanza mezclada con incertidumbre; su polaridad, la expansión. **Sur, el Sufrimiento:** el territorio de la supervivencia pura, del conflicto y la reactividad; su emoción es el miedo crónico, la alerta permanente; su polaridad, la contracción. **Oeste, el Deber:** la misión, la responsabilidad, el servicio; su emoción es la obligación y la lealtad; su polaridad, el servicio. **Este, el Placer:** el gozo, la satisfacción, la conservación de la energía; su emoción es la comodidad y el disfrute; su polaridad, la conservación.
 >
-> Un principio antes de seguir, porque ordena todo lo demás: ningún camino es bueno ni malo. Cada persona transita predominantemente por uno o dos, y cada uno tiene sus recursos y sus costos. El Migrante que se reinventa también es el que no echa raíces. El Deber que sostiene a todos también es el que no puede descansar. El trabajo terapéutico no es cambiar de camino — es hacer consciente el que se camina, ver qué lo sostiene, e integrar los recursos de los otros tres.
+> Un principio antes de seguir, porque ordena todo lo demás: ningún camino es bueno ni malo. Cada persona transita predominantemente por uno o dos, y cada uno tiene sus recursos y sus costos — el Migrante que se reinventa con facilidad es el mismo que no echa raíces; el Deber que sostiene a todos es el que no encuentra permiso para descansar. El trabajo terapéutico consiste en hacer consciente el camino que se transita, ver qué lo sostiene e integrar los recursos de los otros tres.
 
 **\[Slide 4 — tabla de los 4 caminos: dirección · esencia · emoción central · beneficio · costo]**
 
@@ -78,15 +78,15 @@ Sin tiempos fijos — dividido en bloques secuenciales. El facilitador avanza de
 
 **\[Slide 5 — los tres marcos que se cruzan en cada camino: metaprograma (PNL) · mecanismo de supervivencia (biología) · movimiento sistémico (familia)]**
 
-> Un camino no es un rasgo de personalidad ni un signo del zodiaco. Cada camino es el cruce de tres cosas que ya conocen por separado, y que aquí se leen juntas.
+> Cada camino es el cruce de tres cosas que ustedes ya conocen por separado, y que aquí se leen juntas.
 >
-> **Lo primero, un filtro mental** — lo que en Programación Neurolingüística se llama un metaprograma: el patrón inconsciente con el que la persona procesa la información y decide. El Migrante se mueve hacia lo que desea y busca opciones; el Sufrimiento se mueve alejándose de lo que teme y vive en el detalle, en la hipervigilancia; el Deber decide por criterio externo y sigue procedimientos; el Placer se mueve hacia el disfrute y también busca opciones. El mismo hecho lo procesan distinto según el camino — no porque elijan, sino porque filtran distinto.
+> **Lo primero, un filtro mental** — lo que en Programación Neurolingüística se llama un metaprograma: el patrón inconsciente con el que la persona procesa la información y decide. El Migrante se mueve hacia lo que desea y busca opciones; el Sufrimiento se mueve alejándose de lo que teme y vive en el detalle, en la hipervigilancia; el Deber decide por criterio externo y sigue procedimientos; el Placer se mueve hacia el disfrute y también busca opciones. Ante el mismo hecho, cada camino selecciona información distinta, y esa selección ocurre por debajo de la decisión consciente.
 >
-> **Lo segundo, un mecanismo de supervivencia biológico** — una respuesta del sistema nervioso autónomo, del mismo tipo que trabajamos en la Sesión 1 con la impronta. El Sufrimiento es el simpático en modo amenaza crónica: lucha, huida o congelación, con el eje del estrés sobreactivado. El Deber es el vago ventral, la cooperación social, el vínculo. El Placer es el parasimpático restaurativo: descanso, digestión, conservación. Y el Migrante es un simpático distinto al del Sufrimiento — no es huida por miedo, es exploración: el sistema se moviliza hacia lo nuevo buscando oportunidad, no escapando de un peligro. Esa distinción —huir por miedo versus moverse por búsqueda— es la que separa el Sur del Norte, aunque los dos impliquen movimiento.
+> **Lo segundo, un mecanismo de supervivencia biológico** — una respuesta del sistema nervioso autónomo, del mismo tipo que trabajamos en la Sesión 1 con la impronta. El Sufrimiento es el simpático en modo amenaza crónica: lucha, huida o congelación, con el eje del estrés sobreactivado. El Deber es el vago ventral, la cooperación social, el vínculo. El Placer es el parasimpático restaurativo: descanso, digestión, conservación. Y el Migrante es un simpático distinto al del Sufrimiento: una activación exploratoria, el sistema movilizado hacia lo nuevo en busca de oportunidad. Norte y Sur comparten el movimiento y se separan en su origen — la búsqueda en uno, la amenaza en el otro.
 >
 > **Y lo tercero, un movimiento sistémico familiar** — la lealtad invisible que ya nombramos la semana pasada. Cada camino tiene detrás una historia de familia que lo empuja: el Migrante, migraciones y exilios reales, el desarraigo que se repite; el Sufrimiento, la lealtad al dolor de los que sufrieron antes; el Deber, un rol o una misión heredada de alguien que se sacrificó; el Placer, la compensación —"yo sí voy a disfrutar"— por generaciones de escasez.
 >
-> Cuando los tres coinciden en una dirección, esa dirección es el camino predominante de la persona. Y aquí está el puente con el genograma que ya tienen: **el camino no empieza en la persona. Se hereda por la línea.** Por eso hoy trabajamos la paterna — y por eso la herramienta no pregunta "¿cómo eres?", sino "¿hacia dónde cae tu línea?".
+> Cuando los tres coinciden en una dirección, esa dirección es el camino predominante de la persona. Y aquí está el puente con el genograma que ya tienen: **el camino se hereda por la línea, y llega a la persona ya trazado.** Por eso hoy trabajamos la paterna, y por eso la herramienta interroga a la línea antes que a la persona: la pregunta es hacia dónde cae el linaje.
 
 **Nota de facilitación:** este bloque integra tres marcos que la audiencia ya conoce por separado (PNL, teoría polivagal, constelaciones). El valor no es enseñárselos —ya los saben— sino mostrar que los Cuatro Caminos los leen *juntos*. Segundo corte natural para preguntas. Aquí suele preguntarse "¿y si alguien es de dos caminos a la vez?" — es la entrada perfecta al bloque siguiente.
 
@@ -98,11 +98,11 @@ Sin tiempos fijos — dividido en bloques secuenciales. El facilitador avanza de
 
 **\[Slide 6 — los cuatro cuadrantes: NE Migrante+Placer, NO Migrante+Deber, SE Sufrimiento+Placer, SO Sufrimiento+Deber, con su dinámica central]**
 
-> Casi nadie es de un solo camino puro. Lo más frecuente es caer entre dos — en un cuadrante. Y el cuadrante no es un promedio de los dos caminos: es una tensión entre ellos, y ahí es donde vive la mayor parte del trabajo clínico.
+> Casi nadie es de un solo camino puro. Lo más frecuente es caer entre dos — en un cuadrante. Y el cuadrante opera como una tensión entre los dos caminos que lo forman, más que como un promedio de ambos; ahí ocurre la mayor parte del trabajo clínico.
 >
 > Cuatro cuadrantes. **Noreste, Migrante con Placer:** exploración hedonista, buscar lo nuevo que dé gozo — su costo es la superficialidad, la inconstancia. **Noroeste, Migrante con Deber:** exploración al servicio, buscar lo nuevo como misión — su costo es el agotamiento de buscar siempre nuevas formas de servir. **Sureste, Sufrimiento con Placer:** el placer culpable, la oscilación entre el gozo y la culpa por disfrutar — el cuadrante de las adicciones como escape del dolor. **Suroeste, Sufrimiento con Deber:** el sacrificio total, el sufrimiento vuelto misión — el cuadrante del martirio como identidad, de quien no puede recibir.
 >
-> Los dos primeros cuadrantes —los del Norte— combinan tendencias que se acompañan. Los dos del Sur combinan tendencias en tensión: el Sureste oscila entre disfrutar y castigarse por disfrutar; el Suroeste convierte el dolor en deber y no encuentra permiso para descansar. Nombrar en cuál cuadrante cae una persona ya es, por sí mismo, un acto terapéutico: lo que se hace consciente puede elegirse, en vez de repetirse en automático.
+> Los dos primeros cuadrantes —los del Norte— combinan tendencias que se acompañan. Los dos del Sur combinan tendencias en tensión: el Sureste oscila entre disfrutar y castigarse por disfrutar; el Suroeste convierte el dolor en deber y no encuentra permiso para descansar. Nombrar en cuál cuadrante cae una persona ya tiene efecto terapéutico por sí mismo: el patrón que se hace visible queda disponible para decidir sobre él.
 
 **Nota de facilitación:** este bloque sube un peldaño de complejidad (de un camino a la intersección de dos). Es el momento de mayor densidad conceptual de la Hora 1. Proyectar el Slide 6 y dejarlo visible — es el mapa que van a ver aplicarse en la demo.
 
@@ -112,25 +112,25 @@ Sin tiempos fijos — dividido en bloques secuenciales. El facilitador avanza de
 
 **\[Slide 7 — las 7 primeras improntas (i1–i7): por cada una, nombre · patrón · qué le pasó a la línea (origen del ancestro) · creencia que instala. Puede ir en una lámina-tabla o desglosarse en 7 si se abren a fondo]**
 
-> Ya tenemos el mapa de las direcciones —los cuatro caminos y sus cuadrantes—. Falta una pieza: qué es lo que *empuja* a una línea hacia una dirección y no otra. Una línea no camina hacia el Sufrimiento porque sí. Camina hacia allá porque en algún punto de esa línea un ciclo defensivo quedó sin cerrar y se volvió patrón — lo que en la Sesión 1 nombramos como impronta: no el evento, sino el programa de supervivencia que quedó activo cuando no pudo descargarse.
+> Ya tenemos el mapa de las direcciones —los cuatro caminos y sus cuadrantes—. Falta una pieza: qué es lo que *empuja* a una línea hacia una dirección y no otra. Una línea no camina hacia el Sufrimiento porque sí. Camina hacia allá porque en algún punto de esa línea un ciclo defensivo quedó sin cerrar y se volvió patrón — lo que en la Sesión 1 nombramos como impronta: el programa de supervivencia que quedó activo cuando no pudo descargarse.
 >
-> Esas improntas están catalogadas. Son trece en total; hoy les doy las siete primeras. Y las voy a dar de una forma específica, porque estamos en lo transgeneracional: en cada una, el descendiente **no hereda el evento — hereda el umbral**. No la escena que le pasó al ancestro, sino la facilidad con la que su propio sistema activa esa misma respuesta, ante cosas que a otra persona no le activarían nada. Escuchen cada impronta con esa lente: qué le pasó a la línea, y qué carga hoy quien viene después, sin haberlo vivido.
+> Esas improntas están catalogadas. Son trece en total; hoy les doy las siete primeras. Y las voy a dar de una forma específica, porque estamos en lo transgeneracional: en cada una, el descendiente **hereda el umbral, no el evento** — la facilidad con la que su propio sistema activa esa misma respuesta, ante situaciones que a otra persona no le activarían nada. Escuchen cada impronta con esa lente: qué le pasó a la línea, y qué carga hoy quien viene después, sin haberlo vivido.
 >
-> **i1, Desacople.** El patrón de fragmentar la experiencia para sobrevivir a un impacto demasiado grande para integrarlo: una catástrofe súbita, una muerte violenta presenciada, un accidente sin tiempo de procesar. El ancestro se partió para no romperse, y el ciclo nunca cerró. El descendiente no hereda la escena — hereda el reflejo: ante el estrés, el sistema se desconecta, entra en piloto automático, mira la vida desde detrás de un vidrio. Y no hay un evento propio que lo explique. *"No estoy realmente aquí."*
+> **i1, Desacople.** El patrón de fragmentar la experiencia para sobrevivir a un impacto demasiado grande para integrarlo: una catástrofe súbita, una muerte violenta presenciada, un accidente sin tiempo de procesar. El ancestro se dividió para poder sostenerlo, y el ciclo nunca cerró. Lo que llega al descendiente es el reflejo: ante el estrés, el sistema se desconecta, entra en piloto automático, mira la vida desde detrás de un vidrio, sin un evento propio que lo explique. *"No estoy realmente aquí."*
 >
 > **i2, Acorazamiento.** Blindar la zona vulnerable después de una traición del vínculo — un abandono, una infidelidad, una deslealtad de quien era de confianza. El ancestro se acorazó para no volver a ser herido. El descendiente hereda la coraza sin la traición: un cuerpo que se cierra justo antes de la intimidad, que "cuida la espalda" con quienes más lo aman, que espera la deslealtad en relaciones donde todavía no ha pasado nada. *"No vuelvo a bajar la guardia."*
 >
-> **i3, Retracción.** Retirarse de la exposición para no ser juzgado, después de una humillación o una caída pública que marcó a la línea — una deshonra, una familia "venida a menos", una vergüenza que nadie reparó. El descendiente hereda el umbral de la vergüenza: se achica ante las oportunidades, se disculpa por existir, siente que "no da la talla" sin un fracaso propio que lo justifique. Su vergüenza es más vieja que su vida. *"No soy suficiente."*
+> **i3, Retracción.** Retirarse de la exposición para no ser juzgado, después de una humillación o una caída pública que marcó a la línea — una deshonra, una familia "venida a menos", una vergüenza que nadie reparó. El descendiente hereda el umbral de la vergüenza: se achica ante las oportunidades, se disculpa por existir, siente que "no da la talla" sin un fracaso propio que lo justifique — una vergüenza anterior a su propia biografía. *"No soy suficiente."*
 >
 > **i4, Fijación Externa.** Fijar la energía en una causa que está afuera, después de una injusticia real que nunca se reparó — un despojo, una traición del sistema, un culpable que jamás respondió. El ancestro quedó fijado en el agravio. El descendiente hereda la fijación: un resentimiento de fondo, la sensación de que "el mundo está en su contra", la búsqueda perpetua del culpable — sin una injusticia propia que explique la intensidad. La línea carga una deuda impaga. *"La vida es injusta."*
 >
 > **i5, Compresión.** Cerrar el canal de la expresión, después de que en la línea algo no se pudo decir — una voz que no tenía valor, una verdad que era peligroso nombrar, un secreto que se castigaba contar. El ancestro se calló para sobrevivir. El descendiente hereda el cierre: la garganta que se aprieta, el "para qué hablo si no cambia nada", las palabras que no salen — sin una experiencia propia de haber sido silenciado. Es la impronta típica de las líneas con un secreto. *"No tiene caso hablar."*
 >
-> **i6, Camuflaje.** Volverse invisible como protección, cuando en la línea ser visto era peligroso — una persecución por lo que se era, una identidad que había que esconder para sobrevivir, un estigma que marcó a la familia. El descendiente hereda el reflejo de desaparecer: no ocupa su lugar, esconde lo que logra, se siente equivocado por el solo hecho de existir — sin una persecución propia. Su necesidad de no ser visto es más antigua que cualquier razón personal. *"Yo soy el error."*
+> **i6, Camuflaje.** Volverse invisible como protección, cuando en la línea ser visto era peligroso — una persecución por lo que se era, una identidad que había que esconder para sobrevivir, un estigma que marcó a la familia. El descendiente hereda el reflejo de desaparecer: no ocupa su lugar, esconde lo que logra, se siente equivocado por el solo hecho de existir, sin una persecución propia que lo explique. *"Yo soy el error."*
 >
 > **i7, Hibernación.** Apagarse hasta el mínimo vital ante una amenaza que superó lo que el sistema podía sostener — hambre, guerra, opresión sostenida, esclavitud. El ancestro llegó al límite y se rindió; era la única respuesta que le quedaba. El descendiente hereda un umbral bajo para apagarse: se queda sin fuerza ante obstáculos que objetivamente podría manejar, con un vacío que su propia vida no explica. Es, de las siete, la impronta que con más frecuencia viaja por la línea. *"La vida no tiene sentido."*
 >
-> Fíjense en el eje común de las siete: en todas, lo que se hereda es el umbral, no el evento — la facilidad con la que el sistema del descendiente dispara esa respuesta, sin la historia que la originó. Y fíjense hacia dónde empujan: varias de estas —la Retracción, la Fijación Externa, sobre todo la Hibernación— inclinan una vida entera hacia el Sur, hacia el camino del Sufrimiento. Por eso, cuando en la demostración el muñeco del voluntario caiga hacia un lado, la pregunta que sigue no es solo *"¿qué camino?"*, sino *"¿qué impronta de la línea lo empujó hasta ahí?"*. La dirección la da el muñeco; el patrón que la originó, lo da esta lista.
+> Fíjense en el eje común de las siete: en todas se hereda el umbral — la facilidad con la que el sistema del descendiente dispara esa respuesta, sin la historia que la originó. Y fíjense hacia dónde empujan: varias de estas —la Retracción, la Fijación Externa, sobre todo la Hibernación— inclinan una vida entera hacia el Sur, hacia el camino del Sufrimiento. Por eso, cuando en la demostración el muñeco del voluntario caiga hacia un lado, hay dos preguntas encadenadas: qué camino señala esa caída, y qué impronta de la línea empujó hasta ahí. La dirección la da el muñeco; el patrón que la originó lo da esta lista.
 
 **Nota de facilitación:** son siete patrones densos — no todos caben con la misma profundidad en una beca. Presentar los siete como rejilla y **abrir a fondo solo las dos o tres que aparezcan en la demo y en los genogramas del grupo**; las demás quedan como referencia en la lámina. En cada una que se abra, sostener el mismo eje: *evento del ancestro → patrón que quedó activo → umbral que hereda el descendiente, sin el evento*. Ese es el aprendizaje — la lente transgeneracional —, no memorizar las siete. Si el tiempo aprieta, las tres del Sur (i3, i4, i7) son las que más van a aparecer al leer líneas paternas.
 
@@ -144,11 +144,11 @@ Sin tiempos fijos — dividido en bloques secuenciales. El facilitador avanza de
 
 **\[Sin slide — pedir que bajen la mirada de la pantalla, pies en el piso]**
 
-> Un encuadre antes de empezar. Varios de ustedes están entrenados en el rastreo con test. Ese es su instrumento en consulta y lo sigue siendo. Aquí lo dejamos a un lado a propósito: hoy no interrogamos al cuerpo — lo escuchamos. En lo transgeneracional muchas veces no hay un instante que recordar; el cuerpo es la puerta. Lo que reconozca, lo reconoce; lo que no, se queda quieto, y también es información.
+> Un encuadre antes de empezar. Varios de ustedes están entrenados en el rastreo con test. Ese es su instrumento en consulta y lo sigue siendo. Aquí lo dejamos a un lado a propósito: el trabajo de hoy es de escucha del cuerpo, sin interrogarlo. En lo transgeneracional muchas veces no hay un instante que recordar; el cuerpo es la puerta. Lo que reconozca, lo reconoce; lo que no, se queda quieto, y también es información.
 >
-> Es un momento breve, y no van a compartir nada — es para ustedes, para entrar a mirar el caso de hoy con la pregunta ya viva en el cuerpo, no solo en la cabeza.
+> Es un momento breve, y no van a compartir nada — es para ustedes, para entrar a mirar el caso de hoy con la pregunta ya viva en el cuerpo.
 
-**Paso 1 — Nombrar el patrón.** Ambas manos sobre las piernas, sintiendo su peso. Antes de mirar hacia dónde va la línea, se nombra que se la carga — decirlo en voz alta es el primer acto que la vuelve visible y rompe el automatismo de portarla sin saberlo.
+**Paso 1 — Nombrar el patrón.** Ambas manos sobre las piernas, sintiendo su peso. Antes de mirar hacia dónde va la línea, se nombra que se la carga — decirlo en voz alta es el primer acto que la vuelve visible e interrumpe el automatismo de portarla sin saberlo.
 
 > Digan en voz baja, sintiendo las manos sobre las piernas: *"Traigo una línea de hombres en el cuerpo. Algo de lo que soy no empezó conmigo."*
 
@@ -158,7 +158,7 @@ Sin tiempos fijos — dividido en bloques secuenciales. El facilitador avanza de
 
 **Paso 3 — Recursos.** Pies apoyados en el piso, sintiendo el peso del cuerpo sobre la silla.
 
-> *"Tengo un cuerpo que puede mirar esta línea sin quebrarse."*
+> *"Tengo un cuerpo que puede mirar esta línea y sostenerse."*
 
 **Paso 4 — Ampliar la conciencia.** Sin buscar una imagen ni un recuerdo, solo sentir la pregunta.
 
@@ -201,7 +201,7 @@ Y entonces la pausa — el momento que más se salta y el que hace que el trabaj
 
 **Nota de facilitación:** funciona igual en sala que en Zoom — es un gesto de manos, nadie necesita cámara. Si a alguien se le activa algo fuerte, el co-facilitador lo anota y se acerca 1:1 en el receso; no se detiene el ritmo grupal. Este momento tiene una función pedagógica además de la vivencial: activa el conocimiento previo (los Cuatro Caminos y las improntas recién vistos) sobre la propia línea, de modo que cuando el grupo observe la demo, esté proyectando el caso sobre su propia experiencia — que es exactamente lo que sostiene la atención en el aprendizaje por observación.
 
-**Mapa TAME del ritual (uso interno):** la secuencia sigue la columna de la skill ritual-creator, calibrada a Nivel Bajo. **1) Inducir el cambio** — Paso 1 nombra el patrón en primera persona ("traigo una línea… algo de lo que soy no empezó conmigo"), rompiendo el automatismo de portarla sin saberlo. **2) Regular** — Paso 2, respiración 4-4-6. **3) Recursos** — Paso 3, pies/peso, "puedo mirar esta línea sin quebrarse". **4) Ampliar la conciencia** — Pasos 4-7, apertura del canal somático (dirección → localización → cinco cualidades → *felt shift*), cerrando con la frase de reconocimiento "esto es lo que traigo, lo reconozco". **5) Influir sobre N3 (Nivel Bajo)** — Paso 8 (gesto direccional + **pausa de descarga real de 20-30 s**, el punto que no debe saltarse), Paso 9 (**lo nuevo**: manos que giran a recibir, diferenciación "no todo lo que traigo es mío" — apertura, no devolución) y Cierre (**objeto transformado**: el genograma marcado que se llevan). **Lo que se omite a propósito por ser grupo, no clínica 1:1:** el *mismatch* (que el cuerpo experimente lo temido y no pase nada), el acto irreversible y el trabajo de descarga completo — todo eso pertenece al acto de quiebre de la formación clínica, no a la beca.
+**Mapa TAME del ritual (uso interno):** la secuencia sigue la columna de la skill ritual-creator, calibrada a Nivel Bajo. **1) Inducir el cambio** — Paso 1 nombra el patrón en primera persona ("traigo una línea… algo de lo que soy no empezó conmigo"), interrumpiendo el automatismo de portarla sin saberlo. **2) Regular** — Paso 2, respiración 4-4-6. **3) Recursos** — Paso 3, pies/peso, "puedo mirar esta línea y sostenerme". **4) Ampliar la conciencia** — Pasos 4-7, apertura del canal somático (dirección → localización → cinco cualidades → *felt shift*), cerrando con la frase de reconocimiento "esto es lo que traigo, lo reconozco". **5) Influir sobre N3 (Nivel Bajo)** — Paso 8 (gesto direccional + **pausa de descarga real de 20-30 s**, el punto que no debe saltarse), Paso 9 (**lo nuevo**: manos que giran a recibir, diferenciación "no todo lo que traigo es mío" — apertura, no devolución) y Cierre (**objeto transformado**: el genograma marcado que se llevan). **Lo que se omite a propósito por ser grupo, no clínica 1:1:** el *mismatch* (que el cuerpo experimente lo temido y no pase nada), el acto irreversible y el trabajo de descarga completo — todo eso pertenece al acto de quiebre de la formación clínica, no a la beca.
 
 **Nota clínica (uso interno, no se lee al grupo):** esta secuencia abre el **canal somático-fenomenológico** de acceso al N3 (Tratado BV4, Cap. 11), sin test muscular. Mapeo por paso: el Paso 4 pone el cuerpo en la pregunta vía interocepción sin narrativa (Craig, 2009); el Paso 5 es **localización corporal (Canal 2)** — dónde se expresa el patrón; el Paso 6 es **rastreo de cualidades (Canal 3)** — las cinco cualidades del *felt sense* de Gendlin (forma, peso, temperatura, movimiento, color) que aumentan la resolución del mapa interoceptivo; el Paso 7 nombra el ***felt shift*** (el cambio somático que confirma el encaje), pero **solo para registrarlo — no se trabaja**. El gesto direccional del Paso 8 es orientación motora deliberadamente por debajo del umbral de intervención. **Calibración de grupo (Nivel Bajo):** se usan Canales 2 y 3; NO el Canal 4 completo (función protectora → parte vulnerable → descarga), que es intervención clínica 1:1. Si a alguien un *felt shift* le abre material fuerte, se contiene 1:1 en el receso — no se abre en grupo. Prosodia regulatoria e indirecta (voz lenta, pausas largas). Fuentes: Tratado BV4, Cap. 11 (canales de acceso), Cap. 2-3 (N3); Gendlin (*felt sense*/*felt shift*); Craig (2002, 2009).
 
@@ -211,7 +211,7 @@ Y entonces la pausa — el momento que más se salta y el que hace que el trabaj
 
 > Con esto cierra el marco. Recapitulando lo que ahora saben: la línea paterna se transmite por una vía biológica literal —el cromosoma Y—; se lee como una dirección de vida —uno de los Cuatro Caminos, o un cuadrante entre dos—; esa dirección la originó una impronta concreta —una de las siete primeras— que se hereda por la línea hasta que se hace consciente. Todo eso es teoría hasta que se ve funcionar.
 >
-> Ahora lo van a ver funcionar. En la segunda hora trabajo un caso real, con un voluntario, de principio a fin. Y quiero pedirles algo antes de empezar: no van a mirar como público de un espectáculo. Van a mirar como terapeutas estudiando a otro terapeuta. Les voy a decir exactamente qué observar.
+> Ahora lo van a ver funcionar. En la segunda hora trabajo un caso real, con un voluntario, de principio a fin. Y quiero pedirles algo antes de empezar: miren como terapeutas que estudian a otro terapeuta trabajando. Les voy a decir exactamente qué observar.
 
 ***
 
@@ -229,7 +229,7 @@ Y entonces la pausa — el momento que más se salta y el que hace que el trabaj
 >
 > **Primero, la dirección de la caída.** Voy a soltar un muñeco sobre una hoja con los ejes cardinales trazados, y va a caer hacia algún lado. Observen hacia dónde apuntan los pies — Norte, Sur, Este, Oeste, o un cuadrante. Esa dirección es el dato de entrada.
 >
-> **Segundo, y esto es lo más importante: las preguntas que hago, y por qué las hago.** No voy a interpretar en silencio. Voy a pensar en voz alta — van a escuchar mi razonamiento mientras ocurre. Cuando pregunte *"¿hay migraciones en tu familia?"*, presten atención a qué me llevó a esa pregunta y no a otra. La técnica no está en soltar el muñeco. Está en lo que se pregunta después.
+> **Segundo, y esto es lo más importante: las preguntas que hago, y por qué las hago.** No voy a interpretar en silencio. Voy a pensar en voz alta — van a escuchar mi razonamiento mientras ocurre. Cuando pregunte *"¿hay migraciones en tu familia?"*, presten atención a qué me llevó a esa pregunta y no a otra. El trabajo técnico está en lo que se pregunta después de la caída.
 >
 > **Tercero, cómo conecto lo que cae con lo que el voluntario ya sabe de su familia** — el genosociograma. La caída no dice nada por sí sola. Cobra sentido cuando se cruza con las fechas, los oficios y los eventos de la línea paterna. Ahí es donde una dirección sobre un papel se vuelve una lectura clínica.
 
@@ -279,9 +279,9 @@ Y entonces la pausa — el momento que más se salta y el que hace que el trabaj
 
 **Think-aloud del Dr.:**
 
-> Cayó con los pies hacia el [dirección]. Eso apunta al camino del [Migrante/Sufrimiento/Deber/Placer], o al cuadrante [X] si cayó en diagonal. Grupo: ese es el dato de entrada, y es solo el principio. Un muñeco que cae al Sur no significa "esta persona sufre". Significa: *aquí hay una hipótesis de dirección, y ahora la pongo a prueba con preguntas.* La caída abre la puerta; no cierra el caso.
+> Cayó con los pies hacia el [dirección]. Eso apunta al camino del [Migrante/Sufrimiento/Deber/Placer], o al cuadrante [X] si cayó en diagonal. Grupo: ese es el dato de entrada, y es solo el principio. Un muñeco que cae al Sur me da una hipótesis de dirección, y esa hipótesis se pone a prueba con preguntas antes de sostener nada sobre esta persona. La caída abre el trabajo y no lo concluye.
 >
-> Ahora repito con el padre. Y con el abuelo. (se sueltan) Miren el conjunto: \[describe el patrón — mismos caminos, opuestos, perpendiculares]. Cuando dos generaciones caen al mismo lado, hay una lealtad que sigue la línea. Cuando caen a lados opuestos, hay una compensación — un hijo que fue en dirección contraria a su padre suele estar corrigiendo algo, no huyendo al azar.
+> Ahora repito con el padre. Y con el abuelo. (se sueltan) Miren el conjunto: \[describe el patrón — mismos caminos, opuestos, perpendiculares]. Cuando dos generaciones caen al mismo lado, hay una lealtad que sigue la línea. Cuando caen a lados opuestos, hay una compensación — un hijo que fue en dirección contraria a su padre suele estar corrigiendo algo de la línea, con una dirección tan determinada por ella como la del padre.
 
 **Nota de facilitación:** este es el "momento imán" de la sesión — lo que el grupo vino a ver. Filmarlo de cerca. El principio que el Dr. debe dejar clarísimo, porque es donde una técnica así se malinterpreta: **la caída es una hipótesis de entrada, no un veredicto.** Todo el rigor está en lo que viene después, no en el gesto físico.
 
@@ -302,13 +302,13 @@ Y entonces la pausa — el momento que más se salta y el que hace que el trabaj
 
 **Think-aloud del Dr. (intercalado entre las respuestas del voluntario):**
 
-> Escucharon la pregunta que acabo de hacer. Vengo de la dirección que cayó el muñeco, sí — pero fíjense que no le dije "tu muñeco cayó al Oeste, entonces tú eres del Deber". Le pregunté. Si me hubiera dicho que no, que nadie se sacrificó, que nadie cargó una misión — habría soltado esa hipótesis y mirado el cuadrante vecino. La técnica no impone la lectura. La propone y la verifica contra la vida real de la persona. Un terapeuta que solo "lee la caída" sin verificar está adivinando. Un terapeuta formado usa la caída para saber qué preguntar.
+> Escucharon la pregunta que acabo de hacer. Viene de la dirección en que cayó el muñeco, y fíjense en la forma: le pregunté, en lugar de declararle "cayó al Oeste, entonces eres del Deber". Si me hubiera dicho que no, que nadie se sacrificó, que nadie cargó una misión, habría soltado esa hipótesis y mirado el cuadrante vecino. La técnica propone una lectura y la verifica contra la vida real de la persona. La caída sirve para saber qué preguntar; el rigor está en la verificación.
 
 *(El Dr. conecta con el genosociograma:)*
 
 > Y ahora lo cruzo con lo que [voluntario] ya sabe de su familia. Me dijiste que tu abuelo [dato del genosociograma]. Miren cómo encaja con la dirección que cayó — o miren cómo *no* encaja, que también es información. Cuando la caída, las preguntas y el genosociograma apuntan al mismo lado, tenemos una lectura sólida. Cuando no, tenemos algo más interesante todavía: una tensión que vale la pena mirar.
 
-**Nota de facilitación:** esta sección es el núcleo del aprendizaje por observación. El valor entero de la hora está en que el grupo *escuche el razonamiento clínico ocurriendo* — la fase que Collins/Brown/Newman llaman articulación del experto. Sin el think-aloud, el grupo ve un truco. Con el think-aloud, ve un método. Insistir al Dr.: verbalizar cada bifurcación de decisión ("consideré esto, lo descarté por esto").
+**Nota de facilitación:** esta sección es el núcleo del aprendizaje por observación. El valor entero de la hora está en que el grupo *escuche el razonamiento clínico ocurriendo* — la fase que Collins/Brown/Newman llaman articulación del experto. El think-aloud es lo que hace visible el método detrás de la maniobra; sin él, el grupo se queda con el gesto físico. Insistir al Dr.: verbalizar cada bifurcación de decisión ("consideré esto, lo descarté por esto").
 
 ***
 
@@ -316,7 +316,7 @@ Y entonces la pausa — el momento que más se salta y el que hace que el trabaj
 
 **\[Slide 12 — pregunta de cierre del método (Documento Base §15, Paso 12): "Ahora que ves este patrón, ¿quieres seguir en este camino o elegir una dirección distinta?"]**
 
-> Cierro con el voluntario antes de devolvérselo al grupo. \[Voluntario]: viste hacia dónde cae tu línea, y viste que no empezó contigo — viene de atrás. La pregunta con la que te dejo no es un diagnóstico, es una elección: ahora que puedes ver el patrón, ¿es este el camino en el que quieres seguir, o quieres empezar a caminar hacia otro lado? Esa pregunta es tuya, para las próximas semanas.
+> Cierro con el voluntario antes de devolvérselo al grupo. \[Voluntario]: viste hacia dónde cae tu línea, y viste que viene de atrás, de antes de ti. La pregunta con la que te dejo abre una elección: ahora que puedes ver el patrón, ¿es este el camino en el que quieres seguir, o quieres empezar a caminar hacia otro lado? Esa pregunta es tuya, para las próximas semanas.
 >
 > Gracias por prestar tu línea para que el grupo pudiera ver esto. (cierre cálido con el voluntario)
 
@@ -330,13 +330,13 @@ Y entonces la pausa — el momento que más se salta y el que hace que el trabaj
 
 *(El grupo comparte; el Dr. confirma o corrige el razonamiento observado.)*
 
-> Lo que acaban de hacer —reconstruir por qué pregunté lo que pregunté— es el primer paso para hacerlo ustedes. No lo hicieron con las manos hoy; lo hicieron con la mirada. Y esa es la diferencia entre haber visto un caso y haber estudiado un caso.
+> Lo que acaban de hacer —reconstruir por qué pregunté lo que pregunté— es el primer paso para hacerlo ustedes. Hoy fue con la mirada y con el registro escrito; así se estudia el caso de otro terapeuta.
 
 **Aplicación a su propio genograma (transferencia):**
 
-> Última cosa antes de cerrar. Vuelvan un momento al genograma de la Sesión 1 —o a la línea paterna que sintieron en el momento somático de hoy—. Sin muñecos, solo con lo que ya vieron: si tuvieran que apostar una dirección para su propia línea paterna, ¿cuál sería? ¿Norte, Sur, Este, Oeste — o un cuadrante? Anótenla al margen de su árbol. No es un diagnóstico; es una hipótesis suya, para seguir mirando.
+> Última cosa antes de cerrar. Vuelvan un momento al genograma de la Sesión 1 —o a la línea paterna que sintieron en el momento somático de hoy—. Sin muñecos, solo con lo que ya vieron: si tuvieran que apostar una dirección para su propia línea paterna, ¿cuál sería? ¿Norte, Sur, Este, Oeste — o un cuadrante? Anótenla al margen de su árbol, como hipótesis de trabajo sobre su propia línea, para seguir mirando estas semanas.
 
-**Nota de facilitación:** este debrief es el "checkpoint de recuperación" y la "transferencia" del molde de clase mundial, adaptados a formato de demostración. La reconstrucción del razonamiento (Sección 7, primera parte) consolida la retención; la apuesta sobre la propia línea (segunda parte) es la transferencia a un caso nuevo —el suyo—. Sin este paso, la demo se queda en espectáculo; con él, se vuelve formación.
+**Nota de facilitación:** este debrief es el "checkpoint de recuperación" y la "transferencia" del molde de clase mundial, adaptados a formato de demostración. La reconstrucción del razonamiento (Sección 7, primera parte) consolida la retención; la apuesta sobre la propia línea (segunda parte) es la transferencia a un caso nuevo —el suyo—. Este paso es lo que convierte la demostración en formación; sin él, el grupo se lleva la anécdota del voluntario.
 
 ***
 
@@ -352,11 +352,11 @@ Y entonces la pausa — el momento que más se salta y el que hace que el trabaj
 
 **\[Slide 14 (opcional) — las dos puertas de este módulo: LEER la línea → Los Caminos de la Vida y Playmobil · MOVER lo que la línea dejó → Actos que Mueven]**
 
-> Y una última cosa, para quien hoy sintió que quiere aprender a hacer esto —no solo a entenderlo—. Hoy no se los conté para que se lo imaginaran: hoy lo vivieron y lo vieron. Y de eso se abren dos puertas.
+> Y una última cosa, para quien hoy sintió que quiere aprender a hacer esto, además de entenderlo. Lo de hoy lo vivieron en el cuerpo y lo vieron trabajar sobre un caso real. De ahí se abren dos puertas.
 >
 > La primera es **leer la línea**. Lo que me vieron hacer con el muñeco —soltarlo es un gesto de segundos; leerlo es otra cosa: los siete pasos, los cuadrantes, la familia entera junta, las preguntas que verifican cada hipótesis— es lo que enseña **Terapia con Muñecos: Playmobil Pro**. Y el marco completo de los Cuatro Caminos, con sus metaprogramas y sus movimientos sistémicos, es **Los Caminos de la Vida**.
 >
-> La segunda es **mover lo que la línea dejó**. El momento somático de hoy —cuando sintieron en el cuerpo la dirección de su línea, y algo se movió al ponerle nombre— fue una versión suave, de grupo. El acto completo, el que no solo nombra el patrón sino que lo mueve —actos físicos, con objetos cotidianos, que el sistema nervioso registra como experiencia real— es lo que se hace en **Actos que Mueven**, el taller vivencial de Ritual Experiencing. Ahí no se habla de rituales: se hacen.
+> La segunda es **mover lo que la línea dejó**. El momento somático de hoy —cuando sintieron en el cuerpo la dirección de su línea, y algo se movió al ponerle nombre— fue una versión suave, de grupo. El acto completo —el que además de nombrar el patrón lo mueve: actos físicos, con objetos cotidianos, que el sistema nervioso registra como experiencia real— es lo que se trabaja en **Actos que Mueven**, el taller vivencial de Ritual Experiencing. Es un taller de práctica: los rituales se hacen ahí, en la sala.
 >
 > Leer la línea, y mover lo que la línea dejó. Hoy tocaron un poco de las dos. Quien quiera cualquiera de las dos formaciones, al cierre abrimos conversación para contarles cómo entrar.
 

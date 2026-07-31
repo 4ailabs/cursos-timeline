@@ -1,0 +1,466 @@
+<title>El Cuerpo Eléctrico — Método de enseñanza y producción · Deck de equipo</title>
+<style>
+  :root{
+    --bg:#FFFFFF; --panel:#FBFBFA; --ink:#23252A; --soft:#4A4643; --faint:#8A897F;
+    --hair:#E4E2D9; --line:#DEDBD2;
+    --teal:#0F6E56; --teal-deep:#0B5644; --teal-tint:#E7F4EF;
+    --chip:#F1EFE8; --amber:#9C7B37;
+    --sans:"Avenir Next","Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#16171B; --panel:#1E2024; --ink:#ECEDEF; --soft:#B7B9BD; --faint:#7C7E86;
+      --hair:#2C2E34; --line:#33363D; --teal:#3FA98A; --teal-deep:#6FC6AC; --teal-tint:#14312A; --chip:#23262C; --amber:#C6A363; }
+  }
+  :root[data-theme="light"]{ --bg:#FFFFFF;--panel:#FBFBFA;--ink:#23252A;--soft:#4A4643;--faint:#8A897F;--hair:#E4E2D9;--line:#DEDBD2;--teal:#0F6E56;--teal-deep:#0B5644;--teal-tint:#E7F4EF;--chip:#F1EFE8;--amber:#9C7B37; }
+  :root[data-theme="dark"]{ --bg:#16171B;--panel:#1E2024;--ink:#ECEDEF;--soft:#B7B9BD;--faint:#7C7E86;--hair:#2C2E34;--line:#33363D;--teal:#3FA98A;--teal-deep:#6FC6AC;--teal-tint:#14312A;--chip:#23262C;--amber:#C6A363; }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  .deck{position:fixed;inset:0;overflow:hidden}
+  .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(26px,5vw,72px) clamp(34px,7vw,104px) clamp(52px,6vw,80px);opacity:0;visibility:hidden;
+    transition:opacity .35s ease;pointer-events:none;overflow:hidden}
+  .slide.on{opacity:1;visibility:visible;pointer-events:auto}
+  .slide::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--teal)}
+  .max{width:100%;max-width:1200px;margin:0 auto}
+
+  .eyebrow{font-size:clamp(11px,1.2vw,14px);letter-spacing:.22em;text-transform:uppercase;color:var(--teal);font-weight:700;margin:0 0 clamp(8px,1.3vw,16px)}
+  h1{font-size:clamp(26px,4.3vw,52px);font-weight:600;line-height:1.06;letter-spacing:-.02em;margin:0 0 clamp(10px,1.5vw,20px);text-wrap:balance;max-width:24ch}
+  .lead{font-size:clamp(15px,1.8vw,22px);line-height:1.5;color:var(--soft);max-width:64ch;margin:0}
+  .lead em{font-style:italic;color:var(--ink)}
+  .note{font-size:clamp(12.5px,1.3vw,16px);line-height:1.5;color:var(--faint);max-width:70ch;margin:clamp(12px,1.8vw,22px) 0 0}
+  .note b{color:var(--teal-deep);font-weight:600}
+
+  .cover h1{font-size:clamp(38px,6.6vw,88px);letter-spacing:-.03em;margin-bottom:clamp(6px,1.2vw,16px)}
+  .cover .sub{font-size:clamp(16px,2.2vw,27px);color:var(--soft);font-weight:400;margin:0 0 clamp(20px,3.4vw,42px)}
+  .cover .thesis{font-size:clamp(16px,1.9vw,23px);line-height:1.5;font-style:italic;color:var(--ink);border-top:1px solid var(--line);padding-top:clamp(14px,2.2vw,26px);max-width:54ch}
+  .mark{display:flex;align-items:center;gap:12px;margin-bottom:clamp(24px,5vw,60px)}
+  .mark svg{height:clamp(20px,2.4vw,32px);width:auto}
+  .mark span{font-size:clamp(14px,1.6vw,20px);color:var(--ink)} .mark b{color:var(--teal);font-weight:400}
+
+  /* tarjetas escalera / unidades */
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(9px,1.2vw,18px);margin-top:clamp(14px,2vw,28px)}
+  .step{border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:6px;background:var(--panel);padding:clamp(12px,1.5vw,18px);display:flex;flex-direction:column;gap:5px}
+  .step .m{font:700 clamp(10px,1vw,12px) var(--mono);color:var(--teal);letter-spacing:.06em}
+  .step .b{font-size:clamp(14px,1.4vw,18px);font-weight:600;line-height:1.15}
+  .step .v{font-size:clamp(11.5px,1.2vw,14px);color:var(--soft);line-height:1.35}
+  .step .d{font:400 clamp(9px,.95vw,11px) var(--mono);color:var(--faint);margin-top:auto}
+  .coh{margin-top:clamp(12px,2vw,26px);font-size:clamp(12.5px,1.4vw,17px);color:var(--soft);line-height:1.5}
+  .coh b{color:var(--teal-deep);font-weight:600}
+
+  /* lista numerada (momentos, pasos, competencias) */
+  .flow{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(4px,.7vw,10px) clamp(24px,4vw,56px);margin-top:clamp(12px,2vw,26px)}
+  .flow.one{grid-template-columns:1fr;max-width:70ch}
+  .row{display:flex;gap:clamp(11px,1.3vw,16px);align-items:baseline;padding:clamp(5px,.8vw,10px) 0;border-bottom:1px solid var(--hair)}
+  .row .n{font:700 clamp(12px,1.3vw,16px) var(--mono);color:var(--teal);flex:none;width:2em;font-variant-numeric:tabular-nums}
+  .row .t{font-size:clamp(13px,1.4vw,18px);line-height:1.3}
+  .row .t small{display:block;color:var(--faint);font-size:.8em;margin-top:1px}
+
+  /* dos columnas de tarjetas */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3.4vw,52px);margin-top:clamp(12px,2vw,26px);align-items:start}
+  .card{border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;background:var(--panel);padding:clamp(14px,1.7vw,22px)}
+  .card .k{font-size:clamp(10px,1vw,12px);letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:700;margin:0 0 7px}
+  .card p{margin:0;font-size:clamp(13px,1.4vw,17px);line-height:1.5;color:var(--soft)} .card p b{color:var(--ink);font-weight:600}
+
+  /* tablas (multimodal, unidades, analogías) */
+  table.tb{width:100%;border-collapse:collapse;margin-top:clamp(12px,2vw,24px)}
+  table.tb td,table.tb th{padding:clamp(6px,1vw,12px) 0;border-bottom:1px solid var(--hair);font-size:clamp(12.5px,1.35vw,17px);vertical-align:baseline;text-align:left}
+  table.tb th{font:700 clamp(10px,1vw,12px) var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+  table.tb td.a{width:34%;font-weight:600;color:var(--ink);padding-right:18px}
+  table.tb td.b{color:var(--soft)} table.tb td.b b{color:var(--teal-deep);font-weight:600}
+  table.tb td.c{width:14%;font:700 11px var(--mono);color:var(--teal)}
+
+  .gold{margin-top:clamp(12px,2vw,24px);background:var(--teal-tint);border-radius:6px;padding:clamp(12px,1.6vw,20px);font-size:clamp(12.5px,1.4vw,17px);line-height:1.5;color:var(--ink)}
+  .gold b{color:var(--teal-deep)}
+
+  /* glosario (término → def) */
+  .gloss{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1.2vw,16px) clamp(24px,4vw,56px);margin-top:clamp(12px,2vw,26px)}
+  .gl{border-bottom:1px solid var(--hair);padding-bottom:clamp(6px,.9vw,11px)}
+  .gl .term{font-size:clamp(13px,1.4vw,18px);font-weight:600;color:var(--ink)}
+  .gl .term span{color:var(--faint);font-weight:400;font-size:.8em}
+  .gl .def{font-size:clamp(12px,1.25vw,15px);color:var(--soft);line-height:1.4;margin-top:2px}
+
+  /* sección: ficha */
+  .ficha{border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:clamp(14px,2vw,24px);margin-top:clamp(12px,2vw,24px)}
+  .ficha .id{font:700 clamp(12px,1.3vw,16px) var(--mono);color:var(--teal);letter-spacing:.04em}
+  .ficha .idea{font-size:clamp(14px,1.5vw,19px);color:var(--ink);margin:6px 0 4px;font-weight:600}
+  .ficha .tags{font:600 11px var(--mono);color:var(--faint)}
+  .spawn{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,1.2vw,16px);margin-top:clamp(12px,1.8vw,22px)}
+  .spawn .f{border:1px solid var(--line);border-radius:6px;padding:clamp(9px,1.2vw,14px);text-align:center;background:var(--bg)}
+  .spawn .f .ic{font-size:clamp(17px,1.9vw,24px)}
+  .spawn .f .fn{font-size:clamp(11px,1.15vw,14px);font-weight:600;margin-top:3px}
+  .spawn .f .fd{font-size:clamp(9.5px,1vw,12px);color:var(--faint);margin-top:1px;line-height:1.3}
+
+  /* antes / después */
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.6vw,40px);margin-top:clamp(12px,2vw,24px);align-items:start}
+  .ba .p{border-radius:8px;padding:clamp(14px,1.8vw,22px);font-size:clamp(12px,1.3vw,16px);line-height:1.5}
+  .ba .antes{background:var(--panel);border:1px solid var(--line);color:var(--soft);font-style:italic}
+  .ba .despues{background:var(--teal-tint);border:1px solid transparent}
+  .ba .lb{font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px}
+  .ba .antes .lb{color:var(--faint)} .ba .despues .lb{color:var(--teal-deep)}
+  .ba .despues .beat{display:block;margin-bottom:6px} .ba .despues .beat b{color:var(--teal);font-weight:700;font-family:var(--mono);font-size:.82em;letter-spacing:.03em}
+
+  /* calendario tira */
+  .cal{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(9px,1.2vw,16px);margin-top:clamp(12px,2vw,22px)}
+  .cal .c{border:1px solid var(--line);border-radius:6px;padding:clamp(11px,1.4vw,16px);background:var(--panel)}
+  .cal .c .mm{font:700 12px var(--mono);color:var(--teal)}
+  .cal .c .nm{font-size:clamp(12px,1.3vw,16px);font-weight:600;margin:3px 0}
+  .cal .c .dt{font:400 11px var(--mono);color:var(--faint)}
+
+  .gap{display:flex;gap:clamp(11px,1.5vw,18px);padding:clamp(10px,1.4vw,18px) 0;border-bottom:1px solid var(--hair);align-items:baseline}
+  .gap .num{font:700 clamp(18px,2.3vw,30px) var(--sans);color:var(--teal);flex:none;line-height:1}
+  .gap .tx{font-size:clamp(14px,1.5vw,19px);line-height:1.4} .gap .tx small{display:block;color:var(--faint);font-size:.78em;margin-top:2px}
+
+  .bar{position:fixed;left:0;right:0;bottom:0;height:4px;background:var(--hair);z-index:10}
+  .bar .fill{height:100%;background:var(--teal);width:0;transition:width .35s ease}
+  .hud{position:fixed;right:clamp(14px,3vw,30px);bottom:clamp(12px,2vw,22px);display:flex;align-items:center;gap:12px;z-index:11;font:600 12px var(--mono);color:var(--faint)}
+  .hud button{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--ink);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center}
+  .hud button:hover{border-color:var(--teal);color:var(--teal)}
+  .hud button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+  .count{font-variant-numeric:tabular-nums}
+  @media (max-width:860px){ .grid4,.cal,.spawn{grid-template-columns:repeat(2,1fr)} .flow,.cols,.gloss,.ba{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion:reduce){ .slide,.bar .fill{transition:none} }
+</style>
+
+<div class="deck" id="deck">
+
+  <!-- 1 · Portada -->
+  <section class="slide cover on">
+    <div class="max">
+      <div class="mark"><svg viewBox="0 0 58 24" aria-hidden="true"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1.4"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span>regulación <b>bioeléctrica</b></span></div>
+      <p class="eyebrow">Formación · El Cuerpo Eléctrico</p>
+      <h1>Cómo enseñamos y producimos el curso</h1>
+      <p class="sub">Estrategia, método de clase y máquina de video · para el equipo</p>
+      <p class="thesis">No hacemos cuatro cursos: hacemos <em>un curso de cuatro peldaños</em>, con un solo estándar y una sola línea de montaje.</p>
+    </div>
+  </section>
+
+  <!-- 2 · Qué es la RB (grounding) -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">Para empezar · de qué trata el curso</p>
+      <h1>Qué es la Regulación Bioeléctrica</h1>
+      <p class="lead">Un método que <em>evalúa el estado bioeléctrico</em> del cuerpo y <em>regula el microambiente del tejido</em> con campos magnéticos estáticos suaves (0.1–0.5 T). No trata emociones, ni microbios, ni "energía": trabaja sobre el estado electroquímico del tejido.</p>
+      <div class="cols">
+        <div class="card"><p class="k">Momento 1 · Rastreo</p><p><b>Lee</b> el mapa bioeléctrico individual del paciente — un perfil con estructura, no una lista de síntomas.</p></div>
+        <div class="card"><p class="k">Momento 2 · Aplicación</p><p><b>Facilita el retorno</b> del tejido a su equilibrio. Primero se lee; solo entonces se regula.</p></div>
+      </div>
+      <p class="note">Idea que el curso instala: el cuerpo mantiene un <b>estado</b>, lo defiende, y puede <b>recalibrarse</b> — por eso <b>regular no es curar</b>.</p>
+    </div>
+  </section>
+
+  <!-- 3 · Qué forma el curso -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">El arco de la formación</p>
+      <h1>De una mirada a un método</h1>
+      <p class="lead">El estudiante entra viendo el cuerpo como una máquina que se avería. Sale leyéndolo como un <em>sistema bioeléctrico</em> que mantiene un estado y puede recalibrarse — y conoce el instrumento, el sustrato y el procedimiento con que la RB opera.</p>
+      <div class="cols">
+        <div class="card"><p class="k">Módulo 1 · el marco</p><p>Aquí <b>no se toca al paciente todavía</b>: se aprende a razonar sobre él. Pone el marco que hace que las manos sepan lo que hacen.</p></div>
+        <div class="card"><p class="k">Módulo 2 · las manos</p><p>Aquí se <b>toman los imanes</b> y se ejecuta, ya sabiendo exactamente qué se hace y por qué.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Escalera -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">La estrategia · una escalera cognitiva</p>
+      <h1>Cuatro módulos, cuatro peldaños de Bloom</h1>
+      <div class="grid4">
+        <div class="step"><span class="m">M1</span><span class="b">El Cuerpo Eléctrico</span><span class="v"><b>Comprender</b> · <em>Explica</em> qué es, de dónde viene y con qué instrumento.</span><span class="d">11 jul ✓</span></div>
+        <div class="step"><span class="m">M2</span><span class="b">Leer y regular</span><span class="v"><b>Aplicar</b> · <em>Ejecuta</em> un rastreo y una aplicación segura.</span><span class="d">25 jul</span></div>
+        <div class="step"><span class="m">M3</span><span class="b">Los ejes de regulación</span><span class="v"><b>Analizar</b> · <em>Decide con criterio</em> qué eje trabajar.</span><span class="d">8 ago</span></div>
+        <div class="step"><span class="m">M4</span><span class="b">La clínica</span><span class="v"><b>Evaluar / Crear</b> · <em>Conduce</em> una sesión y diseña el mantenimiento.</span><span class="d">22 ago</span></div>
+      </div>
+      <p class="coh">La columna de coherencia (el hilo que no se rompe): <b>entender</b> el cuerpo eléctrico → <b>tomar el instrumento y leer</b> → <b>mapear y priorizar</b> los ejes → <b>integrar</b> la clínica. Cada módulo abre recuperando el anterior y cierra anunciando el siguiente.</p>
+    </div>
+  </section>
+
+  <!-- 5 · Módulo 1 detalle -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">Módulo 1 en detalle</p>
+      <h1>4 unidades · 13 lecciones</h1>
+      <table class="tb">
+        <tr><th>Unidad</th><th>Lecciones</th><th>Competencia que construye</th></tr>
+        <tr><td class="a">U1 · El Cuerpo Eléctrico</td><td class="b">1.1 Qué es · 1.2 El linaje · 1.3 La MEC · 1.4 El Vmem</td><td class="b">Definir el método y sus dos pilares</td></tr>
+        <tr><td class="a">U2 · El Instrumento y el Sustrato</td><td class="b">2.1 Campo↔tejido · 2.2 El imán · 2.3 El sustrato</td><td class="b">Con qué se toca y dónde actúa</td></tr>
+        <tr><td class="a">U3 · El Agente y la Regulación</td><td class="b">3.1 TAME · 3.2 Persuadibilidad · 3.3 Regular ≠ curar</td><td class="b">Razonar con el marco del agente</td></tr>
+        <tr><td class="a">U4 · El Rastreo y el Nodo</td><td class="b">4.1 Rastreo · 4.2 El ciclo · 4.3 El nodo de lesión</td><td class="b">El procedimiento operativo completo</td></tr>
+      </table>
+      <p class="note">El hilo del módulo: <b>estado bioeléctrico → instrumento que lo modifica → marco que lo interpreta → procedimiento que lo opera.</b></p>
+    </div>
+  </section>
+
+  <!-- 6 · Competencias de salida -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">Diseño inverso · empezamos por aquí</p>
+      <h1>Qué sabrá <em>hacer</em> el alumno al terminar M1</h1>
+      <div class="flow">
+        <div class="row"><span class="n">1</span><span class="t">Definir la RB y sus dos momentos (rastreo / aplicación).</span></div>
+        <div class="row"><span class="n">2</span><span class="t">Situar el método en su linaje, de Becker a la biofísica actual.</span></div>
+        <div class="row"><span class="n">3</span><span class="t">Describir los dos pilares —MEC y Vmem— y su jerarquía.</span></div>
+        <div class="row"><span class="n">4</span><span class="t">Explicar cómo el campo magnético interactúa con el tejido.</span></div>
+        <div class="row"><span class="n">5</span><span class="t">Razonar con el marco del agente (TAME): leer un estado, no una enfermedad.</span></div>
+        <div class="row"><span class="n">6</span><span class="t">Describir el rastreo (calibración → ciclo) y el nodo de lesión.</span></div>
+      </div>
+      <p class="note">Estas seis capacidades son el <b>criterio de dominio</b> del módulo. Todo lo demás las sirve. La destreza de la mano se evalúa en M2.</p>
+    </div>
+  </section>
+
+  <!-- 7 · Glosario de marcos -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">El vocabulario del método · para todos</p>
+      <h1>Los marcos que adoptamos (y qué significan)</h1>
+      <div class="gloss">
+        <div class="gl"><div class="term">Diseño inverso <span>· Harvard / UbD</span></div><div class="def">Se diseña desde el resultado: primero qué debe poder hacer el alumno, luego cómo se evidencia, y al final el contenido.</div></div>
+        <div class="gl"><div class="term">Taxonomía de Bloom</div><div class="def">Escalera cognitiva con verbos medibles: recordar → comprender → aplicar → analizar → evaluar → crear.</div></div>
+        <div class="gl"><div class="term">Carga cognitiva <span>· Sweller</span></div><div class="def">El novato se satura: se enseña en trozos, una idea a la vez, con ejemplos resueltos.</div></div>
+        <div class="gl"><div class="term">Recuperación + espaciada</div><div class="def">Quien <em>recupera</em> activamente lo aprendido retiene ~25% más; se revisita con espaciamiento.</div></div>
+        <div class="gl"><div class="term">Conceptos umbral <span>· Meyer &amp; Land</span></div><div class="def">Ideas "portal" que, una vez cruzadas, reorganizan toda la comprensión. Merecen trato especial.</div></div>
+        <div class="gl"><div class="term">Mente y mano · doer effect <span>· MIT</span></div><div class="def">Se aprende <em>haciendo</em>; el que hace práctica con retroalimentación aprende medible­mente más que el que solo mira.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · Molde de 8 momentos -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">El método de enseñanza · por lección</p>
+      <h1>Cada lección, el mismo molde de 8 momentos</h1>
+      <div class="flow">
+        <div class="row"><span class="n">0</span><span class="t">Recuperación de entrada<small>1 pregunta sobre la lección anterior</small></span></div>
+        <div class="row"><span class="n">1</span><span class="t">Objetivo explícito<small>“al terminar podrás [verbo medible]…”</small></span></div>
+        <div class="row"><span class="n">2</span><span class="t">Gancho clínico<small>un fenómeno que el profesional reconoce</small></span></div>
+        <div class="row"><span class="n">3</span><span class="t">Concepto en trozos<small>una idea nuclear a la vez</small></span></div>
+        <div class="row"><span class="n">4</span><span class="t">Tu imagen + ejemplo trabajado<small>la analogía del Dr., textual</small></span></div>
+        <div class="row"><span class="n">5</span><span class="t">Fundamento dosificado<small>la cita, en dosis justa</small></span></div>
+        <div class="row"><span class="n">6</span><span class="t">Anclaje clínico<small>qué significa en el rastreo</small></span></div>
+        <div class="row"><span class="n">7·8</span><span class="t">Checkpoint activo + cierre metacognitivo<small>el alumno responde; “¿qué cambió en tu comprensión?”</small></span></div>
+      </div>
+      <p class="note">Lo nuevo frente a una buena clase: <b>objetivo explícito</b>, <b>checkpoint activo</b> y <b>cierre metacognitivo</b>. Eso convierte una buena clase en una que <em>forma</em>.</p>
+    </div>
+  </section>
+
+  <!-- 9 · Conceptos umbral -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">Los “portales” del método</p>
+      <h1>Los 5 conceptos umbral de la RB</h1>
+      <p class="lead">Un concepto umbral, una vez comprendido, <em>reorganiza todo lo demás</em> y ya no se puede “des-ver”. Se anuncian como tales, se dan con más ejemplos y se revisitan en espiral.</p>
+      <div class="flow one">
+        <div class="row"><span class="n">1</span><span class="t">El estado bioeléctrico es <b>información que instruye</b> —no un subproducto del metabolismo.</span></div>
+        <div class="row"><span class="n">2</span><span class="t">El <b>Vmem organiza</b>; el pH y el redox son <b>lecturas</b>.</span></div>
+        <div class="row"><span class="n">3</span><span class="t">La <b>sangre puede estar en rango mientras el tejido está desregulado</b>.</span></div>
+        <div class="row"><span class="n">4</span><span class="t">El cuerpo es un <b>agente que se recalibra</b>: regular no es curar.</span></div>
+        <div class="row"><span class="n">5</span><span class="t">El dipolo <b>lee un estado del terreno</b>, no identifica un microbio.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · Mente y mano -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">El corazón del método</p>
+      <h1>El alumno hace, no solo mira</h1>
+      <p class="lead">La RB <em>es</em> mente y mano: razonar el terreno y rastrear con el imán. Un video es pasivo; el efecto hacedor dice que quien solo mira aprende menos. Por eso la práctica no se guarda para el final.</p>
+      <div class="cols">
+        <div class="card"><p class="k">La regla</p><p><b>2–4 “pausa y hazlo” por lección</b>, con respuesta inmediata. Ejemplos: “explícalo con tus palabras”, “clasifica este caso”, “rastréate y observa”. Muchos aciertos pequeños, no un examen final.</p></div>
+        <div class="card"><p class="k">M1 → M2</p><p>En M1 la mano se <b>ensaya mentalmente</b> (observar, clasificar, predecir). En M2 se <b>ejecuta</b>: agarre, polaridad, auto-rastreo. Así llega con el gesto ensayado.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · Máquina de 7 pasos -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">Cómo se producen los videos</p>
+      <h1>Una máquina de 7 pasos, igual para cada módulo</h1>
+      <div class="flow">
+        <div class="row"><span class="n">1</span><span class="t">Capturar<small>audio limpio + slides + notas de casos</small></span></div>
+        <div class="row"><span class="n">2</span><span class="t">Transcribir y ordenar<small>sin perder información</small></span></div>
+        <div class="row"><span class="n">3</span><span class="t">Diseñar<small>backward design: objetivos, umbrales, mapa</small></span></div>
+        <div class="row"><span class="n">4</span><span class="t">Guionizar<small>molde de 8 momentos, con tus analogías</small></span></div>
+        <div class="row"><span class="n">5</span><span class="t">Fundamentar<small>cotejo con el Tratado; citas y límites</small></span></div>
+        <div class="row"><span class="n">6</span><span class="t">Seccionar<small>índice con IDs y tags → biblioteca</small></span></div>
+        <div class="row"><span class="n">7</span><span class="t">Derivar<small>infografías · podcast · quizzes · versión EN</small></span></div>
+      </div>
+      <p class="gold"><b>Regla de oro:</b> los pasos 1–6 se hacen <b>una vez por módulo</b>; el paso 7 se activa <b>cuantas veces se quiera</b> desde la biblioteca de secciones.</p>
+    </div>
+  </section>
+
+  <!-- 12 · La sección + ejemplo -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">La unidad reutilizable</p>
+      <h1>La sección: una idea nuclear que genera 5 formatos</h1>
+      <p class="lead">La unidad de trabajo no es la lección, es la <em>sección</em> (una idea, con ID y tags). Cada sección es autónoma y direccionable: <em>“regénerame <span style="font-family:var(--mono)">L1.3·S04</span>”</em> o <em>“todas las de <span style="font-family:var(--mono)">tag:acidosis</span>”.</em></p>
+      <div class="ficha">
+        <div class="id">M1·C1·L1.3·S03</div>
+        <div class="idea">La densidad de carga fija (FCD)</div>
+        <div class="tags">tags: MEC · FCD &nbsp;·&nbsp; nivel Bloom: comprender</div>
+        <div class="spawn">
+          <div class="f"><div class="ic">🎙️</div><div class="fn">Guion</div><div class="fd">segmento de video</div></div>
+          <div class="f"><div class="ic">🖼️</div><div class="fn">Slide</div><div class="fd">deck / carrusel</div></div>
+          <div class="f"><div class="ic">📊</div><div class="fn">Infografía</div><div class="fd">visual / posts</div></div>
+          <div class="f"><div class="ic">🔊</div><div class="fn">Audio</div><div class="fd">podcast / cápsula</div></div>
+          <div class="f"><div class="ic">✅</div><div class="fn">Quiz</div><div class="fd">flashcard / examen</div></div>
+        </div>
+      </div>
+      <p class="note">Del mismo backbone salen: el <b>curso</b>, <b>cápsulas temáticas</b> (por tag), <b>sets visuales</b>, <b>podcast</b>, <b>banco de preguntas</b> y la <b>versión EN</b>.</p>
+    </div>
+  </section>
+
+  <!-- 13 · Roles / sombreros -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">Quién hace qué · los “sombreros”</p>
+      <h1>Los roles que produce cada paso</h1>
+      <div class="flow">
+        <div class="row"><span class="n">·</span><span class="t">Editor en jefe<small>visión, coherencia, qué entra y qué no</small></span></div>
+        <div class="row"><span class="n">·</span><span class="t">Diseñador instruccional<small>objetivos, secuencia, checkpoints</small></span></div>
+        <div class="row"><span class="n">·</span><span class="t">Guionista<small>teleprompter con tus analogías</small></span></div>
+        <div class="row"><span class="n">·</span><span class="t">Verificador científico<small>cotejo con el Tratado, límites honestos</small></span></div>
+        <div class="row"><span class="n">·</span><span class="t">Terminólogo<small>terminología única, glosario</small></span></div>
+        <div class="row"><span class="n">·</span><span class="t">Director visual<small>prompts de slides e infografías</small></span></div>
+        <div class="row"><span class="n">·</span><span class="t">Productor de audio<small>cápsulas, podcast</small></span></div>
+        <div class="row"><span class="n">·</span><span class="t">Diseñador de evaluación<small>quizzes, flashcards</small></span></div>
+        <div class="row"><span class="n">·</span><span class="t">Localizador EN<small>versión en inglés, adapta las analogías</small></span></div>
+        <div class="row"><span class="n">·</span><span class="t">Arquitecto modular<small>secciona y etiqueta la biblioteca</small></span></div>
+      </div>
+      <p class="note">Se piden por nombre: <em>“ponte el sombrero de director visual y hazme los prompts de la 1.3”.</em> <b>Tarea de hoy:</b> repartir estos roles entre el equipo.</p>
+    </div>
+  </section>
+
+  <!-- 14 · Multimodalidad / UDL -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">Robusto para cualquier alumno</p>
+      <h1>No diseñamos por “estilos”; diseñamos multimodal</h1>
+      <p class="lead">Enseñar a cada quien en su “estilo preferido” no mejora resultados —es un mito muy citado—. Lo que sí funciona: <em>cada idea en varios formatos</em> (Diseño Universal para el Aprendizaje).</p>
+      <table class="tb">
+        <tr><td class="a">Ver + oír</td><td class="b"><b>Video</b> de la clase</td></tr>
+        <tr><td class="a">Ver (síntesis)</td><td class="b"><b>Slide</b> · infografía · carrusel</td></tr>
+        <tr><td class="a">Solo oír</td><td class="b"><b>Podcast</b> / cápsula de audio</td></tr>
+        <tr><td class="a">Leer</td><td class="b"><b>Manual B5</b> — el carril de lectura</td></tr>
+        <tr><td class="a">Hacer / recuperar</td><td class="b"><b>Pausa y hazlo</b> + quiz + flashcards</td></tr>
+      </table>
+      <p class="note">Y ya lo tenemos montado: la <b>arquitectura de secciones</b> genera esos cinco formatos del mismo contenido, sin rehacerlo.</p>
+    </div>
+  </section>
+
+  <!-- 15 · Catálogo del maestro -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">El oro del curso · conservar textual</p>
+      <h1>El catálogo de tus imágenes</h1>
+      <p class="lead">El valor premium no está en el contenido —eso está en el manual— sino en <em>cómo lo explicas</em>. Estas analogías se rescatan del audio y se preservan tal cual.</p>
+      <table class="tb">
+        <tr><td class="a">Perfil individual</td><td class="b">Dos diabéticos, mismo HOMA, distinto perfil</td></tr>
+        <tr><td class="a">Voltaje de lesión</td><td class="b">La salamandra: −10 → +20 → −30 regenera; la rana solo cicatriza</td></tr>
+        <tr><td class="a">El campo (no hay cargas)</td><td class="b">“El imán no tiene cargas, tiene un campo… como el aire, o el abanico”</td></tr>
+        <tr><td class="a">Gap junctions</td><td class="b">“Todas las células pegaditas, como los vagones de un metro”</td></tr>
+        <tr><td class="a">Set point</td><td class="b">La regadera: “aquí; no, muy fría, súbele” / el termostato</td></tr>
+        <tr><td class="a">Vmem instruye</td><td class="b">El renacuajo Picasso: un ojo ectópico en el intestino</td></tr>
+      </table>
+      <p class="note"><b>A reencuadrar o retirar</b> (decisión del Dr.): El Quijote / El Señor de los Anillos (digresión), el letrero de “nivelación de pies”, y referencias polémicas —solo como dato histórico, nunca afirmadas.</p>
+    </div>
+  </section>
+
+  <!-- 16 · Antes / después -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">Qué significa “premium” · demostración</p>
+      <h1>El mismo contenido, otra forma</h1>
+      <div class="ba">
+        <div class="p antes"><p class="lb">Antes · en vivo</p>“…tomaba una ranita, digo, ya no se hace tanto porque es difícil ¿verdad?… les cortaban una extremidad y el voltaje, que antes era menos 10 milivoltios ¿ok?, subía a más 20… y a esto se le llama despolarización…”</div>
+        <div class="p despues"><p class="lb">Después · clase grabada</p>
+          <span class="beat"><b>[Gancho]</b> ¿Qué decide si un tejido regenera o solo cicatriza?</span>
+          <span class="beat"><b>[Concepto]</b> El voltaje de la lesión es una señal que instruye.</span>
+          <span class="beat"><b>[Imagen]</b> Becker: −10 → +20 al cortar; en la salamandra baja a −30, se forma el blastema y nace una extremidad. En la rana algo lo detiene: vuelve a −10 y solo cicatriza.</span>
+          <span class="beat"><b>[Anclaje]</b> El nodo de lesión que rastrearás en la Clase 4 es, en el fondo, un muñón que se quedó en el voltaje equivocado.</span>
+        </div>
+      </div>
+      <p class="note">Se conserva tu narración y tus cifras; se quitan las dudas (“digo”, “¿ok?”), se ordena en progresión y se <b>ancla a la clínica</b> — que es lo que un profesional necesita.</p>
+    </div>
+  </section>
+
+  <!-- 17 · Captura en vivo + calendario -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">Alimentar la máquina · empieza el 25 jul</p>
+      <h1>Qué capturar en cada módulo en vivo</h1>
+      <p class="lead">La calidad del curso grabado depende de la calidad de la captura. Checklist para M2–M4:</p>
+      <div class="flow">
+        <div class="row"><span class="n">🎙️</span><span class="t">Audio limpio<small>micrófono del Dr., no ambiente — es la fuente del guion</small></span></div>
+        <div class="row"><span class="n">💡</span><span class="t">Las analogías y casos en el momento<small>si el Dr. improvisa una nueva, se conserva</small></span></div>
+        <div class="row"><span class="n">🖼️</span><span class="t">Los slides y los dibujos/mapa que use</span></div>
+        <div class="row"><span class="n">✋</span><span class="t">Las maniobras con imanes, filmadas de cerca<small>M2–M4 son manuales: cada maniobra con su rúbrica</small></span></div>
+        <div class="row"><span class="n">❓</span><span class="t">Las preguntas del grupo<small>revelan dónde cuesta el concepto → ahí van los “pausa y hazlo”</small></span></div>
+      </div>
+      <div class="cal">
+        <div class="c"><div class="mm">M1</div><div class="nm">El Cuerpo Eléctrico</div><div class="dt">11 jul ✓ · producción en curso</div></div>
+        <div class="c"><div class="mm">M2</div><div class="nm">Leer y regular</div><div class="dt">25 jul · orden 28 jul</div></div>
+        <div class="c"><div class="mm">M3</div><div class="nm">Los ejes</div><div class="dt">8 ago · orden 11 ago</div></div>
+        <div class="c"><div class="mm">M4</div><div class="nm">La clínica</div><div class="dt">22 ago · orden 25 ago</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 18 · Estado + huecos + decisiones -->
+  <section class="slide">
+    <div class="max">
+      <p class="eyebrow">Dónde estamos · qué decidimos hoy</p>
+      <h1>Estado actual, huecos y acuerdos</h1>
+      <p class="lead"><b>Estado:</b> Módulo 1 dado y ordenado; Clase 1 escrita y seccionada (piloto del molde). Pendientes: 12 lecciones ES + las 13 EN, y las Clases 2–4.</p>
+      <div class="gap"><span class="num">1</span><span class="tx">Diseñar los “pausa y hazlo <b>de la mano</b>” de M2<small>agarre · polaridad · auto-rastreo — el hueco real, y lo que define M2</small></span></div>
+      <div class="gap"><span class="num">2</span><span class="tx">Garantizar el <b>diagrama de cada concepto umbral</b><small>los 5 “portales”, en video + diagrama + ejemplo + una frase</small></span></div>
+      <p class="note" style="margin-top:clamp(14px,2vw,26px)"><b>Decisiones para hoy:</b> repartir los roles del equipo entre los 7 pasos · asignar quién captura el 25 jul · estrenar el paso 7 con un umbral de M1 (infografía + audio + quiz) como piloto de derivados.</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="bar"><div class="fill" id="fill"></div></div>
+<div class="hud">
+  <button id="prev" type="button" aria-label="Anterior">‹</button>
+  <span class="count"><span id="cur">1</span> / <span id="tot">18</span></span>
+  <button id="next" type="button" aria-label="Siguiente">›</button>
+  <button id="theme" type="button" aria-label="Tema claro u oscuro">◐</button>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var slides=[].slice.call(document.querySelectorAll('.slide')), i=0, n=slides.length;
+  document.getElementById('tot').textContent=n;
+  function show(k){
+    i=Math.max(0,Math.min(n-1,k));
+    slides.forEach(function(s,j){ s.classList.toggle('on', j===i); });
+    document.getElementById('cur').textContent=i+1;
+    document.getElementById('fill').style.width=((i+1)/n*100)+'%';
+  }
+  document.getElementById('next').addEventListener('click',function(e){e.stopPropagation();show(i+1);});
+  document.getElementById('prev').addEventListener('click',function(e){e.stopPropagation();show(i-1);});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home'){show(0);} else if(e.key==='End'){show(n-1);}
+  });
+  document.getElementById('deck').addEventListener('click',function(e){
+    if(e.target.closest('.hud')||e.target.closest('a'))return;
+    show(i + (e.clientX > window.innerWidth/2 ? 1 : -1));
+  });
+  var root=document.documentElement, mode='auto';
+  document.getElementById('theme').addEventListener('click',function(e){
+    e.stopPropagation();
+    mode = mode==='auto'?'light':mode==='light'?'dark':'auto';
+    if(mode==='auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme',mode);
+  });
+  show(0);
+})();
+</script>
