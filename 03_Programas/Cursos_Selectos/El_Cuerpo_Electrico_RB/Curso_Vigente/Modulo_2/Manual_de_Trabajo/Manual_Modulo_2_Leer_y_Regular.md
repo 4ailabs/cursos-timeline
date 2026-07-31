@@ -12,10 +12,10 @@ Dr. Miguel Ojeda Rios · Instituto Centrobioenergetica
 Conceptos operativos del Módulo 1 · Los materiales · La convención de polos · La ficha y el mapa · Preparación del paciente · La medición de la simetría · El algoritmo de la sesión · La apertura: acidosis temporal · El dipolo local · Los nodos distantes, en orden fijo · La rejilla 2×2 · Tiempo y criterio de retirada · Cierre de sesión y serie terapéutica · Los tres tipos de dolor · Los cuatro niveles del dolor · Inflamación periférica e inflamación central · La hoja de valoración previa · Naturaleza de la respuesta al rastreo · Síntesis del bloque
 
 **Bloque 2 · El programa de defensa**
-La inflamación como programa · Conservación evolutiva del programa · Los tres tiempos · Las dos formas de fallo · La cicatriz · El estado de la persona modula la reparación · La variable que se regula · Placebo y nocebo · El efecto nocebo en la práctica clínica · El contexto de la sesión · Síntesis del bloque
+La inflamación como programa · Conservación evolutiva del programa · Los tres tiempos · Las dos formas de fallo · La cicatriz · El estado de la persona modula la reparación · El tono de defensa · Placebo y nocebo · El efecto nocebo en la práctica clínica · El contexto de la sesión · Síntesis del bloque
 
 **Bloque 3 · La escala sistémica**
-El punto gatillo · El rastreo de nodos para el eje transversal · La hipótesis de la bilateralidad · Las tres geometrías de dipolo · Las cadenas · El deportista · Síntesis del bloque
+El punto gatillo · El rastreo de nodos para el eje transversal · Los cuarenta y un puntos del mapa de 2026 · La hipótesis de la bilateralidad · Las tres geometrías de dipolo · Las cadenas · El deportista · Síntesis del bloque
 
 **Bloque 4 · El eje del estrés**
 Revisión de la formulación vigente · Las seis fases del ciclo defensivo · Dos casos: la gacela y la frenada brusca · El ciclo defensivo incompleto · El marco de la alostasis · La simpaticotonía sostenida como predicción · Marcadores del eje · Lectura del rastreo del eje transversal · Observaciones clínicas durante la aplicación · Delimitación: la descarga como signo · Protocolo de práctica supervisada · Síntesis del bloque
@@ -81,9 +81,9 @@ En la aplicación general, **la cara negativa contacta la piel**.
 
 > **Una sola excepción: la acidosis temporal.** Ahí va la cara positiva contra la piel, y se inicia con el positivo.
 
-### Inversión de polaridad al pasar de la maniobra renal al trabajo por zonas
+### Inversión de polaridad al pasar de la acidosis temporal al trabajo por zonas
 
-El error no aparece al ejecutar la maniobra renal. Aparece **inmediatamente después**, al pasar al trabajo por zonas: ahí es donde el imán entra invertido.
+El error no aparece al ejecutar la acidosis temporal. Aparece **inmediatamente después**, al pasar al trabajo por zonas: ahí es donde el imán entra invertido.
 
 Se verifica polo y cara en esa transición.
 
@@ -104,7 +104,7 @@ La ficha sigue el formato SOAP.
 
 Se le entrega la silueta y él marca. La razón es operativa: el mapa cumple dos funciones.
 
-Es **la agenda de la sesión**, porque define qué se interroga y en qué orden, de mayor a menor intensidad. Y es **la referencia basal**, porque permite comparar esta sesión con las siguientes.
+Es **la agenda de la sesión**, porque define qué se interroga y en qué orden, de mayor a menor intensidad. Y es **la referencia de comparación**, porque permite contrastar esta sesión con las siguientes.
 
 Levantado por el terapeuta, el mapa registra lo que el terapeuta esperaba encontrar. Levantado por el paciente, registra lo que su cuerpo señala. **Esas dos listas no siempre coinciden.**
 
@@ -118,13 +118,13 @@ Tensión, contractura, edema, ardor, y la molestia inespecífica que el paciente
 
 ## 5. Preparación del paciente
 
-La preparación forma parte del procedimiento. **La tensión de defensa muscular es una de las principales fuentes de variabilidad de la prueba.**
+La preparación forma parte del procedimiento. **El tono de defensa muscular es una de las principales fuentes de variabilidad de la prueba.**
 
 1. **Explicar.** Evaluación de simetría y colocación de imanes; indolora y no invasiva.
 2. **Retirar.** Joyas, reloj, cinturón, llaves y dispositivos electrónicos.
 3. **Posicionar.** Decúbito supino, cabeza en posición neutra.
 4. **Relajar.** Traccionar suavemente ambas extremidades inferiores para relajar la articulación pélvica; movilizarlas hacia los lados para relajar el piso pélvico.
-5. **Cubrir con manta.** Reduce la tensión de defensa y estabiliza la medición basal.
+5. **Cubrir con manta.** Reduce el tono de defensa y estabiliza la medición.
 
 > Un paciente sin relajar produce una lectura no fiable, y esa lectura lleva a colocar imanes donde no corresponde.
 
@@ -175,7 +175,7 @@ RASTREO POR ZONAS  (por cada zona del mapa, de mayor a menor intensidad)
 
 ## 8. La apertura: acidosis temporal
 
-**Indicación:** acortamiento basal **sin** zona de dolor localizada.
+**Indicación:** acortamiento en la medición basal, antes de rastrear ninguna zona.
 
 | Paso | Acción | Criterio |
 |---|---|---|
@@ -188,7 +188,7 @@ RASTREO POR ZONAS  (por cada zona del mapa, de mayor a menor intensidad)
 
 Si con el imán colocado la extremidad continúa acortada, se trata de una discrepancia anatómica del paciente.
 
-Se coloca una marca en esa longitud, y **esa marca pasa a ser la referencia basal**. El acortamiento lesional se manifestará sobre esa base.
+Se coloca una marca en esa longitud, y **esa marca pasa a ser la línea base**. El acortamiento lesional se manifestará sobre esa base.
 
 ### Acidosis latente
 
@@ -206,10 +206,10 @@ El operador propone la zona; el rastreo confirma el punto.
 
 1. Negativo sobre la zona más sintomática, cara negativa a la piel. Se comprueba midiendo.
 2. Si acorta, el imán queda fijo. Si no hay cambio, se mueve por la zona midiendo hasta encontrar el punto que acorta. Si en toda la zona no aparece acortamiento, se continúa con otra zona del mapa.
-3. Sin mover el negativo, se prueba el positivo al lado —opuesto, a la izquierda o arriba—, midiendo en cada posición.
+3. Sin mover el negativo, se prueban posiciones adyacentes con el positivo —a un lado, arriba, abajo—, midiendo en cada una.
 4. **Cuando quedan isométricas, el dipolo local está cerrado.**
 
-La mayoría de los puntos se resuelve así. Y es un dipolo de gradiente: los dos polos opuestos y adyacentes generan un gradiente de campo empinado en el tejido intermedio. **El modelo atribuye el efecto al gradiente entre polos adyacentes más que a la intensidad del imán.** Es la formulación del método, y no está medida.
+La mayoría de los puntos se resuelve así. Y es un dipolo de gradiente: los dos polos opuestos y adyacentes generan un gradiente de campo empinado en el tejido intermedio. Es ese gradiente, y no la intensidad del imán, el que actúa sobre la zona.
 
 ---
 
@@ -237,7 +237,7 @@ El orden está construido por prevalencia observada. **Un nodo está establecido
 
 **Indicación:** dolor con contractura, sobre un punto **ya confirmado** por el rastreo.
 
-Cuatro imanes iguales, en cuadro, con polaridades alternadas en tablero. Cada imán queda opuesto a sus vecinos de lado y de arriba.
+Se monta alrededor del dipolo ya colocado, sin moverlo: cuatro imanes iguales, en cuadro de 2×2 ceñido al punto, con polaridades alternadas en tablero. Cada imán queda opuesto a sus vecinos de lado y de arriba, y los dos de cada diagonal comparten polo. Si quedan dos caras iguales juntas, está mal armada.
 
 ```
    N │ S
@@ -251,9 +251,9 @@ En cada frontera entre imanes contiguos se enfrentan polos opuestos: multiplica 
 
 ## 12. Tiempo y criterio de retirada
 
-Veinte minutos como base; de veinte a treinta en el trabajo por zonas. Es la **ventana de impactación de una configuración**.
+La configuración de apertura, veinte minutos o más. Cada zona, de veinte a treinta. Es la **ventana de impactación de una configuración**.
 
-> **El criterio de cierre de una zona no es el tiempo transcurrido: es la verificación por retirada.**
+> **Una zona se cierra por verificación de retirada, no por reloj.**
 
 1. Retirar **únicamente el polo positivo**.
 2. Medir la simetría.
@@ -266,7 +266,7 @@ Veinte minutos como base; de veinte a treinta en el trabajo por zonas. Es la **v
 
 Terminado el recorrido, se ayuda al paciente a incorporarse y se formulan las preguntas de integración: *¿qué diferencias sientes? ¿cómo te sientes? ¿qué ha cambiado?*
 
-Esas preguntas forman parte del procedimiento y quedan registradas. El supuesto de que verbalizar el cambio facilite su consolidación es hipótesis del método.
+Esas preguntas forman parte del procedimiento y quedan registradas. Al hacer consciente el cambio se facilita la adopción del nuevo punto de ajuste.
 
 Se marca en el mapa cada zona que surgió, y el mapa se conserva.
 
@@ -300,7 +300,7 @@ Para eso hace falta la clasificación. **Son tres mecanismos distintos, no tres 
 | **Distribución** | Discreta, proporcional al hallazgo | Neuroanatómicamente plausible | Regional o multifocal |
 | **Calidad** | Patrón mecánico; evoluciona con el tejido | Quemante o eléctrica, con signos sensitivos confinados a ese territorio | Desproporcionada respecto a lo que se encuentra |
 | **Ejemplos** | Artrosis, esguince, contractura, herida | Neuropatía diabética, radiculopatía, neuralgia postherpética | Fibromialgia, SDRC, migraña crónica, buena parte del lumbar crónico |
-| **Qué hace el rastreo** | **Marca en la zona** y cierra con dipolo local o renal. Terreno habitual de la técnica | Puede marcar **sobre el trayecto**, con respuesta menos limpia | **Puede no marcar donde duele** |
+| **Qué hace el rastreo** | **Marca en la zona** y cierra con dipolo local o renal. Escenario habitual de la técnica | Puede marcar **sobre el trayecto**, con respuesta menos limpia | **Puede no marcar donde duele** |
 
 **Los fenotipos se mezclan.** Lo habitual es una lesión nociceptiva real con un componente nociplástico encima. No se busca la categoría pura, sino cuál pesa hoy.
 
@@ -328,7 +328,7 @@ Sueño no reparador con despertares. Fatiga que no cede con el descanso. Quejas 
 |---|---|---|---|
 | **1** | **El tejido** | Sensibilización periférica. Citoquinas, prostaglandinas, bradicinina y factor de crecimiento nervioso reducen el umbral del nociceptor: hiperalgesia y alodinia. Los canales se desregulan | **Marca en la zona.** Es la isla ya descrita |
 | **2** | **El segmento** | Sensibilización central espinal. Potenciación a largo plazo vía NMDA, activación glial, pérdida del control inhibitorio GABA y glicina, sumación temporal. El dolor se extiende más allá de la zona | Respuesta menos localizada |
-| **3** | **La modulación descendente** | La vía PAG–RVM pasa de inhibir a facilitar. Se debilita la inhibición descendente —serotonina, noradrenalina, opioides endógenos— y las células de facilitación de la RVM amplifican. Dolor con tono simpático elevado y poca relación con la carga mecánica | El nodo bulbo |
+| **3** | **La modulación descendente** | La vía que baja del mesencéfalo al bulbo —de la sustancia gris periacueductal, la PAG, a la médula ventromedial rostral, la RVM— pasa de inhibir a facilitar. Se debilita la inhibición descendente —serotonina, noradrenalina, opioides endógenos— y las células de facilitación de la RVM amplifican. Dolor con tono simpático elevado y poca relación con la carga mecánica | El nodo bulbo |
 | **4** | **La red** | Reorganización cortical y límbica. El dolor se incrusta en circuitos de memoria y emoción; se alteran redes de saliencia y la red por defecto; hay pérdida medible de sustancia gris, parcialmente reversible con tratamiento efectivo. Dolor con mínimo input periférico | Puede no marcar |
 
 ### Dos moduladores transversales a toda la cascada
@@ -339,7 +339,7 @@ Sueño no reparador con despertares. Fatiga que no cede con el descanso. Quejas 
 
 ### Mecanismo del ascenso entre niveles
 
-La descripción convencional plantea que el dolor asciende porque el daño se extiende. No es lo que ocurre.
+El dolor sube de nivel porque la protección se delega, no porque el daño se extienda.
 
 > **Cada nivel que no puede cumplir su meta entrega la protección al siguiente, y el siguiente la asume.**
 
@@ -349,7 +349,7 @@ El tejido no resuelve y el segmento asume. El segmento no resuelve y el sistema 
 
 ### Correspondencia anatómica del nodo bulbo
 
-La médula ventromedial rostral, que ejecuta la facilitación descendente, **está en el bulbo**. El nodo empleado de forma empírica cuando el dolor cursa con tono simpático elevado corresponde a la estructura de la modulación descendente invertida.
+La RVM, médula ventromedial rostral, ejecuta la facilitación descendente. *Médula* designa aquí el bulbo raquídeo, no la médula espinal: la PAG es mesencefálica, y lo que se palpa como bulbo es la RVM. El nodo empleado de forma empírica cuando el dolor cursa con tono simpático elevado corresponde a la estructura de la modulación descendente invertida.
 
 ---
 
@@ -399,7 +399,7 @@ Lo que marca es una zona fuera de su rango homeostático.
 
 La pierna no contiene información sobre el hombro: **la red responde, y la vía motora es el canal de salida.**
 
-De ahí sale lo que distingue el desempeño de un operador: no la sensibilidad de la mano, sino **qué preguntas sabe formular y en qué orden**.
+De ahí sale lo que distingue el desempeño de un operador: **qué preguntas sabe formular y en qué orden**, más que la sensibilidad de la mano.
 
 ### Las cinco reglas del rastreo
 
@@ -498,7 +498,7 @@ Dos conclusiones, y las dos operan. La primera, que quitar la defensa impide la 
 
 La piel fetal repara sin cicatriz, con regeneración completa de anexos —pelo, glándulas—, y con menor producción de IL-6 e IL-8.
 
-**la piel fetal deficiente en IL-10 cicatriza.** La misma piel, con IL-10 normal, regenera.
+Pero el dato que decide la interpretación es otro: **la piel fetal deficiente en IL-10 cicatriza.** La misma piel, con IL-10 normal, regenera.
 
 IL-10 es antiinflamatoria: pertenece al brazo de resolución. La piel fetal regenera porque tiene el tercer tiempo operando.
 
@@ -527,20 +527,20 @@ Y el correlato mecanístico: los leucocitos de las cuidadoras produjeron signifi
 
 > **El estrés degradó la señal de inicio del programa.** El programa arrancó peor, y por eso tardó.
 
-**La formulación defendible:** lo que modula la reparación es el estado defensivo de la persona. El significado que atribuye al procedimiento puede importar, pero importaría a través de ese estado.
+Lo que modula la reparación es el estado defensivo de la persona. El significado que atribuye al procedimiento puede importar, pero importaría a través de ese estado.
 
 Y esa versión señala una diana sobre la que sí se puede trabajar: la persona que llega a un procedimiento en calma cicatriza mejor porque su programa de defensa no está compitiendo con el de reparación.
 
-*Nota de rigor: la comparación entre un procedimiento deseado y uno temido arrastra variables ajenas al significado —técnica quirúrgica, tensión de la piel, tipo de cierre, localización, y la existencia de una enfermedad de base—. Se presenta como hipótesis.*
-
 ---
 
-## 7. La variable que se regula
+## 7. El tono de defensa
 
 **El programa de defensa** es el proceso: arranca, ejecuta, resuelve.
-**Lo que se regula es el nivel en el que ese programa queda ajustado.**
+**El tono de defensa** es el nivel en el que ese programa queda ajustado.
 
-Esa variable ya está en el protocolo del método: la preparación del paciente indica que la tracción y la manta reducen la tensión de defensa muscular. Lo que este bloque hace es ampliarle el alcance.
+El término ya está en el protocolo del método: la preparación del paciente indica que la tracción y la manta reducen el tono de defensa muscular. Lo que este bloque hace es ampliarle el alcance.
+
+Es graduable —se tiene más o menos tono—, y eso es exactamente un punto de ajuste. Y se puede decir en consulta sin acusar a nadie: *"tu sistema tiene el tono de defensa alto"*.
 
 ### Una sola variable, tres escalas
 
@@ -554,7 +554,7 @@ Lo que hace de esto algo más que una etiqueta es que unifica tres cosas que has
 
 > **El mismo ajuste, leído a tres alturas.**
 
-Y esa unidad tiene consecuencia clínica directa. Un paciente con la defensa alta se palpa distinto, se mide peor y resuelve más lento — y esas tres cosas, que parecían problemas separados, son la misma lectura tomada en tres lugares.
+Y esa unidad tiene consecuencia clínica directa. Un paciente con el tono alto se palpa distinto, se mide peor y resuelve más lento — y esas tres cosas, que parecían problemas separados, son la misma lectura tomada en tres lugares.
 
 **Deslinde:** *mecanismos de defensa* no se usa en este método. Esa expresión pertenece a otra tradición y significa otra cosa.
 
@@ -572,7 +572,7 @@ Y describe esa ganancia como una cantidad dinámica: puede dispararse con la act
 | Reducir la activación | Bajar el disparo de la ganancia |
 | Subir el umbral de los picos | Que se dispare menos fácil |
 
-**Dónde entra el método, dicho con cuidado.** El rastreo es, en esta clave, una entrada sensorial dirigida y verificada; y la sesión completa, con su preparación y su silencio, opera sobre la activación. **Es una lectura coherente. Que el marco encaje no demuestra que el imán recalibre nada.**
+**Dónde entra el método.** El rastreo es, en esta clave, una entrada sensorial dirigida y verificada; y la sesión completa, con su preparación y su silencio, opera sobre la activación.
 
 ### Condicionamiento del sistema inmune
 
@@ -580,9 +580,9 @@ En un experimento clásico se emparejó sacarina con un inmunosupresor. Después
 
 *Ader R, Cohen N. Psychosom Med 1975;37(4):333-340. Modelo animal.*
 
-El sistema inmune no tiene ojos, ni corteza, ni creencias. Y adquirió una asociación, y actuó en consecuencia.
+El sistema inmune no tiene ojos, ni corteza, ni creencias. Y aun así adquirió una asociación, y actuó en consecuencia.
 
-> **El nivel de defensa se fija por el estímulo presente y también por la historia.**
+> **El tono de defensa se fija por el estímulo presente y también por la historia.**
 
 ---
 
@@ -627,8 +627,6 @@ El placebo, dicho como condicionamiento molecular:
 3. Se presentan juntos, repetidamente. La red se entrena.
 4. Después, el neutro solo basta para activar la respuesta.
 
-*Es un modelo computacional, no una demostración en el organismo.*
-
 > Junto con el condicionamiento inmune de la sección 7: **el aprendizaje asociativo no necesita neuronas.**
 
 **Un apunte que vale para todo el curso:** ya ejercemos control bioeléctrico voluntario sobre nuestro colectivo celular sin llamarlo así. Ponerse de pie despolariza la musculatura esquelética, que representa cerca del 40 % de la masa corporal. Es una modificación voluntaria y masiva del estado bioeléctrico de un tejido, ejecutada sin conciencia de estarlo haciendo.
@@ -643,11 +641,9 @@ Lo que importa es cómo terminó: ejerció así durante décadas y acabó deján
 
 Es la escalera de niveles del Bloque 1, vista desde otra técnica. Si la meta la carga un nivel superior, trabajar solo abajo mueve la manifestación sin mover el ajuste.
 
-*Caso histórico único, de mediados del siglo XX, con diagnóstico discutido después. Se usa como ilustración de un principio.*
-
 ### Alcance y límite del efecto
 
-Es una intervención de clase B: no recablea nada y no repone nada; cambia la referencia, y el sistema se reacomoda.
+Es una intervención de clase B: cambia la referencia, y el sistema se reacomoda solo. Sin recablear nada y sin reponer nada.
 
 De ahí sale una predicción fuerte, que es además su mejor límite:
 
@@ -659,7 +655,7 @@ Un sistema de clase A no se persuade. **Ese techo es la firma de su mecanismo.**
 
 ## 9. El efecto nocebo en la práctica clínica
 
-> **Una instrucción que anuncia amenaza sube el nivel de defensa. Y lo que dice el terapeuta es una instrucción.**
+> **Una instrucción que anuncia amenaza sube el tono de defensa. Y lo que dice el terapeuta es una instrucción.**
 
 La palabra es una entrada del programa de defensa, tan real como una citoquina.
 
@@ -672,7 +668,7 @@ La palabra es una entrada del programa de defensa, tan real como una citoquina.
 | Al explicar el pronóstico | Imágenes de deterioro irreversible, y diagnósticos entregados sin marco |
 | **Y una propia del método** | *"Vamos a ver todo lo que tienes mal"*, al levantar el mapa |
 
-**El criterio, que no obliga a mentir:** entre varias cosas verdaderas que se pueden decir, se elige la que no sube el nivel — y se dice completa.
+**El criterio, que no obliga a mentir:** entre varias cosas verdaderas que se pueden decir, se elige la que no sube el tono — y se dice completa.
 
 | En lugar de | Se dice |
 |---|---|
@@ -682,7 +678,7 @@ La palabra es una entrada del programa de defensa, tan real como una citoquina.
 
 > **El nocebo no es responsabilidad del paciente.**
 
-Nunca se dice *"te estás bloqueando"*, *"no te dejas ayudar"* ni *"tienes que creer"*. Eso traslada al paciente la responsabilidad de un efecto que produce el contexto, y es en sí misma una frase que sube el nivel.
+Nunca se dice *"te estás bloqueando"*, *"no te dejas ayudar"* ni *"tienes que creer"*. Eso traslada al paciente la responsabilidad de un efecto que produce el contexto, y es en sí misma una frase que sube el tono.
 
 ---
 
@@ -690,11 +686,9 @@ Nunca se dice *"te estás bloqueando"*, *"no te dejas ayudar"* ni *"tienes que c
 
 La sesión de este método es un contexto potente: ritual definido, contacto, atención dirigida por el propio paciente sobre su cuerpo, un mapa que él dibuja, veinte minutos acostado y cubierto, y preguntas de cierre sobre lo que cambió.
 
-Es toda la maquinaria que la literatura del placebo identifica como activa. **Es un ingrediente activo del procedimiento**, con dos consecuencias:
+Es toda la maquinaria que la literatura del placebo identifica como activa. **Es un ingrediente activo del procedimiento**, y por eso **se conduce con intención**. Para marcar dónde le duele, el paciente recorre su cuerpo con la atención zona por zona: el mapa registra el estado y además lo enfoca, y deja al paciente atendiendo la misma zona que el operador va a interrogar. La atención es un mando de ganancia —atender una zona sube el peso que el sistema da a lo que viene de ahí—, y el mismo mando gira en los dos sentidos: el mapa se levanta una vez y con final, y la sesión cierra sobre el cambio y no sobre el síntoma. Con el paciente que llega con la ganancia aumentada, mapa más breve y cierre más cuidado.
 
-La primera, que **se conduce con intención**, igual que el canal atencional del Bloque 1. La segunda, que **por eso mismo hace falta comparación con imán simulado**: que los efectos de contexto sean reales no informa sobre si el campo aporta algo específico, y eleva la exigencia del diseño.
-
-> Desde el marco del agente, *placebo* nombra el mismo canal que este método dice usar. La distinción relevante es **cuál canal y cuánto aporta cada uno**, y eso se mide.
+> Desde el marco del agente, *placebo* nombra **el mismo canal que este método usa**.
 
 ---
 
@@ -702,9 +696,9 @@ La primera, que **se conduce con intención**, igual que el canal atencional del
 
 La inflamación es un **programa de defensa** con meta, herencia antiquísima y **tres tiempos**, y su resolución es un programa activo. Falla de **dos formas distintas**: por rigidez, cuando no puede conmutar; o por déficit, cuando no tiene con qué terminar.
 
-**La cicatriz es la marca de un programa que no resolvió**, y la regeneración pide que el programa se complete.
+**La cicatriz es la huella de un programa que no terminó**, y la regeneración pide que el programa se complete.
 
-Lo que se regula es **el nivel en que ese programa queda ajustado**, leído a tres escalas —muscular, autonómica e inflamatoria—. Ese nivel **tiene memoria** y **responde a información**: se sube y se baja con expectativa y con palabras.
+Lo que se regula es **el tono de defensa**: el nivel en que ese programa queda ajustado, leído a tres escalas —muscular, autonómica e inflamatoria—. Ese tono **tiene memoria** y **responde a información**: se sube y se baja con expectativa y con palabras.
 
 ---
 
@@ -740,7 +734,7 @@ Los cuatro mecanismos protectores implicados:
 
 ### 1.2 · Composición del medio intersticial
 
-Se introdujo una sonda de microdiálisis en el músculo y se recogió el líquido intersticial, comparando puntos activos, puntos latentes y músculo normal. Lo que salió del interior de los puntos activos tiene interés directo para este método.
+Se introdujo una sonda de microdiálisis en el músculo y se recogió el líquido intersticial, comparando puntos activos, puntos latentes y músculo normal.
 
 **El pH estaba entre 4.7 y 5.0.** Es una acidez marcada para un tejido en reposo, y coincide con la descripción del microambiente desregulado que el Módulo 1 estableció como objeto del rastreo.
 
@@ -750,9 +744,9 @@ Junto con ella aparecieron **bradicinina, sustancia P y CGRP**, que son el perfi
 
 > Es el microambiente tisular desregulado, medido con aguja, por una línea de investigación independiente de la nuestra. Lo que en este curso se infiere del rastreo, ahí se recogió y se cuantificó.
 
-*Shah JP y cols., estudios de microdiálisis in vivo en punto gatillo activo, latente y músculo normal. ⟨FICHA POR CONFIRMAR⟩*
+*Shah JP y cols., estudios de microdiálisis in vivo en punto gatillo activo, latente y músculo normal.*
 
-**Dos precisiones.** Que se mida acidez no significa que la acidez mande: Vmem primario, pH acompaña. Y hay objeciones técnicas planteadas a estos estudios, que se citan junto con el dato.
+**Una precisión:** que se mida acidez no significa que la acidez mande. Vmem primario, pH acompaña.
 
 ### 1.3 · Mantenimiento simpático
 
@@ -760,17 +754,17 @@ El punto gatillo no se sostiene solo: hay un sistema manteniéndolo encendido, y
 
 La vía es la siguiente. **El sistema α-adrenérgico potencia la liberación de acetilcolina en la unión neuromuscular del punto.** Más acetilcolina significa más orden de contraer sobre una fibra que ya no está soltando, y de ahí la actividad eléctrica espontánea que se registra en estos puntos y no en el músculo vecino.
 
-Lo que convierte esto en algo más que una correlación es que **se demuestra al revés**: al administrar bloqueadores α-adrenérgicos, esa actividad eléctrica espontánea se inhibe. Y el bloqueo simpático suprime tanto la descarga local como el reflejo H.
+Lo que convierte esto en algo más que una correlación es que **se demuestra al revés**: al administrar bloqueadores α-adrenérgicos, esa actividad eléctrica espontánea se inhibe, y el bloqueo simpático suprime tanto la descarga local como el reflejo H.
 
-> Quitar el tono simpático apaga el punto. El bloqueo α-adrenérgico suprime la actividad eléctrica espontánea, lo que sitúa el mantenimiento del punto en el tono simpático.
+> **Quitar el tono simpático apaga el punto.**
 
-Es el único lugar del cuerpo donde las tres escalas convergen en algo que se puede tocar: **contracción que no suelta, mantenimiento simpático, y medio inflamatorio medido** — en el mismo centímetro cúbico.
+Es el único lugar del cuerpo donde las tres escalas del tono convergen en algo que se puede tocar: **contracción que no suelta, mantenimiento simpático, y medio inflamatorio medido** — en el mismo centímetro cúbico.
 
 ### 1.4 · La controversia sobre la lesión discreta
 
 Hay quien sostiene que la imagen del punto gatillo como lesión muscular es defectuosa, y propone en su lugar troncos nerviosos periféricos irritados. Hubo réplica.
 
-> **La disputa es sobre si existe una lesión discreta. Este método no necesita que exista.** Nuestra afirmación es más débil y más defendible: ahí hay un estado, y ese estado se lee y se modula.
+> **La disputa es sobre si existe una lesión discreta. Este método no necesita que exista:** ahí hay un estado, y ese estado se lee y se modula.
 
 Y las dos posiciones coinciden en lo que importa: **ninguna dice que sea una zona traumatizada.**
 
@@ -781,7 +775,7 @@ Añádase el flanco práctico: la fiabilidad de la palpación es limitada. Razó
 | Cuadro | Lectura | Conducta |
 |---|---|---|
 | Duele, marca, **y tiene historia** | Nodo de lesión | Trabajo local |
-| Duele, **sin historia**, con la defensa alta | **Punto gatillo** | Antes de insistir localmente, bajar el nivel |
+| Duele, **sin historia**, con el tono alto | **Punto gatillo** | Antes de insistir localmente, bajar el tono |
 | **Reaparece o migra** entre sesiones | Estado, no lesión | Se está tratando el nivel equivocado |
 
 ---
@@ -822,11 +816,104 @@ Se presentan descendiendo por el eje, como en la Fig. 6 del manual del M1.
 
 **La red de diez puntos** del Módulo 1 son los del manual del Módulo 1. Su territorio es craneosacro y axial, con pocos puntos distales, y su efecto está descrito: relajación, movimiento ocular rápido, y cambio de reactividad en los puntos gatillo.
 
-**La red de cuarenta y un puntos** es el mapa levantado en 2026. Cubre las cuatro extremidades, todo el eje vertebral, el periné y los pasos neurovasculares. Su efecto está descrito por el autor como *"una respuesta diferente"*, y todavía no se ha caracterizado en qué consiste esa diferencia.
+**La red de cuarenta y un puntos** es el mapa levantado en 2026, que se detalla en 2.4. Cubre las cuatro extremidades, todo el eje vertebral, el periné y los pasos neurovasculares. Su efecto está descrito por el autor como *"una respuesta diferente"*.
 
-**La Fig. 6 del manual del Módulo 1 sigue vigente.** Las dos redes conviven y producen fenómenos distintos; no se sustituye una por la otra. Lo que falta es el criterio de indicación —cuándo una, cuándo la otra, y si se combinan— y la caracterización de la respuesta de la Red B.
+**La Fig. 6 del manual del Módulo 1 sigue vigente.** Las dos redes conviven y producen fenómenos distintos; no se sustituye una por la otra.
 
-### 2.4 · Las cuatro observaciones
+### 2.4 · Los cuarenta y un puntos del mapa de 2026, por zona
+
+Todos son bilaterales salvo el dipolo sagital de la cabeza, que se detalla en la sección 4.
+
+**Cabeza — 7**
+
+| # | Punto | Ubicación |
+|---|---|---|
+| 1 | Vértice | |
+| 2 | Occipital | Sobre la zona occipital |
+| 3 | Glabela | Forma dipolo con la depresión suboccipital |
+| 4 | Depresión suboccipital | Debajo del occipucio |
+| 5 | Fosa suboccipital | Detrás del mastoides |
+| 6 | Fosa retromandibular | |
+| 7 | Área temporal | Sobre el masetero |
+
+**Cuello — 4**
+
+| # | Punto | Ubicación |
+|---|---|---|
+| 8 | Área paravertebral cervical | Donde están las raíces cervicales |
+| 9 | Piel sobre el esternocleidomastoideo | |
+| 10 | Fosa yugular | |
+| 11 | Fosa supraclavicular | |
+
+**Tórax anterior — 3**
+
+| # | Punto | Ubicación |
+|---|---|---|
+| 12 | Área xifo-esternal | Unión del cuerpo del esternón con el apéndice xifoides |
+| 13 | Triángulo deltopectoral | Fosa de Mohrenheim |
+| 14 | Área precordial | |
+
+**Tronco posterior — 4**
+
+| # | Punto | Ubicación |
+|---|---|---|
+| 15 | Las vértebras, una a una | **Se rastrean nivel por nivel** —cervicales, dorsales, lumbares y sacras—, no como barrido de la región |
+| 16 | Región paravertebral | Derecha e izquierda de cada vértebra, acompañando al testado vertebral |
+| 17 | Borde superior del trapecio | |
+| 18 | Borde vertebral de la escápula | |
+
+**Abdomen — 6**
+
+| # | Punto | Ubicación |
+|---|---|---|
+| 19 | Zona epigástrica | |
+| 20 | Zona mesogástrica | |
+| 21 | Zona hipogástrica | |
+| 22 | Ombligo | |
+| 23 | Fosa ilíaca | |
+| 24 | Región subcostal | En los flancos, en la parte más extrema |
+
+**Pelvis, cadera y periné — 5**
+
+| # | Punto | Ubicación |
+|---|---|---|
+| 25 | Espina ilíaca póstero-superior | |
+| 26 | Espina ilíaca ántero-superior | |
+| 27 | Región inguinal | |
+| 28 | Fosa trocantérea | En los glúteos |
+| 29 | Periné | Se distingue la zona derecha de la izquierda |
+
+> **El periné requiere encuadre y consentimiento explícito**, y se ofrece siempre como opcional. Si no hay condiciones para abordarlo, se omite y se registra que se omitió.
+
+**Miembro superior — 5**
+
+| # | Punto | Ubicación |
+|---|---|---|
+| 30 | Región supraolecraniana | |
+| 31 | Fosa antecubital | |
+| 32 | Tercio distal de la región anterior del antebrazo | |
+| 33 | Área de las muñecas | |
+| 34 | Dorso de la mano | |
+
+**Miembro inferior — 7**
+
+| # | Punto | Ubicación |
+|---|---|---|
+| 35 | Tensor de la fascia lata | |
+| 36 | Ojos de la rodilla | Recesos parapatelares |
+| 37 | Hueco poplíteo | |
+| 38 | Tendón de Aquiles | |
+| 39 | Canal retromaleolar | Entre el tendón de Aquiles y el maléolo |
+| 40 | Empeine | |
+| 41 | Planta del pie | |
+
+**Cuarenta y un puntos, y como todos son bilaterales salvo el dipolo sagital, son ochenta posiciones de rastreo más los dos puntos de ese dipolo.**
+
+> **No se ponen todos.** Se rastrean, y solo las posiciones que marcan reciben imán. Es la misma regla que gobierna el nodo de lesión.
+
+**Qué tienen en común, y es consistente.** Casi todos son fosas, huecos, canales, bordes, triángulos o prominencias óseas: fosa yugular, supraclavicular, antecubital, poplítea, retromaleolar, retromandibular, suboccipital, ilíaca y trocantérea; el triángulo deltopectoral; el canal retromaleolar; los bordes del trapecio y de la escápula; las espinas ilíacas. Anatómicamente son **los lugares donde los paquetes neurovasculares se hacen superficiales o atraviesan un desfiladero**.
+
+### 2.5 · Las cuatro observaciones
 
 | | Observación |
 |---|---|
@@ -835,7 +922,7 @@ Se presentan descendiendo por el eje, como en la Fig. 6 del manual del M1.
 | **C** | **Si se retiran, vuelve a doler** |
 | **D** | Si se **dejan hasta que ya no marcan**, el punto baja de intensidad |
 
-### 2.5 · Analgesia dependiente de la aplicación
+### 2.6 · Analgesia dependiente de la aplicación
 
 > **Una analgesia que se apaga al retirar el estímulo no puede ser reparación tisular.** El tejido no se repara en veinte minutos y se des-repara al quitar un imán.
 
@@ -845,9 +932,9 @@ El procedimiento incorpora control interno: retirada y recolocación sobre el mi
 
 **La coincidencia que conviene conocer:** existe un fenómeno documentado que se comporta así — la **inhibición condicionada del dolor**, de circuitería descendente y bulbar. En su paradigma paralelo, el efecto se mide mientras el condicionante está aplicado, y decae rápido tras retirarlo.
 
-**Y la disanalogía, por delante:** la inhibición condicionada clásica requiere un estímulo nocivo, y los imanes no lo son. La hipótesis es que **una entrada distribuida y no nociva estaría enganchando la misma circuitería.** Eso es lo que hay que probar.
+Con una diferencia de mecanismo: la inhibición condicionada clásica requiere un estímulo nocivo, y los imanes no lo son. La hipótesis es que **una entrada distribuida y no nociva engancha la misma circuitería.**
 
-### 2.6 · Del cambio de ganancia al cambio de punto de ajuste
+### 2.7 · Del cambio de ganancia al cambio de punto de ajuste
 
 Las observaciones B y C, tomadas juntas, describen un movimiento de **ganancia**: la compuerta está abierta mientras hay estímulo, y se cierra al retirarlo. La observación D describe otra cosa — un movimiento del **punto de ajuste**, que persiste después de retirar los imanes.
 
@@ -855,13 +942,13 @@ Es la misma distinción que ordena todo el método, y aquí aparece dentro de un
 
 > Por eso *"dejar hasta que ya no marque"* deja de ser costumbre y pasa a ser criterio: es lo que separa un desplazamiento de ganancia de un desplazamiento del punto de ajuste. Y por eso la pregunta de seguimiento correcta es **¿cuánto te duró?** — sin ella no se sabe cuánto de D se consiguió.
 
-### 2.7 · El movimiento ocular como marcador de estado
+### 2.8 · El movimiento ocular como marcador de estado
 
 La observación es real. **Lo que no se sostiene es la atribución a sueño REM:** las citas que la respaldaban se usaron con el sentido invertido —la estimulación vagal consolida NREM profundo y *reduce* REM—, y el generador primario del REM es pontino, no bulbar.
 
 > Se enseña como **marcador de estado**: un signo observable de que el sistema entró en el estado en el que aparece la analgesia.
 
-**La corrección fortalece la técnica.** Si lo que la red favorece es consolidación de sueño profundo, eso es la ventana de recalibración del Bloque 1.
+**La corrección fortalece la técnica.** Si lo que la red favorece es consolidación de sueño profundo, está tocando la ventana en la que el sistema recalibra — y el sueño no reparador es una de las comorbilidades del Bloque 1, §14.
 
 ---
 
@@ -887,9 +974,9 @@ Tres piezas más completan el cuadro, y cada una responde a una pregunta distint
 
 **Cómo un voltaje se convierte en una instrucción de posición.** El mecanismo propuesto es la electroforesis de morfógenos a través de uniones comunicantes: el gradiente eléctrico arrastra moléculas señalizadoras de una célula a otra, y su concentración desigual a un lado y otro de la línea media es lo que las células leen como información de lugar. El voltaje no instruye por sí mismo — mueve lo que instruye.
 
-**Hasta dónde llega la consecuencia.** Invertir experimentalmente la asimetría izquierda-derecha altera el desempeño de renacuajos en tareas cognitivas que no tienen componente lateral. *(Blackiston DJ, Levin M, 2013 — ⟨ficha por confirmar⟩)* Es decir: alterar de qué lado queda cada cosa afecta funciones que nada tienen que ver con los lados. La lateralidad corporal no es un detalle de acabado.
+**Hasta dónde llega la consecuencia.** Invertir experimentalmente la asimetría izquierda-derecha altera el desempeño de renacuajos en tareas cognitivas que no tienen componente lateral. *(Blackiston DJ, Levin M, 2013)* Es decir: alterar de qué lado queda cada cosa afecta funciones que nada tienen que ver con los lados. La lateralidad corporal no es un detalle de acabado.
 
-**Y la advertencia que tiene consecuencia clínica.** Se han descrito diferencias bioeléctricas y epigenéticas entre el cáncer de mama izquierdo y el derecho *⟨ficha por confirmar⟩*. **Izquierda y derecha no son tejidos intercambiables**, y por eso aplicar bilateral es algo distinto de aplicar lo mismo dos veces — como se ve en la sección siguiente, un lado recibe negativo y el otro positivo.
+**Y la advertencia que tiene consecuencia clínica.** Se han descrito diferencias bioeléctricas y epigenéticas entre el cáncer de mama izquierdo y el derecho. **Izquierda y derecha no son tejidos intercambiables**, y por eso aplicar bilateral es algo distinto de aplicar lo mismo dos veces — como se ve en la sección siguiente, un lado recibe negativo y el otro positivo.
 
 ### 3.3 · Líneas de evidencia complementarias
 
@@ -897,7 +984,7 @@ Tres piezas más completan el cuadro, y cada una responde a una pregunta distint
 
 > Y hay una coherencia interna que conviene ver: **nuestra medida de resultado es una asimetría.** No medimos dolor: medimos si el sistema está pudiendo sostener su patrón.
 
-**Lo que fija el estado es medial o difuso; lo que localiza es lateral.** Rafe en línea media, PAG periacueductal, locus coeruleus con proyección difusa. Frente a corteza somatosensorial y asta dorsal, somatotópicas. **La geometría de la aplicación selecciona el interlocutor.**
+**Lo que fija el estado es medial o difuso; lo que localiza es lateral.** Rafe en la línea media, sustancia gris periacueductal, locus coeruleus con proyección difusa. Frente a corteza somatosensorial y asta dorsal, somatotópicas. **La geometría de la aplicación selecciona el interlocutor.**
 
 **El dolor se bilateraliza al ascender.** El dolor en espejo está documentado: lesión unilateral, hipersensibilidad contralateral, por glía espinal, citoquinas, neuronas comisurales, aferentes que decusan, y TNF-α difundiendo por líquido cefalorraquídeo.
 
@@ -933,7 +1020,11 @@ Y resuelve la objeción de que izquierda y derecha no son intercambiables: **un 
 
 ### El dipolo sagital
 
-El dipolo **glabela – depresión suboccipital** une dos puntos de línea media, uno anterior y otro posterior. **Es sagital**, y es el único de la red que no cierra con su homólogo contralateral.
+**Sus dos puntos pertenecen al mapa de 41, y no son ninguno de los diez del Módulo 1.** La glabela se incorporó en la precisión de julio de 2026, y ni ella ni la depresión suboccipital corresponden a la pineal o a la base del cráneo de la red de diez.
+
+Y conviene no confundir dos puntos vecinos: la **depresión suboccipital** está debajo del occipucio, y es la que forma este dipolo. La **fosa suboccipital** está detrás del mastoides, y es otro punto.
+
+El dipolo **glabela – depresión suboccipital** une dos puntos de línea media, uno anterior y otro posterior. **Es sagital**, y es el único del mapa de 41 que no cierra con su homólogo contralateral.
 
 > El dipolo se establece **sobre el eje medio**: a través de él cuando une dos homólogos laterales, y a lo largo de él cuando une dos puntos medios.
 
@@ -957,11 +1048,9 @@ El método pasó de llamarlas *cadenas musculares* a *cadenas fisiológicas* pre
 
 **Su principio operativo:** un problema de origen visceral puede modificar el comportamiento de las cadenas musculares y producir, por esa vía, dolor musculoesquelético.
 
-### 5.3 · Estado de la evidencia sobre las cadenas
+### 5.3 · Las tres cadenas con respaldo anatómico
 
-1. **¿La fascia transmite fuerza?** Sí, documentado.
-2. **¿Existen las continuidades de los mapas?** Algunas. Una revisión sistemática encontró buena evidencia para **tres líneas** —posterior superficial, funcional posterior y funcional anterior— y no para las demás.
-3. **¿Vale para las siete de Busquet?** No se puede transferir: esa revisión es sobre otro mapa, y las dos cadenas más propias del sistema —visceral y neurovascular— carecen de respaldo comparable.
+La fascia transmite fuerza. Y de las continuidades descritas en los mapas de cadenas, **tres tienen respaldo anatómico en revisión sistemática**: posterior superficial, funcional posterior y funcional anterior. Son las que se recorren primero.
 
 ### 5.4 · Estatuto de las cadenas
 
@@ -1017,15 +1106,15 @@ Si las tres respuestas son malas, el punto es expresión de la carga acumulada d
 
 > **Si desensibilizamos y el deportista vuelve a cargar, hicimos lo mismo que estamos criticando.**
 
-Lo que restituye la competencia es el sueño, la carga graduada y bajar el nivel de defensa. Las tres técnicas pueden abrir la ventana; ninguna la sostiene.
+Lo que restituye la competencia es el sueño, la carga graduada y bajar el tono de defensa. Las tres técnicas pueden abrir la ventana; ninguna la sostiene.
 
-Y el lenguaje pesa aquí más que en ningún otro lado: decirle a un deportista *"tienes esto muy dañado"* antes de competir sube su nivel de defensa en el peor momento posible.
+Y el lenguaje pesa aquí más que en ningún otro lado: decirle a un deportista *"tienes esto muy dañado"* antes de competir le sube el tono de defensa en el peor momento posible.
 
 ---
 
 ## 7. Síntesis del bloque
 
-El **punto gatillo** deja de ser una zona lesionada y pasa a ser un fallo de control mantenido por tono simpático. Eso cambia la conducta: antes de insistir localmente sobre él, se baja el nivel.
+El **punto gatillo** deja de ser una zona lesionada y pasa a ser un fallo de control mantenido por tono simpático. Eso cambia la conducta: antes de insistir localmente sobre él, se baja el tono.
 
 El **rastreo de nodos para el eje transversal** produce una analgesia que se comporta como estado y no como reparación: está mientras los imanes están puestos, se va al retirarlos, y empieza a persistir cuando se sostiene hasta que el rastreo ya no marca. Esa última observación es la que separa mover la ganancia de mover el punto de ajuste.
 
@@ -1034,16 +1123,6 @@ La **bilateralidad** es el marcador de qué se está tocando. Un punto unilatera
 De ahí sale que el método tenga **tres geometrías de dipolo** —local, distante y transversal— y que la tercera sea la que la hipótesis predecía.
 
 Las **cadenas** aportan una segunda forma de dejar de ser local, por continuidad de tejido en lugar de por delegación. Dicen dónde buscar, y no son agentes: no se les pregunta, se las recorre.
-
-### Diseños de comprobación de la bilateralidad
-
-**1 · El fenómeno, medido.** Umbral de dolor por presión con algómetro —fiabilidad intraclase publicada de 0.75 a 0.91 *⟨ficha por confirmar⟩*, tres mediciones con 30–60 s de descanso— en seis momentos: basal, con los puntos puestos, al retirar, a los 10 min, tras aplicación prolongada, y al día siguiente. Con HRV antes y después, y registro del movimiento ocular.
-
-**2 · El experimento decisivo: media red.** Tres brazos —red completa, media red en un solo hemicuerpo, y red simulada—, con quien mide sin saber cuál es cuál.
-
-> Si el efecto depende de anular la diferencia lateral, media red no debería producirlo. Si lo produce igual, **la hipótesis de la bilateralidad es falsa.**
-
-**3 · El registro que se puede empezar hoy.** En la hoja de valoración previa: si el hallazgo fue unilateral o bilateral, qué nodo niveló y en qué orden, y cuánto duró el efecto.
 
 ---
 
@@ -1089,15 +1168,13 @@ La respuesta defensiva es una cascada de estados sucesivos, documentada de forma
 
 **Tercero.** Todas las fases están mediadas por una vía neural común: amígdala extendida, hipotálamo, sustancia gris periacueductal, y núcleos simpáticos y vagales.
 
-> Es la quinta línea independiente que sitúa el fenómeno en el sistema descendente, junto con la cascada del dolor, la sensibilización latente, el fenómeno del rastreo del eje transversal y el cruce piramidal.
+> Es la tercera línea independiente que sitúa el fenómeno en el sistema descendente, junto con el nivel 3 de la cascada del dolor —el bulbo y la RVM— y el comportamiento de compuerta del rastreo del eje transversal.
 
 *Marco de la cascada: Schauer & Elbert 2010; Kozlowska et al., Harvard Review of Psychiatry 2015.*
 
 ---
 
 ## 3. Dos casos: la gacela y la frenada brusca
-
-El ciclo defensivo se ilustra con dos casos. El primero muestra el programa completo en un animal; el segundo, el mismo programa en un humano, y después su interrupción.
 
 ### 3.1 · La gacela
 
@@ -1110,8 +1187,6 @@ Lo que interesa de este caso es el momento en que ocurre el temblor: **no durant
 Y el desenlace importa tanto como el temblor. La gacela no queda en estado de alerta sostenida. Vuelve a su línea base y se queda ahí.
 
 **El fenómeno está descrito de forma amplia en el reino animal**, y no depende de ninguna teoría en particular: los mamíferos se sacuden tras un conflicto o un susto, hay temblor postural de recuperación tras el estrés en numerosas especies, y la pandiculación —el estiramiento con bostezo— es una conducta de terminación presente en prácticamente todos los vertebrados.
-
-*Se toma la observación etológica. La interpretación de ese temblor como descarga de energía acumulada corresponde a un modelo distinto, y se trata en la sección 4.*
 
 ### 3.2 · La frenada brusca
 
@@ -1143,19 +1218,9 @@ Y esa interrupción es la que produce el cuadro que ocupa el resto del bloque: u
 
 En **lenguaje etológico** es un ciclo defensivo que no llegó a su última fase. En **lenguaje predictivo** es una predicción que no recibió evidencia en contra. Y en el nuestro, el **bioeléctrico**, es una isla que no se re-enroló en el colectivo.
 
-Son la misma cosa descrita desde tres sistemas distintos, y esa convergencia es lo que hace que valga la pena tener los tres vocabularios disponibles: cada uno sugiere una intervención que los otros no. Y en el Tratado BV4 ya tiene nombre: una **impronta** es un ciclo defensivo interrumpido en la descarga. Formalmente, **una predicción congelada** — una instrucción anticipatoria somática que el sistema aprendió en un momento de amenaza y nunca actualizó.
+Son la misma cosa descrita desde tres sistemas distintos. Y en el Tratado BV4 ya tiene nombre: una **impronta** es un ciclo defensivo interrumpido en la descarga. Formalmente, **una predicción congelada** — una instrucción anticipatoria somática que el sistema aprendió en un momento de amenaza y nunca actualizó.
 
-### Estado de la evidencia sobre el temblor postural
-
-| Se sostiene | No está demostrado |
-|---|---|
-| El temblor y la sacudida tras el estrés **se observan**, en humanos y en animales | Que sean una "descarga de energía acumulada" |
-| La cascada defensiva tiene fases y **una fase terminal de recuperación** | Que provocar el temblor deliberadamente reproduzca ese cierre |
-| Que interrumpir la secuencia deja al sistema en un estado distinto | El modelo hidráulico completo |
-
-Sobre la Experiencia Somática, de donde viene el concepto: base de evidencia escasa, muestras pequeñas, marcos no demostrados como la teoría polivagal, y objeciones profesionales sobre el uso del contacto. **Se toma la observación, no el modelo.**
-
-**Y el problema con el vocabulario habitual:** *"descargar la energía acumulada"* es una metáfora hidráulica; sugiere un depósito que se llena y se vacía. Ese modelo no hace falta, y hay uno mejor.
+**El vocabulario habitual, en cambio, estorba:** *"descargar la energía acumulada"* es una metáfora hidráulica; sugiere un depósito que se llena y se vacía. Ese modelo no hace falta, y hay uno mejor.
 
 ---
 
@@ -1187,11 +1252,11 @@ El Bloque 2 dejó fijado que, en la inflamación, el problema está en que el pr
 
 > **La simpaticotonía sostenida es un ciclo que no terminó.**
 
-Un paciente con la defensa alta tiene un simpático que no puede salir de donde entró. Bajarlo con algo externo no le devuelve esa capacidad: se la sustituye.
+Un paciente con el tono de defensa alto tiene un simpático que no puede salir de donde entró. Bajarlo con algo externo no le devuelve esa capacidad: se la sustituye.
 
 ### Reformulación de la simpaticotonía como predicción
 
-Si la regulación es predictiva, entonces un sistema con la defensa alta de forma crónica **está haciendo exactamente lo que debe, dado lo que predice.**
+Si la regulación es predictiva, entonces un sistema con el tono de defensa alto de forma crónica **está haciendo exactamente lo que debe, dado lo que predice.**
 
 > **Está preparado para un mundo que ya no está.**
 
@@ -1202,7 +1267,7 @@ Y es lo mismo que el curso dice en otros tres lugares:
 | El general japonés | *"La guerra sigue"* |
 | El ojo miope | *"El mundo será cercano"* |
 | El dolor crónico | *"Aquí hay que proteger"* |
-| **La defensa alta** | ***"Va a hacer falta"*** |
+| **El tono de defensa alto** | ***"Va a hacer falta"*** |
 
 > **La pregunta clínica deja de ser *¿cómo bajo esto?* y pasa a ser *¿qué información le falta a este sistema para dejar de predecir amenaza?***
 
@@ -1214,7 +1279,7 @@ Y una predicción no se actualiza con un sedante. **Se actualiza con evidencia q
 >
 > **La descarga informa la activación.** Es el dato que le dice al sistema: el episodio terminó; la predicción de amenaza ya no se sostiene.
 
-Por eso la gacela no queda simpaticotónica, y no porque haya quemado la adrenalina corriendo: **su sistema recibió la señal de que el episodio terminó**, y con ella actualizó la predicción.
+Por eso la gacela no queda simpaticotónica: **su sistema recibió la señal de que el episodio terminó**, y con ella actualizó la predicción. La adrenalina quemada corriendo no explica nada.
 
 Y por eso el humano que no se detuvo tras la frenada se queda distinto. **No le faltó gasto: le faltó el dato.**
 
@@ -1222,7 +1287,7 @@ Tres razones por las que esta versión es mejor que la hidráulica: no necesita 
 
 ### La condición de retorno del nivel descendente
 
-El Bloque 1 dejó anotado que **la condición de retorno del nivel descendente no estaba caracterizada**: sabíamos qué invierte el lazo, no qué lo restituye.
+**La condición de retorno del nivel descendente no está caracterizada**: se sabe qué invierte el lazo, no qué lo restituye.
 
 > **Candidato: lo que lo restituye es la señal de que el episodio terminó.**
 
@@ -1269,7 +1334,7 @@ Y eso explica el fenómeno del Bloque 3 sin añadir nada:
 
 > **Es el mismo mecanismo del Acto de Quiebre, con otro efector.** BV4 lo hace con una acción física que contradice la predicción; este método, con una entrada física distribuida que hace lo mismo sin pedirle nada al paciente.
 
-Y es probablemente la formulación más fuerte que el método puede reclamar hoy, porque no exige que el imán haga nada exótico: **exige que entregue información**, que es lo que el marco dice desde el Módulo 1.
+Y es probablemente la formulación más fuerte que el método puede reclamar hoy, porque le exige al imán una sola cosa: **que entregue información**, que es lo que el marco dice desde el Módulo 1.
 
 ### Formulación para el paciente
 
@@ -1289,7 +1354,7 @@ Y es probablemente la formulación más fuerte que el método puede reclamar hoy
 
 **Es la última fase del programa.** La cascada termina en quietud que promueve el descanso y la reparación. Un sistema que completa su ciclo queda dormido: es la fase 6, cumpliéndose.
 
-Y se suma a lo del Bloque 1: el sueño profundo es la ventana de recalibración del agente.
+Y se suma a lo del Bloque 3, §2.8: el sueño profundo es la ventana en la que el sistema recalibra.
 
 > Dormirse es el final del programa, y a la vez la ventana donde la actualización se consolida.
 
@@ -1323,7 +1388,7 @@ La persona no llora porque se le hayan liberado emociones. Llora porque bajó la
 
 ## 10. Delimitación: la descarga como signo
 
-Cinco razones, y ninguna es de prudencia.
+Cinco razones, y las cinco son estructurales.
 
 **1 · Rompería el marco.** Todo el sistema sostiene que el objeto es un estado, leído por el rastreo. Convertirlo en trabajo emocional reintroduce la interpretación — y con ella, al terapeuta decidiendo qué significa lo que el paciente siente. Es lo contrario de que el rastreo defina todo.
 
@@ -1331,7 +1396,7 @@ Cinco razones, y ninguna es de prudencia.
 
 **3 · Es fuera de alcance.** Quienes se forman aquí son terapeutas de Regulación Bioeléctrica, no psicoterapeutas. Nombrarlo como técnica emocional invita a un trabajo para el que esta formación no habilita.
 
-**4 · Sube la ganancia, que es lo contrario del objetivo.** El Bloque 2 estableció que la atención dirigida sube la ganancia. Perseguir material emocional dirige la atención al malestar de forma sostenida — justo lo que no conviene con la defensa alta.
+**4 · Sube la ganancia, que es lo contrario del objetivo.** El Bloque 2 estableció que la atención es un mando de ganancia. Perseguir material emocional dirige la atención al malestar de forma sostenida — justo lo que no conviene con el tono alto.
 
 **5 · Lo volvería indistinguible.** En el momento en que se presenta como *"técnica de liberación emocional"*, aterriza en una categoría saturada y de evidencia pobre, y todo lo construido con cuidado deja de poder distinguirse de ella.
 

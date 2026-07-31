@@ -16,15 +16,19 @@ Antes de entrar, recuperemos lo de hoy.
 
 ¿Qué distingue a un punto que duele y marca de uno que duele y no marca?
 
-¿Qué significa que la cascada sea delegación?
+¿Por qué sube de nivel el dolor?
 
-¿En qué tres escalas se manifiesta la variable que trabajamos después de comer?
+`[La protección se delega. El nivel que no puede cumplir su meta la entrega al siguiente.]`
 
-¿Qué tipo de control falla en cada nivel — el punto de ajuste, la ganancia, el signo del lazo, el modelo?
+¿Qué es el tono de defensa, y en qué tres escalas se manifiesta?
+
+¿Qué significa que el tono tenga memoria?
 
 `[Escuchar. Luego anunciar el cambio.]`
 
-Todo lo que hemos trabajado hasta ahora tenía historia: un golpe, una lesión, un nodo.
+Hace un rato quedó anunciado que el eje del estrés regula la ganancia de todo lo demás. Vamos a entrar por la escala que se palpa —la muscular— y a mostrar que es la misma variable que las otras dos.
+
+Y todo lo que hemos trabajado hasta ahora tenía historia: un golpe, una lesión, un nodo.
 
 Ahora entra un objeto distinto. Algo que duele, que se comporta como nodo, y que no tuvo trauma.
 
@@ -70,7 +74,7 @@ Y el receptor de rianodina, el canal que libera el calcio.
 
 El punto gatillo aparece porque un lazo de protección dejó de proteger.
 
-Y un detalle que conviene señalar: dos de los cuatro son canales iónicos. Ese es el nivel donde el campo magnético tiene su punto de acción documentado. No prueba nada, y es la primera vez en el curso que la diana y el mecanismo coinciden de nivel.
+Y un detalle que conviene señalar: dos de los cuatro son canales iónicos. Ese es el nivel donde el campo magnético tiene su punto de acción documentado. No prueba nada. Y es la primera vez en el curso que la diana y el mecanismo coinciden de nivel.
 
 ## Qué se ha medido dentro del punto gatillo
 
@@ -82,7 +86,7 @@ Y elevados también en sitios remotos.
 
 Es el microambiente tisular desregulado, medido con aguja, por una línea de investigación independiente de la nuestra.
 
-Dos precisiones. Que se mida acidez no significa que la acidez mande: Vmem primario, pH acompaña. Y hay objeciones técnicas planteadas a estos estudios, que se citan junto con el dato.
+Una precisión: que se mida acidez no significa que la acidez mande. Vmem primario, pH acompaña.
 
 ## Qué mantiene encendido el punto gatillo
 
@@ -90,15 +94,15 @@ El sistema alfa-adrenérgico potencia la acetilcolina en la unión neuromuscular
 
 Y se demuestra al revés: los bloqueadores alfa-adrenérgicos inhiben la actividad eléctrica espontánea. El bloqueo simpático suprime la descarga local y el reflejo H.
 
-Un punto gatillo es la variable de defensa hecha palpable.
+Un punto gatillo es tono de defensa hecho palpable.
 
-Y es el único lugar del cuerpo donde las tres escalas convergen en algo que se puede tocar: contracción que no suelta, mantenimiento simpático, y medio inflamatorio medido — en el mismo centímetro cúbico.
+Y es el único lugar del cuerpo donde las tres escalas del tono convergen en algo que se puede tocar: contracción que no suelta, mantenimiento simpático, y medio inflamatorio medido — en el mismo centímetro cúbico.
 
 ## La disputa sobre si existe una lesión discreta
 
 Hay quien sostiene que la imagen del punto gatillo como lesión muscular es defectuosa, y propone en su lugar troncos nerviosos periféricos irritados. Hubo réplica.
 
-La disputa es sobre si existe una lesión discreta. Nosotros no necesitamos que exista. Nuestra afirmación es más débil y más defendible: ahí hay un estado, y ese estado se lee y se modula.
+La disputa es sobre si existe una lesión discreta. Nosotros no necesitamos que exista: ahí hay un estado, y ese estado se lee y se modula.
 
 Y las dos posiciones coinciden en lo que nos importa: ninguna dice que sea una zona traumatizada.
 
@@ -110,7 +114,7 @@ Añádase el flanco práctico: la fiabilidad de la palpación es limitada. Razó
 
 Duele, marca, y tiene historia: es nodo de lesión. Trabajo local.
 
-Duele, sin historia, en alguien con la defensa alta: es punto gatillo. Antes de insistir localmente, bajar el nivel.
+Duele, sin historia, en alguien con el tono alto: es punto gatillo. Antes de insistir localmente, bajar el tono.
 
 Reaparece o migra entre sesiones: es un estado. Se está tratando el nivel equivocado.
 
@@ -154,7 +158,7 @@ Y el décimo no es uno más. Ancla la red en los dos extremos del eje.
 
 Una nota para que nadie se confunda: el riñón aparece aquí en un papel distinto del que tiene en el orden fijo del nodo de lesión. Es el mismo lugar con dos funciones.
 
-## Las cuatro observaciones del fenómeno
+## Las cuatro observaciones al aplicar la red
 
 `[Al pizarrón, en este orden. El orden importa.]`
 
@@ -172,13 +176,13 @@ Tomen B y C juntas.
 
 Una analgesia que se apaga al retirar el estímulo no puede ser reparación tisular. El tejido no se repara en veinte minutos y se des-repara al quitar un imán.
 
-Lo que se apaga es una compuerta. Y una compuerta que se abre y se cierra según un estímulo aplicado a distancia es modulación descendente — el nivel tres de esta mañana, donde vive el nodo bulbo.
+Lo que se apaga es una compuerta. Y una compuerta que se abre y se cierra según un estímulo aplicado a distancia es modulación descendente — el nivel tres de esta mañana, donde vive el nodo del bulbo.
 
-Es la evidencia más limpia que tiene el método de que algo sistémico se engancha. Y tiene control interno, porque el propio procedimiento incluye retirar y volver a colocar.
+Es la evidencia más limpia que tiene el método de que algo sistémico se engancha, y trae su propio control: el procedimiento incluye retirar y volver a colocar.
 
 Una coincidencia que conviene conocer: existe un fenómeno documentado que se comporta exactamente así, la inhibición condicionada del dolor, de circuitería descendente y bulbar. En su paradigma paralelo el efecto se mide mientras el condicionante está aplicado, y decae rápido tras retirarlo.
 
-Y la disanalogía, dicha por delante: la inhibición condicionada clásica requiere un estímulo nocivo, y los imanes no lo son. Así que la hipótesis es que una entrada distribuida y no nociva estaría enganchando la misma circuitería. Eso es lo que hay que probar.
+Con una diferencia de mecanismo: la inhibición condicionada clásica requiere un estímulo nocivo, y los imanes no lo son. La hipótesis es que una entrada distribuida y no nociva engancha la misma circuitería.
 
 ## Por qué dejarlos hasta que no marquen cambia el resultado
 
@@ -202,7 +206,7 @@ Y lo digo completo, porque el error fue nuestro: las dos citas que respaldaban e
 
 Se enseña como marcador de estado: un signo observable de que el sistema entró en el estado en el que aparece la analgesia. Deja de ser una afirmación frágil y pasa a ser una variable registrable.
 
-Y la corrección fortalece la técnica. Si lo que la red favorece es consolidación de sueño profundo, eso es precisamente la ventana de recalibración que establecimos esta mañana.
+Y la corrección fortalece la técnica. Si lo que la red favorece es consolidación de sueño profundo, está tocando la ventana en la que el sistema recalibra. Y recuerden que el sueño no reparador es una de las comorbilidades que esta mañana marcamos en la hoja de valoración, en el paciente con la sensibilidad subida.
 
 ---
 
@@ -232,25 +236,25 @@ La consecuencia global: invertir la asimetría izquierda-derecha altera el desem
 
 Y la advertencia, que tiene consecuencia para nosotros: hay diferencias bioeléctricas y epigenéticas entre el cáncer de mama izquierdo y el derecho. Izquierda y derecha no son intercambiables. Aplicar bilateral es algo distinto de aplicar lo mismo dos veces.
 
-## Cuatro líneas más que sostienen la hipótesis
+## Cuatro líneas que sostienen la hipótesis de la bilateralidad
 
 **La simetría indica el costo de sostener el patrón.** En biología, las desviaciones aleatorias de la simetría se usan como medida de inestabilidad, y aumentan con el estrés.
 
 Y aquí una coherencia interna del método que conviene ver: nuestra medida de resultado es una asimetría. No medimos dolor. Medimos si el sistema está pudiendo sostener su patrón.
 
-**Lo que fija el estado es medial o difuso; lo que localiza es lateral.** Rafe en línea media. PAG periacueductal. Locus coeruleus con proyección difusa, que al disparar junto produce liberación global de noradrenalina. Frente a eso, corteza somatosensorial y asta dorsal, que son somatotópicas.
+**Lo que fija el estado es medial o difuso; lo que localiza es lateral.** El rafe, en la línea media. La sustancia gris periacueductal, la PAG que vimos esta mañana. El locus coeruleus, con proyección difusa, que al disparar junto produce liberación global de noradrenalina. Frente a eso, corteza somatosensorial y asta dorsal, que son somatotópicas.
 
 La geometría de la aplicación selecciona el interlocutor.
 
 **El dolor mismo se bilateraliza al ascender.** El dolor en espejo está documentado: lesión unilateral, hipersensibilidad contralateral, por glía espinal, citoquinas, neuronas comisurales, aferentes que decusan, y TNF-α difundiendo por líquido cefalorraquídeo. La bilateralidad es un fenotipo del ascenso.
 
-**Y aplicar en simetría fija a cero una variable diferencial.** No se añade señal en un sitio: se anula la variable que el sistema usa para localizar. Lo que queda es el nivel.
+**Y aplicar en simetría fija a cero una variable diferencial.** La aplicación bilateral anula la variable que el sistema usa para localizar. Lo que queda es el nivel.
 
 ## Por qué la anatomía del vago obliga al cambio de nombre
 
 El vago es asimétrico en su eferencia. Pero las aferencias se integran centralmente en el núcleo del tracto solitario antes de que la salida parta bilateralmente.
 
-Entonces lo que una red simétrica engancharía es la entrada al integrador. No se conduce el efector: se alimenta al sistema que fija el estado.
+Entonces lo que una red simétrica engancharía es la entrada al integrador: alimenta al sistema que fija el estado, en lugar de conducir el efector.
 
 Que es, exactamente, el marco de todo el curso.
 
@@ -258,7 +262,7 @@ Que es, exactamente, el marco de todo el curso.
 
 # PARTE 4 · LAS CADENAS
 
-## Dos maneras de dejar de ser local
+## Las dos formas en que un problema deja de ser local
 
 `[Al pizarrón, dos columnas.]`
 
@@ -276,15 +280,11 @@ Y un dato de nomenclatura que dice mucho: el método pasó de llamarlas *cadenas
 
 Su principio operativo: un problema de origen visceral puede modificar el comportamiento de las cadenas musculares y producir, por esa vía, dolor musculoesquelético.
 
-## Qué está documentado y qué no
+## Las tres cadenas con respaldo anatómico
 
-Tres afirmaciones distintas, con respaldo muy distinto.
+La fascia transmite fuerza. Eso está documentado.
 
-¿La fascia transmite fuerza? Sí, documentado.
-
-¿Existen las continuidades de los mapas? Algunas. Una revisión sistemática encontró buena evidencia para tres líneas —posterior superficial, funcional posterior y funcional anterior— y no para las demás.
-
-¿Vale eso para las siete de Busquet? No se puede transferir. Esa revisión es sobre otro mapa, y las dos cadenas más propias de este sistema —visceral y neurovascular— carecen de respaldo comparable.
+Y de las continuidades descritas en los mapas de cadenas, tres tienen respaldo anatómico en revisión sistemática: posterior superficial, funcional posterior y funcional anterior. Son las que se recorren primero.
 
 ## Por qué una cadena no es un agente
 
@@ -296,13 +296,13 @@ A un agente se le pregunta. A una cadena se la recorre.
 
 La cadena dice dónde buscar. No dice qué preguntar.
 
-## Para qué sirve en el orden fijo
+## Para qué sirven las cadenas en el orden fijo
 
 La cadena estática de Busquet está ligada al tejido conjuntivo, y nuestro sustrato es el continuo matricial-fascial-bioeléctrico, con los fibroblastos acoplados por uniones comunicantes y el iliopsoas como transductor.
 
 Están hablando del mismo tejido. Busquet describe su mecánica; nosotros su continuidad eléctrica.
 
-Y el uso concreto es este: dar topología al séptimo paso del orden fijo. Esa instrucción dice *"si ninguno restablece la isometría, rastrear todo el cuerpo"*, y hoy es una búsqueda sin estructura.
+Y el uso concreto es este: dar topología al último paso del orden fijo. Esa instrucción dice *"si ninguno restablece la isometría, se rastrea el resto del cuerpo"*, y hoy es una búsqueda sin estructura.
 
 Las tres cadenas con respaldo anatómico son las primeras a recorrer.
 
@@ -348,13 +348,13 @@ La pregunta previa, siempre: *¿cuánto duerme, cuánta carga lleva, y cuánto h
 
 Si las tres respuestas son malas, el punto es un síntoma de la temporada.
 
-## La misma vara sobre nuestro método
+## El mismo criterio aplicado a nuestro método
 
 Y esto aplica igual para nosotros. Si desensibilizamos y el deportista vuelve a cargar, hicimos lo mismo que estamos criticando.
 
-Lo que restituye la competencia no es el imán, ni la aguja, ni el tape. Es el sueño, la carga graduada y bajar el nivel de defensa. Las tres técnicas pueden abrir la ventana; ninguna la sostiene.
+Lo que restituye la competencia es el sueño, la carga graduada y bajar el tono de defensa. Las tres técnicas —imán, aguja y tape— pueden abrir la ventana; ninguna la sostiene.
 
-Y el lenguaje pesa aquí más que en ningún otro lado. Decirle a un deportista *"tienes esto muy dañado"* antes de competir sube su nivel de defensa en el peor momento posible.
+Y el lenguaje pesa aquí más que en ningún otro lado. Decirle a un deportista *"tienes esto muy dañado"* antes de competir le sube el tono de defensa en el peor momento posible. Es el nocebo que vimos hace un rato, dicho en el vestidor.
 
 ---
 
@@ -372,33 +372,15 @@ Las cadenas aportan una segunda topología de propagación, y no son agentes.
 
 Y en el deportista, quitar la señal sin restituir la competencia es un riesgo — que vale también para nosotros.
 
-## Los tres experimentos que quedan planteados
+## El registro que se puede empezar hoy
 
-**Uno. El fenómeno, medido.** Umbral de dolor por presión con algómetro —fiabilidad publicada de 0.75 a 0.91, tres mediciones con treinta a sesenta segundos de descanso— en seis momentos: basal, con los puntos puestos, al retirar, a los diez minutos, tras aplicación prolongada, y al día siguiente. Con variabilidad de la frecuencia cardíaca antes y después, y registro del movimiento ocular.
+En la hoja de valoración previa: si el hallazgo fue unilateral o bilateral, qué nodo niveló y en qué orden, y cuánto duró el efecto.
 
-**Dos. El experimento decisivo, y es barato: media red.** Tres brazos — red completa, media red en un solo hemicuerpo, y red simulada. Con quien mide sin saber cuál es cuál.
-
-Si el efecto depende de anular la diferencia lateral, media red no debería producirlo. Si lo produce igual, la hipótesis de la bilateralidad es falsa.
-
-Es el experimento más informativo del método, porque no compara con nada externo: compara la técnica consigo misma, cambiando una sola variable.
-
-**Tres. El registro que se puede empezar hoy.** En la hoja de valoración previa: si el hallazgo fue unilateral o bilateral, qué nodo niveló y en qué orden, y cuánto duró el efecto.
-
-Con eso se prueban las dos predicciones: que la bilateralidad covaría con el nivel, y que el nodo migra del riñón al bulbo con la cronicidad.
-
-## Qué sigue faltando
-
-Lo digo completo, porque ustedes van a enseñar esto.
-
-La condición de retorno del nivel descendente no está caracterizada. Sabemos qué invierte el lazo; no sabemos qué lo restituye.
-
-El corpus de Levin es sobre el establecimiento embrionario del eje, no sobre su mantenimiento adulto. El salto es nuestro.
-
-Y el rastreo de nodos para el eje transversal no tiene ningún registro sistemático: ni variabilidad cardíaca, ni algometría, ni electrooculografía. Todo lo que afirmamos de él es observación no ciega.
+Con eso se siguen las dos predicciones: que la bilateralidad covaría con el nivel, y que el nodo se desplaza del riñón al bulbo con la cronicidad.
 
 ## Puente al Bloque 4
 
-Hoy trabajamos el nivel de defensa desde el cuerpo. Falta lo que lo sostiene desde dentro —los terrenos, la barrera intestinal y el metabolismo— y la práctica supervisada.
+Hoy trabajamos el tono de defensa desde el cuerpo. Falta lo que lo sostiene desde dentro —los terrenos, la barrera intestinal y el metabolismo— y la práctica supervisada.
 
 ---
 

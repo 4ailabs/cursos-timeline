@@ -32,7 +32,7 @@ Al final de esta hora van a tener con qué sustituirla.
 
 # PARTE 1 · LAS SEIS FASES DEL CICLO DEFENSIVO
 
-## La cascada completa
+## Las seis fases y su perfil autonómico
 
 La respuesta defensiva es una cascada de estados sucesivos, documentada de forma consistente en animales y en humanos.
 
@@ -60,9 +60,9 @@ El programa está diseñado para terminar en recuperación. Quedarse atascado si
 
 **Y la tercera.** Todas las fases están mediadas por una vía neural común: amígdala extendida, hipotálamo, sustancia gris periacueductal, y núcleos simpáticos y vagales.
 
-Y ahí aparece otra vez el mismo lugar. Llevamos cinco convergencias independientes sobre el sistema descendente: la cascada del dolor de esta mañana, la sensibilización latente, el fenómeno del rastreo del eje transversal, el cruce piramidal, y ahora esta.
+Y ahí aparece otra vez el mismo lugar. Llevamos tres convergencias independientes sobre el sistema descendente: el nivel tres de la cascada del dolor de esta mañana, con el bulbo y la RVM; el fenómeno del rastreo del eje transversal, que se comporta como una compuerta; y ahora la vía común de la cascada defensiva.
 
-## El frenazo
+## El frenazo: la activación culmina después del peligro
 
 `[Contarlo despacio. Es el ejemplo que sustituye a la gacela.]`
 
@@ -82,7 +82,7 @@ Nadie confunde eso con una emoción. A nadie le parece que le tiemblan las manos
 
 Y enseña el punto exacto: la activación culmina después de que el peligro terminó. Es el cierre del programa.
 
-## El mismo frenazo, sin cierre
+## El mismo frenazo cuando la secuencia se interrumpe
 
 Ahora el caso que enseña de verdad.
 
@@ -100,7 +100,7 @@ El programa está en todas partes. Lo que varía es si se le deja llegar al fina
 
 # PARTE 2 · QUÉ QUEDA CUANDO EL CICLO NO CIERRA
 
-## Tres lenguajes, una sola cosa
+## El ciclo que no cierra, dicho en tres lenguajes
 
 `[Al pizarrón, tres renglones.]`
 
@@ -114,19 +114,9 @@ Son la misma cosa vista desde tres sistemas.
 
 Y en mi Tratado eso ya tiene nombre: una **impronta** es un ciclo defensivo interrumpido en la descarga. Formalmente, una predicción congelada — una instrucción anticipatoria somática que el sistema aprendió en un momento de amenaza y nunca actualizó.
 
-## Qué se sostiene y qué no sobre la descarga
+## Por qué se retira el vocabulario de la descarga
 
-Y aquí me detengo, porque el concepto de descarga viene de una tradición con evidencia limitada, y ustedes tienen que saberlo antes de usarlo.
-
-`[Al pizarrón, dos columnas.]`
-
-**Lo que se sostiene.** El temblor y la sacudida tras el estrés se observan, en humanos y en animales. La cascada defensiva tiene fases y una fase terminal de recuperación. E interrumpir la secuencia deja al sistema en un estado distinto.
-
-**Lo que no está demostrado.** Que sean una descarga de energía acumulada. Que provocar el temblor deliberadamente reproduzca ese cierre. Y el modelo hidráulico completo.
-
-Sobre la Experiencia Somática, de donde viene el concepto: base de evidencia escasa, muestras pequeñas, marcos no demostrados como la teoría polivagal, y objeciones profesionales sobre el uso del contacto. Tomamos la observación, no el modelo.
-
-Y el problema de fondo con el vocabulario habitual. *Descargar la energía acumulada* es una metáfora hidráulica: sugiere un depósito que se llena y se vacía.
+*Descargar la energía acumulada* es una metáfora hidráulica: sugiere un depósito que se llena y se vacía.
 
 Ese modelo no hace falta. Y hay uno mejor, que es a donde vamos.
 
@@ -160,21 +150,21 @@ Palabra por palabra, es la definición del marco del agente. Salud es poder move
 
 # PARTE 4 · LA SIMPATICOTONÍA SOSTENIDA COMO PREDICCIÓN
 
-## Por qué la formulación vieja falla
+## Por qué falla "bajar la simpaticotonía"
 
 Ya tenemos con qué desmontar la frase del principio.
 
-Después de comer quedó fijado que, en la inflamación, el problema no está en que el programa se active sino en que no se complete.
+Después de comer quedó fijado que, en la inflamación, lo que enferma es que el programa no se complete.
 
 No hay ninguna razón para que la defensa autonómica funcione distinto. Es el mismo programa a otra escala.
 
 La simpaticotonía sostenida es un ciclo que no terminó.
 
-Un paciente con la defensa alta tiene un simpático que no puede salir de donde entró. Y bajarlo con algo desde fuera no le devuelve esa capacidad: se la sustituye.
+Un paciente con el tono de defensa alto tiene un simpático que no puede salir de donde entró. Y bajarlo con algo desde fuera no le devuelve esa capacidad: se la sustituye.
 
-## La reformulación
+## Qué predice un sistema con el tono alto
 
-Si la regulación es predictiva —si el organismo fija sus parámetros anticipando la demanda— entonces un sistema con la defensa alta de forma crónica está haciendo exactamente lo que debe, dado lo que predice.
+Si la regulación es predictiva —si el organismo fija sus parámetros anticipando la demanda— entonces un sistema con el tono de defensa alto de forma crónica está haciendo exactamente lo que debe, dado lo que predice.
 
 Está preparado para un mundo que ya no está.
 
@@ -188,13 +178,13 @@ El ojo miope predice: *el mundo será cercano*.
 
 El dolor crónico predice: *aquí hay que proteger*.
 
-Y la defensa alta predice: *va a hacer falta*.
+Y el tono de defensa alto predice: *va a hacer falta*.
 
 Entonces la pregunta clínica deja de ser *¿cómo bajo esto?* y pasa a ser *¿qué información le falta a este sistema para dejar de predecir amenaza?*
 
 Y una predicción no se actualiza con un sedante. Se actualiza con evidencia que la contradiga.
 
-## La tesis del bloque
+## El ciclo completado como evidencia que actualiza la predicción
 
 Y aquí se juntan las dos mitades.
 
@@ -202,21 +192,21 @@ Un ciclo defensivo completado es esa evidencia.
 
 La descarga informa la activación. Es el dato que le dice al sistema: el episodio terminó; la predicción de amenaza ya no se sostiene.
 
-Por eso la gacela no queda simpaticotónica — y no porque haya quemado la adrenalina corriendo. Es porque su sistema recibió la señal de que el episodio terminó, y con ella actualizó la predicción.
+Por eso la gacela no queda simpaticotónica. Su sistema recibió la señal de que el episodio terminó, y con ella actualizó la predicción. La adrenalina quemada corriendo no explica nada.
 
 Y por eso el humano que no se detuvo tras el frenazo se queda distinto. No le faltó gasto. Le faltó el dato.
 
-Cambia la metáfora entera. Es un modelo que se corrige.
+Cambia el modelo entero: en lugar de un depósito que se llena y se vacía, un modelo que se corrige.
 
 Y es mejor por tres razones. No necesita una energía que nadie ha medido. Encaja con la regulación predictiva que la fisiología ya describe. Y es la misma lógica del Acto de Quiebre de mi Tratado: una acción física que contradice la predicción.
 
-## Y responde una pregunta que teníamos abierta
+## Qué restituye el nivel descendente
 
-Esta mañana quedó anotado que la condición de retorno del nivel descendente no estaba caracterizada. Sabíamos qué invierte el lazo; no sabíamos qué lo restituye.
+Hace un rato quedó anotado que la condición de retorno del nivel descendente no está caracterizada. Sabemos qué invierte el lazo; no sabemos qué lo restituye.
 
 Candidato: lo que lo restituye es la señal de que el episodio terminó.
 
-## Las tres formulaciones
+## Las tres formulaciones, y cuál se usa
 
 `[Al pizarrón. Es la diapositiva de referencia del bloque.]`
 
@@ -268,7 +258,7 @@ Y si se sostiene hasta que ya no marca, algo persiste: la evidencia se acumuló 
 
 Es el mismo mecanismo del Acto de Quiebre, con otro efector. En BV4 lo hace una acción física que contradice la predicción. Aquí, una entrada física distribuida que hace lo mismo sin pedirle nada al paciente.
 
-Y esa es probablemente la formulación más fuerte que el método puede reclamar hoy. No exige que el imán haga nada exótico: exige que entregue información, que es lo que el marco dice desde el Módulo 1.
+Y esa es probablemente la formulación más fuerte que el método puede reclamar hoy. Le exige al imán una sola cosa: que entregue información, que es lo que el marco dice desde el Módulo 1.
 
 ## Cómo se le dice al paciente
 
@@ -294,7 +284,7 @@ Es la última fase del programa.
 
 La cascada termina en quietud que promueve el descanso y la reparación. Un sistema que completa su ciclo queda dormido. Es la fase seis, cumpliéndose.
 
-Y se suma a lo de esta mañana: el sueño profundo es la ventana de recalibración del agente.
+Y se suma a lo que dijimos hace un rato: el sueño profundo es la ventana en la que el sistema recalibra.
 
 Dormirse es el final del programa, y a la vez la ventana donde la actualización se consolida.
 
@@ -310,9 +300,9 @@ Eso lo saca de la categoría de maniobra provocada y lo coloca en la de fenómen
 
 En esta lectura: es el ciclo llegando a su fase terminal.
 
-## Con el tiempo, como si se hubiera abierto una llave
+## Por qué la persona llora: bajó la guardia
 
-Las personas lloran con más facilidad, pueden descomprimir. Aunque no necesariamente.
+Con el tiempo, las personas lloran con más facilidad y pueden descomprimir. Aunque no necesariamente.
 
 Y aquí el término importa, porque llamarlo emoción sería un error.
 
@@ -336,7 +326,7 @@ La expresión emocional viene después. Se modificó el estado; lo demás vino d
 
 `[Esta parte se dice completa. Es lo que mantiene el método en pie.]`
 
-Cinco razones, y ninguna es de prudencia.
+Cinco razones, y las cinco son estructurales.
 
 **Uno. Rompería el marco.** Todo el sistema sostiene que el objeto es un estado, leído por el rastreo. Convertirlo en trabajo emocional reintroduce la interpretación — y con ella, al terapeuta decidiendo qué significa lo que el paciente siente. Es lo contrario de que el rastreo defina todo.
 
@@ -344,11 +334,11 @@ Cinco razones, y ninguna es de prudencia.
 
 **Tres. Es fuera de alcance.** Quienes se forman aquí son terapeutas de Regulación Bioeléctrica, no psicoterapeutas. Nombrarlo como técnica emocional invita a un trabajo para el que esta formación no habilita.
 
-**Cuatro. Y sube la ganancia, que es lo contrario del objetivo.** Establecimos después de comer que la atención dirigida sube la ganancia. Perseguir material emocional dirige la atención al malestar de forma sostenida — justo lo que no conviene en alguien con la defensa alta.
+**Cuatro. Y sube la ganancia, que es lo contrario del objetivo.** Establecimos después de comer que la atención es un mando de ganancia. Perseguir material emocional dirige la atención al malestar de forma sostenida — justo lo que no conviene en alguien con el tono alto.
 
 **Cinco. Lo volvería indistinguible.** En el momento en que esto se presenta como técnica de liberación emocional, aterriza en una categoría saturada y de evidencia pobre. Y todo lo que hemos construido con cuidado deja de poder distinguirse de ella.
 
-## La regla operativa
+## La regla operativa sobre la descarga
 
 `[Al pizarrón, y que la copien.]`
 
@@ -360,7 +350,7 @@ Si aparece, se acompaña. Si no aparece, la sesión está igual de completa.
 
 Es el mismo estatuto que mi Tratado le da a la vagotonía: confirma que el proceso está ocurriendo.
 
-## El límite entre los dos sistemas
+## El límite entre la Regulación Bioeléctrica y BV4
 
 Y lo digo con claridad, porque varios de ustedes conocen los dos.
 
@@ -370,7 +360,7 @@ La Regulación Bioeléctrica trabaja el estado, y lo hace con el rastreo. Si en 
 
 Son dos trabajos distintos. Improvisar el primero durante el segundo es lo que produce el problema.
 
-## Y si el paciente pregunta
+## Qué decirle al paciente si pregunta
 
 *"A veces el cuerpo suelta algo mientras trabajamos. Si pasa, lo acompañamos. No es lo que venimos a buscar — es una señal de que el sistema está soltando la guardia."*
 
@@ -414,27 +404,11 @@ Hoy ejecutaron la sesión completa del nodo de lesión, de principio a fin.
 
 Tienen los tres tipos de dolor y los cuatro niveles, con el criterio de cuándo cambiar de nivel.
 
-Tienen el programa de defensa con sus tres tiempos, y la cicatriz como marca de un programa que no resolvió.
+Tienen el programa de defensa con sus tres tiempos, y la cicatriz como huella de un programa que no terminó.
 
 Tienen el punto gatillo como fallo de control, y la bilateralidad como marcador de que se está tocando un estado.
 
 Y tienen la simpaticotonía sostenida leída como una predicción que no se actualizó.
-
-## Los límites, dichos completos
-
-`[Esta parte no se abrevia. Ustedes van a enseñar esto.]`
-
-La reformulación de la descarga como información es nuestra. Es más defendible que el modelo hidráulico y encaja con la regulación predictiva. Y no está demostrada.
-
-La evidencia de la Experiencia Somática es limitada, y su marco incorpora teoría no demostrada. Tomamos la observación, no el modelo.
-
-La carga alostática tiene operacionalización en índices multi-sistema, y es un constructo de investigación, no una medida de consulta.
-
-La propia alostasis ha sido criticada como una lectura demasiado estrecha de la homeostasis. Se cita como marco, no como consenso.
-
-La cascada defensiva es un marco heurístico, y sus fases no son compartimentos estancos.
-
-Y nada de todo esto demuestra que el imán entregue esa información. Lo que hicimos hoy fue establecer **qué habría que demostrar** — que es distinto, y es el paso que faltaba.
 
 ## Puente al Módulo 3
 

@@ -90,7 +90,7 @@ El polo negativo, Norte, es el de rastreo e impactación sobre la zona. El posit
 
 Hay una sola excepción: la acidosis temporal. Ahí va la cara positiva contra la piel, y se inicia con el positivo.
 
-El error aparece siempre en el mismo punto de la secuencia: no al ejecutar la maniobra renal, sino inmediatamente después, al pasar al trabajo por zonas. Ahí es donde el imán entra invertido. Verifiquen polo y cara en esa transición.
+El error aparece siempre en el mismo punto de la secuencia: no al ejecutar la acidosis temporal, sino inmediatamente después, al pasar al trabajo por zonas. Ahí es donde el imán entra invertido. Verifiquen polo y cara en esa transición.
 
 ## La ficha y el mapa
 
@@ -102,7 +102,7 @@ Retengan esa última palabra, seguimiento. Volvemos a ella al cerrar esta parte.
 
 El mapa lo dibuja el paciente. Ustedes entregan la silueta y él marca.
 
-La razón es operativa. El mapa cumple dos funciones: es la agenda de la sesión —qué se interroga y en qué orden— y es la referencia basal para comparar con las sesiones siguientes. Levantado por el terapeuta, registra lo que el terapeuta esperaba encontrar. Levantado por el paciente, registra lo que su cuerpo señala. Esas dos listas no siempre coinciden.
+La razón es operativa. El mapa cumple dos funciones: es la agenda de la sesión —qué se interroga y en qué orden— y es la referencia para comparar con las sesiones siguientes. Levantado por el terapeuta, registra lo que el terapeuta esperaba encontrar. Levantado por el paciente, registra lo que su cuerpo señala. Esas dos listas no siempre coinciden.
 
 Segundo punto sobre el mapa: el hallazgo no se limita al dolor. Entran tensión, contractura, edema, ardor, y la molestia inespecífica que el paciente no logra nombrar. También la zona lesionada aunque hoy esté asintomática. Se registra en su lenguaje.
 
@@ -116,7 +116,7 @@ Se le explica al paciente qué se le va a realizar: evaluación de simetría y c
 
 Decúbito supino, cabeza en posición neutra. Se toman ambas extremidades inferiores y se traccionan suavemente para relajar la articulación pélvica; se movilizan hacia los lados para relajar el piso pélvico. Y se cubre con manta.
 
-La manta reduce el tono de defensa y estabiliza la medición basal. Un paciente sin relajar produce una lectura no fiable, y esa lectura los lleva a colocar imanes donde no corresponde.
+La manta reduce el tono de defensa y estabiliza la medición. Un paciente sin relajar produce una lectura no fiable, y esa lectura los lleva a colocar imanes donde no corresponde.
 
 La medición. Los pies por fuera del borde distal de la camilla, talones libres, de preferencia con calzado. Unas respiraciones profundas antes de medir. Se toman ambas extremidades por los tobillos y se elevan unos 30 grados, alineadas con el eje del cuerpo.
 
@@ -134,23 +134,23 @@ Todo lo que van a hacer hoy está en este diagrama. Cada rama la decide una medi
 
 ## Acidosis temporal
 
-Con acortamiento basal y sin zona de dolor localizada, se abre con la acidosis temporal.
+La apertura va antes de trabajar zonas: con acortamiento en la medición basal, y todavía sin ninguna zona rastreada, se abre con la acidosis temporal.
 
-Polo positivo, cara positiva a la piel, sobre el riñón del lado del acortamiento. Homolateral en cerca del 80 por ciento de los casos; si no responde, contralateral.
+Polo positivo, cara positiva a la piel, sobre el riñón del lado del acortamiento. Homolateral en cerca del 80 por ciento de los casos.
 
-Se vuelve a medir. Isometría confirma el riñón como nodo.
+Se vuelve a medir. Si quedan isométricas, ese riñón es el nodo. Si sigue acortada, se pasa el positivo al riñón contralateral y se vuelve a medir.
 
-Sin retirar el positivo, se coloca el negativo en la misma zona renal, adyacente, sin superponer. Dipolo local. Veinte minutos o más.
+Confirmado el nodo, y sin retirar el positivo, se coloca el negativo en la misma zona renal, adyacente, sin superponer. Dipolo local. Veinte minutos o más.
 
 Criterio de retirada: se retira únicamente el positivo y se mide. Si persiste el acortamiento, se recoloca y se prolonga. Se repite hasta que, al retirarlo, queden isométricas.
 
-Si con el imán colocado la extremidad continúa acortada, se trata de una discrepancia anatómica del paciente. Se coloca una marca en esa longitud y esa marca pasa a ser la referencia basal. El acortamiento lesional se manifestará sobre esa base.
+Si con el imán colocado la extremidad continúa acortada, se trata de una discrepancia anatómica del paciente. Se coloca una marca en esa longitud y esa marca pasa a ser la línea base. El acortamiento lesional se manifestará sobre esa base.
 
 Si la extremidad vuelve a acortarse tras la corrección, la desregulación es más sostenida y corresponde la acidosis latente: positivo sobre zona renal, habitualmente derecha; se mide; si no responde, contralateral; y negativo sobre el área parietal contralateral al riñón utilizado. Veinte minutos, o se deja colocado y se continúa el rastreo por zonas en paralelo.
 
-## Los dipolos
+## El dipolo local, zona por zona
 
-Con la línea base establecida, se va zona por zona, de mayor a menor intensidad.
+Con la línea base —isométrica de entrada, o establecida con la acidosis—, se va zona por zona, de mayor a menor intensidad.
 
 La regla que gobierna todo el trabajo: solo se coloca un dipolo donde el rastreo responde con acortamiento. Una zona que no acorta, no se trabaja.
 
@@ -158,9 +158,11 @@ Ustedes proponen la zona; el rastreo confirma el punto.
 
 Se localiza la zona más sintomática y se coloca ahí un imán con el polo negativo, cara negativa a la piel. Se comprueba midiendo.
 
+Ese negativo interroga la isla de despolarización. El nodo de lesión es eso: una zona traumatizada que quedó desconectada del patrón bioeléctrico del tejido que la rodea.
+
 Si la zona acorta la extremidad, el imán queda fijo. Si no hay cambio, se mueve el imán por la zona midiendo hasta encontrar el punto que acorta. Si en toda la zona no aparece acortamiento, se continúa con otra zona del mapa.
 
-Confirmado el nodo, se busca el complementario. Sin mover el negativo, se coloca el positivo a un lado —al lado opuesto, a la izquierda o arriba—, probando posiciones y midiendo. Cuando quedan isométricas, el dipolo local está cerrado.
+Confirmado el nodo, se busca el complementario. Sin mover el negativo, se prueban posiciones adyacentes con el positivo —a un lado, arriba, abajo—, midiendo en cada una. Cuando quedan isométricas, el dipolo local está cerrado.
 
 La mayoría de los puntos se resuelve así.
 
@@ -188,17 +190,17 @@ El orden está construido por prevalencia. El riñón es el nodo regulador princ
 
 Eso se los digo con ese estatus: uno establecido, tres en investigación.
 
-Y para dolor con contractura, la rejilla: sobre un punto ya confirmado, cuatro imanes en cuadro de 2×2 con polaridades alternadas en tablero. Cada imán opuesto a sus vecinos de lado y de arriba.
+Y para dolor con contractura, la rejilla. Se monta sobre un punto ya confirmado: alrededor del dipolo que ya está colocado, y sin moverlo, se disponen cuatro imanes iguales en cuadro de 2×2, con polaridades alternadas en tablero. Cada imán queda opuesto a sus vecinos de lado y de arriba, y los dos de cada diagonal comparten polo. Si quedan dos caras iguales juntas, está mal armada.
 
 ## El cierre de la sesión y la serie
 
-El tiempo. Veinte minutos como base, veinte a treinta en el trabajo por zonas. Es la ventana de impactación de una configuración.
+El tiempo. La configuración de apertura, veinte minutos o más. Cada zona, de veinte a treinta. Es la ventana de impactación de una configuración.
 
-El criterio de cierre de una zona no es el tiempo transcurrido: es la verificación por retirada. Se retira el positivo y se mide. Si vuelve a acortar, se recoloca y se prolonga.
+Una zona se cierra por verificación de retirada, no por reloj. Se retira el positivo y se mide. Si vuelve a acortar, se recoloca y se prolonga.
 
 Terminado el recorrido, se ayuda al paciente a incorporarse y se formulan las preguntas de integración: qué diferencias siente, cómo se siente, qué ha cambiado.
 
-Esas preguntas forman parte del procedimiento. Al hacer consciente el cambio se facilita la adopción del nuevo punto de equilibrio.
+Esas preguntas forman parte del procedimiento. Al hacer consciente el cambio se facilita la adopción del nuevo punto de ajuste.
 
 Se marca en el mapa cada zona que surgió, y el mapa se conserva.
 
@@ -207,6 +209,8 @@ Ahora, el punto de esta parte.
 Al incorporarse, lo habitual es que haya alivio: relajación, calma, menor dolor, mejor movilidad.
 
 El alivio no cierra el caso.
+
+Es lo que recuperamos al empezar: regular es recalibrar el punto de ajuste, y eso se comprueba en el tiempo.
 
 Esto se trabaja en serie. Al día siguiente, o en los días siguientes, se vuelve a evaluar ese mismo punto. La secuencia se repite las veces que sea necesario hasta que ese punto deje de marcar. La frecuencia la determina la evolución del paciente; no hay intervalo fijo.
 
@@ -218,11 +222,19 @@ Una formulación para la consulta:
 
 Y la pregunta de seguimiento que informa en la sesión siguiente no es "¿le quitó el dolor?". Es "¿cuánto le duró?".
 
+Con esto pueden recorrer una sesión completa. Y quedan dos preguntas que la sesión plantea y que esta parte no responde.
+
+La primera: por qué hay pacientes en los que la zona ya no marca y el dolor continúa.
+
+La segunda: qué responde exactamente cuando la extremidad se acorta.
+
+Las dos se contestan a partir de ahora.
+
 ---
 
-# 11:05 · LOS TIPOS DE DOLOR Y SUS NIVELES
+# 11:05 · LOS TIPOS DE DOLOR Y LOS NIVELES DEL DOLOR
 
-Con lo que llevamos pueden recorrer una sesión completa. Ahora un hallazgo que van a encontrar y conviene tener previsto.
+Empiezo por un hallazgo que van a encontrar y conviene tener previsto.
 
 Una zona que el paciente marcó en su mapa, con dolor claro, y al colocar el imán no marca. Sin cambio en la medición.
 
@@ -234,7 +246,7 @@ La lectura correcta: que no marque no indica ausencia de daño. Indica que el me
 
 Y el caso inverso, igual de frecuente: el punto se trabajó, dejó de marcar, y el paciente sigue con dolor. Si el nivel local está resuelto y el dolor persiste, el proceso vive más arriba.
 
-Para eso hace falta el marco de los tipos de dolor y de sus niveles.
+Para eso hace falta el marco de los tipos de dolor y de los niveles por los que el dolor se mueve.
 
 ## Los tres tipos de dolor
 
@@ -242,7 +254,7 @@ Son tres mecanismos distintos, no tres grados de gravedad. Y el mecanismo determ
 
 **Dolor nociceptivo.** Surge de daño real o amenazado a tejido no neural, por activación de nociceptores. Distribución discreta, proporcional al hallazgo, con patrón mecánico, y evoluciona con el tejido. Artrosis, esguince, contractura, herida.
 
-**Dolor neuropático.** Causado por lesión o enfermedad del sistema somatosensorial. Distribución neuroanatómicamente plausible, calidad quemante o eléctrica, con signos sensitivos confinados a ese territorio. Neuropatía diabética, radiculopatía, neuralgia postherpética. Es una descripción clínica, no un diagnóstico: exige lesión demostrable.
+**Dolor neuropático.** Causado por lesión o enfermedad del sistema somatosensorial. Distribución neuroanatómicamente plausible, calidad quemante o eléctrica, con signos sensitivos confinados a ese territorio. Neuropatía diabética, radiculopatía, neuralgia postherpética. Es una descripción clínica, no un diagnóstico; y para sostenerla hace falta una lesión demostrable.
 
 **Dolor nociplástico.** Surge de nocicepción alterada, sin evidencia de daño tisular que active los nociceptores ni de lesión del sistema somatosensorial. El término se incorporó en 2017 y sus criterios clínicos se publicaron en 2021.
 
@@ -250,19 +262,19 @@ Es el tercer descriptor de la clasificación, y es el que faltaba. Antes de tene
 
 ## Los criterios del nociplástico
 
-Cuatro criterios de entrada: duración de tres meses o más; distribución regional o multifocal, no discreta; dolor no explicado del todo por el hallazgo tisular ni por lesión neural; y desproporción respecto a lo que se encuentra.
+Cuatro criterios de entrada: duración de tres meses o más; distribución regional o multifocal, no discreta; dolor no explicado del todo por el hallazgo tisular ni por lesión neural; y desproporción entre lo que el paciente refiere y lo que se encuentra en la exploración.
 
 Después, hipersensibilidad evocada en la región: alodinia, hiperalgesia y post-sensación.
 
 Y un grupo de comorbilidades que rinde mucho y que rara vez se interroga: sueño no reparador con despertares, fatiga que no cede con el descanso, quejas cognitivas —concentración y memoria de trabajo—, e hipersensibilidad a luz, sonido y olores.
 
-Cuando esas comorbilidades acompañan al dolor crónico, no son cuatro problemas independientes: corresponden a un solo sistema con la ganancia aumentada.
+Cuando esas comorbilidades acompañan al dolor crónico, las cuatro corresponden a un solo sistema con la ganancia aumentada.
 
 Y los fenotipos se mezclan. Lo habitual es una lesión nociceptiva real con un componente nociplástico encima. No se busca la categoría pura, sino cuál pesa hoy.
 
-## Qué esperar del rastreo
+## Qué esperar del rastreo en cada tipo de dolor
 
-En dolor predominantemente nociceptivo, el rastreo marca en la zona y cierra con dipolo local o renal. Es el terreno habitual de la técnica.
+En dolor predominantemente nociceptivo, el rastreo marca en la zona y cierra con dipolo local o renal. Es el escenario habitual de la técnica.
 
 En neuropático, puede marcar sobre el trayecto, con respuesta menos limpia.
 
@@ -276,6 +288,8 @@ Con eso, el punto que duele y no marca queda explicado: es lo esperable cuando p
 
 Saquen la hoja que les entregué. Se completa en la toma del caso, antes de tocar al paciente, y su producto es un plan de dónde interrogar primero.
 
+Una aclaración antes de recorrerla. En la hoja los tres apartados están nombrados por lo que se observa: la señal corresponde al tejido, el nervio está dañado, la sensibilidad está subida. Son los tres tipos que acabamos de ver: nociceptivo, neuropático y nociplástico. El nombre clínico queda entre paréntesis en cada apartado.
+
 Lo primero es cuándo no se trabaja.
 
 `[Leer completas.]`
@@ -286,17 +300,23 @@ Ante cualquiera de estas: no se rastrea, no se aplican imanes, se deriva.
 
 Y esto está dentro del método, no fuera. Ustedes operan con un alcance definido, y reconocer su borde forma parte del criterio clínico.
 
-El resto de la hoja lo completan en la práctica: qué está haciendo el dolor, de dónde viene, a qué nivel vive, y el plan.
+El resto de la hoja lo completan en la práctica: qué está haciendo el dolor, de dónde viene, a qué nivel vive, el plan y el registro.
 
-## Cómo el dolor cambia de nivel
+Dos apuntes sobre la parte de dónde viene la señal. El orden fijo que acabamos de ver —riñón, suprarrenal, hígado, bulbo— ya es interrogación visceral desde la superficie: las aferencias viscerales convergen en el asta dorsal con las somáticas del mismo segmento, y por eso una víscera se interroga en su segmento y no donde duele. Y a la inversa: no todo lo que se regula duele, y no todo lo que duele marca.
+
+La parte que pregunta a qué nivel vive el dolor la van a poder llenar con la escalera que sigue.
+
+## Los cuatro niveles del dolor
 
 `[Al pizarrón. Escalera de cuatro niveles con dos columnas laterales.]`
+
+La cascada viene de una revisión publicada de la fisiopatología del dolor crónico. Las etapas se solapan y se refuerzan entre sí; no es una escalera que se sube un peldaño a la vez.
 
 **Nivel uno, el tejido.** Sensibilización periférica. Los mediadores —citoquinas, prostaglandinas, bradicinina, factor de crecimiento nervioso— reducen el umbral del nociceptor: hiperalgesia y alodinia. Los canales se desregulan. Es la isla que ya saben trabajar, y aquí el rastreo marca en la zona.
 
 **Nivel dos, el segmento.** Sensibilización central espinal. El input persistente amplifica la señal en el asta dorsal: potenciación a largo plazo vía NMDA, activación glial, pérdida del control inhibitorio GABA y glicina, y sumación temporal. Aquí el dolor comienza a independizarse de su origen y se extiende más allá de la zona.
 
-**Nivel tres, la modulación descendente.** La vía PAG-RVM pasa de inhibir a facilitar. La inhibición descendente —serotonina, noradrenalina, opioides endógenos— se debilita, y las células de facilitación de la RVM amplifican. Clínicamente: dolor con tono simpático que incrementa la sensibilidad, con poca relación con la carga mecánica.
+**Nivel tres, la modulación descendente.** La vía que baja del mesencéfalo al bulbo —de la sustancia gris periacueductal, la PAG, a la médula ventromedial rostral, la RVM— pasa de inhibir a facilitar. La inhibición descendente —serotonina, noradrenalina, opioides endógenos— se debilita, y las células de facilitación de la RVM amplifican. Clínicamente: dolor con tono simpático que incrementa la sensibilidad, con poca relación con la carga mecánica.
 
 **Nivel cuatro, la red.** Reorganización cortical y límbica. El dolor se incrusta en circuitos de memoria y emoción; se alteran redes de saliencia y la red por defecto; hay pérdida medible de sustancia gris, parcialmente reversible con tratamiento efectivo. Dolor con mínimo input periférico.
 
@@ -320,23 +340,25 @@ Y el dato central: la microglía poda las sinapsis inhibitorias. Es una remoció
 
 ## Por qué el dolor sube de nivel
 
-La descripción convencional plantea que el dolor asciende porque el daño se extiende. No es lo que ocurre.
+El dolor sube de nivel porque la protección se delega, no porque el daño se extienda.
 
 Cada nivel que no puede cumplir su meta entrega la protección al siguiente, y el siguiente la asume. El tejido no resuelve y el segmento asume. El segmento no resuelve y el sistema descendente asume. Tampoco resuelve, y la red lo incrusta.
 
-Regular, entonces, no consiste en detener el ascenso, sino en devolverle a cada nivel las condiciones para retomar lo que entregó.
+Regular consiste en devolverle a cada nivel las condiciones para retomar lo que entregó.
 
-Un apunte anatómico que les va a interesar: la médula ventromedial rostral, que ejecuta la facilitación descendente, está en el bulbo. El nodo que ustedes usan de forma empírica cuando el dolor cursa con tono simpático elevado corresponde a la estructura de la modulación descendente invertida.
+Un apunte anatómico que les va a interesar. La RVM, la médula ventromedial rostral, es la que ejecuta la facilitación descendente. Médula aquí es el bulbo raquídeo, no la médula espinal: la PAG es mesencefálica, y lo que ustedes palpan como bulbo es la RVM. El nodo que usan de forma empírica cuando el dolor cursa con tono simpático elevado corresponde a la estructura de la modulación descendente invertida.
 
 ## Qué responde cuando la pierna se acorta
 
 Cierro esta parte con la segunda pregunta que dejé abierta: qué responde exactamente cuando la extremidad se acorta.
 
-El imán no mide potasio ni voltaje en esa zona. Lo que se lee es la respuesta del propio sistema a esa perturbación. Lo que marca es una zona fuera de su rango homeostático.
+El imán no mide potasio ni voltaje en esa zona. Lo que se lee es la respuesta del propio sistema a esa perturbación. Lo que marca es una zona fuera de su rango homeostático: el agente de esa zona está señalando que ahí no puede cumplir su meta.
 
 La pierna no contiene información sobre el hombro. La red responde, y la vía motora es el canal de salida.
 
-De ahí sale lo que distingue el desempeño de un operador: no la sensibilidad de la mano, sino qué preguntas sabe formular y en qué orden.
+Y esa respuesta es un sí o un no. Parece poca cosa. Veinte preguntas bien hechas separan más de un millón de posibilidades, porque cada respuesta parte el espacio en dos. El límite nunca estuvo en el sí o el no.
+
+El límite es qué preguntas se saben hacer, y en qué orden. Eso es lo que distingue el desempeño de un operador, no la sensibilidad de la mano.
 
 Todo lo que vimos esta mañana —los tipos de dolor, los niveles, los compartimentos— es repertorio de preguntas. Cada concepto es una pregunta que ahora pueden hacer.
 

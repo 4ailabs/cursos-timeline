@@ -12,9 +12,9 @@
 
 Retomemos dónde quedamos.
 
-Esta mañana establecimos que lo desregulado es el punto de ajuste, y que cuando el rastreo marca, lo que señala es una zona fuera de su rango. Y en la escalera de niveles quedó una idea que ahora se cobra: hay procesos que sostienen el dolor con mínimo aporte desde el tejido.
+Esta mañana establecimos que lo desregulado es el punto de ajuste, y que cuando el rastreo marca, lo que señala es una zona que perdió su rango. Y en la escalera de niveles quedó una idea que ahora se cobra: hay procesos que sostienen el dolor con mínimo input periférico.
 
-Ese proceso tiene un agente concreto, y es el que vamos a trabajar ahora: el sistema de defensa.
+Ese proceso tiene un agente concreto, y es el que vamos a trabajar ahora: el sistema de defensa. Esta mañana lo vieron por sus dos compartimentos, el periférico y el central. Ahora lo vemos completo, como programa.
 
 Lo que esta mañana llamamos ganancia aumentada va a recibir aquí su nombre propio.
 
@@ -32,7 +32,7 @@ El tono de defensa se puede subir con palabras.
 
 # PARTE 1 · EL PROGRAMA DE DEFENSA
 
-## Un programa con meta
+## La inflamación como programa con meta
 
 La inflamación es lo que el cuerpo hace cuando detecta amenaza, y lo hace siguiendo una secuencia que no improvisa.
 
@@ -42,7 +42,7 @@ Su meta: detectar la amenaza, contenerla, retirar lo dañado y reparar.
 
 Su capacidad de agencia depende de sus recursos, de las señales que recibe y de su historia previa.
 
-Y tiene un set point: el umbral desde el cual decide que hay amenaza. Ese umbral es su tono, y es la variable de todo este bloque.
+Y tiene un punto de ajuste —su set point—: el umbral desde el cual decide que hay amenaza. Ese umbral es su tono, y es la variable de todo este bloque.
 
 De ahí sale la consecuencia que conviene dejar clara desde el principio. Si es un programa con meta, entonces suprimirlo queda fuera de lo que llamamos regular. Regularlo consiste en ayudarlo a cumplir su meta — y su meta incluye terminar.
 
@@ -76,27 +76,27 @@ Si la resolución es un programa aparte, ¿qué significa que un paciente lleve 
 
 `[Respuesta: que el tercer tiempo no está ocurriendo. El estímulo no necesariamente persiste; la orden de terminar no llega.]`
 
-## Las dos formas de fallar
+## Las dos formas en que falla el programa
 
 Conviene separarlas, porque tienen conducta clínica distinta.
 
 **Rigidez.** El sistema queda atascado en un modo y no puede conmutar. Es lo que describen la polarización TH1 / TH2 en la respuesta adaptativa, y el balance M1 / M2 del macrófago que ya vieron en el Módulo 1. Aquí no falta ningún sustrato: falta flexibilidad.
 
-**Déficit.** Falta el mediador o el sustrato de la resolución. Aquí sí falta algo, y es de los pocos puntos del modelo con una vía nutricional plausible.
+**Déficit.** Falta el sustrato con el que se fabrican esos mediadores de la resolución que acabo de nombrar. Aquí sí falta algo, y es de los pocos puntos del modelo con una vía nutricional plausible.
 
 Un programa rígido y uno deficitario se ven parecido en consulta. Uno no puede cambiar de modo; el otro no tiene con qué terminar.
 
-Y aquí enuncio algo que se cobra en la siguiente parte. El general japonés no es una metáfora psicológica. Es esto: un programa de defensa correctamente ejecutado, al que nunca le llegó la orden de terminar.
+Y aquí enuncio algo que se cobra en la siguiente parte. El general japonés del Módulo 1 tiene aquí su versión fisiológica: un programa de defensa correctamente ejecutado, al que nunca le llegó la orden de terminar.
 
 ---
 
 # PARTE 2 · LA CICATRIZ
 
-## La pregunta que se plantea al grupo
+## Si se quita la defensa, ¿el tejido regenera?
 
 `[Plantearla y dejar que discutan antes de responder. Dos o tres minutos.]`
 
-Toda inflamación termina en cicatriz. Si quitáramos el mecanismo de defensa, ¿el tejido regeneraría en lugar de cicatrizar?
+En el adulto, la inflamación termina en cicatriz. Si quitáramos el mecanismo de defensa, ¿el tejido regeneraría en lugar de cicatrizar?
 
 `[Escuchar. La mayoría dirá que sí.]`
 
@@ -118,7 +118,7 @@ La segunda: hay una ventana. El programa tiene que estar presente en su momento.
 
 `[Referencia: Godwin, Pinto y Rosenthal. PNAS 2013. PMID 23690624.]`
 
-## El caso fetal
+## La piel fetal y la IL-10
 
 La piel fetal repara sin cicatriz, con regeneración completa de anexos —pelo, glándulas—. Y su perfil inflamatorio es distinto: menor producción de IL-6 e IL-8.
 
@@ -142,6 +142,8 @@ La correcta: *"la inflamación no impide la regeneración. La inflamación que n
 
 Y así se cierra el general japonés con una consecuencia física. No deja el tejido intacto esperando. Deja fibrosis.
 
+La cicatriz es la huella de una orden de terminar que nunca llegó.
+
 ## El estado de la persona modula la reparación
 
 Aquí entra la observación clínica, y hay que formularla con precisión.
@@ -160,8 +162,6 @@ La formulación defendible es esta: lo que modula la reparación es el estado de
 
 Y esta versión es mejor por una razón práctica: señala una diana sobre la que sí se puede trabajar. La persona que llega a quirófano en calma cicatriza mejor porque su programa de defensa no está compitiendo con el de reparación.
 
-`[Nota de rigor, dicha al grupo: la comparación implante/biopsia arrastra variables ajenas al significado — técnica quirúrgica, tensión de la piel, tipo de cierre, localización, y la existencia de una enfermedad de base. Se presenta como hipótesis.]`
-
 ---
 
 # PARTE 3 · EL TONO DE DEFENSA
@@ -174,13 +174,13 @@ Y esta versión es mejor por una razón práctica: señala una diana sobre la qu
 
 **Tono de defensa** es el nivel en el que ese programa queda ajustado.
 
-Y el término ya está en la técnica. El protocolo dice, sobre la preparación del paciente, que la tracción y la manta reducen el tono de defensa muscular. La palabra llevaba ahí todo el tiempo. Lo que hacemos hoy es ampliarle el alcance.
+Y el término ya está en la técnica. Lo dijimos esta mañana al ver la preparación del paciente: la tracción y la manta reducen el tono de defensa muscular, y por eso la medición sale fiable. La palabra llevaba ahí todo el tiempo. Lo que hacemos hoy es ampliarle el alcance.
 
 Tres razones para este término.
 
 Un tono es un nivel de ajuste. Eso evita psicologizar al paciente.
 
-Es graduable: se tiene más o menos tono. Eso es exactamente un set point.
+Es graduable: se tiene más o menos tono. Eso es exactamente un punto de ajuste.
 
 Y se puede decir en consulta sin acusar a nadie: *"tu sistema tiene el tono de defensa alto."*
 
@@ -200,13 +200,15 @@ Esto es lo que hace del término algo más que una etiqueta: unifica tres cosas 
 
 El mismo ajuste, leído a tres alturas. Por eso un paciente con el tono alto se palpa distinto, se mide peor y resuelve más lento.
 
+Y aquí se cobra lo que anuncié al abrir. La ganancia aumentada de esta mañana es este tono, leído en la escala inflamatoria y en la autonómica. El paciente que en la hoja de valoración se marca con la sensibilidad subida —el del sueño no reparador, la fatiga y la molestia con la luz y el ruido— es un paciente con el tono de defensa alto.
+
 `[En parejas, tres minutos.]`
 
 ¿En cuál de las tres escalas han visto ustedes el tono alto con más frecuencia, y cómo lo notaron?
 
 ## El tono como ganancia descalibrada
 
-El tono tiene un gemelo formal, y viene del mismo autor que escribió la cascada del dolor crónico que usamos esta mañana.
+El tono tiene un gemelo formal en la literatura, y viene del mismo autor de la revisión de la cascada que usamos esta mañana.
 
 En su trabajo sobre trastorno neurológico funcional lo formula así: una descalibración temporal de la ganancia, que sobrepondera las predicciones y subpondera la retroalimentación sensorial.
 
@@ -226,8 +228,6 @@ Subir el umbral de los picos de ganancia: que se dispare menos fácil.
 
 Dónde entra nuestro método, dicho con cuidado. El rastreo es, en esta clave, una entrada sensorial dirigida y verificada. Y la sesión completa, con su preparación y su silencio, opera sobre la activación.
 
-Es una lectura coherente. Que el marco encaje no demuestra que el imán recalibre nada.
-
 ## El tono tiene memoria
 
 Y aquí una pieza que cierra la parte.
@@ -236,7 +236,7 @@ En un experimento clásico se emparejó sacarina con un inmunosupresor. Después
 
 `[Referencia: Ader y Cohen. Psychosomatic Medicine 1975. Modelo animal.]`
 
-El sistema inmune no tiene ojos, ni corteza, ni creencias. Y adquirió una asociación, y actuó en consecuencia.
+El sistema inmune no tiene ojos, ni corteza, ni creencias. Y aun así adquirió una asociación, y actuó en consecuencia.
 
 El tono de defensa se fija por el estímulo presente y también por la historia. El sistema aprendió.
 
@@ -254,7 +254,7 @@ La pregunta útil es por qué canal entró.
 
 Un opioide entra por el canal farmacológico. Una expectativa entra por el de la información. Los dos terminan en la misma fisiología.
 
-## Tres hechos medidos
+## Tres hechos medidos del placebo
 
 **Uno. El efecto lo fabrica el agente.**
 
@@ -302,21 +302,19 @@ Después, el neutro solo basta para activar la respuesta.
 
 Se puede entrenar al tejido para que una sustancia inerte actúe como un fármaco potente.
 
-`[Decirlo explícitamente: es un modelo computacional, no una demostración en el organismo.]`
-
 Y junto al condicionamiento inmune de la parte anterior, la conclusión es una sola: el aprendizaje asociativo no necesita neuronas. Aprendió un sistema inmune; aprendió una red de genes.
 
 La tesis de fondo, en palabras del propio autor: micro-manejar el sistema con fármacos es temporal, y usar la terapia o la hipnosis como interfaz con el sistema celular de bajo nivel tiene que ser el futuro de la medicina.
 
 Es la clase B, dicha por el autor del marco.
 
-Y un apunte que vale para todo el curso: ya ejercemos control bioeléctrico voluntario sobre nuestro colectivo celular sin llamarlo así. Levantarse de la cama altera el potencial de reposo de cerca del treinta por ciento de las células del cuerpo, las musculares. Es plausible que tengamos ese control sobre muchas más, y que aún no sepamos usarlo.
+Y un apunte que vale para todo el curso: ya ejercemos control bioeléctrico voluntario sobre nuestro colectivo celular sin llamarlo así. Ponerse de pie despolariza la musculatura esquelética, que es cerca del cuarenta por ciento de la masa corporal. Es una modificación voluntaria y masiva del estado bioeléctrico de un tejido, ejecutada sin conciencia de estarlo haciendo. Es plausible que tengamos ese control sobre muchos más tejidos, y que aún no sepamos usarlo.
 
-## La advertencia de Mason
+## El caso Mason: resolver en el nivel equivocado desplaza el síntoma
 
 Albert Mason, médico británico, trataba afecciones graves de la piel con hipnosis. En un caso célebre limpió la lesión de un solo brazo y dejó el otro, para mostrar la especificidad del control por sugestión verbal.
 
-Lo que importa no es el caso: es cómo terminó. Mason ejerció así durante décadas y acabó dejándolo para hacerse psiquiatra, porque los síntomas específicos se limpiaban como debían, pero aparecían en otro lado. Los pacientes se curaban de la piel y empezaban a fumar, o terminaban divorciándose.
+Lo que enseña es cómo terminó. Mason ejerció así durante décadas y acabó dejándolo para hacerse psiquiatra, porque los síntomas específicos se limpiaban como debían, pero aparecían en otro lado. Los pacientes se curaban de la piel y empezaban a fumar, o terminaban divorciándose.
 
 Resolver el síntoma en el nivel equivocado lo desplaza.
 
@@ -324,15 +322,13 @@ Y esto es exactamente la escalera de niveles de esta mañana, vista desde otra t
 
 Es la advertencia más útil del día para un terapeuta que empieza a tener buenos resultados locales.
 
-`[Cautela, dicha al grupo: caso histórico único, de mediados del siglo XX, con diagnóstico discutido después. Se usa como ilustración de un principio.]`
-
 ## Qué mueve el placebo y qué no
 
-Es una intervención de clase B en estado puro. No recablea nada y no repone nada: cambia la referencia, y el sistema se reacomoda.
+Es una intervención de clase B en estado puro: cambia la referencia, y el sistema se reacomoda solo. Sin recablear nada y sin reponer nada.
 
 Y de ahí sale una predicción fuerte, que es además su mejor límite.
 
-El placebo mueve lo que tiene set point. No mueve lo que no lo tiene.
+El placebo mueve lo que tiene punto de ajuste. No mueve lo que no lo tiene.
 
 `[Al pizarrón, dos columnas.]`
 
@@ -370,19 +366,19 @@ En lugar de *"tienes una degeneración importante"*:
 
 Y el límite ético, que no se omite. El nocebo no es responsabilidad del paciente. Nunca se dice *"te estás bloqueando"*, *"no te dejas ayudar"* ni *"tienes que creer"*. Eso traslada al paciente la responsabilidad de un efecto que produce el contexto — y es, en sí misma, una frase que sube el tono.
 
-## El contexto de la sesión
+## El contexto de la sesión como ingrediente activo
 
-La sesión de nuestro método es un contexto potente: ritual definido, contacto, atención dirigida por el propio paciente sobre su cuerpo, un mapa que él dibuja, veinte minutos acostado y cubierto, y preguntas de cierre sobre lo que cambió.
+La sesión de nuestro método es un contexto potente: ritual definido, contacto, un mapa que dibuja el propio paciente, veinte minutos acostado y cubierto, y preguntas de cierre sobre lo que cambió.
 
 Es toda la maquinaria que la literatura del placebo identifica como activa.
 
-Eso es un ingrediente activo del procedimiento, con dos consecuencias.
+Y hay una pieza ahí que conviene ver de frente, porque esta mañana la usaron sin nombrarla. Para marcar dónde le duele, el paciente tiene que recorrer su cuerpo con la atención, zona por zona: localiza, nombra y gradúa. El mapa registra el estado y además lo enfoca. Deja al paciente atendiendo la misma zona que el operador va a interrogar, y el rastreo lo sostiene ahí toda la sesión.
 
-La primera: se conduce con intención, igual que el canal atencional de esta mañana.
+Y la atención es un mando de ganancia: atender una zona sube el peso que el sistema le da a lo que viene de ahí. El mismo mando gira en los dos sentidos, así que conviene conducirlo.
 
-La segunda: por eso mismo hace falta comparación con imán simulado. Que los efectos de contexto sean reales no dice nada sobre si el campo aporta algo específico. Sube el listón.
+Eso es un ingrediente activo del procedimiento, y se conduce con intención. El mapa abre, el rastreo sostiene, y el cierre redirige la atención del síntoma al cambio — por eso las preguntas finales preguntan qué cambió, y no si le sigue doliendo. Con el paciente que llega con la sensibilidad subida, el mapa se levanta más breve y el cierre se cuida más: ahí el canal ya está demasiado abierto.
 
-Desde el marco del agente, *placebo* nombra el mismo canal que nuestro método dice usar. Así que la distinción relevante es cuál canal y cuánto aporta cada uno. Y eso se mide.
+Desde el marco del agente, *placebo* nombra el mismo canal que nuestro método usa.
 
 ---
 
@@ -394,23 +390,17 @@ La inflamación es un programa de defensa con meta, herencia antiquísima y tres
 
 Falla de dos formas distintas: por rigidez, cuando no puede conmutar; o por déficit, cuando no tiene con qué terminar.
 
-La cicatriz es la marca de un programa que no resolvió. La regeneración pide que el programa se complete.
+La cicatriz es la huella de un programa que no terminó. La regeneración pide que el programa se complete.
 
-Lo que se regula es el tono de defensa: una sola variable a tres escalas — muscular, autonómica e inflamatoria.
+Lo que se regula es el tono de defensa: una sola variable a tres escalas — muscular, autonómica e inflamatoria. Es la ganancia aumentada de esta mañana, dicha con su nombre propio.
 
 Y el tono tiene memoria, y responde a información. Se sube y se baja con expectativa y con palabras.
-
-## Qué queda sin demostrar
-
-Buena parte de la evidencia mecanística que vimos es experimental: modelos animales, dolor por calor en voluntarios. Su traslación a la consulta es razonable, y no es automática.
-
-Y nada de esto demuestra que el campo magnético mueva el tono. Demuestra que el tono existe, que es una variable real y que es movible. Que nuestro método lo mueva es lo que hay que probar.
 
 ## Puente al eje del estrés
 
 Si el estado defensivo modula la reparación, y el tono se ajusta por la historia y por la información, entonces el eje del estrés opera como el regulador de ganancia del eje inflamatorio.
 
-Eso es lo que sigue.
+Es la escala autonómica del tono, la que dejamos anunciada hace un rato. Eso es lo que sigue.
 
 ---
 
