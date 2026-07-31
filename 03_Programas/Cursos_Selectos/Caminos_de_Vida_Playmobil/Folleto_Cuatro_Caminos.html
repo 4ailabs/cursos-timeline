@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Los Cuatro Caminos — Formación en terapia con muñecos</title>
+<style>
+  :root {
+    --terracota: #B5604A;
+    --terracota-deep: #8B4A2A;
+    --sage: #8FA87A;
+    --gold: #E8A857;
+    --ink: #362F29;
+    --ink-soft: #4E463E;
+    --muted: #746C62;
+    --faint: #9A9187;
+    --paper: #FAF6F0;
+    --paper-2: #F1E9DB;
+    --rule: #E2D6C6;
+    --rule-soft: #EFE7DA;
+    --backdrop: #E9E2D6;
+
+    --serif: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, 'Times New Roman', serif;
+    --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', 'Courier New', monospace;
+    --u: 0.068in;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--backdrop); }
+  body {
+    font-family: var(--sans); color: var(--ink);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 2.5rem 1rem; gap: 2rem; -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    position: relative; width: 8.5in; height: 11in; background: var(--paper);
+    box-shadow: 0 2rem 4rem rgba(50,32,16,.22);
+    padding: calc(var(--u)*7) calc(var(--u)*8) calc(var(--u)*5);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+
+  /* ---------- tipografía ---------- */
+  h1 { font-family: var(--serif); font-weight: 600; letter-spacing: -.5px; line-height: .98; }
+  h2 { font-family: var(--serif); font-size: 19px; font-weight: 600; line-height: 1.14; }
+  h3 { font-size: 12px; font-weight: 700; letter-spacing: .2px; }
+  p  { font-size: 11.5px; line-height: 1.55; color: var(--ink-soft); }
+  b, strong { color: var(--ink); font-weight: 600; }
+  .kick { font-size: 9px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; color: var(--terracota);
+          display: flex; align-items: center; gap: 9px; }
+  .kick::before { content:""; width: 22px; height: 2px; background: var(--terracota); flex: 0 0 auto; }
+  .lede { font-family: var(--serif); font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+
+  /* ---------- portada ---------- */
+  .brandrow { display: flex; align-items: center; gap: calc(var(--u)*2); margin-bottom: calc(var(--u)*6); }
+  .brandrow .iso { width: 30px; height: 30px; }
+  .brandrow .bn { font-size: 9.5px; letter-spacing: 2.2px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .title h1 { font-size: 50px; color: var(--ink); }
+  .title .d1 { font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--ink); margin-top: calc(var(--u)*2.6); }
+  .title .d2 { font-family: var(--serif); font-style: italic; font-size: 13.5px; color: var(--muted); margin-top: calc(var(--u)*1); }
+  .title .rule { width: 68px; height: 3px; background: var(--terracota); margin: calc(var(--u)*3) 0; }
+
+  /* ---------- bloques ---------- */
+  .sec { margin-top: calc(var(--u)*3.2); }
+  .sec .kick { margin-bottom: calc(var(--u)*2); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u)*4); }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(var(--u)*3); }
+
+  .card { border: 1px solid var(--rule); border-radius: 3px; padding: calc(var(--u)*2.4) calc(var(--u)*2.4);
+          display: flex; flex-direction: column; gap: 6px; background: #FFFDF9; }
+  .card .cn { font-family: var(--mono); font-size: 8.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--terracota); font-weight: 700; }
+  .card h3 { font-family: var(--serif); font-size: 14px; font-weight: 600; }
+  .card p { font-size: 10.5px; line-height: 1.45; }
+
+  .box { background: var(--paper-2); border-left: 3px solid var(--terracota); padding: calc(var(--u)*2.2) calc(var(--u)*2.6); border-radius: 0 3px 3px 0; }
+  .box .bl { font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--terracota); font-weight: 700; margin-bottom: 5px; }
+  .box p { font-size: 11px; line-height: 1.5; }
+
+  ul.clean { list-style: none; display: flex; flex-direction: column; gap: calc(var(--u)*1.5); }
+  ul.clean li { position: relative; padding-left: 17px; font-size: 11.5px; line-height: 1.45; color: var(--ink-soft); }
+  ul.clean li::before { content:""; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--terracota); }
+
+  /* ---------- roseta ---------- */
+  .rosewrap { display: flex; justify-content: center; padding: calc(var(--u)*1) 0; }
+  .rosewrap svg { width: 5.4in; height: auto; }
+  .rosewrap .rn { font-size: 11px; font-weight: 700; fill: var(--ink); font-family: var(--sans); }
+  .rosewrap .rc { font-size: 8px; letter-spacing: 1.6px; fill: var(--muted); font-family: var(--mono); font-weight: 700; }
+  .rosewrap .rq { font-size: 8.5px; fill: var(--faint); font-family: var(--serif); font-style: italic; }
+
+  /* ---------- módulos ---------- */
+  .mods { display: flex; flex-direction: column; gap: calc(var(--u)*2.2); }
+  .mod { border: 1px solid var(--rule); border-top: 3px solid var(--terracota); border-radius: 0 0 3px 3px;
+         padding: calc(var(--u)*2.6) calc(var(--u)*3); background: #FFFDF9; }
+  .mod .mh { display: flex; align-items: baseline; justify-content: space-between; gap: calc(var(--u)*2); margin-bottom: calc(var(--u)*1.6); }
+  .mod .mt { font-family: var(--serif); font-size: 16px; font-weight: 600; color: var(--ink); }
+  .mod .md { font-family: var(--mono); font-size: 9.5px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--terracota); font-weight: 700; white-space: nowrap; }
+  .mod ul.clean li { font-size: 11px; }
+
+  /* ---------- ficha de datos ---------- */
+  .datos { display: flex; flex-direction: column; border-top: 1.5px solid var(--ink); }
+  .drow { display: grid; grid-template-columns: 1.25in 1fr; gap: calc(var(--u)*2.4); padding: calc(var(--u)*1.55) 0;
+          border-bottom: 1px solid var(--rule-soft); align-items: baseline; }
+  .drow .dl { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .drow .dv { font-size: 11.5px; line-height: 1.42; color: var(--ink); }
+  .drow .dv b { font-weight: 600; }
+
+  /* ---------- cierre ---------- */
+  .cta { margin-top: auto; border-top: 1.5px solid var(--terracota-deep); padding-top: calc(var(--u)*3);
+         display: flex; align-items: flex-end; justify-content: space-between; gap: calc(var(--u)*3); }
+  .cta .ct { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--ink); line-height: 1.2; }
+  .cta .cs { font-size: 10.5px; color: var(--muted); margin-top: 5px; }
+  .cta .badge { border: 1.5px solid var(--terracota); border-radius: 999px; padding: 9px 20px;
+                font-family: var(--mono); font-size: 10px; letter-spacing: 1.6px; text-transform: uppercase;
+                color: var(--terracota); font-weight: 700; white-space: nowrap; }
+
+  .foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--rule);
+          padding-top: calc(var(--u)*1.4); margin-top: calc(var(--u)*2);
+          font-size: 8.5px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--faint); }
+
+  @media print {
+    @page { size: letter portrait; margin: 0; }
+    html, body { background: #fff; }
+    body { padding: 0; gap: 0; }
+    .page { box-shadow: none; page-break-after: always; }
+    .page:last-child, .ultima-hoja { page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= CARA 1 ================= -->
+<div class="page">
+  <div class="brandrow">
+    <span class="iso" data-iso></span>
+    <span class="bn">Instituto Centrobioenergetica · Curso Selecto</span>
+  </div>
+
+  <div class="title">
+    <h1>Los Cuatro<br>Caminos</h1>
+    <div class="d1">Formación en terapia con muñecos</div>
+    <div class="d2">Lectura proyectiva de trayectoria vital</div>
+    <div class="rule"></div>
+  </div>
+
+  <p class="lede">Una vida se repite en la dirección que tomó. Se ve en el trabajo, en el cuerpo, en el dinero, en el rol que carga. Y lo que sostiene esa dirección está más allá de lo que la persona alcanza a contar.</p>
+
+  <div class="sec">
+    <div class="kick">Cómo se lee</div>
+    <p>Un muñeco cae sobre una hoja con dos ejes. Los pies quedan apuntando a un rumbo, y ese rumbo abre la sesión. La lectura aparece en minutos, y desde ahí se conduce con preguntas que la verifican contra la vida de la persona.</p>
+  </div>
+
+  <div class="rosewrap">
+    <svg viewBox="-46 0 552 330">
+      <rect x="90" y="88" width="280" height="182" rx="3" fill="#FFFDF9" stroke="#E2D6C6" stroke-width="1.6"/>
+      <line x1="90" y1="179" x2="370" y2="179" stroke="#E2D6C6" stroke-width="1.6"/>
+      <line x1="230" y1="88" x2="230" y2="270" stroke="#E2D6C6" stroke-width="1.6"/>
+      <circle cx="230" cy="179" r="3.4" fill="#B5604A"/>
+      <text class="rc" x="230" y="34" text-anchor="middle">ESTE</text>
+      <text class="rn" x="230" y="54" text-anchor="middle">Placer</text>
+      <text class="rq" x="230" y="72" text-anchor="middle">gozo · conservación</text>
+      <text class="rc" x="384" y="166" text-anchor="start">NORTE</text>
+      <text class="rn" x="384" y="186" text-anchor="start">Migrante</text>
+      <text class="rq" x="384" y="203" text-anchor="start">búsqueda de lo nuevo</text>
+      <text class="rc" x="230" y="296" text-anchor="middle">OESTE</text>
+      <text class="rn" x="230" y="316" text-anchor="middle">Deber</text>
+      <text class="rc" x="76" y="166" text-anchor="end">SUR</text>
+      <text class="rn" x="76" y="186" text-anchor="end">Sufrimiento</text>
+      <text class="rq" x="76" y="203" text-anchor="end">supervivencia · conflicto</text>
+    </svg>
+  </div>
+
+  <div class="sec">
+    <div class="kick">Tres registros que se cruzan</div>
+    <div class="grid3">
+      <div class="card"><div class="cn">01</div><h3>El evento</h3><p>Pone la dirección en marcha. Los catálogos de eventos vitales y transgeneracionales dicen qué preguntar.</p></div>
+      <div class="card"><div class="cn">02</div><h3>El patrón</h3><p>La instala en el cuerpo: el filtro con el que se decide y el mecanismo de supervivencia que la sostiene.</p></div>
+      <div class="card"><div class="cn">03</div><h3>La historia familiar</h3><p>La sostiene desde atrás. Cuando los tres apuntan al mismo lado, la lectura sale limpia.</p></div>
+    </div>
+  </div>
+
+  <div class="foot" style="margin-top:auto;">
+    <span>Los Cuatro Caminos · Formación en terapia con muñecos</span>
+    <span>Dr. Miguel Ojeda Rios</span>
+  </div>
+</div>
+
+<!-- ================= CARA 2 ================= -->
+<div class="page ultima-hoja">
+  <div class="kick" style="margin-bottom:calc(var(--u)*3);">El programa · Dos sábados</div>
+
+  <div class="mods">
+    <div class="mod">
+      <div class="mh">
+        <span class="mt">La dirección y de dónde viene</span>
+        <span class="md">Módulo 1 · 5 sept</span>
+      </div>
+      <ul class="clean">
+        <li>El problema que resuelve la técnica, los cuatro caminos y los cuadrantes</li>
+        <li>Los catálogos de eventos vitales y transgeneracionales, para saber qué preguntar</li>
+        <li>El protocolo completo, de la pregunta de trabajo al cierre, con demostración en vivo</li>
+        <li><b>Práctica supervisada</b> con la propia línea y con casos tipo</li>
+      </ul>
+    </div>
+    <div class="mod">
+      <div class="mh">
+        <span class="mt">La historia familiar y la elección</span>
+        <span class="md">Módulo 2 · 19 sept</span>
+      </div>
+      <ul class="clean">
+        <li>Corrección sobre los casos que cada quien trabajó entre módulos</li>
+        <li>La familia completa sobre la misma hoja: lealtad, compensación, exclusión y jerarquía</li>
+        <li>Las seis preguntas terapéuticas del método</li>
+        <li><b>El acto que actualiza el patrón</b>, y cuándo derivar</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="kick">Qué te llevas</div>
+    <div class="grid2">
+      <ul class="clean">
+        <li>Los <b>siete pasos</b> del protocolo</li>
+        <li>Las <b>seis preguntas</b> que verifican la lectura</li>
+      </ul>
+      <ul class="clean">
+        <li>Los <b>dos catálogos</b> de eventos: biografía y línea familiar</li>
+        <li>Cinco fichas de mesa y diploma de participación</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="kick">Datos</div>
+    <div class="datos">
+      <div class="drow"><span class="dl">Módulo 1</span><span class="dv">Sábado <b>5 de septiembre de 2026</b></span></div>
+      <div class="drow"><span class="dl">Módulo 2</span><span class="dv">Sábado <b>19 de septiembre de 2026</b></span></div>
+      <div class="drow"><span class="dl">Horario</span><span class="dv">10:00 a 18:00 h · 13 horas de contenido</span></div>
+      <div class="drow"><span class="dl">Modalidad</span><span class="dv">Presencial en el Instituto y por Zoom · Cupo limitado</span></div>
+      <div class="drow"><span class="dl">Dirigido a</span><span class="dv">Terapeutas y profesionales de la salud con consulta activa, con formación previa en rastreo o en otras técnicas de acceso al inconsciente</span></div>
+      <div class="drow"><span class="dl">Material</span><span class="dv">El set y la hoja se prestan durante el taller</span></div>
+      <div class="drow"><span class="dl">Sede e inversión</span><span class="dv" style="color:var(--faint);">Por confirmar</span></div>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top:calc(var(--u)*2.6);">
+    <div class="bl">Dónde ocurre</div>
+    <p>Se trabaja con una persona a la vez, sobre una mesa, y cabe dentro de una sesión de consultorio. El modelo de los Cuatro Caminos y los catálogos de eventos son desarrollo propio del Instituto Centrobioenergetica.</p>
+  </div>
+
+  <div class="cta">
+    <div>
+      <div class="ct">Aparta tu lugar</div>
+      <div class="cs">Cupo limitado por el número de parejas que la práctica supervisada permite corregir.</div>
+    </div>
+    <div class="badge">[ canal de contacto ]</div>
+  </div>
+
+  <div class="foot">
+    <span>Instituto Centrobioenergetica</span>
+    <span>Dr. Miguel Ojeda Rios</span>
+  </div>
+</div>
+
+<script>
+  (function () {
+    function iso(size) {
+      var pts = [];
+      for (var k = 0; k < 12; k++) {
+        var ang = (k * 30 - 90) * Math.PI / 180;
+        var x = (48 * Math.cos(ang)).toFixed(1);
+        var y = (48 * Math.sin(ang)).toFixed(1);
+        var fill = k % 2 === 0 ? '#B5604A' : '#8FA87A';
+        pts.push('<circle cx="' + x + '" cy="' + y + '" r="11" fill="' + fill + '"/>');
+      }
+      return '<svg width="' + size + '" height="' + size + '" viewBox="-80 -80 160 160" aria-hidden="true">'
+        + pts.join('')
+        + '<circle cx="0" cy="0" r="14" fill="#E8A857" opacity="0.3"/><circle cx="0" cy="0" r="7" fill="#E8A857"/></svg>';
+    }
+    document.querySelectorAll('[data-iso]').forEach(function (el) {
+      var w = el.clientWidth || 30;
+      el.innerHTML = iso(w);
+      el.style.display = 'inline-flex';
+    });
+  })();
+</script>
+</body>
+</html>

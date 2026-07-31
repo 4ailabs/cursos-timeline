@@ -24,6 +24,8 @@ Documento de control. Registra qué se enseñó en cada sesión, en qué bloque,
 
 **Función en el arco:** el participante construye su genograma. Sin gancho comercial: se cierra sin invitación a cursos, por diseño.
 
+> **La sesión impartida difiere de este guion.** El registro de lo que ocurrió en clase —con la estructura real, los conceptos que se enseñaron y no están escritos, y los huecos— está en [`Clases_Impartidas/Sesion1_Registro_Clase_Impartida.md`](Clases_Impartidas/Sesion1_Registro_Clase_Impartida.md). Lo que sigue en esta sección es el guion preparado, que se conserva sin cambios.
+
 ### Hora 1 — Marco conceptual
 
 | Bloque | Tema | Contenido | Fuente |
@@ -260,6 +262,7 @@ Ningún concepto aparece suelto: cada uno engancha hacia atrás con algo ya vist
 | `Programa_Sesion3_Linea_Materna.md` | Programa propuesto de la Sesión 3 |
 | `Investigacion_Linea_Materna.md` | Evidencia de las seis vías de transmisión materna |
 | `Mapa_de_Contenidos_Programa.md` | Este documento |
+| `Clases_Impartidas/` | Registro de las sesiones tal como se dieron. No se edita, y los guiones de lo ya impartido tampoco |
 | `Prompts_NanoBanana_Sesion1.md` | Prompts de imágenes |
 | Decks, manuales, folleto, formulario | HTML y PDF, versiones color y blanco y negro |
 

@@ -536,11 +536,20 @@ Los movimientos sistémicos familiares son las dinámicas transgeneracionales in
 ### Preparación de la Hoja Doble Carta
 
 1. **Colocar la hoja en posición horizontal** sobre la tabla giratoria
-2. **Trazar un eje vertical** (Norte-Sur) en el centro de la hoja
-3. **Trazar un eje horizontal** (Este-Oeste) perpendicular al primero
-4. **Marcar las direcciones cardinales**: Norte (arriba), Sur (abajo), Este (derecha), Oeste (izquierda)
-5. **Identificar los caminos**: Norte = Migrante, Sur = Sufrimiento, Este = Placer, Oeste = Deber
-6. **Marcar los cuadrantes**: NE, NO, SE, SO con sus combinaciones correspondientes
+2. **Trazar un eje horizontal** (Norte-Sur) en el centro de la hoja
+3. **Trazar un eje vertical** (Este-Oeste) perpendicular al primero
+4. **Marcar las direcciones cardinales** según la disposición de trabajo:
+
+| Sobre la hoja | Dirección | Camino |
+|---|---|---|
+| **Arriba** | Este | Placer |
+| **Derecha** | Norte | Migrante |
+| **Abajo** | Oeste | Deber |
+| **Izquierda** | Sur | Sufrimiento |
+
+> **Nota de precisión.** Esta disposición sustituye a la que traía el documento —*Norte arriba, Sur abajo, Este derecha, Oeste izquierda*—, que reproducía la brújula de un mapa y difiere de cómo se traza la hoja en la práctica. **El eje Norte–Sur es el horizontal.** Corregido con el Dr. Ojeda Rios el 31 de julio de 2026; todo el material derivado (fichas de camino, programa del taller, materiales de proyección) debe seguir esta tabla.
+
+5. **Marcar los cuadrantes**: los cuatro espacios que quedan **entre** los ejes, con sus combinaciones correspondientes. Un muñeco cae sobre un cuadrante cuando su dirección queda entre dos cardinales.
 
 ### Proceso de Preparación en 6 Pasos
 

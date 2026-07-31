@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hoja de trabajo — Sesión 3 · La línea materna</title>
+<style>
+  :root {
+    --ink:        #141414;
+    --ink-soft:   #333333;
+    --muted:      #5E5E5E;
+    --faint:      #8A8A8A;
+    --rule:       #C9C9C9;
+    --rule-soft:  #E0E0E0;
+    --box:        #F0F0F0;
+    --box-line:   #BDBDBD;
+    --paper:      #FFFFFF;
+    --write:      #999999;
+    --terra:      #9E4028;
+    --sage:       #5A6E48;
+    --serif: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, 'Times New Roman', serif;
+    --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', 'Courier New', monospace;
+    --u: 0.07in;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #DADADA; }
+  body {
+    font-family: var(--sans); color: var(--ink);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 2.5rem 1rem; gap: 2rem; -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    position: relative; width: 11in; height: 8.5in; background: var(--paper);
+    box-shadow: 0 1.4rem 3rem rgba(0,0,0,.28);
+    padding: 0.5in 0.55in 0.42in; display: flex; flex-direction: column; overflow: hidden;
+  }
+  .mast {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: calc(var(--u)*3);
+    border-bottom: 1.5px solid var(--ink); padding-bottom: calc(var(--u)*1.3);
+    margin-bottom: calc(var(--u)*1.8); flex-shrink: 0;
+  }
+  .mast .eyebrow { font-size: 8.5px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; color: var(--terra); margin-bottom: calc(var(--u)*0.7); }
+  .mast h1 { font-family: var(--serif); font-size: 21px; line-height: 1.08; font-weight: 600; letter-spacing: -.2px; }
+  .mast .rightmark { display: flex; align-items: center; gap: calc(var(--u)*1.6); padding-bottom: 2px; }
+  .mast .isotipo { width: 30px; height: 30px; }
+  .mast .rmtext { text-align: right; }
+  .mast .rmtext .inst { font-size: 8.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .mast .rmtext .pg { font-family: var(--mono); font-size: 8.5px; color: var(--faint); letter-spacing: 1px; margin-top: 2px; }
+
+  .content { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+  h3 { font-size: 11.5px; font-weight: 700; letter-spacing: .2px; }
+  p  { font-size: 11px; line-height: 1.5; color: var(--ink-soft); }
+  b, strong { color: var(--ink); font-weight: 600; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u)*5); flex: 1; min-height: 0; }
+  .two.wide-right { grid-template-columns: 1fr 1.25fr; }
+  .col { display: flex; flex-direction: column; gap: calc(var(--u)*2); min-height: 0; }
+
+  .writebox { border: 1.2px solid var(--box-line); border-radius: 3px; padding: calc(var(--u)*1.6) calc(var(--u)*2); flex: 1; display: flex; flex-direction: column; gap: calc(var(--u)*1.4); }
+  .writebox .wblabel { font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .writebox .wbhint { font-size: 10px; font-style: italic; color: var(--write); line-height: 1.42; }
+  .writebox .wbhint b { color: var(--muted); font-style: normal; font-weight: 700; }
+  .lines { display: flex; flex-direction: column; gap: calc(var(--u)*2.6); flex: 1; justify-content: space-around; padding-top: calc(var(--u)*1.2); }
+  .lines .ln { border-bottom: 1px solid var(--rule); height: 0; }
+
+  .note { border-left: 3px solid var(--terra); background: var(--box); padding: calc(var(--u)*1.4) calc(var(--u)*2); border-radius: 0 3px 3px 0; }
+  .note .nl { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--terra); font-weight: 700; margin-bottom: 5px; }
+  .note p { font-size: 11px; line-height: 1.46; }
+
+  .foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--rule); padding-top: calc(var(--u)*1.1); margin-top: calc(var(--u)*1.4); flex-shrink: 0; font-size: 8px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--faint); }
+  .foot .fno { font-family: var(--mono); }
+
+  /* Roseta de marcaje */
+  .rosbox { border: 1.2px solid var(--box-line); border-radius: 3px; padding: calc(var(--u)*1.4); display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1; }
+  .rosbox .rl { font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 700; align-self: flex-start; }
+  .rosbox svg { width: 100%; flex: 1; }
+  .rosbox .rn { font-size: 10px; font-weight: 700; fill: var(--ink); font-family: var(--sans); }
+  .rosbox .rc { font-size: 7.5px; letter-spacing: 1.4px; fill: var(--muted); font-family: var(--mono); font-weight: 700; }
+  .rosbox .rh { font-size: 9.5px; font-style: italic; color: var(--write); text-align: center; line-height: 1.36; }
+
+  /* Preguntas por dirección */
+  .ancl { display: flex; flex-direction: column; border-top: 1.5px solid var(--ink); }
+  .anrow { display: grid; grid-template-columns: 1.15in 1fr; gap: calc(var(--u)*2); padding: calc(var(--u)*1.7) 0; border-bottom: 1px solid var(--rule-soft); align-items: baseline; }
+  .anrow .an { font-family: var(--serif); font-size: 12px; font-weight: 600; color: var(--ink); }
+  .anrow .aq { font-family: var(--serif); font-size: 11px; font-style: italic; color: var(--ink-soft); line-height: 1.36; }
+
+  /* Procedimiento numerado */
+  .procl { display: flex; flex-direction: column; border-top: 1.5px solid var(--ink); }
+  .prow { display: grid; grid-template-columns: 0.3in 1fr; gap: calc(var(--u)*1.8); align-items: baseline; padding: calc(var(--u)*1.5) 0; border-bottom: 1px solid var(--rule-soft); }
+  .prow .pn { font-family: var(--mono); font-size: 11.5px; font-weight: 700; color: var(--terra); }
+  .prow .pt { font-family: var(--serif); font-size: 12px; font-weight: 600; color: var(--ink); line-height: 1.14; }
+  .prow .pd { font-size: 10px; line-height: 1.38; color: var(--ink-soft); margin-top: 2px; }
+
+  .drawbox { border: 1.2px dashed var(--box-line); border-radius: 3px; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+  .drawbox .dl { font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .drawbox .dh { font-size: 10px; font-style: italic; color: var(--write); text-align: center; max-width: 3in; line-height: 1.4; }
+
+  @media print {
+    @page { size: letter landscape; margin: 0; }
+    html, body { background: #fff; }
+    body { padding: 0; gap: 0; }
+    .page { box-shadow: none; page-break-after: always; width: 100%; height: 100vh; }
+    .page:last-child, .ultima-hoja { page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== HOJA 1 · LA LÍNEA MATERNA SOBRE LA ROSETA ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Hoja de trabajo · Sesión 3</div>
+      <h1>La línea materna sobre la roseta</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">Hoja 1 de 2</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="two wide-right">
+      <div class="col">
+        <div class="rosbox">
+          <div class="rl">Traza la dirección de cada muñeco</div>
+          <svg viewBox="0 0 380 300">
+            <rect x="70" y="70" width="240" height="156" rx="3" fill="none" stroke="#BDBDBD" stroke-width="1.4"/>
+            <line x1="70" y1="148" x2="310" y2="148" stroke="#BDBDBD" stroke-width="1.4"/>
+            <line x1="190" y1="70" x2="190" y2="226" stroke="#BDBDBD" stroke-width="1.4"/>
+            <circle cx="190" cy="148" r="3" fill="#9E4028"/>
+            <text class="rc" x="190" y="34" text-anchor="middle">ESTE</text>
+            <text class="rn" x="190" y="52" text-anchor="middle">Placer</text>
+            <text class="rc" x="322" y="142" text-anchor="start">NORTE</text>
+            <text class="rn" x="322" y="160" text-anchor="start">Migrante</text>
+            <text class="rc" x="190" y="258" text-anchor="middle">OESTE</text>
+            <text class="rn" x="190" y="276" text-anchor="middle">Deber</text>
+            <text class="rc" x="58" y="142" text-anchor="end">SUR</text>
+            <text class="rn" x="58" y="160" text-anchor="end">Sufrimiento</text>
+          </svg>
+          <div class="rh">El eje <b>Norte–Sur</b> es el horizontal. Marca una línea por cada muñeco y anota de quién es: <b>M</b> madre, <b>A</b> abuela, <b>B</b> bisabuela.</div>
+        </div>
+        <div class="note">
+          <div class="nl">Qué se mira, y en este orden</div>
+          <p><b>1.</b> Hacia dónde va cada una. &nbsp;<b>2.</b> A qué distancia quedaron entre ellas. &nbsp;<b>3.</b> Hacia dónde miran.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="ancl">
+          <div class="anrow"><span class="an">Norte</span><span class="aq">¿Hay mujeres en esta línea que se fueron? ¿Migración o exilio? ¿Alguna salió de su casa muy joven?</span></div>
+          <div class="anrow"><span class="an">Sur</span><span class="aq">¿Qué duelo no se lloró en esta línea? ¿Qué pérdida quedó sin hablarse?</span></div>
+          <div class="anrow"><span class="an">Oeste</span><span class="aq">¿Quién sostuvo a todos? ¿Qué carga se asumió sin haberla elegido?</span></div>
+          <div class="anrow"><span class="an">Este</span><span class="aq">¿Había permiso para disfrutar entre las mujeres de mi familia?</span></div>
+        </div>
+        <div class="writebox">
+          <div class="wblabel">Lo que aparece</div>
+          <div class="wbhint">Y el cruce con el árbol: compara con la marca del asterisco —<b>A</b>, <b>R</b> o <b>E</b>—. Si ambos apuntan al mismo lado, la lectura es sólida.</div>
+          <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Actualización en Bioenergética Transgeneracional</span><span class="fno">01</span></div>
+</div>
+
+<!-- ========== HOJA 2 · EL PROCEDIMIENTO DE ACCESO AL CAMPO ========== -->
+<div class="page">
+  <div class="mast">
+    <div class="mast-text">
+      <div class="eyebrow">Hoja de trabajo · Sesión 3</div>
+      <h1>El procedimiento de acceso al campo</h1>
+    </div>
+    <div class="rightmark">
+      <div class="rmtext"><div class="inst">Instituto Centrobioenergetica</div><div class="pg">Hoja 2 de 2</div></div>
+      <span class="isotipo" data-iso></span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="two wide-right">
+      <div class="col">
+        <div class="procl">
+          <div class="prow"><span class="pn">1</span><div><div class="pt">Dibujar con la mano no dominante</div><div class="pd">Una de las tres mujeres de tu línea, en una hoja en blanco.</div></div></div>
+          <div class="prow"><span class="pn">2</span><div><div class="pt">Colocar el papel en el piso</div><div class="pd">En el lugar que indique el cuerpo.</div></div></div>
+          <div class="prow"><span class="pn">3</span><div><div class="pt">Pararse encima, los dos pies</div></div></div>
+          <div class="prow"><span class="pn">4</span><div><div class="pt">Preguntar desde esa posición</div><div class="pd">¿Cómo estoy parada aquí? ¿Cómo respiro? ¿Cómo se siente estar en esta familia? ¿Me siento más grande, más pequeña o del mismo tamaño? ¿Quién es la persona más importante desde aquí?</div></div></div>
+          <div class="prow"><span class="pn">5</span><div><div class="pt">Colocar la segunda hoja: el observador</div><div class="pd">Aparte. Desde ahí: ¿cambió algo en mi percepción? ¿qué aprendí?</div></div></div>
+          <div class="prow"><span class="pn">6</span><div><div class="pt">Llevarse el recurso</div><div class="pd">Una frase, una imagen o una sensación.</div></div></div>
+        </div>
+        <div class="note">
+          <div class="nl">La pregunta central, en el paso 4</div>
+          <p><b>¿De qué manera esta mujer tuvo la intención de algo bueno para la familia?</b> Se contesta mirando a través de sus ojos. Lo que hizo pudo salir mal; la pregunta es hacia dónde apuntaba.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="drawbox">
+          <div class="dl">Espacio para tu dibujo</div>
+          <div class="dh">Con la mano con la que no escribes. No tiene que parecerse a nada.</div>
+        </div>
+        <div class="writebox" style="flex:0 0 auto;">
+          <div class="wblabel">Lo que me llevo</div>
+          <div class="wbhint">Desde el observador, antes de terminar.</div>
+          <div class="lines" style="gap:calc(var(--u)*2.4);"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Actualización en Bioenergética Transgeneracional</span><span class="fno">02</span></div>
+</div>
+
+<script>
+  (function () {
+    function iso(size) {
+      var pts = [];
+      for (var k = 0; k < 12; k++) {
+        var ang = (k * 30 - 90) * Math.PI / 180;
+        var x = (48 * Math.cos(ang)).toFixed(1);
+        var y = (48 * Math.sin(ang)).toFixed(1);
+        var fill = k % 2 === 0 ? '#A94D36' : '#8FA87A';
+        pts.push('<circle cx="' + x + '" cy="' + y + '" r="11" fill="' + fill + '"/>');
+      }
+      return '<svg width="' + size + '" height="' + size + '" viewBox="-80 -80 160 160" aria-hidden="true">'
+        + pts.join('')
+        + '<circle cx="0" cy="0" r="14" fill="#E8A857" opacity="0.28"/><circle cx="0" cy="0" r="7" fill="#E8A857"/></svg>';
+    }
+    document.querySelectorAll('[data-iso]').forEach(function (el) {
+      var w = el.clientWidth || 30;
+      el.innerHTML = iso(w);
+      el.style.display = 'inline-flex';
+    });
+  })();
+</script>
+</body>
+</html>

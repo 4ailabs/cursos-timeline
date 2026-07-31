@@ -1,6 +1,10 @@
 # Programa propuesto — Sesión 3: "La Línea Materna: Lo que se Hereda por el Campo"
 
-**Estado:** propuesta de estructura. Todavía no es guion. Sirve para revisar el arco, cerrar las decisiones abiertas (§8) y después guionizar.
+> **Documento superado en su Hora 2.** Las decisiones se cerraron en [`Pendientes_y_Plan_de_Cierre.md`](Pendientes_y_Plan_de_Cierre.md): la sesión continúa con **muñecos sobre la misma roseta** de la Sesión 2, no con Imagen de la Familia. El documento operativo es [`Guion_Sesion3_Linea_Materna_Campo.md`](Guion_Sesion3_Linea_Materna_Campo.md).
+>
+> **Lo que sigue vigente aquí:** el arco de las cuatro sesiones (§1), los dos niveles del método (§2), la diferencia con una constelación familiar (§2.1), el encuadre del campo mórfico (§4), las improntas i8–i13 (§5, Bloque 7) y las correcciones a la fuente del Instituto (§7). La Imagen de la Familia pasa a ser contenido del curso de NIG, y por ahí entra el gancho.
+
+**Estado:** documento de diseño. El guion es el operativo.
 
 Base: `Programa_4_Sesiones_Beca.md` §4 (Sesión 3) y §5, con el nivel de detalle y los marcos pedagógicos ya probados en `Guion_Sesion2_Linea_Paterna_Camino.md`.
 
