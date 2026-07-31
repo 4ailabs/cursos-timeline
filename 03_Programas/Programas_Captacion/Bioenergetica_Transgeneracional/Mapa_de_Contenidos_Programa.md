@@ -12,7 +12,7 @@ Documento de control. Registra qué se enseñó en cada sesión, en qué bloque,
 | Sesión | Título | Guion | Deck | Manual | Ejercicio | Otros |
 |---|---|---|---|---|---|---|
 | 1 | El Mapa que Cargas | ✅ | ✅ HTML + Keynote | ✅ HTML | — | Tarjetas de facilitador (color y BN), 50 tarjetas exportadas, prompts de imágenes |
-| 2 | La Línea Paterna y el Camino que Caminas | ✅ | ✅ HTML | ✅ HTML + PDF, color y BN | ✅ HTML + PDF, color y BN | Imágenes generadas |
+| 2 | La Línea Paterna y el Camino que Caminas | ✅ | ✅ HTML | ✅ HTML + PDF, color y BN | ✅ HTML + PDF, color y BN | **Panel del Facilitador (HTML)**, imágenes generadas |
 | 3 | La Línea Materna | 🟡 programa propuesto | ⬜ | ⬜ | ⬜ | Investigación de línea materna ✅ |
 | 4 | Los Abuelos, los Tatarabuelos y el Cuerpo que Sobrevive | ⬜ | ⬜ | ⬜ | ⬜ | Definida solo en el programa maestro |
 
@@ -256,6 +256,7 @@ Ningún concepto aparece suelto: cada uno engancha hacia atrás con algo ya vist
 | `Guion_Sesion1_Mapa_Que_Cargas.md` | Guion completo de la Sesión 1 |
 | `Guion_Sesion2_Linea_Paterna_Camino.md` | Guion completo de la Sesión 2 |
 | `Sesion2_Clase_Slides_y_Tarjetas.md` | Desglose de slides y tarjetas de la Sesión 2 |
+| `Panel_Facilitador_Sesion2.html` | Panel de conducción de la Sesión 2 para el facilitador |
 | `Programa_Sesion3_Linea_Materna.md` | Programa propuesto de la Sesión 3 |
 | `Investigacion_Linea_Materna.md` | Evidencia de las seis vías de transmisión materna |
 | `Mapa_de_Contenidos_Programa.md` | Este documento |
