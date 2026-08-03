@@ -158,6 +158,21 @@
   .roseta .rn{font-size:17px;font-weight:700;letter-spacing:1px;fill:var(--ink);font-family:var(--sans)}
   .roseta .rc{font-size:12px;letter-spacing:2.4px;fill:var(--ink-2);font-family:var(--mono)}
 
+  /* Imágenes editoriales de la sesión 3 */
+  .slide.with-image{isolation:isolate}
+  .slide.with-image>.slide-visual{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+  .slide.with-image::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:linear-gradient(90deg,var(--ground) 0%,color-mix(in srgb,var(--ground) 96%,transparent) 42%,color-mix(in srgb,var(--ground) 58%,transparent) 68%,color-mix(in srgb,var(--ground) 16%,transparent) 100%),
+               linear-gradient(0deg,color-mix(in srgb,var(--ground) 72%,transparent) 0%,transparent 32%)}
+  .slide.with-image .mid{max-width:59cqw}
+  .slide.with-image .sub{max-width:56cqw}
+  .slide.with-image .caja{max-width:58cqw;background:color-mix(in srgb,var(--ground-2) 92%,transparent);backdrop-filter:blur(5px)}
+  .slide.cover-image>.slide-visual{opacity:.78}
+  .slide.cover-image::before{background:linear-gradient(90deg,var(--ground) 0%,color-mix(in srgb,var(--ground) 94%,transparent) 43%,color-mix(in srgb,var(--ground) 18%,transparent) 76%),linear-gradient(0deg,var(--ground) 0%,transparent 26%)}
+  .visual-frame{height:59cqh;border:1px solid var(--line);overflow:hidden;position:relative;background:var(--ground-2)}
+  .visual-frame img{width:100%;height:100%;display:block;object-fit:cover}
+  .visual-frame::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);pointer-events:none}
+
   /* Controles */
   .bar{display:flex;align-items:center;gap:18px;color:var(--ink-2);font-family:var(--mono);font-size:12px;letter-spacing:.14em}
   .nav{appearance:none;background:transparent;border:1px solid var(--line);color:var(--ink);
@@ -180,7 +195,8 @@
   </g></symbol></svg>
 
   <!-- 1 -->
-  <section class="slide is-active">
+  <section class="slide is-active with-image cover-image">
+    <img class="slide-visual" src="Imagenes_Sesion3_Generadas/01_linea_materna_hero.png" alt="Tres generaciones de mujeres unidas por hilos de luz cálida">
     <div class="lockup"><svg class="iso"><use href="#iso"/></svg><div class="wm"><span class="wm1">INSTITUTO</span><span class="wm2">CENTROBIOENERGETICA</span></div></div>
     <div class="eyebrow"><span class="tick"></span>Sesión 3</div>
     <div class="mid"><h1 class="display tit">La línea materna: lo que se hereda por el campo</h1>
@@ -259,7 +275,8 @@
   </section>
 
   <!-- 8 -->
-  <section class="slide">
+  <section class="slide with-image">
+    <img class="slide-visual" src="Imagenes_Sesion3_Generadas/02_herencia_mitocondrial.png" alt="Óvulo con abundantes mitocondrias y un aporte espermático mínimo">
     <div class="eyebrow"><span class="tick"></span>Concepto 1 · La asimetría</div>
     <div class="mid"><h2 class="display grande">La paterna transmite por <span class="accent">dos</span> vías.<br>La materna, por <span class="accent">seis</span>.</h2>
     <div class="sub">Transmite por más canales, y varios operan antes de que haya memoria, lenguaje o vínculo.</div></div>
@@ -299,15 +316,7 @@
         <div class="sub" style="margin-top:0">Entre las semanas 9 y 22 de vida fetal, el ovario de una niña que aún está en el vientre produce <b>todos</b> los ovocitos que va a tener.</div>
         <div class="caja">El óvulo del que salió cada uno de ustedes <b>ya existía cuando su madre era un feto dentro de su abuela</b>.</div>
       </div>
-      <svg viewBox="0 0 300 300" style="width:100%;max-height:58cqh">
-        <circle cx="150" cy="150" r="126" fill="none" stroke="var(--accent)" stroke-width="3"/>
-        <circle cx="150" cy="162" r="78" fill="none" stroke="var(--sage)" stroke-width="3"/>
-        <circle cx="150" cy="176" r="32" fill="none" stroke="var(--gold)" stroke-width="3"/>
-        <circle cx="150" cy="176" r="8" fill="var(--gold)"/>
-        <text x="150" y="40" text-anchor="middle" font-family="var(--mono)" font-size="14" letter-spacing="2.4" fill="var(--accent)">ABUELA</text>
-        <text x="150" y="102" text-anchor="middle" font-family="var(--mono)" font-size="14" letter-spacing="2.4" fill="var(--sage)">MADRE · feto</text>
-        <text x="150" y="240" text-anchor="middle" font-family="var(--mono)" font-size="13" letter-spacing="1.8" fill="var(--ink-2)">el ovocito</text>
-      </svg>
+      <div class="visual-frame"><img src="Imagenes_Sesion3_Generadas/03_tres_generaciones.png" alt="Representación de tres generaciones contenidas durante la gestación"></div>
     </div>
     <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Bioenergética Transgeneracional</span><span>Tres generaciones</span></div>
   </section>
@@ -537,7 +546,8 @@
   </section>
 
   <!-- 32 -->
-  <section class="slide">
+  <section class="slide with-image">
+    <img class="slide-visual" src="Imagenes_Sesion3_Generadas/04_mano_no_dominante.png" alt="Mujer dibujando una figura con la mano no dominante">
     <div class="eyebrow"><span class="tick"></span>La técnica · Movimiento 1</div>
     <div class="mid instr">
       <span class="num">El dibujo</span>
@@ -549,7 +559,8 @@
   </section>
 
   <!-- 33 -->
-  <section class="slide">
+  <section class="slide with-image">
+    <img class="slide-visual" src="Imagenes_Sesion3_Generadas/05_anclaje_papel.png" alt="Pies sobre una hoja de papel usada como anclaje espacial">
     <div class="eyebrow"><span class="tick"></span>La técnica · Movimiento 2</div>
     <div class="mid instr">
       <span class="num">El anclaje</span>
@@ -631,7 +642,8 @@
   </section>
 
   <!-- 40 -->
-  <section class="slide">
+  <section class="slide with-image">
+    <img class="slide-visual" src="Imagenes_Sesion3_Generadas/06_campo_familiar.png" alt="Personas ubicadas a distintas distancias dentro de un campo relacional">
     <div class="eyebrow"><span class="tick"></span>El marco que lo explica</div>
     <div class="mid"><h2 class="display grande">Lo que acaban de abrir se llama <span class="accent">campo mórfico</span>.</h2>
     <div class="sub">Sheldrake, 1981: campos de información que organizan la forma, el comportamiento y la memoria de los sistemas vivos. Materiales no son, ni energéticos en el sentido físico clásico — son <b>campos de hábitos</b>.</div>
