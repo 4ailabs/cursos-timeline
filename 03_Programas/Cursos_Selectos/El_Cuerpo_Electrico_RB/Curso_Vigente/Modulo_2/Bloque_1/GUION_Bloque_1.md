@@ -16,7 +16,7 @@ En el primero trabajamos el marco: qué es el cuerpo eléctrico, con qué instru
 
 Hoy lo ejecutan.
 
-Al terminar el día van a poder levantar un perfil bioeléctrico completo, y van a tener el eje del estrés como marco de trabajo.
+El día cubre dos cosas: el levantamiento del perfil bioeléctrico completo, y el eje del estrés como marco de lectura.
 
 Antes de empezar, recuperemos el módulo pasado. Lo van a decir ustedes.
 
@@ -304,7 +304,7 @@ El resto de la hoja lo completan en la práctica: qué está haciendo el dolor, 
 
 Dos apuntes sobre la parte de dónde viene la señal. El orden fijo que acabamos de ver —riñón, suprarrenal, hígado, bulbo— ya es interrogación visceral desde la superficie: las aferencias viscerales convergen en el asta dorsal con las somáticas del mismo segmento, y por eso una víscera se interroga en su segmento y no donde duele. Y a la inversa: no todo lo que se regula duele, y no todo lo que duele marca.
 
-La parte que pregunta a qué nivel vive el dolor la van a poder llenar con la escalera que sigue.
+La parte que pregunta a qué nivel vive el dolor se completa con la escalera que sigue.
 
 ## Los cuatro niveles del dolor
 

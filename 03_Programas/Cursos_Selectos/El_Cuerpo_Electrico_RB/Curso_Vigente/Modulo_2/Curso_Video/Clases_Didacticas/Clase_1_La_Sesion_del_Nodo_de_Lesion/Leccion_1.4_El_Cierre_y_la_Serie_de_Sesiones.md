@@ -62,7 +62,7 @@ Al día siguiente, o a los días siguientes, **vuelves a checar ese mismo punto*
 
 La frecuencia entre sesiones la decide la evolución del paciente. No hay intervalo fijo. Puede ser mañana, pasado, en tres días, o el tiempo que consideres según cómo responde.
 
-Por eso la ficha tiene casilla de plan y **seguimiento**, y por eso el mapa con la escala de cero a diez se levanta en cada sesión.
+Por eso la ficha tiene casilla de plan y **seguimiento**, y por eso el mapa con la escala de cero a diez se registra en cada sesión.
 
 `[SLIDE 9 — Cómo se le dice al paciente]`
 Una forma de decirlo que no promete de más y tampoco le quita valor a lo que sí ocurrió:

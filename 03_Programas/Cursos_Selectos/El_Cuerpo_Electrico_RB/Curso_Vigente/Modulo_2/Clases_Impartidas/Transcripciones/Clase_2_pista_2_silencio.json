@@ -1,0 +1,13 @@
+{
+  "model": "voxtral-mini-latest",
+  "text": "",
+  "language": null,
+  "segments": [],
+  "usage": {
+    "prompt_audio_seconds": 124,
+    "prompt_tokens": 10,
+    "total_tokens": 12,
+    "completion_tokens": 2,
+    "request_count": 2
+  }
+}

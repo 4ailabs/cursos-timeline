@@ -154,7 +154,7 @@ Cicatrización: 48.7 días en cuidadoras frente a 39.3 días en controles. Y el 
 
 `[Referencia: Kiecolt-Glaser y cols. Lancet 1995. PMID 7475659.]`
 
-Fíjense en lo que dice el dato. El estrés degradó la señal de inicio del programa. El programa arrancó peor, y por eso tardó.
+Lo que dice el dato: el estrés degradó la señal de inicio del programa. El programa arrancó peor, y por eso tardó.
 
 Ahora la pregunta del quirófano: ¿cicatriza distinto una mujer que desea un implante y una a la que le practican una biopsia?
 

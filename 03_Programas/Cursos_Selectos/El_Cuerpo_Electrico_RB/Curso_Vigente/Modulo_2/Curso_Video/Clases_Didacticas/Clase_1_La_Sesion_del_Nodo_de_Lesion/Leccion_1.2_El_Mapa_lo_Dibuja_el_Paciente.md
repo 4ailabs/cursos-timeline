@@ -2,7 +2,7 @@
 ### El Cuerpo Eléctrico · Formación en Regulación Bioeléctrica
 **Dr. Miguel Ojeda Rios · Instituto Centrobioenergetica**
 
-**Objetivo.** Levantar la ficha clínica y el mapa corporal, entender por qué lo dibuja el paciente, y saber qué entra en el mapa además del dolor.
+**Objetivo.** Registrar la ficha clínica y el mapa corporal, entender por qué lo dibuja el paciente, y saber qué entra en el mapa además del dolor.
 **Fuente.** Manual operativo *El nodo de lesión*, ficha clínica SOAP + Protocolo clínico, Fase 3.
 **Duración estimada.** 11–12 min · **Slides:** 8
 
@@ -13,7 +13,7 @@
 `[SLIDE 1 — Recuperación y objetivo]`
 En la lección anterior pusiste el cero. Antes de rastrear zonas hace falta saber cuáles, y esa lista no la haces tú.
 
-El objetivo de hoy: al terminar sabrás levantar la ficha y el mapa corporal, y entenderás por qué el mapa lo dibuja la persona que está en la camilla.
+El objetivo de hoy: al terminar sabrás registrar la ficha y el mapa corporal, y entenderás por qué el mapa lo dibuja la persona que está en la camilla.
 
 `[SLIDE 2 — La ficha, en formato SOAP]`
 El manual trae la ficha en el formato que ya conoces de la clínica: **subjetivo, objetivo, valoración y plan**.
@@ -60,7 +60,7 @@ Un apunte que retomaremos más adelante en el módulo.
 
 Para marcar dónde le duele, la persona tiene que recorrer su cuerpo con la atención, zona por zona, y decidir. Localiza, nombra y gradúa. Sin proponérselo, **entra al mismo canal que tú vas a interrogar**.
 
-Eso tiene consecuencias, buenas y menos buenas, y las vamos a ver. Por ahora quédate con la instrucción práctica: **el mapa se levanta una vez, con encuadre y con final**. Se dibuja, se registra y se cierra. No se convierte en un repaso minucioso de todo lo que duele.
+Eso tiene consecuencias, buenas y menos buenas, y las vamos a ver. Por ahora quédate con la instrucción práctica: **el mapa se marca una sola vez, con encuadre y con final**. Se dibuja, se registra y se cierra. No se convierte en un repaso minucioso de todo lo que duele.
 
 `[COMPROBACIÓN]`
 Detén la reproducción. ¿Qué tres cosas hace el mapa corporal en la sesión? ¿Y qué hallazgos entran en él además del dolor?

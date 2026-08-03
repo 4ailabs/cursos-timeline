@@ -74,7 +74,7 @@ Y entonces, cuando el peligro ya pasó, te tiemblan las manos, te falta el aire,
 
 ¿A quién le ha pasado?
 
-Fíjense en tres cosas.
+Tres cosas de este caso.
 
 Todos lo han vivido. No hace falta imaginar una sabana.
 
@@ -274,7 +274,7 @@ Y la frase que resume el bloque:
 
 ---
 
-# PARTE 7 · QUÉ SE OBSERVA EN LA CAMILLA
+# PARTE 7 · OBSERVACIONES CLÍNICAS DURANTE LA APLICACIÓN
 
 Tres observaciones que ustedes van a ver, y las tres caen donde esta lectura las predice.
 

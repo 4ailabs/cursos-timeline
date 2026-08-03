@@ -13,7 +13,7 @@
 ## GUION DE TELEPROMPTER
 
 `[SLIDE 1 — Recuperación y objetivo]`
-Tienes el cero puesto y el mapa levantado. Ahora vas zona por zona, empezando por la de mayor intensidad.
+Tienes el cero puesto y el mapa registrado. Ahora vas zona por zona, empezando por la de mayor intensidad.
 
 El objetivo de esta lección: al terminar sabrás encontrar el nodo dentro de una zona, cerrar su dipolo local, y buscar el complementario a distancia cuando el local no cierre.
 
