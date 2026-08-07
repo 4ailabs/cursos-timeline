@@ -24,6 +24,7 @@ Lo que estos registros aportan se recoge solo en las sesiones que todavía no se
 |---|---|---|---|
 | 1 — El Mapa que Cargas | [Sesion1_Registro_Clase_Impartida.md](Sesion1_Registro_Clase_Impartida.md) | `Transcripciones/Sesion1_transcripcion.json` | ≈ 90 min de 120 |
 | 2 — La Línea Paterna y el Camino que Caminas | [Sesion2_Registro_Clase_Impartida.md](Sesion2_Registro_Clase_Impartida.md) | `Transcripciones/Sesion2_transcripcion.json` | ≈ 119 min de 120 |
+| 3 — La Línea Materna: Lo que se Hereda por el Campo | [Sesion3_Registro_Clase_Impartida.md](Sesion3_Registro_Clase_Impartida.md) | `Transcripciones/Sesion3_transcripcion.json` | ≈ 119 min de 120 |
 
 Las transcripciones son el JSON crudo del servicio de transcripción, con segmentos y marcas de tiempo. Los tiempos citados en cada registro salen de ahí y se pueden verificar.
 

@@ -1,9 +1,11 @@
 # Mapa de contenidos del programa
 
 ### Bioenergética Transgeneracional — registro de lo construido
-### Instituto Centrobioenergetica — actualizado al 31 de julio de 2026
+### Instituto Centrobioenergetica — actualizado al 7 de agosto de 2026
 
 Documento de control. Registra qué se enseñó en cada sesión, en qué bloque, con qué fuente, y qué queda pendiente. Sirve para tres cosas: no repetir contenido entre sesiones, saber dónde se presentó cada concepto cuando haya que recuperarlo, y ver de un vistazo el estado de producción.
+
+**Estructura de carpetas.** Cada sesión vive en su propia carpeta (`Sesion1/` a `Sesion4/`), con su guion junto a su deck, manual, ejercicio e imágenes — así se mueven y se consultan como unidad. En la raíz solo quedan los materiales que aplican al programa completo (folleto, deck de beca, formulario, temario, programa maestro, este mapa) y `Clases_Impartidas/`, que registra lo que realmente ocurrió en cada sesión ya impartida, aparte de los guiones.
 
 ---
 
@@ -13,10 +15,12 @@ Documento de control. Registra qué se enseñó en cada sesión, en qué bloque,
 |---|---|---|---|---|---|---|
 | 1 | El Mapa que Cargas | ✅ | ✅ HTML + Keynote | ✅ HTML | — | Tarjetas de facilitador (color y BN), 50 tarjetas exportadas, prompts de imágenes |
 | 2 | La Línea Paterna y el Camino que Caminas | ✅ | ✅ HTML | ✅ HTML + PDF, color y BN | ✅ HTML + PDF, color y BN | **Panel del Facilitador (HTML)**, imágenes generadas |
-| 3 | La Línea Materna | 🟡 programa propuesto | ⬜ | ⬜ | ⬜ | Investigación de línea materna ✅ |
-| 4 | Los Abuelos, los Tatarabuelos y el Cuerpo que Sobrevive | ⬜ | ⬜ | ⬜ | ⬜ | Definida solo en el programa maestro |
+| 3 | La Línea Materna | ✅ | ✅ HTML | ✅ HTML + PDF | ✅ HTML + PDF | Investigación de línea materna ✅ |
+| 4 | Los Abuelos, los Tatarabuelos y el Cuerpo que Sobrevive | ✅ | ⬜ | ⬜ | ⬜ | Investigación de abuelos/tatarabuelos ✅, investigación sistémica e histórica ✅ |
 
 **Materiales del programa completo:** folleto de beca (HTML + PNG), deck de beca, formulario de solicitud, temario público, programa maestro de 4 sesiones.
+
+**Pendiente de producción:** deck, manual y hoja de ejercicio de la Sesión 4 — el guion ya está completo (`Sesion4/Guion_Sesion4_Cierre.md`).
 
 ---
 
