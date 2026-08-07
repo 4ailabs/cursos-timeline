@@ -8,7 +8,11 @@
 
 ## 1. Vision General
 
-NIG (Neuro-Imaginative Gestalting) es una metodologia terapeutica desarrollada por Robert Dilts como parte de la segunda generacion de PNL (Programacion Neuro-Linguistica). A diferencia de la PNL clasica, NIG integra de manera profunda elementos de la Gestalt, la terapia sistemica y las constelaciones familiares.
+NIG (Neuro-Imaginative Gestalting) es una metodologia terapeutica **creada por Eva Madelung**, psicoterapeuta alemana formada en la segunda generacion de PNL (Programacion Neuro-Linguistica) con Robert Dilts. A diferencia de la PNL clasica, NIG integra de manera profunda elementos de la Gestalt, la terapia sistemica y las constelaciones familiares de Bert Hellinger.
+
+En el ambito hispanohablante, el metodo ha sido traducido, sistematizado y expandido por el **Dr. Miguel Ojeda Rios** (Instituto Centro de Bioenergetica, Ciudad de Mexico), quien desarrollo el atlas visual Energy Intelligence (Ei), el manual de procedimientos en espanol, la integracion con la teoria de Campos Morficos y los 10 procedimientos innovadores de expansion.
+
+> **Nota de autoria.** Robert Dilts es la influencia formadora y maestro de Madelung —fuente de la PNL de segunda generacion y de principios clave como "las causas como soluciones"—, **no el creador de NIG**. Versiones anteriores de este documento lo atribuian a Dilts; la atribucion correcta es la de este apartado. Fuente: canon editorial NIG (`4ailabs/nig`, `base-conocimiento/00_canon.md` §1), que prevalece ante cualquier contradiccion entre documentos historicos.
 
 El nombre refleja sus tres dimensiones fundamentales:
 
@@ -349,7 +353,8 @@ Estos principios aplican a TODOS los procedimientos:
 
 | Autor | Aporte a NIG |
 |---|---|
-| Robert Dilts | Creador de NIG, PNL segunda generacion, causas como soluciones |
+| **Eva Madelung** | **Creadora del NIG**; integracion de PNL, Gestalt y constelaciones; Gestalt de Vida; coreoanchoring |
+| Robert Dilts | PNL segunda generacion; re-impronta; causas como soluciones; maestro de Madelung |
 | Bert Hellinger | Constelaciones familiares, ordenes del amor, amor primario |
 | Gregory Bateson | Estetica, patrones que conectan, doble vinculo |
 | Milton Erickson | Sugestion indirecta, utilizacion del sintoma |
@@ -358,6 +363,8 @@ Estos principios aplican a TODOS los procedimientos:
 | Fritz Perls | Gestalt, awareness, aqui y ahora |
 | Allen Newell | Modelo SOAR (State-Operator-And-Result) |
 | Rupert Sheldrake | Teoria de Campos Morficos |
+| Eugene Gendlin | Focusing, sensacion sentida (felt sense) — paralelo metodologico de la indagacion somatica |
+| **Dr. Miguel Ojeda Rios** | Sistematizacion en espanol; atlas Energy Intelligence (Ei); integracion con Campos Morficos y bioenergetica; 10 procedimientos innovadores |
 
 ---
 
@@ -365,7 +372,7 @@ Estos principios aplican a TODOS los procedimientos:
 
 | Termino | Definicion |
 |---|---|
-| NIG | Neuro-Imaginative Gestalting — metodologia terapeutica de PNL segunda generacion (Robert Dilts) |
+| NIG | Neuro-Imaginative Gestalting — metodologia terapeutica de PNL segunda generacion, creada por Eva Madelung |
 | Metaposicion | Posicion de observacion disociada desde la cual se contempla la situacion con perspectiva |
 | Impronta | Experiencia temprana significativa que establece un patron duradero |
 | Re-Impronta | Procedimiento para modificar improntas tempranas utilizando recursos adultos |
@@ -408,7 +415,9 @@ NIG se enmarca dentro de la PNL de segunda generacion y las terapias complementa
 
 ## 13. Referencias y Fuentes
 
-- Dilts, Robert — NIG: Neuro-Imaginative Gestalting (PNL segunda generacion)
+- Madelung, Eva (1996) — *Kurztherapien: Neue Wege zur Lebensgestaltung* (origen del concepto de Gestalt de Vida)
+- Madelung, Eva & Innecken, Barbara (2003) — *Kommst du mit nach Innen?* (trad. inglesa *Entering Inner Images*, 2004) — obra de referencia del NIG con dibujo y anclajes espaciales
+- Dilts, Robert — PNL de segunda generacion, re-impronta, "las causas como soluciones"
 - Hellinger, Bert — Constelaciones familiares, ordenes del amor
 - Bateson, Gregory — Pasos hacia una ecologia de la mente
 - Erickson, Milton — Hipnosis clinica y sugestion indirecta

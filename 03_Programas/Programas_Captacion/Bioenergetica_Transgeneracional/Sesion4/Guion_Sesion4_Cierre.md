@@ -1,4 +1,4 @@
-# Guion — Sesión 4: "Los Abuelos, los Tatarabuelos y el Cuerpo que Sobrevive"
+# Guion — Sesión 4: "Los Abuelos, los Bisabuelos y el Cuerpo que Sobrevive"
 
 ### El método del árbol, completo · La programación metabólica transgeneracional · El cierre de las cuatro sesiones
 
@@ -153,7 +153,7 @@ Tono: ver `README.md` (misma carpeta) — registro clínico-terapéutico, audien
 
 **⏱ 15 minutos** · **\[Slide 11 — las tres capas, con lo que cada una tiene detrás]**
 
-> El título de esta sesión habla de abuelos y de tatarabuelos, y se salta una generación de en medio a propósito de nombrarla — así que vamos a hacerlo bien, con las tres capas.
+> Subimos por el árbol, y conviene decir de entrada que las capas no pesan igual. Vamos con las tres.
 
 **\[Slide 12 — cronología mexicana: Revolución, Cristiada, Bracero]**
 
@@ -169,13 +169,13 @@ Tono: ver `README.md` (misma carpeta) — registro clínico-terapéutico, audien
 
 *(Dos minutos de trabajo individual con el árbol y la cronología.)*
 
-> **Bisabuelos.** No están en su árbol — nunca se los pedimos, porque el árbol que construimos en la primera sesión llega hasta abuelos. Si alguien sabe algo de un bisabuelo, es bienvenido: es, de hecho, la generación hasta donde el método clínico de este Instituto rastrea en consulta. Pero no se preocupen si no tienen nada — no es una falla del árbol, es su límite normal.
+> **Bisabuelos.** Estos quedaron de tarea la primera sesión — les dije que agregarlos era opcional, pero que estaría genial. Quien la haya hecho, ya los tiene en el árbol, y es la capa donde vale la pena mirar hoy: es, de hecho, la generación hasta donde el método clínico de este Instituto rastrea en consulta. Cuando el dato está, se trabaja igual que los abuelos. Y si no lo tienen, no pasa nada — el árbol mínimo son tres generaciones, y con eso se trabaja.
 >
-> **Tatarabuelos.** Los nombra el título de hoy, y merecen que se los diga con honestidad: lo que la ciencia ha demostrado a esa distancia es en otra especie, no en personas. Se los menciono como el horizonte de lo que se está descubriendo, no como algo que su árbol de hoy pueda verificar.
+> **Tatarabuelos.** Aquí hay que ser preciso: lo que la ciencia ha demostrado a esa distancia es en otra especie, no en personas. Se los menciono como el horizonte de lo que se está descubriendo, no como algo que su árbol de hoy pueda verificar.
 
 **Nota de facilitación:** quince minutos. El error a evitar es tratar las tres capas como si tuvieran el mismo peso — no lo tienen, y decirlo así es lo que sostiene la credibilidad del bloque completo ante esta audiencia.
 
-**Nota de encuadre (uso interno, no se lee al grupo):** desarrollo completo en `Investigacion_Abuelos_Tatarabuelos.md` §7 y `Investigacion_Sistemica_e_Historica.md` §4. El árbol de la Sesión 1 se detiene en abuelos (`Guion_Sesion1_Mapa_Que_Cargas.md`, Sección 5); el embudo clínico de BV4 llega hasta bisabuelos (Cap. 15 §15.4).
+**Nota de encuadre (uso interno, no se lee al grupo):** desarrollo completo en `Investigacion_Abuelos_Tatarabuelos.md` §7 y `Investigacion_Sistemica_e_Historica.md` §4. El árbol **mínimo** del guion de la Sesión 1 llega hasta abuelos (`Guion_Sesion1_Mapa_Que_Cargas.md`, Sección 5), pero **en la clase real se pidieron bisabuelos como tarea opcional** (`Clases_Impartidas/Sesion1_Registro_Clase_Impartida.md` §4: *"agregar bisabuelos (opcional, «estaría genial»)"*). Por eso esa capa tiene rendimiento variable y no está ausente por diseño — conviene preguntar quién la trae antes de darla por vacía. El embudo clínico de BV4 llega hasta bisabuelos (Cap. 15 §15.4).
 
 ***
 

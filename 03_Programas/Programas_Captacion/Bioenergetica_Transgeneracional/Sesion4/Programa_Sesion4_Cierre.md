@@ -1,4 +1,4 @@
-# Plan — Sesión 4: "Los Abuelos, los Tatarabuelos y el Cuerpo que Sobrevive"
+# Plan — Sesión 4: "Los Abuelos, los Bisabuelos y el Cuerpo que Sobrevive"
 
 ### Programación metabólica transgeneracional + cierre e integración
 ### Instituto Centrobioenergetica — Dr. Miguel Ojeda Rios

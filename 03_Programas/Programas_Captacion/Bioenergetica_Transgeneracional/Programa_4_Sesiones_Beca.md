@@ -44,7 +44,7 @@ Este programa se aleja a propósito del repertorio ya conocido por quien ha toma
 | 1 | El Mapa que Cargas | Fundamentos + genograma y genosociograma | — |
 | 2 | La Línea Paterna y el Camino que Caminas | Cuatro Caminos de la Vida + demo con Playmobil | Terapia con Muñecos: Playmobil Pro / Los Caminos de la Vida |
 | 3 | La Línea Materna: Lo que se Hereda por el Campo | Campos Mórficos + resonancia transgeneracional | NIG y Campos Mórficos |
-| 4 | Los Abuelos, los Tatarabuelos y el Cuerpo que Sobrevive | Programación metabólica transgeneracional + cierre e integración | Refuerzo de ambos cursos + Setpoint + Formación Integral de Terapeutas |
+| 4 | Los Abuelos, los Bisabuelos y el Cuerpo que Sobrevive | Programación metabólica transgeneracional + cierre e integración | Refuerzo de ambos cursos + Setpoint + Formación Integral de Terapeutas |
 
 **Base teórica del programa:** Bioenergética (inconsciente transgeneracional, rastreo por línea materna/paterna, 3 frases de liberación) como marco del Instituto, y los conceptos actuales de la sección 2 como el lenguaje con el que se explican — cuatro en la Sesión 1 (líneas de ADN directas, trauma histórico colectivo, co-regulación del sistema nervioso, herencia epigenética) y uno más, sobre programación metabólica, reservado para la Sesión 4. El genograma es la herramienta con la que cada participante mapea su propia familia.
 
@@ -88,7 +88,7 @@ Este programa se aleja a propósito del repertorio ya conocido por quien ha toma
 
 ---
 
-### Sesión 4 — Los Abuelos, los Tatarabuelos y el Cuerpo que Sobrevive
+### Sesión 4 — Los Abuelos, los Bisabuelos y el Cuerpo que Sobrevive
 
 **Objetivo:** llevar el genograma dos generaciones más atrás —abuelos, tatarabuelos— y mostrar que lo heredado no solo es emocional: también es metabólico. Cerrar el programa integrando todo lo aprendido y mostrar con claridad el camino hacia adelante.
 

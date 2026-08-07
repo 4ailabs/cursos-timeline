@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sesión 4 — Los Abuelos, los Bisabuelos y el Cuerpo que Sobrevive · Slides</title>
+<style>
+  :root{
+    --ground:#FAF6F0; --ground-2:#F1E9DB;
+    --ink:#201B16; --ink-2:#574E44;
+    --accent:#B5604A; --accent-soft:#B5604A22;
+    --sage:#8FA87A; --gold:#E8A857;
+    --line:#DBD1BF; --line-soft:#EAE1D2;
+    --serif: ui-serif,"New York",Georgia,"Times New Roman",serif;
+    --sans: ui-sans-serif,system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono: ui-monospace,"SF Mono","SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#1A1917; --ground-2:#262421; --ink:#E8E6DE; --ink-2:#D9D3C8;
+      --accent:#C4926A; --accent-soft:#C4926A26; --sage:#A8C8A0; --gold:#E8A857;
+      --line:rgba(232,230,222,.22); --line-soft:rgba(232,230,222,.12);
+    }
+  }
+  :root[data-theme="light"]{
+    --ground:#FAF6F0;--ground-2:#F1E9DB;--ink:#201B16;--ink-2:#574E44;--accent:#B5604A;--accent-soft:#B5604A22;--sage:#8FA87A;--gold:#E8A857;--line:#DBD1BF;--line-soft:#EAE1D2;
+  }
+  :root[data-theme="dark"]{
+    --ground:#1A1917;--ground-2:#262421;--ink:#E8E6DE;--ink-2:#D9D3C8;--accent:#C4926A;--accent-soft:#C4926A26;--sage:#A8C8A0;--gold:#E8A857;--line:rgba(232,230,222,.22);--line-soft:rgba(232,230,222,.12);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:radial-gradient(120% 120% at 50% -10%, var(--ground-2), var(--ground) 60%);
+    color:var(--ink); font-family:var(--sans);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-height:100dvh;padding:clamp(10px,2.4vw,34px);gap:16px;overflow:hidden;
+  }
+  .stage{
+    position:relative;width:min(96vw, calc((100dvh - 96px) * 16 / 9));
+    aspect-ratio:16/9;background:var(--ground);
+    border:1px solid var(--line);
+    box-shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 30px 80px -40px rgba(0,0,0,.55);
+    container-type:size;overflow:hidden;
+  }
+  .slide{
+    position:absolute;inset:0;padding:7.6cqh 7.4cqw;
+    display:flex;flex-direction:column;
+    opacity:0;visibility:hidden;transition:opacity .45s ease, transform .45s ease;
+    transform:translateY(1.2cqh);
+  }
+  .slide.is-active{opacity:1;visibility:visible;transform:none}
+  @media (prefers-reduced-motion:reduce){ .slide{transition:opacity .01s;transform:none} }
+
+  /* ====================================================================
+     ESCALA DE PROYECCIÓN. Estas láminas se ven en pantalla desde el fondo
+     de un salón: el cuerpo de texto nunca baja de 3.2cqh (≈35 px a 1080),
+     y ninguna lámina lleva más de cuatro elementos. Si algo no cabe con
+     este tamaño, se parte en dos láminas — jamás se reduce la fuente.
+     ==================================================================== */
+  .eyebrow{
+    font-family:var(--mono);font-size:2.3cqh;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--ink-2);display:flex;align-items:center;gap:1.2cqw;flex:0 0 auto;
+  }
+  .eyebrow .tick{width:3cqw;height:3px;background:var(--accent);display:inline-block}
+  .foot{
+    position:absolute;left:7.4cqw;right:7.4cqw;bottom:3.6cqh;
+    display:flex;justify-content:space-between;align-items:flex-end;
+    font-family:var(--mono);font-size:1.9cqh;letter-spacing:.14em;color:var(--ink-2);
+  }
+  .foot .brand{text-transform:uppercase;letter-spacing:.2em;display:inline-flex;align-items:center;gap:1.1cqw}
+  .footiso{height:3cqh;width:3cqh;display:block;flex:0 0 auto}
+  .progress{position:absolute;left:0;bottom:0;height:4px;background:var(--accent);transition:width .45s ease}
+
+  .mid{flex:1;display:flex;flex-direction:column;justify-content:center;width:100%;min-height:0}
+  .display{font-family:var(--serif);font-weight:500;line-height:1.04;letter-spacing:-.012em;text-wrap:balance;color:var(--ink)}
+  .accent{color:var(--accent)}
+  h1.tit{font-size:11cqh;max-width:82cqw}
+  h2.tit{font-size:6.6cqh;max-width:92cqw;margin-bottom:2.6cqh}
+  h2.grande{font-size:8.4cqh;max-width:88cqw}
+  .sub{font-size:3.9cqh;line-height:1.36;color:var(--ink-2);max-width:78cqw;margin-top:2.4cqh}
+  .sub b{color:var(--ink);font-weight:600}
+
+  /* Portada */
+  .lockup{display:flex;align-items:center;gap:1.8cqw;margin-bottom:3cqh;flex:0 0 auto}
+  .lockup .iso{height:7.2cqh;width:7.2cqh;display:block;flex:0 0 auto}
+  .wm{display:flex;flex-direction:column;line-height:1.06;font-weight:600}
+  .wm1{font-size:1.8cqh;letter-spacing:.34em;color:var(--ink-2)}
+  .wm2{font-size:1.8cqh;letter-spacing:.16em;color:var(--accent)}
+  .sessions{margin-top:auto;display:flex;border-top:1px solid var(--line);padding-top:2.4cqh;flex:0 0 auto}
+  .sess{flex:1;padding-right:2.2cqw;position:relative}
+  .sess + .sess{border-left:1px solid var(--line-soft);padding-left:2.2cqw}
+  .sess .n{font-family:var(--mono);font-size:2cqh;letter-spacing:.18em;color:var(--ink-2)}
+  .sess .t{font-family:var(--serif);font-size:3cqh;margin-top:.8cqh;line-height:1.12;color:var(--ink)}
+  .sess.done .t{color:var(--ink-2)}
+  .sess.now .n{color:var(--accent)}
+  .sess .dot{position:absolute;top:.3cqh;right:1.2cqw;width:1.2cqh;height:1.2cqh;border-radius:50%}
+  .sess.done .dot{background:var(--ink-2)}
+  .sess.now .dot{background:var(--accent);box-shadow:0 0 0 .6cqh var(--accent-soft)}
+
+  /* Lista de filas — máximo 4 por lámina */
+  .lista{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .fila{display:grid;grid-template-columns:auto 1fr;gap:3.4cqw;align-items:baseline;
+        padding:2.8cqh 0;border-bottom:1px solid var(--line-soft)}
+  .fila .marca{font-family:var(--mono);font-size:2.6cqh;letter-spacing:.1em;color:var(--accent);
+        white-space:nowrap;min-width:9cqw}
+  .fila .cuerpo{display:flex;flex-direction:column;gap:.9cqh}
+  .fila .t{font-family:var(--serif);font-size:4.4cqh;color:var(--ink);line-height:1.08}
+  .fila .d{font-size:3.6cqh;line-height:1.34;color:var(--ink-2)}
+  .fila .d b{color:var(--ink);font-weight:600}
+  .fila.suelta{grid-template-columns:1fr}
+
+  /* Dupla comparativa */
+  .dupla{display:grid;grid-template-columns:1fr 1fr;gap:5cqw;flex:1;align-content:center}
+  .lado{border-top:4px solid var(--line);padding-top:2.4cqh;display:flex;flex-direction:column;gap:1.6cqh}
+  .lado.a{border-top-color:var(--accent)}
+  .lado.b{border-top-color:var(--sage)}
+  .lado .k{font-family:var(--mono);font-size:2.1cqh;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2)}
+  .lado h3{font-family:var(--serif);font-weight:500;font-size:4.8cqh;color:var(--ink);line-height:1.06}
+  .lado p{font-size:3.6cqh;line-height:1.36;color:var(--ink-2)}
+  .lado p b{color:var(--ink);font-weight:600}
+
+  /* Pasos con código */
+  .paso{display:grid;grid-template-columns:auto 1fr auto;gap:3cqw;align-items:center;
+        padding:2.6cqh 0;border-bottom:1px solid var(--line-soft)}
+  .paso .n{font-family:var(--serif);font-size:4.6cqh;color:var(--accent);opacity:.5;line-height:1}
+  .paso .t{font-family:var(--serif);font-size:4cqh;color:var(--ink);line-height:1.1}
+  .paso .t small{display:block;font-family:var(--sans);font-size:3.3cqh;color:var(--ink-2);
+        margin-top:.9cqh;line-height:1.32}
+  .cod{font-family:var(--mono);font-size:3.2cqh;font-weight:700;color:var(--ground);
+        background:var(--accent);width:7cqh;height:7cqh;border-radius:50%;display:grid;place-items:center;flex:0 0 auto}
+  .cod.r{background:var(--sage)} .cod.e{background:var(--gold)}
+
+  /* Caja de énfasis */
+  .caja{margin-top:2.6cqh;background:var(--ground-2);border-left:5px solid var(--accent);
+        padding:2.2cqh 2.6cqw;font-size:3.5cqh;line-height:1.36;color:var(--ink)}
+  .caja b{font-weight:600} .caja .lbl{color:var(--accent);font-weight:700}
+
+  /* Cita grande */
+  .cita{font-family:var(--serif);font-style:italic;font-size:5.6cqh;line-height:1.2;
+        color:var(--ink);max-width:84cqw;text-wrap:balance}
+  .cita-pie{margin-top:2.8cqh;font-family:var(--mono);font-size:2.4cqh;letter-spacing:.16em;
+        text-transform:uppercase;color:var(--accent)}
+
+  /* Instrucción de práctica */
+  .instr{display:flex;flex-direction:column;gap:2.4cqh;flex:1;justify-content:center}
+  .instr .num{font-family:var(--mono);font-size:2.4cqh;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+  .instr .grande{font-family:var(--serif);font-size:7cqh;line-height:1.08;color:var(--ink);max-width:86cqw}
+  .instr .apoyo{font-size:3.8cqh;line-height:1.38;color:var(--ink-2);max-width:78cqw}
+  .instr .apoyo b{color:var(--ink);font-weight:600}
+  .preg{display:flex;flex-direction:column;gap:1.4cqh;margin-top:1cqh;border-left:4px solid var(--line);padding-left:2.4cqw}
+  .preg span{font-family:var(--serif);font-style:italic;font-size:3.6cqh;line-height:1.24;color:var(--ink)}
+
+  /* Figura SVG */
+  .fig{flex:1;display:flex;align-items:center;justify-content:center;min-height:0}
+  .fig svg{max-height:62cqh;width:auto;max-width:88cqw;display:block}
+  .roseta .rn{font-size:17px;font-weight:700;letter-spacing:1px;fill:var(--ink);font-family:var(--sans)}
+  .roseta .rc{font-size:12px;letter-spacing:2.4px;fill:var(--ink-2);font-family:var(--mono)}
+
+  /* Imágenes editoriales de la sesión 3 */
+  .slide.with-image{isolation:isolate}
+  .slide.with-image>.slide-visual{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+  .slide.with-image::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:linear-gradient(90deg,var(--ground) 0%,color-mix(in srgb,var(--ground) 96%,transparent) 42%,color-mix(in srgb,var(--ground) 58%,transparent) 68%,color-mix(in srgb,var(--ground) 16%,transparent) 100%),
+               linear-gradient(0deg,color-mix(in srgb,var(--ground) 72%,transparent) 0%,transparent 32%)}
+  .slide.with-image .mid{max-width:59cqw}
+  .slide.with-image .sub{max-width:56cqw}
+  .slide.with-image .caja{max-width:58cqw;background:color-mix(in srgb,var(--ground-2) 92%,transparent);backdrop-filter:blur(5px)}
+  .slide.cover-image>.slide-visual{opacity:.78}
+  .slide.cover-image::before{background:linear-gradient(90deg,var(--ground) 0%,color-mix(in srgb,var(--ground) 94%,transparent) 43%,color-mix(in srgb,var(--ground) 18%,transparent) 76%),linear-gradient(0deg,var(--ground) 0%,transparent 26%)}
+  .visual-frame{height:59cqh;border:1px solid var(--line);overflow:hidden;position:relative;background:var(--ground-2)}
+  .visual-frame img{width:100%;height:100%;display:block;object-fit:cover}
+  .visual-frame::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);pointer-events:none}
+
+  /* Controles */
+  .bar{display:flex;align-items:center;gap:18px;color:var(--ink-2);font-family:var(--mono);font-size:12px;letter-spacing:.14em}
+  .nav{appearance:none;background:transparent;border:1px solid var(--line);color:var(--ink);
+    width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:15px;display:grid;place-items:center;
+    transition:border-color .2s,color .2s}
+  .nav:hover{border-color:var(--accent);color:var(--accent)}
+  .count b{color:var(--ink)}
+  .hint{font-size:11px;letter-spacing:.1em;opacity:.7}
+  .zone{position:absolute;top:0;bottom:0;width:22%;cursor:pointer;z-index:3}
+  .zone.left{left:0}.zone.right{right:0}
+</style>
+</head>
+<body>
+<main class="stage" id="stage" aria-label="Presentación Sesión 4">
+  <div class="zone left" id="zL" aria-hidden="true"></div>
+  <div class="zone right" id="zR" aria-hidden="true"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="iso" viewBox="0 0 160 160"><g transform="translate(80,80)">
+    <circle cx="0" cy="-50" r="8" fill="var(--accent)"/><circle cx="25" cy="-43.3" r="8" fill="var(--sage)"/><circle cx="43.3" cy="-25" r="8" fill="var(--accent)"/><circle cx="50" cy="0" r="8" fill="var(--sage)"/><circle cx="43.3" cy="25" r="8" fill="var(--accent)"/><circle cx="25" cy="43.3" r="8" fill="var(--sage)"/><circle cx="0" cy="50" r="8" fill="var(--accent)"/><circle cx="-25" cy="43.3" r="8" fill="var(--sage)"/><circle cx="-43.3" cy="25" r="8" fill="var(--accent)"/><circle cx="-50" cy="0" r="8" fill="var(--sage)"/><circle cx="-43.3" cy="-25" r="8" fill="var(--accent)"/><circle cx="-25" cy="-43.3" r="8" fill="var(--sage)"/>
+    <circle cx="0" cy="0" r="5" fill="var(--gold)" opacity="0.5"/><circle cx="0" cy="0" r="3" fill="var(--gold)"/>
+  </g></symbol></svg>
+
+  <section class="slide is-active">
+  <div class="lockup"><svg class="iso"><use href="#iso"/></svg><div class="wm"><span class="wm1">INSTITUTO</span><span class="wm2">CENTROBIOENERGETICA</span></div></div>
+  <div class="eyebrow"><span class="tick"></span>Sesión 4 · Cierre</div>
+  <div class="mid"><h1 class="display tit">Los abuelos, los bisabuelos y el cuerpo que sobrevive</h1>
+  <div class="sub">El método del árbol, completo. Y lo que se hereda cuando lo heredado ya no es emocional, sino metabólico.</div></div>
+  <div class="sessions">
+    <div class="sess done"><span class="dot"></span><div class="n">S1</div><div class="t">El mapa que cargas</div></div>
+    <div class="sess done"><span class="dot"></span><div class="n">S2</div><div class="t">La línea paterna</div></div>
+    <div class="sess done"><span class="dot"></span><div class="n">S3</div><div class="t">La línea materna</div></div>
+    <div class="sess now"><span class="dot"></span><div class="n">S4 · Hoy</div><div class="t">El cuerpo que sobrevive</div></div>
+  </div>
+</section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Hoy</div>
+  <div class="mid"><h2 class="display tit">Tres cosas, y cerramos</h2>
+  <div class="lista">
+    <div class="fila"><span class="marca">01</span><div class="cuerpo"><div class="t">Cómo leer su árbol</div>
+      <div class="d">Cuatro pasos para encontrar lo que se repite entre generaciones.</div></div></div>
+    <div class="fila"><span class="marca">02</span><div class="cuerpo"><div class="t">Lo que se hereda en el metabolismo</div>
+      <div class="d">No solo se hereda lo emocional. El peso, el azúcar y la grasa también, y eso se mide.</div></div></div>
+    <div class="fila"><span class="marca">03</span><div class="cuerpo"><div class="t">El cierre</div>
+      <div class="d">Un acto final sobre las tres líneas: la suya, la de su padre y la de su madre.</div></div></div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Bloque 1 · El método del árbol</div>
+  <div class="mid"><h2 class="display grande">Cuatro pasos para encontrar lo que <span class="accent">se repite</span>.</h2>
+  <div class="sub">Cada paso busca una cosa distinta en el árbol. Lo que encuentren, lo marcan con una letra: <b>A</b>, <b>R</b> o <b>E</b>.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Pasos 1 y 2 · Edades y fechas</div>
+  <div class="mid">
+    <div class="paso"><span class="n">1</span><div class="t">Edades<small>Para cada persona con un evento marcado, la edad que tenía cuando ocurrió. ¿Se repite en generaciones distintas?</small></div><span class="cod">A</span></div>
+    <div class="paso"><span class="n">2</span><div class="t">Fechas del calendario<small>Día y mes, sin importar el año. ¿Se repite una fecha entre personas distintas?</small></div><span class="cod">A</span></div>
+    <div class="caja">Los dos se marcan con <span class="lbl">A</span>: uno cuando se repite la edad, otro cuando se repite el día y el mes.</div>
+  </div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Pasos 3 y 4 · Roles y tipo de evento</div>
+  <div class="mid">
+    <div class="paso"><span class="n">3</span><div class="t">Oficios y roles<small>Quién cuidaba, quién sostenía, quién se fue, quién mandaba. ¿El mismo rol en dos o más generaciones seguidas?</small></div><span class="cod r">R</span></div>
+    <div class="paso"><span class="n">4</span><div class="t">Tipo de evento por rama<small>Muertes, secretos, migraciones, crisis. ¿La misma categoría concentrada en una sola rama?</small></div><span class="cod e">E</span></div>
+  </div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Al terminar los cuatro pasos</div>
+  <div class="mid"><h2 class="display grande">Elijan <span class="accent">una sola</span> de sus marcas.</h2>
+  <div class="sub">La que puedan explicar en una frase, sin dudar. Pónganle un <b>asterisco</b>: es con la que van a trabajar el resto de la sesión.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Por qué importa que una fecha se repita</div>
+  <div class="mid"><h2 class="display tit">Síndrome de aniversario</h2>
+  <div class="sub">Cuando a alguien le pasa algo —una enfermedad, un accidente, una crisis— en la misma fecha o a la misma edad en que le pasó algo grave a un ancestro.</div>
+  <div class="caja">Una fecha no depende de que alguien recuerde bien o mal. <b>Está escrita en un acta.</b></div></div>
+  <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Anne Ancelin Schützenberger</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Bloque 2 · Cómo se le pregunta al cuerpo</div>
+  <div class="mid"><h2 class="display tit">Los cuatro canales</h2>
+  <div class="lista">
+    <div class="fila"><span class="marca">01</span><div class="cuerpo"><div class="t">Test muscular</div><div class="d">Se le pregunta al cuerpo y el músculo responde. El que ya dominan.</div></div></div>
+    <div class="fila"><span class="marca">02</span><div class="cuerpo"><div class="t">Localización corporal</div><div class="d">En qué parte del cuerpo se siente lo que se está explorando.</div></div></div>
+    <div class="fila"><span class="marca">03</span><div class="cuerpo"><div class="t">Rastreo de cualidades</div><div class="d">Qué forma, peso, temperatura, movimiento y color tiene esa sensación.</div></div></div>
+    <div class="fila"><span class="marca" style="color:var(--gold)">04</span><div class="cuerpo"><div class="t">Escucha somática</div><div class="d">No se pregunta nada. Se deja que el síntoma hable solo.</div></div></div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Preguntar o escuchar</div>
+  <div class="mid"><div class="dupla">
+    <div class="lado a"><div class="k">Canales 1, 2 y 3</div><h3>Preguntan</h3><p>El terapeuta hace la pregunta y el cuerpo contesta.</p></div>
+    <div class="lado b"><div class="k">Canal 4</div><h3>Escucha</h3><p>El terapeuta no pregunta. Se queda con el síntoma y espera a que el síntoma diga algo.</p></div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Cómo se usa el test hoy</div>
+  <div class="mid"><h2 class="display grande">Hoy el test no busca:<br><span class="accent">confirma</span>.</h2>
+  <div class="sub">Tomen la marca del asterisco y pregunten con el test: <b>¿esta marca sigue activa hoy?</b> Si el cuerpo dice que sí, pregúntenle qué necesita para dejar de estarlo.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Bloque 3 · Lo que se hereda en el cuerpo</div>
+  <div class="mid"><h2 class="display grande">¿Lo que se hereda llega de verdad hasta los <span class="accent">tatarabuelos</span>?</h2>
+  <div class="sub">O nada más hasta los abuelos. La respuesta cambia según cómo se cuenten las generaciones.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Cuando una embarazada pasa hambre</div>
+  <div class="mid"><h2 class="display tit">Tres generaciones quedan expuestas al mismo tiempo</h2>
+  <div class="lista">
+    <div class="fila"><span class="marca">1ª</span><div class="cuerpo"><div class="t">Ella, la embarazada</div></div></div>
+    <div class="fila"><span class="marca">2ª</span><div class="cuerpo"><div class="t">El bebé que lleva dentro</div></div></div>
+    <div class="fila"><span class="marca">3ª</span><div class="cuerpo"><div class="t">Los óvulos de ese bebé, que ya se están formando</div>
+      <div class="d">Es lo que vimos la semana pasada: la abuela, la madre y el óvulo del nieto, en un mismo cuerpo.</div></div></div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Por eso hay dos palabras distintas</div>
+  <div class="mid"><div class="dupla">
+    <div class="lado a"><div class="k">Hijos y nietos</div><h3>Intergeneracional</h3><p>Estuvieron dentro del cuerpo que pasó hambre. Aunque sea como óvulo, ahí estuvieron.</p></div>
+    <div class="lado b"><div class="k">Bisnietos en adelante</div><h3>Transgeneracional</h3><p>La primera generación que <b>nunca estuvo ahí</b>. Si aun así aparece el efecto, se heredó de verdad.</p></div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>El estudio principal</div>
+  <div class="mid"><h2 class="display tit">Överkalix</h2>
+  <div class="sub">Un pueblo del norte de Suecia. Estaba tan aislado que unos años había comida de sobra y otros se pasaba hambre — y todo quedó anotado. Después se comparó con de qué murieron sus nietos y bisnietos.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Lo que encontraron</div>
+  <div class="mid"><div class="cita">Lo que comió el <span class="accent">abuelo paterno</span> cuando era niño predijo de qué murieron sus <span class="accent">nietos hombres</span> — no sus nietas.</div>
+  <div class="cita-pie">Kaati · Bygren · Pembrey</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Y lo mismo del otro lado</div>
+  <div class="mid"><h2 class="display grande">Lo que comió la abuela paterna predijo de qué murieron sus <span class="accent">nietas</span>.</h2>
+  <div class="caja">Del abuelo a los nietos hombres. De la abuela a las nietas mujeres. <b>Viaja por el mismo sexo.</b></div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>El dato más raro del estudio</div>
+  <div class="mid"><h2 class="display tit">El efecto salta una generación</h2>
+  <div class="sub">El hijo del abuelo no muestra nada. El efecto se brinca esa generación y <b>aparece hasta el nieto</b>.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>En qué momento de la infancia del abuelo</div>
+  <div class="mid"><h2 class="display grande">Entre los <span class="accent">ocho y los doce años</span>.</h2>
+  <div class="sub">No cuenta la infancia entera. Solo esos años, justo antes del estirón de la pubertad.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Y no es lo que uno esperaría</div>
+  <div class="mid"><h2 class="display tit">Que al abuelo le sobrara comida entre los 8 y los 12 años</h2>
+  <div class="sub">le dio a su nieto <b>más</b> riesgo de diabetes y de morir antes. No menos.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>El mismo efecto por el lado de la madre</div>
+  <div class="mid"><h2 class="display tit">Los nietos de la Hambruna Holandesa</h2>
+  <div class="sub">Mujeres que estuvieron embarazadas durante el bloqueo de 1944. Sesenta años después, sus hijos seguían con el metabolismo alterado — y sus <b>nietos</b> nacieron más pequeños y con más grasa.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>¿Y más atrás de los abuelos?</div>
+  <div class="mid"><h2 class="display grande">Hasta la <span class="accent">cuarta generación</span>, pero en ratas.</h2>
+  <div class="sub">Expusieron a ratas preñadas a un fungicida. El daño siguió apareciendo en los tataranietos, que nunca tocaron esa sustancia.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Cómo viaja</div>
+  <div class="mid"><h2 class="display tit">En el espermatozoide, aparte del ADN, viaja información</h2>
+  <div class="sub">Son fragmentos de ARN. Si se inyectan solos en un óvulo sano, el efecto se reproduce igual.</div>
+  <div class="caja">Es lo mismo que ya vimos con el <b>olor del miedo</b>: el ratón aprende a temerle a un olor y su hijo y su nieto le temen también, sin haberlo olido nunca.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Entonces, hasta dónde llega</div>
+  <div class="mid"><div class="cita">En personas, la evidencia llega con fuerza hasta los abuelos. Más atrás solo se ha demostrado en animales — con un mecanismo que ya conocemos.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Una explicación posible, todavía en discusión</div>
+  <div class="mid"><h2 class="display tit">El gen ahorrador</h2>
+  <div class="sub">Guardar grasa con facilidad servía cuando el hambre era real. Hoy, con comida siempre disponible, el cuerpo sigue preparándose para un hambre que no llega.</div>
+  <div class="caja">Es una explicación que lleva sesenta años en discusión. Sirve para <b>nombrar</b> en consulta lo que los estudios ya mostraron — no es un hecho probado por sí solo.</div></div>
+  <div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Neel, 1962</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Receso</div>
+  <div class="mid"><h2 class="display tit">Diez minutos</h2>
+  <div class="sub">Traigan su árbol, sus muñecos y el dibujo de la semana pasada.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Hora 2 · Qué tan atrás se puede llegar</div>
+  <div class="mid"><h2 class="display grande">Tres generaciones hacia atrás,<br>con <span class="accent">distinto peso</span>.</h2>
+  <div class="sub">Abuelos, bisabuelos y tatarabuelos no se trabajan igual: de cada uno hay más o menos información disponible.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Abuelos</div>
+  <div class="mid"><h2 class="display tit">Ya están en su árbol</h2>
+  <div class="sub">Desde la primera sesión, y con sus muñecos de las dos líneas. Es la generación de la que hay <b>estudios sólidos</b> en personas.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Bisabuelos</div>
+  <div class="mid"><h2 class="display tit">Quedaron de tarea en la primera sesión</h2>
+  <div class="sub">Quien la haya hecho, ya los tiene en su árbol. Es la generación hasta donde el método clínico del Instituto <b>rastrea en consulta</b>.</div>
+  <div class="caja">Si tienen el dato, se trabaja igual que con los abuelos. Si no lo tienen, <span class="lbl">no pasa nada</span> — el árbol funciona con tres generaciones.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Tatarabuelos</div>
+  <div class="mid"><h2 class="display tit">Todavía no se pueden trabajar</h2>
+  <div class="sub">A esa distancia la evidencia es en animales. Se los menciono porque es hacia donde va la investigación, <b>no como algo que su árbol pueda comprobar hoy</b>.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Qué pasaba en México entonces</div>
+  <div class="mid"><h2 class="display tit">Revolución Mexicana</h2>
+  <div class="sub"><b>1910 – 1920.</b> Un millón de muertos, y un millón de nacimientos que no ocurrieron. La esperanza de vida cayó de 32 a 20 años. Encima, la influenza de 1918.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Qué pasaba en México entonces</div>
+  <div class="mid"><h2 class="display tit">Guerra Cristera</h2>
+  <div class="sub"><b>1926 – 1929.</b> Alrededor de 250 mil muertos, concentrada en Jalisco, Guanajuato, San Luis Potosí, Colima, Michoacán y Zacatecas — con desplazamiento y migración masiva desde esos estados.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Qué pasaba en México entonces</div>
+  <div class="mid"><h2 class="display tit">Programa Bracero</h2>
+  <div class="sub"><b>1942 – 1964.</b> Cuatro y medio millones de trabajadores mexicanos migrando a Estados Unidos, de manera legal y masculina.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Hagan la cuenta</div>
+  <div class="mid"><h2 class="display grande">¿En qué año nació su abuelo?</h2>
+  <div class="preg">
+    <span>¿Qué edad tenía en 1926?</span>
+    <span>¿Y su bisabuelo, en 1910?</span>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Cerrar el trabajo del campo</div>
+  <div class="mid"><h2 class="display tit">Recuperen el dibujo de la semana pasada</h2>
+  <div class="sub">Se pusieron encima, de pie, y contestaron las preguntas del cuerpo. Hoy lo terminamos.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Movimiento 3</div>
+  <div class="mid"><div class="instr">
+    <div class="num">El observador</div>
+    <div class="grande">Una segunda hoja, en blanco, aparte.</div>
+    <div class="apoyo">Párense ahí. Desde el observador se mira el conjunto, <b>sin juicio</b>. Si algo todavía los jala, aléjense un paso más.</div>
+    <div class="preg"><span>¿Cambió algo en mi percepción?</span><span>¿Qué aprendí?</span></div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Movimiento 4</div>
+  <div class="mid"><div class="instr">
+    <div class="num">Llevarse el recurso</div>
+    <div class="grande">De todo esto, ¿qué se llevan?</div>
+    <div class="apoyo">Una frase, una imagen, una sensación en el cuerpo. Guárdenla ahí donde la sientan.</div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Lo que acaban de completar</div>
+  <div class="mid"><h2 class="display tit">Una Imagen de la Familia</h2>
+  <div class="sub">Dibujaron, se pararon encima, y salieron a mirar desde fuera sin juzgar. Esos son los movimientos que sostienen la técnica.</div>
+  <div class="caja">Hoy lo hicieron con una figura. El método completo usa una hoja por cada miembro de la familia y se recorren todas las posiciones. Eso es <b>NIG y Campos Mórficos</b>.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>El cierre</div>
+  <div class="mid"><h2 class="display grande">Las tres líneas que trabajamos.</h2>
+  <div class="sub">Su línea, la de su padre y la de su madre. Nadie va a compartir nada en voz alta: esto es para cada quien.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Paso 1 · Reconocimiento</div>
+  <div class="mid"><div class="instr">
+    <div class="apoyo">Ambas manos sobre las piernas.</div>
+    <div class="cita">Esto viene de antes de mí. Lo reconozco.</div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Paso 2 · Regular</div>
+  <div class="mid"><div class="instr">
+    <div class="apoyo">Inhalar 4 · sostener 4 · exhalar 6. Tres veces.</div>
+    <div class="cita">Mi cuerpo está aquí, en esta silla, ahora.</div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Paso 3 · El acto</div>
+  <div class="mid"><div class="instr">
+    <div class="apoyo">Pies firmes en el piso, empujando suavemente hacia abajo.</div>
+    <div class="cita">Me muevo. Mi vida es diferente de la suya.</div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Paso 4 · Devolución</div>
+  <div class="mid"><div class="instr">
+    <div class="apoyo">Manos abiertas, palmas al frente, a la altura del corazón.</div>
+    <div class="cita">Esto fue real, y fue de ellos. Lo honro. Ya no me pertenece. Lo devuelvo con respeto.</div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Qué es y qué no es este acto</div>
+  <div class="mid"><h2 class="display grande">No es rechazar, ni culpar, ni perdonar.<br>Es reconocer, separar y <span class="accent">respetar</span>.</h2></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Paso 5 · Cierre con nombre propio</div>
+  <div class="mid"><div class="instr">
+    <div class="apoyo">Las manos bajan a las piernas, palmas hacia arriba.</div>
+    <div class="cita">Estoy aquí. Soy…</div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Las dos herramientas</div>
+  <div class="mid"><div class="dupla">
+    <div class="lado a"><div class="k">Línea paterna</div><h3>Terapia con Muñecos</h3>
+      <p>Movimiento simbólico y dirección física.<br><b>¿Hacia dónde cae tu camino?</b></p>
+      <p>Para quien aprende por acción y cuerpo.</p></div>
+    <div class="lado b"><div class="k">Línea materna</div><h3>NIG y Campos Mórficos</h3>
+      <p>Campo familiar y posición en el espacio.<br><b>¿Qué patrón del campo sigues cargando?</b></p>
+      <p>Para quien aprende por reflexión y lenguaje.</p></div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Lo que ya tienen incluido</div>
+  <div class="mid"><h2 class="display tit">Una sesión de práctica presencial</h2>
+  <div class="sub">Para practicar <b>una</b> de las dos con supervisión, con cupo limitado. Ya vieron las dos completas, así que pueden elegir con criterio.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Si el tema del peso les tocó algo</div>
+  <div class="mid"><h2 class="display tit">Setpoint</h2>
+  <div class="sub">Si lo que vimos hoy del metabolismo les sonó a algo propio —que no baja el peso, que "en mi familia todos somos así"—, ese es exactamente el tema de este curso.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Si quieren seguir formándose</div>
+  <div class="mid"><h2 class="display tit">Formación Integral de Terapeutas</h2>
+  <div class="sub">Para quien quiera ir más allá de estas cuatro sesiones.</div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide"><div class="eyebrow"><span class="tick"></span>Cuatro sesiones</div>
+  <div class="mid"><h2 class="display tit">Lo que hicieron</h2>
+  <div class="lista">
+    <div class="fila"><span class="marca">S1</span><div class="cuerpo"><div class="t">Un árbol con método</div></div></div>
+    <div class="fila"><span class="marca">S2</span><div class="cuerpo"><div class="t">Dos líneas leídas con muñecos</div></div></div>
+    <div class="fila"><span class="marca">S3</span><div class="cuerpo"><div class="t">Un campo familiar recorrido con el cuerpo</div></div></div>
+    <div class="fila"><span class="marca">S4</span><div class="cuerpo"><div class="t">Dos generaciones más, y un cierre</div></div></div>
+  </div></div><div class="foot"><span class="brand"><svg class="footiso"><use href="#iso"/></svg>Instituto Centrobioenergetica</span><span>Sesión 4</span></div></section>
+
+  <section class="slide">
+  <div class="lockup"><svg class="iso"><use href="#iso"/></svg><div class="wm"><span class="wm1">INSTITUTO</span><span class="wm2">CENTROBIOENERGETICA</span></div></div>
+  <div class="mid"><h1 class="display tit">Gracias por las cuatro semanas.</h1>
+  <div class="sub">Dr. Miguel Ojeda Rios</div></div>
+</section>
+
+  <div class="progress" id="prog"></div>
+</main>
+
+<div class="bar">
+  <button class="nav" id="prev" aria-label="Anterior">‹</button>
+  <span class="count"><b id="cur">01</b> / <span id="tot">50</span></span>
+  <button class="nav" id="next" aria-label="Siguiente">›</button>
+  <span class="hint">← → o barra · T cambia el tema</span>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var i=0, n=slides.length;
+  document.getElementById('tot').textContent=String(n).padStart(2,'0');
+  function show(k){
+    i=(k+n)%n;
+    slides.forEach(function(s,idx){s.classList.toggle('is-active',idx===i)});
+    document.getElementById('cur').textContent=String(i+1).padStart(2,'0');
+    document.getElementById('prog').style.width=((i+1)/n*100)+'%';
+  }
+  function next(){show(i+1)} function prev(){show(i-1)}
+  document.getElementById('next').onclick=next;
+  document.getElementById('prev').onclick=prev;
+  document.getElementById('zR').onclick=next;
+  document.getElementById('zL').onclick=prev;
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '){next();e.preventDefault();}
+    else if(e.key==='ArrowLeft'){prev();}
+    else if(e.key==='t'||e.key==='T'){
+      var r=document.documentElement;
+      var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+      r.setAttribute('data-theme', cur==='dark'?'light':'dark');
+    }
+  });
+  show(0);
+})();
+</script>
+</body>
+</html>

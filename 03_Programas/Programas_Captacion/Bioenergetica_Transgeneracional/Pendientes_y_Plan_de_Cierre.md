@@ -41,7 +41,7 @@ Todo esto se dio en vivo, funcionó, y no está en ningún documento. Detalle en
 | 2 | **Qué es el módulo 4:** el test (anunciado en clase) o programación metabólica (programa maestro) | **Bloquea el arco** |
 | 3 | La tercera frase de liberación: "Corte" o **Devolución** | Recomendación hecha |
 | 4 | Taxonomía: 4 tipos (S1) o 5 vías (BV4) | Absorbible sin corregir |
-| 5 | Autoría de NIG en el documento base — Madelung, no Dilts | Pendiente de tu revisión |
+| 5 | Autoría de NIG en el documento base — Madelung, no Dilts | ✅ Resuelto (07 ago 2026): canon `4ailabs/nig` §1; corregido en documento base, índice maestro y manual final |
 | 6 | Los "21 nodos psóricos" y la nomenclatura de miasmas | Pendiente de fijar |
 | 7 | El ritual de cierre de la S2: ¿al muñeco propio o al del padre? | Pendiente de aclarar |
 | 8 | La app NIG Facilitador en la beca | Abierta |

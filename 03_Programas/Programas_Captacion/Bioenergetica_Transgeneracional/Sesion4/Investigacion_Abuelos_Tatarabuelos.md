@@ -146,17 +146,19 @@ Ya referenciado en el programa maestro y en el plan de la Sesión 4. Aquí, su e
 
 El **Tratado BV4, Cap. 15 §15.4**, define el embudo temporal transgeneracional clínico hasta **bisabuelos** — madre → abuela materna → bisabuela materna; padre → abuelo paterno → bisabuelo paterno — y no menciona tatarabuelos en ningún punto del protocolo clínico. El título de esta sesión ("Los Abuelos, los Tatarabuelos...") promete una generación más de la que el propio marco clínico del Instituto trabaja en consulta, y **se salta justo la generación de en medio**.
 
-Y hay algo más concreto todavía: **el árbol que el grupo construyó en la Sesión 1 se detiene en abuelos.** El guion de esa sesión pide explícitamente "mínimo tres generaciones: ustedes, sus padres, sus abuelos", y no pide bisabuelos en ningún punto (`Guion_Sesion1_Mapa_Que_Cargas.md`, Sección 5). Es decir: **bisabuelos y tatarabuelos no están en el árbol de nadie** — no es que falten datos de esas generaciones, es que la herramienta nunca pidió construirlas.
+Y hay algo más concreto todavía: **el árbol mínimo que pide la Sesión 1 se detiene en abuelos.** El guion pide "mínimo tres generaciones: ustedes, sus padres, sus abuelos" (`Guion_Sesion1_Mapa_Que_Cargas.md`, Sección 5).
+
+**Corrección sobre bisabuelos (07 ago 2026).** El guion no los pide, pero **en la clase real sí se pidieron**: el registro de la Sesión 1 lista como tarea del grupo *"agregar bisabuelos (opcional, «estaría genial»)"* (`Clases_Impartidas/Sesion1_Registro_Clase_Impartida.md`, §4). Es decir, la capa de bisabuelos tiene rendimiento variable —la tendrá quien haya hecho la tarea—, no está ausente por diseño. **Tatarabuelos sí quedan fuera del árbol de todos.** Cotejar siempre contra el registro y no solo contra el guion: lo que se pidió en vivo no siempre coincide con lo guionizado.
 
 **Las tres capas, ordenadas con lo que cada una tiene detrás:**
 
 | Generación | ¿Está en el árbol de la S1? | ¿La trabaja el protocolo clínico BV4? | Evidencia científica |
 |---|---|---|---|
 | **Abuelos** | Sí — parte del árbol mínimo | Sí, rutinariamente | Sólida y replicada (Överkalix, Hambruna Holandesa) |
-| **Bisabuelos** | No — nunca se pidió | Sí — es el límite del embudo clínico (Cap. 15 §15.4) | Escasa evidencia humana directa a esa distancia exacta |
+| **Bisabuelos** | En parte — tarea opcional pedida en la clase de la S1 | Sí — es el límite del embudo clínico (Cap. 15 §15.4) | Escasa evidencia humana directa a esa distancia exacta |
 | **Tatarabuelos** | No | No — fuera del protocolo clínico del Instituto | Solo animal (Skinner, F3–F4) |
 
-**Recomendación:** no tratar "abuelos y tatarabuelos" como un par parejo, como sugiere el título. La sesión gana en honestidad y en solidez si ofrece las tres capas con su peso real: **abuelos** con el dato duro y sobre el árbol que ya existe; **bisabuelos** como una invitación abierta —"si lo saben, es la generación hasta donde el método del Instituto rastrea en consulta"— sin exigir que el árbol ya los tenga; y **tatarabuelos**, nombrados en el título, presentados honestamente como el horizonte de lo que la ciencia empieza a mostrar en otras especies, no como algo que el árbol de hoy pueda verificar.
+**Recomendación:** no tratar "abuelos y tatarabuelos" como un par parejo, como sugiere el título. La sesión gana en solidez si ofrece las tres capas con su peso real: **abuelos** con el dato duro y sobre el árbol que ya existe; **bisabuelos** retomando la tarea opcional de la Sesión 1 —quien la hizo ya los tiene, y es la generación hasta donde el método del Instituto rastrea en consulta— sin que falte nada si el dato no está; y **tatarabuelos**, nombrados en el título, presentados como el horizonte de lo que la ciencia empieza a mostrar en otras especies, no como algo que el árbol de hoy pueda verificar.
 
 ---
 

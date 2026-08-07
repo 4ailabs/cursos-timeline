@@ -16,11 +16,13 @@ Documento de control. Registra qué se enseñó en cada sesión, en qué bloque,
 | 1 | El Mapa que Cargas | ✅ | ✅ HTML + Keynote | ✅ HTML | — | Tarjetas de facilitador (color y BN), 50 tarjetas exportadas, prompts de imágenes |
 | 2 | La Línea Paterna y el Camino que Caminas | ✅ | ✅ HTML | ✅ HTML + PDF, color y BN | ✅ HTML + PDF, color y BN | **Panel del Facilitador (HTML)**, imágenes generadas |
 | 3 | La Línea Materna | ✅ | ✅ HTML | ✅ HTML + PDF | ✅ HTML + PDF | Investigación de línea materna ✅ |
-| 4 | Los Abuelos, los Tatarabuelos y el Cuerpo que Sobrevive | ✅ | ⬜ | ⬜ | ⬜ | Investigación de abuelos/tatarabuelos ✅, investigación sistémica e histórica ✅ |
+| 4 | Los Abuelos, los Bisabuelos y el Cuerpo que Sobrevive | ✅ | ⬜ | ⬜ | ⬜ | Investigación de abuelos/tatarabuelos ✅, investigación sistémica e histórica ✅ |
 
 **Materiales del programa completo:** folleto de beca (HTML + PNG), deck de beca, formulario de solicitud, temario público, programa maestro de 4 sesiones.
 
-**Pendiente de producción:** deck, manual y hoja de ejercicio de la Sesión 4 — el guion ya está completo (`Sesion4/Guion_Sesion4_Cierre.md`).
+**Pendiente de producción:** manual y hoja de ejercicio de la Sesión 4. Ya hechos: el guion (`Sesion4/Guion_Sesion4_Cierre.md`) y el **deck de 50 láminas** (`Sesion4/Slides_Sesion4_Deck.html`), que reutiliza el armazón visual del deck de la Sesión 3 para continuidad del programa.
+
+**Manual del alumno de los cuatro módulos:** `Manual_Final_Bioenergetica_Transgeneracional.md` (fuente) y `.html` (hoja carta paginada, 41 páginas) + `Manual_Bioenergetica_Transgeneracional.pdf`.
 
 ---
 
@@ -111,7 +113,7 @@ Documento de control. Registra qué se enseñó en cada sesión, en qué bloque,
 
 ---
 
-## 5. Sesión 4 — Los Abuelos, los Tatarabuelos y el Cuerpo que Sobrevive
+## 5. Sesión 4 — Los Abuelos, los Bisabuelos y el Cuerpo que Sobrevive
 
 Definida en el programa maestro; sin guion todavía.
 
@@ -240,7 +242,7 @@ Ningún concepto aparece suelto: cada uno engancha hacia atrás con algo ya vist
 
 **De fuentes:**
 
-4. **Autoría de NIG.** `02_Base_Conocimiento/NIG/Documento_Base_NIG.md` atribuye el método a Robert Dilts. El Manual NIG, en primera persona, muestra que es de **Eva Madelung**, con Dilts como maestro. Pendiente de corregir.
+4. **Autoría de NIG — resuelto (07 ago 2026).** El método es de **Eva Madelung**; Dilts es su maestro y la influencia formadora, no el creador; el Dr. Ojeda Rios es sistematizador y expansor. Decisión canónica en `4ailabs/nig`, `base-conocimiento/00_canon.md` §1. Ya corregido en `Documento_Base_NIG.md`, en `INDICE_MAESTRO.md` y en el manual final. Los guiones de sesiones ya impartidas no se editan.
 5. Los cinco criterios de meta y la numeración del atlas de diagramas difieren entre el documento base y la app NIG Facilitador.
 
 **De producción:**
