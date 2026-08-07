@@ -105,9 +105,9 @@ La última pregunta es el programa entero dicho en lenguaje somático: es **i11,
 
 Si la respuesta llega rápida, explicativa y sin eco corporal, es de la cabeza: se regresa a la sensación y se espera.
 
-### 4.3 El ciclo pendular: protocolo operativo, seguro para grupo
+### 4.3 La exploración a fondo en la Metaposición: protocolo operativo, seguro para grupo
 
-El Canal 4 clínico 1:1 no se abre en la beca. Lo que sí es abrible —y da a la Sesión 4 una estructura que hoy no tiene— es el ciclo pendular, que es el procedimiento de la Metaposición (Diagramas Ei 1–2) ejecutado completo:
+El Canal 4 clínico 1:1 no se abre en la beca. Lo que sí es abrible —y da a la Sesión 4 una estructura que hoy no tiene— es la exploración a fondo del problema desde la metaposición — que no es una técnica aparte, sino el procedimiento de la Metaposición (Diagramas Ei 1–2) ejecutado completo:
 
 1. **Sintonización silenciosa.** La persona se para junto a su material y sintoniza sin hablar. El facilitador observa micromovimientos —apoyo del peso, hombros, respiración, deglución— y no interviene.
 2. **Al observador.** Notar diferencias corporales, y contemplar el dibujo a distancia.
@@ -116,7 +116,7 @@ El Canal 4 clínico 1:1 no se abre en la beca. Lo que sí es abrible —y da a l
 
 Es escucha, no descarga, y por eso funciona en grupo: la profundidad la marca la persona, no el protocolo. El fundamento está en el guion original del método: *"si necesitas más aclaraciones, repite el movimiento de ida y vuelta entre el problema y la metaposición"*.
 
-**Regla de ritmo:** la transición a la fase siguiente no se apresura. Se pasa cuando el péndulo se agotó, no cuando el reloj lo pide.
+**Regla de ritmo:** la transición a la fase siguiente no se apresura. Se pasa cuando la exploración se agotó, no cuando el reloj lo pide.
 
 ### 4.4 La devolución ya tiene frase en el método
 
@@ -162,7 +162,7 @@ Las tres dinámicas del Slide 13 quedan alineadas: **lealtad ↔ i10**, **tomar 
 
 ## Fuentes
 
-- Base de conocimientos NIG: `~/NIG/base-conocimiento/` — `00_canon.md` (autoría, numeración, SOAR), `01_glosario.md`, `03_elementos/05_indagacion-somatica.md` (escalera y ciclo pendular), `04_procedimientos/clasicos/07_imagen-familia.md` y `09_reimpronta-sistemas-familiares.md`, `05_diagramas/atlas-ei.md`, `06_clinica/`.
+- Base de conocimientos NIG: `~/NIG/base-conocimiento/` — `00_canon.md` (autoría, numeración, SOAR), `01_glosario.md`, `03_elementos/05_indagacion-somatica.md` (escalera de indagación y exploración a fondo), `04_procedimientos/clasicos/07_imagen-familia.md` y `09_reimpronta-sistemas-familiares.md`, `05_diagramas/atlas-ei.md`, `06_clinica/`.
 - Madelung, Eva — capítulo *Neuro-Imaginative Gestalting*, traducción al español (voz en primera persona de la creadora); *Kurztherapien. Neue Wege zur Lebensgestaltung* (1996).
 - Gendlin, Eugene (1978). *Focusing* — marco externo del Canal 4.
 - Tratado BV4: Cap. 7 §7.16 (improntas Grupo B), Cap. 11 §11.2–11.6 (los cuatro canales), Cap. 15 §15.6.
