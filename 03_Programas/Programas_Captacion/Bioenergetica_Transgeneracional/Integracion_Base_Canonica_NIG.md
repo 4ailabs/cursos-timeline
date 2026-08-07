@@ -18,7 +18,7 @@ Tres cosas quedan cerradas y hay material nuevo para la Sesión 4.
 
 **Formulación canónica:**
 
-> NIG (Neuro-Imaginative Gestalting) es una metodología creada por **Eva Madelung**, psicoterapeuta alemana formada en la PNL de segunda generación con Robert Dilts, que integró Gestalt, terapia sistémica y las constelaciones familiares de Hellinger. Dilts es la influencia formadora, no el creador.
+> NIG (Neuro-Imaginative Gestalting) es una metodología creada por **Eva Madelung**, psicoterapeuta alemana formada con Robert Dilts, que integró Gestalt, terapia sistémica y las constelaciones familiares de Hellinger. Dilts es la influencia formadora, no el creador.
 
 El sustento es su propio texto, en primera persona: asistió a seminarios con Dilts a principios de los noventa, aprendió ahí elementos esenciales, y desarrolló NIG desde su práctica clínica —trabajando con dolor, anclas y coreoanchoring, después bocetos, después constelaciones con almohadones en el suelo—. Cita como propio *Kurztherapien. Neue Wege zur Lebensgestaltung* y remite a "(Madelung 1996)" para el modelo de efectos recíprocos.
 

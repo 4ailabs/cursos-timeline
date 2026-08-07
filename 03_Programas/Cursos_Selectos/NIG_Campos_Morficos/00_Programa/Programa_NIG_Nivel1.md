@@ -24,7 +24,7 @@
 
 ## EL MÉTODO Y SU ORIGEN
 
-NIG —Neuro-Imaginative Gestalting— es una metodología terapéutica creada por **Eva Madelung**, psicoterapeuta alemana formada en la PNL de segunda generación con Robert Dilts. Madelung integró Gestalt, terapia sistémica y las constelaciones familiares de Hellinger en un método donde el trabajo ocurre en el espacio y en el cuerpo, no en la conversación.
+NIG —Neuro-Imaginative Gestalting— es una metodología terapéutica creada por **Eva Madelung**, psicoterapeuta alemana formada con Robert Dilts. Madelung integró Gestalt, terapia sistémica y las constelaciones familiares de Hellinger en un método donde el trabajo ocurre en el espacio y en el cuerpo, no en la conversación.
 
 El método nació en la clínica, trabajando con pacientes cuya queja principal era el dolor: primero anclas y coreoanchoring, después bocetos y preguntas sobre colores y formas, después constelaciones con almohadones colocados en el suelo. El nombre cambió respecto de la PNL porque el lenguaje pasó a segundo plano:
 
