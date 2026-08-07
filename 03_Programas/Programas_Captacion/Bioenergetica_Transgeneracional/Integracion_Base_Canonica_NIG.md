@@ -2,7 +2,9 @@
 
 ### Qué aporta la base de conocimientos NIG a las Sesiones 3 y 4
 
-*Documento de trabajo. Agosto 2026. Complementa `Guion_Sesion3_Linea_Materna_Campo.md` y prepara la Sesión 4.*
+*Documento de trabajo. Agosto 2026. Complementa `Sesion3/Guion_Sesion3_Linea_Materna_Campo.md` y `Sesion4/Guion_Sesion4_Cierre.md`.*
+
+> **Nota de sincronización:** el guion de la Sesión 4 ya está escrito. Los aportes de la sección 4 de este documento —el Canal 4 como Focusing de Gendlin, la escalera unificada y la frase de devolución— están por contrastar con lo que ese guion ya resuelve.
 
 La base de conocimientos canónica de NIG (`~/NIG/base-conocimiento/`) consolidó las fuentes primarias del método —el capítulo de autoría de Madelung, el manual de procedimientos, el atlas Energy Intelligence y los capítulos del libro— en una fuente única con las contradicciones resueltas. Este documento recoge lo que de ahí sirve directamente a este programa.
 
@@ -12,7 +14,7 @@ Tres cosas quedan cerradas y hay material nuevo para la Sesión 4.
 
 ## 1. La autoría, cerrada
 
-`Programa_Sesion3_Linea_Materna.md` §7 identificó el problema y el guion operativo lo resolvió no nombrando autor. Ya no hace falta.
+`Sesion3/Programa_Sesion3_Linea_Materna.md` §7 identificó el problema y el guion operativo lo resolvió no nombrando autor. Ya no hace falta.
 
 **Formulación canónica:**
 
@@ -166,7 +168,7 @@ Las tres dinámicas del Slide 13 quedan alineadas: **lealtad ↔ i10**, **tomar 
 - Madelung, Eva — capítulo *Neuro-Imaginative Gestalting*, traducción al español (voz en primera persona de la creadora); *Kurztherapien. Neue Wege zur Lebensgestaltung* (1996).
 - Gendlin, Eugene (1978). *Focusing* — marco externo del Canal 4.
 - Tratado BV4: Cap. 7 §7.16 (improntas Grupo B), Cap. 11 §11.2–11.6 (los cuatro canales), Cap. 15 §15.6.
-- `Guion_Sesion3_Linea_Materna_Campo.md` y `Programa_Sesion3_Linea_Materna.md` §7 (correcciones a la fuente del Instituto).
+- `Sesion3/Guion_Sesion3_Linea_Materna_Campo.md` y `Sesion3/Programa_Sesion3_Linea_Materna.md` §7 (correcciones a la fuente del Instituto).
 
 ---
 
