@@ -1,0 +1,64 @@
+.science-figure {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 13px 13px 0;
+  overflow: hidden;
+  border: 1px solid rgba(20, 40, 58, .16);
+  border-radius: 3px;
+  background: #fffdfa;
+  box-shadow: 0 22px 60px rgba(5, 13, 20, .18);
+}
+
+.science-figure::before {
+  content: "FIGURA CONCEPTUAL";
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 22px;
+  padding: 7px 9px;
+  background: rgba(12, 22, 32, .88);
+  color: #fff;
+  font: 800 9px/1 var(--mono);
+  letter-spacing: .14em;
+}
+
+.science-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+}
+
+.science-figure figcaption {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 43px;
+  padding: 8px 5px;
+  color: #43505a;
+  font: 700 11px/1.25 var(--sans);
+  letter-spacing: .015em;
+}
+
+.science-figure figcaption b {
+  color: var(--oxide);
+  font: 900 12px/1 var(--mono);
+}
+
+.science-figure figcaption span {
+  width: 1px;
+  height: 16px;
+  background: #d8d4ca;
+}
+
+.dark .science-figure,
+.field .science-figure {
+  box-shadow: 0 25px 70px rgba(0, 0, 0, .35);
+}
+
+@media (max-height: 800px) {
+  .science-figure img { max-height: 410px; }
+  .science-figure figcaption { min-height: 35px; padding-block: 6px; }
+}

@@ -1,0 +1,1454 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guion exacto · El quíntuple y el cono cognitivo</title>
+<style>
+:root{--paper:#f4f1ea;--ink:#171a1f;--blue:#3d5a80;--amber:#e8a33d;--oxide:#a8452f;--muted:#686a69;--line:#d8d2c6;--white:#fffdf8;--serif:Georgia,'Times New Roman',serif;--sans:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--mono:'SFMono-Regular',Consolas,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}
+.masthead{position:relative;padding:56px max(6vw,28px) 54px;background:var(--ink);color:var(--paper);overflow:hidden}.masthead:after{content:'';position:absolute;width:620px;height:620px;border:1px solid rgba(232,163,61,.3);border-radius:50%;right:-180px;top:-370px;box-shadow:0 0 0 60px rgba(232,163,61,.035),0 0 0 120px rgba(232,163,61,.025)}.brand-logo{position:relative;z-index:2;display:block;width:min(360px,70vw);height:auto;margin:0 0 34px;opacity:.96}
+.eyebrow{margin:0 0 16px;color:var(--amber);font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase}.masthead h1{max-width:920px;margin:0;font:700 clamp(42px,6vw,78px)/.98 var(--serif);letter-spacing:-.04em}.masthead .dek{max-width:760px;margin:28px 0 0;color:#c9c7c0;font-size:19px;line-height:1.55}
+.toolbar{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px max(6vw,28px);background:rgba(244,241,234,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}.toolbar input{flex:1;min-width:220px;padding:12px 15px;border:1px solid var(--line);border-radius:4px;background:var(--white);font-size:15px}.toolbar button{border:1px solid var(--line);background:var(--white);padding:11px 14px;border-radius:4px;color:var(--ink);font-weight:700;cursor:pointer}.toolbar button[aria-pressed='true']{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.count{margin-left:auto;color:var(--muted);font:700 12px var(--mono)}main{width:min(1180px,88vw);margin:48px auto 100px;display:grid;gap:30px}.script-card{position:relative;background:var(--white);padding:42px 48px 46px;border:1px solid var(--line);box-shadow:0 18px 55px rgba(23,26,31,.07)}.script-card:before{content:'';position:absolute;left:-1px;top:-1px;bottom:-1px;width:5px;background:var(--amber)}
+.card-head{display:flex;justify-content:space-between;gap:20px;align-items:center}.card-meta{display:flex;align-items:center;gap:12px}.diagram-badge{padding:8px 10px;background:var(--blue);color:white;font:800 10px var(--mono);letter-spacing:.08em;text-transform:uppercase}.slide-number{display:inline-grid;place-items:center;width:44px;height:32px;background:var(--ink);color:var(--paper);font:700 13px var(--mono)}.section-name,.time{margin-left:12px;color:var(--muted);font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase}.script-card h2{margin:24px 0 30px;font:700 clamp(31px,4vw,49px)/1 var(--serif);letter-spacing:-.025em}.script-block{margin-top:24px;padding-top:23px;border-top:1px solid var(--line)}.script-block h3{margin:0 0 16px;color:var(--blue);font:800 12px var(--mono);letter-spacing:.11em;text-transform:uppercase}.script-block h3 span{margin-right:8px}.spoken{font:400 clamp(19px,2.1vw,25px)/1.62 var(--serif)}.spoken p,.prose p{margin:0}.prose{font-size:16px;line-height:1.65;color:#414443}.general-block{margin-left:-18px;margin-right:-18px;padding:23px 18px 20px;background:rgba(61,90,128,.07);border-top-color:rgba(61,90,128,.36)}.general-block h3{color:var(--blue)}.guide-grid{display:grid;grid-template-columns:1.12fr 1fr 1fr;gap:18px}.guide-grid>div{padding-right:18px;border-right:1px solid rgba(61,90,128,.2)}.guide-grid>div:last-child{border:0;padding-right:0}.guide-grid b{display:block;margin-bottom:7px;color:var(--blue);font:800 10px var(--mono);letter-spacing:.08em;text-transform:uppercase}.guide-grid p{margin:0;font-size:15px;line-height:1.48;color:#34383b}.expert-block{background:rgba(232,163,61,.07);margin-left:-18px;margin-right:-18px;padding:23px 18px 0;border-top-color:rgba(232,163,61,.4)}.interaction-block h3{color:var(--oxide)}.formula{display:inline-block;padding:0 .18em;color:#273f5e;font-family:var(--serif);font-style:italic}.transition{display:flex;gap:16px;align-items:flex-start;margin-top:26px;padding:17px 20px;background:var(--ink);color:var(--paper)}.transition span{color:var(--amber);font-size:24px}.transition p{margin:2px 0 0;font-weight:700;line-height:1.5}.source-details{margin-top:20px}.source-details summary{cursor:pointer;color:var(--muted);font:700 11px var(--mono);text-transform:uppercase;letter-spacing:.08em}.source-details pre{margin:16px 0 0;padding:20px;overflow:auto;background:#eeebe3;border:1px solid var(--line);white-space:pre-wrap;font:12px/1.55 var(--mono)}
+.hide-optional .optional{display:none}.compact main{grid-template-columns:repeat(2,minmax(0,1fr));width:min(1500px,94vw);gap:18px}.compact .script-card{padding:30px}.compact .spoken{font-size:18px}.compact .script-card h2{font-size:32px}.script-card[hidden]{display:none}.empty{display:none;text-align:center;padding:80px;color:var(--muted)}
+footer{padding:36px max(6vw,28px);background:var(--ink);color:#aaa79f;font-size:13px;line-height:1.6}footer strong{color:var(--paper)}
+@media(max-width:760px){.masthead{padding-top:52px}.toolbar{align-items:stretch}.count{width:100%;margin:0}.script-card{padding:30px 25px}.compact main{grid-template-columns:1fr}.card-head{align-items:flex-start}.time{text-align:right}.section-name{display:none}.guide-grid{grid-template-columns:1fr}.guide-grid>div{border-right:0;border-bottom:1px solid rgba(61,90,128,.2);padding:0 0 13px}.guide-grid>div:last-child{border:0;padding:0}}
+@media print{.toolbar{display:none}.masthead{padding:30px 40px}.masthead:after{display:none}main,.compact main{display:block;width:auto;margin:0}.script-card{break-inside:avoid;box-shadow:none;border-width:0 0 1px;margin:0;padding:34px 38px}.optional{display:block!important}.source-block{display:none!important}footer{display:none}}
+</style>
+</head>
+<body>
+<header class="masthead"><img class="brand-logo" src="assets/logo-regulacion-bioelectrica.png" alt="Regulación bioeléctrica"><p class="eyebrow">Guion de presentación · 30 slides · 75 minutos</p><h1>El quíntuple y el cono cognitivo</h1><p class="dek">Tarjetas de conducción con el guion literal de cada diapositiva, la capa experta, las interacciones y las transiciones.</p></header>
+<nav class="toolbar" aria-label="Herramientas del guion"><input id="search" type="search" placeholder="Buscar por slide, concepto o frase…" aria-label="Buscar en el guion"><button id="optional" type="button" aria-pressed="true">Capas completas</button><button id="compact" type="button" aria-pressed="false">Vista compacta</button><button id="print" type="button">Imprimir</button><span class="count"><b id="visible-count">30</b> / 30 tarjetas</span></nav>
+<main>
+<article class="script-card" id="slide-01" data-search="01 portada &quot;esta clase tiene dos temas. el primero es un vocabulario de cinco elementos. el segundo es esta figura, que se llama cono cognitivo.
+
+al terminar, van a poder tomar una enfermedad crónica y decir cuál de los cinco elementos se degradó y cuánto se redujo este cono.&quot;   ">
+  <header class="card-head">
+    <div><span class="slide-number">01</span><span class="section-name">La pregunta</span></div>
+    <div class="card-meta"><span class="time">30 s</span></div>
+  </header>
+  <h2>Portada</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Esta clase tiene dos temas. El primero es un vocabulario de cinco elementos. El segundo es esta figura, que se llama cono cognitivo.</p><p>Al terminar, van a poder tomar una enfermedad crónica y decir cuál de los cinco elementos se degradó y cuánto se redujo este cono.&quot;</p></div>
+  </section>
+  
+  
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 01 · Portada
+
+**Tiempo:** 30 s
+
+🖼️ **[IMG-01]**
+Un cono de luz sale del ojo de una silueta humana de perfil y se abre hacia la derecha. Dentro del cono, tres objetos de tamaño creciente: un islote pancreático, una calle, un grupo familiar. Fuera del cono, negro. Título sobre la zona oscura.
+*Idea única: lo que un sistema puede tomar en cuenta tiene forma de cono.*
+
+🗣️ **Guion:**
+&gt; &quot;Esta clase tiene dos temas. El primero es un vocabulario de cinco elementos. El segundo es esta figura, que se llama cono cognitivo.
+&gt;
+&gt; Al terminar, van a poder tomar una enfermedad crónica y decir cuál de los cinco elementos se degradó y cuánto se redujo este cono.&quot;
+
+➡️ &quot;Empiezo con una situación clínica frecuente.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-02" data-search="02 el caso inicial &quot;paciente con diabetes tipo 2 de doce años. le bajas la glucosa y sube. se la vuelves a bajar y vuelve a subir. y sube con fuerza, hasta un valor concreto.
+
+piensen qué hace falta para que eso ocurra. para subir la glucosa se necesita que el hígado rompa glucógeno, que se libere glucagón y que las señales lleguen a destino. es decir, se necesitan efectores funcionando.
+
+un sistema con los efectores dañados no hace eso. un sistema con los efectores dañados se queda en el valor donde lo dejaste.
+
+conclusión: esa respuesta que nos frustra en la consulta es evidencia de que la maquinaria funciona.&quot; regla de asignación del marco: si el sistema regresa activamente a un valor después de que lo desvías, ese valor pertenece a $e$, la evaluación. la contrarregulación es firma de $e$, no de daño en $o$. si el valor vuelve por sí solo después de moverlo, el cuerpo está trabajando para recuperarlo. como un termostato que vuelve a su temperatura aunque abras una ventana. rebote activo = existe control; no demuestra por sí mismo una pieza rota. el rebote requiere una cadena causal funcionando">
+  <header class="card-head">
+    <div><span class="slide-number">02</span><span class="section-name">La pregunta</span></div>
+    <div class="card-meta"><span class="diagram-badge">Pizarra · D</span><span class="time">3 min</span></div>
+  </header>
+  <h2>El caso inicial</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Paciente con diabetes tipo 2 de doce años. Le bajas la glucosa y sube. Se la vuelves a bajar y vuelve a subir. Y sube con fuerza, hasta un valor concreto.</p><p>Piensen qué hace falta para que eso ocurra. Para subir la glucosa se necesita que el hígado rompa glucógeno, que se libere glucagón y que las señales lleguen a destino. Es decir, se necesitan efectores funcionando.</p><p>Un sistema con los efectores dañados no hace eso. Un sistema con los efectores dañados se queda en el valor donde lo dejaste.</p><p>Conclusión: esa respuesta que nos frustra en la consulta es evidencia de que la maquinaria funciona.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>Si el valor vuelve por sí solo después de moverlo, el cuerpo está trabajando para recuperarlo.</p></div><div><b>Ejemplo</b><p>Como un termostato que vuelve a su temperatura aunque abras una ventana.</p></div><div><b>Qué observar</b><p>Rebote activo = existe control; no demuestra por sí mismo una pieza rota.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>Regla de asignación del marco: si el sistema regresa activamente a un valor después de que lo desvías, ese valor pertenece a <span class="formula">E</span>, la evaluación. La contrarregulación es firma de <span class="formula">E</span>, no de daño en <span class="formula">O</span>.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 02 · El caso inicial
+
+**Tiempo:** 3 min
+
+🖼️ **[IMG-02]**
+Dos paneles. Izquierda: un motor desarmado con piezas rotas en el suelo; etiqueta *&quot;lo que esperamos encontrar&quot;*. Derecha: el mismo motor completo y limpio, encerrado tras una reja soldada; etiqueta *&quot;lo que encontramos&quot;*.
+*Idea única: el problema no está en las piezas.*
+
+🗣️ **Guion:**
+&gt; &quot;Paciente con diabetes tipo 2 de doce años. Le bajas la glucosa y sube. Se la vuelves a bajar y vuelve a subir. Y sube con fuerza, hasta un valor concreto.
+&gt;
+&gt; Piensen qué hace falta para que eso ocurra. Para subir la glucosa se necesita que el hígado rompa glucógeno, que se libere glucagón y que las señales lleguen a destino. Es decir, se necesitan efectores funcionando.
+&gt;
+&gt; Un sistema con los efectores dañados no hace eso. Un sistema con los efectores dañados se queda en el valor donde lo dejaste.
+&gt;
+&gt; Conclusión: esa respuesta que nos frustra en la consulta es evidencia de que la maquinaria funciona.&quot;
+
+🎓 **Capa experta:**
+&gt; Regla de asignación del marco: si el sistema regresa activamente a un valor después de que lo desvías, ese valor pertenece a $E$, la evaluación. La contrarregulación es firma de $E$, no de daño en $O$.
+
+❓ &quot;¿A cuántos les ha pasado, y lo interpretaron como falta de adherencia o como progresión de la enfermedad?&quot;
+
+➡️ &quot;Si la maquinaria funciona y el resultado es malo, lo que falla es otra cosa. Para nombrarla hace falta vocabulario.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-03" data-search="03 la tesis &quot;la tesis de la clase es esta:
+
+en muchas enfermedades crónicas la maquinaria está intacta. lo que se degrada es la información: qué caminos están disponibles, qué meta se persigue y cuánto se ve adelante.
+
+el sistema no falla por incompetencia. falla porque perdió la capacidad de volver a plantearse el problema.
+
+aclaro el alcance, porque importa. esto aplica a enfermedades con tres rasgos: hay una variable que el cuerpo defiende activamente, hay varias escalas involucradas, y la resistencia al tratamiento tiene forma de contrarregulación.
+
+no aplica a lesión aguda, ni a déficit genético de un solo producto, ni a infección con un agente externo dominante, ni a trauma.&quot;  un resultado malo puede provenir de instrucciones equivocadas aunque la maquinaria responda bien. el sistema conserva potencia, pero usa caminos, metas o tiempos que ya no convienen. esta lectura solo se propone cuando hay regulación activa y varias escalas implicadas. ">
+  <header class="card-head">
+    <div><span class="slide-number">03</span><span class="section-name">La pregunta</span></div>
+    <div class="card-meta"><span class="time">1.5 min</span></div>
+  </header>
+  <h2>La tesis</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;La tesis de la clase es esta:</p><p>En muchas enfermedades crónicas la maquinaria está intacta. Lo que se degrada es la información: qué caminos están disponibles, qué meta se persigue y cuánto se ve adelante.</p><p>El sistema no falla por incompetencia. Falla porque perdió la capacidad de volver a plantearse el problema.</p><p>Aclaro el alcance, porque importa. Esto aplica a enfermedades con tres rasgos: hay una variable que el cuerpo defiende activamente, hay varias escalas involucradas, y la resistencia al tratamiento tiene forma de contrarregulación.</p><p>No aplica a lesión aguda, ni a déficit genético de un solo producto, ni a infección con un agente externo dominante, ni a trauma.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>Un resultado malo puede provenir de instrucciones equivocadas aunque la maquinaria responda bien.</p></div><div><b>Ejemplo</b><p>El sistema conserva potencia, pero usa caminos, metas o tiempos que ya no convienen.</p></div><div><b>Qué observar</b><p>Esta lectura solo se propone cuando hay regulación activa y varias escalas implicadas.</p></div></div></section>
+  
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 03 · La tesis
+
+**Tiempo:** 1.5 min
+
+🖼️ **[IMG-03]**
+Solo texto sobre fondo crudo. La afirmación central en negro. Debajo, tres palabras grandes en ámbar, separadas: *caminos · meta · horizonte*.
+*Idea única: la frase es el contenido de la slide.*
+
+🗣️ **Guion:**
+&gt; &quot;La tesis de la clase es esta:
+&gt;
+&gt; En muchas enfermedades crónicas la maquinaria está intacta. Lo que se degrada es la información: qué caminos están disponibles, qué meta se persigue y cuánto se ve adelante.
+&gt;
+&gt; El sistema no falla por incompetencia. Falla porque perdió la capacidad de volver a plantearse el problema.
+&gt;
+&gt; Aclaro el alcance, porque importa. Esto aplica a enfermedades con tres rasgos: hay una variable que el cuerpo defiende activamente, hay varias escalas involucradas, y la resistencia al tratamiento tiene forma de contrarregulación.
+&gt;
+&gt; No aplica a lesión aguda, ni a déficit genético de un solo producto, ni a infección con un agente externo dominante, ni a trauma.&quot;
+
+➡️ &quot;Vamos a convertir 'caminos, meta y horizonte' en algo definido. Empiezo con un taxi.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-04" data-search="04 la metáfora base &quot;un taxista en ciudad de méxico. la pregunta '¿qué tan bueno es?' es vaga. pero si la descomponemos, resulta que todo taxista se describe con exactamente cinco elementos. y el mismo esquema describe a tu páncreas.
+
+se escribe p igual a s, o, c, e, h. son estados, operadores, restricciones, evaluación y horizonte. los veo uno por uno.&quot; es la formulación clásica de espacio-problema de los años setenta. esa versión trataba solo $s$ y $o$ como partes del problema; $c$, $e$ y $h$ eran consideradas detalles de estrategia. levin y chis-ciure las incorporaron como elementos de primer orden. la razón está en la slide 11. todo sistema regulado necesita posibilidades, acciones, reglas, un criterio y alguna anticipación. taxi: mapa, movimientos, calles permitidas, destino y tráfico que puede prever. las cinco preguntas describen el problema antes de intentar corregirlo. ">
+  <header class="card-head">
+    <div><span class="slide-number">04</span><span class="section-name">El quíntuple</span></div>
+    <div class="card-meta"><span class="time">2 min</span></div>
+  </header>
+  <h2>La metáfora base</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Un taxista en Ciudad de México. La pregunta '¿qué tan bueno es?' es vaga. Pero si la descomponemos, resulta que todo taxista se describe con exactamente cinco elementos. Y el mismo esquema describe a tu páncreas.</p><p>Se escribe P igual a S, O, C, E, H. Son estados, operadores, restricciones, evaluación y horizonte. Los veo uno por uno.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>Todo sistema regulado necesita posibilidades, acciones, reglas, un criterio y alguna anticipación.</p></div><div><b>Ejemplo</b><p>Taxi: mapa, movimientos, calles permitidas, destino y tráfico que puede prever.</p></div><div><b>Qué observar</b><p>Las cinco preguntas describen el problema antes de intentar corregirlo.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>Es la formulación clásica de espacio-problema de los años setenta. Esa versión trataba solo <span class="formula">S</span> y <span class="formula">O</span> como partes del problema; <span class="formula">C</span>, <span class="formula">E</span> y <span class="formula">H</span> eran consideradas detalles de estrategia. Levin y Chis-Ciure las incorporaron como elementos de primer orden. La razón está en la slide 11.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 04 · La metáfora base
+
+**Tiempo:** 2 min
+
+🖼️ **[IMG-04]**
+Vista cenital de una retícula de calles. Un taxi como punto azul en una esquina. Un destino marcado con un pin ámbar. Algunas calles tachadas. En una esquina, en pequeño: *P = ⟨S, O, C, E, H⟩*.
+*Idea única: un problema es un mapa, un vehículo y un destino.*
+
+🗣️ **Guion:**
+&gt; &quot;Un taxista en Ciudad de México. La pregunta '¿qué tan bueno es?' es vaga. Pero si la descomponemos, resulta que todo taxista se describe con exactamente cinco elementos. Y el mismo esquema describe a tu páncreas.
+&gt;
+&gt; Se escribe P igual a S, O, C, E, H. Son estados, operadores, restricciones, evaluación y horizonte. Los veo uno por uno.&quot;
+
+🎓 **Capa experta:**
+&gt; Es la formulación clásica de espacio-problema de los años setenta. Esa versión trataba solo $S$ y $O$ como partes del problema; $C$, $E$ y $H$ eran consideradas detalles de estrategia. Levin y Chis-Ciure las incorporaron como elementos de primer orden. La razón está en la slide 11.
+
+➡️ &quot;Primer elemento.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-05" data-search="05 s — los estados &quot;s es el conjunto de todos los lugares donde el taxi podría estar. cada esquina, cada cuadra.
+
+dos subconjuntos importan: dónde está ahora, y a dónde quiere llegar.
+
+y un detalle que se pasa por alto: la meta normalmente no es un punto, son varios. 'llegar al aeropuerto' incluye terminal 1 o terminal 2, por circuito o por viaducto. varios estados distintos cuentan como haber llegado.
+
+en el cuerpo, s es cada combinación posible de glucosa, insulina, glucagón, grasa en sangre, glucógeno y tono nervioso. con diez variables y diez niveles por variable, s tiene diez mil millones de configuraciones.
+
+en una vida, s son todos los estados en que una persona podría estar: con este trabajo o con otro, en esta ciudad o en otra.&quot;  s no es “el estado actual”: es el catálogo completo de estados en los que el sistema podría estar. glucosa alta con insulina alta y glucosa alta con insulina baja son estados diferentes. la meta suele ser un conjunto de estados aceptables, no un único número. ">
+  <header class="card-head">
+    <div><span class="slide-number">05</span><span class="section-name">El quíntuple</span></div>
+    <div class="card-meta"><span class="time">2.5 min</span></div>
+  </header>
+  <h2>S — los estados</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;S es el conjunto de todos los lugares donde el taxi podría estar. Cada esquina, cada cuadra.</p><p>Dos subconjuntos importan: dónde está ahora, y a dónde quiere llegar.</p><p>Y un detalle que se pasa por alto: la meta normalmente no es un punto, son varios. 'Llegar al aeropuerto' incluye Terminal 1 o Terminal 2, por Circuito o por Viaducto. Varios estados distintos cuentan como haber llegado.</p><p>En el cuerpo, S es cada combinación posible de glucosa, insulina, glucagón, grasa en sangre, glucógeno y tono nervioso. Con diez variables y diez niveles por variable, S tiene diez mil millones de configuraciones.</p><p>En una vida, S son todos los estados en que una persona podría estar: con este trabajo o con otro, en esta ciudad o en otra.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>S no es “el estado actual”: es el catálogo completo de estados en los que el sistema podría estar.</p></div><div><b>Ejemplo</b><p>Glucosa alta con insulina alta y glucosa alta con insulina baja son estados diferentes.</p></div><div><b>Qué observar</b><p>La meta suele ser un conjunto de estados aceptables, no un único número.</p></div></div></section>
+  
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 05 · S — los estados
+
+**Tiempo:** 2.5 min
+
+🖼️ **[IMG-05]**
+La misma retícula, ahora con un punto en cada esquina: cientos de puntos. Tres de ellos, agrupados, en ámbar, unidos por una llave con la etiqueta *meta*.
+*Idea única: la meta no es un punto, es un conjunto de puntos.*
+
+🗣️ **Guion:**
+&gt; &quot;S es el conjunto de todos los lugares donde el taxi podría estar. Cada esquina, cada cuadra.
+&gt;
+&gt; Dos subconjuntos importan: dónde está ahora, y a dónde quiere llegar.
+&gt;
+&gt; Y un detalle que se pasa por alto: la meta normalmente no es un punto, son varios. 'Llegar al aeropuerto' incluye Terminal 1 o Terminal 2, por Circuito o por Viaducto. Varios estados distintos cuentan como haber llegado.
+&gt;
+&gt; En el cuerpo, S es cada combinación posible de glucosa, insulina, glucagón, grasa en sangre, glucógeno y tono nervioso. Con diez variables y diez niveles por variable, S tiene diez mil millones de configuraciones.
+&gt;
+&gt; En una vida, S son todos los estados en que una persona podría estar: con este trabajo o con otro, en esta ciudad o en otra.&quot;
+
+➡️ &quot;Ese es el mapa. Ahora, los movimientos.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-06" data-search="06 o — los operadores, y w, su costo &quot;o es el repertorio de acciones disponibles: avanzar, dar vuelta, retroceder.
+
+cada acción tiene un costo. ese costo se llama w, y se paga en gasolina, minutos o desgaste.
+
+en el cuerpo, o es secretar insulina, suprimirla, liberar glucagón, captar glucosa en el músculo, romper glucógeno en el hígado, sentir hambre. el costo w se paga en atp, en desgaste de la célula beta y en riesgo de hipoglucemia.
+
+en una vida, pedir ayuda es un operador. para muchas personas es un operador con costo muy alto. no está prohibido: es caro. esa distinción entre 'caro' y 'prohibido' es el siguiente elemento.&quot; $s$ y $o$ son maquinaria. $c$, $e$ y $h$ son información. la partición completa está en la slide 11. o responde qué puede hacer el sistema; w responde cuánto cuesta cada acción. pedir ayuda puede estar permitido y, aun así, tener un costo emocional muy alto. “caro” y “prohibido” producen conductas parecidas, pero no son el mismo problema. ">
+  <header class="card-head">
+    <div><span class="slide-number">06</span><span class="section-name">El quíntuple</span></div>
+    <div class="card-meta"><span class="time">2.5 min</span></div>
+  </header>
+  <h2>O — los operadores, y w, su costo</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;O es el repertorio de acciones disponibles: avanzar, dar vuelta, retroceder.</p><p>Cada acción tiene un costo. Ese costo se llama w, y se paga en gasolina, minutos o desgaste.</p><p>En el cuerpo, O es secretar insulina, suprimirla, liberar glucagón, captar glucosa en el músculo, romper glucógeno en el hígado, sentir hambre. El costo w se paga en ATP, en desgaste de la célula beta y en riesgo de hipoglucemia.</p><p>En una vida, pedir ayuda es un operador. Para muchas personas es un operador con costo muy alto. No está prohibido: es caro. Esa distinción entre 'caro' y 'prohibido' es el siguiente elemento.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>O responde qué puede hacer el sistema; w responde cuánto cuesta cada acción.</p></div><div><b>Ejemplo</b><p>Pedir ayuda puede estar permitido y, aun así, tener un costo emocional muy alto.</p></div><div><b>Qué observar</b><p>“Caro” y “prohibido” producen conductas parecidas, pero no son el mismo problema.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p><span class="formula">S</span> y <span class="formula">O</span> son maquinaria. <span class="formula">C</span>, <span class="formula">E</span> y <span class="formula">H</span> son información. La partición completa está en la slide 11.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 06 · O — los operadores, y w, su costo
+
+**Tiempo:** 2.5 min
+
+🖼️ **[IMG-06]**
+Cuatro flechas azules desde un punto: recta, giro, vuelta en U, retroceso. Sobre cada flecha, un ícono de gota de combustible de tamaño distinto. La gota de la vuelta en U es la más grande.
+*Idea única: cada movimiento existe y cada movimiento tiene un precio.*
+
+🗣️ **Guion:**
+&gt; &quot;O es el repertorio de acciones disponibles: avanzar, dar vuelta, retroceder.
+&gt;
+&gt; Cada acción tiene un costo. Ese costo se llama w, y se paga en gasolina, minutos o desgaste.
+&gt;
+&gt; En el cuerpo, O es secretar insulina, suprimirla, liberar glucagón, captar glucosa en el músculo, romper glucógeno en el hígado, sentir hambre. El costo w se paga en ATP, en desgaste de la célula beta y en riesgo de hipoglucemia.
+&gt;
+&gt; En una vida, pedir ayuda es un operador. Para muchas personas es un operador con costo muy alto. No está prohibido: es caro. Esa distinción entre 'caro' y 'prohibido' es el siguiente elemento.&quot;
+
+🎓 **Capa experta:**
+&gt; $S$ y $O$ son maquinaria. $C$, $E$ y $H$ son información. La partición completa está en la slide 11.
+
+➡️ &quot;Tercer elemento. Es el que decide la mayor parte de la clase.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-07" data-search="07 c — las restricciones &quot;c indica qué movimientos están prohibidos: sentidos únicos, la avenida cerrada, la calle bloqueada.
+
+dos ideas aquí.
+
+primera: las restricciones no son fallas. son lo que define el problema. si quitas todos los sentidos únicos de la ciudad, no liberas al taxista: eliminas la ciudad. queda un llano sin rutas.
+
+segunda: cambiar las restricciones modifica el problema más que cambiar los movimientos. si abres una calle cerrada, se vuelven alcanzables muchas rutas que antes no existían. si le enseñas al taxista un movimiento nuevo, ganas menos. el repertorio crece por suma; la cantidad de destinos alcanzables crece por combinación.
+
+la misma idea en cocina: un cocinero atorado no se desatora aprendiendo una técnica nueva. se desatora abriendo la despensa. con cuatro ingredientes, dominar treinta técnicas no cambia el resultado.
+
+en el cuerpo, c es cuánta insulina puede secretar el páncreas como máximo, qué tan rápido difunde una hormona, qué órgano tiene prioridad cuando escasea la glucosa, y qué tan acopladas están entre sí las células del islote.&quot; existe formalización disponible: la organización biológica como clausura de restricciones (montévil y mossio). es un régimen causal circular donde las restricciones se hacen mutuamente interdependientes, y no son solo moléculas: también son fuerzas biofísicas.
+
+a esto se suma una inversión tomada de la teoría del campo de organización tisular: el estado por defecto de toda célula es la proliferación con variación y motilidad. por lo tanto, proliferar y moverse no requieren explicación. lo que requiere explicación es por qué las células no lo hacen. de ahí la corrección central de la versión 3.0 del marco: $c$ no es un límite impuesto a la regulación; $c$ es la regulación. una restricción separa los movimientos posibles de los imposibles y también organiza el sistema. los carriles y sentidos únicos limitan al taxi, pero hacen que la ciudad sea navegable. abrir una sola ruta puede recuperar muchos destinos sin añadir una capacidad nueva. abrir una sola compuerta cambia muchos destinos">
+  <header class="card-head">
+    <div><span class="slide-number">07</span><span class="section-name">El quíntuple</span></div>
+    <div class="card-meta"><span class="diagram-badge">Pizarra · D</span><span class="time">4 min · slide clave</span></div>
+  </header>
+  <h2>C — las restricciones</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;C indica qué movimientos están prohibidos: sentidos únicos, la avenida cerrada, la calle bloqueada.</p><p>Dos ideas aquí.</p><p>Primera: las restricciones no son fallas. Son lo que define el problema. Si quitas todos los sentidos únicos de la ciudad, no liberas al taxista: eliminas la ciudad. Queda un llano sin rutas.</p><p>Segunda: cambiar las restricciones modifica el problema más que cambiar los movimientos. Si abres una calle cerrada, se vuelven alcanzables muchas rutas que antes no existían. Si le enseñas al taxista un movimiento nuevo, ganas menos. El repertorio crece por suma; la cantidad de destinos alcanzables crece por combinación.</p><p>La misma idea en cocina: un cocinero atorado no se desatora aprendiendo una técnica nueva. Se desatora abriendo la despensa. Con cuatro ingredientes, dominar treinta técnicas no cambia el resultado.</p><p>En el cuerpo, C es cuánta insulina puede secretar el páncreas como máximo, qué tan rápido difunde una hormona, qué órgano tiene prioridad cuando escasea la glucosa, y qué tan acopladas están entre sí las células del islote.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>Una restricción separa los movimientos posibles de los imposibles y también organiza el sistema.</p></div><div><b>Ejemplo</b><p>Los carriles y sentidos únicos limitan al taxi, pero hacen que la ciudad sea navegable.</p></div><div><b>Qué observar</b><p>Abrir una sola ruta puede recuperar muchos destinos sin añadir una capacidad nueva.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>Existe formalización disponible: la organización biológica como clausura de restricciones (Montévil y Mossio). Es un régimen causal circular donde las restricciones se hacen mutuamente interdependientes, y no son solo moléculas: también son fuerzas biofísicas.</p><p>A esto se suma una inversión tomada de la teoría del campo de organización tisular: el estado por defecto de toda célula es la proliferación con variación y motilidad. Por lo tanto, proliferar y moverse no requieren explicación. Lo que requiere explicación es por qué las células no lo hacen. De ahí la corrección central de la versión 3.0 del marco: <span class="formula">C</span> no es un límite impuesto a la regulación; <span class="formula">C</span> es la regulación.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 07 · C — las restricciones
+
+**Tiempo:** 4 min · **slide clave**
+
+🖼️ **[IMG-07]**
+Dos paneles. Derecha: la retícula con tres calles tachadas en ámbar; el taxi tiene rutas definidas. Izquierda: un llano vacío sin calles, con el taxi solo en el centro; etiqueta *&quot;sin restricciones&quot;*.
+*Idea única: sin restricciones no hay ciudad. Las restricciones son lo que hace que exista el problema.*
+
+🗣️ **Guion:**
+&gt; &quot;C indica qué movimientos están prohibidos: sentidos únicos, la avenida cerrada, la calle bloqueada.
+&gt;
+&gt; Dos ideas aquí.
+&gt;
+&gt; Primera: las restricciones no son fallas. Son lo que define el problema. Si quitas todos los sentidos únicos de la ciudad, no liberas al taxista: eliminas la ciudad. Queda un llano sin rutas.
+&gt;
+&gt; Segunda: cambiar las restricciones modifica el problema más que cambiar los movimientos. Si abres una calle cerrada, se vuelven alcanzables muchas rutas que antes no existían. Si le enseñas al taxista un movimiento nuevo, ganas menos. El repertorio crece por suma; la cantidad de destinos alcanzables crece por combinación.
+&gt;
+&gt; La misma idea en cocina: un cocinero atorado no se desatora aprendiendo una técnica nueva. Se desatora abriendo la despensa. Con cuatro ingredientes, dominar treinta técnicas no cambia el resultado.
+&gt;
+&gt; En el cuerpo, C es cuánta insulina puede secretar el páncreas como máximo, qué tan rápido difunde una hormona, qué órgano tiene prioridad cuando escasea la glucosa, y qué tan acopladas están entre sí las células del islote.&quot;
+
+🎓 **Capa experta:**
+&gt; Existe formalización disponible: la organización biológica como clausura de restricciones (Montévil y Mossio). Es un régimen causal circular donde las restricciones se hacen mutuamente interdependientes, y no son solo moléculas: también son fuerzas biofísicas.
+&gt;
+&gt; A esto se suma una inversión tomada de la teoría del campo de organización tisular: el estado por defecto de toda célula es la proliferación con variación y motilidad. Por lo tanto, proliferar y moverse no requieren explicación. Lo que requiere explicación es por qué las células no lo hacen. De ahí la corrección central de la versión 3.0 del marco: $C$ no es un límite impuesto a la regulación; $C$ es la regulación.
+
+➡️ &quot;Cuarto elemento.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-08" data-search="08 e — la evaluación &quot;e es el criterio con el que el sistema decide si un estado es bueno o malo. no es la meta escrita en un plan: es el criterio interno con el que juzga cada momento.
+
+el taxista no tiene la dirección correcta. tiene la dirección que él considera correcta.
+
+si alguien escribió mal la dirección en el gps, el taxista va a manejar bien, con toda su pericia disponible, hacia el lugar equivocado. y cada vez que se desvíe de esa ruta errónea, va a corregir con energía.
+
+ese taxista no es malo. es competente, y está resolviendo un problema mal planteado.
+
+en el cuerpo, e es la glucemia que tu cerebro defiende, es decir, el valor al que regresa activamente si lo desvías. en una persona sana ronda 90 mg/dl. en diabetes tipo 2 ese valor sube, y el cerebro lo defiende con la misma eficacia.
+
+el termostato no se descompuso. el valor de referencia cambió.
+
+eso es lo que estábamos viendo en la slide 2.&quot; &quot;creencia&quot; se usa aquí como andamio didáctico. el término técnico del marco es prior alostático. la consecuencia terapéutica es concreta: cuando $e$ está desplazada, forzar el sistema produce contrarregulación. el perfil correcto es reanclar el valor de referencia, no aumentar la presión. e es la regla interna con la que el sistema decide si ya corrigió el problema. un gps con la dirección equivocada puede guiar con precisión al lugar incorrecto. correcciones enérgicas hacia el mismo valor sugieren una meta defendida. ">
+  <header class="card-head">
+    <div><span class="slide-number">08</span><span class="section-name">El quíntuple</span></div>
+    <div class="card-meta"><span class="time">3.5 min · slide clave</span></div>
+  </header>
+  <h2>E — la evaluación</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;E es el criterio con el que el sistema decide si un estado es bueno o malo. No es la meta escrita en un plan: es el criterio interno con el que juzga cada momento.</p><p>El taxista no tiene la dirección correcta. Tiene la dirección que él considera correcta.</p><p>Si alguien escribió mal la dirección en el GPS, el taxista va a manejar bien, con toda su pericia disponible, hacia el lugar equivocado. Y cada vez que se desvíe de esa ruta errónea, va a corregir con energía.</p><p>Ese taxista no es malo. Es competente, y está resolviendo un problema mal planteado.</p><p>En el cuerpo, E es la glucemia que tu cerebro defiende, es decir, el valor al que regresa activamente si lo desvías. En una persona sana ronda 90 mg/dL. En diabetes tipo 2 ese valor sube, y el cerebro lo defiende con la misma eficacia.</p><p>El termostato no se descompuso. El valor de referencia cambió.</p><p>Eso es lo que estábamos viendo en la slide 2.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>E es la regla interna con la que el sistema decide si ya corrigió el problema.</p></div><div><b>Ejemplo</b><p>Un GPS con la dirección equivocada puede guiar con precisión al lugar incorrecto.</p></div><div><b>Qué observar</b><p>Correcciones enérgicas hacia el mismo valor sugieren una meta defendida.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>&quot;Creencia&quot; se usa aquí como andamio didáctico. El término técnico del marco es prior alostático. La consecuencia terapéutica es concreta: cuando <span class="formula">E</span> está desplazada, forzar el sistema produce contrarregulación. El perfil correcto es reanclar el valor de referencia, no aumentar la presión.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 08 · E — la evaluación
+
+**Tiempo:** 3.5 min · **slide clave**
+
+🖼️ **[IMG-08]**
+Un GPS de tablero visto de frente. Una ruta trazada con precisión en ámbar hacia un destino. En la esquina opuesta, pequeño y gris, el destino real. El taxi va exactamente sobre la línea ámbar.
+*Idea única: ejecución correcta hacia un destino equivocado.*
+
+🗣️ **Guion:**
+&gt; &quot;E es el criterio con el que el sistema decide si un estado es bueno o malo. No es la meta escrita en un plan: es el criterio interno con el que juzga cada momento.
+&gt;
+&gt; El taxista no tiene la dirección correcta. Tiene la dirección que él considera correcta.
+&gt;
+&gt; Si alguien escribió mal la dirección en el GPS, el taxista va a manejar bien, con toda su pericia disponible, hacia el lugar equivocado. Y cada vez que se desvíe de esa ruta errónea, va a corregir con energía.
+&gt;
+&gt; Ese taxista no es malo. Es competente, y está resolviendo un problema mal planteado.
+&gt;
+&gt; En el cuerpo, E es la glucemia que tu cerebro defiende, es decir, el valor al que regresa activamente si lo desvías. En una persona sana ronda 90 mg/dL. En diabetes tipo 2 ese valor sube, y el cerebro lo defiende con la misma eficacia.
+&gt;
+&gt; El termostato no se descompuso. El valor de referencia cambió.
+&gt;
+&gt; Eso es lo que estábamos viendo en la slide 2.&quot;
+
+🎓 **Capa experta:**
+&gt; &quot;Creencia&quot; se usa aquí como andamio didáctico. El término técnico del marco es prior alostático. La consecuencia terapéutica es concreta: cuando $E$ está desplazada, forzar el sistema produce contrarregulación. El perfil correcto es reanclar el valor de referencia, no aumentar la presión.
+
+❓ &quot;En teatro pasa lo mismo: un actor con la intención equivocada no actúa mal, actúa bien hacia el lugar equivocado, y no se corrige con notas de ejecución. ¿Alguien ha dirigido y ha visto eso?&quot;
+
+➡️ &quot;Quinto y último elemento del quíntuple.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-09" data-search="09 h — el horizonte &quot;h es cuánto puede anticipar el sistema.
+
+dos taxistas. el primero ve solo la esquina siguiente: se topa con el tráfico y reacciona. el segundo escuchó el radio, sabe que hay un bloqueo y se desvía diez cuadras antes.
+
+mismo coche, mismo mapa, mismas calles. el segundo llega antes porque ve más lejos.
+
+y aquí está lo importante: h no es una virtud del carácter. h es consecuencia de qué información llega al sistema y con cuánto retraso. si le apagas el radio, su h disminuye. no se volvió menos inteligente: perdió una línea de información.
+
+en el cuerpo, hay un nervio que va del hígado al cerebro. cuando esa vía deja de informar, el sistema pierde anticipación y pasa a responder solo después del desvío.
+
+en una vida, una persona que no puede planear a seis meses porque no sabe si va a cobrar la quincena no tiene un problema de disciplina. tiene una línea de información cortada.&quot; esto está cuantificado. una ameba tiene $h \approx 1$: su horizonte está fijado por el tiempo que tarda una molécula en difundir a través de su propio cuerpo. una planaria tiene $h \approx 22{,}000$, porque su reloj interno es la división celular, más lenta y capaz de sostener planes largos. son cuatro órdenes de magnitud de diferencia, derivados de constantes físicas medibles.
+
+el mejor marcador clínico de $h$ es la respuesta anticipatoria: actividad del efector antes de que la variable se desvíe. su pérdida se anota como $\delta_h$. h es cuánto futuro relevante entra en la decisión antes de que ocurra el desvío. con radio, el taxista evita el bloqueo; sin radio, solo reacciona cuando llega. anticipar y reaccionar pueden usar la misma maquinaria; cambia la información disponible. ">
+  <header class="card-head">
+    <div><span class="slide-number">09</span><span class="section-name">El quíntuple</span></div>
+    <div class="card-meta"><span class="time">3.5 min</span></div>
+  </header>
+  <h2>H — el horizonte</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;H es cuánto puede anticipar el sistema.</p><p>Dos taxistas. El primero ve solo la esquina siguiente: se topa con el tráfico y reacciona. El segundo escuchó el radio, sabe que hay un bloqueo y se desvía diez cuadras antes.</p><p>Mismo coche, mismo mapa, mismas calles. El segundo llega antes porque ve más lejos.</p><p>Y aquí está lo importante: H no es una virtud del carácter. H es consecuencia de qué información llega al sistema y con cuánto retraso. Si le apagas el radio, su H disminuye. No se volvió menos inteligente: perdió una línea de información.</p><p>En el cuerpo, hay un nervio que va del hígado al cerebro. Cuando esa vía deja de informar, el sistema pierde anticipación y pasa a responder solo después del desvío.</p><p>En una vida, una persona que no puede planear a seis meses porque no sabe si va a cobrar la quincena no tiene un problema de disciplina. Tiene una línea de información cortada.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>H es cuánto futuro relevante entra en la decisión antes de que ocurra el desvío.</p></div><div><b>Ejemplo</b><p>Con radio, el taxista evita el bloqueo; sin radio, solo reacciona cuando llega.</p></div><div><b>Qué observar</b><p>Anticipar y reaccionar pueden usar la misma maquinaria; cambia la información disponible.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>Esto está cuantificado. Una ameba tiene <span class="formula">H \approx 1</span>: su horizonte está fijado por el tiempo que tarda una molécula en difundir a través de su propio cuerpo. Una planaria tiene <span class="formula">H \approx 22{,}000</span>, porque su reloj interno es la división celular, más lenta y capaz de sostener planes largos. Son cuatro órdenes de magnitud de diferencia, derivados de constantes físicas medibles.</p><p>El mejor marcador clínico de <span class="formula">H</span> es la respuesta anticipatoria: actividad del efector antes de que la variable se desvíe. Su pérdida se anota como <span class="formula">\delta_H</span>.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 09 · H — el horizonte
+
+**Tiempo:** 3.5 min
+
+🖼️ **[IMG-09]**
+Dos taxis idénticos en la misma avenida. El primero tiene un arco de visión de una cuadra y choca de frente con una barrera. El segundo tiene un arco de visión ámbar de diez cuadras que incluye la barrera, y ya está tomando una lateral.
+*Idea única: mismo vehículo y mismo mapa; lo único distinto es cuánto se ve adelante.*
+
+🗣️ **Guion:**
+&gt; &quot;H es cuánto puede anticipar el sistema.
+&gt;
+&gt; Dos taxistas. El primero ve solo la esquina siguiente: se topa con el tráfico y reacciona. El segundo escuchó el radio, sabe que hay un bloqueo y se desvía diez cuadras antes.
+&gt;
+&gt; Mismo coche, mismo mapa, mismas calles. El segundo llega antes porque ve más lejos.
+&gt;
+&gt; Y aquí está lo importante: H no es una virtud del carácter. H es consecuencia de qué información llega al sistema y con cuánto retraso. Si le apagas el radio, su H disminuye. No se volvió menos inteligente: perdió una línea de información.
+&gt;
+&gt; En el cuerpo, hay un nervio que va del hígado al cerebro. Cuando esa vía deja de informar, el sistema pierde anticipación y pasa a responder solo después del desvío.
+&gt;
+&gt; En una vida, una persona que no puede planear a seis meses porque no sabe si va a cobrar la quincena no tiene un problema de disciplina. Tiene una línea de información cortada.&quot;
+
+🎓 **Capa experta:**
+&gt; Esto está cuantificado. Una ameba tiene $H \approx 1$: su horizonte está fijado por el tiempo que tarda una molécula en difundir a través de su propio cuerpo. Una planaria tiene $H \approx 22{,}000$, porque su reloj interno es la división celular, más lenta y capaz de sostener planes largos. Son cuatro órdenes de magnitud de diferencia, derivados de constantes físicas medibles.
+&gt;
+&gt; El mejor marcador clínico de $H$ es la respuesta anticipatoria: actividad del efector antes de que la variable se desvíe. Su pérdida se anota como $\delta_H$.
+
+➡️ &quot;Los cinco elementos, juntos.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-10" data-search="10 la tabla completa &quot;esta es la slide de referencia. tómenle foto.
+
+s: todas las esquinas. en el cuerpo, todos los estados metabólicos posibles.
+o: avanzar, girar, frenar. en el cuerpo, secretar, captar, movilizar.
+c: calles cerradas. en el cuerpo, capacidad máxima, acoplamientos y prioridades.
+e: la dirección en el gps. en el cuerpo, la glucemia que el cerebro defiende.
+h: cuántas cuadras ve adelante. en el cuerpo, cuánto puede anticipar.&quot;   ">
+  <header class="card-head">
+    <div><span class="slide-number">10</span><span class="section-name">El quíntuple</span></div>
+    <div class="card-meta"><span class="time">1.5 min</span></div>
+  </header>
+  <h2>La tabla completa</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Esta es la slide de referencia. Tómenle foto.</p><p>S: todas las esquinas. En el cuerpo, todos los estados metabólicos posibles.<br>O: avanzar, girar, frenar. En el cuerpo, secretar, captar, movilizar.<br>C: calles cerradas. En el cuerpo, capacidad máxima, acoplamientos y prioridades.<br>E: la dirección en el GPS. En el cuerpo, la glucemia que el cerebro defiende.<br>H: cuántas cuadras ve adelante. En el cuerpo, cuánto puede anticipar.&quot;</p></div>
+  </section>
+  
+  
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 10 · La tabla completa
+
+**Tiempo:** 1.5 min
+
+🖼️ **[IMG-10]**
+Tabla de tres columnas: **Símbolo · Taxi · Metabolismo**. Filas de $S$ y $O$ en azul. Filas de $C$, $E$ y $H$ en ámbar. Diseño limpio, legible desde el fondo del salón.
+*Idea única: el diccionario completo en una sola imagen.*
+
+🗣️ **Guion:**
+&gt; &quot;Esta es la slide de referencia. Tómenle foto.
+&gt;
+&gt; S: todas las esquinas. En el cuerpo, todos los estados metabólicos posibles.
+&gt; O: avanzar, girar, frenar. En el cuerpo, secretar, captar, movilizar.
+&gt; C: calles cerradas. En el cuerpo, capacidad máxima, acoplamientos y prioridades.
+&gt; E: la dirección en el GPS. En el cuerpo, la glucemia que el cerebro defiende.
+&gt; H: cuántas cuadras ve adelante. En el cuerpo, cuánto puede anticipar.&quot;
+
+➡️ &quot;Ahora, por qué los colores de la tabla no son decorativos.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-11" data-search="11 maquinaria e información &quot;los cinco elementos no son del mismo tipo. se dividen en dos grupos.
+
+s y o son maquinaria. se reponen: trasplantar, regenerar, sustituir. es caro.
+
+c, e y h son información. se reescriben. en principio es barato.
+
+esta es la razón por la que se les dio rango de elementos de primer orden: los sistemas vivos no solo recorren su espacio-problema, también lo reescriben. editan sus restricciones, recalibran su meta y ajustan su horizonte. esa capacidad de replantear el propio problema es lo que el marco identifica como inteligencia biológica.
+
+dicho con el taxi: un taxista mediocre recorre la ciudad. un taxista excepcional consigue que le abran una calle.&quot;  s y o ejecutan; c, e y h definen qué problema se está intentando resolver. cambiar una pieza modifica capacidad. cambiar una instrucción modifica la tarea. la intervención depende de distinguir pérdida de capacidad de pérdida de información. ">
+  <header class="card-head">
+    <div><span class="slide-number">11</span><span class="section-name">El quíntuple</span></div>
+    <div class="card-meta"><span class="time">3 min · slide clave</span></div>
+  </header>
+  <h2>Maquinaria e información</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Los cinco elementos no son del mismo tipo. Se dividen en dos grupos.</p><p>S y O son maquinaria. Se reponen: trasplantar, regenerar, sustituir. Es caro.</p><p>C, E y H son información. Se reescriben. En principio es barato.</p><p>Esta es la razón por la que se les dio rango de elementos de primer orden: los sistemas vivos no solo recorren su espacio-problema, también lo reescriben. Editan sus restricciones, recalibran su meta y ajustan su horizonte. Esa capacidad de replantear el propio problema es lo que el marco identifica como inteligencia biológica.</p><p>Dicho con el taxi: un taxista mediocre recorre la ciudad. Un taxista excepcional consigue que le abran una calle.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>S y O ejecutan; C, E y H definen qué problema se está intentando resolver.</p></div><div><b>Ejemplo</b><p>Cambiar una pieza modifica capacidad. Cambiar una instrucción modifica la tarea.</p></div><div><b>Qué observar</b><p>La intervención depende de distinguir pérdida de capacidad de pérdida de información.</p></div></div></section>
+  
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 11 · Maquinaria e información
+
+**Tiempo:** 3 min · **slide clave**
+
+🖼️ **[IMG-11]**
+Dos columnas separadas por una línea vertical gruesa. Izquierda, azul: ícono de pieza mecánica, etiquetas *S · O — se repone — caro*. Derecha, ámbar: ícono de nota escrita, etiquetas *C · E · H — se reescribe — barato*.
+*Idea única: los cinco elementos se dividen en dos naturalezas distintas.*
+
+🗣️ **Guion:**
+&gt; &quot;Los cinco elementos no son del mismo tipo. Se dividen en dos grupos.
+&gt;
+&gt; S y O son maquinaria. Se reponen: trasplantar, regenerar, sustituir. Es caro.
+&gt;
+&gt; C, E y H son información. Se reescriben. En principio es barato.
+&gt;
+&gt; Esta es la razón por la que se les dio rango de elementos de primer orden: los sistemas vivos no solo recorren su espacio-problema, también lo reescriben. Editan sus restricciones, recalibran su meta y ajustan su horizonte. Esa capacidad de replantear el propio problema es lo que el marco identifica como inteligencia biológica.
+&gt;
+&gt; Dicho con el taxi: un taxista mediocre recorre la ciudad. Un taxista excepcional consigue que le abran una calle.&quot;
+
+➡️ &quot;De ahí sale la pregunta que define la enfermedad.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-12" data-search="12 la secuencia patogénica &quot;la secuencia tiene cuatro pasos, y siempre es la misma.
+
+uno: hubo una demanda real. llegó la tormenta.
+dos: el sistema reescribió su propio problema. se tapió. fue la respuesta correcta.
+tres: las condiciones cambiaron. salió el sol.
+cuatro: el sistema ya no puede volver a reescribirlo. las tablas quedaron fijas.
+
+no es una casa en ruinas: es una casa tapiada. la diferencia cambia el tratamiento.
+
+el mismo esquema aplica a una vida. alguien aprendió a no confiar en una situación en que no convenía confiar. fue una respuesta correcta. veinte años después la situación ya no existe, pero la restricción sigue puesta.&quot; formalmente esto es una flecha $s \to c$: el estado alcanzado reescribe las restricciones. con eso, la enfermedad deja de describirse como cascada y pasa a describirse como atractor.
+
+el marco cataloga nueve tipos, t1 a t9, y los ordena por reversibilidad para el trabajo clínico. **t6, sustracción de capacidad —pérdida de un cofactor o de un transportador—, y t8, permiso que no se reactiva, son los reversibles. se evalúan primero.** una adaptación se vuelve problemática cuando ya no puede deshacerse al cambiar el contexto. las tablas protegen durante la tormenta; con sol, seguir tapiado deja de ayudar. la respuesta pudo ser correcta al principio y rígida después. la adaptación cambia de estado y después bloquea el regreso">
+  <header class="card-head">
+    <div><span class="slide-number">12</span><span class="section-name">El quíntuple</span></div>
+    <div class="card-meta"><span class="diagram-badge">Pizarra · D</span><span class="time">3 min · slide clave</span></div>
+  </header>
+  <h2>La secuencia patogénica</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;La secuencia tiene cuatro pasos, y siempre es la misma.</p><p>Uno: hubo una demanda real. Llegó la tormenta.<br>Dos: el sistema reescribió su propio problema. Se tapió. Fue la respuesta correcta.<br>Tres: las condiciones cambiaron. Salió el sol.<br>Cuatro: el sistema ya no puede volver a reescribirlo. Las tablas quedaron fijas.</p><p>No es una casa en ruinas: es una casa tapiada. La diferencia cambia el tratamiento.</p><p>El mismo esquema aplica a una vida. Alguien aprendió a no confiar en una situación en que no convenía confiar. Fue una respuesta correcta. Veinte años después la situación ya no existe, pero la restricción sigue puesta.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>Una adaptación se vuelve problemática cuando ya no puede deshacerse al cambiar el contexto.</p></div><div><b>Ejemplo</b><p>Las tablas protegen durante la tormenta; con sol, seguir tapiado deja de ayudar.</p></div><div><b>Qué observar</b><p>La respuesta pudo ser correcta al principio y rígida después.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>Formalmente esto es una flecha <span class="formula">S \to C</span>: el estado alcanzado reescribe las restricciones. Con eso, la enfermedad deja de describirse como cascada y pasa a describirse como atractor.</p><p>El marco cataloga nueve tipos, T1 a T9, y los ordena por reversibilidad para el trabajo clínico. <strong>T6, sustracción de capacidad —pérdida de un cofactor o de un transportador—, y T8, permiso que no se reactiva, son los reversibles. Se evalúan primero.</strong></p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 12 · La secuencia patogénica
+
+**Tiempo:** 3 min · **slide clave**
+
+🖼️ **[IMG-12]**
+Cuatro viñetas horizontales con la misma casa. 1) Casa con tormenta afuera. 2) Casa tapiada con tablas ámbar. 3) Sol afuera; la casa sigue tapiada. 4) Primer plano de las tablas soldadas y oxidadas en rojo; una mano intenta arrancarlas sin conseguirlo.
+*Idea única: la tapia fue correcta y después dejó de poder quitarse.*
+
+🗣️ **Guion:**
+&gt; &quot;La secuencia tiene cuatro pasos, y siempre es la misma.
+&gt;
+&gt; Uno: hubo una demanda real. Llegó la tormenta.
+&gt; Dos: el sistema reescribió su propio problema. Se tapió. Fue la respuesta correcta.
+&gt; Tres: las condiciones cambiaron. Salió el sol.
+&gt; Cuatro: el sistema ya no puede volver a reescribirlo. Las tablas quedaron fijas.
+&gt;
+&gt; No es una casa en ruinas: es una casa tapiada. La diferencia cambia el tratamiento.
+&gt;
+&gt; El mismo esquema aplica a una vida. Alguien aprendió a no confiar en una situación en que no convenía confiar. Fue una respuesta correcta. Veinte años después la situación ya no existe, pero la restricción sigue puesta.&quot;
+
+🎓 **Capa experta:**
+&gt; Formalmente esto es una flecha $S \to C$: el estado alcanzado reescribe las restricciones. Con eso, la enfermedad deja de describirse como cascada y pasa a describirse como atractor.
+&gt;
+&gt; El marco cataloga nueve tipos, T1 a T9, y los ordena por reversibilidad para el trabajo clínico. **T6, sustracción de capacidad —pérdida de un cofactor o de un transportador—, y T8, permiso que no se reactiva, son los reversibles. Se evalúan primero.**
+
+➡️ &quot;El concepto de permiso merece su propia slide, porque ahí se produce el error terapéutico más frecuente.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-13" data-search="13 el permiso apagado &quot;hay señales que no producen ningún efecto por sí mismas. lo único que hacen es permitir que otra señal produzca el suyo. se llaman señales permisivas, y no pertenecen a o: pertenecen a c.
+
+un caso documentado. en el eje hígado-parasimpático, la señal vagal no libera nada por sí sola. lo que hace es permitir que los pulsos de insulina produzcan liberación proporcional a la dosis. y depende del estado: ocurre después de comer, no en ayuno. además, ese sistema requiere dos permisos simultáneos, uno neural y uno químico.
+
+ahora, lo importante. que ese camino esté cerrado en ayuno es correcto: evita hipoglucemia cuando no está entrando glucosa. es una restricción funcional, no una avería.
+
+el modo de fallo es que esa restricción funcional se vuelva permanente. el permiso debería activarse al comer y desactivarse en ayuno. si deja de activarse, el sistema queda en modo ayuno de forma crónica. la restricción es correcta; el contexto es equivocado.
+
+la consecuencia clínica es directa: un permiso apagado se ve igual que un efector dañado, y el tratamiento es el opuesto. si supones que el efector está dañado, lo fuerzas. si el problema era el permiso, forzarlo solo lo desgasta.
+
+por eso, al analizar cualquier patología, hay una pregunta obligatoria: ¿esta restricción está mal, o está bien aplicada en el momento equivocado?&quot; $c = c(s)$, y puede exigir conjunción: $c(s)$ admite $o$ si y solo si $\text{permiso}_1(s) \wedge \text{permiso}_2(s)$.
+
+prueba operativa para ubicar al sistema entre $c$ y $w$: preguntar si responde menos o si no responde. barrera infranqueable corresponde a $c$; barrera alta corresponde a $w$ elevado. en el paisaje de atractores, la mayoría de las perturbaciones no crean ni destruyen atractores: modifican la altura de las barreras entre ellos, y eso modifica las tasas de transición. una señal permisiva no ejecuta la acción: habilita que otra señal pueda ejecutarla. una llave retira el seguro; la segunda llave mueve el mecanismo. desde fuera, permiso apagado y efector dañado pueden verse iguales. la respuesta necesita señal primaria y permiso">
+  <header class="card-head">
+    <div><span class="slide-number">13</span><span class="section-name">El quíntuple</span></div>
+    <div class="card-meta"><span class="diagram-badge">Pizarra · D</span><span class="time">3.5 min · slide clave</span></div>
+  </header>
+  <h2>El permiso apagado</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Hay señales que no producen ningún efecto por sí mismas. Lo único que hacen es permitir que otra señal produzca el suyo. Se llaman señales permisivas, y no pertenecen a O: pertenecen a C.</p><p>Un caso documentado. En el eje hígado-parasimpático, la señal vagal no libera nada por sí sola. Lo que hace es permitir que los pulsos de insulina produzcan liberación proporcional a la dosis. Y depende del estado: ocurre después de comer, no en ayuno. Además, ese sistema requiere dos permisos simultáneos, uno neural y uno químico.</p><p>Ahora, lo importante. Que ese camino esté cerrado en ayuno es correcto: evita hipoglucemia cuando no está entrando glucosa. Es una restricción funcional, no una avería.</p><p>El modo de fallo es que esa restricción funcional se vuelva permanente. El permiso debería activarse al comer y desactivarse en ayuno. Si deja de activarse, el sistema queda en modo ayuno de forma crónica. La restricción es correcta; el contexto es equivocado.</p><p>La consecuencia clínica es directa: un permiso apagado se ve igual que un efector dañado, y el tratamiento es el opuesto. Si supones que el efector está dañado, lo fuerzas. Si el problema era el permiso, forzarlo solo lo desgasta.</p><p>Por eso, al analizar cualquier patología, hay una pregunta obligatoria: ¿esta restricción está mal, o está bien aplicada en el momento equivocado?&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>Una señal permisiva no ejecuta la acción: habilita que otra señal pueda ejecutarla.</p></div><div><b>Ejemplo</b><p>Una llave retira el seguro; la segunda llave mueve el mecanismo.</p></div><div><b>Qué observar</b><p>Desde fuera, permiso apagado y efector dañado pueden verse iguales.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p><span class="formula">C = C(s)</span>, y puede exigir conjunción: <span class="formula">C(s)</span> admite <span class="formula">o</span> si y solo si <span class="formula">\text{permiso}_1(s) \wedge \text{permiso}_2(s)</span>.</p><p>Prueba operativa para ubicar al sistema entre <span class="formula">C</span> y <span class="formula">w</span>: preguntar si responde menos o si no responde. Barrera infranqueable corresponde a <span class="formula">C</span>; barrera alta corresponde a <span class="formula">w</span> elevado. En el paisaje de atractores, la mayoría de las perturbaciones no crean ni destruyen atractores: modifican la altura de las barreras entre ellos, y eso modifica las tasas de transición.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 13 · El permiso apagado
+
+**Tiempo:** 3.5 min · **slide clave**
+
+🖼️ **[IMG-13]**
+Arriba: una puerta con dos cerraduras; una llave ámbar puesta en la de arriba que no gira sola, y una segunda llave gris en la de abajo. Abajo, dos miniaturas de puertas cerradas idénticas vistas desde fuera, con etiquetas distintas: *&quot;efector dañado&quot;* (rojo) y *&quot;permiso apagado&quot;* (ámbar).
+*Idea única: dos causas que se ven iguales desde fuera y requieren tratamientos opuestos.*
+
+🗣️ **Guion:**
+&gt; &quot;Hay señales que no producen ningún efecto por sí mismas. Lo único que hacen es permitir que otra señal produzca el suyo. Se llaman señales permisivas, y no pertenecen a O: pertenecen a C.
+&gt;
+&gt; Un caso documentado. En el eje hígado-parasimpático, la señal vagal no libera nada por sí sola. Lo que hace es permitir que los pulsos de insulina produzcan liberación proporcional a la dosis. Y depende del estado: ocurre después de comer, no en ayuno. Además, ese sistema requiere dos permisos simultáneos, uno neural y uno químico.
+&gt;
+&gt; Ahora, lo importante. Que ese camino esté cerrado en ayuno es correcto: evita hipoglucemia cuando no está entrando glucosa. Es una restricción funcional, no una avería.
+&gt;
+&gt; El modo de fallo es que esa restricción funcional se vuelva permanente. El permiso debería activarse al comer y desactivarse en ayuno. Si deja de activarse, el sistema queda en modo ayuno de forma crónica. La restricción es correcta; el contexto es equivocado.
+&gt;
+&gt; La consecuencia clínica es directa: un permiso apagado se ve igual que un efector dañado, y el tratamiento es el opuesto. Si supones que el efector está dañado, lo fuerzas. Si el problema era el permiso, forzarlo solo lo desgasta.
+&gt;
+&gt; Por eso, al analizar cualquier patología, hay una pregunta obligatoria: ¿esta restricción está mal, o está bien aplicada en el momento equivocado?&quot;
+
+🎓 **Capa experta:**
+&gt; $C = C(s)$, y puede exigir conjunción: $C(s)$ admite $o$ si y solo si $\text{permiso}_1(s) \wedge \text{permiso}_2(s)$.
+&gt;
+&gt; Prueba operativa para ubicar al sistema entre $C$ y $w$: preguntar si responde menos o si no responde. Barrera infranqueable corresponde a $C$; barrera alta corresponde a $w$ elevado. En el paisaje de atractores, la mayoría de las perturbaciones no crean ni destruyen atractores: modifican la altura de las barreras entre ellos, y eso modifica las tasas de transición.
+
+➡️ &quot;Una precisión antes de cerrar el bloque: C puede dañarse en dos direcciones opuestas.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-14" data-search="14 las dos patologías de c &quot;c se puede dañar de dos maneras, y son opuestas.
+
+rigidificación: se cierran caminos que deberían estar abiertos. el sistema queda atrapado en una sola vía. la firma es contrarregulación y una ventana de intervención que se va cerrando. el tratamiento es abrir caminos.
+
+debilitamiento: se pierden restricciones que deberían estar presentes. como el estado por defecto de una célula es proliferar y moverse, el sistema revierte a ese estado. la firma es proliferación, motilidad y pérdida de contexto. el tratamiento es restaurar restricciones.
+
+las dos son daño en c, con signo opuesto. si se confunden, el tratamiento se invierte.&quot; se anotan como $\delta_c^{+}$ y $\delta_c^{-}$. la formalización de $\langle c, e\rangle$ es el paisaje de atractores, y de ahí sale un corolario relevante: existen muchos más estados atractores que los ocupados en el organismo sano, por razones matemáticas y de evolución de redes, y los no ocupados no son vistos por la selección, por lo que no están afinados.
+
+implicación: la patología puede consistir en la entrada a un atractor latente, no en la creación de uno nuevo. y esa entrada no requiere una causa específica: muchos estresores distintos convergen en pocos destinos. rigidificación y debilitamiento son fallos opuestos. rigidificación: laberinto tapiado. debilitamiento: terreno que perdió sus paredes. en un caso sobran barreras; en el otro falta la organización que contenía. cerrar rutas y perder límites son topologías opuestas">
+  <header class="card-head">
+    <div><span class="slide-number">14</span><span class="section-name">El quíntuple</span></div>
+    <div class="card-meta"><span class="diagram-badge">Pizarra · D</span><span class="time">3 min</span></div>
+  </header>
+  <h2>Las dos patologías de C</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;C se puede dañar de dos maneras, y son opuestas.</p><p>Rigidificación: se cierran caminos que deberían estar abiertos. El sistema queda atrapado en una sola vía. La firma es contrarregulación y una ventana de intervención que se va cerrando. El tratamiento es abrir caminos.</p><p>Debilitamiento: se pierden restricciones que deberían estar presentes. Como el estado por defecto de una célula es proliferar y moverse, el sistema revierte a ese estado. La firma es proliferación, motilidad y pérdida de contexto. El tratamiento es restaurar restricciones.</p><p>Las dos son daño en C, con signo opuesto. Si se confunden, el tratamiento se invierte.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>Rigidificación y debilitamiento son fallos opuestos.</p></div><div><b>Ejemplo</b><p>Rigidificación: laberinto tapiado. Debilitamiento: terreno que perdió sus paredes.</p></div><div><b>Qué observar</b><p>En un caso sobran barreras; en el otro falta la organización que contenía.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>Se anotan como <span class="formula">\delta_C^{+}</span> y <span class="formula">\delta_C^{-}</span>. La formalización de <span class="formula">\langle C, E\rangle</span> es el paisaje de atractores, y de ahí sale un corolario relevante: existen muchos más estados atractores que los ocupados en el organismo sano, por razones matemáticas y de evolución de redes, y los no ocupados no son vistos por la selección, por lo que no están afinados.</p><p>Implicación: la patología puede consistir en la entrada a un atractor latente, no en la creación de uno nuevo. Y esa entrada no requiere una causa específica: muchos estresores distintos convergen en pocos destinos.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 14 · Las dos patologías de C
+
+**Tiempo:** 3 min
+
+🖼️ **[IMG-14]**
+Dos paneles simétricos. Izquierda, *rigidificación*: un laberinto con casi todos los pasillos tapiados y un solo corredor abierto, recorrido por una figura. Derecha, *debilitamiento*: el mismo laberinto sin paredes, con figuras dispersándose en todas direcciones. Al pie, las terapéuticas: *&quot;abrir caminos&quot;* y *&quot;restaurar restricciones&quot;*.
+*Idea única: el mismo elemento dañado en dos sentidos, con tratamientos opuestos.*
+
+🗣️ **Guion:**
+&gt; &quot;C se puede dañar de dos maneras, y son opuestas.
+&gt;
+&gt; Rigidificación: se cierran caminos que deberían estar abiertos. El sistema queda atrapado en una sola vía. La firma es contrarregulación y una ventana de intervención que se va cerrando. El tratamiento es abrir caminos.
+&gt;
+&gt; Debilitamiento: se pierden restricciones que deberían estar presentes. Como el estado por defecto de una célula es proliferar y moverse, el sistema revierte a ese estado. La firma es proliferación, motilidad y pérdida de contexto. El tratamiento es restaurar restricciones.
+&gt;
+&gt; Las dos son daño en C, con signo opuesto. Si se confunden, el tratamiento se invierte.&quot;
+
+🎓 **Capa experta:**
+&gt; Se anotan como $\delta_C^{+}$ y $\delta_C^{-}$. La formalización de $\langle C, E\rangle$ es el paisaje de atractores, y de ahí sale un corolario relevante: existen muchos más estados atractores que los ocupados en el organismo sano, por razones matemáticas y de evolución de redes, y los no ocupados no son vistos por la selección, por lo que no están afinados.
+&gt;
+&gt; Implicación: la patología puede consistir en la entrada a un atractor latente, no en la creación de uno nuevo. Y esa entrada no requiere una causa específica: muchos estresores distintos convergen en pocos destinos.
+
+➡️ &quot;Hasta aquí el quíntuple. Le falta un elemento, y es la segunda mitad de la clase.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-15" data-search="15 lo que el quíntuple no dice &quot;el quíntuple dice cómo está planteado el problema. no dice de qué tamaño es el mundo de ese sistema.
+
+esa pregunta tiene dos partes.
+
+la primera: ¿hasta cuándo hacia adelante le importa algo? esa ya la tenemos, es h.
+
+la segunda: ¿hasta qué escala le importa algo? esa todavía no la tenemos.
+
+ejemplo: un taxista puede ver diez cuadras adelante y trabajar solo para sí mismo. otro ve diez cuadras adelante y trabaja para el sitio de taxis completo. tienen el mismo h y mundos distintos.&quot; corrección registrada en la capa 1, versión 2.0: el cono cognitivo de tame es espaciotemporal, y la versión 1.0 del marco solo tenía la coordenada temporal. esa omisión es lo que motivó la métrica $\lambda$.  ">
+  <header class="card-head">
+    <div><span class="slide-number">15</span><span class="section-name">El cono cognitivo</span></div>
+    <div class="card-meta"><span class="time">2 min</span></div>
+  </header>
+  <h2>Lo que el quíntuple no dice</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;El quíntuple dice cómo está planteado el problema. No dice de qué tamaño es el mundo de ese sistema.</p><p>Esa pregunta tiene dos partes.</p><p>La primera: ¿hasta cuándo hacia adelante le importa algo? Esa ya la tenemos, es H.</p><p>La segunda: ¿hasta qué escala le importa algo? Esa todavía no la tenemos.</p><p>Ejemplo: un taxista puede ver diez cuadras adelante y trabajar solo para sí mismo. Otro ve diez cuadras adelante y trabaja para el sitio de taxis completo. Tienen el mismo H y mundos distintos.&quot;</p></div>
+  </section>
+  
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>Corrección registrada en la capa 1, versión 2.0: el cono cognitivo de TAME es espaciotemporal, y la versión 1.0 del marco solo tenía la coordenada temporal. Esa omisión es lo que motivó la métrica <span class="formula">\Lambda</span>.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 15 · Lo que el quíntuple no dice
+
+**Tiempo:** 2 min
+
+🖼️ **[IMG-15]**
+Una fotografía tipo instantánea de la retícula con el taxi, nítida pero recortada. Alrededor del marco, en gris muy tenue, el resto de la ciudad que la foto no alcanza. Un signo de interrogación ámbar en el borde.
+*Idea única: el quíntuple describe el problema, pero no dice de qué tamaño es el mundo del sistema.*
+
+🗣️ **Guion:**
+&gt; &quot;El quíntuple dice cómo está planteado el problema. No dice de qué tamaño es el mundo de ese sistema.
+&gt;
+&gt; Esa pregunta tiene dos partes.
+&gt;
+&gt; La primera: ¿hasta cuándo hacia adelante le importa algo? Esa ya la tenemos, es H.
+&gt;
+&gt; La segunda: ¿hasta qué escala le importa algo? Esa todavía no la tenemos.
+&gt;
+&gt; Ejemplo: un taxista puede ver diez cuadras adelante y trabajar solo para sí mismo. Otro ve diez cuadras adelante y trabaja para el sitio de taxis completo. Tienen el mismo H y mundos distintos.&quot;
+
+🎓 **Capa experta:**
+&gt; Corrección registrada en la capa 1, versión 2.0: el cono cognitivo de TAME es espaciotemporal, y la versión 1.0 del marco solo tenía la coordenada temporal. Esa omisión es lo que motivó la métrica $\Lambda$.
+
+➡️ &quot;A esa segunda parte se le llama alcance.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-16" data-search="16 λ — el alcance &quot;λ, lambda, es la escala máxima cuyo desvío hace que el sistema actúe.
+
+dicho sin símbolos: de qué tamaño son los problemas que te mueven a hacer algo.
+
+una célula con λ pequeño responde solo a lo que le ocurre a ella. una con λ grande responde también a lo que le ocurre al tejido, al órgano y al organismo.
+
+y esto se mide con un procedimiento definido: se perturba a distintas escalas y se registra a cuáles responde el sistema. la escala más grande a la que todavía responde es su λ.
+
+en una vida ocurre lo mismo. una persona en crisis deja de responder a lo que pasa en su barrio, después a lo que pasa con sus amigos, después a lo que pasa en su familia. al final responde solo a su cuerpo y al día de hoy. eso es contracción de λ.&quot;  λ indica la escala más grande cuyo cambio todavía provoca una respuesta del sistema. ¿la célula responde solo por sí misma o también corrige algo que afecta al tejido? no mide tamaño físico: mide hasta qué nivel llega la acción correctiva. ">
+  <header class="card-head">
+    <div><span class="slide-number">16</span><span class="section-name">El cono cognitivo</span></div>
+    <div class="card-meta"><span class="time">3 min</span></div>
+  </header>
+  <h2>Λ — el alcance</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Λ, lambda, es la escala máxima cuyo desvío hace que el sistema actúe.</p><p>Dicho sin símbolos: de qué tamaño son los problemas que te mueven a hacer algo.</p><p>Una célula con Λ pequeño responde solo a lo que le ocurre a ella. Una con Λ grande responde también a lo que le ocurre al tejido, al órgano y al organismo.</p><p>Y esto se mide con un procedimiento definido: se perturba a distintas escalas y se registra a cuáles responde el sistema. La escala más grande a la que todavía responde es su Λ.</p><p>En una vida ocurre lo mismo. Una persona en crisis deja de responder a lo que pasa en su barrio, después a lo que pasa con sus amigos, después a lo que pasa en su familia. Al final responde solo a su cuerpo y al día de hoy. Eso es contracción de Λ.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>Λ indica la escala más grande cuyo cambio todavía provoca una respuesta del sistema.</p></div><div><b>Ejemplo</b><p>¿La célula responde solo por sí misma o también corrige algo que afecta al tejido?</p></div><div><b>Qué observar</b><p>No mide tamaño físico: mide hasta qué nivel llega la acción correctiva.</p></div></div></section>
+  
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 16 · Λ — el alcance
+
+**Tiempo:** 3 min
+
+🖼️ **[IMG-16]**
+Círculos concéntricos etiquetados de dentro afuera: *célula · tejido · órgano · organismo · familia · comunidad*, con una figura en el centro. Un anillo ámbar marca hasta dónde llega la respuesta; los anillos exteriores quedan en gris. Al lado, la misma figura con el anillo ámbar mucho mayor.
+*Idea única: Λ es hasta qué escala llega la respuesta del sistema.*
+
+🗣️ **Guion:**
+&gt; &quot;Λ, lambda, es la escala máxima cuyo desvío hace que el sistema actúe.
+&gt;
+&gt; Dicho sin símbolos: de qué tamaño son los problemas que te mueven a hacer algo.
+&gt;
+&gt; Una célula con Λ pequeño responde solo a lo que le ocurre a ella. Una con Λ grande responde también a lo que le ocurre al tejido, al órgano y al organismo.
+&gt;
+&gt; Y esto se mide con un procedimiento definido: se perturba a distintas escalas y se registra a cuáles responde el sistema. La escala más grande a la que todavía responde es su Λ.
+&gt;
+&gt; En una vida ocurre lo mismo. Una persona en crisis deja de responder a lo que pasa en su barrio, después a lo que pasa con sus amigos, después a lo que pasa en su familia. Al final responde solo a su cuerpo y al día de hoy. Eso es contracción de Λ.&quot;
+
+➡️ &quot;Con las dos coordenadas ya se puede construir la figura de la portada.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-17" data-search="17 el cono cognitivo &quot;esto es el cono cognitivo. se define como λ por h.
+
+el eje largo es cuánto ve adelante en el tiempo. la apertura es hasta qué escala responde.
+
+lo que queda fuera del cono no es que el sistema lo ignore por decisión. es que esa información nunca entró en su problema.
+
+una bacteria tiene un cono muy pequeño: anticipa microsegundos y responde a la escala de su propia membrana. un ser humano tiene un cono muy grande: puede actuar hoy por algo que va a ocurrir en cuarenta años, a escala de una población entera.
+
+la diferencia entre los dos es de grado, no de tipo. es el mismo objeto, en dos tamaños.&quot; la definición de cognición en tame es mínima: las operaciones entre percibir y actuar que permiten responder abarcando un horizonte mayor que el instante presente. el cono es su formalización. en el modelo dinámico del marco, $\lambda_j = \{k : a_{jk} \neq 0\}$, es decir, el alcance definido como el soporte del acoplamiento. h dice cuánto futuro entra en la decisión; λ dice cuánto mundo compartido entra. algo fuera del cono puede existir y, sin embargo, no modificar la conducta del sistema. el aquí-ahora es el centro; el cono representa alcance, no una frontera mental rígida. ">
+  <header class="card-head">
+    <div><span class="slide-number">17</span><span class="section-name">El cono cognitivo</span></div>
+    <div class="card-meta"><span class="time">3 min · slide central</span></div>
+  </header>
+  <h2>El cono cognitivo</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Esto es el cono cognitivo. Se define como Λ por H.</p><p>El eje largo es cuánto ve adelante en el tiempo. La apertura es hasta qué escala responde.</p><p>Lo que queda fuera del cono no es que el sistema lo ignore por decisión. Es que esa información nunca entró en su problema.</p><p>Una bacteria tiene un cono muy pequeño: anticipa microsegundos y responde a la escala de su propia membrana. Un ser humano tiene un cono muy grande: puede actuar hoy por algo que va a ocurrir en cuarenta años, a escala de una población entera.</p><p>La diferencia entre los dos es de grado, no de tipo. Es el mismo objeto, en dos tamaños.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>H dice cuánto futuro entra en la decisión; Λ dice cuánto mundo compartido entra.</p></div><div><b>Ejemplo</b><p>Algo fuera del cono puede existir y, sin embargo, no modificar la conducta del sistema.</p></div><div><b>Qué observar</b><p>El aquí-ahora es el centro; el cono representa alcance, no una frontera mental rígida.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>La definición de cognición en TAME es mínima: las operaciones entre percibir y actuar que permiten responder abarcando un horizonte mayor que el instante presente. El cono es su formalización. En el modelo dinámico del marco, <span class="formula">\Lambda_j = \{k : a_{jk} \neq 0\}</span>, es decir, el alcance definido como el soporte del acoplamiento.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 17 · El cono cognitivo
+
+**Tiempo:** 3 min · **slide central**
+
+🖼️ **[IMG-17]** — **la imagen más importante del deck**
+Un cono visto de lado, con el vértice a la izquierda, donde hay una figura pequeña, y abriéndose hacia la derecha. Eje horizontal: *H — cuánto ve adelante en el tiempo*. Apertura vertical: *Λ — hasta qué escala responde*. Dentro del cono, en ámbar, íconos ordenados por tamaño: célula, tejido, cuerpo, familia, comunidad. Fuera del cono, los mismos íconos en gris. Abajo, en pequeño: *Cono cognitivo = Λ × H*.
+*Idea única: el mundo de un sistema es un cono; lo que queda fuera no entra en su problema.*
+
+🗣️ **Guion:**
+&gt; &quot;Esto es el cono cognitivo. Se define como Λ por H.
+&gt;
+&gt; El eje largo es cuánto ve adelante en el tiempo. La apertura es hasta qué escala responde.
+&gt;
+&gt; Lo que queda fuera del cono no es que el sistema lo ignore por decisión. Es que esa información nunca entró en su problema.
+&gt;
+&gt; Una bacteria tiene un cono muy pequeño: anticipa microsegundos y responde a la escala de su propia membrana. Un ser humano tiene un cono muy grande: puede actuar hoy por algo que va a ocurrir en cuarenta años, a escala de una población entera.
+&gt;
+&gt; La diferencia entre los dos es de grado, no de tipo. Es el mismo objeto, en dos tamaños.&quot;
+
+🎓 **Capa experta:**
+&gt; La definición de cognición en TAME es mínima: las operaciones entre percibir y actuar que permiten responder abarcando un horizonte mayor que el instante presente. El cono es su formalización. En el modelo dinámico del marco, $\Lambda_j = \{k : a_{jk} \neq 0\}$, es decir, el alcance definido como el soporte del acoplamiento.
+
+❓ &quot;Piensen en su propio cono hace diez años y en el de hoy. ¿Se abrió o se cerró?&quot;
+
+➡️ &quot;Ahora, la reformulación central de la clase.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-18" data-search="18 la enfermedad como contracción del cono &quot;la propuesta es esta: en muchos casos, la enfermedad crónica es un cono que se contrajo. y se contrae de dos maneras.
+
+primera: se acorta. pierde h. deja de anticipar y pasa a responder solo después del desvío. la firma es concreta y medible: se pierde la respuesta anticipatoria, es decir, la actividad del efector antes de que la variable cambie.
+
+segunda: se estrecha. pierde λ. deja de responder a las escalas superiores. esta es la que casi no se detecta, por la razón que sigue.
+
+la reversión de identidad no es una caída de eficiencia. es una contracción de λ. el sistema sigue siendo eficiente; su problema se hizo más pequeño.
+
+esto tiene una consecuencia práctica: si mides el desempeño de ese agente en su propia escala, el resultado sale normal. si mides su contribución al organismo, ha desaparecido. ningún indicador de función local detecta esa diferencia. por eso pasa inadvertida.&quot; corresponde a la flecha t7, reversión de identidad —desdiferenciación o atavismo—, con contracción de $\lambda$, y reversible según el estadio.
+
+genera una predicción falsable, la p10: **la contracción de $\lambda$ precede a la pérdida de función local.** si al medirla resultara simultánea o posterior, esta parte del marco queda refutada. un cono pequeño no implica poca potencia dentro de él: implica menos tiempo o menos escala considerados. puede resolver muy bien lo urgente y local, pero dejar de anticipar o coordinar. δh acorta el horizonte; δλ reduce las escalas que provocan acción. ">
+  <header class="card-head">
+    <div><span class="slide-number">18</span><span class="section-name">El cono cognitivo</span></div>
+    <div class="card-meta"><span class="time">4 min · slide central</span></div>
+  </header>
+  <h2>La enfermedad como contracción del cono</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;La propuesta es esta: en muchos casos, la enfermedad crónica es un cono que se contrajo. Y se contrae de dos maneras.</p><p>Primera: se acorta. Pierde H. Deja de anticipar y pasa a responder solo después del desvío. La firma es concreta y medible: se pierde la respuesta anticipatoria, es decir, la actividad del efector antes de que la variable cambie.</p><p>Segunda: se estrecha. Pierde Λ. Deja de responder a las escalas superiores. Esta es la que casi no se detecta, por la razón que sigue.</p><p>La reversión de identidad no es una caída de eficiencia. Es una contracción de Λ. El sistema sigue siendo eficiente; su problema se hizo más pequeño.</p><p>Esto tiene una consecuencia práctica: si mides el desempeño de ese agente en su propia escala, el resultado sale normal. Si mides su contribución al organismo, ha desaparecido. Ningún indicador de función local detecta esa diferencia. Por eso pasa inadvertida.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>Un cono pequeño no implica poca potencia dentro de él: implica menos tiempo o menos escala considerados.</p></div><div><b>Ejemplo</b><p>Puede resolver muy bien lo urgente y local, pero dejar de anticipar o coordinar.</p></div><div><b>Qué observar</b><p>δH acorta el horizonte; δΛ reduce las escalas que provocan acción.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>Corresponde a la flecha T7, reversión de identidad —desdiferenciación o atavismo—, con contracción de <span class="formula">\Lambda</span>, y reversible según el estadio.</p><p>Genera una predicción falsable, la P10: <strong>la contracción de <span class="formula">\Lambda</span> precede a la pérdida de función local.</strong> Si al medirla resultara simultánea o posterior, esta parte del marco queda refutada.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 18 · La enfermedad como contracción del cono
+
+**Tiempo:** 4 min · **slide central**
+
+🖼️ **[IMG-18]**
+El cono de la slide 17 en ámbar, en trazo tenue, de fondo. Encima, un cono mucho más pequeño en rojo. Dos flechas rojas marcan las dos formas de reducción: una horizontal, *δH — se acorta*, y una vertical, *δΛ — se estrecha*. La figura del vértice es idéntica en ambos conos.
+*Idea única: el sistema no cambió; su cono se redujo.*
+
+🗣️ **Guion:**
+&gt; &quot;La propuesta es esta: en muchos casos, la enfermedad crónica es un cono que se contrajo. Y se contrae de dos maneras.
+&gt;
+&gt; Primera: se acorta. Pierde H. Deja de anticipar y pasa a responder solo después del desvío. La firma es concreta y medible: se pierde la respuesta anticipatoria, es decir, la actividad del efector antes de que la variable cambie.
+&gt;
+&gt; Segunda: se estrecha. Pierde Λ. Deja de responder a las escalas superiores. Esta es la que casi no se detecta, por la razón que sigue.
+&gt;
+&gt; La reversión de identidad no es una caída de eficiencia. Es una contracción de Λ. El sistema sigue siendo eficiente; su problema se hizo más pequeño.
+&gt;
+&gt; Esto tiene una consecuencia práctica: si mides el desempeño de ese agente en su propia escala, el resultado sale normal. Si mides su contribución al organismo, ha desaparecido. Ningún indicador de función local detecta esa diferencia. Por eso pasa inadvertida.&quot;
+
+🎓 **Capa experta:**
+&gt; Corresponde a la flecha T7, reversión de identidad —desdiferenciación o atavismo—, con contracción de $\Lambda$, y reversible según el estadio.
+&gt;
+&gt; Genera una predicción falsable, la P10: **la contracción de $\Lambda$ precede a la pérdida de función local.** Si al medirla resultara simultánea o posterior, esta parte del marco queda refutada.
+
+➡️ &quot;Lo veo primero en ejemplos de vida cotidiana y después en tejido.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-19" data-search="19 el cono en una vida humana &quot;antes de ir al tejido, cuatro situaciones conocidas.
+
+duelo. la primera semana no se puede pensar en el mes siguiente: h se reduce a días. y deja de importar lo que ocurre en el trabajo o en la ciudad: λ se reduce a la casa. es una respuesta adaptativa, del mismo tipo que la tapia con la tormenta afuera.
+
+precariedad económica. no se puede planear a seis meses porque no se sabe si va a haber ingreso. eso no es falta de visión: es h determinado por qué información llega y con cuánto retraso. es el mismo mecanismo que fija el h de la ameba, a escala de una vida.
+
+desgaste laboral. un año antes le importaba el proyecto, el equipo y el rumbo de la organización. ahora le importa terminar el día. y puede seguir siendo muy competente en terminar el día. su eficiencia no cayó: su problema se hizo pequeño. es la misma frase que usé para la desdiferenciación celular.
+
+dolor crónico. el cono se reduce alrededor del cuerpo, y lo que está fuera del cuerpo deja de recibir respuesta.
+
+lo que quiero señalar es esto: en los cuatro casos la reacción habitual es pedirle a la persona más esfuerzo dentro de su cono. y por la estructura misma del problema, eso no puede funcionar. lo que falta no es potencia en el vértice. lo que falta es apertura.&quot; estatuto: `[analogía]`. la aplicación a estados psicológicos y sociales es una transferencia formal del marco. no es una afirmación clínica ni una teoría de la depresión, del duelo ni del desgaste laboral. sirve como pedagogía y como generador de hipótesis. no está instanciada ni contrastada.  ">
+  <header class="card-head">
+    <div><span class="slide-number">19</span><span class="section-name">El cono cognitivo</span></div>
+    <div class="card-meta"><span class="time">4 min</span></div>
+  </header>
+  <h2>El cono en una vida humana</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Antes de ir al tejido, cuatro situaciones conocidas.</p><p>Duelo. La primera semana no se puede pensar en el mes siguiente: H se reduce a días. Y deja de importar lo que ocurre en el trabajo o en la ciudad: Λ se reduce a la casa. Es una respuesta adaptativa, del mismo tipo que la tapia con la tormenta afuera.</p><p>Precariedad económica. No se puede planear a seis meses porque no se sabe si va a haber ingreso. Eso no es falta de visión: es H determinado por qué información llega y con cuánto retraso. Es el mismo mecanismo que fija el H de la ameba, a escala de una vida.</p><p>Desgaste laboral. Un año antes le importaba el proyecto, el equipo y el rumbo de la organización. Ahora le importa terminar el día. Y puede seguir siendo muy competente en terminar el día. Su eficiencia no cayó: su problema se hizo pequeño. Es la misma frase que usé para la desdiferenciación celular.</p><p>Dolor crónico. El cono se reduce alrededor del cuerpo, y lo que está fuera del cuerpo deja de recibir respuesta.</p><p>Lo que quiero señalar es esto: en los cuatro casos la reacción habitual es pedirle a la persona más esfuerzo dentro de su cono. Y por la estructura misma del problema, eso no puede funcionar. Lo que falta no es potencia en el vértice. Lo que falta es apertura.&quot;</p></div>
+  </section>
+  
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>Estatuto: `[ANALOGÍA]`. La aplicación a estados psicológicos y sociales es una transferencia formal del marco. No es una afirmación clínica ni una teoría de la depresión, del duelo ni del desgaste laboral. Sirve como pedagogía y como generador de hipótesis. No está instanciada ni contrastada.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 19 · El cono en una vida humana
+
+**Tiempo:** 4 min
+
+🖼️ **[IMG-19]**
+Cuatro conos en fila, cada vez más pequeños, sobre una línea de tiempo. 1) Cono amplio con íconos de proyectos, viajes y personas. 2) Menor. 3) Menor, solo casa y trabajo. 4) Cono mínimo con un solo ícono: *hoy · yo*. La figura del vértice es idéntica y del mismo tamaño en los cuatro.
+*Idea única: la persona es la misma en los cuatro; el mundo al que responde no.*
+
+🗣️ **Guion:**
+&gt; &quot;Antes de ir al tejido, cuatro situaciones conocidas.
+&gt;
+&gt; Duelo. La primera semana no se puede pensar en el mes siguiente: H se reduce a días. Y deja de importar lo que ocurre en el trabajo o en la ciudad: Λ se reduce a la casa. Es una respuesta adaptativa, del mismo tipo que la tapia con la tormenta afuera.
+&gt;
+&gt; Precariedad económica. No se puede planear a seis meses porque no se sabe si va a haber ingreso. Eso no es falta de visión: es H determinado por qué información llega y con cuánto retraso. Es el mismo mecanismo que fija el H de la ameba, a escala de una vida.
+&gt;
+&gt; Desgaste laboral. Un año antes le importaba el proyecto, el equipo y el rumbo de la organización. Ahora le importa terminar el día. Y puede seguir siendo muy competente en terminar el día. Su eficiencia no cayó: su problema se hizo pequeño. Es la misma frase que usé para la desdiferenciación celular.
+&gt;
+&gt; Dolor crónico. El cono se reduce alrededor del cuerpo, y lo que está fuera del cuerpo deja de recibir respuesta.
+&gt;
+&gt; Lo que quiero señalar es esto: en los cuatro casos la reacción habitual es pedirle a la persona más esfuerzo dentro de su cono. Y por la estructura misma del problema, eso no puede funcionar. Lo que falta no es potencia en el vértice. Lo que falta es apertura.&quot;
+
+🎓 **Capa experta — decir esto en voz alta:**
+&gt; Estatuto: `[ANALOGÍA]`. La aplicación a estados psicológicos y sociales es una transferencia formal del marco. No es una afirmación clínica ni una teoría de la depresión, del duelo ni del desgaste laboral. Sirve como pedagogía y como generador de hipótesis. No está instanciada ni contrastada.
+
+➡️ &quot;Los mismos dos mecanismos, ahora en tejido.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-20" data-search="20 el cono en la enfermedad &quot;primero: la célula beta que se desdiferencia. no murió. apagó su identidad y volvió a un programa anterior. sigue viva y sigue siendo eficiente en su propia escala. lo que dejó de hacer es trabajar para el islote y para el organismo. es contracción de λ, no muerte celular. eso cambia la pregunta clínica: en vez de contar cuánta masa se perdió, hay que preguntar hasta qué escala responde lo que queda.
+
+segundo: la pérdida de respuesta anticipatoria. un sistema sano se prepara antes de que llegue la comida: hay actividad del efector antes de que la glucosa suba. cuando esa línea de información se corta, el sistema deja de anticipar y solo reacciona. es pérdida de h, y es el marcador más limpio de horizonte que tenemos.
+
+tercero: el cáncer. recuerden la inversión de la slide 7: el estado por defecto de una célula es proliferar y moverse. entonces una célula tumoral no adquirió una capacidad nueva. perdió las restricciones que la mantenían participando en algo mayor que ella, y su cono se redujo al tamaño de sí misma. es debilitamiento de c junto con contracción de λ.
+
+hay un dato que apoya esta lectura. si se inyectan células de hepatocarcinoma agrupadas en un hígado, se genera tumor. si se inyecta la misma cantidad de las mismas células, distribuidas de forma individual, no se genera tumor, y las células se normalizan por contacto con hepatocitos normales.
+
+misma cantidad, mismas células, distinta distribución, resultado opuesto. el contexto no modula el resultado: lo determina.&quot; el análogo temporal del mismo principio está documentado: en el eje hepático-parasimpático, la administración pulsátil de insulina permite la sensibilización, mientras que la misma dosis administrada de forma continua durante una hora produce supresión total. misma dosis, distinta distribución, efecto binario. es decir, la distribución importa tanto en el tiempo como en el espacio.
+
+estatuto de la traslación terapéutica: no probada y no refutada. los ensayos humanos de insulina pulsátil usaron sesiones semanales de seis horas por vena periférica, añadidas a terapia estándar. no restauran pulsatilidad de período de minutos, no comparan a dosis equivalente y midieron hba1c en lugar de capacidad. lo descartado es ese protocolo, no la hipótesis del régimen. la misma geometría permite comparar hipótesis distintas sin afirmar que tengan la misma causa. respuesta tardía apunta a h; pérdida de contexto colectivo apunta a λ. son lecturas contrastables del marco, no diagnósticos clínicos establecidos. ">
+  <header class="card-head">
+    <div><span class="slide-number">20</span><span class="section-name">El cono cognitivo</span></div>
+    <div class="card-meta"><span class="time">4 min</span></div>
+  </header>
+  <h2>El cono en la enfermedad</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Primero: la célula beta que se desdiferencia. No murió. Apagó su identidad y volvió a un programa anterior. Sigue viva y sigue siendo eficiente en su propia escala. Lo que dejó de hacer es trabajar para el islote y para el organismo. Es contracción de Λ, no muerte celular. Eso cambia la pregunta clínica: en vez de contar cuánta masa se perdió, hay que preguntar hasta qué escala responde lo que queda.</p><p>Segundo: la pérdida de respuesta anticipatoria. Un sistema sano se prepara antes de que llegue la comida: hay actividad del efector antes de que la glucosa suba. Cuando esa línea de información se corta, el sistema deja de anticipar y solo reacciona. Es pérdida de H, y es el marcador más limpio de horizonte que tenemos.</p><p>Tercero: el cáncer. Recuerden la inversión de la slide 7: el estado por defecto de una célula es proliferar y moverse. Entonces una célula tumoral no adquirió una capacidad nueva. Perdió las restricciones que la mantenían participando en algo mayor que ella, y su cono se redujo al tamaño de sí misma. Es debilitamiento de C junto con contracción de Λ.</p><p>Hay un dato que apoya esta lectura. Si se inyectan células de hepatocarcinoma agrupadas en un hígado, se genera tumor. Si se inyecta la misma cantidad de las mismas células, distribuidas de forma individual, no se genera tumor, y las células se normalizan por contacto con hepatocitos normales.</p><p>Misma cantidad, mismas células, distinta distribución, resultado opuesto. El contexto no modula el resultado: lo determina.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>La misma geometría permite comparar hipótesis distintas sin afirmar que tengan la misma causa.</p></div><div><b>Ejemplo</b><p>Respuesta tardía apunta a H; pérdida de contexto colectivo apunta a Λ.</p></div><div><b>Qué observar</b><p>Son lecturas contrastables del marco, no diagnósticos clínicos establecidos.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>El análogo temporal del mismo principio está documentado: en el eje hepático-parasimpático, la administración pulsátil de insulina permite la sensibilización, mientras que la misma dosis administrada de forma continua durante una hora produce supresión total. Misma dosis, distinta distribución, efecto binario. Es decir, la distribución importa tanto en el tiempo como en el espacio.</p><p>Estatuto de la traslación terapéutica: no probada y no refutada. Los ensayos humanos de insulina pulsátil usaron sesiones semanales de seis horas por vena periférica, añadidas a terapia estándar. No restauran pulsatilidad de período de minutos, no comparan a dosis equivalente y midieron HbA1c en lugar de capacidad. Lo descartado es ese protocolo, no la hipótesis del régimen.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 20 · El cono en la enfermedad
+
+**Tiempo:** 4 min
+
+🖼️ **[IMG-20]**
+Tres filas. Cada una con un ícono a la izquierda y su cono correspondiente a la derecha: célula beta desdiferenciada, con cono estrecho en ámbar; pérdida de respuesta anticipatoria, con cono corto; célula tumoral, con cono mínimo en rojo. Columna derecha con la anotación: *δΛ · δH · δΛ + δC⁻*.
+*Idea única: tres cuadros distintos, una misma geometría.*
+
+🗣️ **Guion:**
+&gt; &quot;Primero: la célula beta que se desdiferencia. No murió. Apagó su identidad y volvió a un programa anterior. Sigue viva y sigue siendo eficiente en su propia escala. Lo que dejó de hacer es trabajar para el islote y para el organismo. Es contracción de Λ, no muerte celular. Eso cambia la pregunta clínica: en vez de contar cuánta masa se perdió, hay que preguntar hasta qué escala responde lo que queda.
+&gt;
+&gt; Segundo: la pérdida de respuesta anticipatoria. Un sistema sano se prepara antes de que llegue la comida: hay actividad del efector antes de que la glucosa suba. Cuando esa línea de información se corta, el sistema deja de anticipar y solo reacciona. Es pérdida de H, y es el marcador más limpio de horizonte que tenemos.
+&gt;
+&gt; Tercero: el cáncer. Recuerden la inversión de la slide 7: el estado por defecto de una célula es proliferar y moverse. Entonces una célula tumoral no adquirió una capacidad nueva. Perdió las restricciones que la mantenían participando en algo mayor que ella, y su cono se redujo al tamaño de sí misma. Es debilitamiento de C junto con contracción de Λ.
+&gt;
+&gt; Hay un dato que apoya esta lectura. Si se inyectan células de hepatocarcinoma agrupadas en un hígado, se genera tumor. Si se inyecta la misma cantidad de las mismas células, distribuidas de forma individual, no se genera tumor, y las células se normalizan por contacto con hepatocitos normales.
+&gt;
+&gt; Misma cantidad, mismas células, distinta distribución, resultado opuesto. El contexto no modula el resultado: lo determina.&quot;
+
+🎓 **Capa experta:**
+&gt; El análogo temporal del mismo principio está documentado: en el eje hepático-parasimpático, la administración pulsátil de insulina permite la sensibilización, mientras que la misma dosis administrada de forma continua durante una hora produce supresión total. Misma dosis, distinta distribución, efecto binario. Es decir, la distribución importa tanto en el tiempo como en el espacio.
+&gt;
+&gt; Estatuto de la traslación terapéutica: no probada y no refutada. Los ensayos humanos de insulina pulsátil usaron sesiones semanales de seis horas por vena periférica, añadidas a terapia estándar. No restauran pulsatilidad de período de minutos, no comparan a dosis equivalente y midieron HbA1c en lugar de capacidad. Lo descartado es ese protocolo, no la hipótesis del régimen.
+
+➡️ &quot;Si el cono se contrae, la pregunta siguiente es cómo se mide.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-21" data-search="21 cómo se mide un cono &quot;esto es lo que separa el marco de una metáfora: hay un procedimiento de medición definido.
+
+para λ: se perturba cada escala, de la más pequeña a la más grande, y se registra si el sistema emite una acción correctiva. la escala más alta con respuesta significativa es su λ.
+
+para h: se busca respuesta anticipatoria. si el efector se activa antes de que la variable se desvíe, hay horizonte. si solo se activa después, el horizonte se perdió.
+
+el principio metodológico que rige las dos mediciones es este: las competencias no se infieren de datos observacionales. se demuestran perturbando.
+
+se puede observar un sistema durante mucho tiempo y no saber de qué es capaz. solo se sabe si se le bloquea la ruta habitual y se observa si encuentra otra.&quot; ese último test es la métrica $\phi_{\text{flex}}$, el único procedimiento del marco que mide agencia y no eficiencia. operacionaliza el criterio de james, fines fijos con medios variables. el concepto tiene nombre desde 2001: degeneración (edelman y gally), definida como la capacidad de elementos estructuralmente distintos de realizar la misma función. no es lo mismo que redundancia: la redundancia protege frente a un fallo previsto, la degeneración protege frente a perturbaciones novedosas.
+
+la fragilidad resultante es un teorema, no una observación, por la ley de variedad requerida de ashby: la variedad de respuestas acota superiormente la variedad de condiciones frente a las que el sistema puede ser robusto. si $\phi_{\text{flex}}$ baja, esa cota baja.
+
+tesis del marco: $\phi_{\text{flex}}$ cae antes y más que la eficiencia. el sistema se vuelve rígido antes que ineficiente.
+
+limitación declarada: la plataforma de perturbación selectiva que estas mediciones requieren no existe todavía. es el pendiente número 2 del repositorio. la competencia no se adivina mirando: se prueba perturbando el sistema. si bloqueas la ruta habitual y aparece otra, había flexibilidad oculta. medir cantidad no basta; también importa coordinación, anticipación y alternativas. cada propiedad exige una perturbación distinta">
+  <header class="card-head">
+    <div><span class="slide-number">21</span><span class="section-name">El cono cognitivo</span></div>
+    <div class="card-meta"><span class="diagram-badge">Pizarra · D</span><span class="time">3 min</span></div>
+  </header>
+  <h2>Cómo se mide un cono</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Esto es lo que separa el marco de una metáfora: hay un procedimiento de medición definido.</p><p>Para Λ: se perturba cada escala, de la más pequeña a la más grande, y se registra si el sistema emite una acción correctiva. La escala más alta con respuesta significativa es su Λ.</p><p>Para H: se busca respuesta anticipatoria. Si el efector se activa antes de que la variable se desvíe, hay horizonte. Si solo se activa después, el horizonte se perdió.</p><p>El principio metodológico que rige las dos mediciones es este: las competencias no se infieren de datos observacionales. Se demuestran perturbando.</p><p>Se puede observar un sistema durante mucho tiempo y no saber de qué es capaz. Solo se sabe si se le bloquea la ruta habitual y se observa si encuentra otra.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>La competencia no se adivina mirando: se prueba perturbando el sistema.</p></div><div><b>Ejemplo</b><p>Si bloqueas la ruta habitual y aparece otra, había flexibilidad oculta.</p></div><div><b>Qué observar</b><p>Medir cantidad no basta; también importa coordinación, anticipación y alternativas.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>Ese último test es la métrica <span class="formula">\Phi_{\text{flex}}</span>, el único procedimiento del marco que mide agencia y no eficiencia. Operacionaliza el criterio de James, fines fijos con medios variables. El concepto tiene nombre desde 2001: degeneración (Edelman y Gally), definida como la capacidad de elementos estructuralmente distintos de realizar la misma función. No es lo mismo que redundancia: la redundancia protege frente a un fallo previsto, la degeneración protege frente a perturbaciones novedosas.</p><p>La fragilidad resultante es un teorema, no una observación, por la ley de variedad requerida de Ashby: la variedad de respuestas acota superiormente la variedad de condiciones frente a las que el sistema puede ser robusto. Si <span class="formula">\Phi_{\text{flex}}</span> baja, esa cota baja.</p><p>Tesis del marco: <span class="formula">\Phi_{\text{flex}}</span> cae antes y más que la eficiencia. El sistema se vuelve rígido antes que ineficiente.</p><p>Limitación declarada: la plataforma de perturbación selectiva que estas mediciones requieren no existe todavía. Es el pendiente número 2 del repositorio.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 21 · Cómo se mide un cono
+
+**Tiempo:** 3 min
+
+🖼️ **[IMG-21]**
+Escalas apiladas de abajo arriba: célula, tejido, órgano, organismo. Un ícono de perturbación golpea cada una. Al lado de cada escala, el resultado: *sí · sí · débil · no*. Una línea ámbar marca el corte, con la etiqueta *Λ = la escala más alta que todavía responde*.
+*Idea única: el alcance no se deduce observando; se demuestra perturbando.*
+
+🗣️ **Guion:**
+&gt; &quot;Esto es lo que separa el marco de una metáfora: hay un procedimiento de medición definido.
+&gt;
+&gt; Para Λ: se perturba cada escala, de la más pequeña a la más grande, y se registra si el sistema emite una acción correctiva. La escala más alta con respuesta significativa es su Λ.
+&gt;
+&gt; Para H: se busca respuesta anticipatoria. Si el efector se activa antes de que la variable se desvíe, hay horizonte. Si solo se activa después, el horizonte se perdió.
+&gt;
+&gt; El principio metodológico que rige las dos mediciones es este: las competencias no se infieren de datos observacionales. Se demuestran perturbando.
+&gt;
+&gt; Se puede observar un sistema durante mucho tiempo y no saber de qué es capaz. Solo se sabe si se le bloquea la ruta habitual y se observa si encuentra otra.&quot;
+
+🎓 **Capa experta:**
+&gt; Ese último test es la métrica $\Phi_{\text{flex}}$, el único procedimiento del marco que mide agencia y no eficiencia. Operacionaliza el criterio de James, fines fijos con medios variables. El concepto tiene nombre desde 2001: degeneración (Edelman y Gally), definida como la capacidad de elementos estructuralmente distintos de realizar la misma función. No es lo mismo que redundancia: la redundancia protege frente a un fallo previsto, la degeneración protege frente a perturbaciones novedosas.
+&gt;
+&gt; La fragilidad resultante es un teorema, no una observación, por la ley de variedad requerida de Ashby: la variedad de respuestas acota superiormente la variedad de condiciones frente a las que el sistema puede ser robusto. Si $\Phi_{\text{flex}}$ baja, esa cota baja.
+&gt;
+&gt; Tesis del marco: $\Phi_{\text{flex}}$ cae antes y más que la eficiencia. El sistema se vuelve rígido antes que ineficiente.
+&gt;
+&gt; Limitación declarada: la plataforma de perturbación selectiva que estas mediciones requieren no existe todavía. Es el pendiente número 2 del repositorio.
+
+➡️ &quot;Con esto ya se puede construir un catálogo de modos de fallo.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-22" data-search="22 los seis modos de fallo &quot;esto sustituye a la frase 'la enfermedad progresó'. son seis formas distintas de fallar, cada una con una firma observable y un tratamiento distinto.
+
+la meta se desplazó. firma: contrarregulación, y a veces respuestas con el signo invertido.
+el alcance se contrajo. firma: deja de responder a escalas superiores.
+el horizonte se acortó. firma: pérdida de respuesta anticipatoria.
+rigidificación. firma: una ventana de intervención que se cierra.
+debilitamiento. firma: proliferación, motilidad, pérdida de contexto.
+se perdió la integración. firma: la coordinación cae antes que la cantidad.
+
+sobre la última, una distinción que discrimina bien. si dos partes del sistema dejan de informarse entre sí, eso indica disolución del colectivo. si se informan en direcciones opuestas, eso indica otra cosa: que la meta se desplazó.
+
+la razón por la que la distinción sirve es esta: el signo invertido no lo produce ningún modelo de señal degradada. una señal débil se debilita, pero no cambia de dirección.&quot; el vector de modo de fallo es $\mathbf{m} = (\delta_e, \delta_\lambda, \delta_h, \delta_c^{\pm}, \delta_\sigma, \delta_{\phi_{\text{flex}}})$. la propuesta operativa del marco es duplicar la clasificación por analito con una clasificación por $\mathbf{m}$.
+
+desacoplamiento e incoherencia direccional se separan en las dos componentes de la idi. la razón es técnica: la información mutua es simétrica y sin signo, de modo que dos observadores con respuestas exactamente opuestas dan información mutua máxima. una métrica así sería ciega al test binario del propio marco. “la enfermedad progresó” describe un resultado, pero no identifica cómo falló la regulación. meta desplazada, horizonte corto y pérdida de integración requieren preguntas diferentes. cada modo de fallo debe dejar una firma observable distinta. ">
+  <header class="card-head">
+    <div><span class="slide-number">22</span><span class="section-name">El cono cognitivo</span></div>
+    <div class="card-meta"><span class="time">3 min</span></div>
+  </header>
+  <h2>Los seis modos de fallo</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Esto sustituye a la frase 'la enfermedad progresó'. Son seis formas distintas de fallar, cada una con una firma observable y un tratamiento distinto.</p><p>La meta se desplazó. Firma: contrarregulación, y a veces respuestas con el signo invertido.<br>El alcance se contrajo. Firma: deja de responder a escalas superiores.<br>El horizonte se acortó. Firma: pérdida de respuesta anticipatoria.<br>Rigidificación. Firma: una ventana de intervención que se cierra.<br>Debilitamiento. Firma: proliferación, motilidad, pérdida de contexto.<br>Se perdió la integración. Firma: la coordinación cae antes que la cantidad.</p><p>Sobre la última, una distinción que discrimina bien. Si dos partes del sistema dejan de informarse entre sí, eso indica disolución del colectivo. Si se informan en direcciones opuestas, eso indica otra cosa: que la meta se desplazó.</p><p>La razón por la que la distinción sirve es esta: el signo invertido no lo produce ningún modelo de señal degradada. Una señal débil se debilita, pero no cambia de dirección.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>“La enfermedad progresó” describe un resultado, pero no identifica cómo falló la regulación.</p></div><div><b>Ejemplo</b><p>Meta desplazada, horizonte corto y pérdida de integración requieren preguntas diferentes.</p></div><div><b>Qué observar</b><p>Cada modo de fallo debe dejar una firma observable distinta.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>El vector de modo de fallo es <span class="formula">\mathbf{m} = (\delta_E, \delta_\Lambda, \delta_H, \delta_C^{\pm}, \delta_\Sigma, \delta_{\Phi_{\text{flex}}})</span>. La propuesta operativa del marco es duplicar la clasificación por analito con una clasificación por <span class="formula">\mathbf{m}</span>.</p><p>Desacoplamiento e incoherencia direccional se separan en las dos componentes de la IDI. La razón es técnica: la información mutua es simétrica y sin signo, de modo que dos observadores con respuestas exactamente opuestas dan información mutua máxima. Una métrica así sería ciega al test binario del propio marco.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 22 · Los seis modos de fallo
+
+**Tiempo:** 3 min
+
+🖼️ **[IMG-22]**
+Seis filas, cada una con un ícono simple: diana desplazada, cono estrecho, cono corto, laberinto tapiado, laberinto sin paredes, red desacoplada. Columna derecha con la firma observable de cada modo.
+*Idea única: un diagnóstico diferencial de seis entradas.*
+
+🗣️ **Guion:**
+&gt; &quot;Esto sustituye a la frase 'la enfermedad progresó'. Son seis formas distintas de fallar, cada una con una firma observable y un tratamiento distinto.
+&gt;
+&gt; La meta se desplazó. Firma: contrarregulación, y a veces respuestas con el signo invertido.
+&gt; El alcance se contrajo. Firma: deja de responder a escalas superiores.
+&gt; El horizonte se acortó. Firma: pérdida de respuesta anticipatoria.
+&gt; Rigidificación. Firma: una ventana de intervención que se cierra.
+&gt; Debilitamiento. Firma: proliferación, motilidad, pérdida de contexto.
+&gt; Se perdió la integración. Firma: la coordinación cae antes que la cantidad.
+&gt;
+&gt; Sobre la última, una distinción que discrimina bien. Si dos partes del sistema dejan de informarse entre sí, eso indica disolución del colectivo. Si se informan en direcciones opuestas, eso indica otra cosa: que la meta se desplazó.
+&gt;
+&gt; La razón por la que la distinción sirve es esta: el signo invertido no lo produce ningún modelo de señal degradada. Una señal débil se debilita, pero no cambia de dirección.&quot;
+
+🎓 **Capa experta:**
+&gt; El vector de modo de fallo es $\mathbf{m} = (\delta_E, \delta_\Lambda, \delta_H, \delta_C^{\pm}, \delta_\Sigma, \delta_{\Phi_{\text{flex}}})$. La propuesta operativa del marco es duplicar la clasificación por analito con una clasificación por $\mathbf{m}$.
+&gt;
+&gt; Desacoplamiento e incoherencia direccional se separan en las dos componentes de la IDI. La razón es técnica: la información mutua es simétrica y sin signo, de modo que dos observadores con respuestas exactamente opuestas dan información mutua máxima. Una métrica así sería ciega al test binario del propio marco.
+
+➡️ &quot;Ahora, qué hacer con un cono contraído.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-23" data-search="23 la jerarquía terapéutica &quot;si el marco es correcto, hay un orden de preferencia terapéutica, y ese orden no se establece por magnitud del efecto sino por durabilidad.
+
+primero: editar c. abrir el camino que está cerrado. es lo más duradero, porque el sistema hace el trabajo.
+segundo: modular la ganancia. amplificar la respuesta solo cuando hay error, de modo que sigue acoplada al sistema.
+tercero: añadir un operador acoplado. se le da una herramienta nueva, pero que responde a la señal del sistema.
+cuarto: forzar un operador con independencia del error. actúa haya o no desviación. no está acoplado a nada. es lo que más se usa.
+
+la imagen del módulo 7: tienes cuarenta bombas y una compuerta cerrada. las bombas funcionan, cada una sirve para algo. pero mientras la compuerta siga cerrada, cada bomba hace necesaria la siguiente, porque un cauce que deja de llevar agua se azolva más rápido.
+
+y hay un criterio útil para saber si acertaste el nivel: si una intervención mínima produce recuperación sostenida, eso demuestra que s y o estaban intactos. el sistema tenía la capacidad; le faltaba el permiso.&quot; $\eta = \dfrac{\text{capacidad que el sistema recupera}}{\text{información que se introdujo}}$. un $\eta$ alto indica que el trabajo lo hizo el sistema, es decir, que el nivel de interacción fue el correcto. la jerarquía formal es
+$$\text{editar } c &gt; \text{modular ganancia} &gt; \text{añadir } o \text{ acoplado} &gt; \text{forzar } o \text{ desacoplado}$$
+y se evalúa comparando arsenales por durabilidad, no por magnitud. criterio diagnóstico asociado: rebote al retirar indica sustitución sin restauración. una intervención durable devuelve capacidad al sistema en vez de hacer el trabajo permanentemente por él. abrir la compuerta antes de instalar más bombas. si al retirar la intervención todo rebota, hubo sustitución más que restauración. ">
+  <header class="card-head">
+    <div><span class="slide-number">23</span><span class="section-name">Qué cambia</span></div>
+    <div class="card-meta"><span class="time">3.5 min · slide clave</span></div>
+  </header>
+  <h2>La jerarquía terapéutica</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Si el marco es correcto, hay un orden de preferencia terapéutica, y ese orden no se establece por magnitud del efecto sino por durabilidad.</p><p>Primero: editar C. Abrir el camino que está cerrado. Es lo más duradero, porque el sistema hace el trabajo.<br>Segundo: modular la ganancia. Amplificar la respuesta solo cuando hay error, de modo que sigue acoplada al sistema.<br>Tercero: añadir un operador acoplado. Se le da una herramienta nueva, pero que responde a la señal del sistema.<br>Cuarto: forzar un operador con independencia del error. Actúa haya o no desviación. No está acoplado a nada. Es lo que más se usa.</p><p>La imagen del módulo 7: tienes cuarenta bombas y una compuerta cerrada. Las bombas funcionan, cada una sirve para algo. Pero mientras la compuerta siga cerrada, cada bomba hace necesaria la siguiente, porque un cauce que deja de llevar agua se azolva más rápido.</p><p>Y hay un criterio útil para saber si acertaste el nivel: si una intervención mínima produce recuperación sostenida, eso demuestra que S y O estaban intactos. El sistema tenía la capacidad; le faltaba el permiso.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>Una intervención durable devuelve capacidad al sistema en vez de hacer el trabajo permanentemente por él.</p></div><div><b>Ejemplo</b><p>Abrir la compuerta antes de instalar más bombas.</p></div><div><b>Qué observar</b><p>Si al retirar la intervención todo rebota, hubo sustitución más que restauración.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p><span class="formula">\eta = \dfrac{\text{capacidad que el sistema recupera}}{\text{información que se introdujo}}</span>. Un <span class="formula">\eta</span> alto indica que el trabajo lo hizo el sistema, es decir, que el nivel de interacción fue el correcto. La jerarquía formal es<br><span class="formula">\text{editar } C &gt; \text{modular ganancia} &gt; \text{añadir } O \text{ acoplado} &gt; \text{forzar } O \text{ desacoplado}</span><br>y se evalúa comparando arsenales por durabilidad, no por magnitud. Criterio diagnóstico asociado: rebote al retirar indica sustitución sin restauración.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 23 · La jerarquía terapéutica
+
+**Tiempo:** 3.5 min · **slide clave**
+
+🖼️ **[IMG-23]**
+Escalera descendente de cuatro peldaños. Arriba: *editar C*, ámbar intenso, ícono de compuerta abriéndose. Después: *modular la ganancia*, ámbar medio, ícono de perilla. Después: *añadir O acoplado*, azul, ícono de pieza que encaja. Abajo: *forzar O desacoplado*, rojo, ícono de pieza empujada. A la derecha, una flecha vertical etiquetada *durabilidad*.
+*Idea única: hay un orden de preferencia, y se ordena por durabilidad, no por magnitud.*
+
+🗣️ **Guion:**
+&gt; &quot;Si el marco es correcto, hay un orden de preferencia terapéutica, y ese orden no se establece por magnitud del efecto sino por durabilidad.
+&gt;
+&gt; Primero: editar C. Abrir el camino que está cerrado. Es lo más duradero, porque el sistema hace el trabajo.
+&gt; Segundo: modular la ganancia. Amplificar la respuesta solo cuando hay error, de modo que sigue acoplada al sistema.
+&gt; Tercero: añadir un operador acoplado. Se le da una herramienta nueva, pero que responde a la señal del sistema.
+&gt; Cuarto: forzar un operador con independencia del error. Actúa haya o no desviación. No está acoplado a nada. Es lo que más se usa.
+&gt;
+&gt; La imagen del módulo 7: tienes cuarenta bombas y una compuerta cerrada. Las bombas funcionan, cada una sirve para algo. Pero mientras la compuerta siga cerrada, cada bomba hace necesaria la siguiente, porque un cauce que deja de llevar agua se azolva más rápido.
+&gt;
+&gt; Y hay un criterio útil para saber si acertaste el nivel: si una intervención mínima produce recuperación sostenida, eso demuestra que S y O estaban intactos. El sistema tenía la capacidad; le faltaba el permiso.&quot;
+
+🎓 **Capa experta:**
+&gt; $\eta = \dfrac{\text{capacidad que el sistema recupera}}{\text{información que se introdujo}}$. Un $\eta$ alto indica que el trabajo lo hizo el sistema, es decir, que el nivel de interacción fue el correcto. La jerarquía formal es
+&gt; $$\text{editar } C &gt; \text{modular ganancia} &gt; \text{añadir } O \text{ acoplado} &gt; \text{forzar } O \text{ desacoplado}$$
+&gt; y se evalúa comparando arsenales por durabilidad, no por magnitud. Criterio diagnóstico asociado: rebote al retirar indica sustitución sin restauración.
+
+➡️ &quot;Para el modo de fallo específico de esta clase, la contracción de Λ, hay una entrada propia.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-24" data-search="24 qué se hace con un cono contraído &quot;el perfil de fallo se llama repliegue agencial: λ contraído. en la tabla del marco, su tratamiento se enuncia en tres palabras: reconectar a la escala superior.
+
+y el marco registra explícitamente el error asociado: estimular la función local. es un error porque la función local no está caída. se estaría aumentando la potencia de un vértice que ya funciona bien.
+
+formulado como principio: a un sistema replegado no se le recupera haciéndolo más eficiente. se le recupera devolviéndole una escala a la que responder.
+
+la misma formulación aplica fuera de la medicina, y por la misma razón estructural: a una persona replegada no se le recupera exigiéndole más rendimiento en lo poco que le queda, sino devolviéndole algo mayor que ella a lo que responder.&quot; perfil repliegue agencial: dominante $\delta_\lambda$, tratamiento reconectar a escala superior, error registrado estimular la función local. nota de orden operativo: dentro de las flechas $s \to c$, t6 y t8 son las reversibles y se evalúan antes de invertir recursos en las irreversibles. para ampliar un cono contraído hay que devolver información o acoplamiento con una escala superior. no exigir más rendimiento local; reconectar la parte con el conjunto. estimular una función ya intacta puede aumentar potencia sin ampliar el problema. ">
+  <header class="card-head">
+    <div><span class="slide-number">24</span><span class="section-name">Qué cambia</span></div>
+    <div class="card-meta"><span class="time">3 min</span></div>
+  </header>
+  <h2>Qué se hace con un cono contraído</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;El perfil de fallo se llama repliegue agencial: Λ contraído. En la tabla del marco, su tratamiento se enuncia en tres palabras: reconectar a la escala superior.</p><p>Y el marco registra explícitamente el error asociado: estimular la función local. Es un error porque la función local no está caída. Se estaría aumentando la potencia de un vértice que ya funciona bien.</p><p>Formulado como principio: a un sistema replegado no se le recupera haciéndolo más eficiente. Se le recupera devolviéndole una escala a la que responder.</p><p>La misma formulación aplica fuera de la medicina, y por la misma razón estructural: a una persona replegada no se le recupera exigiéndole más rendimiento en lo poco que le queda, sino devolviéndole algo mayor que ella a lo que responder.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>Para ampliar un cono contraído hay que devolver información o acoplamiento con una escala superior.</p></div><div><b>Ejemplo</b><p>No exigir más rendimiento local; reconectar la parte con el conjunto.</p></div><div><b>Qué observar</b><p>Estimular una función ya intacta puede aumentar potencia sin ampliar el problema.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>Perfil repliegue agencial: dominante <span class="formula">\delta_\Lambda</span>, tratamiento reconectar a escala superior, error registrado estimular la función local. Nota de orden operativo: dentro de las flechas <span class="formula">S \to C</span>, T6 y T8 son las reversibles y se evalúan antes de invertir recursos en las irreversibles.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 24 · Qué se hace con un cono contraído
+
+**Tiempo:** 3 min
+
+🖼️ **[IMG-24]**
+Izquierda: un cono pequeño en rojo, con una línea ámbar que lo conecta a un anillo de escala superior situado fuera de él; al conectarse, el cono se abre. Derecha, tachado con una X: el mismo cono pequeño con flechas gruesas empujando desde el vértice, sin abrirse.
+*Idea única: un cono no se abre aumentando la potencia en el vértice.*
+
+🗣️ **Guion:**
+&gt; &quot;El perfil de fallo se llama repliegue agencial: Λ contraído. En la tabla del marco, su tratamiento se enuncia en tres palabras: reconectar a la escala superior.
+&gt;
+&gt; Y el marco registra explícitamente el error asociado: estimular la función local. Es un error porque la función local no está caída. Se estaría aumentando la potencia de un vértice que ya funciona bien.
+&gt;
+&gt; Formulado como principio: a un sistema replegado no se le recupera haciéndolo más eficiente. Se le recupera devolviéndole una escala a la que responder.
+&gt;
+&gt; La misma formulación aplica fuera de la medicina, y por la misma razón estructural: a una persona replegada no se le recupera exigiéndole más rendimiento en lo poco que le queda, sino devolviéndole algo mayor que ella a lo que responder.&quot;
+
+🎓 **Capa experta:**
+&gt; Perfil repliegue agencial: dominante $\delta_\Lambda$, tratamiento reconectar a escala superior, error registrado estimular la función local. Nota de orden operativo: dentro de las flechas $S \to C$, T6 y T8 son las reversibles y se evalúan antes de invertir recursos en las irreversibles.
+
+➡️ &quot;Falta la parte que convierte esto en algo contrastable.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-25" data-search="25 cómo sabríamos que el marco está equivocado &quot;todo lo anterior queda refutado si ocurre cualquiera de estas tres cosas.
+
+una: si la coordinación no cae antes que la cantidad. si al medirlo se pierde primero magnitud y después coordinación, la tesis central queda invertida.
+
+dos: si nunca aparece inversión de signo. ese era el único hallazgo que ningún modelo de señal degradada podía producir.
+
+tres: si el patrón de la señal no importa. si a dosis total idéntica, distribuida de cualquier forma, el resultado es el mismo, toda la parte de régimen queda descartada.
+
+y una advertencia sobre este marco en particular: un vocabulario de agencia, escalas, permisos y contextos ofrece más vías de rescate que uno mecanicista, no menos. siempre se puede decir 'se contrajo λ' y tener la sensación de haber explicado algo. por eso las condiciones de refutación no son un apéndice del marco: son parte del marco.&quot; 1. buscar el término antes de acuñarlo. la tasa base de &quot;esto ya está publicado&quot; es alta: en el desarrollo de este marco, seis literaturas independientes ya habían llegado a piezas centrales sin conocerse entre sí.
+2. verificar el protocolo antes de registrar una disconfirmación: población, comparador, dosis, vía, frecuencia, desenlace. y aplicar esa verificación antes de saber si el resultado fue positivo o negativo. si solo se aplica a los resultados incómodos, es un epiciclo.
+3. leer qué propone una crítica antes de registrarla. si lo que propone coincide con el marco, es convergencia y no disputa. una teoría científica útil declara por adelantado qué resultado la obligaría a cambiar. si el patrón temporal nunca importa, esa parte del modelo debe descartarse. una explicación que acomoda cualquier resultado no permite aprender de los errores. una predicción debe poder perder">
+  <header class="card-head">
+    <div><span class="slide-number">25</span><span class="section-name">Qué cambia</span></div>
+    <div class="card-meta"><span class="diagram-badge">Pizarra · D</span><span class="time">3 min · no omitir</span></div>
+  </header>
+  <h2>Cómo sabríamos que el marco está equivocado</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Todo lo anterior queda refutado si ocurre cualquiera de estas tres cosas.</p><p>Una: si la coordinación no cae antes que la cantidad. Si al medirlo se pierde primero magnitud y después coordinación, la tesis central queda invertida.</p><p>Dos: si nunca aparece inversión de signo. Ese era el único hallazgo que ningún modelo de señal degradada podía producir.</p><p>Tres: si el patrón de la señal no importa. Si a dosis total idéntica, distribuida de cualquier forma, el resultado es el mismo, toda la parte de régimen queda descartada.</p><p>Y una advertencia sobre este marco en particular: un vocabulario de agencia, escalas, permisos y contextos ofrece más vías de rescate que uno mecanicista, no menos. Siempre se puede decir 'se contrajo Λ' y tener la sensación de haber explicado algo. Por eso las condiciones de refutación no son un apéndice del marco: son parte del marco.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>Una teoría científica útil declara por adelantado qué resultado la obligaría a cambiar.</p></div><div><b>Ejemplo</b><p>Si el patrón temporal nunca importa, esa parte del modelo debe descartarse.</p></div><div><b>Qué observar</b><p>Una explicación que acomoda cualquier resultado no permite aprender de los errores.</p></div></div></section>
+  <section class="script-block optional expert-block"><h3><span>🎓</span> Capa experta</h3><div class="prose"><p>1. Buscar el término antes de acuñarlo. La tasa base de &quot;esto ya está publicado&quot; es alta: en el desarrollo de este marco, seis literaturas independientes ya habían llegado a piezas centrales sin conocerse entre sí.<br>2. Verificar el protocolo antes de registrar una disconfirmación: población, comparador, dosis, vía, frecuencia, desenlace. Y aplicar esa verificación antes de saber si el resultado fue positivo o negativo. Si solo se aplica a los resultados incómodos, es un epiciclo.<br>3. Leer qué propone una crítica antes de registrarla. Si lo que propone coincide con el marco, es convergencia y no disputa.</p></div></section>
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 25 · Cómo sabríamos que el marco está equivocado
+
+**Tiempo:** 3 min · **no omitir**
+
+🖼️ **[IMG-25]**
+Un mapa con tres cruces marcadas, las tres tachadas. Junto a cada una: *&quot;la coordinación no cae primero&quot;*, *&quot;no hay inversión de signo&quot;*, *&quot;el patrón de la señal no importa&quot;*. Al pie: *&quot;si alguna se cumple, el marco cae&quot;*.
+*Idea única: el marco declara por adelantado qué resultado lo refutaría.*
+
+🗣️ **Guion:**
+&gt; &quot;Todo lo anterior queda refutado si ocurre cualquiera de estas tres cosas.
+&gt;
+&gt; Una: si la coordinación no cae antes que la cantidad. Si al medirlo se pierde primero magnitud y después coordinación, la tesis central queda invertida.
+&gt;
+&gt; Dos: si nunca aparece inversión de signo. Ese era el único hallazgo que ningún modelo de señal degradada podía producir.
+&gt;
+&gt; Tres: si el patrón de la señal no importa. Si a dosis total idéntica, distribuida de cualquier forma, el resultado es el mismo, toda la parte de régimen queda descartada.
+&gt;
+&gt; Y una advertencia sobre este marco en particular: un vocabulario de agencia, escalas, permisos y contextos ofrece más vías de rescate que uno mecanicista, no menos. Siempre se puede decir 'se contrajo Λ' y tener la sensación de haber explicado algo. Por eso las condiciones de refutación no son un apéndice del marco: son parte del marco.&quot;
+
+🎓 **Capa experta — las tres reglas de método, derivadas de errores cometidos:**
+&gt; 1. Buscar el término antes de acuñarlo. La tasa base de &quot;esto ya está publicado&quot; es alta: en el desarrollo de este marco, seis literaturas independientes ya habían llegado a piezas centrales sin conocerse entre sí.
+&gt; 2. Verificar el protocolo antes de registrar una disconfirmación: población, comparador, dosis, vía, frecuencia, desenlace. Y aplicar esa verificación antes de saber si el resultado fue positivo o negativo. Si solo se aplica a los resultados incómodos, es un epiciclo.
+&gt; 3. Leer qué propone una crítica antes de registrarla. Si lo que propone coincide con el marco, es convergencia y no disputa.
+
+➡️ &quot;Una objeción frecuente, antes de cerrar.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-26" data-search="26 la objeción habitual &quot;la objeción es casi siempre la misma: el mecanismo molecular ya se conoce.
+
+la respuesta es que siempre hay mecanismo. que exista un mecanismo molecular no aporta información, porque siempre existe, para cualquier fenómeno. la pregunta no es si existe.
+
+la pregunta es qué nivel de descripción permite intervenir.
+
+este marco no reemplaza a la biología molecular. discute la elección de nivel.&quot;  conocer moléculas no decide automáticamente cuál es el mejor nivel para intervenir. un atasco tiene fricción molecular, pero se resuelve mejor abriendo la calle. el nivel útil es el que mejora predicción, discriminación e intervención. ">
+  <header class="card-head">
+    <div><span class="slide-number">26</span><span class="section-name">Qué cambia</span></div>
+    <div class="card-meta"><span class="time">2 min</span></div>
+  </header>
+  <h2>La objeción habitual</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;La objeción es casi siempre la misma: el mecanismo molecular ya se conoce.</p><p>La respuesta es que siempre hay mecanismo. Que exista un mecanismo molecular no aporta información, porque siempre existe, para cualquier fenómeno. La pregunta no es si existe.</p><p>La pregunta es qué nivel de descripción permite intervenir.</p><p>Este marco no reemplaza a la biología molecular. Discute la elección de nivel.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>Conocer moléculas no decide automáticamente cuál es el mejor nivel para intervenir.</p></div><div><b>Ejemplo</b><p>Un atasco tiene fricción molecular, pero se resuelve mejor abriendo la calle.</p></div><div><b>Qué observar</b><p>El nivel útil es el que mejora predicción, discriminación e intervención.</p></div></div></section>
+  
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 26 · La objeción habitual
+
+**Tiempo:** 2 min
+
+🖼️ **[IMG-26]**
+Una lupa grande sobre una molécula. Fuera del campo de la lupa, desenfocado y en gris, el organismo completo. Sin texto.
+*Idea única: siempre hay un mecanismo molecular; eso no resuelve la pregunta.*
+
+🗣️ **Guion:**
+&gt; &quot;La objeción es casi siempre la misma: el mecanismo molecular ya se conoce.
+&gt;
+&gt; La respuesta es que siempre hay mecanismo. Que exista un mecanismo molecular no aporta información, porque siempre existe, para cualquier fenómeno. La pregunta no es si existe.
+&gt;
+&gt; La pregunta es qué nivel de descripción permite intervenir.
+&gt;
+&gt; Este marco no reemplaza a la biología molecular. Discute la elección de nivel.&quot;
+
+➡️ &quot;Cierro con lo único que es aplicable de inmediato.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-27" data-search="27 el cambio de pregunta &quot;casi nada de lo que mostré existe hoy en clínica, y quiero decirlo explícitamente.
+
+lo que sí es aplicable de inmediato es un cambio de pregunta.
+
+de '¿qué le añado?' a '¿qué le está cerrando el paso, y qué caminos siguen abiertos?'.
+
+esa segunda pregunta no requiere un fármaco nuevo, ni un estudio nuevo, ni un equipo que todavía no existe. requiere formularla, y cambia lo que se observa en la siguiente consulta.&quot;  la pregunta práctica cambia de “qué falta” a “qué capacidad existe pero no puede usarse”. antes de añadir algo, buscar el camino cerrado y las rutas que siguen abiertas. es un cambio de observación, no una recomendación médica automática. ">
+  <header class="card-head">
+    <div><span class="slide-number">27</span><span class="section-name">Qué cambia</span></div>
+    <div class="card-meta"><span class="time">2 min · slide clave</span></div>
+  </header>
+  <h2>El cambio de pregunta</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Casi nada de lo que mostré existe hoy en clínica, y quiero decirlo explícitamente.</p><p>Lo que sí es aplicable de inmediato es un cambio de pregunta.</p><p>De '¿qué le añado?' a '¿qué le está cerrando el paso, y qué caminos siguen abiertos?'.</p><p>Esa segunda pregunta no requiere un fármaco nuevo, ni un estudio nuevo, ni un equipo que todavía no existe. Requiere formularla, y cambia lo que se observa en la siguiente consulta.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>La pregunta práctica cambia de “qué falta” a “qué capacidad existe pero no puede usarse”.</p></div><div><b>Ejemplo</b><p>Antes de añadir algo, buscar el camino cerrado y las rutas que siguen abiertas.</p></div><div><b>Qué observar</b><p>Es un cambio de observación, no una recomendación médica automática.</p></div></div></section>
+  
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 27 · El cambio de pregunta
+
+**Tiempo:** 2 min · **slide clave**
+
+🖼️ **[IMG-27]**
+Dos preguntas en texto. Arriba, tachada y en gris: *&quot;¿qué le añado?&quot;*. Abajo, en ámbar y grande: *&quot;¿qué le está cerrando el paso, y qué caminos siguen abiertos?&quot;*.
+*Idea única: el resultado aplicable de la clase es un cambio de pregunta.*
+
+🗣️ **Guion:**
+&gt; &quot;Casi nada de lo que mostré existe hoy en clínica, y quiero decirlo explícitamente.
+&gt;
+&gt; Lo que sí es aplicable de inmediato es un cambio de pregunta.
+&gt;
+&gt; De '¿qué le añado?' a '¿qué le está cerrando el paso, y qué caminos siguen abiertos?'.
+&gt;
+&gt; Esa segunda pregunta no requiere un fármaco nuevo, ni un estudio nuevo, ni un equipo que todavía no existe. Requiere formularla, y cambia lo que se observa en la siguiente consulta.&quot;
+
+➡️ &quot;Antes de terminar, quiero que lo apliquen una vez.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-28" data-search="28 ejercicio &quot;tomen un paciente propio, o una persona conocida que esté atorada. contesten cinco preguntas en este orden. el orden importa.
+
+uno: ¿cuál es la variable que el sistema defiende? no la que está alterada, sino la que regresa activamente cuando la mueves.
+
+dos: ¿lo que defiende es una magnitud o una relación? hay una señal para distinguirlo: si existe un subgrupo de pacientes con el número normal y la enfermedad presente, lo que se defiende es una relación, no una magnitud.
+
+tres: ¿responde menos, o no responde? eso ubica al sistema entre costo alto y camino cerrado.
+
+cuatro: ¿hay alguna señal permisiva apagada, y de qué estado depende? recuerden que un permiso apagado se ve igual que un efector dañado y el tratamiento es opuesto.
+
+cinco: ¿cómo está su cono? ¿se acortó, se estrechó, o las dos cosas?&quot;  la variable alterada no siempre es la variable que el sistema está defendiendo. busca el valor o relación al que vuelve activamente después de moverlo. primero identifica regulación; después asigna s, o, c, e y h. ">
+  <header class="card-head">
+    <div><span class="slide-number">28</span><span class="section-name">Cierre</span></div>
+    <div class="card-meta"><span class="time">5–8 min (en formato taller, 25 min)</span></div>
+  </header>
+  <h2>Ejercicio</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Tomen un paciente propio, o una persona conocida que esté atorada. Contesten cinco preguntas en este orden. El orden importa.</p><p>Uno: ¿cuál es la variable que el sistema defiende? No la que está alterada, sino la que regresa activamente cuando la mueves.</p><p>Dos: ¿lo que defiende es una magnitud o una relación? Hay una señal para distinguirlo: si existe un subgrupo de pacientes con el número normal y la enfermedad presente, lo que se defiende es una relación, no una magnitud.</p><p>Tres: ¿responde menos, o no responde? Eso ubica al sistema entre costo alto y camino cerrado.</p><p>Cuatro: ¿hay alguna señal permisiva apagada, y de qué estado depende? Recuerden que un permiso apagado se ve igual que un efector dañado y el tratamiento es opuesto.</p><p>Cinco: ¿cómo está su cono? ¿Se acortó, se estrechó, o las dos cosas?&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>La variable alterada no siempre es la variable que el sistema está defendiendo.</p></div><div><b>Ejemplo</b><p>Busca el valor o relación al que vuelve activamente después de moverlo.</p></div><div><b>Qué observar</b><p>Primero identifica regulación; después asigna S, O, C, E y H.</p></div></div></section>
+  
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 28 · Ejercicio
+
+**Tiempo:** 5–8 min (en formato taller, 25 min)
+
+🖼️ **[IMG-28]**
+Plantilla vacía: cinco casillas etiquetadas S, O, C, E, H, y debajo un cono vacío con los dos ejes rotulados Λ y H.
+*Idea única: la herramienta vacía, lista para llenarse.*
+
+🗣️ **Guion:**
+&gt; &quot;Tomen un paciente propio, o una persona conocida que esté atorada. Contesten cinco preguntas en este orden. El orden importa.
+&gt;
+&gt; Uno: ¿cuál es la variable que el sistema defiende? No la que está alterada, sino la que regresa activamente cuando la mueves.
+&gt;
+&gt; Dos: ¿lo que defiende es una magnitud o una relación? Hay una señal para distinguirlo: si existe un subgrupo de pacientes con el número normal y la enfermedad presente, lo que se defiende es una relación, no una magnitud.
+&gt;
+&gt; Tres: ¿responde menos, o no responde? Eso ubica al sistema entre costo alto y camino cerrado.
+&gt;
+&gt; Cuatro: ¿hay alguna señal permisiva apagada, y de qué estado depende? Recuerden que un permiso apagado se ve igual que un efector dañado y el tratamiento es opuesto.
+&gt;
+&gt; Cinco: ¿cómo está su cono? ¿Se acortó, se estrechó, o las dos cosas?&quot;
+
+❓ **Dinámica:** tres minutos en parejas y después dos o tres casos en voz alta. No corrijas la asignación de letras; lo útil es identificar dónde se atoran. El atoro más frecuente es en la pregunta 1, y consiste en mirar el analito alterado en lugar del defendido. Conviene nombrarlo.
+
+➡️ &quot;Las frases para llevarse.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-29" data-search="29 las siete frases &quot;si de la clase quedan solo siete frases, que sean estas.
+
+una. todo problema son cinco cosas: dónde puedes estar, con qué te mueves, qué te está permitido, qué esperas y cuánto ves adelante.
+dos. las tres últimas son las que el propio sistema se edita a sí mismo.
+tres. cambiar las restricciones modifica el problema más que cambiar los movimientos.
+cuatro. no es una casa en ruinas, es una casa tapiada.
+cinco. un permiso apagado se ve igual que un efector dañado, y el tratamiento es el opuesto.
+seis. el cono cognitivo es cuánto ves adelante por hasta qué escala respondes.
+siete. en muchos casos, la enfermedad no es que el sistema se volviera ineficiente, sino que su problema se hizo pequeño.&quot;   ">
+  <header class="card-head">
+    <div><span class="slide-number">29</span><span class="section-name">Cierre</span></div>
+    <div class="card-meta"><span class="time">2 min</span></div>
+  </header>
+  <h2>Las siete frases</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Si de la clase quedan solo siete frases, que sean estas.</p><p>Una. Todo problema son cinco cosas: dónde puedes estar, con qué te mueves, qué te está permitido, qué esperas y cuánto ves adelante.<br>Dos. Las tres últimas son las que el propio sistema se edita a sí mismo.<br>Tres. Cambiar las restricciones modifica el problema más que cambiar los movimientos.<br>Cuatro. No es una casa en ruinas, es una casa tapiada.<br>Cinco. Un permiso apagado se ve igual que un efector dañado, y el tratamiento es el opuesto.<br>Seis. El cono cognitivo es cuánto ves adelante por hasta qué escala respondes.<br>Siete. En muchos casos, la enfermedad no es que el sistema se volviera ineficiente, sino que su problema se hizo pequeño.&quot;</p></div>
+  </section>
+  
+  
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 29 · Las siete frases
+
+**Tiempo:** 2 min
+
+🖼️ **[IMG-29]**
+Siete líneas numeradas, tipografía limpia, sin ilustración, con las palabras clave en ámbar. Debe leerse desde el fondo del salón.
+*Idea única: es la slide que la gente fotografía; optimizarla para eso.*
+
+🗣️ **Guion:**
+&gt; &quot;Si de la clase quedan solo siete frases, que sean estas.
+&gt;
+&gt; Una. Todo problema son cinco cosas: dónde puedes estar, con qué te mueves, qué te está permitido, qué esperas y cuánto ves adelante.
+&gt; Dos. Las tres últimas son las que el propio sistema se edita a sí mismo.
+&gt; Tres. Cambiar las restricciones modifica el problema más que cambiar los movimientos.
+&gt; Cuatro. No es una casa en ruinas, es una casa tapiada.
+&gt; Cinco. Un permiso apagado se ve igual que un efector dañado, y el tratamiento es el opuesto.
+&gt; Seis. El cono cognitivo es cuánto ves adelante por hasta qué escala respondes.
+&gt; Siete. En muchos casos, la enfermedad no es que el sistema se volviera ineficiente, sino que su problema se hizo pequeño.&quot;
+
+➡️ &quot;Una última cosa, sobre el estatuto de todo esto.&quot;</pre></details>
+</article>
+
+<article class="script-card" id="slide-30" data-search="30 cierre &quot;cierro con el estatuto de este trabajo, que es la parte más importante.
+
+esto es trabajo en desarrollo, no medicina establecida. la biología que cité es real y está referenciada. la interpretación es una hipótesis, y buena parte del esfuerzo del marco está dedicada a definir cómo se refutaría.
+
+un marco presentado como verdad establecida es peor que uno presentado como hipótesis bien argumentada.
+
+gracias.&quot;  el marco organiza preguntas y predicciones; todavía no constituye medicina establecida. una buena hipótesis indica tanto qué explica como qué resultado la refutaría. separar evidencia, interpretación y aplicación evita prometer más de lo demostrado. ">
+  <header class="card-head">
+    <div><span class="slide-number">30</span><span class="section-name">Cierre</span></div>
+    <div class="card-meta"><span class="time">1.5 min</span></div>
+  </header>
+  <h2>Cierre</h2>
+  <section class="script-block guion-block">
+    <h3><span>🗣</span> Guion exacto</h3>
+    <div class="spoken"><p>&quot;Cierro con el estatuto de este trabajo, que es la parte más importante.</p><p>Esto es trabajo en desarrollo, no medicina establecida. La biología que cité es real y está referenciada. La interpretación es una hipótesis, y buena parte del esfuerzo del marco está dedicada a definir cómo se refutaría.</p><p>Un marco presentado como verdad establecida es peor que uno presentado como hipótesis bien argumentada.</p><p>Gracias.&quot;</p></div>
+  </section>
+  <section class="script-block optional general-block"><h3><span>◎</span> Apoyo para público general</h3><div class="guide-grid"><div><b>En palabras simples</b><p>El marco organiza preguntas y predicciones; todavía no constituye medicina establecida.</p></div><div><b>Ejemplo</b><p>Una buena hipótesis indica tanto qué explica como qué resultado la refutaría.</p></div><div><b>Qué observar</b><p>Separar evidencia, interpretación y aplicación evita prometer más de lo demostrado.</p></div></div></section>
+  
+  
+  
+  <details class="source-details optional source-block"><summary>Ver bloque fuente literal</summary><pre>## SLIDE 30 · Cierre
+
+**Tiempo:** 1.5 min
+
+🖼️ **[IMG-30]**
+El cono pequeño en rojo, con el cono grande dibujado alrededor en línea punteada ámbar, indicando la apertura posible. Cierra visualmente con la portada.
+*Idea única: el cono puede volver a abrirse; queda planteado, no afirmado.*
+
+🗣️ **Guion:**
+&gt; &quot;Cierro con el estatuto de este trabajo, que es la parte más importante.
+&gt;
+&gt; Esto es trabajo en desarrollo, no medicina establecida. La biología que cité es real y está referenciada. La interpretación es una hipótesis, y buena parte del esfuerzo del marco está dedicada a definir cómo se refutaría.
+&gt;
+&gt; Un marco presentado como verdad establecida es peor que uno presentado como hipótesis bien argumentada.
+&gt;
+&gt; Gracias.&quot;</pre></details>
+</article></main><p class="empty" id="empty">No hay tarjetas que coincidan con la búsqueda.</p>
+<footer><strong>Fuente:</strong> clase-quintuple-cono-cognitivo-guion.md · Autor: Dr. Miguel Ojeda Rios. El texto del guion no fue resumido ni reescrito. Cada tarjeta incluye un desplegable con su bloque fuente literal para cotejo.</footer>
+<script>
+const cards=[...document.querySelectorAll('.script-card')];
+const search=document.querySelector('#search');
+const count=document.querySelector('#visible-count');
+const empty=document.querySelector('#empty');
+function filter(){const q=search.value.trim().toLowerCase();let visible=0;cards.forEach(card=>{const show=!q||card.dataset.search.includes(q);card.hidden=!show;if(show)visible++});count.textContent=visible;empty.style.display=visible?'none':'block'}
+search.addEventListener('input',filter);
+document.querySelector('#optional').addEventListener('click',event=>{const hidden=document.body.classList.toggle('hide-optional');event.currentTarget.setAttribute('aria-pressed',String(!hidden));event.currentTarget.textContent=hidden?'Solo guion':'Capas completas'});
+document.querySelector('#compact').addEventListener('click',event=>{const compact=document.body.classList.toggle('compact');event.currentTarget.setAttribute('aria-pressed',String(compact));event.currentTarget.textContent=compact?'Vista amplia':'Vista compacta'});
+document.querySelector('#print').addEventListener('click',()=>window.print());
+</script>
+</body>
+</html>

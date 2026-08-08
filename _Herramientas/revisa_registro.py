@@ -106,6 +106,80 @@ AULA = [
     (r"\bconcepto umbral\b", "jerga pedagógica interna: no se dice en voz alta"),
 ]
 
+# ── 9 · Vocabulario controlado ──────────────────────────────────────────────
+# El defecto que más se repite: acuñar un apodo corto para algo que ya tiene
+# nombre. El apodo es nuevo cada vez, así que una lista negra nunca lo alcanza.
+# Las dos listas siguientes salen de _Herramientas/GLOSARIO_RB.md, que el Dr.
+# puede editar sin tocar este archivo.
+GLOSARIO = pathlib.Path(__file__).parent / "GLOSARIO_RB.md"
+
+
+def _lee_glosario():
+    """Devuelve (apodos, verbos, permitidos) desde GLOSARIO_RB.md."""
+    apodos, verbos, permitidos = [], [], set()
+    if not GLOSARIO.exists():
+        return apodos, verbos, permitidos
+    seccion = None
+    for linea in GLOSARIO.read_text(encoding="utf-8").splitlines():
+        if linea.startswith("## "):
+            t = linea.lower()
+            seccion = ("apodos" if "apodos" in t else
+                       "verbos" if "verbos" in t else
+                       "permitidos" if "permitidos" in t else None)
+            continue
+        if seccion and linea.startswith("- "):
+            item = linea[2:].strip()
+            if seccion == "permitidos":
+                permitidos.add(item.lower())
+            elif "→" in item:
+                mal, bien = (p.strip() for p in item.split("→", 1))
+                (apodos if seccion == "apodos" else verbos).append((mal, bien))
+    return apodos, verbos, permitidos
+
+
+APODOS_RAW, VERBOS_RAW, PERMITIDOS = _lee_glosario()
+
+APODOS = [(r"\b" + re.escape(mal) + r"\b", f"apodo — se escribe «{bien}»")
+          for mal, bien in APODOS_RAW]
+VERBOS_VAGOS = [(r"\b" + re.escape(mal) + r"\b", f"no dice qué ocurre — «{bien}»")
+                for mal, bien in VERBOS_RAW]
+
+# Candidatos a apodo nuevo: artículo definido + una o dos palabras, en negritas
+# o como primera celda de una tabla. Es la forma que toman casi siempre.
+CANDIDATO = re.compile(
+    r"\*\*(el|la|los|las)\s+([a-záéíóúñ]+(?:\s+[a-záéíóúñ]+)?)\*\*", re.I)
+
+# El documento no habla del documento.
+AUTORREFERENCIA = [
+    (r"\beste documento\b|\besta secci[óo]n\b|\beste bloque dice\b",
+     "el documento habla de sí mismo — afirmar el contenido"),
+    (r"\blo que se hace aqu[íi]\b|\baqu[íi] se propone\b|\baqu[íi] va\b",
+     "narra la estructura en vez de afirmar"),
+    (r"\bY de ah[íi] sale\b|\bY aqu[íi] est[áa] el dato\b|\bEsto es la\b",
+     "conector que narra el documento"),
+]
+
+
+
+# ── 11 · Frases que anuncian lo que viene en vez de decirlo ─────────────────
+# Un documento clínico afirma el hallazgo. No lo presenta.
+ANUNCIO = [
+    (r"\bY? ?(?:el|la|los|las) (?:dato|datos|detalle|detalles|frase|respuesta|hallazgo|"
+     r"punto|pieza|piezas|cosa|cosas)\b[^.:;]{0,40}\bque\b[^.:;]{0,40}:",
+     "anuncia el hallazgo en vez de decirlo"),
+    (r"^\s*(?:>\s*)?\**Y aqu[íi] est[áa]\b|^\s*(?:>\s*)?\**Y ah[íi] est[áa]\b",
+     "anuncia en vez de afirmar"),
+    (r"^\s*(?:>\s*)?\**(?:Dos|Tres|Cuatro|Cinco|Seis) cosas\b",
+     "anuncia un conteo en vez de decir la primera"),
+    (r"\bY hay (?:un|una|algo|otro|otra)\b[^.:;]{0,30}:",
+     "anuncia en vez de afirmar"),
+    (r"\blo m[áa]s (?:aprovechable|interesante|importante|útil|fuerte)\b",
+     "califica en vez de decir el contenido"),
+    (r"\bconviene decir\b|\bhay que decir\b|\bvale decir\b",
+     "anuncia que se va a decir algo"),
+]
+
+
 GRUPOS = [
     ("PROHIBIDA", PROHIBIDAS, False),
     ("MULETILLA", MULETILLAS, False),
@@ -113,6 +187,10 @@ GRUPOS = [
     ("RELLENO", RELLENO, False),
     ("CONTACTO", CONTACTO, False),
     ("LEVANTAR", LEVANTAR, False),
+    ("APODO", APODOS, False),
+    ("AUTORREF", AUTORREFERENCIA, False),
+    ("ANUNCIO", ANUNCIO, False),
+    ("VERBO", VERBOS_VAGOS, False),
     ("TÍTULO", TITULOS, True),   # solo se aplica a encabezados
 ]
 
@@ -125,6 +203,8 @@ EXCEPCIONES = [
     r"le quitó el dolor|te quitó el dolor",  # la pregunta de seguimiento
     r"regular no es curar",                 # criterio del método
     r"la inflamación no se apaga",          # frase del Bloque 2
+    r"variable (bioel[ée]ctrica|controlada|postulada|el[ée]ctrica|primaria|de comparaci[óo]n)",
+    r"comunidad microbiana",                # término completo, no apodo
 ]
 
 
@@ -147,8 +227,60 @@ def revisa(ruta: pathlib.Path):
     return hallazgos
 
 
+
+# ── 10 · Encabezados y frases que rotulan en vez de afirmar ─────────────────
+# El defecto que más se repite y que ninguna lista de palabras alcanza: el
+# encabezado se escribe ANTES que la sección, así que solo puede nombrar el
+# papel del texto —«Lo que el bloque instala»— y no lo que la sección dice.
+# Se marca la construcción; cada marca se reescribe desde el contenido.
+ROTULO = re.compile(
+    r"^\s*#{1,6}\s*(?:\d+\s*·\s*)?(?:"
+    r"Lo que\b|Los que\b|Las que\b"
+    r"|Qu[ée] es\b|Qu[ée] hace este\b|Qu[ée] se hace\b|Qu[ée] aporta\b"
+    r"|C[óo]mo se usa\b|C[óo]mo se llama\b"
+    r"|(?:El|La|Los|Las)\s+\w+\s*$"          # artículo + un sustantivo, y nada más
+    r")", re.I)
+
+def encabezados_rotulo(ruta: pathlib.Path):
+    """Encabezados que nombran el papel del texto en vez de decir su hallazgo."""
+    marcas = []
+    try:
+        texto = ruta.read_text(encoding="utf-8")
+    except Exception:
+        return marcas
+    for n, linea in enumerate(texto.splitlines(), 1):
+        if re.match(r"^\s*#{1,6}\s", linea) and ROTULO.match(linea):
+            marcas.append((n, re.sub(r"^\s*#{1,6}\s*", "", linea).strip()))
+    return marcas
+
+
+def terminos_nuevos(ruta: pathlib.Path):
+    """Términos en negritas con artículo definido que no están en el glosario.
+
+    No son errores: son decisiones. O se agregan al glosario porque son el
+    nombre correcto, o se sustituyen por el nombre completo de algo que ya está.
+    """
+    nuevos = {}
+    try:
+        texto = ruta.read_text(encoding="utf-8")
+    except Exception:
+        return nuevos
+    for n, linea in enumerate(texto.splitlines(), 1):
+        for m in CANDIDATO.finditer(linea):
+            termino = m.group(2).lower().strip()
+            if termino in PERMITIDOS:
+                continue
+            if any(termino.startswith(p) or p.startswith(termino) for p in PERMITIDOS):
+                continue
+            nuevos.setdefault(termino, n)
+    return nuevos
+
+
 def main():
     args = sys.argv[1:]
+    ver_nuevos = "--nuevos" in args
+    if ver_nuevos:
+        args.remove("--nuevos")
     if "--locucion" in args:
         args.remove("--locucion")
         GRUPOS.append(("AULA", AULA, False))
@@ -173,6 +305,27 @@ def main():
                 print(f"  {n:>5}  {etiqueta:<9} {motivo}")
                 print(f"         {linea}")
             total += len(h)
+
+    if ver_nuevos:
+        rotulos = []
+        for f in sorted(objetivos):
+            for n, cuerpo in encabezados_rotulo(f):
+                rotulos.append((f.name, n, cuerpo))
+        if rotulos:
+            print(f"\n── Encabezados que rotulan en vez de afirmar ({len(rotulos)})")
+            print("   Cada uno dice algo comprobable, o se reescribe para que lo diga.")
+            for nombre, n, cuerpo in rotulos:
+                print(f"   {nombre}:{n:<4} {cuerpo}")
+
+        acumulado = {}
+        for f in sorted(objetivos):
+            for t, n in terminos_nuevos(f).items():
+                acumulado.setdefault(t, f"{f.name}:{n}")
+        if acumulado:
+            print(f"\n── Términos nuevos, fuera del glosario ({len(acumulado)})")
+            print("   Cada uno se agrega a GLOSARIO_RB.md o se sustituye por el nombre completo.")
+            for t, donde in sorted(acumulado.items()):
+                print(f"   {t:<38} {donde}")
 
     if total:
         print(f"\n{total} marcas. Ninguna se entrega sin resolver.")
