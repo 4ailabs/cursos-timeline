@@ -1,0 +1,24 @@
+.science .atlas-overlay{position:absolute;z-index:3;top:12px;left:12px;width:calc(100% - 24px);aspect-ratio:3/2;pointer-events:none;overflow:visible}
+.science.atlas-17 .atlas-overlay{aspect-ratio:1200/415}
+.science:has(.atlas-overlay)::before{display:none}
+.slide:has(.science) .cols{grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:38px}
+.slide:has(.science) h2{font-size:clamp(43px,4.1vw,72px)}
+.slide:has(.science) .science{padding:9px 9px 0}
+.slide:has(.science) .science .atlas-overlay{top:9px;left:9px;width:calc(100% - 18px)}
+.science.atlas-22 .atlas-overlay{aspect-ratio:1672/941}
+.science.atlas-28 .atlas-overlay{aspect-ratio:1}
+.atlas-overlay text{font-family:Avenir,"Avenir Next",Arial,sans-serif;font-weight:800;paint-order:stroke;stroke:rgba(255,253,248,.96);stroke-width:5px;stroke-linejoin:round;fill:#17212a}
+.atlas-overlay .tag{fill:rgba(255,253,248,.94);stroke:#477ca5;stroke-width:2.5px}
+.atlas-overlay .tag-amber{fill:rgba(255,253,248,.95);stroke:#efa83b;stroke-width:2.5px}
+.atlas-overlay .num{fill:#0b1722;stroke:#fffdf8;stroke-width:3px}
+.atlas-overlay .num-amber{fill:#efa83b;stroke:#fffdf8;stroke-width:3px}
+.atlas-overlay .leader{fill:none;stroke:#477ca5;stroke-width:2.5px;stroke-linecap:round;stroke-dasharray:7 6}
+.atlas-overlay .leader-amber{fill:none;stroke:#efa83b;stroke-width:3px;stroke-linecap:round}
+.atlas-overlay .field{fill:none;stroke:#efa83b;stroke-width:5px;stroke-dasharray:9 7;filter:drop-shadow(0 0 5px rgba(239,168,59,.55))}
+.atlas-overlay .badge{fill:rgba(11,23,34,.9);stroke:#78c6d9;stroke-width:2px}
+.atlas-overlay .badge-text{fill:#fffdf8;stroke:none;font-size:25px;letter-spacing:.04em}
+.atlas-overlay .small-label{font-size:20px}
+.atlas-overlay .tiny-label{font-size:17px}
+.active .atlas-overlay .marker{opacity:0;animation:atlasMarker .55s cubic-bezier(.16,1,.3,1) forwards;animation-delay:calc(.25s + var(--i,0)*.07s)}
+@keyframes atlasMarker{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.atlas-overlay .marker{opacity:1!important;animation:none!important}}

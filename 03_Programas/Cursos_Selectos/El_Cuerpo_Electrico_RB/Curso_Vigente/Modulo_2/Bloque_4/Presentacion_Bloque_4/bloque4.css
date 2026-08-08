@@ -1,0 +1,75 @@
+/* ── Escala para proyección en pared ─────────────────────────────────
+   Sube el cuerpo de texto sobre la escala del deck de la clase.
+   Legible a 4 o 5 metros de la pantalla.                             */
+
+.slide{padding:76px 84px 76px}
+.chrome{top:30px;left:84px;right:84px;font-size:15px;letter-spacing:.11em}
+.brand img{width:150px}
+
+.eyebrow{margin:0 0 20px;font-size:17px;letter-spacing:.14em}
+h1{font-size:clamp(76px,7.1vw,124px)}
+h2{max-width:19ch;font-size:clamp(52px,4.7vw,84px);line-height:.99}
+.lead{max-width:34ch;margin-top:24px;font-size:clamp(28px,2.35vw,39px);line-height:1.28}
+.hero .lead{max-width:40ch;font-size:clamp(30px,2.5vw,42px)}
+
+.facts{gap:14px;margin-top:28px}
+.facts article{min-height:96px;padding:17px 20px;gap:8px;border-top-width:4px}
+.facts b{font-size:18px;line-height:1.1}
+.facts span{font-size:24px;line-height:1.24}
+
+.callout{margin-top:24px;padding:19px 23px;border-left-width:8px;font-size:27px;line-height:1.26}
+.question{margin-top:22px;padding:18px 22px;font-size:25px;line-height:1.28}
+.question b{margin-bottom:8px;font-size:14px}
+
+.science figcaption{min-height:46px;padding:10px 6px;font-size:16px;line-height:1.3}
+.science img{max-height:600px}
+
+.diagram text{font-size:24px}
+.diagram .small{font-size:19px}
+.diagram,.visual-svg{max-height:720px}
+.diagram .timeline{stroke:var(--blue);stroke-width:7}
+
+/* La columna de texto pesa un poco más cuando hay figura al lado */
+.cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}
+
+/* ── Ficha operativa: lo que el clínico pregunta, anota o ejecuta ──── */
+.ficha{margin:0;width:100%;max-height:600px;overflow:hidden;padding:26px 28px;border-left:8px solid var(--amber);border-radius:4px;background:rgba(255,255,255,.72);color:var(--ink);font:600 21px/1.62 var(--mono);white-space:pre;letter-spacing:-.01em}
+.slide:nth-child(6n+1) .ficha{background:rgba(255,255,255,.09);color:var(--white)}
+.ficha b{color:var(--blue);font-weight:800}
+.slide:nth-child(6n+1) .ficha b{color:var(--cyan)}
+@media (max-height:760px){.ficha{max-height:430px;padding:18px 20px;font-size:16px;line-height:1.55}}
+
+/* ── Hueco de imagen: se muestra mientras el archivo no exista ─────── */
+.slot{display:flex;flex-direction:column;justify-content:center;gap:16px;width:100%;min-height:380px;padding:38px 34px;border:2px dashed var(--line);border-radius:10px;background:repeating-linear-gradient(135deg,rgba(239,168,59,.05) 0 12px,transparent 12px 24px)}
+.slot b{font:800 15px/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--amber)}
+.slot span{font:500 19px/1.42 var(--sans);color:var(--muted)}
+.slide:nth-child(6n+1) .slot span{color:#c2ced6}
+.slide:nth-child(6n+1) .slot{border-color:rgba(255,255,255,.22)}
+
+/* ── Pantallas bajas: se conserva la proporción sin desbordar ──────── */
+@media (max-height:760px){
+  .slide{padding:52px 60px 60px}
+  .chrome{top:18px;left:60px;right:60px;font-size:13px}
+  h2{font-size:clamp(40px,4vw,58px)}
+  .lead{margin-top:16px;font-size:clamp(22px,2vw,28px)}
+  .facts{gap:10px;margin-top:18px}
+  .facts article{min-height:74px;padding:12px 14px}
+  .facts b{font-size:14px}
+  .facts span{font-size:19px}
+  .callout{margin-top:16px;padding:13px 16px;font-size:21px}
+  .question{margin-top:14px;padding:13px 16px;font-size:20px}
+  .science img{max-height:430px}
+  .slot{min-height:280px;padding:26px}
+  .diagram text{font-size:21px}
+  .diagram .small{font-size:17px}
+}
+
+/* ── Impresión a PDF apaisado, una lámina por página ───────────────── */
+@media print{
+  html,body{overflow:visible;height:auto;background:#fff}
+  .deck{position:static;width:auto;height:auto;overflow:visible}
+  .slide{position:static;display:flex!important;width:1280px;height:720px;break-after:page;box-shadow:none}
+  .slide .fragment{opacity:1!important;transform:none!important}
+  .controls,.notes-panel{display:none}
+  @page{size:13.333in 7.5in;margin:0}
+}

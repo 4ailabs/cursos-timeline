@@ -1,0 +1,41 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Guion docente · El eje del estrés</title><style>
+
+:root{--ink:#17212a;--paper:#e9e5dc;--night:#0b1722;--blue:#477ca5;--amber:#efa83b;--coral:#bd503c;--line:#d6cec0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Avenir,"Avenir Next",Arial,sans-serif}
+header{position:sticky;z-index:3;top:0;padding:18px 4vw;background:rgba(11,23,34,.97);color:white;display:flex;gap:24px;align-items:center;justify-content:space-between;box-shadow:0 8px 30px rgba(0,0,0,.18)}
+h1{margin:0;font:600 clamp(26px,2.5vw,42px)/1 Georgia,serif}
+header p{margin:6px 0 0;color:#b7c7d0;font-size:clamp(13px,1vw,17px)}
+input{width:min(380px,35vw);padding:13px 15px;border:1px solid #536675;background:#14283a;color:white;font-size:16px}
+main{display:flex;flex-direction:column;align-items:center;gap:clamp(30px,5vw,76px);padding:clamp(28px,4vw,64px) 3vw clamp(60px,8vw,120px)}
+.card{container-type:inline-size;position:relative;display:flex;flex-direction:column;width:min(94vw,1600px);aspect-ratio:16/9;padding:3cqw 4.5cqw 2.5cqw;overflow:auto;background:#fffdf8;border-top:clamp(7px,.65cqw,11px) solid var(--blue);box-shadow:0 24px 70px rgba(20,30,40,.14)}
+.card:nth-child(5n){border-color:var(--amber)}
+.meta{display:flex;gap:28px;justify-content:space-between;color:var(--coral);font:800 clamp(12px,1.1cqw,18px)/1.15 monospace;letter-spacing:.08em;text-transform:uppercase}
+.meta span:last-child{text-align:right}
+.card h2{max-width:29ch;margin:1.25cqw 0 1cqw;font:600 clamp(34px,3.7cqw,59px)/1.02 Georgia,serif;letter-spacing:-.025em;text-wrap:balance}
+.card p{max-width:76ch;margin:0 0 .72cqw;font-size:clamp(14px,1.28cqw,21px);line-height:1.38;text-wrap:pretty}
+.card p b{font-weight:750}
+.teaching-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:2.6cqw;min-height:0;flex:1}
+.script,.support{min-width:0}
+.guide-label{margin:0 0 .48cqw;color:var(--blue);font:800 clamp(11px,.9cqw,15px)/1.2 monospace;letter-spacing:.09em;text-transform:uppercase}
+.objective{margin-bottom:.85cqw!important;font-weight:750;color:#243440}
+.script-text{font-size:clamp(15px,1.42cqw,23px)!important;line-height:1.42!important}
+.support ul{margin:.05cqw 0 .75cqw;padding-left:1.25em;color:#263640;font-size:clamp(13px,1.16cqw,19px);line-height:1.34}
+.support li{margin:0 0 .34cqw;padding-left:.12em}
+.precision,.transition{padding:.68cqw .85cqw;background:#f3eee3;border-left:4px solid var(--amber)}
+.transition{background:#edf3f5;border-left-color:var(--blue)}
+.callout{max-width:100%!important;padding:.82cqw 1.3cqw;border-left:clamp(5px,.45cqw,8px) solid var(--amber);background:#f3eee3;font-weight:700}
+.source{width:100%;max-width:none!important;margin-top:auto!important;margin-bottom:0!important;padding-top:.8cqw;border-top:1px solid var(--line);color:#6c757c;font:600 clamp(11px,1cqw,16px)/1.4 monospace}
+@media(max-width:760px){header{position:relative;align-items:flex-start;flex-direction:column}.search,input{width:100%}.card{width:96vw;padding:3cqw;aspect-ratio:16/9}.card h2{font-size:clamp(22px,4.8cqw,36px)}.card p{font-size:clamp(10px,1.95cqw,14px);line-height:1.3}.teaching-grid{gap:2cqw}.support ul{font-size:clamp(9px,1.75cqw,13px)}.source{font-size:clamp(8px,1.45cqw,11px)}}
+@page{size:13.333in 7.5in;margin:0}
+@media print{body{background:white}header{display:none}main{display:block;padding:0}.card{width:13.333in;height:7.5in;aspect-ratio:auto;margin:0;padding:.52in .6in .42in;overflow:hidden;break-after:page;break-inside:avoid;box-shadow:none}.card:last-child{break-after:auto}.meta{font-size:12pt}.card h2{margin:.22in 0 .18in;font-size:34pt}.card p{margin-bottom:.11in;font-size:15pt;line-height:1.32}.callout{padding:.11in .16in}.source{padding-top:.1in;font-size:9pt}}
+.ficha-mini{margin:.05cqw 0 .75cqw;font:600 clamp(9px,.95cqw,15px)/1.45 monospace;white-space:pre;overflow:hidden;color:#263640}
+</style></head><body><header><div><h1>Guion docente · El eje del estrés</h1><p>Módulo 2 · Bloque 4 · 36 tarjetas, una por lámina · Instituto Centrobioenergetica</p></div><div class="search"><input id="q" placeholder="Buscar concepto, instrumento o lámina"></div></header><main></main><script src="slides-data.js"></script><script src="guion-docente.js"></script><script>
+const main=document.querySelector('main');
+function draw(q=''){const t=q.toLowerCase();
+main.innerHTML=SLIDES_DATA.filter(s=>JSON.stringify({...s,guide:TEACHER_GUIDE[s.n]}).toLowerCase().includes(t)).map(s=>{
+const g=TEACHER_GUIDE[s.n]||{objective:'',script:'',data:[],precision:'',transition:''};
+return `<article class="card"><div class="meta"><span>${String(s.n).padStart(2,'0')} · ${s.section}</span><span>${s.eyebrow}</span></div><h2>${s.title}</h2><div class="teaching-grid"><section class="script"><h3 class="guide-label">Objetivo de la lámina</h3><p class="objective">${g.objective}</p><h3 class="guide-label">Lo que se dice</h3><p class="script-text">${g.script}</p>${s.callout?`<p class="callout">${s.callout}</p>`:''}${s.question?`<h3 class="guide-label">Pregunta al grupo</h3><p><b>${s.question}</b></p>`:''}</section><aside class="support"><h3 class="guide-label">Datos que se mencionan</h3><ul>${(g.data||[]).map(d=>`<li>${d}</li>`).join('')}</ul>${s.block?`<h3 class="guide-label">Ficha en pantalla</h3><pre class="ficha-mini">${s.block}</pre>`:''}<h3 class="guide-label">Límite y precisión</h3><p class="precision">${g.precision}</p><h3 class="guide-label">Transición</h3><p class="transition">${g.transition}</p></aside></div><p class="source">[Fuentes del repositorio] ${s.source}</p></article>`}).join('')}
+draw();document.querySelector('#q').addEventListener('input',e=>draw(e.target.value));
+</script></body></html>

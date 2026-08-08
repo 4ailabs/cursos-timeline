@@ -6,11 +6,11 @@ notes:[`Este es el orden de trabajo en consulta.`,`Pasos 1 a 6: razonamiento cl�
 
 {n:2,section:'Estructura',eyebrow:'Índice del protocolo',title:'Diecisiete pasos, por momento de la atención',diagram:'pasos',
 callout:'Los pasos 7 a 12 se ejecutan sobre la camilla. Los seis anteriores deciden a quién se le aplican.',
-notes:[`Los seis primeros pasos deciden si esta persona entra al protocolo y con qué se va a comparar después.`,`Sin la medición basal de la primera consulta, la sesión de aplicación no tiene contra qué compararse.`],source:'PROTOCOLO · tabla de pasos.'},
+notes:[`Los seis primeros pasos deciden si esta persona entra al protocolo y con qué se va a comparar después.`,`Sin los números de la primera consulta, la sesión de aplicación no tiene contra qué compararse.`],source:'PROTOCOLO · tabla de pasos.'},
 
 {n:3,section:'Primera consulta',eyebrow:'Paso 1',title:'Criterios de derivación inmediata',lead:'Se preguntan al inicio de la primera consulta y ocupan dos minutos.',diagram:'derivacion',
 callout:'Estos seis datos no se interpretan ni se ponderan. Aparece uno y se deriva.',
-notes:[`Si el motivo de consulta incluye náusea se agregan seis: vómito persistente, vómito con sangre, dolor de cabeza intenso o de aparición brusca, alteración de la visión, rigidez de nuca, y náusea del embarazo con deshidratación.`],source:'PROTOCOLO · paso 1 · doc 02 §2.'},
+notes:[`Estos seis datos no se interpretan ni se ponderan: aparece uno y la persona sale del protocolo hacia estudio.`,`Se preguntan siempre, en la primera consulta, antes de cualquier otra cosa.`],source:'PROTOCOLO · paso 1 · doc 02 §2.'},
 
 {n:4,section:'Primera consulta',eyebrow:'Paso 2',title:'Criterios de exclusión del protocolo',
 facts:[['Intestino','Atrofia de la mucosa, resección quirúrgica previa, o enfermedad intestinal ya diagnosticada'],['Hígado','Fibrosis avanzada o cirrosis establecida'],['Otro diagnóstico','Infección activa, lesión reciente, o un diagnóstico que explica el cuadro completo'],['Razón de la exclusión','El tejido ya se perdió: la restricción es anatómica y no funcional']],
@@ -39,8 +39,8 @@ block:`¿Cuántos minutos entre comer
 ¿Con qué alimento concreto?  ___________________
 
 ¿Al comer mejora o empeora?    mejora / empeora`,
-callout:'Las horas de la segunda pregunta son la medición basal, y son las que se comparan en cada revisión.',
-notes:[`Preguntar cómo está en un día cualquiera informa de hoy. Poner una carga y medir cuánto tarda en volver informa del margen que tiene.`,`La intensidad se anota aparte, como leve, media o fuerte, y no se usa para comparar.`],source:'PROTOCOLO · paso 3.2 · doc 02 §4.'},
+callout:'Las horas de la segunda pregunta son las que se comparan en la revisión.',
+notes:[`Lo que informa no es cuánto le molestó, sino cuánto tardó en dejar de sentirlo. Ese es el número que se compara.`,`La intensidad se anota aparte, como leve, media o fuerte, y no se usa para comparar.`],source:'PROTOCOLO · paso 3.2 · doc 02 §4.'},
 
 {n:7,section:'Primera consulta',eyebrow:'Paso 3.2',title:'A qué unidad corresponde cada respuesta',
 facts:[['Se llena antes de terminar el plato','Estómago, problema de ritmo'],['Ardor de una a tres horas después de comer','Duodeno, neutralización insuficiente'],['Ardor que mejora al comer y regresa','Estómago, capa de moco con bicarbonato'],['Hinchazón a los 30 o 60 minutos, con gas','Válvula ileocecal o páncreas exocrino'],['Grasa que no se digiere, excremento que flota','Páncreas exocrino'],['Pesadez con la grasa que dura horas','Hígado']],
@@ -107,34 +107,20 @@ facts:[['Con qué se mide','Prueba de respiración profunda de la hoja del Módu
 callout:'El rastreo mide ese tramo en el estado autonómico del momento.',
 notes:[`El predominio simpático inhibe las neuronas marcapasos del sistema nervioso entérico, baja la secreción de bicarbonato y reduce el flujo esplácnico. Toca ritmo, secreción y aporte a la vez.`,`Dos rastreos que se comparan se hacen en estados comparables.`],source:'PROTOCOLO · paso 4 · docs 14 §7 y 15 §5.'},
 
-{n:13,section:'Primera consulta',eyebrow:'Paso 5',title:'Medición basal con comida de prueba',
-block:`COMIDA DE PRUEBA               Fecha ______
-
-Qué comió  _____________________________________
-A qué hora                          ______
-
-Empezó a sentirlo a los             ______ min
-Dejó de sentirlo                    ______ h
-
-Intensidad        leve / media / fuerte
-   se anota, y no se usa para comparar`,
-callout:'Algo que fermente informa del intestino. Algo con grasa informa del hígado.',
-notes:[`Se elige una comida concreta y se repite igual en el día 21, en la semana 6 y en la semana 10.`,`Es la versión en consulta de la prueba de lactulosa y manitol: lo que informa es la relación entre dos datos, y no el tamaño de ninguno de los dos.`],source:'PROTOCOLO · paso 5 · doc 02 §4.'},
-
-{n:14,section:'Secuencia',eyebrow:'Paso 6',title:'Secuencia de intervención',lead:'Cuatro pasos en fila, cada uno más caro que el anterior.',diagram:'secuencia',
+{n:13,section:'Secuencia',eyebrow:'Paso 6',title:'Secuencia de intervención',lead:'Cuatro pasos en fila, cada uno más caro que el anterior.',diagram:'secuencia',
 callout:'Sin las tres semanas de sustrato sin imán, la mejoría posterior no se puede atribuir.',
 notes:[`Mover la hora no cuesta nada; reponer sustrato cuesta poco; aplicar cuesta la sesión. Se prueban en ese orden.`,`El retiro final distingue con qué clase de agente se está tratando: una recaída en días apunta a que algo sigue sosteniendo el estado anterior.`],source:'PROTOCOLO · paso 6 · docs 02 §3 y 08 §6.'},
 
-{n:15,section:'Secuencia',eyebrow:'Paso 6',title:'Calendario de consultas',diagram:'calendario',
-callout:'En las cuatro consultas se repite la misma comida de prueba. Lo que cambia es lo que la persona toma en medio.',
+{n:14,section:'Secuencia',eyebrow:'Paso 6',title:'Calendario de consultas',diagram:'calendario',
+callout:'En las cuatro consultas se repiten las mismas preguntas. Lo que cambia es lo que la persona toma en medio.',
 notes:[`La segunda consulta decide si faltaba material o si hay algo cerrado. La cuarta decide si el cuerpo lo sostiene solo.`,`Se anota lo que el paciente cambió por su cuenta: dieta, sueño, trabajo, medicamentos.`],source:'PROTOCOLO · paso 6 · doc 02 §7.'},
 
-{n:16,section:'Secuencia',eyebrow:'Paso 6',title:'Justificación del plazo de tres semanas',
+{n:15,section:'Secuencia',eyebrow:'Paso 6',title:'Justificación del plazo de tres semanas',
 facts:[['El epitelio intestinal se renueva completo','Cada tres a cinco días'],['Dos renovaciones completas','De seis a diez días'],['Primera revisión con valor informativo','A las tres semanas'],['Respuesta inmune','Meses: su instrucción queda escrita en los progenitores de la médula ósea']],
 callout:'Un cambio en la primera semana lo explica la renovación del epitelio, y no lo que se hizo.',
 notes:[`Este es el argumento que sostiene el calendario entero y el que evita conclusiones tempranas.`,`Un calendario construido sobre el reloj del epitelio se queda corto para la pieza inmune.`],source:'PROTOCOLO · paso 6 · docs 02 §7 y 11 §9.'},
 
-{n:17,section:'Sesión de aplicación',eyebrow:'Maniobra 0',title:'Preparación y rastreo basal',
+{n:16,section:'Sesión de aplicación',eyebrow:'Maniobra 0',title:'Preparación y rastreo basal',
 block:`1  Decúbito supino, cabeza en posición neutra
 2  Tracción suave de las dos extremidades
    inferiores, y movilización hacia los lados
@@ -147,17 +133,17 @@ block:`1  Decúbito supino, cabeza en posición neutra
    Acortamiento  acidosis temporal primero`,
 notes:[`La tracción y la manta retiran el tono de defensa muscular, que es una de las fuentes de variabilidad de la medición.`,`El registro del estado autonómico del paso 4 es propio de este eje y no está en el punto trauma.`],source:'TECNICA_RB_Eje_Digestivo.md · maniobra 0.'},
 
-{n:18,section:'Sesión de aplicación',eyebrow:'Maniobra 0',title:'Posición y referencia de simetría',lead:'Camilla sin superficie metálica. La referencia es siempre el talón izquierdo.',kind:'image',image:'assets/03-posicion-camilla.png',
-caption:'Posición en camilla y medición de simetría',
-brief:'Persona en decúbito supino sobre camilla sin metal, cubierta con manta; las dos extremidades inferiores levantadas unos 30°, con los talones marcados y la diferencia de altura visible. Vista lateral alta, trazo limpio, sin rostro.',
+{n:17,section:'Sesión de aplicación',eyebrow:'Maniobra 0',title:'Comparación directa de los talones',lead:'La referencia visual es siempre el talón izquierdo; se compara antes y después de cada colocación.',kind:'image',image:'assets/03-medicion-comparacion.jpg',
+caption:'Izquierda: acortamiento observado · derecha: isometría después de la corrección',
+brief:'Comparación frontal de los talones: primero con diferencia de altura y después al mismo nivel.',
 callout:'El acortamiento de una extremidad señala nodo activo. La isometría señala resolución.',
-notes:[`Se levantan las dos extremidades unos treinta grados y se mide. Solo levantar y medir.`,`Que la persona lleve zapatos, o marcar los talones, hace visible la diferencia.`],source:'TECNICA · maniobra 0.'},
+notes:[`Se levantan las dos extremidades unos treinta grados y se mide. Solo levantar y medir.`,`La comparación se hace de frente y con el mismo talón como referencia en todas las mediciones.`],source:'TECNICA · maniobra 0 · referencia visual medicion_comparacion.jpg.'},
 
-{n:19,section:'Sesión de aplicación',eyebrow:'Convenciones',title:'Polaridad, cara del imán e intensidad',diagram:'polos',
+{n:18,section:'Sesión de aplicación',eyebrow:'Convenciones',title:'Polaridad, cara del imán e intensidad',diagram:'polos',
 facts:[['Intensidad en superficie','De 0.1 a 0.5 tesla'],['Tamaño del imán','Según la zona y el tamaño de la persona'],['Tiempo base','20 minutos por configuración'],['Rejilla','Cuatro imanes iguales']],
 notes:[`Confirmado por el autor y se conserva sin cambio respecto del punto trauma.`,`Lo que cambia en este eje es el mapa de entrada, no la maniobra.`],source:'TECNICA · convenciones.'},
 
-{n:20,section:'Sesión de aplicación',eyebrow:'Maniobra 1',title:'Acidosis temporal',
+{n:19,section:'Sesión de aplicación',eyebrow:'Maniobra 1',title:'Acidosis temporal',
 block:`1  Positivo (Sur) sobre el riñón del lado
    acortado. CARA POSITIVA hacia la piel
 2  Medir: tienen que quedar isométricas
@@ -171,7 +157,7 @@ block:`1  Positivo (Sur) sobre el riñón del lado
 callout:'El riñón del mismo lado responde en cerca del ochenta por ciento de los casos.',
 notes:[`Es la única maniobra que empieza con el positivo, y la única donde la cara positiva va hacia la piel.`,`Si después de quedar isométrica la extremidad vuelve a acortarse, se pasa a la maniobra 2.`],source:'TECNICA · maniobra 1.'},
 
-{n:21,section:'Sesión de aplicación',eyebrow:'Maniobra 2',title:'Riñón y parietal contralateral',
+{n:20,section:'Sesión de aplicación',eyebrow:'Maniobra 2',title:'Riñón y parietal contralateral',
 block:`Indicación: la extremidad vuelve a acortarse
 después de la acidosis temporal
 
@@ -184,7 +170,7 @@ después de la acidosis temporal
       el rastreo de unidades en paralelo`,
 notes:[`Es un dipolo distante que cruza el neuroeje, y corresponde a una desregulación más sostenida que la de la maniobra anterior.`,`El nombre tradicional es fenómeno Goiz o acidosis latente.`],source:'TECNICA · maniobra 2.'},
 
-{n:22,section:'Sesión de aplicación',eyebrow:'Paso 7',title:'Zonas de proyección de las once unidades',
+{n:21,section:'Sesión de aplicación',eyebrow:'Paso 7',title:'Zonas de proyección de las once unidades',
 block:` 1 Esófago     línea media del tórax
  2 Estómago    epigastrio e hipocondrio izq.
  3 Duodeno     epigastrio derecho
@@ -199,47 +185,47 @@ block:` 1 Esófago     línea media del tórax
 callout:'Son áreas, no puntos. Dentro de cada una se mueve el imán hasta encontrar el sitio que acorta.',
 notes:[`El recorrido va en el sentido del flujo, de esófago a ano, y se hace completo aunque no haya síntoma.`,`Si salen tres tramos marcados, se empieza por el primero de la lista, porque está aguas arriba de los otros dos.`],source:'PROTOCOLO · paso 7 · doc 13 §3.'},
 
-{n:23,section:'Sesión de aplicación',eyebrow:'Paso 7',title:'Las once zonas sobre la pared',lead:'Zonas de proyección delimitadas y numeradas, del esófago al recto.',kind:'image',image:'assets/02-once-zonas.png',
-caption:'Las once zonas de proyección sobre la pared torácica y abdominal',
-brief:'Torso de frente con las once zonas delimitadas como áreas sombreadas y numeradas: 1 línea media del tórax, 2 epigastrio, 3 epigastrio derecho, 4 periumbilical, 5 y 6 cuadrante inferior derecho, 7 marco cólico, 10 epigastrio profundo, 11 zona hepática; en recuadros aparte, 8 sacra y perineal, y 9 parotídea y submandibular.',
+{n:22,section:'Sesión de aplicación',eyebrow:'Paso 7',title:'Anatomía de referencia del tubo digestivo',lead:'Primero se reconoce la posición relativa de los órganos; después se traducen a áreas amplias de proyección sobre la pared corporal.',kind:'image',image:'assets/02-sistema-digestivo-atlas.svg',
+caption:'Lámina anatómica de referencia · vista lateral y anterior · dominio público',
+brief:'Lámina anatómica vectorial del aparato digestivo, sin deformaciones generativas. Se usa como referencia de relaciones anatómicas, no como mapa de puntos terapéuticos.',
 callout:'Hay islas de este eje que no producen molestia propia, y por eso el recorrido se hace completo.',
 notes:[`La isla de la base de la cripta se presenta lenta, de meses, y la persona no la relaciona con nada.`,`La red de células de Cajal no tiene zona propia: se busca en la unidad cuyo ritmo está alterado. El tejido inmune se concentra en el íleon.`],source:'PROTOCOLO · paso 7 · doc 13 §3.'},
 
-{n:24,section:'Sesión de aplicación',eyebrow:'Paso 8',title:'Secuencia de rastreo en cada unidad',diagram:'cincoPasos',
+{n:23,section:'Sesión de aplicación',eyebrow:'Paso 8',title:'Secuencia de rastreo en cada unidad',diagram:'cincoPasos',
 callout:'El paso que más se salta es el cuarto: probar varias posiciones del positivo antes de subir al orden fijo.',
 notes:[`Si en toda la zona no aparece acortamiento, se pasa a la unidad siguiente sin insistir.`,`El tiempo lo marca el rastreo: se retira el positivo y, si vuelve a acortar, se deja más tiempo.`],source:'PROTOCOLO · paso 8 · TECNICA · maniobra 3.'},
 
-{n:25,section:'Sesión de aplicación',eyebrow:'Paso 8',title:'Dipolo local sobre la zona confirmada',lead:'Negativo fijo sobre el sitio que acortó, y positivo al lado, probando posiciones.',kind:'image',image:'assets/05-dipolo-local.png',
+{n:24,section:'Sesión de aplicación',eyebrow:'Paso 8',title:'Dipolo local sobre la zona confirmada',lead:'Negativo fijo sobre el sitio que acortó, y positivo al lado, probando posiciones.',kind:'image',image:'assets/05-dipolo-local.png',
 caption:'Dipolo local sobre una zona de proyección',
 brief:'Detalle a escala de piel, con las capas de la pared abdominal en corte: el imán negativo apoyado sobre el punto que acortó y el positivo colocado al lado, con las líneas de campo formando el gradiente entre los dos.',
 callout:'Lo que actúa sobre el acoplamiento es el gradiente entre los dos polos, y no la potencia de uno.',
 notes:[`El positivo se prueba al lado opuesto, a la izquierda o arriba, midiendo la simetría en cada posición.`,`Si ninguna posición consigue la isometría, se sube al orden fijo de nodos distantes.`],source:'TECNICA · maniobra 3.'},
 
-{n:26,section:'Sesión de aplicación',eyebrow:'Paso 9',title:'Orden fijo de nodos distantes',diagram:'ordenFijo',
+{n:25,section:'Sesión de aplicación',eyebrow:'Paso 9',title:'Orden fijo de nodos distantes',diagram:'ordenFijo',
 callout:'Orden confirmado por el autor, con la suprarrenal antes que el hígado.',
 notes:[`No se salta ninguno y no se elige por corazonada. El hígado se rastrea sobre la piel en toda la zona hepática; el bulbo raquídeo, en el hueco debajo del occipucio.`,`El hígado entra como unidad cuando el relato lleva ahí, y como nodo cinco cuando una isla de otro tramo no cerró. Se anota cuál de los dos fue.`],source:'PROTOCOLO · paso 9 · doc 13 §4.'},
 
-{n:27,section:'Sesión de aplicación',eyebrow:'Paso 9',title:'Localización de los seis nodos',lead:'Zona renal, suprarrenal, hígado y bulbo raquídeo, en su orden de exploración.',kind:'image',image:'assets/06-orden-fijo-nodos.png',
+{n:26,section:'Sesión de aplicación',eyebrow:'Paso 9',title:'Localización de los seis nodos',lead:'Zona renal, suprarrenal, hígado y bulbo raquídeo, en su orden de exploración.',kind:'image',image:'assets/06-orden-fijo-nodos.png',
 caption:'Los seis nodos distantes y su orden',
 brief:'Silueta de cuerpo entero de frente y de espalda, con los seis nodos numerados en orden: renal derecha 1, renal izquierda 2, suprarrenal derecha 3, suprarrenal izquierda 4, hígado 5 como área completa, bulbo raquídeo 6 en el hueco bajo el occipucio.',
 notes:[`En el bulbo están el núcleo motor dorsal del vago, el núcleo del tracto solitario y el área postrema.`,`En rata se demostró que la parte rostral del núcleo motor dorsal contrae el píloro y la caudal lo relaja.`],source:'PROTOCOLO · paso 9 · docs 13 §4 y 16 §5.'},
 
-{n:28,section:'Sesión de aplicación',eyebrow:'Paso 10',title:'Lectura del nodo de cierre',
+{n:27,section:'Sesión de aplicación',eyebrow:'Paso 10',title:'Lectura del nodo de cierre',
 facts:[['Dipolo local','Acoplamiento dentro de esa unidad'],['Zona renal','Efector iónico'],['Suprarrenal','Efector neuroendocrino, que lleva al eje del estrés del Módulo 2'],['Hígado','Efector metabólico, y pieza que recibe por vía portal'],['Bulbo raquídeo','Control central. Se comprueba con la prueba de respiración profunda'],['Cuerpo entero','Ninguno enganchó. Se registra y se revisa el planteamiento']],
 notes:[`El cierre en bulbo es el que más informa en este eje: es compatible con que la pieza que falta sea la vía vagal.`,`En ese caso la comprobación se busca en la prueba de respiración profunda antes que en los síntomas digestivos.`],source:'PROTOCOLO · paso 10 · docs 13 §6 y 16 §5.'},
 
-{n:29,section:'Sesión de aplicación',eyebrow:'Maniobras 5 y 6',title:'Rejilla de gradiente',lead:'Cuatro imanes en 2 × 2 alrededor del par ya colocado, con las polaridades alternadas.',kind:'image',image:'assets/07-rejilla-ajedrez.png',
+{n:28,section:'Sesión de aplicación',eyebrow:'Maniobras 5 y 6',title:'Rejilla de gradiente',lead:'Cuatro imanes en 2 × 2 alrededor del par ya colocado, con las polaridades alternadas.',kind:'image',image:'assets/07-rejilla-ajedrez.png',
 caption:'Rejilla 2 × 2 sobre un dipolo confirmado',
 brief:'Vista cenital sobre la piel: el par ya colocado en el centro y cuatro imanes iguales alrededor en cuadrícula 2 × 2, con polaridades alternadas Norte-Sur y Sur-Norte, y las fronteras de gradiente marcadas en ámbar.',
 callout:'En el punto trauma la indicación es dolor con contractura. En el eje digestivo falta definirla.',
 notes:[`La alternancia de polos crea gradientes empinados en cada frontera entre polos opuestos.`,`El candidato para este eje son los problemas de ritmo, porque lo que hay que restituir es el paso de la onda eléctrica entre células vecinas. Queda a criterio del autor.`],source:'TECNICA · maniobras 5 y 6 · doc 07 §6.'},
 
-{n:30,section:'Sesión de aplicación',eyebrow:'Paso 11',title:'Condiciones de colocación',
+{n:29,section:'Sesión de aplicación',eyebrow:'Paso 11',title:'Condiciones de colocación',
 facts:[['Gradiente','Lo forma el segundo polo colocado al lado, y no un imán más potente en el mismo sitio'],['Alcance','Se trabaja el eje completo: intestino, microbiota e hígado se sostienen entre sí'],['Dirección','Se va del intestino hacia el hígado, porque ahí llega todo lo que atraviesa la barrera'],['Calendario','Lo pone el epitelio, que se renueva completo cada tres a cinco días']],
 callout:'Trabajar una sola pieza se revierte, porque las otras dos siguen sosteniendo el estado anterior.',
 notes:[`Las tres piezas se sostienen entre sí por seis vías documentadas.`,`Estas cuatro condiciones se cumplen con independencia de dónde estén los puntos, que es lo que falta definir.`],source:'PROTOCOLO · paso 11 · docs 01 §4 y 02 §5.'},
 
-{n:31,section:'Sesión de aplicación',eyebrow:'Paso 12',title:'Registro de la aplicación',
+{n:30,section:'Sesión de aplicación',eyebrow:'Paso 12',title:'Registro de la aplicación',
 block:`Puntos            _____________________________
 Polaridad         _____________________________
 Distancia entre polos              ______ cm
@@ -254,32 +240,16 @@ Días transcurridos                 ______`,
 callout:'La hora de aplicación se anota siempre. Cada unidad tiene su programa de veinticuatro horas.',
 notes:[`Sin ese dato no se puede mirar después si aplicar en la fase activa de la unidad produce distinto resultado que aplicar en su fase de reposo.`,`Es el dato más barato de anotar y el que hoy falta en la mayoría de los registros.`],source:'PROTOCOLO · paso 12 · doc 08 §7.'},
 
-{n:32,section:'Revisión',eyebrow:'Paso 13',title:'Variables y plazos de revisión',diagram:'plazos',
+{n:31,section:'Revisión',eyebrow:'Paso 13',title:'Variables y plazos de revisión',diagram:'plazos',
 callout:'El plazo lo pone el reloj del tejido que se trató.',
 notes:[`Tres semanas donde manda el epitelio; de tres a seis donde mandan el ritmo o la pieza hepática; meses donde manda la instrucción escrita en los progenitores.`,`Revisar la rigidez a las tres semanas lleva a concluir que no funcionó cuando todavía no había tiempo de que funcionara.`],source:'PROTOCOLO · paso 13 · docs 02, 08, 11 y 13.'},
 
-{n:33,section:'Revisión',eyebrow:'Paso 13',title:'Jerarquía de las comprobaciones',
+{n:32,section:'Revisión',eyebrow:'Paso 13',title:'Jerarquía de las comprobaciones',
 facts:[['Primera','Horas que tarda en dejar de sentir la molestia, al inicio y ahora'],['Segunda','Cuánto dura la mejoría cuando se retira todo'],['Tercera','Prueba de respiración profunda, con la hoja del Módulo 2'],['Cuarta y quinta','Lo que la persona reporta, y el rastreo, que nunca va solo']],
 callout:'El rastreo no puede decidir quién entra, dónde se coloca y si funcionó, las tres cosas a la vez.',
-notes:[`El orden esperado del cambio: primero se acorta el tiempo tras la comida, después mejora cómo se siente en un día cualquiera.`,`Si la persona reporta que está mejor y el tiempo tras la misma comida sigue igual, la mejoría vino por otro lado.`],source:'PROTOCOLO · paso 13 · doc 02 §6.'},
+notes:[`El orden esperado del cambio: primero se acorta el tiempo hasta que deja de sentir la molestia, después mejora cómo se siente en un día cualquiera.`,`Si la persona reporta que está mejor y ese tiempo sigue igual, la mejoría vino por otro lado.`],source:'PROTOCOLO · paso 13 · doc 02 §6.'},
 
-{n:34,section:'Revisión',eyebrow:'Paso 14',title:'Registro de náusea dentro de la sesión',
-block:`Náusea antes de colocar  0 1 2 3 4 5 6 7 8 9 10
-Hora de colocación                 ______
-
-A los 5 minutos          0 1 2 3 4 5 6 7 8 9 10
-A los 15 minutos         0 1 2 3 4 5 6 7 8 9 10
-Al terminar la sesión    0 1 2 3 4 5 6 7 8 9 10
-
-Cerró como  dipolo local ___  nodo ____________`,
-callout:'El desorden del ritmo gástrico precede al reporte de náusea entre uno y veinte minutos.',
-notes:[`Si cede dentro de la sesión, la vía fue el ritmo. Si cede días después, la vía fue el vaciamiento o el aferente vagal.`,`Es el único desenlace de este eje que se observa en la camilla. Todo lo demás se mide en semanas.`],source:'PROTOCOLO · paso 14 · doc 19.'},
-
-{n:35,section:'Revisión',eyebrow:'Paso 14',title:'Tres vías posibles para la misma mejoría',diagram:'nausea',
-callout:'Con veinte casos registrados así se puede decir por cuál de las tres ocurre.',
-notes:[`Y hay una cuarta que se descuenta: que ceda por el curso natural del episodio, o por estar acostado y quieto veinte minutos.`,`Si el dipolo local del píloro no cierra, el bulbo raquídeo tiene fundamento anatómico para ser el punto distante.`],source:'PROTOCOLO · paso 14 · doc 19 §4.'},
-
-{n:36,section:'Revisión',eyebrow:'Paso 16',title:'Hoja del recorrido, una por sesión',
+{n:33,section:'Revisión',eyebrow:'Paso 16',title:'Hoja del recorrido, una por sesión',
 block:`                   acorta  dipolo  nodo distante
  1 Esófago           [ ]     [ ]    ____________
  2 Estómago          [ ]     [ ]    ____________
@@ -295,20 +265,18 @@ block:`                   acorta  dipolo  nodo distante
 callout:'Se llena aunque no se trate nada esa sesión: es el dato de base para comparar en la siguiente.',
 notes:[`Al pie se anotan la primera unidad marcada de la lista y las unidades marcadas sin síntoma reportado.`,`También se anota si el hígado se rastreó como unidad o como nodo distante.`],source:'PROTOCOLO · paso 16 · doc 13 §5.'},
 
-{n:37,section:'Revisión',eyebrow:'Paso 15',title:'Clasificación del resultado en la semana diez',diagram:'resultados',
+{n:34,section:'Revisión',eyebrow:'Paso 15',title:'Clasificación del resultado en la semana diez',diagram:'resultados',
 notes:[`El tercer caso es el más informativo: si la mejoría regresa a los pocos días, se revisan microbiota e hígado antes de repetir la misma aplicación.`,`El cuarto manda de vuelta a la lectura por sistemas.`],source:'PROTOCOLO · paso 15 · doc 02 §9.'},
 
-{n:38,section:'Pendientes',eyebrow:'Particularidad del eje',title:'Colocación en la unión esofagogástrica',lead:'El diafragma crural no tiene tono propio: se contrae con cada descarga del nervio frénico.',kind:'image',image:'assets/08-hiato-diafragma-crural.png',
-caption:'Los dos esfínteres del hiato',
-brief:'Corte del hiato diafragmático con el esfínter esofágico inferior de músculo liso por dentro y el diafragma crural de músculo esquelético por fuera; flechas del nervio frénico y del nervio vago; dos posiciones lado a lado, inspiración y espiración, para mostrar el desplazamiento.',
+{n:35,section:'Pendientes',eyebrow:'Particularidad del eje',title:'Colocación en la unión esofagogástrica',lead:'En esta región participan dos componentes distintos: el esfínter esofágico inferior y el diafragma crural.',diagram:'hiatoAnatomico',
 callout:'La zona se desplaza mientras se rastrea, y falta definir con qué respiración se coloca.',
-notes:[`Es el único punto del eje donde el instrumento de medición y la diana coinciden: la prueba de respiración profunda trabaja sobre esta misma estructura.`,`El esfínter interno es músculo liso del esófago; el externo, músculo esquelético inervado por el frénico.`],source:'TECNICA · particularidad 1 · doc 16 §1.'},
+notes:[`Aclare que la figura es un esquema funcional, no una vista quirúrgica. El esfínter esofágico inferior corresponde al componente de músculo liso de la unión; el diafragma crural aporta un componente externo de músculo esquelético.`,`El nervio vago acompaña al esófago y participa en la regulación digestiva; el nervio frénico activa el diafragma. Durante la respiración cambian la posición de la unión y la contribución mecánica del hiato.`,`El punto que sigue pendiente no es la anatomía, sino la maniobra: hace falta definir en qué fase respiratoria se localiza y se coloca el imán.`],source:'TECNICA · particularidad 1 · doc 16 §1.'},
 
-{n:39,section:'Pendientes',eyebrow:'Paso 17',title:'Diez puntos pendientes de definición',lead:'Ninguno se resuelve leyendo. Los diez salen del registro de casos.',diagram:'pendientes',
+{n:36,section:'Pendientes',eyebrow:'Paso 17',title:'Diez puntos pendientes de definición',lead:'Ninguno se resuelve leyendo. Los diez salen del registro de casos.',diagram:'pendientes',
 callout:'Dos cambian la maniobra. Los otros ocho cambian dónde se coloca.',
 notes:[`Y dos datos se obtienen sin trabajo nuevo: cuántos minutos toma el recorrido completo de las once unidades, y si la hora de aplicación está anotada en los casos existentes.`],source:'PROTOCOLO · paso 17 · TECNICA.'},
 
-{n:40,section:'Cierre',eyebrow:'Regla de comprobación',title:'Cada decisión tiene su propio instrumento',theme:'dark',
+{n:37,section:'Cierre',eyebrow:'Regla de comprobación',title:'Cada decisión tiene su propio instrumento',theme:'dark',
 facts:[['Quién entra','Criterios de derivación, criterios de exclusión e interrogatorio'],['Dónde se coloca','El rastreo'],['Si funcionó','Horas tras la comida, días de cierre de una herida, y respiración profunda']],
 callout:'Un rastreo que hace los tres trabajos a la vez confirma siempre, pase lo que pase.',
 notes:[`Con esto el protocolo queda refutable: si las mejorías aparecen igual con sustrato y sin él, con gradiente y sin él, y en el mismo plazo en que el intestino se renueva por su cuenta, entonces no separó nada.`],source:'PROTOCOLO · pasos 13 y 17 · doc 02 §10.'}

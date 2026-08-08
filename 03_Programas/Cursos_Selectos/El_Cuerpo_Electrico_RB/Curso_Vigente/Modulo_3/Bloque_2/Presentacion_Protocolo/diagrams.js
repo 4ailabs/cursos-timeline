@@ -28,7 +28,7 @@ return S(link('M62 260H700','route')
 +mid('lo que sobrevive a los dos primeros es lo que corresponde al tercero',380,472,'small'),'Secuencia de horario, sustrato, campo y retiro')}
 
 /* Calendario: cuatro consultas y tres periodos */
-function calendario(){const m=[[110,'Día 0','historia y basal'],[290,'Día 21','misma comida'],[470,'Semana 6','tres mediciones'],[650,'Semana 10','cuánto duró']];
+function calendario(){const m=[[110,'Día 0','historia y números'],[290,'Día 21','se comparan horas'],[470,'Semana 6','tres mediciones'],[650,'Semana 10','cuánto duró']];
 const per=[[110,180,'sustrato, sin imán'],[290,180,'sesiones de aplicación'],[470,180,'sin sustrato y sin imán']];
 return S(`<text x="30" y="52" class="small">CUATRO CONSULTAS</text><path d="M110 210H650" class="timeline"/>`
 +m.map(([x,t,s],i)=>`<g class="zone"><circle cx="${x}" cy="210" r="30"/>${mid(i+1,x,219)}</g>`+mid(t,x,160)+wrapMid(s,x,272,18)).join('')
@@ -53,20 +53,10 @@ return S(link('M52 230H726','route')
 +mid('se detiene en el primero que restablece la isometría',380,430,''),'Orden fijo de nodos distantes')}
 
 /* Variables y plazos de revisión */
-function plazos(){const r=[['Náusea tratada en el píloro','minutos, en la sesión',70,'coral'],['Estómago, duodeno, páncreas','3 semanas',300,'blue'],['Yeyuno, íleon, colon','3 semanas',300,'blue'],['Unión esofagogástrica, píloro, recto','3 semanas',300,'blue'],['Cualquier tramo, problema de ritmo','3 a 6 semanas',430,'amber'],['Hígado, o cierre en bulbo','3 a 6 semanas',430,'amber'],['Rigidez de la respuesta','meses',600,'coral']];
+function plazos(){const r=[['Estómago, duodeno, páncreas','3 semanas',300,'blue'],['Yeyuno, íleon, colon','3 semanas',300,'blue'],['Unión esofagogástrica, píloro, recto','3 semanas',300,'blue'],['Cualquier tramo, problema de ritmo','3 a 6 semanas',430,'amber'],['Hígado, o cierre en bulbo','3 a 6 semanas',430,'amber'],['Rigidez de la respuesta','meses',600,'coral']];
 return S(r.map(([t,d,w,c],i)=>{const y=26+i*74;
   return `<text x="30" y="${y+26}">${t}</text><g class="channel"><rect x="30" y="${y+40}" width="${w}" height="18" rx="9" class="${c}"/></g><text x="${w+46}" y="${y+56}" class="small">${d}</text>`}).join('')
 +`<text x="30" y="548" class="small">tres semanas equivalen a dos renovaciones completas del epitelio</text>`,'Variables y plazos de revisión por unidad tratada')}
-
-/* Náusea: el ritmo precede al síntoma */
-function nausea(){return S(`<path d="M60 300H700" class="axis"/>
-<path d="M60 300C150 300 180 170 260 170" class="curve coral" fill="none" stroke-width="7"/>
-<path d="M260 300C350 300 380 210 460 210" class="curve blueStroke" fill="none" stroke-width="7" stroke-dasharray="10 8"/>
-<text x="70" y="140" class="small">se desordena el ritmo eléctrico del estómago</text>
-<text x="300" y="180">la persona reporta náusea</text>
-<path d="M260 320V366M460 320V366" class="thinFlow"/>${mid('1 a 20 minutos',360,400,'')}
-`+[['A','por el ritmo','cede en la sesión','coral'],['B','por el esfínter','días o semanas','blue'],['C','por el aferente vagal','sin cambiar el vaciamiento','amber']]
-.map(([k,t,s,c],i)=>{const x=140+i*240;return dot(x,472,34,k,c)+mid(t,x,532,'small')}).join(''),'El desorden del ritmo precede al reporte de náusea')}
 
 /* Clasificación del resultado */
 function resultados(){const q=[['Mejoró con el sustrato','Faltaba material. No necesitaba la aplicación','blue'],['Mejoró con el imán y se sostiene','Se reabrió lo cerrado. Se espacían las sesiones','blue'],['Mejoró con el imán y regresa','Algo sigue sosteniendo el estado. Revisar microbiota e hígado','amber'],['No mejoró con ninguno','El sistema que manda es otro. Volver a la lectura por sistemas','coral']];
@@ -85,5 +75,26 @@ function pendientes(){const p=[['Puntos de cada unidad',0],['Delgado frente a co
 return S(p.map(([t,key],i)=>{const x=30+(i%2)*370,y=24+Math.floor(i/2)*106;
   return `<g class="${key?'ratchet':'stepNode'}">${key?`<path d="M${x+12} ${y}h316a12 12 0 0 1 12 12v64a12 12 0 0 1-12 12H${x+12}a12 12 0 0 1-12-12V${y+12}a12 12 0 0 1 12-12z"/>`:`<rect x="${x}" y="${y}" width="340" height="88" rx="12"/>`}<text x="${x+22}" y="${y+40}" class="small">${String(i+1).padStart(2,'0')}</text>${wrapMid(t,x+195,y+38,25,26,'')}${key?mid('cambia la maniobra',x+195,y+72,'small'):''}</g>`}).join(''),'Los diez puntos que faltan por definir')}
 
-const MAP={pasos,derivacion,secuencia,calendario,cincoPasos,ordenFijo,plazos,nausea,resultados,polos,pendientes};
+/* Esquema funcional del hiato, sin pretender una vista de atlas */
+function hiatoAnatomico(){const panel=(x,title,phase,contracted)=>`<g class="hiatusPanel">
+  <rect x="${x}" y="58" width="326" height="414" rx="18" class="hiatusFrame"/>
+  ${mid(title,x+163,96,'hiatusTitle')}${mid(phase,x+163,122,'small')}
+  <path d="M${x+20} ${contracted?302:272} Q${x+163} ${contracted?350:314} ${x+306} ${contracted?302:272} L${x+306} ${contracted?348:318} Q${x+163} ${contracted?394:360} ${x+20} ${contracted?348:318}Z" class="diaphragm"/>
+  <rect x="${x+144}" y="128" width="38" height="260" rx="18" class="esophagus"/>
+  <path d="M${x+144} 326 C${x+126} 348 ${x+130} 382 ${x+156} 400 C${x+188} 422 ${x+232} 402 ${x+248} 370 C${x+260} 344 ${x+222} 320 ${x+182} 326Z" class="stomachCardia"/>
+  <ellipse cx="${x+163}" cy="${contracted?325:296}" rx="${contracted?38:52}" ry="${contracted?18:24}" class="cruralRing"/>
+  <rect x="${x+143}" y="250" width="40" height="74" rx="20" class="les"/>
+  <path d="M${x+117} 132 C${x+104} 202 ${x+110} 252 ${x+126} 294" class="vagus"/>
+  <path d="M${x+230} 152 C${x+250} 214 ${x+244} 252 ${x+216} ${contracted?312:286}" class="phrenic"/>
+  <path d="M${x+236} ${contracted?384:352}v${contracted?34:-34}" class="breathArrow" marker-end="url(#arr)"/>
+  ${mid(contracted?'Diafragma desciende':'Diafragma asciende',x+163,438,'small')}
+</g>`;
+return S(panel(28,'INSPIRACIÓN','fase mecánica',true)+panel(406,'ESPIRACIÓN','fase mecánica',false)+
+`<g class="hiatusLegend"><circle cx="58" cy="510" r="8" class="les"/><text x="76" y="516" class="legendText">Esfínter inferior · músculo liso</text>
+<circle cx="392" cy="510" r="8" class="cruralRing"/><text x="410" y="516" class="legendText">Diafragma crural · músculo esquelético</text>
+<path d="M58 544h26" class="vagus"/><text x="94" y="550" class="legendText">Vago</text><path d="M188 544h26" class="phrenic"/><text x="224" y="550" class="legendText">Frénico</text>
+<text x="730" y="554" text-anchor="end" class="tinyNote">ESQUEMA FUNCIONAL · NO ES UNA VISTA QUIRÚRGICA</text></g>`,
+'Esquema funcional de la unión esofagogástrica durante inspiración y espiración')}
+
+const MAP={pasos,derivacion,secuencia,calendario,cincoPasos,ordenFijo,plazos,resultados,polos,pendientes,hiatoAnatomico};
 function diagramFor(name){return (MAP[name]||(()=>''))()}
