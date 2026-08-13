@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
+  <title id="title">Límites superficiales del periné</title>
+  <desc id="desc">Vista inferior esquemática con pubis, tuberosidades isquiáticas y cóccix delimitando un rombo.</desc>
+  <defs><linearGradient id="pelvis" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f2d9ca"/><stop offset="1" stop-color="#ddb09a"/></linearGradient></defs>
+  <rect width="800" height="560" fill="#f7f6f2"/>
+  <path d="M180 80C245 28 322 43 400 108c78-65 155-80 220-28 67 54 83 157 38 244-51 98-146 154-258 172-112-18-207-74-258-172-45-87-29-190 38-244z" fill="url(#pelvis)" stroke="#734d42" stroke-width="5"/>
+  <path d="M400 142L593 284 400 454 207 284Z" fill="#e9a78d" fill-opacity=".38" stroke="#ad604d" stroke-width="5"/>
+  <path d="M400 142v312M207 284h386" stroke="#ad604d" stroke-width="2" stroke-dasharray="8 10" opacity=".7"/>
+  <g font-family="system-ui,sans-serif" font-size="20" fill="#5f625f">
+    <text x="400" y="100" text-anchor="middle">pubis</text><text x="116" y="291">tuberosidad isquiática</text><text x="684" y="291" text-anchor="end">tuberosidad isquiática</text><text x="400" y="510" text-anchor="middle">cóccix</text>
+  </g>
+</svg>

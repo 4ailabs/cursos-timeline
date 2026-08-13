@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
+  <title id="title">Vista plantar de ambos pies</title>
+  <desc id="desc">Esquema anatómico simplificado de talón, arco, antepié y dedos, sin puntos adicionales.</desc>
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f4d8c7"/><stop offset="1" stop-color="#dcae96"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity=".12"/></filter>
+  </defs>
+  <rect width="800" height="560" fill="#f7f6f2"/>
+  <g filter="url(#shadow)" fill="url(#skin)" stroke="#734d42" stroke-width="4">
+    <path d="M257 492C207 479 181 432 190 382c10-56 43-92 50-140 8-53-17-103-5-148 12-44 48-65 87-55 42 11 60 50 51 94-9 47-22 79-16 125 7 51 30 96 25 149-5 57-61 104-125 85z"/>
+    <path d="M543 492c50-13 76-60 67-110-10-56-43-92-50-140-8-53 17-103 5-148-12-44-48-65-87-55-42 11-60 50-51 94 9 47 22 79 16 125-7 51-30 96-25 149 5 57 61 104 125 85z"/>
+    <ellipse cx="274" cy="47" rx="26" ry="31"/><ellipse cx="237" cy="53" rx="22" ry="27"/><ellipse cx="205" cy="65" rx="19" ry="23"/><ellipse cx="180" cy="82" rx="16" ry="20"/><ellipse cx="162" cy="103" rx="14" ry="17"/>
+    <ellipse cx="526" cy="47" rx="26" ry="31"/><ellipse cx="563" cy="53" rx="22" ry="27"/><ellipse cx="595" cy="65" rx="19" ry="23"/><ellipse cx="620" cy="82" rx="16" ry="20"/><ellipse cx="638" cy="103" rx="14" ry="17"/>
+  </g>
+  <g fill="none" stroke="#b98270" stroke-width="3" opacity=".72">
+    <path d="M241 147c38 24 79 23 119 2M230 331c37 20 87 19 132-2M439 149c40 21 81 22 120-2M438 329c45 21 95 22 132 2"/>
+    <path d="M255 189c-5 61-19 89-31 119M545 189c5 61 19 89 31 119"/>
+  </g>
+  <g font-family="system-ui,sans-serif" font-size="19" fill="#5f625f" text-anchor="middle">
+    <text x="400" y="534">superficie plantar: talón · arco · antepié · dedos</text>
+  </g>
+</svg>
