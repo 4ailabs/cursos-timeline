@@ -1,0 +1,508 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Manual Módulo 3 — Preguntar y rastrear</title>
+<style>
+/* ══ HOJA DE ESTILO B5 · Regulación Bioeléctrica ══
+   Sistema heredado de manual_nodo_lesion.html
+   B5 176×250 mm · Avenir Next · negro · impresión B/N · columna única
+   Coral SOLO alertas. Sin cajas rellenas con barrita de color.  */
+
+@page{size:176mm 250mm;margin:0}
+
+.b5{
+  margin:0;
+  --ink:#141412; --soft:#3A3A38; --faint:#6E6E6B;
+  --paper:#FFFFFF; --line:#BEBEBB; --hair:#D9D9D6; --card:#EFEFEC;
+  --teal:#000000; --teal-deep:#000000; --teal-tint:#EAEAEA; --coral:#000000;
+  --serif:"Avenir Next","Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+  --sans:system-ui,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --display:"Avenir Next","Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+  color:var(--ink);
+}
+.b5 *{box-sizing:border-box}
+html,body{margin:0;background:#fff}
+.b5 .page{width:176mm;height:250mm;background:var(--paper);position:relative;overflow:hidden;
+  color:var(--ink);font-family:var(--serif);display:flex;flex-direction:column;
+  margin:0 auto;box-shadow:none;page-break-after:always;break-after:page}
+.b5 .page:last-child{page-break-after:auto;break-after:auto}
+.b5 .page.blank{background:#fff}
+
+/* MEDIANIL — margen interior ancho para el lomo, según recto o verso */
+.pg-recto .prem{padding-left:32mm}
+.pg-recto .indice{padding-left:34mm}
+.pg-recto .cover{padding-left:36mm}
+.pg-verso .prem{padding-right:32mm}
+.pg-verso .indice{padding-right:34mm}
+.pg-verso .cover{padding-right:36mm}
+
+/* NEGRITAS — la jerarquía la cargan los pasos, subtítulos, filetes y tablas.
+   En el cuerpo, <b> pasa a redonda: se conserva en el HTML por si se reactiva. */
+.b5 .prem .body b,.b5 .prem li b,.b5 .prem td b,.b5 .prem th b,
+.b5 .prem .callout p b,.b5 .prem .pull p b,.b5 .prem .signal p b{
+  font-weight:400;color:inherit}
+
+@media screen{
+  body{background:#e9e8e3;padding:20px 0}
+  .b5 .page{box-shadow:0 8px 30px rgba(0,0,0,.16);margin:0 auto 14px}
+  .b5 .page.blank{border:1px dashed #ccc}
+}
+
+/* ── PORTADA / COLOFÓN ── */
+.b5 .cover{padding:22mm 24mm 18mm 24mm}
+.b5 .cover .wm{position:absolute;right:-30mm;bottom:34mm;width:150mm;height:auto;opacity:.08}
+.b5 .cover .logo{display:flex;align-items:center;gap:4mm}
+.b5 .cover .logo svg{height:9mm}
+.b5 .cover .wordmark{font-size:16px;letter-spacing:.02em;color:var(--ink)}
+.b5 .cover .wordmark b{color:var(--teal);font-weight:400}
+.b5 .cover .gap-t{flex:382 0 0}
+.b5 .cover .gap-b{flex:618 0 0}
+.b5 .cover .kicker{font:600 11px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--teal);margin:0 0 6mm}
+.b5 .cover h1{font-family:var(--display);font-weight:600;font-size:40px;line-height:1.06;letter-spacing:-.015em;margin:0 0 5mm;max-width:16ch}
+.b5 .cover .sub{font-size:16px;font-style:italic;color:var(--soft);line-height:1.5;max-width:34ch;margin:0}
+.b5 .cover .meta{border-top:1px solid var(--line);padding-top:5mm;display:flex;justify-content:space-between;align-items:flex-end}
+.b5 .cover .meta .who{font-size:12px;line-height:1.5}
+.b5 .cover .meta .who b{color:var(--teal);font-weight:400}
+.b5 .cover .meta .who svg{height:7mm}
+.b5 .cover .meta .ed{font:500 8px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);text-align:right;line-height:1.7}
+.b5 .cover .endfoot{position:absolute;left:0;right:0;bottom:9mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+.b5 .colofon .sub{font-size:13px;font-style:normal}
+
+/* ── ÍNDICE ── */
+.b5 .indice{padding:14mm 22mm 12mm 22mm}
+.b5 .indice .brand{display:flex;align-items:center;gap:3mm;margin-bottom:5.5mm;padding-bottom:2.6mm;border-bottom:1px solid var(--hair)}
+.b5 .indice .brand svg{height:5.6mm}
+.b5 .indice .wordmark{font-size:10.5px;color:var(--ink)}
+.b5 .indice .wordmark b{color:var(--teal);font-weight:400}
+.b5 .indice .sp{flex:1}
+.b5 .indice .rh{font:400 8px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.b5 .indice .opener{margin:0 0 5mm}
+.b5 .indice .kbar{width:16mm;height:2.2mm;background:var(--teal);border-radius:1px;margin:0 0 2.6mm}
+.b5 .indice .eyebrow{font:600 10px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:0 0 1.6mm}
+.b5 .indice h1{font-family:var(--display);font-weight:600;font-size:23px;letter-spacing:-.005em;margin:0}
+.b5 .indice .grp{font:700 9.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:0 0 1.6mm;padding-bottom:1.8mm;border-bottom:.5px solid var(--line)}
+.b5 .indice .grp.mt{margin-top:5mm}
+.b5 .indice .toc{list-style:none;margin:0;padding:0}
+.b5 .indice .toc li{display:flex;align-items:baseline;gap:4mm;padding:1.3mm 0;border-bottom:1px solid var(--hair)}
+.b5 .indice .toc li .pg{font:700 11px var(--sans);color:var(--teal);width:8mm;flex:none;font-variant-numeric:tabular-nums}
+.b5 .indice .toc li .body{flex:1;min-width:0}
+.b5 .indice .toc li .t{font-family:var(--display);font-weight:600;font-size:11px;color:var(--ink);line-height:1.3}
+.b5 .indice .toc li .t .step{font:700 8px var(--sans);color:#fff;background:var(--teal);border-radius:2px;padding:.4mm 1.6mm;margin-right:2mm;vertical-align:1.5px}
+.b5 .indice .foot{position:absolute;left:0;right:0;bottom:9mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+
+/* ── PÁGINA DE CONTENIDO ── */
+.b5 .prem{padding:15mm 20mm 14mm 20mm}
+.b5 .prem .brand{display:flex;align-items:center;gap:3mm;margin-bottom:5mm;padding-bottom:3mm;border-bottom:1px solid var(--hair)}
+.b5 .prem .brand svg{height:6mm}
+.b5 .prem .wm2{font-size:11px;color:var(--ink)}
+.b5 .prem .wm2 b{color:var(--teal);font-weight:400}
+.b5 .prem .sp{flex:1}
+.b5 .prem .rh{font:400 8.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.b5 .prem .eyebrow{font:600 9.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:0 0 2.2mm}
+.b5 .prem h1{font-family:var(--display);font-weight:600;font-size:21px;line-height:1.14;margin:0 0 4.5mm;max-width:28ch;letter-spacing:-.005em}
+.b5 .prem .body{flex:0 0 auto;min-height:0}
+.b5 .prem .body+.eyebrow{margin-top:6mm}
+.b5 .prem .body p{font-size:11.5px;line-height:1.52;margin:0 0 2.6mm;text-align:left;max-width:64ch}
+.b5 .prem .body p.ref{font-size:9.5px;color:var(--faint);font-style:italic;line-height:1.45;margin:-1mm 0 3mm}
+.b5 .prem .sub{font-family:var(--sans);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:700;margin:4.5mm 0 2.2mm}
+.b5 .prem .shead{font:700 9px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--soft);padding-bottom:1.4mm;margin:4mm 0 2.2mm}
+
+/* listas */
+.b5 .prem ol.proc{margin:0 0 3mm;padding:0;list-style:none;counter-reset:p}
+.b5 .prem ol.proc>li{counter-increment:p;position:relative;padding-left:8mm;font-size:11.5px;line-height:1.5;margin-bottom:2.2mm;max-width:62ch}
+.b5 .prem ol.proc>li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:.3mm;font:700 8.5px var(--sans);color:var(--teal);font-variant-numeric:tabular-nums}
+.b5 .prem ul.dash{margin:0 0 3mm;padding:0;list-style:none}
+.b5 .prem ul.dash>li{position:relative;padding-left:5mm;font-size:11.5px;line-height:1.5;margin-bottom:1.8mm;max-width:62ch}
+.b5 .prem ul.dash>li::before{content:"";position:absolute;left:0;top:2.1mm;width:2.6mm;height:.5px;background:var(--teal)}
+
+/* bloque destacado — filete, nunca caja rellena con barrita */
+.b5 .prem .callout{margin:3.2mm 0;padding:2.6mm 0 2.6mm 4mm;border-left:1.5px solid var(--teal)}
+.b5 .prem .callout .w{display:block;font-family:var(--sans);font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:1.2mm}
+.b5 .prem .callout p{font-size:11.5px;line-height:1.5;color:var(--soft);margin:0;max-width:60ch}
+.b5 .prem .pull{margin:3.2mm 0;padding:2.6mm 0;border-top:.5px solid var(--teal);border-bottom:.5px solid var(--teal)}
+.b5 .prem .pull p{font-size:12px;line-height:1.45;color:var(--ink);margin:0;max-width:58ch}
+.b5 .prem .signal{margin:3.2mm 0;padding:2.4mm 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.b5 .prem .signal .w{font:700 8.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);margin-right:3mm}
+.b5 .prem .signal p{display:inline;font-size:11.5px;color:var(--soft);margin:0}
+
+/* tablas */
+.b5 .prem table{width:100%;border-collapse:collapse;margin:2mm 0 3.5mm}
+.b5 .prem th,.b5 .prem td{text-align:left;padding:1.7mm 3mm 1.7mm 0;font-size:10.5px;line-height:1.42;border-bottom:.5px solid var(--hair);vertical-align:top}
+.b5 .prem thead th{font:700 8.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);border-bottom:1px solid var(--teal)}
+.b5 .prem table.spec th{width:38mm;color:var(--teal-deep);font-weight:600;padding-right:5mm}
+.b5 .prem table.spec td{color:var(--soft)}
+.b5 .prem table.nodos td:first-child{color:var(--ink)}
+.b5 .data{font-family:ui-monospace,Menlo,monospace;font-size:10px;background:var(--teal-tint);padding:0 3px;border-radius:2px}
+
+/* árbol de decisión */
+.b5 .prem pre.tree{font-family:ui-monospace,Menlo,monospace;font-size:8.2px;line-height:1.5;color:var(--soft);
+  background:#FCFBF7;border:.5px solid var(--line);border-radius:2mm;padding:3mm 4mm;margin:2mm 0 3.5mm;
+  white-space:pre;overflow:hidden}
+
+.b5 .prem .foot{position:absolute;left:0;right:0;bottom:8mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+.b5 .prem .folio{position:absolute;bottom:7mm;right:20mm;font:400 8.5px var(--sans);color:var(--faint)}
+
+/* huérfanas y viudas para el flujo de Paged.js */
+.b5 p,.b5 li{widows:2;orphans:2}
+.b5 table,.b5 .callout,.b5 .pull,.b5 pre.tree{break-inside:avoid}
+
+</style></head>
+<body class="b5">
+<section class="page pg-recto cover">
+<svg class="wm" viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg>
+<div class="logo"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wordmark">regulación <b>bioeléctrica</b></span></div>
+<div class="gap-t"></div>
+<div><p class="kicker">Manual de trabajo · Módulo 3</p><h1>Preguntar y rastrear</h1>
+<p class="sub">El quíntuple aplicado a la Regulación Bioeléctrica, y el eje digestivo: barrera, microbiota e hígado.</p></div>
+<div class="gap-b"></div>
+<div class="meta"><div class="who"><b>Dr. Miguel Ojeda Rios</b><br>Instituto Centrobioenergetica</div>
+<div class="ed">Programa<br>El Cuerpo Eléctrico<br>Edición 2026</div></div>
+<div class="endfoot">INSTITUTO CENTROBIOENERGETICA</div>
+</section>
+<section class="page blank pg-verso"></section>
+<section class="page pg-recto indice">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wordmark">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Módulo 3 · Preguntar y rastrear</span></div>
+<div class="opener"><div class="kbar"></div><p class="eyebrow">Contenido</p><h1>Índice</h1></div>
+<div class="grp mt">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</div><ul class="toc"><li><span class="pg">1</span><div class="body"><div class="t"><span class=step>1</span>El paciente que hace todo bien</div></div></li><li><span class="pg">1</span><div class="body"><div class="t"><span class=step>2</span>El taxi con la dirección equivocada</div></div></li><li><span class="pg">2</span><div class="body"><div class="t"><span class=step>3</span>La calle cerrada</div></div></li><li><span class="pg">3</span><div class="body"><div class="t"><span class=step>4</span>Las dos preguntas</div></div></li><li><span class="pg">3</span><div class="body"><div class="t"><span class=step>5</span>Bombas y compuertas</div></div></li><li><span class="pg">4</span><div class="body"><div class="t"><span class=step>6</span>Las cinco letras y la notación</div></div></li><li><span class="pg">5</span><div class="body"><div class="t"><span class=step>7</span>La tabla de traducción</div></div></li><li><span class="pg">6</span><div class="body"><div class="t"><span class=step>8</span>Qué se rompe, y qué queda intacto</div></div></li><li><span class="pg">6</span><div class="body"><div class="t"><span class=step>9</span>Cómo se usa hoy</div></div></li><li><span class="pg">7</span><div class="body"><div class="t"><span class=step>10</span>Síntesis del bloque</div></div></li></ul>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div>
+</section><section class="page pg-verso indice">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wordmark">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Módulo 3 · Preguntar y rastrear</span></div>
+
+<div class="grp mt">Bloque 2 · Barrera, microbiota e hígado</div><ul class="toc"><li><span class="pg">8</span><div class="body"><div class="t"><span class=step>1</span>Las tres preguntas clínicas</div></div></li><li><span class="pg">8</span><div class="body"><div class="t"><span class=step>2</span>Primera pregunta: la barrera</div></div></li><li><span class="pg">9</span><div class="body"><div class="t"><span class=step>3</span>Segunda pregunta: el ritmo</div></div></li><li><span class="pg">10</span><div class="body"><div class="t"><span class=step>4</span>Tercera pregunta: la rigidez</div></div></li><li><span class="pg">10</span><div class="body"><div class="t"><span class=step>5</span>El orden entre las tres</div></div></li><li><span class="pg">11</span><div class="body"><div class="t"><span class=step>6</span>Las once unidades del tubo digestivo</div></div></li><li><span class="pg">12</span><div class="body"><div class="t"><span class=step>7</span>El estado autonómico, antes de rastrear</div></div></li><li><span class="pg">13</span><div class="body"><div class="t"><span class=step>8</span>Materiales y convenciones de la técnica</div></div></li><li><span class="pg">15</span><div class="body"><div class="t"><span class=step>9</span>Los cinco pasos del rastreo</div></div></li><li><span class="pg">15</span><div class="body"><div class="t"><span class=step>10</span>El orden fijo de nodos distantes</div></div></li><li><span class="pg">17</span><div class="body"><div class="t"><span class=step>11</span>Qué se comprueba después, y a qué plazo</div></div></li><li><span class="pg">18</span><div class="body"><div class="t"><span class=step>12</span>Antes de empezar: exclusiones y datos que obligan a derivar</div></div></li><li><span class="pg">18</span><div class="body"><div class="t"><span class=step>13</span>La secuencia de horario, sustrato, campo y retiro</div></div></li><li><span class="pg">20</span><div class="body"><div class="t"><span class=step>14</span>La náusea, y su comprobación dentro de la sesión</div></div></li><li><span class="pg">21</span><div class="body"><div class="t"><span class=step>15</span>El acoplamiento se degrada antes que se pierdan las células</div></div></li><li><span class="pg">22</span><div class="body"><div class="t"><span class=step>16</span>El punto de ajuste tiene cuatro componentes</div></div></li><li><span class="pg">22</span><div class="body"><div class="t"><span class=step>17</span>Los agentes: anidado, patológico, o de excepción local</div></div></li><li><span class="pg">23</span><div class="body"><div class="t"><span class=step>18</span>La tabla de trinquetes</div></div></li><li><span class="pg">24</span><div class="body"><div class="t"><span class=step>19</span>La hoja de consulta</div></div></li><li><span class="pg">25</span><div class="body"><div class="t"><span class=step>20</span>Síntesis del bloque</div></div></li></ul>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</span></div>
+<p class="eyebrow">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</p><h1>El paciente que hace todo bien</h1><div class="body"><p>Un paciente cumple. Viene a sus sesiones, sigue las indicaciones, cambió lo que se le pidió. Y no mejora.</p>
+<p>Hay una explicación que no suele considerarse: <b>que el cuerpo esté funcionando bien, pero hacia un objetivo que ya no corresponde.</b> No es falta de constancia ni un diagnóstico equivocado. Es un sistema completo, resolviendo con excelencia un problema que ya no es el suyo.</p>
+<div class="pull"><p>Hay una posibilidad que no solemos considerar: que esté resolviendo con excelencia un problema que ya no es el suyo.</p></div>
+<p>Dos maneras de fallar sostienen esa idea, y ambas se enseñan con la misma ciudad.</p></div><p class="eyebrow">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</p><h1>El taxi con la dirección equivocada</h1><div class="body"><p>Alguien teclea mal una dirección en el GPS de un taxi: una calle parecida, un número cambiado. El taxista maneja hacia esa dirección. Esquiva el tráfico, toma buenos atajos, llega rápido, y corrige cada vez que se desvía de la ruta.</p>
+<p><b>Ese taxista no maneja mal.</b> El problema está en el dato que recibió, no en cómo maneja. Darle más indicaciones de manejo solo lo hace llegar más rápido al lugar equivocado.</p>
+<p><b>El taxista no tiene «la dirección correcta». Tiene la que él cree correcta.</b> Si alguien tecleó mal el GPS, va a manejar impecablemente hacia el lugar equivocado, y va a corregir con energía cada vez que se desvíe de esa ruta errónea.</p>
+<div class="sub">El mismo caso en el cuerpo</div>
+<p>Un hígado estuvo meses con carga alta —medicamentos, alcohol, ultraprocesados—. Se retiró la carga, y sigue con lo mismo: pesadez después de comer grasa, molestia en el hipocondrio derecho, piel opaca, cansancio en la mañana.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">1</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</span></div>
+<div class="body"><p>Ese hígado no está dañado. Sigue procesando, sigue eliminando, sigue sosteniendo el metabolismo. Las enzimas están, la estructura está. Lo que cambió es el valor que está defendiendo: se ajustó a una carga alta, y cuando la carga bajó, no volvió a ajustarse. Sigue trabajando para una condición que ya no existe.</p>
+<div class="pull"><p>LA ESTRUCTURA ESTÁ · EL VALOR QUE DEFIENDE ESTÁ CORRIDO</p></div></div><p class="eyebrow">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</p><h1>La calle cerrada</h1><div class="body"><p>Cierran una avenida por una marcha. Los coches están igual, los choferes saben lo mismo que ayer. Lo que cambió es que hay rutas que ya no se pueden usar.</p>
+<p><b>Las calles cerradas no son un defecto de la ciudad.</b> Los sentidos únicos, los camellones, las vías rápidas son restricciones, y son las que hacen que la ciudad funcione. Siempre hay restricciones. Lo que hay que preguntar en clínica es cuáles se cerraron de más.</p>
+<div class="sub">Lo mismo en el tejido</div>
+<p>Hay un trauma. Se rompen membranas, sale potasio al espacio de afuera y sube de cuatro a veinte o cuarenta. Ese potasio despolariza a las células vecinas, y al despolarizarse, esas células cierran sus uniones comunicantes.</p>
+<p>Lo que se pierde no es la estructura. Las células están completas y siguen sabiendo hacer lo suyo. Lo que se cierra es el paso de información con las de al lado.</p>
+<p><b>Y si esa zona ya no recibe información de las vecinas, trabaja solo con la que le llega directo.</b> No tiene manera de saber lo que está pasando alrededor. Un taxista con radio se entera de que hay una marcha en la avenida siguiente y se desvía diez cuadras antes; un taxista sin radio se mete y se queda atorado. Mismo coche, mismas calles: la diferencia está en la información que recibe y en cuándo la recibe.</p>
+<div class="pull"><p>SE CIERRAN LAS CONEXIONES → SE PIERDE LA INFORMACIÓN DE ALREDEDOR</p></div></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">2</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</span></div>
+<div class="body"><p>Por eso una isla de despolarización puede durar años sin cambiar: no le llega la información que la haría cambiar.</p></div><p class="eyebrow">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</p><h1>Las dos preguntas</h1><div class="body"><p>De aquí en adelante, son las dos preguntas que se le hacen a cada sistema del cuerpo:</p>
+<div class="callout"><span class="w">¿Qué conexión se le cerró?</span><p><b>¿Qué valor está defendiendo?</b></p></div>
+<table class="nodos"><thead><tr><th>Situación</th><th>Pregunta</th></tr></thead><tbody><tr><td>Una zona que se despolarizó y cerró sus uniones</td><td>Conexión cerrada</td></tr><tr><td>Un hígado en modo sobrecarga, meses después</td><td>Valor corrido</td></tr><tr><td>Un tejido que no recibe señal de alrededor y solo responde a lo directo</td><td>Conexión cerrada</td></tr></tbody></table>
+<p>Al cerrarse una conexión se pierde la información de alrededor: las dos preguntas suelen ir juntas.</p></div><p class="eyebrow">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</p><h1>Bombas y compuertas</h1><div class="body"><p>Una ciudad está trabada y hay que resolverlo. Hay dos maneras: poner más taxis, o abrir una avenida que está cerrada. Doscientos taxis más agregan doscientos coches al mismo embotellamiento; abrir una avenida deja disponibles todas las rutas que pasaban por ahí.</p>
+<p>En salud, casi todo lo que se hace es del primer tipo: dar algo que empuje más, que supla, que fuerce una función. <b>El imán hace lo otro.</b> No aporta sustancia, no administra nada, no le agrega al tejido una función que no tuviera. Cambia las condiciones de campo alrededor de la zona, y con eso las uniones comunicantes se pueden reabrir. Devuelve el paso de información.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">3</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</span></div>
+<div class="body"><div class="pull"><p>La bomba número cuarenta y uno no te da agua nueva. La compuerta sí.</p></div>
+<p><b>Y por eso importa el segundo polo, y no un imán más potente.</b> Un imán más potente empuja más fuerte en el mismo sitio; el segundo polo al lado forma el gradiente, y el gradiente es lo que actúa sobre el tejido.</p></div><p class="eyebrow">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</p><h1>Las cinco letras y la notación</h1><div class="body"><p>Las dos preguntas trabajadas hasta aquí son dos piezas de un mapa que tiene cinco. Cualquier sistema que se regule solo se describe con estas cinco:</p>
+<p>$$P = \langle S,\ O,\ C,\ E,\ H \rangle$$</p>
+<table class="nodos"><thead><tr><th></th><th>Qué es</th><th>En el taxi</th></tr></thead><tbody><tr><td><b>S</b></td><td>Los estados posibles</td><td>Todas las esquinas de la ciudad</td></tr><tr><td><b>O</b></td><td>Las acciones disponibles, y lo que cuesta cada una</td><td>Los movimientos que puede hacer</td></tr><tr><td><b>C</b></td><td>Las restricciones</td><td>Las calles cerradas, los sentidos únicos</td></tr><tr><td><b>E</b></td><td>El criterio de evaluación</td><td>La dirección tecleada en el GPS</td></tr><tr><td><b>H</b></td><td>El horizonte</td><td>Cuántas cuadras alcanza a ver adelante</td></tr></tbody></table>
+<p><b>El horizonte no es una virtud de carácter. Es una consecuencia física</b> de qué información llega y con cuánto retraso. Apagarle el radio al taxista colapsa su horizonte: no se volvió tonto, se quedó sin línea de información.</p>
+<p>Un dato sobre de dónde viene esta notación: la formulación original, de los años setenta, solo consideraba las dos primeras letras —dónde puedes estar y qué puedes hacer—. Levin y Chis-Ciure pusieron las otras tres al mismo nivel, con el argumento de que los sistemas vivos no solo se mueven dentro de su mapa: también lo modifican. Cambian sus restricciones, recalibran su criterio, ajustan su horizonte.</p>
+<div class="pull"><p>¿Qué le pasa a un sistema que cambió su propio planteamiento —con razón, en su momento— y después no pudo volver a cambiarlo?</p></div></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">4</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</span></div>
+<p class="eyebrow">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</p><h1>La tabla de traducción</h1><div class="body"><p>Las mismas cinco letras, en el vocabulario de la Regulación Bioeléctrica:</p>
+<table class="nodos"><thead><tr><th></th><th>Taxi</th><th>Regulación Bioeléctrica</th></tr></thead><tbody><tr><td><b>S</b></td><td>Todas las esquinas</td><td>Los estados bioeléctricos posibles del tejido: el espacio de configuraciones de Vmem</td></tr><tr><td><b>O</b></td><td>Avanzar, girar, frenar</td><td>Lo que el tejido puede hacer: proliferar, diferenciarse, migrar, reparar, secretar</td></tr><tr><td><b>C</b></td><td>Calles cerradas</td><td>El acoplamiento. Qué uniones comunicantes están abiertas y cuáles cerradas</td></tr><tr><td><b>E</b></td><td>La dirección del GPS</td><td>El punto de ajuste que el agente defiende, guardado en el patrón de Vmem</td></tr><tr><td><b>H</b></td><td>Cuántas cuadras ve</td><td>El cono de luz cognitivo: hasta dónde alcanza a coordinar el colectivo</td></tr></tbody></table>
+<p>De ahí, dichas con esta estructura, cuatro afirmaciones que ya se enseñan:</p>
+<p><b>La isla de despolarización es una restricción añadida.</b> Cuando el potasio sube y las uniones se cierran, no se pierde maquinaria: se cierran calles. La zona conserva <b>S</b> y <b>O</b> —sigue pudiendo estar en muchos estados y sigue sabiendo hacer lo que hacía— y pierde <b>C</b>.</p>
+<p><b>Y al perder C pierde H.</b> Desconectada del colectivo, esa zona se quedó sin radio. Deja de anticipar y empieza a solo reaccionar. Por eso mantiene su estado indefinidamente.</p>
+<p><b>Regular no es curar</b> significa, en esta notación, que se interviene sobre <b>E</b>. No se fuerza el estado: se reescribe la referencia desde la que el agente lo evalúa.</p>
+<p><b>Y el pH es derivado</b>, porque es una lectura cuantitativa de un estado, mientras que el acoplamiento es relacional. Ahí está el umbral del bloque:</p>
+<div class="pull"><p>Lo relacional se rompe antes que lo cuantitativo.</p></div></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">5</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</span></div>
+<p class="eyebrow">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</p><h1>Qué se rompe, y qué queda intacto</h1><div class="body"><p>Cómo se presenta el fallo crónico, en una línea del marco:</p>
+<div class="pull"><p>El sistema conserva íntegro <i>dónde puede estar</i> y <i>con qué moverse</i>. Pierde <i>qué le está permitido</i>, <i>qué anticipa</i> y <i>cuán lejos ve</i>.</p></div>
+<table class="nodos"><thead><tr><th></th><th>Estado</th></tr></thead><tbody><tr><td><b>S</b> · los estados</td><td>Intacto</td></tr><tr><td><b>O</b> · los operadores</td><td>Intacto</td></tr><tr><td><b>C</b> · las restricciones</td><td>Degradado</td></tr><tr><td><b>E</b> · la evaluación</td><td>Degradado</td></tr><tr><td><b>H</b> · el horizonte</td><td>Degradado</td></tr></tbody></table>
+<p>Ese es exactamente el hígado descrito en la sección 2: el que estuvo meses con carga alta, retiró la carga y sigue igual. Su maquinaria está entera —procesa, elimina, sostiene—; lo que tiene desplazado es <b>E</b>, y lo que tiene cerrado es <b>C</b>.</p>
+<div class="pull"><p>No es la pérdida de la capacidad de resolver problemas. Es la pérdida de la capacidad de volver a plantearlos.</p></div></div><p class="eyebrow">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</p><h1>Cómo se usa hoy</h1><div class="body"><p>Los cinco sistemas de la jornada se leen con esta plantilla, y en cada uno la pregunta es la misma: <b>qué letra tiene degradada.</b></p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">6</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</span></div>
+<div class="body"><table class="nodos"><thead><tr><th>Sistema</th><th>Pregunta de lectura</th></tr></thead><tbody><tr><td>Barrera e intestinal</td><td>¿Qué restricción se añadió, y a quién deja sin información?</td></tr><tr><td>Metabólico-energético</td><td>¿Se perdió el operador, o se perdió la capacidad de conmutar entre operadores?</td></tr><tr><td>Inflamatorio</td><td>¿El programa de defensa no se inicia, o se inicia y no termina? ¿Qué está prediciendo el macrófago?</td></tr><tr><td>Biotransformación</td><td>¿Es carga, o es capacidad? ¿Dónde está el sustrato del punto de ajuste?</td></tr><tr><td>Redox</td><td>¿Por qué su punto de ajuste se mueve tan despacio?</td></tr></tbody></table>
+<p><b>Esa lectura entrega directamente la jerarquía con la que se decide qué se atiende primero</b>, sin memorizarla: se atiende primero el sistema cuya restricción cierra caminos a los demás.</p></div><p class="eyebrow">Bloque 1 · El quíntuple aplicado a la Regulación Bioeléctrica</p><h1>Síntesis del bloque</h1><div class="body"><p>Tres afirmaciones que sostienen la lectura de los cinco sistemas de la jornada:</p>
+<ol class="proc"><li><b>Un sistema puede tener la estructura completa y estar defendiendo un valor que ya no corresponde.</b></li><li><b>Cuando una zona pierde la conexión con las vecinas, deja de recibir información de alrededor, y por eso su estado no cambia.</b></li><li><b>El imán devuelve el paso de información; no empuja más fuerte. Por eso importa el gradiente y no la potencia.</b></li></ol></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">7</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>Las tres preguntas clínicas</h1><div class="body"><p>Tres pacientes abren el bloque.</p>
+<div class="callout"><span class="w">1</span><p>«Cada vez me caen mal más cosas, y no son las mismas. Me quitaron cinco alimentos y al mes aparecieron otros tres.»
+
+<b>2.</b> «Como poquito y siento que se me queda ahí. Y evacúo cada tres días desde hace años, sin que tenga que ver con lo que como.»
+
+<b>3.</b> «Con el antiinflamatorio mejoro, y en cuanto lo dejo regresa igual. Y una raspada me tarda semanas en cerrar.»</p></div>
+<p>Cada uno instala una de las tres preguntas con las que se lee todo el eje digestivo:</p>
+<table class="nodos"><thead><tr><th></th><th>La pregunta</th><th>Dónde se mira</th></tr></thead><tbody><tr><td><b>1</b></td><td>¿Qué pasa que no debería pasar?</td><td>La cripta con su vellosidad, la capa de moco, la unión estrecha</td></tr><tr><td><b>2</b></td><td>¿Qué no avanza cuando le toca?</td><td>El marcapasos del tramo, las tres puertas, el horario</td></tr><tr><td><b>3</b></td><td>¿Qué respuesta empezó y no termina?</td><td>El programa de resolución, el tránsito entre programas inmunes</td></tr></tbody></table></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>Primera pregunta: la barrera</h1><div class="body"><p>Si se retiran cinco alimentos y aparecen otros tres, lo que cambió no fue el alimento.</p>
+<p>La prueba de permeabilidad intestinal se informa como <b>razón entre dos azúcares</b>: lactulosa, que casi no cruza con la unión cerrada, y manitol, que atraviesa incluso una pared íntegra. Cuando se acorta el tiempo de recolección de orina, la cantidad recuperada de los dos baja, <b>y la razón se mantiene igual.</b></p>
+<p>Esa prueba de laboratorio ordinaria demuestra que lo que informa del sistema es una relación y no una cifra —el concepto umbral de este bloque—.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">8</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<div class="body"><div class="pull"><p>LO QUE CAMBIÓ ES A PARTIR DE CUÁNTO RESPONDE, NO A QUÉ RESPONDE</p></div>
+<p><b>Lo que la persona cuenta, y a qué apunta:</b></p>
+<table class="nodos"><thead><tr><th>Lo que dice</th><th>Hacia dónde apunta</th></tr></thead><tbody><tr><td>«Días buenos y malos, el mismo alimento me cae distinto»</td><td>Barrera</td></tr><tr><td>«Algo me sirvió un tiempo y dejó de servir»</td><td>Barrera</td></tr><tr><td>«Se levanta cansado, pesadez con la grasa»</td><td>Barrera, con carga portal — hígado</td></tr></tbody></table></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>Segunda pregunta: el ritmo</h1><div class="body"><p>¿Quién le dice al intestino cuándo contraerse? No es, en primer lugar, el sistema nervioso: hay una red de células —las células intersticiales de Cajal— que no son musculares ni nerviosas, que generan ondas eléctricas por su cuenta mediante el canal ANO1 y se las entregan al músculo liso por uniones comunicantes.</p>
+<table class="nodos"><thead><tr><th>Tramo</th><th>Frecuencia</th></tr></thead><tbody><tr><td>Estómago</td><td>3 ondas por minuto</td></tr><tr><td>Duodeno</td><td>12 ondas por minuto</td></tr><tr><td>Íleon</td><td>6 a 9 ondas por minuto</td></tr></tbody></table>
+<p><b>El contenido avanza porque el tramo de adelante late más despacio que el de atrás.</b></p>
+<p>En el tubo que envejece, <b>la conexina 43 baja antes de que se pierdan esas células y las neuronas.</b> Es la afirmación central del curso, con orden temporal medido:</p>
+<div class="pull"><p>Hay una etapa en la que el acoplamiento ya cayó y las células todavía están. Esa es la que el método alcanza.</p></div>
+<p><b>Lo que la persona cuenta, y a qué apunta:</b></p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">9</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<div class="body"><table class="nodos"><thead><tr><th>Lo que dice</th><th>Hacia dónde apunta</th></tr></thead><tbody><tr><td>«Me lleno enseguida, la comida se me queda»</td><td>Ritmo, estómago</td></tr><tr><td>«Hinchazón a los treinta o sesenta minutos»</td><td>Ritmo o puerta</td></tr><tr><td>«Evacúo cada tres días desde hace años»</td><td>Ritmo, colon</td></tr><tr><td>«Se me atora la comida en el pecho»</td><td>Puerta esofagogástrica</td></tr></tbody></table></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>Tercera pregunta: la rigidez</h1><div class="body"><p>Si un antiinflamatorio funciona mientras se toma, lo que no está haciendo es terminar la inflamación. Terminar una inflamación es <b>un programa aparte</b>, con moléculas propias —lipoxinas, resolvinas, protectinas, maresinas—, y lo pone en marcha la propia inflamación: los mediadores del inicio activan las enzimas que fabrican los del final.</p>
+<p>Una inflamación que no resuelve es una inflamación cuyo segundo programa no se puso en marcha. Tres cosas no lo ponen en marcha: suprimir la respuesta, quitar los estímulos uno por uno, e insistir con más de lo mismo.</p>
+<p><b>Lo que la persona cuenta, y a qué apunta:</b></p>
+<table class="nodos"><thead><tr><th>Lo que dice</th><th>Hacia dónde apunta</th></tr></thead><tbody><tr><td>«Cada vez me caen mal más cosas, y no son las mismas»</td><td>Rigidez</td></tr><tr><td>«Con antiinflamatorio mejoro y al dejarlo regresa»</td><td>Rigidez</td></tr><tr><td>«Una raspada tarda semanas en cerrar»</td><td>Rigidez</td></tr></tbody></table>
+<p><b>Los datos de este bloque se comparan en meses, no en semanas</b>, porque la instrucción de esta respuesta queda escrita en los progenitores de la médula ósea.</p></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>El orden entre las tres</h1><div class="body"><p>Con dos o tres preguntas a la vez:</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">10</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<div class="body"><table class="nodos"><tbody><tr><td><b>Ritmo antes que barrera</b></td><td>Un tramo que no avanza deja contenido detenido, y ese contenido cambia la condición en la que la barrera trabaja</td></tr><tr><td><b>Barrera antes que rigidez</b></td><td>Mientras siga llegando estímulo, hay material para que la respuesta se instale</td></tr><tr><td><b>Y la rigidez tiene el plazo más largo</b></td><td>Es la única cuya instrucción queda escrita donde se fabrican las células</td></tr></tbody></table>
+<p><b>El razonamiento de jerarquía se hace tres veces dentro de este eje.</b> Es el mismo que se aplica después entre los cinco sistemas del día.</p></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>Las once unidades del tubo digestivo</h1><div class="body"><p>En los plexos de la pared del tubo digestivo hay tantas neuronas como en la médula espinal, y un segmento de intestino aislado, fuera del cuerpo, sigue haciendo peristalsis. <b>Cada unidad tiene regulación propia, y por eso el procedimiento es el mismo en las once.</b></p>
+<table class="nodos"><thead><tr><th></th><th>Unidad</th><th>Qué del relato lleva ahí</th></tr></thead><tbody><tr><td><b>1</b></td><td>Esófago y su esfínter inferior</td><td>Comida que se atora en el pecho; ardor que sube; regurgita</td></tr><tr><td><b>2</b></td><td>Estómago</td><td>Se llena enseguida; la comida se le queda; ardor que mejora al comer</td></tr><tr><td><b>3</b></td><td>Duodeno</td><td>Ardor de una a tres horas después de comer</td></tr><tr><td><b>4</b></td><td>Yeyuno</td><td>Hinchazón temprana; tolerancia cambiante</td></tr><tr><td><b>5</b></td><td>Íleon</td><td>Hinchazón; es el tramo del tejido inmune</td></tr><tr><td><b>6</b></td><td>Válvula ileocecal</td><td>Hinchazón a los treinta a sesenta minutos</td></tr><tr><td><b>7</b></td><td>Colon</td><td>Ritmo alterado desde hace años; la evacuación de la mañana no llega</td></tr><tr><td><b>8</b></td><td>Recto y esfínteres</td><td>Puja y no sale; sensación de no terminar</td></tr><tr><td><b>9</b></td><td>Glándulas salivales</td><td>Boca seca; digestión que empieza mal</td></tr><tr><td><b>10</b></td><td>Páncreas exocrino</td><td>Grasa que no se digiere; hinchazón a los treinta a sesenta minutos</td></tr><tr><td><b>11</b></td><td>Hígado y vía biliar</td><td>Pesadez con la grasa; cansancio matutino; molestia sorda derecha</td></tr></tbody></table></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">11</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<div class="body"><p>Tres unidades distinguen al grupo:</p>
+<p><b>El hiato</b> tiene dos esfínteres, uno encima del otro. El externo es el diafragma crural, que es músculo esquelético y se contrae con cada respiración: es el único punto del tubo digestivo donde un músculo respiratorio hace de esfínter digestivo.</p>
+<p><b>El píloro</b> se abre con óxido nítrico liberado por neuronas entéricas. Falla de tres maneras: sin la enzima, sin las neuronas que la tienen, o sin las células de Cajal que transducen esa señal.</p>
+<p><b>El colon</b> no tiene vellosidades ni marcapasos único. Tiene capa doble de moco, y su célula se alimenta del butirato que fabrican las bacterias.</p>
+<p><b>Sobre las bacterias:</b> no hay lista de bacterias buenas y malas. Un organismo está anidado cuando su éxito depende de que la restricción del huésped se mantenga, y es patológico cuando depende de que se levante. La posición es de la configuración, no del organismo.</p></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>El estado autonómico, antes de rastrear</h1><div class="body"><p>Llega la noticia de un accidente y la persona deja de comer. El estómago está entero: lo que dejó de ocurrir es la preparación.</p>
+<table class="nodos"><tbody><tr><td><b>Qué toca el predominio simpático</b></td><td>Inhibe las neuronas marcapasos, baja la secreción de bicarbonato y reduce el flujo esplácnico: ritmo, secreción y aporte, en una sola condición</td></tr><tr><td><b>Qué se pierde primero</b></td><td>La anticipación. La fase cefálica prepara la secreción antes de que llegue la comida, y es vagal</td></tr><tr><td><b>En personas sanas</b></td><td>Hablar en público aumenta la permeabilidad intestinal, medida con la misma razón de azúcares del protocolo, y solo en quienes elevaron cortisol</td></tr></tbody></table>
+<p>En fisiología digestiva las fases son la cefálica, la gástrica y la intestinal, así que «fase simpática» colisiona con tres términos ya ocupados. Se dice <b>estado autonómico</b>, y <b>predominio simpático o vagal</b> para la dirección.</p>
+<p>El paciente lo llama susto. Está en el DSM-5 como explicación cultural del malestar, y trae la fecha puesta: preguntar por el susto contesta desde cuándo y qué pasó justo antes.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">12</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<div class="body"><div class="pull"><p>El estado autonómico se anota antes de rastrear, con la prueba de respiración profunda de la hoja del Módulo 2. El rastreo mide ese tramo en el estado autonómico del momento.</p></div>
+<table class="nodos"><thead><tr><th>Si el estado autonómico está</th><th>Conducta</th></tr></thead><tbody><tr><td>Compensado</td><td>Se rastrea. Lo que aparezca corresponde a la unidad</td></tr><tr><td>Desplazado</td><td>Se trabaja primero el estado, porque actúa sobre el ritmo, la secreción y la barrera a la vez</td></tr></tbody></table></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>Materiales y convenciones de la técnica</h1><div class="body"><table class="spec"><tbody><tr><th><b>Camilla</b></th><td>De masaje u otra sin superficie metálica externa, que interferiría con los imanes</td></tr><tr><th><b>Posición de la persona</b></th><td>Decúbito supino, cabeza en posición neutra, relajada</td></tr><tr><th><b>Referencia de simetría</b></th><td>Siempre el talón de la extremidad inferior izquierda</td></tr><tr><th><b>Signo de rastreo</b></th><td>Acortamiento de una extremidad = nodo activo. Isometría, talones a la misma altura = resolución</td></tr><tr><th><b>Polaridad</b></th><td>Polo negativo = Norte, es el de rastreo e impactación. Polo positivo = Sur, es el complementario: par local o nodo distante</td></tr><tr><th><b>Cara del imán hacia la piel</b></th><td>La cara negativa contacta la piel sobre la zona</td></tr><tr><th><b>Intensidad</b></th><td>0.1 a 0.5 T en superficie, que son 100 a 500 mT</td></tr><tr><th><b>Tiempo base de impactación</b></th><td>20 minutos por configuración, salvo que el rastreo indique otra cosa</td></tr></tbody></table></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">13</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<div class="body"><p><b>El mapa de entrada cambia; el procedimiento sobre la camilla se conserva.</b> En el punto trauma se entra por la zona de mayor dolor y se espera que baje el dolor de la zona. En el eje digestivo se entra por la unidad que el relato señala, o por el recorrido completo, y se espera que cambie una variable de tiempo: minutos hasta que aparece la molestia, horas hasta que deja de sentirla.</p>
+<p><b>Se entra de dos maneras, y no compiten:</b></p>
+<table class="nodos"><thead><tr><th></th><th>Cuándo se usa</th><th>Qué encuentra</th></tr></thead><tbody><tr><td>Por relato</td><td>La persona trae una molestia que ubica una unidad</td><td>Lo que la persona nota</td></tr><tr><td>Por recorrido completo</td><td>De esófago a ano, unidad por unidad, aunque no haya síntoma</td><td>Lo que la persona no nota</td></tr></tbody></table>
+<p>El recorrido completo se hace aunque no haya síntoma, porque hay islas de este eje que no producen molestia propia: la de la base de la cripta se presenta lenta, de meses; la microbiota desplazada informa del colonocito sin molestia localizada; y la rigidez de la respuesta se presenta como una lista que crece, sin un sitio que duela.</p>
+<p><b>El recorrido va en el sentido del flujo</b>, así que lo que aparece antes está aguas arriba de lo que aparece después. Si salen varios tramos marcados, se empieza por el primero de la lista.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">14</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>Los cinco pasos del rastreo</h1><div class="body"><pre class="tree">1 · LA ZONA
+    Por relato:    la unidad que la persona señala.
+    Por recorrido: la siguiente de la lista, de esófago a ano.
+
+2 · INTERROGAR
+    Polo negativo, cara negativa a la piel, sobre la zona de proyección.
+    Medir simetría.
+      Acorta        → zona confirmada. Dejar fijo el imán.
+      No cambia     → mover el imán dentro de la zona y volver a medir.
+      Nada en toda
+      la zona       → pasar a la unidad siguiente.
+
+3 · DIPOLO LOCAL
+    Sin mover el negativo, colocar el positivo al lado. Probar posiciones.
+      Isométricas   → dipolo local. Dejar.
+      No isométricas→ paso 4.
+
+4 · PUNTO DISTANTE, POR EL ORDEN FIJO
+    Renal D → renal I → suprarrenal D → suprarrenal I → hígado →
+    bulbo raquídeo → rastreo de cuerpo entero.
+    Se detiene en el primero que restablece la isometría.
+
+5 · TIEMPO
+    Mantener lo que marque el rastreo, hasta que deje de acortar.
+    Retirar el positivo; si vuelve a acortar, dejar más tiempo.</pre>
+<p><b>En cada órgano se busca su nodo, dentro de su zona anatómica, con el mismo procedimiento.</b> El hígado entra igual: se coloca el imán sobre la zona hepática, se rastrea, y se busca ahí su nodo.</p></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>El orden fijo de nodos distantes</h1><div class="body"><p>Cuando el dipolo local no consigue isometría en ninguna posición:</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">15</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<div class="body"><table class="nodos"><thead><tr><th></th><th>Nodo</th></tr></thead><tbody><tr><td><b>1</b></td><td>Zona renal derecha</td></tr><tr><td><b>2</b></td><td>Zona renal izquierda</td></tr><tr><td><b>3</b></td><td>Suprarrenal derecha</td></tr><tr><td><b>4</b></td><td>Suprarrenal izquierda</td></tr><tr><td><b>5</b></td><td>Hígado, rastreado sobre la piel en toda la zona hepática</td></tr><tr><td><b>6</b></td><td>Bulbo raquídeo, en el hueco debajo del occipucio</td></tr><tr><td><b>7</b></td><td>Si ninguno restablece la isometría, se rastrea en todo el cuerpo</td></tr></tbody></table>
+<p><b>El hígado aparece en dos momentos.</b> Como unidad, cuando el relato lleva ahí. Como nodo distante número cinco, cuando una isla de otro tramo no cerró con dipolo local. Se rastrea igual en los dos casos, y se anota cuál de los dos fue, porque en el registro del caso significan cosas distintas.</p>
+<p><b>Qué significa dónde cerró:</b></p>
+<table class="nodos"><thead><tr><th>Cerró en</th><th>Con qué pieza se está tratando</th></tr></thead><tbody><tr><td>Dipolo local</td><td>El acoplamiento dentro de la unidad</td></tr><tr><td>Riñón</td><td>El efector iónico</td></tr><tr><td>Suprarrenal</td><td>El efector neuroendocrino. Lleva al eje del estrés del Módulo 2</td></tr><tr><td>Hígado</td><td>El efector metabólico, y la pieza que recibe por vía portal</td></tr><tr><td>Bulbo raquídeo</td><td>El control central: núcleo motor dorsal del vago, núcleo del tracto solitario y área postrema</td></tr><tr><td>Cuerpo entero</td><td>Ninguno enganchó. Se registra y se revisa el planteamiento</td></tr></tbody></table>
+<p><b>El cierre en bulbo raquídeo es el que más informa en este eje.</b> Es compatible con que la pieza que falta sea la vía vagal, una de las tres por las que viaja la orden de terminar una inflamación. En rata se demostró que la parte rostral del núcleo motor dorsal del vago contrae el píloro y la caudal lo relaja.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">16</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>Qué se comprueba después, y a qué plazo</h1><div class="body"><p>En el punto trauma se compara el dolor de la zona. <b>En este eje se comparan variables de tiempo.</b></p>
+<table class="nodos"><thead><tr><th>Si la unidad tratada fue</th><th>Se compara</th><th>Plazo</th></tr></thead><tbody><tr><td>Estómago, duodeno, páncreas</td><td>Minutos hasta que aparece la molestia tras la comida de prueba</td><td>3 semanas</td></tr><tr><td>Yeyuno, íleon, colon</td><td>Horas hasta que deja de sentirla</td><td>3 semanas</td></tr><tr><td>Puertas</td><td>Tiempo de paso: cuánto tarda en pasar, en aparecer, en evacuar</td><td>3 semanas</td></tr><tr><td>Ritmo, cualquier tramo</td><td>Frecuencia de evacuación; sensación de llenado temprano</td><td>3 a 6 semanas</td></tr><tr><td>Pieza hepática, o cierre en bulbo</td><td>Prueba de respiración profunda</td><td>3 a 6 semanas</td></tr><tr><td>Rigidez de la respuesta</td><td>Que la lista de alimentos deje de crecer; tiempo de cierre de una herida pequeña</td><td>Meses</td></tr></tbody></table>
+<p><b>El epitelio se renueva completo cada tres a cinco días</b>, y una medición empieza a informar después de dos renovaciones, que son de seis a diez días. De ahí las tres semanas antes de la primera revisión.</p>
+<p><b>El orden esperado del cambio:</b> primero se acorta el tiempo que tarda en dejar de sentir la molestia después de comer, y después mejora cómo se siente en un día cualquiera. Si la persona reporta que está mejor y el tiempo tras la misma comida sigue igual, la mejoría vino por otro lado.</p>
+<p><b>Y la regla que sostiene la comprobación:</b> el rastreo no puede decidir quién entra, dónde se coloca y si funcionó, las tres cosas a la vez. Aquí decide dónde se coloca.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">17</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>Antes de empezar: exclusiones y datos que obligan a derivar</h1><div class="body"><p><b>Con uno solo de estos datos, se deriva antes de hacer cualquier otra cosa:</b></p>
+<pre class="tree">[ ] Sangre en el excremento
+[ ] Bajó de peso sin proponérselo
+[ ] Anemia
+[ ] Fiebre
+[ ] Dolor que lo despierta por la noche
+[ ] Cambio del ritmo intestinal sostenido más de 6 semanas
+    en alguien mayor de 50 años</pre>
+<p>Si el motivo de consulta incluye náusea, se agregan: vómito persistente, vómito con sangre, dolor de cabeza intenso o de aparición brusca, alteración de la visión, rigidez de nuca, y náusea del embarazo con deshidratación.</p>
+<p><b>Tres estados hacen inaplicable el protocolo.</b> En los tres, el intestino o el hígado perdieron tejido: la restricción dejó de ser funcional y pasó a ser anatómica, así que no responde a una intervención sobre restricciones.</p>
+<table class="nodos"><thead><tr><th>Aparato</th><th>Qué se descarta</th></tr></thead><tbody><tr><td>Intestino</td><td>Atrofia de la mucosa, cirugía previa con resección, enfermedad intestinal ya diagnosticada</td></tr><tr><td>Hígado</td><td>Fibrosis avanzada o cirrosis</td></tr><tr><td>Otra causa</td><td>Infección activa, lesión reciente, o diagnóstico que explica el cuadro completo</td></tr></tbody></table>
+<p><b>Gradación hepática, para ubicar el borde:</b> esteatosis reversible al retirar la causa; fibrosis de grados uno a tres con regresión documentada; cirrosis cerrada en la práctica.</p></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>La secuencia de horario, sustrato, campo y retiro</h1><div class="body"><p>Cuatro pasos en fila, cada uno más caro que el anterior. <b>Lo que sobrevive a los dos primeros es lo que corresponde al tercero.</b></p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">18</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<div class="body"><table class="nodos"><thead><tr><th></th><th>Qué se hace</th><th>Duración</th><th>Qué decide</th></tr></thead><tbody><tr><td><b>0</b></td><td>Se mueve la hora sin cambiar el contenido. La misma cena, dos o tres horas antes</td><td>2 semanas</td><td>Si los síntomas se mueven con el horario, el valor estaba bien y la hora no</td></tr><tr><td><b>1</b></td><td>Se repone sustrato, sin imán: butirato, glutamina, zinc</td><td>3 semanas</td><td>Si el tiempo de retorno baja, faltaba material. Si queda igual, hay algo cerrado</td></tr><tr><td><b>2</b></td><td>Se aplica el imán</td><td>Semanas 3 a 6</td><td>Sobre quien no respondió a lo anterior y no tiene pérdida de tejido</td></tr><tr><td><b>3</b></td><td>Se retira todo y se observa</td><td>Semana 10</td><td>Si se sostiene, el cuerpo ya lo hace solo. Si regresa en días, algo está fabricando su propia condición</td></tr></tbody></table>
+<p><b>Sin el paso 1, cualquier mejoría posterior queda sin poder atribuirse</b>, porque las dos explicaciones siguen abiertas.</p>
+<p><b>Cuatro consultas ordenan el seguimiento:</b> la primera, día 0, descarta exclusiones, interroga, mide el estado autonómico y define la comida de prueba. La segunda, día 21, compara las horas de esa misma comida. La tercera, semana 6, repite la prueba de respiración profunda y compara las tres mediciones entre sí. La cuarta, semana 10, revisa cuánto duró la mejoría sin nada puesto y clasifica el resultado.</p>
+<p><b>Se cumplen cuatro condiciones al colocar el imán:</b></p>
+<ol class="proc"><li>Se forma el gradiente con el segundo polo al lado. Lo que actúa sobre el acoplamiento es el gradiente.</li><li>Se trabaja el eje completo. Intestino, microbiota e hígado se sostienen entre sí por seis vías documentadas.</li><li>Se va del intestino hacia el hígado. Todo lo que atraviesa la barrera llega al hígado antes que a cualquier otro órgano.</li><li>El calendario lo pone el epitelio, que se renueva completo cada tres a cinco días.</li></ol>
+<p><b>El resultado se clasifica en uno de cuatro:</b></p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">19</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<div class="body"><table class="nodos"><thead><tr><th>Lo que pasó</th><th>Qué significa</th></tr></thead><tbody><tr><td>Mejoró con el sustrato, en tres semanas</td><td>Faltaba material. Este paciente no necesitaba la aplicación</td></tr><tr><td>No mejoró con el sustrato, mejoró con el imán, y se sostiene al retirarlo</td><td>Se reabrió lo que estaba cerrado, y el cuerpo ya lo sostiene</td></tr><tr><td>No mejoró con el sustrato, mejoró con el imán, y regresa al retirarlo</td><td>Algo sigue sosteniendo el estado anterior: la microbiota, o el hígado cargado</td></tr><tr><td>No mejoró con ninguno de los dos, y no hay pérdida de tejido</td><td>El sistema que manda es otro; este quedó marcado como consecuencia</td></tr></tbody></table></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>La náusea, y su comprobación dentro de la sesión</h1><div class="body"><p>El desorden del ritmo eléctrico del estómago <b>precede al reporte de náusea entre uno y veinte minutos.</b> Todo lo demás de este eje se mide en semanas; el ritmo se mueve en minutos, y por eso esta es la única comprobación que cabe dentro de la sesión.</p>
+<table class="nodos"><thead><tr><th></th><th>Camino</th><th>Cuándo cede la náusea</th><th>Qué lo confirma</th></tr></thead><tbody><tr><td><b>A</b></td><td>Por el ritmo</td><td>En minutos, dentro de la sesión</td><td>Cede antes de que pueda haber cambiado el vaciamiento</td></tr><tr><td><b>B</b></td><td>Por el esfínter</td><td>En días o semanas</td><td>Mejora la tolerancia a comidas más grandes</td></tr><tr><td><b>C</b></td><td>Por el aferente vagal</td><td>Sin que cambie el vaciamiento</td><td>Se mueve la prueba de respiración profunda</td></tr></tbody></table>
+<pre class="tree">NÁUSEA · NODO EN PÍLORO
+
+Náusea antes de colocar          0 1 2 3 4 5 6 7 8 9 10
+Náusea a los 5 min               0 1 2 3 4 5 6 7 8 9 10
+Náusea a los 15 min              0 1 2 3 4 5 6 7 8 9 10
+Náusea al terminar la sesión     0 1 2 3 4 5 6 7 8 9 10
+                                   ↑ si cede aquí, camino A</pre>
+<p><b>Si un nodo en el píloro reduce la náusea por la vía del ritmo, tiene que ceder mientras la persona sigue en la camilla.</b></p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">20</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>El acoplamiento se degrada antes que se pierdan las células</h1><div class="body"><p>Este patrón aparece en cuatro tejidos distintos, y es la afirmación central del bloque.</p>
+<table class="nodos"><thead><tr><th>Tejido</th><th>Qué se midió</th></tr></thead><tbody><tr><td>Tubo digestivo que envejece</td><td>La conexina 43 baja antes de que se pierdan las células de Cajal y las neuronas</td></tr><tr><td>Hígado con enfermedad crónica</td><td>La conexina 32 entre hepatocitos está disminuida</td></tr><tr><td>Intestino con enfermedad inflamatoria</td><td>La conexina 43 aparece redistribuida hacia la membrana basal, con caída de las proteínas de la unión estrecha</td></tr><tr><td>Y una bacteria eligió esa diana</td><td>El efector CagA de <i>Helicobacter</i>, inyectado por un aparato anclado en la integrina, tiene por blanco local las uniones célula-célula y el citoesqueleto</td></tr></tbody></table>
+<div class="pull"><p>Hay una etapa en la que el acoplamiento ya cayó y las células todavía están. Esa es la etapa que el método puede alcanzar.</p></div>
+<p><b>Y en las seis piezas del eje, la falla tiene la misma forma:</b></p>
+<table class="nodos"><thead><tr><th>Pieza</th><th>Qué conserva</th><th>Qué pierde</th></tr></thead><tbody><tr><td>Epitelio</td><td>Sigue sellando, secretando y renovándose</td><td>El acoplamiento con las células vecinas</td></tr><tr><td>Hígado</td><td>Sigue procesando y sosteniendo el metabolismo</td><td>El valor que defiende</td></tr><tr><td>Músculo del tubo</td><td>Sigue pudiendo contraerse</td><td>La señal que le dice cuándo</td></tr><tr><td>Sistema inmune</td><td>Conserva los cuatro programas de respuesta</td><td>El tránsito entre ellos</td></tr><tr><td>Esfínteres</td><td>El músculo circular está entero</td><td>La señal que los relaja</td></tr><tr><td>Sistema nervioso de la pared</td><td>Sigue generando su patrón</td><td>La modulación, tras conservar una hiperexcitabilidad</td></tr></tbody></table></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">21</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>El punto de ajuste tiene cuatro componentes</h1><div class="body"><p>El Bloque 1 instaló el punto de ajuste como un valor. Este bloque agrega tres:</p>
+<table class="nodos"><thead><tr><th>Componente</th><th>Dónde se ve</th></tr></thead><tbody><tr><td>Un valor</td><td>El hígado que se ajustó a carga alta</td></tr><tr><td>Una hora</td><td>La acidez alta de 22:00 a 02:00; la presión del colon al despertar</td></tr><tr><td>Un criterio de decisión</td><td>El tejido inmune del intestino defiende un umbral entre tolerar y atacar, no una cantidad</td></tr><tr><td>Más de un dueño</td><td>El pH gástrico lo sostienen el huésped y el colonizador, con criterios distintos</td></tr></tbody></table>
+<div class="pull"><p>Un sistema puede estar defendiendo el valor correcto a la hora equivocada, con el criterio corrido, o compartiendo la propiedad de ese valor con otro agente.</p></div></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>Los agentes: anidado, patológico, o de excepción local</h1><div class="body"><div class="pull"><p>Un agente está anidado cuando su éxito depende de que la restricción del huésped se mantenga. Es patológico cuando su éxito depende de que se levante.</p></div>
+<table class="nodos"><thead><tr><th></th><th>Qué hace con la restricción</th><th>Escala en la que opera</th></tr></thead><tbody><tr><td>Anidado</td><td>La sostiene</td><td>A la escala del huésped</td></tr><tr><td>Patológico</td><td>La levanta</td><td>A la escala del huésped</td></tr><tr><td>De excepción local</td><td>La deja en pie, y opera por debajo de ella</td><td>Menor que la del huésped</td></tr></tbody></table></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">22</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<div class="body"><p><b>Seis variables mueven a un agente de posición, y ninguna es el organismo:</b> la escala en la que opera, el tiempo, el lugar, el genotipo, el sustrato que el huésped aporta, y la presencia de otro agente.</p>
+<div class="pull"><p>Preguntar si una bacteria es buena o mala no tiene respuesta. Preguntar en qué configuración está, sí. Y la configuración es lo que se puede mover.</p></div></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>La tabla de trinquetes</h1><div class="body"><p>Un trinquete es una flecha de <b>S</b> hacia <b>C</b> que no se deshace sola.</p>
+<table class="nodos"><thead><tr><th></th><th>Flecha</th><th>Trinquete</th><th>Ventana</th></tr></thead><tbody><tr><td><b>B1</b></td><td>Falta de sustrato del colonocito: butirato, glutamina, zinc</td><td>no</td><td>Días a semanas</td></tr><tr><td><b>B2</b></td><td>La unión estrecha queda abierta después de pasada la carga</td><td>no</td><td>Días a semanas</td></tr><tr><td><b>B3</b></td><td>Barrera abierta → producto bacteriano → inflamación → acoplamiento cerrado</td><td>no</td><td>Días</td></tr><tr><td><b>B4</b></td><td>Lípido hepático → despolarización del hepatocito → GABA → aferente vagal deprimido</td><td>no</td><td>Semanas</td></tr><tr><td><b>B5</b></td><td>Desplazamiento estable de la microbiota, con pérdida de productores de butirato</td><td>parcial</td><td>Semanas a meses</td></tr><tr><td><b>B10</b></td><td>Hiperexcitabilidad del sistema nervioso de la pared tras una inflamación</td><td>parcial</td><td>Semanas a meses</td></tr><tr><td><b>B9</b></td><td>Respuesta inmune con la instrucción escrita en los progenitores</td><td>sí</td><td>Meses a años</td></tr><tr><td><b>B6</b></td><td>Memoria epigenética del epitelio</td><td>sí</td><td>Años</td></tr><tr><td><b>B7</b></td><td>Atrofia de mucosa, resección, fibrosis de pared</td><td>sí</td><td>Irreversible</td></tr><tr><td><b>B8</b></td><td>Fibrosis hepática avanzada</td><td>sí</td><td>Irreversible</td></tr></tbody></table>
+<p><b>Este eje tiene el índice de trinquete más bajo de los cinco sistemas del día.</b> De ahí la regla de secuenciación:</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">23</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<div class="body"><div class="pull"><p>Se cierra primero lo reversible, porque mientras siga abierto sigue fabricando lo irreversible.</p></div></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>La hoja de consulta</h1><div class="body"><div class="sub">Frente · las tres preguntas, con las frases que llevan a cada una</div>
+<pre class="tree">┌─────────────────────────────────────────────────────────────┐
+│ 1 · ¿QUÉ PASA QUE NO DEBERÍA PASAR?                         │
+│                                                              │
+│   «Hay días buenos y días malos, y no sé de qué depende»     │
+│   «Un día me cae bien y otro día el mismo alimento me        │
+│    cae mal»                                                  │
+│   «Me hizo bien un tiempo y luego dejó de servir»            │
+│   «Me levanto cansado aunque duerma»                         │
+│   «Me da pesadez o sueño después de comer»                   │
+├─────────────────────────────────────────────────────────────┤
+│ 2 · ¿QUÉ NO AVANZA CUANDO LE TOCA?                          │
+│                                                              │
+│   «Me lleno enseguida, la comida se me queda»                │
+│   «Hinchazón a los treinta o sesenta minutos de comer»       │
+│   «Evacúo cada tres días desde hace años»                    │
+│   «Se me atora la comida en el pecho»                        │
+├─────────────────────────────────────────────────────────────┤
+│ 3 · ¿QUÉ RESPUESTA EMPEZÓ Y NO TERMINA?                     │
+│                                                              │
+│   «Cada vez me caen mal más cosas, y no son las mismas»      │
+│   «Con antiinflamatorio mejoro y al dejarlo regresa»         │
+│   «Una raspada tarda semanas en cerrar»                      │
+├─────────────────────────────────────────────────────────────┤
+│ SI TRAE LAS TRES:                                            │
+│   ritmo → barrera → rigidez                                  │
+│   Y la rigidez se valora en meses, no en semanas             │
+└─────────────────────────────────────────────────────────────┘</pre>
+<div class="sub">Reverso · las once zonas, y el orden de nodos</div></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">24</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<div class="body"><pre class="tree"> 1 Esófago          línea media del tórax        se atora en el pecho
+ 2 Estómago         epigastrio                   se llena enseguida
+ 3 Duodeno          epigastrio derecho           ardor 1 a 3 h después
+ 4 Yeyuno           periumbilical                hinchazón temprana
+ 5 Íleon            cuadrante inferior derecho   hinchazón · tejido inmune
+ 6 Válvula ileocecal cuadrante inferior derecho  hinchazón a los 30–60 min
+ 7 Colon            marco cólico                 ritmo alterado de años
+ 8 Recto            sacra y perineal             puja y no sale
+ 9 Salivales        parotídea y submandibular    boca seca
+10 Páncreas         epigastrio profundo          grasa que no se digiere
+11 Hígado           toda la zona hepática        pesadez con la grasa
+
+SI EL DIPOLO LOCAL NO CIERRA:
+  renal D → renal I → suprarrenal D → suprarrenal I →
+  hígado → bulbo raquídeo → cuerpo entero
+
+ANTES DE RASTREAR: prueba de respiración profunda, y se anota.</pre></div><p class="eyebrow">Bloque 2 · Barrera, microbiota e hígado</p><h1>Síntesis del bloque</h1><div class="body"><p><b>Uno.</b> La integridad de la barrera se mide en resistencia eléctrica, y la permeabilidad se informa como razón entre dos azúcares, porque la relación es lo estable.</p>
+<p><b>Dos.</b> Las unidades funcionales están organizadas por gradientes, y a cada célula le toca su trabajo según dónde esté.</p>
+<p><b>Tres.</b> Una isla deja un hueco en el gradiente, y un gradiente con un hueco deja de decirle a las células en qué posición están.</p>
+<p><b>Cuatro.</b> El músculo del tubo no decide cuándo contraerse; el marcapasos que se lo dice es un canal de cloro, y la frecuencia va bajando de un tramo al siguiente.</p>
+<p><b>Cinco.</b> La conexina 43 baja antes de que se pierdan las células: primero la comunicación, después el tejido.</p>
+<p><b>Seis.</b> El ácido del estómago no lo fija la bomba, sino la disponibilidad de canales de potasio y de cloro. El bicarbonato sale por otro canal de cloro.</p>
+<p><b>Siete.</b> Un punto de ajuste tiene valor y tiene hora, y una medición tomada una sola vez no puede ver un corrimiento de horario.</p>
+<p><b>Ocho.</b> La barrera retiene, muestrea e informa, con células designadas para cada cosa: la célula M para el sistema inmune, y la célula neurópoda, que hace sinapsis y transmite en milisegundos, para el sistema nervioso.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">25</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque 2 · Barrera, microbiota e hígado</span></div>
+<div class="body"><p><b>Nueve.</b> El butirato hace cuatro trabajos, y uno es fabricar el permiso para que la microbiota se quede.</p>
+<p><b>Diez.</b> Terminar una inflamación es un programa aparte que tiene que ponerse en marcha, y lo activa la propia inflamación.</p>
+<p><b>Once.</b> El sistema inmune tiene varios programas, y lo sano es poder cambiar entre ellos. Lo que falla en el cuadro crónico es el tránsito.</p>
+<p><b>Doce.</b> El sistema nervioso de la pared no trabaja por reflejo: genera su patrón, se pone en marcha suspendiendo un freno propio, y conserva el cambio semanas después con el mismo mecanismo con que el cerebro consolida memoria.</p>
+<p><b>Trece.</b> En el hiato hay dos esfínteres, y el externo es un músculo respiratorio.</p>
+<p><b>Catorce.</b> La náusea es un fenómeno de ritmo antes de ser una sensación, y el desorden del ritmo precede al síntoma entre uno y veinte minutos.</p>
+<p><b>Quince.</b> No hay lista de bacterias buenas y malas. La posición es de la configuración, y la configuración es lo que se puede mover.</p>
+<p>Un aviso que se dice una vez: hay un estado funcional real y medible que eleva el costo del conjunto. Llamarlo la causa de un cuadro general excede lo que el dato permite.</p>
+<p class="ref">Instituto Centrobioenergetica, 2026</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">26</div>
+</section>
+<section class="page pg-recto cover colofon">
+<div class="gap-t"></div>
+<div><p class="kicker">Colofón</p>
+<p class="sub">Manual de trabajo del Módulo 3 del programa El Cuerpo Eléctrico, formación en Regulación Bioeléctrica.</p>
+<p class="sub" style="margin-top:6mm">Redacción y dirección clínica: Dr. Miguel Ojeda Rios.<br>Edición 2026.</p></div>
+<div class="gap-b"></div>
+<div class="meta"><div class="who"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#000000"/><line x1="16" y1="12" x2="28" y2="12" stroke="#000000" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#000000" opacity="0.35"/></svg></div><div class="ed">Instituto<br>Centrobioenergetica</div></div>
+<div class="endfoot">INSTITUTO CENTROBIOENERGETICA</div>
+</section>
+</body></html>
