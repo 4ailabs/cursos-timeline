@@ -1,9 +1,11 @@
-# NIG y Campos Mórficos — Curso Selecto
+# Edición Interoceptiva Multiescala — Curso Selecto
 
-**Método NIG de Eva Madelung · Sistematización y expansión: Dr. Miguel Ojeda Ríos**
+**Método NIG de Eva Madelung · Sistematización y expansión: Dr. Miguel Ojeda Rios**
 Instituto Centrobioenergetica
 
-Formación en Neuro-Imaginative Gestalting, dividida en dos niveles de dos módulos cada uno.
+Formación en el método —creado por Eva Madelung como NIG, Neuro-Imaginative Gestalting— dividida en dos niveles de dos módulos cada uno.
+
+**Nombre en transición (agosto 2026).** El método se renombró a *Edición Interoceptiva Multiescala*; la decisión y su justificación están en `~/nig/base-conocimiento/09_nombre.md`. La carpeta y los archivos ya usan el nombre nuevo.
 
 ---
 

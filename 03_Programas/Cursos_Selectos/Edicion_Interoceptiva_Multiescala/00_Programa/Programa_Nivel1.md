@@ -1,4 +1,4 @@
-# NIG Y CAMPOS MÓRFICOS — NIVEL 1
+# EDICIÓN INTEROCEPTIVA MULTIESCALA — NIVEL 1
 ## El trabajo individual: el observador, el patrón y el camino
 ### Dr. Miguel Ojeda Rios — Instituto Centrobioenergetica
 ### Noviembre 2026
@@ -7,7 +7,7 @@
 
 ## DATOS GENERALES
 
-- **Nombre:** NIG y Campos Mórficos — Nivel 1
+- **Nombre:** Edición Interoceptiva Multiescala — Nivel 1
 - **Facilitador:** Dr. Miguel Ojeda Rios
 - **Formato:** Vivencial y formativo. Se practica todo lo que se enseña.
 - **Módulos:** 2 sábados
@@ -24,7 +24,7 @@
 
 ## EL MÉTODO Y SU ORIGEN
 
-NIG —Neuro-Imaginative Gestalting— es una metodología terapéutica creada por **Eva Madelung**, psicoterapeuta alemana formada con Robert Dilts. Madelung integró Gestalt, terapia sistémica y las constelaciones familiares de Hellinger en un método donde el trabajo ocurre en el espacio y en el cuerpo, no en la conversación.
+**Edición Interoceptiva Multiescala** es el nombre actual del método que **Eva Madelung** —psicoterapeuta alemana formada con Robert Dilts— creó como NIG, Neuro-Imaginative Gestalting. Madelung integró Gestalt, terapia sistémica y las constelaciones familiares de Hellinger en un método donde el trabajo ocurre en el espacio y en el cuerpo, no en la conversación.
 
 El método nació en la clínica, trabajando con pacientes cuya queja principal era el dolor: primero anclas y coreoanchoring, después bocetos y preguntas sobre colores y formas, después constelaciones con almohadones colocados en el suelo. El nombre cambió respecto de la PNL porque el lenguaje pasó a segundo plano:
 
@@ -289,7 +289,7 @@ Antes de configurar nada, la meta pasa por cinco criterios:
 
 ## CERTIFICACIÓN
 
-Constancia de **NIG y Campos Mórficos — Nivel 1**, que acredita la formación en los cuatro procedimientos individuales del método y habilita para cursar el Nivel 2.
+Constancia de **Edición Interoceptiva Multiescala — Nivel 1**, que acredita la formación en los cuatro procedimientos individuales del método y habilita para cursar el Nivel 2.
 
 ---
 
@@ -305,4 +305,5 @@ Al terminar el Nivel 1, el participante puede:
 
 ---
 
-*Método NIG de Eva Madelung · Sistematización y expansión: Dr. Miguel Ojeda Ríos, Instituto Centrobioenergetica*
+*Edición Interoceptiva Multiescala*
+*Método NIG de Eva Madelung · Sistematización y expansión: Dr. Miguel Ojeda Rios, Instituto Centrobioenergetica*

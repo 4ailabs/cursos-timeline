@@ -5,7 +5,7 @@
 2. Bioenergética
 3. Bioenergética Holográfica
 4. Biomagnetismo Kids
-5. NIG y Campos Mórficos
+5. Edición Interoceptiva Multiescala
 6. LEGO Serious Play
 7. Gestalting y Modelado Creativo
 8. Microbioenergética (el código energético, emocional y simbólico de los microbios)
@@ -41,7 +41,7 @@
 6. Inteligencia Energética
 
 ### 2) Campos Mórficos y Terapias Relacionadas
-1. NIG y Campos Mórficos
+1. Edición Interoceptiva Multiescala
 2. Morphic Field Therapy
 3. Morphic Field Therapy para Animales
 

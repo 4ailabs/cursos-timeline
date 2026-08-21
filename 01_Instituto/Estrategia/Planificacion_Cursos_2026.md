@@ -83,7 +83,7 @@
 | Nivel | Nombre comercial | Contenido |
 |---|---|---|
 | N1 | **¿Tu Casa Te Enferma?** | Geobiología básica. Detectar geopatías en el hogar. |
-| N2 | **Espacio y Cuerpo** | Geobiología profesional + NIG y Campos Mórficos para limpiar espacios |
+| N2 | **Espacio y Cuerpo** | Geobiología profesional + Edición Interoceptiva Multiescala para limpiar espacios |
 | N3 | **Terapeuta de Espacios** | Oligoterapia catalítica + certificación para consultorías de espacio |
 
 ---
@@ -245,7 +245,7 @@ Parte 1 = síntoma/resultado inmediato · Parte 2 = causa profunda/transformaci�
 | 2 | Bioenergética | Decodificación Total | N2-N3 | Relanzar como **V4 con enfoque TAME** |
 | 3 | Bioenergética Holográfica | Bioenergética Avanzada | N2 | Extensión avanzada de la base |
 | 4 | Biomagnetismo Kids | Niños en Equilibrio | N2 | Biomagnetismo adaptado a pediatría |
-| 5 | NIG y Campos Mórficos | Casa y Cuerpo Sano | N2 | Técnica exclusiva del Dr. Ojeda |
+| 5 | Edición Interoceptiva Multiescala | Casa y Cuerpo Sano | N2 | Técnica exclusiva del Dr. Ojeda |
 | 6 | LEGO Serious Play | Despertar y Propósito | N3 | Herramienta de facilitación avanzada |
 | 7 | Gestalting y Modelado Creativo | Terapia Creativa | N3 | Modelado terapéutico avanzado |
 | 8 | Microbioenergetica | Bioenergética Avanzada | N2 | Código energético de los microbios |

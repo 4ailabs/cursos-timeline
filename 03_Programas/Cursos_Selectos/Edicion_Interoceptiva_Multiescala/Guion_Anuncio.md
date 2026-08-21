@@ -1,4 +1,4 @@
-# Guion del anuncio — NIG y Campos Mórficos, Nivel 1
+# Guion del anuncio — Edición Interoceptiva Multiescala, Nivel 1
 ### Video de captación · ~40 s · Instituto Centrobioenergetica
 
 > **Formato:** pantalla limpia y texto animado. Sin diagramas ni ilustraciones — los gráficos los produce el Dr. por separado.
@@ -9,7 +9,7 @@
 ## El guion
 
 ### 01 · El nombre
-> **VOZ:** NIG y Campos Mórficos. Nivel uno.
+> **VOZ:** Edición Interoceptiva Multiescala. Nivel uno.
 
 **PANTALLA:** Título grande. Debajo, «Nivel 1».
 
@@ -56,8 +56,9 @@
 - **Palabras normales.** Fuera «anclaje espacial», «posiciones perceptuales», «indagación somática», «campos de información que conectan a los miembros de un sistema». Ese lenguaje es del manual, no del anuncio.
 - **Sin gráficos.** Pantalla limpia y texto animado. Los diagramas los hace el Dr. aparte.
 - **Sin autorías ni créditos.** Viven en el programa y en el manual.
+- **El nombre.** El método se renombró a *Edición Interoceptiva Multiescala* (canon: `~/nig/base-conocimiento/09_nombre.md`). El anuncio usa solo el nombre nuevo; el nombre viejo, NIG, no aparece.
 - **Oferta abierta.** Sin lista de profesiones: el curso no tiene prerequisito.
-- Datos de `00_Programa/Programa_NIG_Nivel1.md`.
+- Datos de `00_Programa/Programa_Nivel1.md`.
 
 ## Identidad visual
 

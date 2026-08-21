@@ -135,7 +135,7 @@ Sesiones de una tarde sobre un tema puntual. Accesibles, sin requisito de experi
 - Inteligencia Energética
 
 **Campos Mórficos y Terapias Relacionadas**
-- NIG y Campos Mórficos
+- Edición Interoceptiva Multiescala
 - Morphic Field Therapy
 - Morphic Field Therapy para Animales
 
