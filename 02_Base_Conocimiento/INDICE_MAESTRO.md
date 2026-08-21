@@ -32,7 +32,7 @@ Las Bases de Conocimiento (KB) del Instituto Centrobioenergetica son documentos 
 
 | # | Curso | Directorio | Archivo | Resumen |
 |---|-------|-----------|---------|---------|
-| 7 | **NIG y Campos Mórficos** | `NIG/` | `Documento_Base_NIG.md` | Neuro-Imaginative Gestalting — metodología creada por **Eva Madelung** (2ª generación de PNL; Dilts es su maestro, no el creador). Sistematizada y expandida en español por el Dr. Ojeda Rios. Integra Gestalt, terapia sistémica y constelaciones familiares. Tres dimensiones: Neuro (fisiología), Imaginative (metáforas) y Gestalting (totalidades significativas). |
+| 7 | **Edición Interoceptiva Multiescala** | `NIG/` | `Documento_Base_NIG.md` | Renombre de NIG (Neuro-Imaginative Gestalting), metodología creada por **Eva Madelung** (Dilts es su maestro y su formador, no el creador). Sistematizada y expandida en español por el Dr. Ojeda Rios. Integra Gestalt, terapia sistémica y constelaciones familiares. Tres dimensiones: Neuro (fisiología), Imaginative (metáforas) y Gestalting (totalidades significativas). |
 | 8 | **Morphic Field Therapy® (MFT)** | `MFT/` | `Documento_Base_MFT.md` | Sistema terapéutico que trabaja con campos mórficos mediante cartas radiónicas. El campo mórfico posee inteligencia inherente que determina qué información acepta o rechaza. Aborda patrones sistémicos, familiares y transgeneracionales. |
 | 9 | **MFT para Animales** | `MFT_Animales/` | `Documento_Base_MFT_Animales.md` | Aplicación de MFT al reino animal (v4.0 — Edición Trauma Integrada). Usa cartas radiónicas, Flores de Bach y comandos radiónicos para restaurar instintos naturales bloqueados por la vida doméstica. Los animales domésticos experimentan distorsión de sus instintos naturales. |
 
@@ -103,7 +103,7 @@ Base_Conocimiento/
 ├── Microbioenergetica/                        05 — Microbioenergética
 ├── Inteligencia_Energetica/                   06 — Inteligencia Energética
 │
-├── NIG/                                       07 — NIG y Campos Mórficos
+├── NIG/                                       07 — Edición Interoceptiva Multiescala
 ├── MFT/                                       08 — Morphic Field Therapy®
 ├── MFT_Animales/                              09 — MFT para Animales
 │

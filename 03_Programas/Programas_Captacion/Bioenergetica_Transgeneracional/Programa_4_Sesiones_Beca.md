@@ -43,7 +43,7 @@ Este programa se aleja a propósito del repertorio ya conocido por quien ha toma
 |---|---|---|---|
 | 1 | El Mapa que Cargas | Fundamentos + genograma y genosociograma | — |
 | 2 | La Línea Paterna y el Camino que Caminas | Cuatro Caminos de la Vida + demo con Playmobil | Terapia con Muñecos: Playmobil Pro / Los Caminos de la Vida |
-| 3 | La Línea Materna: Lo que se Hereda por el Campo | Campos Mórficos + resonancia transgeneracional | NIG y Campos Mórficos |
+| 3 | La Línea Materna: Lo que se Hereda por el Campo | Campos Mórficos + resonancia transgeneracional | Edición Interoceptiva Multiescala |
 | 4 | Los Abuelos, los Bisabuelos y el Cuerpo que Sobrevive | Programación metabólica transgeneracional + cierre e integración | Refuerzo de ambos cursos + Setpoint + Formación Integral de Terapeutas |
 
 **Base teórica del programa:** Bioenergética (inconsciente transgeneracional, rastreo por línea materna/paterna, 3 frases de liberación) como marco del Instituto, y los conceptos actuales de la sección 2 como el lenguaje con el que se explican — cuatro en la Sesión 1 (líneas de ADN directas, trauma histórico colectivo, co-regulación del sistema nervioso, herencia epigenética) y uno más, sobre programación metabólica, reservado para la Sesión 4. El genograma es la herramienta con la que cada participante mapea su propia familia.
@@ -84,7 +84,7 @@ Este programa se aleja a propósito del repertorio ya conocido por quien ha toma
 
 **Hora 2 — Demo en vivo, el Dr. Ojeda trabaja un caso real, el grupo observa:** el campo mórfico es el marco del Instituto para leer esta transmisión — campo de información no material que organiza patrones familiares, emocionales y conductuales que se repiten entre generaciones (Rupert Sheldrake), sin necesidad de recuerdo consciente ni comunicación explícita. Con el mismo genograma de la Sesión 1, un voluntario comparte el evento o patrón que ya había identificado en su línea materna. El Dr. Ojeda guía la lectura completa del campo familiar frente al grupo: ubica el patrón, hace las preguntas que abren la información, y muestra en vivo qué cambia cuando ese patrón se nombra como parte de un campo compartido y no como un rasgo personal. Igual que en la Sesión 2, los participantes observan un caso real trabajado a fondo — no ejecutan el procedimiento ellos mismos.
 
-**Cierre:** "Esto es lo que se puede leer cuando alguien ya sabe trabajar el campo familiar completo. La forma en que el Instituto enseña a hacerlo —con anclajes, representantes y todo el procedimiento— se aprende en NIG y Campos Mórficos."
+**Cierre:** "Esto es lo que se puede leer cuando alguien ya sabe trabajar el campo familiar completo. La forma en que el Instituto enseña a hacerlo —con anclajes, representantes y todo el procedimiento— se aprende en Edición Interoceptiva Multiescala."
 
 ---
 
@@ -158,7 +158,7 @@ Ver documento separado: `Temario_Publico_Invitacion.md` (misma carpeta) — text
 
 - Bioenergética — inconsciente transgeneracional, rastreo por línea materna/paterna, 3 frases de liberación (`Documento_Base_Bioenergetica.md`)
 - Terapia con Muñecos / Los Caminos de la Vida — Cuatro Caminos, técnica de la caída del muñeco (`Documento_Base_TerapiaMunecosCaminos.md`)
-- NIG y Campos Mórficos — campo mórfico, resonancia transgeneracional (`Documento_Base_NIG.md`)
+- Edición Interoceptiva Multiescala — campo mórfico, resonancia transgeneracional (`Documento_Base_NIG.md`)
 - Setpoint — programas de supervivencia metabólicos, hambruna holandesa, gen ahorrador, ventana temporal transgeneracional (`Documento_Base_SetPoint.md` §8)
 - Conflictología Biológica — programas biológicos especiales de supervivencia (`Documento_Base_ConflictologiaBiologica.md`)
 - Posicionamiento y estructura formativa del Instituto (`CONTEXTO_BASE_INSTITUTO.md`, `Lista_Cursos_Centrobioenergetica.md`)

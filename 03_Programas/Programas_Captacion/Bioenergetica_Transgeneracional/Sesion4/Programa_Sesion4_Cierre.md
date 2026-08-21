@@ -18,7 +18,7 @@
 
 ### 1.2 NIG, cortado en la Sesión 3
 
-Se detuvo después del Movimiento 2 (pararse sobre el dibujo). Faltan el Movimiento 3 (el observador, segunda hoja) y el Movimiento 4 (llevarse el recurso). **Decisión: se cierran aquí**, como parte del cierre general del trabajo de árbol de las tres sesiones — y justo después de completar el procedimiento es donde se abre la puerta a NIG y Campos Mórficos como curso.
+Se detuvo después del Movimiento 2 (pararse sobre el dibujo). Faltan el Movimiento 3 (el observador, segunda hoja) y el Movimiento 4 (llevarse el recurso). **Decisión: se cierran aquí**, como parte del cierre general del trabajo de árbol de las tres sesiones — y justo después de completar el procedimiento es donde se abre la puerta a Edición Interoceptiva Multiescala como curso.
 
 ### 1.3 El término "impronta"
 
@@ -50,7 +50,7 @@ Que cada participante cierre el programa con tres cosas: **un método propio par
 | Min | Bloque | Qué cierra |
 |---|---|---|
 | 15 | **Cruce final sobre el árbol, en tres capas — no dos.** **Abuelos:** ya están en el árbol desde la Sesión 1; se marca si hubo hambruna, guerra o migración forzada durante su periodo de crecimiento lento, y se cruza con patrones metabólicos actuales. Apoyo concreto: la **cronología mexicana** —Revolución 1910-20, Cristiada 1926-29, Programa Bracero 1942-64— para que cada quien calcule con las fechas de su propio árbol en qué evento cayeron sus ancestros, en vez de preguntar "¿hubo guerra?" en abstracto. **Bisabuelos:** no están en el árbol —nunca se pidieron—, así que se ofrecen como invitación abierta, "si lo saben": es la generación hasta donde el propio protocolo clínico del Instituto rastrea en consulta. **Tatarabuelos:** se nombran porque dan título a la sesión, y se presentan con honestidad como el horizonte que la ciencia empieza a mostrar en otras especies — no como algo que el árbol de hoy pueda verificar | Aplica el método del Bloque 2, `Investigacion_Abuelos_Tatarabuelos.md` §0 y §7, y `Investigacion_Sistemica_e_Historica.md` §4 |
-| 10 | **Cerrar NIG.** Recuperan el dibujo de la Sesión 3. Movimiento 3 —el observador, en una segunda hoja, aparte— y Movimiento 4 —llevarse el recurso—. Justo después: la puerta a **NIG y Campos Mórficos**, apoyada en el procedimiento que el grupo acaba de completar, no en uno que quedó a medias | **Deuda 1.2 (NIG incompleto)** y una de las dos puertas de gancho |
+| 10 | **Cerrar NIG.** Recuperan el dibujo de la Sesión 3. Movimiento 3 —el observador, en una segunda hoja, aparte— y Movimiento 4 —llevarse el recurso—. Justo después: la puerta a **Edición Interoceptiva Multiescala**, apoyada en el procedimiento que el grupo acaba de completar, no en uno que quedó a medias | **Deuda 1.2 (NIG incompleto)** y una de las dos puertas de gancho |
 | 15 | **Las tres frases de cierre: Reconocimiento → Liberación → Devolución.** Con el gesto de manos abiertas, palmas al frente, y el cierre con nombre propio. Cierre simbólico de las tres líneas trabajadas —propia, paterna, materna— sobre la misma hoja | Del programa maestro, con la corrección ya decidida (Devolución, no Corte — `Pendientes_y_Plan_de_Cierre.md` §3.2) |
 | 10 | **Comparativo de las dos herramientas y las puertas restantes.** Tabla Playmobil Pro/Caminos de la Vida vs. NIG/Campos Mórficos. Gancho a **Playmobil Pro / Los Caminos de la Vida**, anclado a lo que se vivió en la Sesión 2. Gancho a **Setpoint**, anclado a la programación metabólica recién vista. Mención breve de la **Formación Integral de Terapeutas** como ruta completa | La otra puerta de gancho, más las dos nativas de S4 |
 | 5 | **Preguntas, diploma y despedida** | — |
@@ -63,7 +63,7 @@ Ninguna puerta se anuncia en frío — cada una se apoya en algo que el grupo ac
 
 | Puerta | Anclada a |
 |---|---|
-| **NIG y Campos Mórficos** | El procedimiento que el grupo acaba de completar entero, por primera vez —Movimientos 1 a 4— en esta misma sesión |
+| **Edición Interoceptiva Multiescala** | El procedimiento que el grupo acaba de completar entero, por primera vez —Movimientos 1 a 4— en esta misma sesión |
 | **Playmobil Pro / Los Caminos de la Vida** | El trabajo con muñecos y direcciones de la Sesión 2, recordado en el comparativo |
 | **Setpoint** | La programación metabólica que se acaba de explicar, con el reconocimiento de "peso de familia" como propio |
 | **Formación Integral de Terapeutas** | Mención breve, como ruta completa para quien quiera ir más allá de las cuatro sesiones |

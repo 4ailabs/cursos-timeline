@@ -109,7 +109,7 @@ Documento de control. Registra qué se enseñó en cada sesión, en qué bloque,
 | 7 | Improntas i8–i13, emparejadas con las dinámicas sistémicas: lealtad, tomar el control, proyección |
 | 8 | Momento somático — el estado recolectado (concentración, **sin descarga**) |
 | Hora 2 | Demostración: Imagen de la Familia por la línea materna, 11 secciones |
-| Cierre | Gancho a NIG y Campos Mórficos + elección de la sesión de práctica incluida |
+| Cierre | Gancho a Edición Interoceptiva Multiescala + elección de la sesión de práctica incluida |
 
 ---
 
@@ -200,7 +200,7 @@ El cuarto cambia de lógica a propósito: NIG establece que no se debe alentar l
 | 1 | — | — | Sin gancho, por diseño |
 | 2 | Leer la línea | Playmobil Pro / Los Caminos de la Vida | La demostración |
 | 2 | Mover lo que la línea dejó | Actos que Mueven | El momento somático |
-| 3 | Leer el campo familiar | NIG y Campos Mórficos | La demostración |
+| 3 | Leer el campo familiar | Edición Interoceptiva Multiescala | La demostración |
 | 3 | Elegir la práctica incluida | Ambos | Haber visto las dos herramientas |
 | 4 | El cuerpo que sobrevive | Setpoint | El reconocimiento metabólico |
 | 4 | Ruta formativa | Formación Integral de Terapeutas | Conversación 1:1 |

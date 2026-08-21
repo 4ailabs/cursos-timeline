@@ -119,7 +119,7 @@ Supone la decisión 3.1 tomada. Tiempos calibrados con lo que la Sesión 2 realm
 | 12 | **La línea materna sobre la misma roseta:** madre, abuela materna, y la bisabuela si la tienen. Mismo procedimiento — centro, caída, dirección de los pies, línea marcada | Formato prometido |
 | 20 | **Lectura conducida en plenaria.** Preguntas por dirección para la línea materna; distancias y miradas entre las mujeres; las fronteras. Y el cruce que faltó en la Sesión 2: **cada dirección se verifica contra el árbol** — la marca A, R o E que pusieron en la primera hora | Deuda 1.8 |
 | 8 | **Las dos líneas juntas.** Los muñecos paternos vuelven a la hoja: ¿la línea materna y la paterna caminan al mismo lado o en direcciones distintas? Es el momento que solo puede ocurrir en esta sesión | Contenido nuevo |
-| 7 | **Debrief y cierre.** Qué se ensayó hoy. Y el gancho completo a NIG y Campos Mórficos, más la elección de la sesión de práctica incluida, que ahora sí es una decisión real porque ya vieron las dos herramientas | Deuda 1.2, segunda puerta |
+| 7 | **Debrief y cierre.** Qué se ensayó hoy. Y el gancho completo a Edición Interoceptiva Multiescala, más la elección de la sesión de práctica incluida, que ahora sí es una decisión real porque ya vieron las dos herramientas | Deuda 1.2, segunda puerta |
 | 5 | Preguntas | — |
 
 **Antes de la sesión:** enviar el material previo comprometido y el video del rostro inmóvil por el mismo canal. Resuelve las deudas 1.6 y 1.7 sin gastar minutos de clase.
@@ -158,7 +158,7 @@ Con una sola sesión de gancho perdida, así se recupera sin apilarlo todo al fi
 | Momento | Puerta | Anclada a |
 |---|---|---|
 | Apertura de la S3 | Playmobil Pro / Los Caminos de la Vida | El trabajo con muñecos que acaban de hacer |
-| Cierre de la S3 | NIG y Campos Mórficos | La lectura del campo familiar de la sesión |
+| Cierre de la S3 | Edición Interoceptiva Multiescala | La lectura del campo familiar de la sesión |
 | Cierre de la S3 | La sesión de práctica incluida | Ya vieron las dos herramientas: la elección es real |
 | Cierre de la S4 | Setpoint | El reconocimiento del programa metabólico propio |
 | Cierre de la S4 | Formación Integral de Terapeutas | La ruta completa, con conversación uno a uno |

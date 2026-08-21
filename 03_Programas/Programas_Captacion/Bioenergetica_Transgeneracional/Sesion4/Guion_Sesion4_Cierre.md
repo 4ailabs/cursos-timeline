@@ -203,9 +203,9 @@ Tono: ver `README.md` (misma carpeta) — registro clínico-terapéutico, audien
 
 **\[Slide 14 — lo que acaban de completar tiene nombre]**
 
-> Lo que acaban de terminar es el procedimiento completo de una técnica que se llama **Imagen de la Familia**, dentro de un método más amplio que aquí llamamos NIG y Campos Mórficos. Ustedes hicieron el dibujo, se pararon en el lugar, y salieron a observar sin juicio — los tres movimientos que sostienen la técnica.
+> Lo que acaban de terminar es el procedimiento completo de una técnica que se llama **Imagen de la Familia**, dentro de un método más amplio que aquí llamamos Edición Interoceptiva Multiescala. Ustedes hicieron el dibujo, se pararon en el lugar, y salieron a observar sin juicio — los tres movimientos que sostienen la técnica.
 >
-> Y esto es la punta. El método completo trabaja con la familia entera, una hoja por cada miembro, el recorrido de posición en posición, y un procedimiento para los enredos que aquí solo alcanzamos a nombrar. Eso es lo que enseña **NIG y Campos Mórficos**. Al cierre les cuento cómo entrar.
+> Y esto es la punta. El método completo trabaja con la familia entera, una hoja por cada miembro, el recorrido de posición en posición, y un procedimiento para los enredos que aquí solo alcanzamos a nombrar. Eso es lo que enseña **Edición Interoceptiva Multiescala**. Al cierre les cuento cómo entrar.
 
 **Nota de facilitación:** diez minutos. Esta vez el procedimiento se cierra completo — en la Sesión 3 se detuvo después del segundo movimiento (`Sesion3_Registro_Clase_Impartida.md` §4.5). La puerta se abre inmediatamente después de terminar, apoyada en algo que el grupo acaba de vivir entero, no en un procedimiento a medias.
 
@@ -266,7 +266,7 @@ Tono: ver `README.md` (misma carpeta) — registro clínico-terapéutico, audien
 
 > **La primera puerta.** Lo que hicieron con los muñecos y las direcciones, hace dos sesiones — leerlo completo, con los siete pasos y la familia entera junta, es **Terapia con Muñecos: Playmobil Pro**, y el marco completo de los Cuatro Caminos, **Los Caminos de la Vida**.
 >
-> **La segunda puerta**, la que acaban de cerrar completa hace un momento: **NIG y Campos Mórficos**.
+> **La segunda puerta**, la que acaban de cerrar completa hace un momento: **Edición Interoceptiva Multiescala**.
 >
 > Su beca incluye una sesión de práctica presencial, con cupo limitado, para practicar con supervisión **una** de las dos. Ahora ya vieron las dos completas — la elección puede ser real.
 
