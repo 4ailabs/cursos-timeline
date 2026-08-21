@@ -1,0 +1,1307 @@
+<style>
+  :root {
+    --terra:   #A94D36;
+    --terra-d: #7C3E22;
+    --sage:    #8FA87A;
+    --sage-d:  #566B44;
+    --gold:    #E8A857;
+    --gold-d:  #A8781F;
+    --ink:     #201B16;
+    --ink-2:   #332E27;
+    --muted:   #574E44;
+    --paper:   #FAF6F0;
+    --paper-2: #F0E8DA;
+    --paper-3: #E6DCC8;
+    --line:    #DBD1BF;
+    --line-2:  #C6BAA1;
+    --serif: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+    --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: #17100A;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; font-family: var(--sans); color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .scaler { width: 1280px; height: 720px; transform-origin: center center; }
+  .stage {
+    position: relative; width: 1280px; height: 720px;
+    background: var(--paper); overflow: hidden;
+    box-shadow: 0 40px 120px rgba(0,0,0,.55);
+  }
+  .stage::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(120% 80% at 100% 0%, rgba(169,77,54,.06), transparent 55%),
+      radial-gradient(90% 70% at 0% 100%, rgba(143,168,122,.06), transparent 50%);
+  }
+
+  /* running head */
+  .runhead, .folio, .nav, .dots { position: absolute; z-index: 40; }
+  .runhead { top: 38px; left: 84px; display: flex; align-items: center; gap: 13px; }
+  .runhead .rh-word { font-size: 13px; letter-spacing: 2.4px; text-transform: uppercase; color: var(--muted); }
+  .folio {
+    top: 40px; right: 84px; font-size: 13.5px; letter-spacing: 2px; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .folio b { color: var(--ink); font-weight: 600; }
+  .stage.bare .runhead, .stage.bare .folio { display: none; }
+  .rule-top { position: absolute; top: 70px; left: 84px; right: 84px; height: 1px; background: var(--line); z-index: 5; }
+  .stage.bare .rule-top { display: none; }
+
+  .deck { position: absolute; inset: 0; z-index: 10; }
+  .slide {
+    position: absolute; inset: 0; padding: 90px 84px 76px;
+    display: flex; flex-direction: column;
+    opacity: 0; visibility: hidden; transition: opacity .5s ease, visibility .5s;
+  }
+  .slide.active { opacity: 1; visibility: visible; }
+  .slide > .inner { margin: auto 0; width: 100%; max-height: 100%; }
+  .cover, .close, .divider { padding-top: 100px; padding-bottom: 84px; }
+  @media (prefers-reduced-motion: reduce) { .slide { transition: opacity .01s; } }
+
+  /* full-bleed image slides — the image IS the slide, no text overlay */
+  .slide.imgslide { padding: 0; }
+  .slide.imgslide .imgfull {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: 2;
+  }
+  .slide.imgslide .inner { display: none; }
+  /* on an image slide, hide chrome so it exports clean */
+  .stage.onimg .runhead, .stage.onimg .folio, .stage.onimg .rule-top,
+  .stage.onimg .dots, .stage.onimg .nav, .stage.onimg .progress { display: none; }
+
+  /* entrance animation for content on the active slide */
+  .slide .inner > * { opacity: 0; transform: translateY(14px); }
+  .slide.active .inner > * { animation: rise .6s cubic-bezier(.22,.7,.28,1) forwards; }
+  .slide.active .inner > *:nth-child(1) { animation-delay: .06s; }
+  .slide.active .inner > *:nth-child(2) { animation-delay: .16s; }
+  .slide.active .inner > *:nth-child(3) { animation-delay: .26s; }
+  .slide.active .inner > *:nth-child(4) { animation-delay: .36s; }
+  .slide.active .inner > *:nth-child(5) { animation-delay: .46s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .slide .inner > * { opacity: 1; transform: none; }
+    .slide.active .inner > * { animation: none; }
+  }
+  /* staggered children inside grids */
+  .stagger > * { opacity: 0; transform: translateY(12px); }
+  .slide.active .stagger > * { animation: rise .5s cubic-bezier(.22,.7,.28,1) forwards; }
+  .slide.active .stagger > *:nth-child(1) { animation-delay: .30s; }
+  .slide.active .stagger > *:nth-child(2) { animation-delay: .40s; }
+  .slide.active .stagger > *:nth-child(3) { animation-delay: .50s; }
+  .slide.active .stagger > *:nth-child(4) { animation-delay: .60s; }
+  .slide.active .stagger > *:nth-child(5) { animation-delay: .70s; }
+  @media (prefers-reduced-motion: reduce) {
+    .stagger > * { opacity: 1; transform: none; }
+    .slide.active .stagger > * { animation: none; }
+  }
+
+  canvas.field { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+
+  .kicker {
+    font-size: 15px; font-weight: 700; letter-spacing: 2.8px; text-transform: uppercase;
+    color: var(--terra); display: flex; align-items: center; gap: 12px;
+  }
+  .kicker::before { content: ""; width: 26px; height: 2px; background: var(--terra); flex: 0 0 auto; }
+  .kicker.sage { color: var(--sage-d); } .kicker.sage::before { background: var(--sage-d); }
+  .kicker.gold { color: var(--gold-d); } .kicker.gold::before { background: var(--gold-d); }
+
+  h1 {
+    font-family: var(--serif); font-weight: 400; font-size: 64px; line-height: 1.04;
+    letter-spacing: -.5px; color: var(--terra-d); text-wrap: balance;
+  }
+  h2 {
+    font-family: var(--serif); font-weight: 400; font-size: 42px; line-height: 1.14;
+    letter-spacing: -.3px; color: var(--ink); text-wrap: balance;
+  }
+  .lede { font-family: var(--serif); font-size: 24px; line-height: 1.5; color: var(--ink-2); max-width: 58ch; }
+  .lede em { font-style: italic; color: var(--terra); }
+  .lede b { color: var(--ink); }
+
+  /* ---- SLIDE · Cover ---- */
+  .cover .inner { margin: 0; height: 100%; display: flex; flex-direction: column; }
+  .cover .inner > * { opacity: 1; transform: none; animation: none; }
+  .cover .brand { display: flex; align-items: center; gap: 16px; margin-top: 6px; }
+  .cover .brand .w { font-size: 14px; letter-spacing: 2.8px; text-transform: uppercase; color: var(--muted); }
+  .cover .mid { margin: auto 0; max-width: 62ch; }
+  .cover .status {
+    display: inline-flex; align-items: center; gap: 11px; font-size: 15px; letter-spacing: 2.2px;
+    text-transform: uppercase; color: var(--terra); font-weight: 700; margin-bottom: 24px;
+  }
+  .cover .status .d { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); flex: 0 0 auto; }
+  .cover h1 { max-width: 15ch; font-size: 82px; }
+  .cover .sub { font-family: var(--serif); font-size: 26px; color: var(--ink-2); margin-top: 20px; font-style: italic; max-width: 30ch; }
+  /* rail: 4 columns, each label a single tidy line */
+  .cover .rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 44px; max-width: 1000px; }
+  .cover .rcell { border-top: 3px solid var(--line-2); padding: 14px 26px 0 0; }
+  .cover .rcell.on { border-top-color: var(--terra); }
+  .cover .rcell .n { font-size: 13px; letter-spacing: 1.8px; color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 700; text-transform: uppercase; }
+  .cover .rcell.on .n { color: var(--terra); }
+  .cover .rcell .t { font-size: 15.5px; line-height: 1.3; color: var(--ink-2); margin-top: 7px; text-wrap: balance; }
+  .cover .rcell.on .t { color: var(--ink); font-weight: 600; }
+  .cover .foot { font-size: 13.5px; letter-spacing: 1.8px; color: var(--muted); text-transform: uppercase; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+
+  .note-strip {
+    margin-top: 26px; display: flex; gap: 18px; align-items: flex-start;
+    background: var(--paper-3); border-left: 4px solid var(--gold-d); padding: 18px 24px; border-radius: 0 3px 3px 0;
+  }
+  .note-strip .lbl { font-size: 13.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-d); font-weight: 700; flex: 0 0 auto; padding-top: 2px; }
+  .note-strip p { font-size: 17.5px; line-height: 1.5; color: var(--ink-2); }
+  .note-strip p b { color: var(--ink); font-weight: 600; }
+  .note-strip p em { font-style: italic; }
+
+  /* ---- STRUCTURE ---- */
+  .struct-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .struct-block { background: var(--paper-2); border: 1px solid var(--line-2); border-radius: 4px; padding: 22px 26px; border-top: 4px solid var(--c); }
+  .struct-block .sh { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; }
+  .struct-block .sh .snum { font-family: var(--serif); font-size: 32px; color: var(--c); }
+  .struct-block .sh .stt { font-family: var(--serif); font-size: 26px; color: var(--ink); }
+  .struct-block ul { list-style: none; display: grid; gap: 11px; }
+  .struct-block li { position: relative; padding-left: 26px; font-size: 17.5px; line-height: 1.38; color: var(--ink-2); }
+  .struct-block li::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+  .struct-block li b { color: var(--ink); font-weight: 600; }
+
+  /* ---- 4 tipos ---- */
+  .four-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 8px; }
+  .tcard { background: var(--paper-2); border: 1px solid var(--line-2); border-radius: 3px; padding: 24px 22px; border-top: 4px solid var(--c); }
+  .tcard .ic { width: 44px; height: 44px; margin-bottom: 16px; }
+  .tcard h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--ink); line-height: 1.1; }
+  .tcard p { font-size: 16.5px; line-height: 1.42; color: var(--ink-2); margin-top: 10px; }
+  .tcard p em { font-style: italic; color: var(--terra); }
+
+  /* ---- FOREIGN FEELINGS ---- */
+  .ff-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .ff-aside h2 { margin-bottom: 20px; }
+  .ff-def { font-family: var(--serif); font-size: 23px; line-height: 1.55; color: var(--ink-2); }
+  .ff-def b { color: var(--terra-d); font-style: italic; }
+  .ff-cond { margin-top: 24px; background: var(--paper-3); border-left: 4px solid var(--terra); padding: 18px 24px; border-radius: 0 3px 3px 0; font-size: 17px; line-height: 1.5; color: var(--ink-2); }
+  .ff-cond b { color: var(--ink); }
+  .ff-panel { background: var(--paper-2); border: 1px solid var(--line-2); border-radius: 4px; padding: 24px; }
+
+  /* ---- BOWEN ---- */
+  .bowen-wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 54px; align-items: center; }
+  .bconcepts { display: grid; gap: 20px; }
+  .bconcept { display: grid; grid-template-columns: 34px 1fr; gap: 18px; align-items: start; }
+  .bconcept .bn { font-family: var(--serif); font-size: 26px; color: var(--terra); line-height: 1; padding-top: 2px; }
+  .bconcept h3 { font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: .2px; }
+  .bconcept p { font-size: 16.5px; line-height: 1.42; color: var(--ink-2); margin-top: 5px; }
+  .bowen-panel { background: var(--paper-2); border: 1px solid var(--line-2); border-radius: 4px; padding: 26px; }
+  .bowen-panel .pcap { font-size: 13.5px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 18px; }
+
+  /* ---- CICLO DEFENSIVO ---- */
+  .phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 6px; position: relative; }
+  .phase { padding: 24px 22px 22px; position: relative; }
+  .phase .pn { font-family: var(--mono); font-size: 13.5px; letter-spacing: 1px; color: var(--terra); font-weight: 600; }
+  .phase h3 { font-family: var(--serif); font-size: 29px; font-weight: 400; color: var(--ink); margin-top: 8px; }
+  .phase p { font-size: 16px; line-height: 1.4; color: var(--ink-2); margin-top: 8px; }
+  .phase .dot { width: 15px; height: 15px; border-radius: 50%; position: absolute; top: 26px; right: 22px; }
+  .interrupt {
+    margin-top: 22px; background: var(--terra-d); color: #F6E9DE; border-radius: 3px;
+    padding: 22px 28px; display: flex; gap: 20px; align-items: baseline;
+  }
+  .interrupt .k { font-size: 13.5px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: var(--gold); flex: 0 0 auto; }
+  .interrupt p { font-size: 19px; line-height: 1.45; }
+  .interrupt p b { color: #fff; font-weight: 600; }
+
+  /* ---- METABÓLICO ---- */
+  .met-chain { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 12px; }
+  .met-node { background: var(--paper-2); border: 1px solid var(--line-2); padding: 22px 24px; position: relative; }
+  .met-node:first-child { border-radius: 4px 0 0 4px; }
+  .met-node:last-child { border-radius: 0 4px 4px 0; background: #F4E4D9; }
+  .met-node .mn { font-family: var(--mono); font-size: 13px; letter-spacing: 1px; color: var(--terra); font-weight: 600; }
+  .met-node h3 { font-family: var(--serif); font-size: 23px; color: var(--ink); margin-top: 8px; line-height: 1.15; }
+  .met-node p { font-size: 15.5px; line-height: 1.4; color: var(--ink-2); margin-top: 8px; }
+  .met-node .arrow { position: absolute; right: -12px; top: 50%; transform: translateY(-50%); z-index: 3; color: var(--terra); font-size: 22px; font-weight: 700; }
+  .met-outcomes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+  .met-out { background: var(--paper-2); border: 1px solid var(--line); border-left: 4px solid var(--terra); border-radius: 3px; padding: 18px 20px; }
+  .met-out .mot { font-size: 18px; font-weight: 700; color: var(--terra-d); }
+  .met-out p { font-size: 15px; line-height: 1.4; color: var(--ink-2); margin-top: 5px; }
+
+  /* ---- 4 NIVELES ---- */
+  .levels-wrap { display: grid; grid-template-columns: 1.35fr 1fr; gap: 50px; align-items: center; }
+  .levels { display: grid; gap: 10px; }
+  .lvl { display: grid; grid-template-columns: 54px 1fr; gap: 18px; align-items: center;
+         background: var(--paper-2); border: 1px solid var(--line-2); border-left: 4px solid var(--c); border-radius: 3px; padding: 15px 20px; }
+  .lvl .ln { font-family: var(--serif); font-size: 30px; color: var(--c); text-align: center; font-weight: 600; }
+  .lvl h3 { font-size: 19px; font-weight: 700; color: var(--ink); }
+  .lvl p { font-size: 15.5px; line-height: 1.4; color: var(--ink-2); margin-top: 3px; }
+  .lvl.hot { background: #F4E4D9; border-left-width: 5px; }
+  .levels-aside h3 { font-family: var(--serif); font-size: 29px; font-weight: 400; color: var(--terra-d); line-height: 1.15; margin-bottom: 16px; }
+  .levels-aside p { font-size: 18px; line-height: 1.55; color: var(--ink-2); }
+  .levels-aside p b { color: var(--ink); font-weight: 600; }
+  .levels-aside p em { font-style: italic; color: var(--terra); }
+  .levels-aside p + p { margin-top: 14px; }
+  .pathline { display: flex; align-items: center; gap: 8px; margin-top: 20px; font-family: var(--mono); font-size: 15px; color: var(--terra); flex-wrap: wrap; font-weight: 600; }
+  .pathline span { background: var(--paper-3); padding: 6px 12px; border-radius: 2px; }
+  .pathline em { color: var(--muted); font-style: normal; }
+
+  /* ---- MOMENTO SOMÁTICO / RITUAL ---- */
+  .ritual-head { margin-bottom: 18px; }
+  .ritual-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .rstep { background: var(--paper-2); border: 1px solid var(--line-2); border-radius: 4px; padding: 18px 16px; border-top: 4px solid var(--c); }
+  .rstep .rn { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--c); color: #fff; font-weight: 700; font-size: 16px; margin-bottom: 12px; }
+  .rstep h3 { font-family: var(--serif); font-size: 21px; color: var(--ink); line-height: 1.1; }
+  .rstep p { font-size: 14.5px; line-height: 1.38; color: var(--ink-2); margin-top: 8px; }
+  .rstep .rq { font-size: 14.5px; line-height: 1.38; color: var(--terra-d); font-style: italic; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+  .ritual-foot { margin-top: 20px; display: flex; gap: 18px; align-items: center; font-size: 16.5px; color: var(--ink-2); }
+  .ritual-foot .rf-tag { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--sage-d); font-weight: 700; border: 1px solid var(--line-2); padding: 6px 14px; border-radius: 2px; flex: 0 0 auto; }
+
+  /* ---- SECTION DIVIDER ---- */
+  .divider { justify-content: center; }
+  .divider .inner { text-align: left; max-width: 50ch; }
+  .divider .dnum { font-family: var(--serif); font-size: 22px; color: var(--terra); letter-spacing: 3px; margin-bottom: 18px; }
+  .divider h1 { font-size: 70px; max-width: 16ch; }
+  .divider .dsub { font-family: var(--serif); font-size: 26px; color: var(--ink-2); margin-top: 24px; line-height: 1.4; font-style: italic; }
+
+  /* ---- INSTRUMENTO ---- */
+  .plantilla-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+  .plantilla-panel { background: var(--paper-2); border: 1px solid var(--line-2); border-radius: 4px; padding: 30px; }
+
+  /* ---- DNA ---- */
+  .dna-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .dna-panel { background: var(--paper-2); border: 1px solid var(--line-2); border-radius: 4px; padding: 20px 24px; border-top: 4px solid var(--c); }
+  .dna-panel .dh { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+  .dna-panel .dh .dt { font-family: var(--serif); font-size: 27px; color: var(--ink); }
+  .dna-panel .dh .dc { font-family: var(--mono); font-size: 14px; color: var(--c); font-weight: 700; letter-spacing: .5px; }
+  .dna-panel .drule { font-size: 17px; line-height: 1.45; color: var(--ink-2); margin-top: 4px; }
+  .dna-panel .drule b { color: var(--ink); }
+  .dna-panel .dmech { font-size: 15px; line-height: 1.45; color: var(--ink-2); margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line-2); }
+
+  /* ---- TRAUMA HISTÓRICO ---- */
+  .hist-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+  .hist-aside h2 { margin-bottom: 18px; }
+  .scale-row { display: grid; gap: 14px; }
+  .scale-item { display: grid; grid-template-columns: 130px 1fr; gap: 20px; align-items: center; }
+  .scale-item .sl { text-align: right; font-size: 15px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink-2); font-weight: 700; }
+  .scale-item .sbar { height: 50px; border-radius: 3px; display: flex; align-items: center; padding: 0 20px; font-size: 17px; color: #fff; font-weight: 600; }
+
+  /* ---- STILL FACE ---- */
+  .sf-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 8px; }
+  .sf-panel { text-align: center; }
+  .sf-panel .sfbox { background: var(--paper-2); border: 1px solid var(--line-2); border-radius: 4px; padding: 12px; }
+  .sf-cap { margin-top: 16px; }
+  .sf-cap .sfn { font-family: var(--mono); font-size: 13.5px; letter-spacing: 1px; color: var(--terra); font-weight: 600; }
+  .sf-cap h3 { font-family: var(--serif); font-size: 25px; font-weight: 400; color: var(--ink); margin-top: 6px; }
+  .sf-cap p { font-size: 16px; line-height: 1.42; color: var(--ink-2); margin-top: 8px; max-width: 32ch; margin-left: auto; margin-right: auto; }
+
+  /* ---- EPIGENÉTICA ---- */
+  .rna-wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 50px; align-items: center; }
+  .rna-aside h2 { margin-bottom: 16px; }
+  .rna-split { display: grid; gap: 12px; margin-top: 8px; }
+  .rna-frac { display: grid; grid-template-columns: 150px 1fr; gap: 16px; align-items: center;
+              background: var(--paper-2); border: 1px solid var(--line-2); border-radius: 3px; padding: 16px 18px; }
+  .rna-frac .rf-t { font-family: var(--mono); font-size: 16px; font-weight: 700; }
+  .rna-frac .rf-t small { display: block; font-family: var(--sans); font-size: 13px; color: var(--ink-2); font-weight: 400; letter-spacing: .5px; margin-top: 3px; }
+  .rna-frac .rf-d { font-size: 15.5px; line-height: 1.4; color: var(--ink-2); }
+  .rna-frac .rf-d b { color: var(--ink); }
+
+  /* ---- 8 CATEGORÍAS ---- */
+  .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 6px; }
+  .cat-cell { background: var(--paper-2); border: 1px solid var(--line-2); border-radius: 3px; padding: 20px; display: flex; align-items: center; gap: 16px; }
+  .cat-cell .ci { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .cat-cell h3 { font-size: 18.5px; font-weight: 700; color: var(--ink); line-height: 1.15; }
+  .cat-cell p { font-size: 14px; color: var(--ink-2); margin-top: 2px; }
+
+  /* ---- NOTACIÓN ---- */
+  .not-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 4px; }
+  .not-cell { background: var(--paper-2); border: 1px solid var(--line-2); border-radius: 3px; padding: 14px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 9px; }
+  .not-cell .glyph { height: 50px; display: flex; align-items: center; justify-content: center; }
+  .not-cell h3 { font-size: 17px; font-weight: 700; color: var(--ink); }
+  .not-cell p { font-size: 14.5px; line-height: 1.35; color: var(--ink-2); }
+  .not-q { margin-top: 22px; background: var(--paper-3); border-left: 4px solid var(--terra); padding: 18px 24px; border-radius: 0 3px 3px 0; }
+  .not-q p { font-size: 18px; line-height: 1.5; color: var(--ink-2); }
+  .not-q p b { color: var(--terra-d); }
+
+  /* ---- CRITERIO ---- */
+  .crit-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .crit-q { font-family: var(--serif); font-size: 46px; line-height: 1.18; color: var(--terra-d); text-wrap: balance; }
+  .crit-flow { display: grid; gap: 20px; }
+  .crit-branch { display: grid; grid-template-columns: 52px 1fr; gap: 18px; align-items: start;
+                 background: var(--paper-2); border: 1px solid var(--line-2); border-radius: 4px; padding: 20px 22px; }
+  .crit-branch .cb { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: #fff; }
+  .crit-branch h3 { font-size: 20px; font-weight: 700; color: var(--ink); }
+  .crit-branch p { font-size: 16.5px; line-height: 1.42; color: var(--ink-2); margin-top: 5px; }
+  .crit-branch p b { color: var(--terra-d); }
+
+  /* ---- 4 PASOS ---- */
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 6px; }
+  .step { background: var(--paper-2); border: 1px solid var(--line-2); border-radius: 3px; padding: 22px; position: relative; overflow: hidden; }
+  .step .sn { font-family: var(--serif); font-size: 42px; color: var(--line-2); position: absolute; top: 8px; right: 14px; line-height: 1; }
+  .step .scode {
+    display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px;
+    border-radius: 4px; font-family: var(--mono); font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 14px;
+  }
+  .step h3 { font-family: var(--serif); font-size: 23px; font-weight: 400; color: var(--ink); line-height: 1.1; }
+  .step p { font-size: 15.5px; line-height: 1.42; color: var(--ink-2); margin-top: 10px; }
+  .codekey { margin-top: 24px; display: flex; gap: 36px; align-items: center; justify-content: center; }
+  .codekey .ck { display: flex; align-items: center; gap: 11px; font-size: 16px; color: var(--ink-2); }
+  .codekey .ck b { font-family: var(--mono); width: 30px; height: 30px; border-radius: 4px; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+
+  /* ---- CIERRE ---- */
+  .close .inner { text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .close .inner > * { opacity: 1; transform: none; animation: none; }
+  .close .brand { margin-bottom: 34px; }
+  .close h2 { font-size: 50px; max-width: 20ch; margin-bottom: 22px; color: var(--terra-d); font-style: italic; }
+  .close .clede { font-family: var(--serif); font-size: 24px; line-height: 1.5; color: var(--ink-2); max-width: 52ch; }
+  .close .nextrail { display: flex; gap: 36px; margin-top: 44px; }
+  .close .nx { text-align: left; max-width: 21ch; }
+  .close .nx .nn { font-size: 14px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--terra); font-weight: 700; }
+  .close .nx .nt { font-family: var(--serif); font-size: 20px; color: var(--ink); margin-top: 7px; line-height: 1.25; }
+
+  /* nav */
+  .nav { right: 84px; bottom: 32px; display: flex; align-items: center; gap: 16px; }
+  .nav button {
+    width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line-2);
+    background: transparent; color: var(--terra); font-size: 18px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .nav button:hover, .nav button:focus-visible { background: var(--terra); color: #fff; border-color: var(--terra); outline: none; }
+  .nav .count { font-size: 13px; letter-spacing: 1.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .nav .count b { color: var(--ink); font-weight: 600; }
+  .dots { left: 84px; bottom: 40px; display: flex; gap: 6px; flex-wrap: wrap; max-width: 640px; }
+  .stage.bare .dots { left: 0; right: 0; justify-content: center; }
+  /* hide progress dots on the true endpoints (cover + close) so they don't collide with the footer */
+  .stage.ends .dots { display: none; }
+  .dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--line-2); cursor: pointer; transition: background .2s, transform .2s; }
+  .dots i.on { background: var(--terra); transform: scale(1.35); }
+  .progress { position: absolute; top: 0; left: 0; height: 3px; background: var(--terra); z-index: 45; transition: width .5s cubic-bezier(.22,.7,.28,1); }
+</style>
+
+<div class="scaler" id="scaler">
+<div class="stage bare" id="stage">
+
+  <div class="progress" id="progress"></div>
+  <div class="runhead" id="runhead"></div>
+  <div class="folio">Sesión 1 · <b id="fnum">01</b> / <span id="ftot">23</span></div>
+  <div class="rule-top"></div>
+
+  <div class="deck">
+
+    <!-- 1 · Cover -->
+    <section class="slide cover active">
+      <canvas class="field" id="field1"></canvas>
+      <div class="inner">
+        <div class="brand" data-logo>
+          <span class="w">Instituto Centrobioenergetica</span>
+        </div>
+        <div class="mid">
+          <div class="status"><span class="d"></span>Actualización en Bioenergética Transgeneracional</div>
+          <h1>El mapa que cargas</h1>
+          <p class="sub">Marco conceptual y construcción del genograma de tres generaciones</p>
+          <div class="rail">
+            <div class="rcell on"><div class="n">Sesión 1 · Hoy</div><div class="t">El mapa: genograma y genosociograma</div></div>
+            <div class="rcell"><div class="n">Sesión 2</div><div class="t">Línea paterna<br>Los Caminos de la Vida</div></div>
+            <div class="rcell"><div class="n">Sesión 3</div><div class="t">Línea materna<br>Campos Mórficos</div></div>
+            <div class="rcell"><div class="n">Sesión 4</div><div class="t">Herencia metabólica<br>transgeneracional</div></div>
+          </div>
+        </div>
+        <div class="foot">Dr. Miguel Ojeda Rios · Instituto Centrobioenergetica</div>
+      </div>
+    </section>
+
+
+    <!-- IMG 1 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/1.png" alt="El mapa que cargas — portada">
+      <div class="inner"></div>
+    </section>
+    <!-- 2 · Estructura de la sesión -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker">Cómo trabajamos hoy · Dos horas, dos bloques</p>
+        <h2 style="max-width:46ch;margin:14px 0 4px;font-size:31px;">Al cierre, cada quien sale con su propio genograma de tres generaciones y al menos un patrón identificado.</h2>
+        <div class="struct-wrap stagger" style="margin-top:20px;">
+          <div class="struct-block" style="--c:var(--terra)">
+            <div class="sh"><span class="snum">1</span><span class="stt">Marco conceptual</span></div>
+            <ul>
+              <li>Cuatro <b>marcos</b> que sostienen la lectura del árbol</li>
+              <li>Cuatro <b>conceptos</b>, cada uno con evidencia detrás</li>
+              <li>Cambian cómo se lee un árbol genealógico en consulta</li>
+            </ul>
+          </div>
+          <div class="struct-block" style="--c:var(--sage-d)">
+            <div class="sh"><span class="snum">2</span><span class="stt">Trabajo directo</span></div>
+            <ul>
+              <li>Construcción del <b>genograma y genosociograma</b> propio</li>
+              <li>Detección de patrones con acompañamiento 1:1</li>
+              <li>Formato híbrido <b>sala + Zoom</b>; preguntas al chat en los cortes</li>
+            </ul>
+          </div>
+        </div>
+        <div class="note-strip">
+          <span class="lbl">El programa</span>
+          <p>Cuatro sesiones, una por semana. Esta construye el mapa · la <b>línea paterna</b>, Los Caminos de la Vida · la <b>línea materna</b>, Campos Mórficos · la cuarta, lo que se hereda <b>a nivel metabólico</b>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · Los 4 tipos de transmisión -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker">Marco · Qué es lo transgeneracional</p>
+        <h2 style="max-width:44ch;margin:14px 0 2px;font-size:31px;">Información no resuelta que pasa de una generación a la siguiente y se expresa como síntoma en quien no vivió el evento.</h2>
+        <div class="four-grid stagger">
+          <div class="tcard" style="--c:var(--terra)">
+            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#A94D36" stroke-width="1.6"><circle cx="20" cy="15" r="8"/><path d="M8 34c0-7 5.4-11 12-11s12 4 12 11"/><path d="M13 30l14-14" stroke-opacity=".4"/></svg>
+            <h3>Duelo no resuelto</h3>
+            <p>Una pérdida que nunca se elaboró y sigue operando como carga activa.</p>
+          </div>
+          <div class="tcard" style="--c:var(--sage)">
+            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#566B44" stroke-width="1.6"><circle cx="14" cy="15" r="7"/><circle cx="29" cy="15" r="7" stroke-dasharray="3 3"/><path d="M6 34c0-6 4-9.5 10-9.5"/></svg>
+            <h3>Exclusión</h3>
+            <p>Un miembro negado u olvidado. El descendiente carga <em>sentimientos ajenos</em>.</p>
+          </div>
+          <div class="tcard" style="--c:var(--gold)">
+            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#A8781F" stroke-width="1.6"><rect x="8" y="15" width="24" height="18" rx="2"/><path d="M14 15v-4a6 6 0 0112 0v4"/><circle cx="20" cy="24" r="2.4" fill="#A8781F" stroke="none"/></svg>
+            <h3>Secreto familiar</h3>
+            <p>Información oculta que produce síntomas en quien la desconoce.</p>
+          </div>
+          <div class="tcard" style="--c:var(--terra-d)">
+            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#7C3E22" stroke-width="1.6"><path d="M6 24h28"/><path d="M11 24v9h18v-9"/><path d="M15 24c0-6 2.2-13 5-13s5 7 5 13"/><path d="M20 11V5" stroke-opacity=".4"/></svg>
+            <h3>Cripta genealógica</h3>
+            <p>Un evento traumático enterrado que opera como programa oculto, generación tras generación.</p>
+          </div>
+        </div>
+        <div class="note-strip">
+          <span class="lbl">Tres implicaciones</span>
+          <p>Un conflicto puede rastrearse a un evento <b>que el consultante nunca vivió</b> · los patrones que se repiten son <b>datos clínicos, no coincidencias</b> · distinguir lo propio de lo del ancestro es, en sí mismo, <b>un acto terapéutico</b>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · Sentimientos ajenos -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker">Marco · El mecanismo de la exclusión</p>
+        <div class="ff-wrap" style="margin-top:24px;">
+          <div class="ff-aside">
+            <h2 style="font-size:34px;max-width:18ch;">Sentimientos ajenos</h2>
+            <p class="ff-def">Un descendiente carga, sin saberlo, <b>el estado emocional de un ancestro</b> al que nunca conoció y del que quizás nunca oyó hablar.</p>
+            <div class="ff-cond">
+              <b>La condición:</b> que ese ancestro haya sido excluido de la familia, o no haya cargado las consecuencias de sus propios actos. No es empatía ni imaginación — es información del sistema familiar que se porta <b>como si fuera propia, sin serlo</b>.
+            </div>
+          </div>
+          <div class="ff-panel">
+            <canvas id="ffCanvas" width="480" height="360" style="width:100%;height:auto;"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- IMG 2 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/2.png" alt="Sentimientos ajenos">
+      <div class="inner"></div>
+    </section>
+    <!-- 5 · Bowen -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker sage">Marco sistémico · Teoría de Bowen</p>
+        <div class="bowen-wrap" style="margin-top:22px;">
+          <div>
+            <h2 style="font-size:32px;max-width:24ch;margin-bottom:24px;">El mismo fenómeno, descrito por la terapia familiar sistémica.</h2>
+            <div class="bconcepts">
+              <div class="bconcept"><span class="bn">01</span><div><h3>Transmisión multigeneracional</h3><p>El nivel de diferenciación del yo se transmite de padres a hijos y se repite —o se profundiza— generación tras generación.</p></div></div>
+              <div class="bconcept"><span class="bn">02</span><div><h3>Corte emocional</h3><p>Distancia o silencio para manejar la ansiedad del sistema. Es desplazamiento, no resolución: exactamente el dato a rastrear.</p></div></div>
+              <div class="bconcept"><span class="bn">03</span><div><h3>Proyección familiar</h3><p>La ansiedad de los padres se deposita de forma desigual en un hijo específico, no en la familia como conjunto.</p></div></div>
+            </div>
+          </div>
+          <div class="bowen-panel">
+            <div class="pcap">Notación McGoldrick · Gerson — el instrumento de Bowen</div>
+            <canvas id="genoMini" width="440" height="330" style="width:100%;height:auto;"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- IMG 13 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/13.png" alt="El gesto heredado entre generaciones">
+      <div class="inner"></div>
+    </section>
+    <!-- 6 · Ciclo defensivo -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker gold">Marco biológico · La impronta como programa de supervivencia</p>
+        <h2 style="max-width:40ch;margin:14px 0 2px;font-size:32px;">Lo que se hereda no es solo un sentimiento: es un ciclo defensivo completo que quedó activo.</h2>
+        <div class="phases stagger">
+          <div class="phase" style="background:var(--paper-2);border-radius:3px 0 0 3px;">
+            <span class="dot" style="background:var(--terra)"></span>
+            <div class="pn">FASE 1</div><h3>Activación</h3>
+            <p>El sistema moviliza cortisol, adrenalina, tono muscular.</p>
+          </div>
+          <div class="phase" style="background:#F4EADF;">
+            <span class="dot" style="background:var(--gold)"></span>
+            <div class="pn">FASE 2</div><h3>Respuesta</h3>
+            <p>La estrategia: congelar, huir, luchar, someterse.</p>
+          </div>
+          <div class="phase" style="background:var(--paper-2);">
+            <span class="dot" style="background:var(--sage)"></span>
+            <div class="pn">FASE 3</div><h3>Descarga</h3>
+            <p>Liberación de energía residual: temblor, llanto, suspiro.</p>
+          </div>
+          <div class="phase" style="background:#EAEEE2;border-radius:0 3px 3px 0;">
+            <span class="dot" style="background:var(--sage-d)"></span>
+            <div class="pn">FASE 4</div><h3>Reposo</h3>
+            <p>El sistema regresa a su línea base.</p>
+          </div>
+        </div>
+        <div class="interrupt">
+          <span class="k">Cuando se interrumpe<br>la descarga</span>
+          <p>El ciclo queda atrapado —no como recuerdo, <b>como programa activo</b>. El descendiente no hereda el evento: hereda <b>el umbral</b> con que su sistema activa esa misma respuesta.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- IMG 3 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/3.png" alt="La impronta como energía congelada">
+      <div class="inner"></div>
+    </section>
+    <!-- 7 · Consecuencia metabólica -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker gold">Marco biológico · El ciclo interrumpido tiene sustrato físico</p>
+        <h2 style="max-width:44ch;margin:14px 0 2px;font-size:31px;">No es una metáfora del cuerpo cargando algo emocional. Es fisiología del estrés crónico, medible.</h2>
+        <div class="met-chain stagger">
+          <div class="met-node"><div class="mn">DISPARADOR</div><h3>Ciclo defensivo interrumpido</h3><p>La descarga no pudo completarse. El programa sigue activo.</p><span class="arrow">→</span></div>
+          <div class="met-node"><div class="mn">EJE</div><h3>HPA desregulado</h3><p>El eje hipotálamo-hipófisis-adrenal permanece encendido.</p><span class="arrow">→</span></div>
+          <div class="met-node"><div class="mn">HORMONA</div><h3>Cortisol crónico</h3><p>Elevado de forma sostenida, no puntual.</p><span class="arrow">→</span></div>
+          <div class="met-node"><div class="mn">CUERPO</div><h3>Cambios medibles</h3><p>El metabolismo y el sistema inmune se reorganizan.</p></div>
+        </div>
+        <div class="met-outcomes stagger">
+          <div class="met-out"><div class="mot">Metabolismo</div><p>Resistencia a la insulina, alteración de la glucosa, grasa visceral.</p></div>
+          <div class="met-out"><div class="mot">Sistema inmune</div><p>Suprimido por el cortisol sostenido: mayor vulnerabilidad inflamatoria.</p></div>
+          <div class="met-out"><div class="mot">Transgeneracional</div><p>Cuando el ciclo es de un ancestro, la impronta se transmite por vía epigenética. <span style="color:var(--terra);">→ Sesión 4</span></p></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- IMG 11 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/11.png" alt="Eje HPA y consecuencia metabólica">
+      <div class="inner"></div>
+    </section>
+    <!-- 8 · 4 niveles -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker">Marco biológico · Dónde vive cada cosa</p>
+        <div class="levels-wrap" style="margin-top:20px;">
+          <div class="levels">
+            <div class="lvl" style="--c:var(--terra-d)"><span class="ln">N1</span><div><h3>Celular · bioeléctrico</h3><p>La bioelectricidad de cada célula. Sin localización: en todas partes a la vez.</p></div></div>
+            <div class="lvl" style="--c:var(--gold-d)"><span class="ln">N2</span><div><h3>Homeostático</h3><p>Temperatura, glucosa, inmune, el eje que conecta el estrés con el cuerpo.</p></div></div>
+            <div class="lvl hot" style="--c:var(--terra)"><span class="ln">N3</span><div><h3>Inconsciente somático</h3><p>Donde viven las improntas: el pecho que se cierra, la garganta que se aprieta.</p></div></div>
+            <div class="lvl" style="--c:var(--sage-d)"><span class="ln">N4</span><div><h3>Consciente · explícito</h3><p>El lenguaje, la narrativa, lo que la persona puede contar de sí misma.</p></div></div>
+          </div>
+          <div class="levels-aside">
+            <h3>La impronta transgeneracional no empieza en N3.</h3>
+            <p>Empieza en <b>N1</b> —una marca epigenética heredada— altera el punto de ajuste de <b>N2</b> y termina ejecutándose completa en <b>N3</b>, aunque el descendiente nunca vivió el evento.</p>
+            <p style="color:var(--ink-2);font-size:16.5px;">En <b>N4</b>, muchas veces, no hay ninguna narrativa que ofrecer. Por eso el consultante dice <em>"no sé de dónde viene esto."</em></p>
+            <div class="pathline">
+              <span>N1 origen</span><em>→</em><span>N2 umbral</span><em>→</em><span>N3 ejecución</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- IMG 8 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/8.png" alt="Los cuatro niveles de procesamiento">
+      <div class="inner"></div>
+    </section>
+    <!-- 9 · Momento somático -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker sage">Momento somático · Dónde vive tu impronta</p>
+        <div class="ritual-head">
+          <h2 style="max-width:52ch;font-size:30px;">Un momento breve con el cuerpo antes de construir el mapa. No se comparte en voz alta — es información para uno mismo.</h2>
+        </div>
+        <div class="ritual-steps stagger">
+          <div class="rstep" style="--c:var(--sage-d)"><div class="rn">1</div><h3>Nombrar</h3><p>Ambas manos sobre las piernas, palmas hacia abajo.</p><div class="rq">"Esto es lo que traigo: patrones míos, y patrones que quizás no lo son."</div></div>
+          <div class="rstep" style="--c:var(--sage)"><div class="rn">2</div><h3>Regular</h3><p>Respiración 4-4-6, tres veces.</p><div class="rq">"Mi cuerpo está aquí, en esta silla, en este momento."</div></div>
+          <div class="rstep" style="--c:var(--gold-d)"><div class="rn">3</div><h3>Recursos</h3><p>Pies en el piso, el peso del cuerpo sobre la silla.</p><div class="rq">"Tengo un cuerpo que puede sentir esto sin quebrarse."</div></div>
+          <div class="rstep" style="--c:var(--terra)"><div class="rn">4</div><h3>Ampliar</h3><p>Escaneo breve: pecho, garganta, hombros, vientre, mandíbula.</p><div class="rq">"¿Qué zona reconozco como mía? ¿Cuál se siente prestada?"</div></div>
+          <div class="rstep" style="--c:var(--terra-d)"><div class="rn">5</div><h3>El gesto</h3><p>Una mano sobre cada zona.</p><div class="rq">"Esto es mío. Esto puede no serlo: lo dejo marcado, no resuelto."</div></div>
+        </div>
+        <div class="ritual-foot">
+          <span class="rf-tag">Se llevan</span>
+          <span>En la Hora 2, marcan esas dos zonas con un símbolo propio en el margen de su plantilla, antes de empezar a llenarla. El genograma mismo es el ancla.</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- IMG 4 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/4.png" alt="Momento somático — dos zonas">
+      <div class="inner"></div>
+    </section>
+    <!-- 10 · Divider: Concepto 1-4 -->
+    <section class="slide divider">
+      <canvas class="field" id="fieldD1"></canvas>
+      <div class="inner">
+        <div class="dnum">CUATRO CONCEPTOS</div>
+        <h1>La evidencia detrás del rastreo</h1>
+        <p class="dsub">Líneas de ADN · trauma histórico colectivo · co-regulación del sistema nervioso · herencia epigenética. Cada uno cambia cómo se lee el árbol.</p>
+      </div>
+    </section>
+
+
+    <!-- IMG 12 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/12.png" alt="La cadena de manos entre generaciones">
+      <div class="inner"></div>
+    </section>
+
+    <!-- IMG 15 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/15.png" alt="El hilo que atraviesa el tiempo">
+      <div class="inner"></div>
+    </section>
+    <!-- 11 · Concepto 1: dos líneas de ADN -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker">Concepto 1 · Líneas de ADN directas</p>
+        <h2 style="max-width:46ch;margin:14px 0 14px;font-size:32px;">Dos líneas —y solo dos— se transmiten completas sin mezclarse con el otro progenitor.</h2>
+        <div class="dna-wrap stagger">
+          <div class="dna-panel" style="--c:var(--sage)">
+            <div class="dh"><span class="dt">ADN mitocondrial</span><span class="dc">MATERNO</span></div>
+            <canvas id="mtLine" width="440" height="128" style="width:100%;height:auto;margin:4px 0;"></canvas>
+            <p class="drule">De la madre a <b>todos</b> los hijos. Lo transmite intacto solo si es mujer.</p>
+            <p class="dmech">Mecanismo activo: las mitocondrias del espermatozoide se marcan y degradan por ubiquitinación y autofagia tras la fecundación. El óvulo elimina el aporte paterno de forma dirigida.</p>
+          </div>
+          <div class="dna-panel" style="--c:var(--terra)">
+            <div class="dh"><span class="dt">Cromosoma Y</span><span class="dc">PATERNO</span></div>
+            <canvas id="yLine" width="440" height="128" style="width:100%;height:auto;margin:4px 0;"></canvas>
+            <p class="drule">De padre a <b>hijo varón</b>. La región no recombinante pasa completa.</p>
+            <p class="dmech">Es la base de las pruebas de genealogía genética. El "haplogrupo materno" y "paterno" son exactamente estas dos líneas — la única vía biológica que conecta con ese ancestro específico.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- IMG 7 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/7.png" alt="Dos líneas de ADN directas">
+      <div class="inner"></div>
+    </section>
+    <!-- 12 · Concepto 2: trauma histórico -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker gold">Concepto 2 · Trauma histórico y duelo colectivo</p>
+        <div class="hist-wrap" style="margin-top:22px;">
+          <div class="hist-aside">
+            <h2 style="font-size:32px;max-width:20ch;">No conecta a una persona con su árbol. La conecta con su pueblo.</h2>
+            <p class="lede" style="font-size:19px;">Maria Yellow Horse Brave Heart documentó el <em>duelo histórico no resuelto</em>: un duelo colectivo que no proviene de una pérdida familiar, sino de una compartida por todo un pueblo. Cuando la amenaza continúa, el luto nunca tiene ventana para cerrarse.</p>
+          </div>
+          <div>
+            <div class="scale-row stagger">
+              <div class="scale-item"><span class="sl">Individual</span><div class="sbar" style="background:var(--terra);width:34%;">Una impronta</div></div>
+              <div class="scale-item"><span class="sl">Familiar</span><div class="sbar" style="background:var(--gold-d);width:58%;">Un linaje</div></div>
+              <div class="scale-item"><span class="sl">Colectivo</span><div class="sbar" style="background:var(--terra-d);width:100%;">Un pueblo entero, en paralelo</div></div>
+            </div>
+            <div class="note-strip" style="margin-top:30px;">
+              <span class="lbl">Para el genograma</span>
+              <p>Hay patrones que aparecen en una familia pero <b>no se originan en ella</b>. Una tristeza que atraviesa varias ramas por igual puede señalar algo que le pasó al pueblo, no a un ancestro.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- IMG 5 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/5.png" alt="Trauma histórico y duelo colectivo">
+      <div class="inner"></div>
+    </section>
+    <!-- 13 · Concepto 3: rostro inmóvil -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker sage">Concepto 3 · Co-regulación del sistema nervioso</p>
+        <h2 style="max-width:48ch;margin:14px 0 2px;font-size:31px;">Antes de una sola palabra, el sistema nervioso del bebé se regula copiando al de quien lo cuida.</h2>
+        <div class="sf-wrap stagger">
+          <div class="sf-panel">
+            <div class="sfbox"><canvas class="sfcanvas" data-state="0" width="300" height="200" style="width:100%;height:auto;display:block;"></canvas></div>
+            <div class="sf-cap"><div class="sfn">MOMENTO 1</div><h3>Juego normal</h3><p>Madre y bebé en contacto recíproco. El bebé regula sobre el sistema del cuidador.</p></div>
+          </div>
+          <div class="sf-panel">
+            <div class="sfbox"><canvas class="sfcanvas" data-state="1" width="300" height="200" style="width:100%;height:auto;display:block;"></canvas></div>
+            <div class="sf-cap"><div class="sfn">MOMENTO 2</div><h3>Rostro inmóvil</h3><p>El rostro se congela sin explicación. El bebé intenta recuperar la conexión, luego se angustia.</p></div>
+          </div>
+          <div class="sf-panel">
+            <div class="sfbox"><canvas class="sfcanvas" data-state="2" width="300" height="200" style="width:100%;height:auto;display:block;"></canvas></div>
+            <div class="sf-cap"><div class="sfn">MOMENTO 3</div><h3>Retiro</h3><p>Pierde su fuente externa de regulación y aún no tiene recursos propios. No es indiferencia.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- IMG 9 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/9.png" alt="El paradigma del rostro inmóvil">
+      <div class="inner"></div>
+    </section>
+    <!-- 14 · Concepto 4: epigenética ARN -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker">Concepto 4 · Herencia epigenética — más allá de la metilación</p>
+        <div class="rna-wrap" style="margin-top:20px;">
+          <div class="rna-aside">
+            <h2 style="font-size:31px;max-width:22ch;">El espermatozoide no entrega solo ADN. Entrega una carga de ARN que cambia con el estrés del padre.</h2>
+            <p class="lede" style="font-size:18px;">En animales, el experimento causal directo: se inyecta el ARN del esperma de machos estresados en óvulos normales —sin el padre, sin el evento— y las crías muestran el mismo patrón. Restaurar el microARN <b>miR-34/449</b> lo previene: no es destino fijo, es información corregible.</p>
+          </div>
+          <div>
+            <canvas id="rnaFlow" width="440" height="150" style="width:100%;height:auto;margin-bottom:6px;"></canvas>
+            <div class="rna-split stagger">
+              <div class="rna-frac"><span class="rf-t">ARN largo<small>fracción larga</small></span><span class="rf-d">Afecta más el <b>metabolismo</b> — consumo de alimento, respuesta a la glucosa. <span style="color:var(--terra);">→ Sesión 4</span></span></div>
+              <div class="rna-frac"><span class="rf-t">ARN corto<small>miARN, tsRNA</small></span><span class="rf-d">Afecta más la <b>conducta</b> — peso corporal, comportamiento de tipo desesperanza. <span style="color:var(--sage-d);">→ hoy</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- IMG 10 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/10.png" alt="Herencia epigenética por ARN">
+      <div class="inner"></div>
+    </section>
+    <!-- 15 · Divider: Hora 2 -->
+    <section class="slide divider">
+      <canvas class="field" id="fieldD2"></canvas>
+      <div class="inner">
+        <div class="dnum">HORA 2</div>
+        <h1>Construcción del mapa</h1>
+        <p class="dsub">Ahora aplican todo lo anterior a su propio árbol. Van a construir su genograma y su genosociograma, y a buscar juntos dónde de lo que vimos aparece en su propia familia.</p>
+      </div>
+    </section>
+
+
+    <!-- IMG 16 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/16.png" alt="Raíces y linaje">
+      <div class="inner"></div>
+    </section>
+    <!-- 16 · Instrumento -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker sage">El instrumento · Genograma de tres generaciones</p>
+        <div class="plantilla-wrap" style="margin-top:22px;">
+          <div>
+            <h2 style="font-size:34px;max-width:20ch;margin-bottom:20px;">Un mapa clínico verificable, no un árbol decorativo.</h2>
+            <p class="lede" style="font-size:20px;">Cada dato que se agrega reduce el campo hasta que un patrón deja de ser una impresión vaga y se vuelve algo específico y verificable.</p>
+            <div class="note-strip" style="margin-top:26px;">
+              <span class="lbl">La diferencia</span>
+              <p><em>"Algo se repite en mi familia"</em> es una sensación. <b>"Mi abuelo murió de infarto a los 52, mi padre a los 52, y yo tengo 50"</b> es un dato clínico.</p>
+            </div>
+          </div>
+          <div class="plantilla-panel">
+            <canvas id="genoFull" width="480" height="380" style="width:100%;height:auto;"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17 · Notación -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker sage">Hora 2 · Notación estándar del genograma</p>
+        <h2 style="max-width:36ch;margin:12px 0 14px;font-size:30px;">Se dibuja con la misma notación que usa la terapia familiar sistémica.</h2>
+        <div class="not-grid stagger">
+          <div class="not-cell">
+            <div class="glyph"><svg width="46" height="46" viewBox="0 0 46 46"><rect x="9" y="9" width="28" height="28" fill="none" stroke="#241E19" stroke-width="2"/></svg></div>
+            <h3>Hombre</h3><p>Cuadrado</p>
+          </div>
+          <div class="not-cell">
+            <div class="glyph"><svg width="46" height="46" viewBox="0 0 46 46"><circle cx="23" cy="23" r="15" fill="none" stroke="#241E19" stroke-width="2"/></svg></div>
+            <h3>Mujer</h3><p>Círculo</p>
+          </div>
+          <div class="not-cell">
+            <div class="glyph"><svg width="90" height="46" viewBox="0 0 90 46"><rect x="6" y="16" width="16" height="16" fill="none" stroke="#241E19" stroke-width="2"/><circle cx="76" cy="24" r="9" fill="none" stroke="#241E19" stroke-width="2"/><line x1="22" y1="24" x2="67" y2="24" stroke="#241E19" stroke-width="2"/></svg></div>
+            <h3>Matrimonio</h3><p>Línea continua</p>
+          </div>
+          <div class="not-cell">
+            <div class="glyph"><svg width="90" height="46" viewBox="0 0 90 46"><rect x="6" y="16" width="16" height="16" fill="none" stroke="#241E19" stroke-width="2"/><circle cx="76" cy="24" r="9" fill="none" stroke="#241E19" stroke-width="2"/><line x1="22" y1="24" x2="67" y2="24" stroke="#241E19" stroke-width="2"/><line x1="40" y1="14" x2="50" y2="34" stroke="#A94D36" stroke-width="2"/><line x1="46" y1="14" x2="56" y2="34" stroke="#A94D36" stroke-width="2"/></svg></div>
+            <h3>Divorcio</h3><p>Doble línea diagonal</p>
+          </div>
+          <div class="not-cell">
+            <div class="glyph"><svg width="46" height="46" viewBox="0 0 46 46"><rect x="9" y="9" width="28" height="28" fill="none" stroke="#241E19" stroke-width="2"/><line x1="9" y1="9" x2="37" y2="37" stroke="#241E19" stroke-width="2"/><line x1="37" y1="9" x2="9" y2="37" stroke="#241E19" stroke-width="2"/></svg></div>
+            <h3>Fallecimiento</h3><p>X sobre la figura</p>
+          </div>
+          <div class="not-cell">
+            <div class="glyph"><svg width="90" height="46" viewBox="0 0 90 46"><circle cx="14" cy="24" r="9" fill="none" stroke="#241E19" stroke-width="2"/><rect x="68" y="16" width="16" height="16" fill="none" stroke="#241E19" stroke-width="2"/><line x1="23" y1="24" x2="34" y2="24" stroke="#7C3E22" stroke-width="2"/><line x1="41" y1="24" x2="52" y2="24" stroke="#7C3E22" stroke-width="2"/><line x1="59" y1="24" x2="68" y2="24" stroke="#7C3E22" stroke-width="2"/></svg></div>
+            <h3>Corte emocional</h3><p>Línea cortada</p>
+          </div>
+          <div class="not-cell">
+            <div class="glyph"><svg width="46" height="46" viewBox="0 0 46 46"><circle cx="23" cy="23" r="15" fill="none" stroke="#A94D36" stroke-width="2" stroke-dasharray="4 3"/><text x="23" y="30" text-anchor="middle" font-size="20" font-family="Georgia" fill="#A94D36" font-weight="bold">?</text></svg></div>
+            <h3>Dato desconocido</h3><p>Signo de interrogación</p>
+          </div>
+          <div class="not-cell" style="background:var(--paper-3);border-color:var(--line-2);">
+            <div class="glyph"><svg width="46" height="46" viewBox="0 0 46 46"><circle cx="14" cy="16" r="4" fill="#A94D36"/><path d="M27 12l2.5 5.2 5.5.6-4 4 1.2 5.6-5.2-3-5.2 3 1.2-5.6-4-4 5.5-.6z" fill="#E8A857"/></svg></div>
+            <h3>Tus dos zonas</h3><p>Marca en el margen antes de empezar</p>
+          </div>
+        </div>
+        <div class="not-q">
+          <p><b>Un hueco marcado con <span style="font-family:var(--mono)">?</span> es información</b> —puede señalar un corte, un secreto—. Un hueco en blanco se pierde. No se inventa: un dato inventado contamina todo lo que se construye sobre él.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 18 · 8 categorías de evento -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker sage">Genosociograma · Las ocho categorías de evento</p>
+        <h2 style="max-width:40ch;margin:14px 0 18px;font-size:30px;">Junto a cada fecha, el tipo de evento — para no tener que inventar cómo nombrarlo.</h2>
+        <div class="cat-grid stagger">
+          <div class="cat-cell"><span class="ci" style="background:#F1DCD5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A94D36" stroke-width="1.8"><path d="M6 21V10h12v11"/><path d="M9 21v-6h6v6"/><line x1="4" y1="10" x2="20" y2="10"/></svg></span><div><h3>Muerte o pérdida</h3></div></div>
+          <div class="cat-cell"><span class="ci" style="background:#F1DCD5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A94D36" stroke-width="1.8"><path d="M18 6L6 18M8 7a3 3 0 11-.1 0"/><path d="M15 15l3 3"/></svg></span><div><h3>Abandono o rechazo</h3></div></div>
+          <div class="cat-cell"><span class="ci" style="background:#F1DCD5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A94D36" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4" stroke-dasharray="2 2"/></svg></span><div><h3>Traición o engaño</h3></div></div>
+          <div class="cat-cell"><span class="ci" style="background:#F1DCD5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A94D36" stroke-width="1.8"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></span><div><h3>Violencia</h3></div></div>
+          <div class="cat-cell"><span class="ci" style="background:#EDE4CE"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A8781F" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M6 21c0-4 2.7-6 6-6s6 2 6 6"/><line x1="4" y1="4" x2="20" y2="20" stroke-dasharray="2 2"/></svg></span><div><h3>Humillación o exclusión</h3></div></div>
+          <div class="cat-cell"><span class="ci" style="background:#EDE4CE"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A8781F" stroke-width="1.8"><path d="M12 21C7 17 3 13 3 8.5A4.5 4.5 0 0112 6a4.5 4.5 0 019 2.5C21 13 17 17 12 21z"/><path d="M8 11h8M12 7v8" stroke-width="1.4"/></svg></span><div><h3>Accidente o enfermedad</h3></div></div>
+          <div class="cat-cell"><span class="ci" style="background:#E4EAD9"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#566B44" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/><circle cx="12" cy="15" r="1.6" fill="#566B44" stroke="none"/></svg></span><div><h3>Secreto</h3></div></div>
+          <div class="cat-cell"><span class="ci" style="background:#E4EAD9"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#566B44" stroke-width="1.8"><path d="M3 17l5-5 4 4 8-8"/><path d="M15 8h5v5"/></svg></span><div><h3>Crisis</h3><p>económica · migratoria · estatus</p></div></div>
+        </div>
+        <div class="not-q" style="border-left-color:var(--sage-d);">
+          <p>El <b>duelo no resuelto</b>, la <b>exclusión</b> y el <b>secreto familiar</b> del inicio están aquí, ahora como categorías que se pueden fechar y ubicar en una persona específica del árbol.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 19 · Ritual del pulso -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker gold">El pulso antes del trazo · Un puente breve, no una intervención</p>
+        <div class="ritual-head">
+          <h2 style="max-width:54ch;font-size:30px;">Antes de que el lápiz toque el papel, un momento con el pulso. Lo que van a dibujar ya está en el cuerpo — esto solo lo hace consciente.</h2>
+        </div>
+        <div class="ritual-steps stagger">
+          <div class="rstep" style="--c:var(--terra)"><div class="rn">1</div><h3>Nombrar</h3><p>Dos dedos sobre el cuello o la muñeca, buscando el pulso.</p><div class="rq">"Esto es lo que traigo: un pulso que no empezó conmigo."</div></div>
+          <div class="rstep" style="--c:var(--gold-d)"><div class="rn">2</div><h3>Regular</h3><p>Sin soltar el pulso, respiración 4-4-6, dos o tres veces.</p><div class="rq">"Mi cuerpo está aquí, respirando, en este momento."</div></div>
+          <div class="rstep" style="--c:var(--sage-d)"><div class="rn">3</div><h3>Recursos</h3><p>Pies en el piso, el peso del cuerpo sobre la silla.</p><div class="rq">"Tengo un cuerpo que sostiene este pulso ahora mismo."</div></div>
+          <div class="rstep" style="--c:var(--sage)"><div class="rn">4</div><h3>Ampliar</h3><p>Sin buscar imagen ni recuerdo — solo sentir la pregunta.</p><div class="rq">"Este pulso que siento, ¿de dónde viene?"</div></div>
+          <div class="rstep" style="--c:var(--terra-d)"><div class="rn">5</div><h3>El gesto</h3><p>Una mano en el pulso; la otra, sobre el papel en blanco.</p><div class="rq">"Aquí empiezo yo. Detrás de mí, la línea completa."</div></div>
+        </div>
+        <div class="ritual-foot">
+          <span class="rf-tag">Cierre</span>
+          <span>Ambas manos bajan al lápiz. <em style="color:var(--terra-d);font-style:italic;">"Ahora dibujo lo que ya siento."</em></span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- IMG 6 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/6.png" alt="El pulso antes del trazo">
+      <div class="inner"></div>
+    </section>
+    <!-- 20 · Criterio de sospecha -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker">Detección · El criterio de sospecha</p>
+        <div class="crit-wrap" style="margin-top:26px;">
+          <div>
+            <p class="crit-q">"¿La biografía propia lo explica?"</p>
+            <p class="lede" style="margin-top:24px;font-size:19px;">No todo lo que aparece en el árbol es transgeneracional. La mayoría de los síntomas tienen origen en la propia vida de la persona.</p>
+          </div>
+          <div class="crit-flow stagger">
+            <div class="crit-branch">
+              <span class="cb" style="background:var(--sage-d)">Sí</span>
+              <div><h3>Se explica con la propia vida</h3><p>Infancia, gestación, un evento personal identificable. El origen está aquí — no hace falta mirar atrás.</p></div>
+            </div>
+            <div class="crit-branch">
+              <span class="cb" style="background:var(--terra)">No</span>
+              <div><h3>La biografía no alcanza</h3><p>Ansiedad sin evento que la justifique, un patrón relacional que se repite igual que el de los padres sin haberlo vivido, un síntoma que la medicina no ancla a nada. <b>Es momento de mirar una generación atrás.</b></p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 21 · 4 pasos del método -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker gold">Detección · El método, cuatro pasos en orden</p>
+        <div class="steps-grid stagger" style="margin-top:18px;">
+          <div class="step">
+            <span class="sn">1</span>
+            <span class="scode" style="background:var(--terra)">A</span>
+            <h3>Edades</h3>
+            <p>¿Se repite la misma edad en dos personas de generaciones distintas, en la misma línea?</p>
+          </div>
+          <div class="step">
+            <span class="sn">2</span>
+            <span class="scode" style="background:var(--terra)">A</span>
+            <h3>Fechas del calendario</h3>
+            <p>Mismo día y mes entre eventos, sin importar el año. La misma familia de patrón, por fecha exacta.</p>
+          </div>
+          <div class="step">
+            <span class="sn">3</span>
+            <span class="scode" style="background:var(--sage-d)">R</span>
+            <h3>Oficios y roles</h3>
+            <p>El cuidador, el rebelde, el que se va. ¿El mismo rol en dos generaciones seguidas de una línea?</p>
+          </div>
+          <div class="step">
+            <span class="sn">4</span>
+            <span class="scode" style="background:var(--gold-d)">E</span>
+            <h3>Tipo de evento por rama</h3>
+            <p>¿La misma categoría —muerte, secreto, crisis— más de una vez, pero en una sola rama?</p>
+          </div>
+        </div>
+        <div class="codekey">
+          <div class="ck"><b style="background:var(--terra)">A</b> Aniversario — edad o fecha</div>
+          <div class="ck"><b style="background:var(--sage-d)">R</b> Rol — oficio o función familiar</div>
+          <div class="ck"><b style="background:var(--gold-d)">E</b> Evento — categoría por rama</div>
+        </div>
+        <div class="not-q" style="border-left-color:var(--gold-d);margin-top:22px;">
+          <p>Al terminar, elige la marca que puedas <b>explicar en una sola frase sin dudar</b> y ponle un asterisco. Esa es la que compartes y la que te llevas a las próximas sesiones.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 22 · Compartir hallazgos -->
+    <section class="slide">
+      <div class="inner">
+        <p class="kicker">Puesta en común · Compartir hallazgos</p>
+        <h2 style="max-width:30ch;margin:16px 0 22px;font-size:34px;">Dos o tres voluntarios comparten su marca con asterisco.</h2>
+        <div class="four-grid stagger" style="grid-template-columns:repeat(3,1fr);">
+          <div class="tcard" style="--c:var(--terra)">
+            <h3>El código</h3>
+            <p>Cuál de los tres encontraron — <b style="font-family:var(--mono);color:var(--terra);">A</b>, <b style="font-family:var(--mono);color:var(--sage-d);">R</b> o <b style="font-family:var(--mono);color:var(--gold-d);">E</b>.</p>
+          </div>
+          <div class="tcard" style="--c:var(--sage)">
+            <h3>El patrón, en una frase</h3>
+            <p>No hace falta la historia completa. Solo el patrón que se repite.</p>
+          </div>
+          <div class="tcard" style="--c:var(--gold)">
+            <h3>Sin abrir de más</h3>
+            <p>Mezcla de sala y Zoom. Si nadie se anima, se lee una coincidencia del chat con permiso.</p>
+          </div>
+        </div>
+        <div class="note-strip">
+          <span class="lbl">Recordatorio</span>
+          <p>Este mapa es el <b>material de trabajo</b> de las próximas sesiones. La marca con asterisco es el hilo que se sigue tirando.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 23 · Cierre -->
+    <section class="slide close">
+      <canvas class="field" id="field23"></canvas>
+      <div class="inner">
+        <div class="brand" data-logo style="position:relative;z-index:1;"></div>
+        <h2 style="position:relative;z-index:1;">Hoy construyeron el mapa. Guárdenlo.</h2>
+        <p class="clede" style="position:relative;z-index:1;">Es el material de trabajo de las próximas tres sesiones — el mismo árbol, leído con tres herramientas distintas.</p>
+        <div class="nextrail" style="position:relative;z-index:1;">
+          <div class="nx"><div class="nn">Sesión 2</div><div class="nt">Línea paterna · Los Caminos de la Vida y Playmobil</div></div>
+          <div class="nx"><div class="nn">Sesión 3</div><div class="nt">Línea materna · Campos Mórficos</div></div>
+          <div class="nx"><div class="nn">Sesión 4</div><div class="nt">Dos generaciones más atrás · herencia metabólica</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMG 14 -->
+    <section class="slide imgslide">
+      <img class="imgfull" src="Imagenes slides/14.png" alt="Tres generaciones, un rostro">
+      <div class="inner"></div>
+    </section>
+
+
+  </div>
+
+  <div class="dots" id="dots"></div>
+  <div class="nav">
+    <button id="prev" aria-label="Anterior">‹</button>
+    <span class="count"><b id="cur">1</b> / <span id="tot">23</span></span>
+    <button id="next" aria-label="Siguiente">›</button>
+  </div>
+
+</div>
+</div>
+
+<script>
+  (function () {
+    function isotipo(size) {
+      const pts = [];
+      for (let k = 0; k < 12; k++) {
+        const ang = (k * 30 - 90) * Math.PI / 180;
+        const x = (48 * Math.cos(ang)).toFixed(1);
+        const y = (48 * Math.sin(ang)).toFixed(1);
+        const col = k % 2 === 0 ? '#A94D36' : '#8FA87A';
+        pts.push('<circle cx="' + x + '" cy="' + y + '" r="11" fill="' + col + '"/>');
+      }
+      return '<svg width="' + size + '" height="' + size + '" viewBox="-80 -80 160 160" aria-hidden="true">'
+        + pts.join('')
+        + '<circle cx="0" cy="0" r="15" fill="#E8A857" opacity="0.28"/><circle cx="0" cy="0" r="8" fill="#E8A857"/></svg>';
+    }
+    document.getElementById('runhead').innerHTML = isotipo(26) +
+      '<span class="rh-word">Instituto Centrobioenergetica</span>';
+    document.querySelectorAll('[data-logo]').forEach(function (el) {
+      const big = el.closest('.close');
+      el.insertAdjacentHTML('afterbegin', isotipo(big ? 52 : 40));
+    });
+
+    const scaler = document.getElementById('scaler');
+    function fit() { scaler.style.transform = 'scale(' + Math.min(window.innerWidth / 1280, window.innerHeight / 720) + ')'; }
+    window.addEventListener('resize', fit); fit();
+
+    const stage = document.getElementById('stage');
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dotsBox = document.getElementById('dots');
+    const cur = document.getElementById('cur'), fnum = document.getElementById('fnum');
+    const progress = document.getElementById('progress');
+    const N = slides.length;
+    document.getElementById('tot').textContent = N;
+    document.getElementById('ftot').textContent = N;
+    let i = 0;
+    slides.forEach(function (_, k) { const d = document.createElement('i'); d.addEventListener('click', function () { go(k); }); dotsBox.appendChild(d); });
+    const dots = Array.from(dotsBox.children);
+    function go(n) {
+      i = Math.max(0, Math.min(N - 1, n));
+      slides.forEach(function (s, k) { s.classList.toggle('active', k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle('on', k === i); });
+      cur.textContent = i + 1; fnum.textContent = String(i + 1).padStart(2, '0');
+      progress.style.width = ((i) / (N - 1) * 100) + '%';
+      stage.classList.toggle('bare', i === 0 || i === N - 1 || slides[i].classList.contains('divider'));
+      stage.classList.toggle('ends', i === 0 || i === N - 1);
+      stage.classList.toggle('onimg', slides[i].classList.contains('imgslide'));
+    }
+    document.getElementById('next').addEventListener('click', function () { go(i + 1); });
+    document.getElementById('prev').addEventListener('click', function () { go(i - 1); });
+    window.addEventListener('keydown', function (e) {
+      if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); go(i + 1); }
+      else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); go(i - 1); }
+      else if (e.key === 'Home') go(0); else if (e.key === 'End') go(N - 1);
+    });
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const C = { terra:'#A94D36', terraD:'#7C3E22', sage:'#8FA87A', sageD:'#566B44', gold:'#E8A857', goldD:'#A8781F', ink:'#241E19', muted:'#6E655A', line:'#C6BAA1', paper:'#F0E8DA' };
+
+    function sq(ctx, x, y, s, col, dead) { ctx.strokeStyle=col; ctx.lineWidth=2; ctx.strokeRect(x-s/2, y-s/2, s, s); if(dead){ctx.beginPath();ctx.moveTo(x-s/2,y-s/2);ctx.lineTo(x+s/2,y+s/2);ctx.moveTo(x+s/2,y-s/2);ctx.lineTo(x-s/2,y+s/2);ctx.stroke();} }
+    function ci(ctx, x, y, r, col, dead) { ctx.strokeStyle=col; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.stroke(); if(dead){ctx.beginPath();ctx.moveTo(x-r*0.7,y-r*0.7);ctx.lineTo(x+r*0.7,y+r*0.7);ctx.moveTo(x+r*0.7,y-r*0.7);ctx.lineTo(x-r*0.7,y+r*0.7);ctx.stroke();} }
+    function ln(ctx, x1,y1,x2,y2, col, dash) { ctx.strokeStyle=col; ctx.lineWidth=2; ctx.setLineDash(dash||[]); ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke(); ctx.setLineDash([]); }
+
+    /* Slide 4: foreign feelings diagram */
+    (function () {
+      const cv = document.getElementById('ffCanvas'); if (!cv) return;
+      const ctx = cv.getContext('2d');
+      // excluded ancestor (top, dashed, faded)
+      const ax=100, ay=70;
+      ci(ctx, ax, ay, 22, C.muted, false); ctx.setLineDash([]);
+      // dashed exclusion ring
+      ctx.strokeStyle=C.muted; ctx.lineWidth=1.5; ctx.setLineDash([5,4]); ctx.beginPath(); ctx.arc(ax,ay,34,0,Math.PI*2); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle=C.muted; ctx.font='600 13px ui-sans-serif'; ctx.textAlign='left';
+      ctx.fillText('Ancestro excluido', ax+50, ay-4);
+      ctx.font='12px ui-sans-serif'; ctx.fillStyle=C.muted;
+      ctx.fillText('negado · olvidado', ax+50, ay+16);
+      // descendant (bottom)
+      const dx=100, dy=290;
+      sq(ctx, dx, dy, 44, C.terra);
+      ctx.fillStyle=C.terraD; ctx.font='600 13px ui-sans-serif';
+      ctx.fillText('Descendiente', dx+50, dy-4);
+      ctx.font='12px ui-sans-serif'; ctx.fillStyle=C.muted;
+      ctx.fillText('nunca lo conoció', dx+50, dy+16);
+      // transmission arrow with emotional charge dots
+      ctx.strokeStyle=C.terra; ctx.lineWidth=2; ctx.setLineDash([6,5]);
+      ctx.beginPath(); ctx.moveTo(ax, ay+36); ctx.lineTo(dx, dy-24); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle=C.gold;
+      [0.35,0.55,0.75].forEach(function(t){ const px=ax+(dx-ax)*t, py=(ay+36)+((dy-24)-(ay+36))*t; ctx.beginPath(); ctx.arc(px,py,4,0,Math.PI*2); ctx.fill(); });
+      // arrowhead
+      ctx.fillStyle=C.terra; ctx.beginPath(); ctx.moveTo(dx, dy-24); ctx.lineTo(dx-5, dy-33); ctx.lineTo(dx+5, dy-33); ctx.closePath(); ctx.fill();
+      // label on arrow
+      ctx.save(); ctx.translate(140, 180); ctx.fillStyle=C.terra; ctx.font='italic 600 14px Georgia'; ctx.textAlign='left';
+      ctx.fillText('estado emocional', 6, -4); ctx.fillText('portado como propio', 6, 16); ctx.restore();
+    })();
+
+    /* Slide 5: mini genogram */
+    (function () {
+      const cv = document.getElementById('genoMini'); if (!cv) return;
+      const ctx = cv.getContext('2d');
+      const g1x=110, g2x=210, g3x=280, g4x=380, gy=55;
+      const p1x=160, p2x=330, py=175;
+      const c1x=250, c2x=330, cy=290;
+      ln(ctx, g1x, gy, g2x, gy, C.ink);
+      ln(ctx, g3x, gy, g4x, gy, C.ink);
+      ln(ctx, (g1x+g2x)/2, gy, (g1x+g2x)/2, 120, C.ink); ln(ctx,(g1x+g2x)/2,120,p1x,120,C.ink); ln(ctx,p1x,120,p1x,py-14,C.ink);
+      ln(ctx, (g3x+g4x)/2, gy, (g3x+g4x)/2, 120, C.ink); ln(ctx,(g3x+g4x)/2,120,p2x,120,C.ink); ln(ctx,p2x,120,p2x,py-14,C.ink);
+      ln(ctx, p1x, py, p2x, py, C.ink);
+      const midx=(p1x+p2x)/2;
+      ln(ctx, midx, py, midx, 250, C.ink); ln(ctx, c1x, 250, c2x, 250, C.ink);
+      ln(ctx, c1x, 250, c1x, cy-14, C.ink); ln(ctx, c2x, 250, c2x, cy-14, C.ink);
+      sq(ctx, g1x, gy, 26, C.ink); ci(ctx, g2x, gy, 14, C.ink, true);
+      sq(ctx, g3x, gy, 26, C.ink); ci(ctx, g4x, gy, 14, C.ink);
+      sq(ctx, p1x, py, 26, C.ink); ci(ctx, p2x, py, 14, C.ink);
+      const cutx=(p1x+p2x)/2;
+      ln(ctx, cutx-6, py-9, cutx+2, py+9, C.terra); ln(ctx, cutx+2, py-9, cutx+10, py+9, C.terra);
+      ci(ctx, c1x, cy, 14, C.terra); sq(ctx, c2x, cy, 26, C.ink);
+      ctx.fillStyle=C.terra; ctx.font='600 12px ui-sans-serif'; ctx.textAlign='center';
+      ctx.fillText('consultante', c1x, cy+30);
+    })();
+
+    /* Slide 16: fuller genogram template */
+    (function () {
+      const cv = document.getElementById('genoFull'); if (!cv) return;
+      const ctx = cv.getContext('2d');
+      const gy=50, py=190, cy=330;
+      const gp=[70,150,300,400];
+      ln(ctx,gp[0],gy,gp[1],gy,C.ink); ln(ctx,gp[2],gy,gp[3],gy,C.ink);
+      sq(ctx,gp[0],gy,28,C.ink,true); ci(ctx,gp[1],gy,15,C.ink);
+      sq(ctx,gp[2],gy,28,C.ink); ci(ctx,gp[3],gy,15,C.ink,true);
+      const pL=140, pR=300;
+      ln(ctx,(gp[0]+gp[1])/2,gy,(gp[0]+gp[1])/2,120,C.ink); ln(ctx,(gp[0]+gp[1])/2,120,pL,120,C.ink); ln(ctx,pL,120,pL,py-15,C.ink);
+      ln(ctx,(gp[2]+gp[3])/2,gy,(gp[2]+gp[3])/2,120,C.ink); ln(ctx,(gp[2]+gp[3])/2,120,pR,120,C.ink); ln(ctx,pR,120,pR,py-15,C.ink);
+      ln(ctx,pL,py,pR,py,C.ink);
+      const dm=(pL+pR)/2; ln(ctx,dm-6,py-10,dm+2,py+10,C.terra); ln(ctx,dm+2,py-10,dm+10,py+10,C.terra);
+      sq(ctx,pL,py,28,C.ink); ci(ctx,pR,py,15,C.ink);
+      const kids=[150,220,290];
+      ln(ctx,dm,py,dm,265,C.ink); ln(ctx,kids[0],265,kids[2],265,C.ink);
+      kids.forEach(function(kx){ ln(ctx,kx,265,kx,cy-15,C.ink); });
+      ci(ctx,kids[0],cy,15,C.ink); sq(ctx,kids[1],cy,28,C.ink); ci(ctx,kids[2],cy,15,C.ink);
+      ctx.strokeStyle=C.terra; ctx.lineWidth=2.5; ctx.beginPath(); ctx.arc(kids[1],cy,20,0,Math.PI*2); ctx.stroke();
+      ctx.fillStyle=C.terra; ctx.font='bold 15px Georgia'; ctx.textAlign='center'; ctx.fillText('?', gp[3]+24, gy+5);
+      ctx.fillStyle=C.muted; ctx.font='11px ui-sans-serif'; ctx.textAlign='left';
+      ctx.fillText('† 52a · infarto', gp[0]+18, gy-4);
+      ctx.fillText('† 52a · infarto', pL+18, py-4);
+      ctx.fillStyle=C.terra; ctx.fillText('50a hoy', kids[1]+24, cy+4);
+    })();
+
+    /* Slide 11: mtDNA line */
+    (function () {
+      const cv = document.getElementById('mtLine'); if (!cv) return;
+      const ctx=cv.getContext('2d'); const col=C.sage;
+      const my=28, cyy=98;
+      ci(ctx, 220, my, 14, col);
+      ctx.fillStyle=C.sageD; ctx.font='600 11px ui-sans-serif'; ctx.textAlign='center'; ctx.fillText('madre', 220, my-20);
+      const kx=[90,180,270,360];
+      ln(ctx, 220, my+14, 220, 64, col); ln(ctx, kx[0], 64, kx[3], 64, col);
+      kx.forEach(function(x,idx){ ln(ctx, x, 64, x, cyy-14, col);
+        if(idx%2===0) sq(ctx,x,cyy,24,col); else ci(ctx,x,cyy,12,col);
+      });
+      ctx.fillStyle=C.muted; ctx.font='600 11px ui-sans-serif'; ctx.fillText('todos los hijos', 225, 122);
+    })();
+
+    /* Slide 11: Y line */
+    (function () {
+      const cv = document.getElementById('yLine'); if (!cv) return;
+      const ctx=cv.getContext('2d'); const col=C.terra;
+      const my=28, cyy=98;
+      sq(ctx, 220, my, 24, col);
+      ctx.fillStyle=C.terraD; ctx.font='600 11px ui-sans-serif'; ctx.textAlign='center'; ctx.fillText('padre', 220, my-18);
+      const kx=[90,180,270,360];
+      ln(ctx, 220, my+12, 220, 64, col); ln(ctx, kx[0], 64, kx[3], 64, C.line);
+      kx.forEach(function(x,idx){
+        const son = idx%2===0;
+        ln(ctx, x, 64, x, cyy-14, son?col:C.line);
+        if(son) sq(ctx,x,cyy,24,col); else { ci(ctx,x,cyy,12,C.line); }
+      });
+      ctx.fillStyle=C.muted; ctx.font='600 11px ui-sans-serif'; ctx.fillText('solo hijos varones', 225, 122);
+    })();
+
+    /* Slide 13: still-face triptych */
+    function drawFace(ctx, cx, cy, r, mood, col) {
+      ctx.strokeStyle=col; ctx.lineWidth=2.6; ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke();
+      ctx.fillStyle=col;
+      if (mood==='flat') {
+        ln(ctx,cx-r*0.42,cy-r*0.18,cx-r*0.16,cy-r*0.18,col); ln(ctx,cx+r*0.16,cy-r*0.18,cx+r*0.42,cy-r*0.18,col);
+      } else {
+        ctx.beginPath(); ctx.arc(cx-r*0.32,cy-r*0.15,r*0.09,0,Math.PI*2); ctx.arc(cx+r*0.32,cy-r*0.15,r*0.09,0,Math.PI*2); ctx.fill();
+      }
+      ctx.lineWidth=2.6; ctx.beginPath();
+      if (mood==='smile') { ctx.arc(cx,cy+r*0.1,r*0.42,0.15*Math.PI,0.85*Math.PI); ctx.strokeStyle=col; ctx.stroke(); }
+      else if (mood==='flat') { ln(ctx,cx-r*0.3,cy+r*0.35,cx+r*0.3,cy+r*0.35,col); }
+      else { ctx.arc(cx,cy+r*0.55,r*0.42,1.15*Math.PI,1.85*Math.PI); ctx.strokeStyle=col; ctx.stroke(); }
+    }
+    document.querySelectorAll('.sfcanvas').forEach(function(cv){
+      const ctx=cv.getContext('2d'); const st=+cv.dataset.state; const W=cv.width,H=cv.height;
+      const mx=W*0.34, bx=W*0.68, myy=H*0.42;
+      if (st===0) {
+        ctx.strokeStyle=C.sage; ctx.lineWidth=2.5; ctx.setLineDash([]);
+        ctx.beginPath(); ctx.moveTo(mx+42,myy); ctx.bezierCurveTo(W*0.5,myy-26,W*0.5,myy-26,bx-28,myy); ctx.stroke();
+      } else {
+        ctx.strokeStyle=C.line; ctx.lineWidth=2; ctx.setLineDash([5,5]);
+        ctx.beginPath(); ctx.moveTo(mx+42,myy); ctx.lineTo(bx-28,myy); ctx.stroke(); ctx.setLineDash([]);
+      }
+      const mMood = st===0 ? 'smile' : 'flat';
+      drawFace(ctx, mx, myy, 40, mMood, st===0?C.sage:C.muted);
+      const bMood = st===0 ? 'smile' : (st===1 ? 'frown' : 'flat');
+      const bCol  = st===0 ? C.sage : (st===1 ? C.terra : C.muted);
+      drawFace(ctx, bx, myy, 28, bMood, bCol);
+      ctx.fillStyle=C.muted; ctx.font='11px ui-sans-serif'; ctx.textAlign='center';
+      ctx.fillText('madre', mx, myy+60); ctx.fillText('bebé', bx, myy+48);
+    });
+
+    /* Slide 14: sperm RNA → egg → embryo */
+    (function () {
+      const cv=document.getElementById('rnaFlow'); if(!cv) return;
+      const ctx=cv.getContext('2d'); const H=cv.height;
+      const yy=H*0.42;
+      ctx.strokeStyle=C.terra; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(55,yy,15,0,Math.PI*2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(70,yy); ctx.quadraticCurveTo(95,yy-12,110,yy+4); ctx.quadraticCurveTo(122,yy+14,135,yy-4); ctx.stroke();
+      ctx.fillStyle=C.gold; [[-4,-4],[4,-2],[-2,4],[2,2]].forEach(function(d){ ctx.beginPath(); ctx.arc(55+d[0],yy+d[1],2.2,0,Math.PI*2); ctx.fill(); });
+      ctx.fillStyle=C.terraD; ctx.font='600 11px ui-sans-serif'; ctx.textAlign='center'; ctx.fillText('esperma + ARN', 70, yy-26);
+      ctx.strokeStyle=C.muted; ctx.lineWidth=1.5; ln(ctx,150,yy,195,yy,C.muted); ctx.beginPath(); ctx.moveTo(195,yy);ctx.lineTo(188,yy-4);ctx.lineTo(188,yy+4);ctx.closePath();ctx.fillStyle=C.muted;ctx.fill();
+      ctx.strokeStyle=C.sageD; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(240,yy,26,0,Math.PI*2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(240,yy,10,0,Math.PI*2); ctx.fillStyle=C.sage+'55'; ctx.fill();
+      ctx.fillStyle=C.sageD; ctx.font='600 11px ui-sans-serif'; ctx.fillText('óvulo', 240, yy+44);
+      ctx.fillStyle=C.muted; ln(ctx,272,yy,320,yy,C.muted); ctx.beginPath(); ctx.moveTo(320,yy);ctx.lineTo(313,yy-4);ctx.lineTo(313,yy+4);ctx.closePath();ctx.fill();
+      ctx.strokeStyle=C.terra; ctx.lineWidth=2;
+      [[0,0],[13,-6],[13,7],[26,0]].forEach(function(d){ ctx.beginPath(); ctx.arc(360+d[0],yy+d[1],10,0,Math.PI*2); ctx.stroke(); });
+      ctx.fillStyle=C.terraD; ctx.font='600 11px ui-sans-serif'; ctx.fillText('embrión', 373, yy+44);
+      ctx.fillStyle=C.muted; ctx.font='10px ui-sans-serif'; ctx.fillText('expresión génica alterada', 373, yy-30);
+    })();
+
+    /* ambient constellation (cover + dividers + close) */
+    document.querySelectorAll('canvas.field').forEach(function (canvas) {
+      const ctx = canvas.getContext('2d'); const W = 1280, H = 720;
+      canvas.width = W; canvas.height = H;
+      const cols = ['#A94D36', '#8FA87A'];
+      const nodes = Array.from({ length: 16 }, function () {
+        return { x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .2, vy: (Math.random() - .5) * .2, r: 2 + Math.random() * 2.4, c: cols[Math.random() < .5 ? 0 : 1] };
+      });
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        for (let a = 0; a < nodes.length; a++) {
+          for (let b = a + 1; b < nodes.length; b++) {
+            const dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < 200) {
+              ctx.strokeStyle = 'rgba(124,62,34,' + (0.16 * (1 - dist / 200)).toFixed(3) + ')';
+              ctx.lineWidth = 1;
+              ctx.beginPath(); ctx.moveTo(nodes[a].x, nodes[a].y); ctx.lineTo(nodes[b].x, nodes[b].y); ctx.stroke();
+            }
+          }
+        }
+        for (const n of nodes) {
+          ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+          ctx.fillStyle = n.c + '55'; ctx.fill();
+          if (!reduce) {
+            n.x += n.vx; n.y += n.vy;
+            if (n.x < 0 || n.x > W) n.vx *= -1;
+            if (n.y < 0 || n.y > H) n.vy *= -1;
+          }
+        }
+        if (!reduce) requestAnimationFrame(draw);
+      }
+      draw();
+    });
+
+    go(0);
+  })();
+</script>

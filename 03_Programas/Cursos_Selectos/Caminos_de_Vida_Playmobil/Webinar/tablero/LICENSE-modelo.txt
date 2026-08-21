@@ -1,0 +1,11 @@
+Model Information:
+* title:	Playmobil Figure
+* source:	https://sketchfab.com/3d-models/playmobil-figure-c0ef8fd853404d99a7ab8ca8f3dc97d8
+* author:	SAN71AG0_LC (https://sketchfab.com/SAN71AG0_LC)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Playmobil Figure" (https://sketchfab.com/3d-models/playmobil-figure-c0ef8fd853404d99a7ab8ca8f3dc97d8) by SAN71AG0_LC (https://sketchfab.com/SAN71AG0_LC) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
