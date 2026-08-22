@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; background: #faf8f5; }
+    a { color: #8a5a2b; } a:hover { color: #6b4520; }
+    .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; min-height: 1560px; box-sizing: border-box; padding: 52px 56px 58px; background: #faf8f5; color: #1c1917; font-family: 'Newsreader', Georgia, serif;">
+
+  <!-- cabecera -->
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1.5px solid #1c1917; padding-bottom: 16px;">
+    <div>
+      <div class="mono" style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #78716c; margin-bottom: 9px;">El Cuerpo Eléctrico · Módulo 4 · eje redox</div>
+      <div style="font-size: 36px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.08;">Dónde hay nodo bioeléctrico, y dónde no</div>
+    </div>
+    <div class="mono" style="font-size: 10.5px; color: #78716c; text-align: right; line-height: 1.7;">cuatro escalas<br>Instituto Centrobioenergetica</div>
+  </div>
+
+  <!-- la regla -->
+  <div style="margin: 22px 0 30px; padding: 18px 24px; background: #f2f0ec; border-left: 3px solid #1c1917;">
+    <div style="font-size: 21px; line-height: 1.4; font-weight: 500;">El redox toca lo bioeléctrico modificando proteínas de canal, nunca como voltaje que se suma.</div>
+    <div style="font-size: 15px; line-height: 1.5; color: #57534e; margin-top: 8px;">Afirmar que el estado redox de un líquido modifica el potencial de membrana obliga a nombrar la proteína intermediaria. Sin ella, la afirmación no tiene fuente.</div>
+  </div>
+
+  <!-- el corte -->
+  <div style="display: flex; flex-direction: column; gap: 0;">
+
+    <sc-for list="{{escalas}}" as="e" hint-placeholder-count="4">
+      <div style="display: grid; grid-template-columns: 300px 388px minmax(0, 1fr); gap: 0; border-left: 4px solid {{e.tinta}}; background: {{e.fondo}}; border-top: 1px solid #e7e5e4; border-right: 1px solid #e7e5e4; border-bottom: 1px solid #e7e5e4;">
+
+        <!-- nombre de la escala -->
+        <div style="padding: 24px 26px; border-right: 1px solid {{e.divisor}};">
+          <div class="mono" style="font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #a8a29e; margin-bottom: 8px;">{{e.orden}}</div>
+          <div style="font-size: 21px; font-weight: 500; line-height: 1.2; margin-bottom: 8px;">{{e.escala}}</div>
+          <div style="font-size: 14.5px; line-height: 1.45; color: #57534e;">{{e.queSeMide}}</div>
+        </div>
+
+        <!-- el dibujo -->
+        <div style="padding: 20px 24px; border-right: 1px solid {{e.divisor}}; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 100%;" data-fig="{{e.fig}}">
+
+            <!-- líquido: puntos dispersos, sin dirección -->
+            <sc-if value="{{e.esLiquido}}" hint-placeholder-val="{{false}}">
+              <svg viewBox="0 0 340 120" style="width: 100%; height: auto;">
+                <rect x="8" y="10" width="324" height="100" rx="4" fill="#ffffff" stroke="#d6d3d1" stroke-width="1"/>
+                <g fill="#a8a29e">
+                  <circle cx="46" cy="38" r="4"/><circle cx="112" cy="26" r="4"/><circle cx="186" cy="44" r="4"/>
+                  <circle cx="262" cy="30" r="4"/><circle cx="78" cy="76" r="4"/><circle cx="150" cy="92" r="4"/>
+                  <circle cx="228" cy="72" r="4"/><circle cx="296" cy="88" r="4"/><circle cx="140" cy="58" r="4"/>
+                  <circle cx="212" cy="104" r="4"/><circle cx="34" cy="98" r="4"/><circle cx="300" cy="52" r="4"/>
+                </g>
+                <text x="170" y="66" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#78716c" letter-spacing="0.08em">SIN DIRECCIÓN</text>
+              </svg>
+            </sc-if>
+
+            <!-- matriz: cargas fijas ancladas -->
+            <sc-if value="{{e.esMatriz}}" hint-placeholder-val="{{false}}">
+              <svg viewBox="0 0 340 120" style="width: 100%; height: auto;">
+                <rect x="8" y="10" width="324" height="100" rx="4" fill="#ffffff" stroke="#d6d3d1" stroke-width="1"/>
+                <g stroke="#78716c" stroke-width="1.4" fill="none">
+                  <path d="M30 100 Q 46 60 62 100 Q 78 60 94 100"/>
+                  <path d="M120 100 Q 136 60 152 100 Q 168 60 184 100"/>
+                  <path d="M210 100 Q 226 60 242 100 Q 258 60 274 100"/>
+                </g>
+                <g fill="#57534e" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="600">
+                  <text x="42" y="52">−</text><text x="74" y="52">−</text>
+                  <text x="132" y="52">−</text><text x="164" y="52">−</text>
+                  <text x="222" y="52">−</text><text x="254" y="52">−</text>
+                </g>
+                <g fill="#a8a29e" font-family="IBM Plex Mono, monospace" font-size="11">
+                  <text x="104" y="34">Na⁺</text><text x="196" y="30">Na⁺</text><text x="288" y="40">Na⁺</text>
+                </g>
+                <text x="300" y="104" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#a8a29e" letter-spacing="0.06em">CARGA FIJA</text>
+              </svg>
+            </sc-if>
+
+            <!-- membrana: canal con compuerta -->
+            <sc-if value="{{e.esCanal}}" hint-placeholder-val="{{false}}">
+              <svg viewBox="0 0 340 120" style="width: 100%; height: auto;">
+                <rect x="8" y="46" width="324" height="30" fill="#e7e5e4"/>
+                <line x1="8" y1="46" x2="332" y2="46" stroke="#a8a29e" stroke-width="1"/>
+                <line x1="8" y1="76" x2="332" y2="76" stroke="#a8a29e" stroke-width="1"/>
+                <!-- canal reducido, abre -->
+                <g>
+                  <rect x="72" y="40" width="30" height="42" rx="4" fill="#ffffff" stroke="#1e5f74" stroke-width="1.6"/>
+                  <line x1="87" y1="40" x2="87" y2="52" stroke="#1e5f74" stroke-width="1.6"/>
+                  <line x1="87" y1="70" x2="87" y2="82" stroke="#1e5f74" stroke-width="1.6"/>
+                  <text x="87" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#1e5f74" font-weight="600">SH</text>
+                  <text x="87" y="102" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#78716c">reducida</text>
+                  <text x="87" y="114" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#78716c">abre y cierra</text>
+                </g>
+                <!-- flecha de oxidación -->
+                <g>
+                  <line x1="122" y1="61" x2="196" y2="61" stroke="#9a3412" stroke-width="1.4"/>
+                  <path d="M196 61 l -7 -4 l 0 8 z" fill="#9a3412"/>
+                  <text x="159" y="52" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#9a3412" letter-spacing="0.05em">OXIDA</text>
+                </g>
+                <!-- canal oxidado, queda abierto -->
+                <g>
+                  <rect x="216" y="40" width="30" height="42" rx="4" fill="#ffffff" stroke="#9a3412" stroke-width="1.6"/>
+                  <line x1="231" y1="40" x2="231" y2="48" stroke="#9a3412" stroke-width="1.6"/>
+                  <text x="231" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#9a3412" font-weight="600">S–S</text>
+                  <text x="231" y="102" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#78716c">oxidada</text>
+                  <text x="231" y="114" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#78716c">queda abierta</text>
+                </g>
+                <!-- K+ saliendo -->
+                <g fill="#1e5f74" font-family="IBM Plex Mono, monospace" font-size="11">
+                  <text x="278" y="36">K⁺</text><text x="296" y="24">K⁺</text>
+                </g>
+              </svg>
+            </sc-if>
+
+            <!-- oxidasa: lazo de electrones -->
+            <sc-if value="{{e.esOxidasa}}" hint-placeholder-val="{{false}}">
+              <svg viewBox="0 0 340 120" style="width: 100%; height: auto;">
+                <rect x="8" y="46" width="324" height="30" fill="#e7e5e4"/>
+                <line x1="8" y1="46" x2="332" y2="46" stroke="#a8a29e" stroke-width="1"/>
+                <line x1="8" y1="76" x2="332" y2="76" stroke="#a8a29e" stroke-width="1"/>
+                <rect x="128" y="38" width="46" height="46" rx="5" fill="#ffffff" stroke="#1e5f74" stroke-width="1.8"/>
+                <text x="151" y="66" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#1e5f74" font-weight="600">NOX</text>
+                <!-- electrones hacia afuera -->
+                <g>
+                  <line x1="151" y1="38" x2="151" y2="20" stroke="#1e5f74" stroke-width="1.4"/>
+                  <path d="M151 20 l -4 7 l 8 0 z" fill="#1e5f74"/>
+                  <text x="162" y="22" font-family="IBM Plex Mono, monospace" font-size="10" fill="#1e5f74">e⁻ → O₂⁻</text>
+                </g>
+                <!-- despolariza -->
+                <text x="196" y="60" font-family="IBM Plex Mono, monospace" font-size="10" fill="#9a3412" letter-spacing="0.05em">DESPOLARIZA</text>
+                <!-- lazo de retorno -->
+                <g stroke="#9a3412" stroke-width="1.4" fill="none">
+                  <path d="M286 60 Q 300 100 200 104 Q 130 106 118 84"/>
+                </g>
+                <path d="M118 84 l 8 1 l -3 -8 z" fill="#9a3412"/>
+                <text x="212" y="118" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#9a3412">y la despolarización la detiene</text>
+              </svg>
+            </sc-if>
+
+          </div>
+        </div>
+
+        <!-- veredicto -->
+        <div style="padding: 24px 26px; display: flex; flex-direction: column; gap: 9px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 11px; height: 11px; border-radius: 50%; background: {{e.marcaFondo}}; border: 2px solid {{e.tinta}}; flex-shrink: 0;"></div>
+            <div class="mono" style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: {{e.tinta}};">{{e.veredicto}}</div>
+          </div>
+          <div style="font-size: 15px; line-height: 1.45; color: #1c1917;">{{e.porQue}}</div>
+          <div class="mono" style="font-size: 10px; line-height: 1.5; color: #a8a29e; margin-top: auto; padding-top: 8px;">{{e.fuente}}</div>
+        </div>
+
+      </div>
+    </sc-for>
+
+  </div>
+
+  <!-- pie -->
+  <div style="display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 40px; margin-top: 34px; padding-top: 24px; border-top: 1.5px solid #1c1917;">
+
+    <div>
+      <div class="mono" style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #78716c; margin-bottom: 10px;">La moneda de cambio del eje</div>
+      <div style="font-size: 16px; line-height: 1.45; color: #1c1917;">Treinta milivoltios de potencial redox equivalen a multiplicar por diez la proporción entre cisteína reducida y oxidada en las proteínas.</div>
+      <div style="font-size: 14px; line-height: 1.45; color: #57534e; margin-top: 8px;">Proporción de tioles, no voltaje transmembranal.</div>
+    </div>
+
+    <div>
+      <div class="mono" style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #78716c; margin-bottom: 10px;">Dos magnitudes, la misma palabra</div>
+      <div style="font-size: 14px; line-height: 1.5; color: #44403c;">
+        El <strong style="font-weight: 600;">potencial redox</strong> describe el balance de una solución: escalar, sin dirección, fijado por su composición.<br><br>
+        El <strong style="font-weight: 600;">potencial de membrana</strong> es la diferencia de voltaje entre dentro y fuera: con dirección, fijada por qué canales están abiertos.
+      </div>
+      <div style="font-size: 13.5px; line-height: 1.45; color: #78716c; margin-top: 9px; font-style: italic;">Los dos se miden en milivoltios, y no son la misma variable.</div>
+    </div>
+
+    <div>
+      <div class="mono" style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #78716c; margin-bottom: 10px;">Tres cosas sin resolver</div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <sc-for list="{{abiertas}}" as="a" hint-placeholder-count="3">
+          <div style="display: flex; gap: 9px; font-size: 13.5px; line-height: 1.42; color: #44403c;">
+            <span class="mono" style="color: #a8a29e; flex-shrink: 0;">{{a.n}}</span>
+            <span>{{a.t}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":1560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const AZUL = '#1e5f74';
+    const GRIS = '#78716c';
+    const VINO = '#9a3412';
+
+    return {
+      escalas: [
+        {
+          orden: 'Escala 1 · fuera de la célula',
+          escala: 'El líquido extracelular',
+          queSeMide: 'El potencial redox del plasma — el que mide el sORP, y el que el rH₂ dice medir.',
+          fig: 'liquido', esLiquido: true, esMatriz: false, esCanal: false, esOxidasa: false,
+          veredicto: 'Sin nodo bioeléctrico',
+          porQue: 'Ninguna literatura indexada relaciona el potencial redox del plasma con el potencial de membrana de las células que baña. Mide estado sistémico, no bioelectricidad celular.',
+          fuente: 'EVIDENCIA DE AUSENCIA · MÁS DÉBIL QUE LA POSITIVA',
+          tinta: GRIS, fondo: '#f6f5f3', divisor: '#e7e5e4', marcaFondo: '#faf8f5'
+        },
+        {
+          orden: 'Escala 2 · el tejido',
+          escala: 'La matriz extracelular',
+          queSeMide: 'El potencial de Donnan, que nace de la carga fija de los glicosaminoglicanos.',
+          fig: 'matriz', esLiquido: false, esMatriz: true, esCanal: false, esOxidasa: false,
+          veredicto: 'Medible, y pasivo',
+          porQue: 'Es consecuencia obligada de la carga fija que hay. Ninguna proteína lo modula en segundos, no tiene punto de ajuste ni retroalimentación. Cambia cuando cambia la matriz misma.',
+          fuente: 'DEPENDE DEL pH · NO SE ENCONTRÓ QUE DEPENDA DEL REDOX',
+          tinta: GRIS, fondo: '#f6f5f3', divisor: '#e7e5e4', marcaFondo: '#e7e5e4'
+        },
+        {
+          orden: 'Escala 3 · la membrana',
+          escala: 'La compuerta del canal',
+          queSeMide: 'La cisteína del canal de potasio, oxidada o reducida.',
+          fig: 'canal', esLiquido: false, esMatriz: false, esCanal: true, esOxidasa: false,
+          veredicto: 'Nodo literal',
+          porQue: 'La oxidación de la cisteína quita la inactivación rápida: el canal se queda abierto, cambia la corriente de potasio, y el potencial de membrana se mueve como consecuencia. Reversible con un reductor.',
+          fuente: 'Kv1.4 · CISTEÍNA 13 · RUPPERSBERG 1991 · PMID 1908562',
+          tinta: AZUL, fondo: '#f2f6f7', divisor: '#dbe7ea', marcaFondo: AZUL
+        },
+        {
+          orden: 'Escala 4 · la membrana, al revés',
+          escala: 'La NADPH oxidasa',
+          queSeMide: 'La transferencia de electrones que forma superóxido.',
+          fig: 'oxidasa', esLiquido: false, esMatriz: false, esCanal: false, esOxidasa: true,
+          veredicto: 'Nodo literal, invertido',
+          porQue: 'Aquí el voltaje controla al redox y no al revés: la enzima despolariza al transferir electrones, y la despolarización detiene la transferencia. Solo se sostiene porque unos canales de protón compensan la carga.',
+          fuente: 'OCURRE EN EL FAGOCITO · PERTENECE AL EJE INFLAMATORIO',
+          tinta: AZUL, fondo: '#f2f6f7', divisor: '#dbe7ea', marcaFondo: AZUL
+        }
+      ],
+
+      abiertas: [
+        { n: '01', t: 'Si el redox es un eje o es la condición de fondo de los otros seis.' },
+        { n: '02', t: 'Cuál es el agente, si la matriz extracelular queda descartada por pasiva.' },
+        { n: '03', t: 'Si el lazo de la NADPH oxidasa se enseña aquí o en el eje inflamatorio.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

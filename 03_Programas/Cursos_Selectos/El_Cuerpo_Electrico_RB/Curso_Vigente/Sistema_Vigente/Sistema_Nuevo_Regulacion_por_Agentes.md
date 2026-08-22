@@ -1,4 +1,4 @@
-# De regular el terreno a regular agentes
+# De regular el sistema a regular agentes
 
 ## El sistema nuevo de Regulación Bioeléctrica
 
@@ -16,9 +16,9 @@ Parte de un diagnóstico del Tratado de Regulación Bioeléctrica (marzo 2026) y
 
 ## 1. El diagnóstico: qué ya cambió y qué no
 
-El Tratado de RB hizo una reformulación real y bien fundamentada: cambió el **marco interpretativo** del método. Pasó de *"el par detecta un microbio"* a *"el par lee el estado bioeléctrico del terreno"*. Ese cambio corrige el error fundacional de Goiz —nombrar el par con el nombre del microbio— y lo sustituye por un modelo biofísico verificable (MEC, potencial de Donnan, Vmem de Levin, interacción campo–canal iónico).
+El Tratado de RB hizo una reformulación real y bien fundamentada: cambió el **marco interpretativo** del método. Pasó de *"el par detecta un microbio"* a *"el par lee el estado bioeléctrico del sistema"*. Ese cambio corrige el error fundacional de Goiz —nombrar el par con el nombre del microbio— y lo sustituye por un modelo biofísico verificable (MEC, potencial de Donnan, Vmem de Levin, interacción campo–canal iónico).
 
-Pero el **método clínico** quedó intacto. El Capítulo 7 lo confirma: la sesión sigue siendo *calibración basal → polo negativo punto por punto → buscar el complementario → confirmar el dipolo → dejar los imanes → siguiente punto*. El punto de partida sigue siendo **la superficie del cuerpo y el catálogo de 359 dipolos**. Se cambió el nombre de lo que se encuentra (de "estreptococo" a "nodo bioeléctrico"), pero la operación de pensar es la misma: *escanear el terreno, encontrar nodos desregulados, regularlos*.
+Pero el **método clínico** quedó intacto. El Capítulo 7 lo confirma: la sesión sigue siendo *calibración basal → polo negativo punto por punto → buscar el complementario → confirmar el dipolo → dejar los imanes → siguiente punto*. El punto de partida sigue siendo **la superficie del cuerpo y el catálogo de 359 dipolos**. Se cambió el nombre de lo que se encuentra (de "estreptococo" a "nodo bioeléctrico"), pero la operación de pensar es la misma: *escanear el sistema, encontrar nodos desregulados, regularlos*.
 
 Esto es lo que, con razón, se siente como "el par tuneado". La reformulación fue del *relato*, no del *método*.
 
@@ -35,13 +35,13 @@ Trasladado a la clínica de RB, el giro es este:
 | | Sistema actual (par reformulado) | Sistema nuevo (agente biológico) |
 |---|---|---|
 | **Se empieza por** | La superficie del cuerpo / el catálogo | La pregunta: *¿qué agente perdió su agencia?* |
-| **Unidad de pensamiento** | El dipolo y el terreno difuso | El órgano-agente: meta, circuito, set point |
+| **Unidad de pensamiento** | El dipolo y el sistema difuso | El órgano-agente: meta, circuito, set point |
 | **Qué se busca** | Nodos que "prenden" al rastrear | Un set point atascado en una condición vieja |
 | **Por qué se interviene ahí** | Porque el dipolo se niveló | Porque es una intervención *clase B* sobre la señal del circuito |
 | **Qué es el imán / dipolo** | El centro del método | *Una* herramienta clase B dentro del razonamiento |
 | **Qué se lleva el alumno** | Una lista de puntos y su técnica | Un modo de razonar aplicable a un paciente que nunca vio |
 
-La frase que resume el giro: **se deja de rastrear el terreno de abajo hacia arriba, y se pasa a regular agentes de arriba hacia abajo.** El terreno no desaparece —es el entorno compartido que empuja a los agentes fuera de su set point (esa es exactamente la cascada de deterioro del Cap. 13)—, pero deja de ser el punto de partida.
+La frase que resume el giro: **se deja de rastrear el sistema de abajo hacia arriba, y se pasa a regular agentes de arriba hacia abajo.** El sistema no desaparece —es el entorno compartido que empuja a los agentes fuera de su set point (esa es exactamente la cascada de deterioro del Cap. 13)—, pero deja de ser el punto de partida.
 
 ---
 
@@ -93,17 +93,17 @@ Eso es lo que separa un sistema científico de una idea antigua.
 
 ## 4. El Tratado no se tira: es la base de evidencia
 
-El sistema nuevo no descarta el Tratado. Lo **reorganiza alrededor del agente**. Toda la materia prima ya está escrita, solo que ordenada "terreno-primero":
+El sistema nuevo no descarta el Tratado. Lo **reorganiza alrededor del agente**. Toda la materia prima ya está escrita, solo que ordenada "sistema-primero":
 
 | Material del Tratado | Su papel en el sistema nuevo |
 |---|---|
-| Cascada de deterioro del terreno (Cap. 13) | El cambio de entorno que empuja a *cualquier* agente fuera de su set point |
+| Cascada de deterioro del sistema (Cap. 13) | El cambio de entorno que empuja a *cualquier* agente fuera de su set point |
 | Vmem / Levin (Cap. 3) | El canal bioeléctrico literal = la vía clase B |
 | Macrófagos M1/M2 y modulación magnética (Cap. 16) | Circuito del agente inmune + su nodo bioeléctrico literal |
 | Vmem glandular, NIS, gap junctions (Cap. 17) | Circuitos de los agentes endocrinos |
 | ΔΨm y cascada de 9 pasos (Cap. 19) | Circuito del agente anérgico (mitocondria) + nodo bioeléctrico más literal |
 | Catálogo de 359 dipolos, 10 regiones (Cap. 8, 12) | El instrumento de lectura/aplicación, subordinado al razonamiento por agente |
-| BEV pH–rH₂ (Cap. 15) | Lectura del estado del terreno que rodea al agente |
+| BEV pH–rH₂ (Cap. 15) | Lectura del estado del sistema que rodea al agente |
 
 Lo que falta no es evidencia: es la **columna vertebral que pone al agente como unidad** y un método clínico que empiece por él.
 
@@ -154,21 +154,21 @@ Aquí está la decisión que define si esto es de verdad un sistema nuevo. El ra
 
 ### Propuesta C — Reemplazo total del rastreo
 
-**La lógica.** El sistema nuevo abandona el rastreo punto-por-punto del iliopsoas como método diagnóstico. La evaluación es enteramente por agente y circuito. El imán se aplica sobre nodos del circuito definidos por el razonamiento clínico (y, donde exista, por medición objetiva del terreno: impedanciometría, pH tisular, BEV — que el propio Cap. 22 propone como frontera).
+**La lógica.** El sistema nuevo abandona el rastreo punto-por-punto del iliopsoas como método diagnóstico. La evaluación es enteramente por agente y circuito. El imán se aplica sobre nodos del circuito definidos por el razonamiento clínico (y, donde exista, por medición objetiva del sistema: impedanciometría, pH tisular, BEV — que el propio Cap. 22 propone como frontera).
 
 **Cómo es la sesión.**
 1. Perfilamiento por agente (entrevista + signos + laboratorio si aplica).
 2. Mapa del circuito del agente y su set point.
 3. Aplicación sobre nodos anatómicos del circuito, definidos por el modelo.
-4. Verificación por cambio clínico y, cuando sea posible, por medición objetiva del terreno.
+4. Verificación por cambio clínico y, cuando sea posible, por medición objetiva del sistema.
 
 **Qué gana.** El cambio más radical y el más defendible académicamente: elimina la parte del método cuyo mecanismo *no está establecido* (el propio Cap. 7.3.5 reconoce que la respuesta del iliopsoas no está verificada, ni su fiabilidad inter-operador). Un sistema que no depende de una respuesta neuromuscular no verificada es mucho más publicable y enseñable en un foro serio.
 
-**Qué cuesta.** Es la ruptura más grande con la identidad del método y con lo que los alumnos veteranos esperan aprender. Descarta 30 años de casuística de rastreo y el catálogo como instrumento de lectura. Y **crea un hueco**: si el imán ya no se guía por el acortamiento, ¿qué guía exactamente dónde aplicarlo? Sin el rastreo, hace falta un criterio de localización nuevo (anatómico + medición del terreno), que hoy no está desarrollado. Es el camino con más trabajo pendiente antes de poder enseñarse.
+**Qué cuesta.** Es la ruptura más grande con la identidad del método y con lo que los alumnos veteranos esperan aprender. Descarta 30 años de casuística de rastreo y el catálogo como instrumento de lectura. Y **crea un hueco**: si el imán ya no se guía por el acortamiento, ¿qué guía exactamente dónde aplicarlo? Sin el rastreo, hace falta un criterio de localización nuevo (anatómico + medición del sistema), que hoy no está desarrollado. Es el camino con más trabajo pendiente antes de poder enseñarse.
 
 **Riesgo de "par tuneado":** nulo — pero a costa de dejar de ser reconociblemente biomagnetismo.
 
-**Cómo se ve el curso.** Un curso de regulación bioeléctrica clínica sin rastreo del iliopsoas: fisiología de agentes, lectura del terreno por medición, y aplicación razonada. Es casi un método nuevo con otro nombre — potente, pero comercialmente distinto a lo que la gente que ya pide temario espera.
+**Cómo se ve el curso.** Un curso de regulación bioeléctrica clínica sin rastreo del iliopsoas: fisiología de agentes, lectura del sistema por medición, y aplicación razonada. Es casi un método nuevo con otro nombre — potente, pero comercialmente distinto a lo que la gente que ya pide temario espera.
 
 ---
 
@@ -183,7 +183,7 @@ Aquí está la decisión que define si esto es de verdad un sistema nuevo. El ra
 | Defendible en foro académico | Alto | Medio | El más alto |
 | Continuidad para el alumno veterano | Buena | La mejor | La más disruptiva |
 
-**Recomendación para discutir:** la Propuesta A es la que mejor cumple el objetivo que planteaste —*"que no sea otra vez el par tuneado, sino un sistema nuevo"*— sin tirar lo que funciona ni abrir un hueco metodológico que hoy no podemos llenar. Convierte el giro en algo enseñable ya para julio, y deja la puerta abierta a evolucionar hacia C conforme la medición objetiva del terreno (Cap. 22) madure. La B es la más cómoda pero la que más fácilmente recae en el hábito viejo. La C es la más pura pero requiere resolver antes cómo se localiza la aplicación sin el rastreo.
+**Recomendación para discutir:** la Propuesta A es la que mejor cumple el objetivo que planteaste —*"que no sea otra vez el par tuneado, sino un sistema nuevo"*— sin tirar lo que funciona ni abrir un hueco metodológico que hoy no podemos llenar. Convierte el giro en algo enseñable ya para julio, y deja la puerta abierta a evolucionar hacia C conforme la medición objetiva del sistema (Cap. 22) madure. La B es la más cómoda pero la que más fácilmente recae en el hábito viejo. La C es la más pura pero requiere resolver antes cómo se localiza la aplicación sin el rastreo.
 
 ---
 

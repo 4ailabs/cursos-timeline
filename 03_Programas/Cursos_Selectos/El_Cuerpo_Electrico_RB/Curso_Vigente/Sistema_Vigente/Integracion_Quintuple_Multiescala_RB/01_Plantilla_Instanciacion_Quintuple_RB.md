@@ -161,10 +161,10 @@ No reportar $K$ si el modelo nulo no puede especificarse. No interpretar $K$ alt
 
 ---
 
-# F. Terreno como contexto
+# F. Sistema como contexto
 
 ```yaml
-terreno:
+sistema:
   eje_carga_alostatica: <bajo|medio|alto|no_medido>
   dominante: <inflamatorio|metabolico_energetico|biotransformacion|redox|barrera|ninguno>
   variables_contextuales: []
@@ -177,7 +177,7 @@ terreno:
   fuentes: []
 ```
 
-La etiqueta de terreno no reemplaza la instanciación del agente.
+La etiqueta de sistema no reemplaza la instanciación del agente.
 
 ---
 

@@ -52,6 +52,9 @@ Formato: `verbo → qué escribir en su lugar`.
 - se activa → nombrar qué hace al activarse
 - se compromete → nombrar qué función se pierde
 - optimiza → nombrar qué cambia y en qué dirección
+- sostiene · sostener · sostenido → mantiene · conserva · produce · dura · nombrar qué hace
+- permite → nombrar el verbo real: programa, fija, abre, deja pasar
+- es más profundo → nombrar sobre qué actúa y en qué plazo
 
 ---
 
@@ -62,6 +65,7 @@ Los que pueden ir en negritas o encabezado sin explicación previa.
 ### Método
 
 - regulación bioeléctrica
+- cuerpo bioeléctrico
 - rastreo
 - nodo de lesión
 - isla de despolarización

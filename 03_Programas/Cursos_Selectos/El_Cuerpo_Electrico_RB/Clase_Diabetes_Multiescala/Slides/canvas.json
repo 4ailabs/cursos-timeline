@@ -1,0 +1,445 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 720,
+      "title": "01 · Portada"
+    },
+    {
+      "file": "S02_Tesis.dc.html",
+      "x": 1360,
+      "y": 0,
+      "w": 1280,
+      "h": 720,
+      "title": "02 · La tesis"
+    },
+    {
+      "file": "S03_Coste.dc.html",
+      "x": 2720,
+      "y": 0,
+      "w": 1280,
+      "h": 720,
+      "title": "03 · El coste"
+    },
+    {
+      "file": "S04_w.dc.html",
+      "x": 4080,
+      "y": 0,
+      "w": 1280,
+      "h": 720,
+      "title": "04 · w · subió el precio"
+    },
+    {
+      "file": "S05_C.dc.html",
+      "x": 5440,
+      "y": 0,
+      "w": 1280,
+      "h": 720,
+      "title": "05 · C · se cerró una vía"
+    },
+    {
+      "file": "S06_Sigma.dc.html",
+      "x": 6800,
+      "y": 0,
+      "w": 1280,
+      "h": 720,
+      "title": "06 · Σ · se perdió el orden"
+    },
+    {
+      "file": "S07_RespuestaCorrecta.dc.html",
+      "x": 0,
+      "y": 840,
+      "w": 1280,
+      "h": 720,
+      "title": "07 · Cuando la resistencia es lo correcto"
+    },
+    {
+      "file": "S08_Infeccion.dc.html",
+      "x": 1360,
+      "y": 840,
+      "w": 1280,
+      "h": 720,
+      "title": "08 · Infección"
+    },
+    {
+      "file": "S09_Embarazo.dc.html",
+      "x": 2720,
+      "y": 840,
+      "w": 1280,
+      "h": 720,
+      "title": "09 · Embarazo"
+    },
+    {
+      "file": "S10_Pubertad.dc.html",
+      "x": 4080,
+      "y": 840,
+      "w": 1280,
+      "h": 720,
+      "title": "10 · Pubertad"
+    },
+    {
+      "file": "S11_Hibernacion.dc.html",
+      "x": 5440,
+      "y": 840,
+      "w": 1280,
+      "h": 720,
+      "title": "11 · Hibernación"
+    },
+    {
+      "file": "S12_Literatura.dc.html",
+      "x": 6800,
+      "y": 840,
+      "w": 1280,
+      "h": 720,
+      "title": "12 · Lo que la literatura no resuelve"
+    },
+    {
+      "file": "S13_Phiflex.dc.html",
+      "x": 0,
+      "y": 1680,
+      "w": 1280,
+      "h": 720,
+      "title": "13 · Lugar 1 · cambiar de combustible"
+    },
+    {
+      "file": "S14_Causas.dc.html",
+      "x": 1360,
+      "y": 1680,
+      "w": 1280,
+      "h": 720,
+      "title": "14 · Las tres causas"
+    },
+    {
+      "file": "S15_Ectopica.dc.html",
+      "x": 2720,
+      "y": 1680,
+      "w": 1280,
+      "h": 720,
+      "title": "15 · La grasa ectópica"
+    },
+    {
+      "file": "S16_Anticipar.dc.html",
+      "x": 4080,
+      "y": 1680,
+      "w": 1280,
+      "h": 720,
+      "title": "16 · Qué es anticipar"
+    },
+    {
+      "file": "S17_CircuitoHepatico.dc.html",
+      "x": 5440,
+      "y": 1680,
+      "w": 1280,
+      "h": 720,
+      "title": "17 · El circuito hepático · GABA"
+    },
+    {
+      "file": "S18_H.dc.html",
+      "x": 6800,
+      "y": 1680,
+      "w": 1280,
+      "h": 720,
+      "title": "18 · Lugar 2 · anticipar"
+    },
+    {
+      "file": "S19_Objeciones.dc.html",
+      "x": 0,
+      "y": 2520,
+      "w": 1280,
+      "h": 720,
+      "title": "19 · Las dos objeciones"
+    },
+    {
+      "file": "S20_SinPulsos.dc.html",
+      "x": 1360,
+      "y": 2520,
+      "w": 1280,
+      "h": 720,
+      "title": "20 · Sin pulsos, sin pausas"
+    },
+    {
+      "file": "S21_Lambda.dc.html",
+      "x": 2720,
+      "y": 2520,
+      "w": 1280,
+      "h": 720,
+      "title": "21 · Lugar 3 · el alcance"
+    },
+    {
+      "file": "S22_Superaditividad.dc.html",
+      "x": 4080,
+      "y": 2520,
+      "w": 1280,
+      "h": 720,
+      "title": "22 · Superaditividad"
+    },
+    {
+      "file": "S23_MafaPdx1.dc.html",
+      "x": 5440,
+      "y": 2520,
+      "w": 1280,
+      "h": 720,
+      "title": "23 · MafA y Pdx1"
+    },
+    {
+      "file": "S24_EscalaSNC.dc.html",
+      "x": 6800,
+      "y": 2520,
+      "w": 1280,
+      "h": 720,
+      "title": "24 · La corrección pasa al SNC"
+    },
+    {
+      "file": "S25_Hipotalamo.dc.html",
+      "x": 0,
+      "y": 3360,
+      "w": 1280,
+      "h": 720,
+      "title": "25 · Cómo entra la agresión"
+    },
+    {
+      "file": "S26_E.dc.html",
+      "x": 1360,
+      "y": 3360,
+      "w": 1280,
+      "h": 720,
+      "title": "26 · Lugar 4 · el valor defendido"
+    },
+    {
+      "file": "S27_T2.dc.html",
+      "x": 2720,
+      "y": 3360,
+      "w": 1280,
+      "h": 720,
+      "title": "27 · Lugar 5 · T2 · glicación"
+    },
+    {
+      "file": "S28_T1.dc.html",
+      "x": 4080,
+      "y": 3360,
+      "w": 1280,
+      "h": 720,
+      "title": "28 · T1 · amiloide"
+    },
+    {
+      "file": "S29_T3.dc.html",
+      "x": 5440,
+      "y": 3360,
+      "w": 1280,
+      "h": 720,
+      "title": "29 · T3 · karma metabólico"
+    },
+    {
+      "file": "S30_Recuento.dc.html",
+      "x": 6800,
+      "y": 3360,
+      "w": 1280,
+      "h": 720,
+      "title": "30 · El recuento"
+    },
+    {
+      "file": "S31_Limite.dc.html",
+      "x": 0,
+      "y": 4200,
+      "w": 1280,
+      "h": 720,
+      "title": "31 · El límite"
+    },
+    {
+      "file": "S32_Sensor.dc.html",
+      "x": 1360,
+      "y": 4200,
+      "w": 1280,
+      "h": 720,
+      "title": "32 · El sensor"
+    },
+    {
+      "file": "S33_Coordenadas.dc.html",
+      "x": 2720,
+      "y": 4200,
+      "w": 1280,
+      "h": 720,
+      "title": "33 · Las tres condiciones"
+    },
+    {
+      "file": "S34_Cadena.dc.html",
+      "x": 4080,
+      "y": 4200,
+      "w": 1280,
+      "h": 720,
+      "title": "34 · La cadena T11"
+    },
+    {
+      "file": "S35_Citas.dc.html",
+      "x": 5440,
+      "y": 4200,
+      "w": 1280,
+      "h": 720,
+      "title": "35 · Las citas y el hueco"
+    },
+    {
+      "file": "S36_Atavismo.dc.html",
+      "x": 6800,
+      "y": 4200,
+      "w": 1280,
+      "h": 720,
+      "title": "36 · El atavismo"
+    },
+    {
+      "file": "S37_Disenos.dc.html",
+      "x": 0,
+      "y": 5040,
+      "w": 1280,
+      "h": 720,
+      "title": "37 · Los tres diseños"
+    },
+    {
+      "file": "S38_LaminaA.dc.html",
+      "x": 1360,
+      "y": 5040,
+      "w": 1280,
+      "h": 720,
+      "title": "38 · Islote conectado"
+    },
+    {
+      "file": "S39_LaminaB.dc.html",
+      "x": 2720,
+      "y": 5040,
+      "w": 1280,
+      "h": 720,
+      "title": "39 · Islote desconectado"
+    },
+    {
+      "file": "S40_Dilema.dc.html",
+      "x": 4080,
+      "y": 5040,
+      "w": 1280,
+      "h": 720,
+      "title": "40 · El dilema"
+    },
+    {
+      "file": "S41_Autodefensa.dc.html",
+      "x": 5440,
+      "y": 5040,
+      "w": 1280,
+      "h": 720,
+      "title": "41 · El acto de autodefensa"
+    },
+    {
+      "file": "S42_LaminaC.dc.html",
+      "x": 6800,
+      "y": 5040,
+      "w": 1280,
+      "h": 720,
+      "title": "42 · El corte esquemático"
+    },
+    {
+      "file": "S43_Inversion.dc.html",
+      "x": 0,
+      "y": 5880,
+      "w": 1280,
+      "h": 720,
+      "title": "43 · La inversión de signo"
+    },
+    {
+      "file": "S44_Atractor.dc.html",
+      "x": 1360,
+      "y": 5880,
+      "w": 1280,
+      "h": 720,
+      "title": "44 · El atractor"
+    },
+    {
+      "file": "S45_TresRazones.dc.html",
+      "x": 2720,
+      "y": 5880,
+      "w": 1280,
+      "h": 720,
+      "title": "45 · Las tres razones"
+    },
+    {
+      "file": "S46_T8T11.dc.html",
+      "x": 4080,
+      "y": 5880,
+      "w": 1280,
+      "h": 720,
+      "title": "46 · T8 y T11"
+    },
+    {
+      "file": "S47_Isocalorico.dc.html",
+      "x": 5440,
+      "y": 5880,
+      "w": 1280,
+      "h": 720,
+      "title": "47 · El estudio con las mismas calorías"
+    },
+    {
+      "file": "S48_DosCosas.dc.html",
+      "x": 6800,
+      "y": 5880,
+      "w": 1280,
+      "h": 720,
+      "title": "48 · Las dos cosas que se pueden hacer"
+    },
+    {
+      "file": "S49_Estudio.dc.html",
+      "x": 0,
+      "y": 6720,
+      "w": 1280,
+      "h": 720,
+      "title": "49 · El estudio que las separa"
+    },
+    {
+      "file": "S50_Regla.dc.html",
+      "x": 1360,
+      "y": 6720,
+      "w": 1280,
+      "h": 720,
+      "title": "50 · La regla"
+    },
+    {
+      "file": "S51_Ventana.dc.html",
+      "x": 2720,
+      "y": 6720,
+      "w": 1280,
+      "h": 720,
+      "title": "51 · La ventana de ayuno"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "piso-tipografico",
+      "x": 0,
+      "y": -240,
+      "w": 470,
+      "text": "Escala de proyección: nada por debajo de 17 px en una lámina de 1280×720.\nTítulo 38–52 · cuerpo 21–26 · cintillo, folio y pie 17."
+    },
+    {
+      "id": "criterio",
+      "x": 1360,
+      "y": -240,
+      "w": 470,
+      "text": "Criterio de escritura: cada frase se entiende sin haber leído nada antes; ningún término del marco sin definir la primera vez; nada de referencias internas al catálogo; se nombra la cosa física."
+    },
+    {
+      "id": "verificar-pmid",
+      "x": 2720,
+      "y": -240,
+      "w": 470,
+      "text": "Seis citas por cotejar contra PubMed antes de que esto salga del Instituto: Hu 2022, Zhang 2023, O'Rahilly 1988, Thaler 2012, El-Osta 2008 y Talchai 2012."
+    },
+    {
+      "id": "generador",
+      "x": 4080,
+      "y": -240,
+      "w": 470,
+      "text": "El deck se genera con los scripts de _generador/. Para cambiar una lámina se edita ahí y se vuelve a correr, en vez de tocar el .dc.html a mano."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

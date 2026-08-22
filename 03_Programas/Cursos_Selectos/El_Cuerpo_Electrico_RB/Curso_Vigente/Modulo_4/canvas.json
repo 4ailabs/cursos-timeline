@@ -1,0 +1,11 @@
+{
+  "pages": [
+    { "id": "page-1", "name": "Los siete ejes" },
+    { "id": "page-2", "name": "Eje redox" }
+  ],
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1680, "h": 2320, "title": "Los siete ejes por letra", "page": "page-1" },
+    { "file": "Redox.dc.html", "x": 0, "y": 0, "w": 1440, "h": 1560, "title": "Eje redox · las cuatro escalas", "page": "page-2" }
+  ],
+  "launch": { "view": "canvas", "page": "page-2" }
+}

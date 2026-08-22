@@ -337,14 +337,14 @@ Para que este módulo entre al pipeline sin fricción, del 25 de julio hay que s
 | Perfil bioeléctrico y sus criterios de forma | `Modulo_1/Manual_de_Trabajo/Modulo_1_Bloque_1_El_Cuerpo_Electrico.md` §1 |
 | Contraindicaciones y tiempos de aplicación | `Modulo_1/Curso_Video/Clases_Didacticas/Clase_4.../Leccion_4.4_Rejilla_Combinada_y_Cierre.md` |
 | Técnica 5 — puntos de la red parasimpática | `Modulo_1/Manual_de_Trabajo/Modulo_1_Bloque_4_El_Rastreo_y_el_Nodo_de_Lesion.md` §8 |
-| Eje del estrés y los dos terrenos | `Sistema_Vigente/Regulacion_para_Mantenimiento_Modelo_por_Terrenos.md` §4 |
+| Eje del estrés y los dos terrenos | `Sistema_Vigente/Regulacion_para_Mantenimiento_Modelo_por_Sistemas.md` §4 |
 | Salvedad sobre el signo REM | Investigación 2026, T5 — reencuadre pendiente de decisión del autor |
 
 ---
 
 ## 13. Lo que todavía no existe (y aquí se suplió con la fuente primaria)
 
-1. **Las fichas de los tres ejes** de hoy no están escritas. `Sistema_Vigente/Fichas_Terrenos/` está vacía. El contenido de C3, C4a y C4b sale directo del modelo por terrenos; falta la ficha con los **4 niveles desarrollados** (circuito con nodos reales · cibernética/clase B · agencia/bioelectricidad · inferencia activa) y la **ruta de regulación** de cada uno. Sin esa ruta, la tarde enseña **lectura** del terreno pero no una secuencia de maniobras propia por terreno.
+1. **Las fichas de los tres ejes** de hoy no están escritas. `Sistema_Vigente/Fichas_Sistemas/` está vacía. El contenido de C3, C4a y C4b sale directo del modelo por terrenos; falta la ficha con los **4 niveles desarrollados** (circuito con nodos reales · cibernética/clase B · agencia/bioelectricidad · inferencia activa) y la **ruta de regulación** de cada uno. Sin esa ruta, la tarde enseña **lectura** del terreno pero no una secuencia de maniobras propia por terreno.
 2. **No hay manual del alumno del M2** ni slides. Este documento es de conducción, no de entrega al alumno.
 3. **El reencuadre de la Técnica 5** sigue pendiente de decisión del autor. Aquí se enseña con el límite dicho en voz alta.
 

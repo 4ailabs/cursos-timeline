@@ -15,15 +15,15 @@ El quíntuple no debe añadirse como un “quinto nivel” al modelo vigente de 
 
 La integración propuesta queda así:
 
-1. **Regulación Bioeléctrica aporta el fenómeno clínico y el instrumento:** terreno, rastreo, aplicación con campos magnéticos estáticos y observaciones longitudinales.
+1. **Regulación Bioeléctrica aporta el fenómeno clínico y el instrumento:** sistema, rastreo, aplicación con campos magnéticos estáticos y observaciones longitudinales.
 2. **TAME aporta la pregunta agencial:** qué sistema persigue qué meta, con qué alcance y mediante qué protocolo de interacción puede ser persuadido.
 3. **El quíntuple aporta la especificación formal:** estados, operadores, restricciones, evaluación y horizonte.
 4. **El modelo multiescala aporta la arquitectura:** qué competencias pertenecen a una escala del mismo linaje y cuándo existe realmente otro agente con meta propia.
 5. **La investigación aporta el criterio de verdad:** perturbaciones, controles, mediciones objetivas y condiciones explícitas de refutación.
 
-La nueva unidad de razonamiento ya no es el dipolo, ni el terreno aislado, ni la etiqueta “agente”. Es:
+La nueva unidad de razonamiento ya no es el dipolo, ni el sistema aislado, ni la etiqueta “agente”. Es:
 
-> **Un agente candidato, situado en un terreno y una escala, cuyo problema de control puede instanciarse, perturbarse y medirse.**
+> **Un agente candidato, situado en un sistema y una escala, cuyo problema de control puede instanciarse, perturbarse y medirse.**
 
 ---
 
@@ -77,18 +77,18 @@ Esta discriminación impide llamar “set point atascado” a cualquier falta de
 
 ---
 
-## 4. Terreno, agente y escala no son lo mismo
+## 4. Sistema, agente y escala no son lo mismo
 
-### Terreno
+### Sistema
 
-El terreno es el **contexto compartido** que modifica costos, permisos y señales. En el formalismo entra principalmente como:
+El sistema es el **contexto compartido** que modifica costos, permisos y señales. En el formalismo entra principalmente como:
 
 - parte del estado $S$;
 - modulador de $w$;
 - condición de $C(s)$;
 - fuente de flechas $S \to C$ cuando un estado persistente reescribe restricciones.
 
-Los cinco terrenos vigentes no son cinco agentes ni cinco escalas. Son **perfiles de contexto y fallo** que pueden afectar a varios agentes a la vez.
+Los cinco sistemas vigentes no son cinco agentes ni cinco escalas. Son **perfiles de contexto y fallo** que pueden afectar a varios agentes a la vez.
 
 ### Escala
 
@@ -100,7 +100,7 @@ Se reserva “agente” para un sistema con meta operacional propia y competenci
 
 ### Regla práctica
 
-> **Un terreno se perfila; una escala se localiza; un agente se instancia y se perturba.**
+> **Un sistema se perfila; una escala se localiza; un agente se instancia y se perturba.**
 
 ---
 
@@ -187,9 +187,9 @@ Una respuesta inmediata del iliopsoas no permite, por sí sola, decidir entre es
 
 Completar $S$, $O$, $w$, $C(s)$, $E$ y $H$. Si no puede completarse sin inventar, declarar la instancia incompleta.
 
-### Paso 3 — Ubicar el terreno
+### Paso 3 — Ubicar el sistema
 
-Registrar eje de carga alostática y terreno dominante como contexto, no como diagnóstico ni explicación total.
+Registrar eje de carga alostática y sistema dominante como contexto, no como diagnóstico ni explicación total.
 
 ### Paso 4 — Formular el vector de fallo
 
@@ -231,9 +231,9 @@ Medir:
 
 ---
 
-## 9. Integración con el modelo de cinco terrenos
+## 9. Integración con el modelo de cinco sistemas
 
-| Terreno | Papel formal predominante | Pregunta quíntuple inicial |
+| Sistema | Papel formal predominante | Pregunta quíntuple inicial |
 |---|---|---|
 | Carga alostática / alerta | contexto global; $E$, $H$ y costos $w$ | ¿la respuesta sigue calibrada para amenaza aunque el contexto cambió? |
 | Inflamatorio no-resolutivo | $C(s)$ y acoplamiento entre poblaciones | ¿falta resolución, falta permiso o la meta defensiva continúa activa? |
@@ -242,7 +242,7 @@ Medir:
 | Redox-envejecimiento | flechas acumulativas $S \to C$ | ¿qué restricciones se rigidificaron y cuáles son reversibles? |
 | Barrera / disbiótico | $C^-$ del huésped y posible segundo agente | ¿se perdió selectividad del huésped o hay disputa por operadores compartidos? |
 
-Los terrenos se convierten así en **puertas de instanciación**, no en explicaciones finales.
+Los sistemas se convierten así en **puertas de instanciación**, no en explicaciones finales.
 
 ---
 
@@ -253,7 +253,7 @@ Los terrenos se convierten así en **puertas de instanciación**, no en explicac
 - la base de MEC, Vmem, canales iónicos, gap junctions y campos magnéticos;
 - la técnica como fenómeno histórico y objeto de investigación;
 - el razonamiento por agentes;
-- los terrenos de mantenimiento;
+- los sistemas de mantenimiento;
 - la honestidad epistemológica y los límites.
 
 ### Lo que cambia
@@ -270,7 +270,7 @@ Los terrenos se convierten así en **puertas de instanciación**, no en explicac
 1. **El problema de control:** aprender las cinco letras con ejemplos no clínicos.
 2. **Agentes y escalas:** distinguir parte, escala, colectivo y segundo agente.
 3. **Bioelectricidad endógena:** qué está demostrado y en qué sistemas.
-4. **Terreno como contexto:** cómo $S$ modifica $C(s)$ y $w$.
+4. **Sistema como contexto:** cómo $S$ modifica $C(s)$ y $w$.
 5. **Vector de fallo:** seis maneras distintas de desregularse.
 6. **Perturbación y medición:** demostrar competencia, no inferirla.
 7. **RB como hipótesis de interacción:** instrumento, configuraciones y alternativas.

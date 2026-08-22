@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; background: #faf8f5; }
+    a { color: #8a5a2b; } a:hover { color: #6b4520; }
+    .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  </style>
+</helmet>
+
+<div style="width: 1680px; min-height: 2320px; box-sizing: border-box; padding: 52px 56px 60px; background: #faf8f5; color: #1c1917; font-family: 'Newsreader', Georgia, serif;">
+
+  <!-- cabecera -->
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1.5px solid #1c1917; padding-bottom: 16px;">
+    <div>
+      <div class="mono" style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #78716c; margin-bottom: 9px;">El Cuerpo Eléctrico · Módulo 4 · documento de trabajo</div>
+      <div style="font-size: 38px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.05;">Los siete ejes, por la letra que editan</div>
+    </div>
+    <div class="mono" style="font-size: 10.5px; color: #78716c; text-align: right; line-height: 1.7;">22 de agosto de 2026<br>Instituto Centrobioenergetica</div>
+  </div>
+
+  <!-- premisa -->
+  <div style="display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 38px; margin: 22px 0 26px; align-items: start;">
+    <div style="font-size: 18px; line-height: 1.5;">
+      El método es una <strong style="font-weight: 600;">compuerta</strong>, no una bomba. Una bomba añade un operador y cuesta para siempre; una compuerta edita una restricción y es un evento. <span style="color: #57534e;">Por eso lo que cada eje permite hacer depende de qué letra tenga rota — y no todas están al alcance de la maniobra.</span>
+    </div>
+    <div style="border-left: 2px solid #d6d3d1; padding-left: 20px; font-size: 15.5px; line-height: 1.5; color: #57534e; font-style: italic;">
+      «Opera en O, opera en C. A veces un poco en E. Y nada más. Todas las demás letras dependen de la persona.»
+      <span class="mono" style="display: block; font-style: normal; font-size: 10px; color: #a8a29e; margin-top: 6px; letter-spacing: 0.06em;">8 DE AGOSTO · PISTA 1, 1:59:10</span>
+    </div>
+  </div>
+
+  <!-- encabezados de columna -->
+  <div style="display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 0; margin-bottom: 6px;">
+    <div></div>
+    <div class="mono" style="display: grid; grid-template-columns: 176px minmax(0, 1fr) 188px 250px; gap: 20px; padding: 0 22px; font-size: 9.5px; letter-spacing: 0.11em; text-transform: uppercase; color: #a8a29e;">
+      <div>Eje · agente</div>
+      <div>Qué se rompe, y qué se hace</div>
+      <div>Nodo y marcadores</div>
+      <div>Alcance de la maniobra</div>
+    </div>
+  </div>
+
+  <!-- bandas -->
+  <div style="display: flex; flex-direction: column; gap: 13px;">
+
+    <sc-for list="{{bandas}}" as="b" hint-placeholder-count="4">
+      <div style="display: grid; grid-template-columns: 250px minmax(0, 1fr); border: 1.5px solid {{b.borde}}; border-radius: 3px; background: {{b.fondo}}; overflow: hidden;">
+
+        <!-- columna izquierda: la letra -->
+        <div style="padding: 20px 22px 18px; border-right: 1.5px solid {{b.borde}}; display: flex; flex-direction: column; gap: 9px;">
+          <div style="display: flex; align-items: baseline; gap: 9px;">
+            <div class="mono" style="font-size: 32px; font-weight: 600; line-height: 1; color: {{b.tinta}};">{{b.letra}}</div>
+            <div class="mono" style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #78716c; line-height: 1.4;">{{b.nletra}}</div>
+          </div>
+          <div style="font-size: 14.5px; line-height: 1.42; color: #44403c;">{{b.queEs}}</div>
+          <div style="font-size: 13.5px; line-height: 1.42; color: #78716c; font-style: italic;">{{b.comoFalla}}</div>
+          <div style="margin-top: auto; padding-top: 12px; border-top: 1px solid {{b.borde}};">
+            <div class="mono" style="font-size: 9.5px; letter-spacing: 0.09em; text-transform: uppercase; color: {{b.tinta}}; font-weight: 600; line-height: 1.5;">{{b.alcance}}</div>
+          </div>
+        </div>
+
+        <!-- columna derecha: los ejes -->
+        <div style="padding: 14px 22px 16px; display: flex; flex-direction: column;">
+          <sc-for list="{{b.ejes}}" as="e" hint-placeholder-count="4">
+            <div style="display: grid; grid-template-columns: 176px minmax(0, 1fr) 188px 250px; gap: 20px; padding: 13px 0; border-bottom: 1px solid #e7e5e4; align-items: start;">
+
+              <div>
+                <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px;">
+                  <div style="width: 7px; height: 7px; border-radius: 50%; background: {{e.punto}}; flex-shrink: 0;"></div>
+                  <div style="font-size: 16.5px; font-weight: 500; line-height: 1.25;">{{e.nombre}}</div>
+                </div>
+                <div style="font-size: 13px; line-height: 1.4; color: #78716c; padding-left: 15px;">{{e.agente}}</div>
+              </div>
+
+              <div>
+                <div style="font-size: 14.5px; line-height: 1.42; color: #1c1917; margin-bottom: 5px;">{{e.rompe}}</div>
+                <div style="font-size: 14px; line-height: 1.42; color: #57534e;">{{e.hace}}</div>
+              </div>
+
+              <div>
+                <div style="font-size: 13.5px; line-height: 1.4; color: #44403c; margin-bottom: 4px;">{{e.nodo}}</div>
+                <div class="mono" style="font-size: 10.5px; line-height: 1.45; color: #a8a29e;">{{e.marcadores}}</div>
+              </div>
+
+              <div style="border-left: 2px solid {{e.alcanceBorde}}; padding-left: 13px;">
+                <div style="font-size: 13.5px; line-height: 1.45; color: {{e.alcanceColor}};">{{e.alcance}}</div>
+                <div class="mono" style="font-size: 9.5px; letter-spacing: 0.06em; color: #a8a29e; margin-top: 5px;">{{e.estatuto}}</div>
+              </div>
+
+            </div>
+          </sc-for>
+        </div>
+
+      </div>
+    </sc-for>
+
+  </div>
+
+  <!-- pie -->
+  <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 40px; margin-top: 30px; padding-top: 22px; border-top: 1.5px solid #1c1917;">
+
+    <div>
+      <div style="font-size: 19px; line-height: 1.42; font-weight: 500; margin-bottom: 11px;">Los siete ejes no son siete cosas equivalentes, y esa desigualdad es la que fija el orden en que se atienden.</div>
+      <div style="font-size: 14px; line-height: 1.5; color: #57534e;">Cuatro editan una restricción y ahí la maniobra y la letra coinciden. Uno pide un operador que el imán no aporta. Uno pide una estructura temporal que una sesión no alcanza. Uno se mueve en años y va a mantenimiento.</div>
+    </div>
+
+    <div>
+      <div class="mono" style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #78716c; margin-bottom: 10px;">El orden que se dictó en clase</div>
+      <div style="font-size: 14px; line-height: 1.55; color: #44403c;">
+        Barrera y digestivo · después el inflamatorio · después biotransformación y oxidación · y el eje del estrés <strong style="font-weight: 600;">debajo de todos</strong>, como sustrato.
+      </div>
+      <div style="font-size: 13.5px; line-height: 1.45; color: #78716c; margin-top: 9px; font-style: italic;">El modelo escrito lo pone primero por ser aguas arriba. Las dos formulaciones dicen lo mismo desde distinto lugar, y el material debe enunciar una sola.</div>
+      <div class="mono" style="font-size: 9.5px; color: #a8a29e; margin-top: 7px; letter-spacing: 0.06em;">PISTA 2, 2:18:10 · UN SISTEMA DOMINANTE POR SESIÓN</div>
+    </div>
+
+    <div>
+      <div class="mono" style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #78716c; margin-bottom: 10px;">Cinco decisiones abiertas</div>
+      <div style="display: flex; flex-direction: column; gap: 7px;">
+        <sc-for list="{{abiertas}}" as="a" hint-placeholder-count="5">
+          <div style="display: flex; gap: 9px; font-size: 13.5px; line-height: 1.42; color: #44403c;">
+            <span class="mono" style="color: #a8a29e; flex-shrink: 0;">{{a.n}}</span>
+            <span>{{a.t}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":1680,"height":2320}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const AZUL  = '#1e5f74';
+    const AMBAR = '#a16207';
+    const VINO  = '#9a3412';
+    const GRIS  = '#57534e';
+
+    const banda = (letra, nletra, queEs, comoFalla, alcance, tinta, fondo, borde, ejes) => ({
+      letra, nletra, queEs, comoFalla, alcance, tinta, fondo, borde,
+      ejes: ejes.map((e) => ({
+        ...e,
+        punto: tinta,
+        alcanceBorde: e.alcanceBorde || '#d6d3d1',
+        alcanceColor: e.alcanceColor || '#44403c'
+      }))
+    });
+
+    return {
+      bandas: [
+
+        banda('C', 'restricción', 'Una vía existe y algo la mantiene cerrada.',
+          'Se retira lo que impide, y el sistema se encarga.',
+          'La maniobra y la letra coinciden', AZUL, '#f2f6f7', '#c5d9df', [
+
+          { nombre: 'Nodo de lesión', agente: 'el tejido con su gradiente',
+            rompe: 'Un grupo de células cerró la comunicación con las de al lado y quedó sin información de posición.',
+            hace: 'Se restablece el acoplamiento de la isla con su gradiente.',
+            nodo: 'Uniones comunicantes · acoplamiento local',
+            marcadores: 'simetría de talones · rastreo',
+            alcance: 'Completo. Es el caso que define el método: se mide, se coloca, se comprueba en la misma sesión.',
+            estatuto: 'YA SE TRABAJA', alcanceBorde: '#1e5f74', alcanceColor: '#1c1917' },
+
+          { nombre: 'Tono defensivo', agente: 'el ciclo defensivo',
+            rompe: 'Un ciclo defensivo empezó y no terminó. El sistema queda en activación sostenida.',
+            hace: 'Se retira la restricción para que el ciclo termine, y se restaura la alternancia.',
+            nodo: 'Red bilateral · diez puntos del tono',
+            marcadores: 'variabilidad cardíaca · ventana de tolerancia · más de 6 nodos, sistémico',
+            alcance: 'Completo, y comprobable: la prueba de respiración profunda cambia dentro de la sesión.',
+            estatuto: 'YA SE TRABAJA', alcanceBorde: '#1e5f74', alcanceColor: '#1c1917' },
+
+          { nombre: 'Digestivo', agente: 'la unidad funcional del tubo',
+            rompe: 'La isla dentro de la unidad pierde acoplamiento; la barrera pierde selectividad.',
+            hace: 'Se reabre la unidad. En el nodo distante se mueve el punto de ajuste.',
+            nodo: 'Células de Cajal · conexina 43 · once unidades',
+            marcadores: 'relato por unidad · orden fijo de dipolos',
+            alcance: 'Completo en la unidad. Cuando cierra en hígado o bulbo, ya se está tocando E y el resultado tarda más.',
+            estatuto: 'Y ALGO DE E', alcanceBorde: '#1e5f74', alcanceColor: '#1c1917' },
+
+          { nombre: 'Biotransformación', agente: 'el hígado que informa',
+            rompe: 'El hígado procesa bien y reporta mal: el hepatocito despolarizado libera GABA y deprime el aferente vagal.',
+            hace: 'Se reabre el reporte. El recorrido hepático va por zonas, buscando islas despolarizadas.',
+            nodo: 'Vmem del hepatocito — nodo literal · Geisler 2021',
+            marcadores: 'GGT · respiración profunda como comprobación',
+            alcance: 'Sobre el reporte, completo. La carga del exposoma queda fuera: bajar lo que entra no lo hace el imán.',
+            estatuto: '[EVIDENCIA] · CORRIGE AL M3', alcanceBorde: '#1e5f74', alcanceColor: '#1c1917' }
+        ]),
+
+        banda('C(s)', 'permiso según el estado', 'La vía existe y está prohibida en este estado.',
+          'No falta capacidad: falta permiso.',
+          'Falta una pieza que el imán no pone', AMBAR, '#fbf7ee', '#e3d5b4', [
+
+          { nombre: 'Metabólico-energético', agente: 'la célula que elige vía, y el hígado que informa',
+            rompe: 'Transiciones que se cerraron con razón y no volvieron a abrirse. En acidosis la energía disponible sube y la fuerza baja.',
+            hace: 'Se reabre la transición cerrada, por la vía del reporte hepático.',
+            nodo: 'Vmem del hepatocito · cinco bifurcaciones del pirofosfato de tiamina',
+            marcadores: 'HbA1c · HOMA-IR · triglicéridos/HDL · cintura',
+            alcance: 'Parcial. El reporte sí; reponer el cofactor es añadir un operador — una molécula, no un gradiente.',
+            estatuto: 'MITAD FUERA DEL MÉTODO', alcanceBorde: '#a16207', alcanceColor: '#78350f' }
+        ]),
+
+        banda('H', 'estructura temporal', 'El sistema deja de anticipar el ciclo y solo reacciona.',
+          'Cada pulso se atiende como si fuera el primero.',
+          'Alcance dudoso, y se dice', VINO, '#fbf3f0', '#e8c9bb', [
+
+          { nombre: 'Inflamatorio', agente: 'el ciclo de activación y resolución del tejido',
+            rompe: 'La meta se conserva —volver al basal— y el ciclo que la alcanzaba perdió su estructura temporal.',
+            hace: 'Se restaura el ritmo, no el nivel. Bajar la media puede empeorar si aplana los pulsos que quedaban.',
+            nodo: 'Indirecto — la inflamación llega a los nodos por vía química',
+            marcadores: 'IL-6 contestada · PCR no distingue estructura · haría falta variabilidad intradía',
+            alcance: 'Sin establecer. H es un ritmo y una sesión es un evento puntual. El campo magnético y el fenotipo reparador está enunciado sin fuente.',
+            estatuto: '[SIN VERIFICAR]', alcanceBorde: '#9a3412', alcanceColor: '#7c2d12' }
+        ]),
+
+        banda('E', 'punto de ajuste, lento', 'La meta se desplaza en años y el sistema la sigue.',
+          'No hay evento que revertir.',
+          'Fuera de la secuencia de rescate', GRIS, '#f6f5f3', '#d6d3d1', [
+
+          { nombre: 'Redox', agente: 'la matriz extracelular y el estado redox global',
+            rompe: 'Nada de golpe. El medio interno se oxida 0.16 mV al año; la defensa aguanta hasta los 45 y luego cede a 0.7.',
+            hace: 'Se sostiene la reserva y se frena la deriva. Antes de los 45, sobre la carga que entra; después, también sobre la reserva.',
+            nodo: 'Indirecto · potencial de oxidorreducción del plasma',
+            marcadores: 'sORP validado · GGT y ácido úrico como aproximaciones',
+            alcance: 'Nulo en una sesión. Un punto de ajuste que se mueve en años se cuida de fondo, siempre.',
+            estatuto: '[EVIDENCIA] · PMID 12398937' }
+        ])
+      ],
+
+      abiertas: [
+        { n: '01', t: 'Si el nodo vagal-GABA pertenece a biotransformación o al metabólico. Hoy está en los dos.' },
+        { n: '02', t: 'Cómo alcanza la maniobra una variable temporal en el eje inflamatorio.' },
+        { n: '03', t: 'Si el redox es un eje o es la condición de fondo de los otros seis.' },
+        { n: '04', t: 'El eje hormonal, comprometido desde julio, no existe en el modelo de cinco.' },
+        { n: '05', t: 'Cuál de las dos formulaciones de la jerarquía queda escrita.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

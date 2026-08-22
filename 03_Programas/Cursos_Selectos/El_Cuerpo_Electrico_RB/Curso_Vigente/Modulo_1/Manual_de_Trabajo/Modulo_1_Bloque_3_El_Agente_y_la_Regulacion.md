@@ -267,4 +267,4 @@ Todo lo anterior converge en un caso clínico reconocible de la RB: el **punto t
 
 ---
 
-*Fuentes internas: `Sistema_Vigente/` (concepto-agente-biologico, Sistema_Nuevo_Regulacion_por_Agentes, Regulacion_para_Mantenimiento_Modelo_por_Terrenos) + `Referencia/Refuerzo_Cientifico_Tarde_Agente_Biologico.md`. Marco: TAME (Michael Levin). Documento de trabajo — Instituto Centrobioenergetica, 2026.*
+*Fuentes internas: `Sistema_Vigente/` (concepto-agente-biologico, Sistema_Nuevo_Regulacion_por_Agentes, Regulacion_para_Mantenimiento_Modelo_por_Sistemas) + `Referencia/Refuerzo_Cientifico_Tarde_Agente_Biologico.md`. Marco: TAME (Michael Levin). Documento de trabajo — Instituto Centrobioenergetica, 2026.*

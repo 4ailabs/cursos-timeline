@@ -280,7 +280,7 @@ Cierra con la tarea y el puente al Módulo 4: **regular en el tiempo, no solo en
 | Programa del Bloque 1 · el quíntuple | **Escrito** |
 | Programas de los bloques 2 a 7 | Por escribir |
 | Guiones de clase | Por escribir |
-| Fichas de los cinco sistemas | `Sistema_Vigente/Fichas_Terrenos/` está vacía |
+| Fichas de los cinco sistemas | `Sistema_Vigente/Fichas_Sistemas/` está vacía |
 | Deck de láminas | Por hacer |
 | Casos para la mesa de la tarde | Por escribir |
 | Las seis láminas restantes del mapa de nodos | Heredado del Módulo 2 |
