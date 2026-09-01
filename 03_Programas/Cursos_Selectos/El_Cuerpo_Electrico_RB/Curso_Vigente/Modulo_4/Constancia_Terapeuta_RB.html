@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Constancia — Terapeuta en Regulación Bioeléctrica</title>
+<style>
+  @page { size: 279.4mm 215.9mm; margin: 0; } /* Carta, horizontal */
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 279.4mm;
+    height: 215.9mm;
+    background: #FFFFFF;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #2C2C2A;
+  }
+
+  .hoja {
+    position: relative;
+    width: 279.4mm;
+    height: 215.9mm;
+    overflow: hidden;
+  }
+
+  /* Marco: filete doble teal, con el espacio de exclusión del manual de marca */
+  .marco-ext {
+    position: absolute;
+    inset: 12mm;
+    border: 0.6mm solid #0F6E56;
+  }
+  .marco-int {
+    position: absolute;
+    inset: 15mm;
+    border: 0.25mm solid #0F6E56;
+  }
+
+  /* Marca de agua: dipolo + wordmark, centrado, detrás de todo.
+     La opacidad al 12% ya viene en el atributo `opacity` del propio SVG oficial —
+     no se declara aquí, porque una opacity en CSS le gana al atributo y lo tapa. */
+  .marca-agua {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.3);
+    z-index: 0;
+  }
+
+  .contenido {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 26mm 34mm 20mm;
+    text-align: center;
+  }
+
+  .logo {
+    width: 62mm;
+    height: auto;
+    margin-bottom: 9mm;
+  }
+
+  .eyebrow {
+    font-size: 10.5pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 11mm;
+  }
+
+  .otorga {
+    font-size: 12pt;
+    color: #2C2C2A;
+    margin-bottom: 7mm;
+  }
+
+  .nombre {
+    font-size: 30pt;
+    color: #0F6E56;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    border-bottom: 0.3mm solid #E1F5EE;
+    padding-bottom: 4mm;
+    margin-bottom: 9mm;
+    min-width: 140mm;
+  }
+
+  .cuerpo {
+    font-size: 12.5pt;
+    line-height: 1.7;
+    max-width: 175mm;
+    color: #2C2C2A;
+  }
+
+  .programa {
+    font-size: 15pt;
+    margin: 2mm 0;
+    color: #2C2C2A;
+  }
+
+  .certificacion {
+    font-size: 16pt;
+    letter-spacing: 0.5px;
+    color: #0F6E56;
+    margin: 4mm 0 2mm;
+  }
+
+  .datos {
+    font-size: 10.5pt;
+    color: #888780;
+    margin-top: 3mm;
+    letter-spacing: 0.3px;
+  }
+
+  .generacion {
+    font-size: 10.5pt;
+    font-style: italic;
+    color: #888780;
+    margin-top: 7mm;
+  }
+
+  .pie {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 10mm;
+  }
+
+  .firma {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80mm;
+  }
+  .firma .linea {
+    width: 62mm;
+    border-top: 0.25mm solid #2C2C2A;
+    margin-bottom: 2.5mm;
+  }
+  .firma .nombre-firma {
+    font-size: 11pt;
+    color: #2C2C2A;
+  }
+  .firma .cargo-firma {
+    font-size: 9pt;
+    color: #888780;
+    letter-spacing: 0.3px;
+    margin-top: 0.8mm;
+  }
+
+  .sello {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60mm;
+  }
+  .sello svg { width: 13mm; height: auto; }
+  .sello .lugar-fecha {
+    font-size: 9.5pt;
+    color: #2C2C2A;
+    margin-top: 2mm;
+  }
+
+  .endorsement {
+    position: absolute;
+    bottom: 9mm;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+
+<div class="hoja">
+  <div class="marco-ext"></div>
+  <div class="marco-int"></div>
+
+  <!-- Marca de agua: dipolo + wordmark centrado al 12%, ya viene con la opacidad fijada en el SVG oficial -->
+  <svg class="marca-agua" width="120" height="48" viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" opacity="0.12">
+    <circle cx="16" cy="24" r="10" fill="#2C2C2A"/>
+    <line x1="28" y1="24" x2="48" y2="24" stroke="#2C2C2A" stroke-width="1.5"/>
+    <circle cx="60" cy="24" r="10" fill="#2C2C2A" opacity="0.35"/>
+    <text x="80" y="20" font-family="Georgia, serif" font-size="9" fill="#2C2C2A" letter-spacing="0.5">regulación</text>
+    <text x="80" y="34" font-family="Georgia, serif" font-size="9" fill="#2C2C2A" letter-spacing="0.5">bioeléctrica</text>
+  </svg>
+
+  <div class="contenido">
+
+    <!-- Logo principal, versión light — símbolo a la izquierda del texto, como manda el manual -->
+    <svg class="logo" viewBox="0 0 380 56" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="14" cy="28" r="6" fill="#0F6E56"/>
+      <line x1="22" y1="28" x2="36" y2="28" stroke="#0F6E56" stroke-width="1"/>
+      <circle cx="44" cy="28" r="6" fill="#0F6E56" opacity="0.35"/>
+      <text x="64" y="24" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="400" fill="#2C2C2A" letter-spacing="1">regulación</text>
+      <text x="64" y="48" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="400" fill="#0F6E56" letter-spacing="1">bioeléctrica</text>
+    </svg>
+
+    <div class="eyebrow">Constancia</div>
+
+    <div class="otorga">Se otorga la presente constancia a</div>
+
+    <div class="nombre">[NOMBRE DEL PARTICIPANTE]</div>
+
+    <div class="cuerpo">
+      <div>por haber concluido satisfactoriamente la formación</div>
+      <div class="programa">El Cuerpo Eléctrico — Formación en Regulación Bioeléctrica</div>
+      <div>con la certificación de</div>
+      <div class="certificacion">Terapeuta en Regulación Bioeléctrica</div>
+      <div class="datos">11 y 25 de julio · 8 y 22 de agosto de 2026 — 32 horas</div>
+      <div class="generacion">Primera generación de terapeutas en Regulación Bioeléctrica</div>
+    </div>
+
+    <div class="pie">
+      <div class="firma">
+        <div class="linea"></div>
+        <div class="nombre-firma">Dr. Miguel Ojeda Rios</div>
+        <div class="cargo-firma">INSTITUTO CENTROBIOENERGETICA</div>
+      </div>
+
+      <div class="sello">
+        <svg viewBox="0 0 58 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="12" r="6" fill="#0F6E56"/>
+          <line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/>
+          <circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/>
+        </svg>
+        <div class="lugar-fecha">Ciudad de México, 22 de agosto de 2026</div>
+      </div>
+    </div>
+
+  </div>
+
+  <svg class="endorsement" width="270" height="16" viewBox="0 0 270 16" xmlns="http://www.w3.org/2000/svg">
+    <text x="0" y="12" font-family="Georgia, serif" font-size="9" font-weight="400" fill="#888780" letter-spacing="2.5" text-anchor="start">INSTITUTO CENTROBIOENERGETICA</text>
+  </svg>
+
+</div>
+
+</body>
+</html>
