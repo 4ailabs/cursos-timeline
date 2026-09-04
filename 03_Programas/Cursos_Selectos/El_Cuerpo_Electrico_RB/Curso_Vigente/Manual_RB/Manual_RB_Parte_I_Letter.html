@@ -1,0 +1,1022 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Manual de Regulación Bioeléctrica</title>
+<style>
+/* ══ MANUAL DE REGULACIÓN BIOELÉCTRICA · HOJA CARTA ══
+   216 × 279 mm · columna de texto con columna de margen exterior
+
+   Esta hoja no es el B5 ampliado. La carta es ancha, y una sola columna de
+   prosa a todo lo ancho deja una medida de línea ilegible o un río de blanco
+   a un costado. La página se organiza en dos franjas:
+
+     · COLUMNA DE TEXTO, 112 mm, con la prosa, a 66 caracteres por línea.
+     · COLUMNA DE MARGEN, 52 mm al canto exterior, con el número de capítulo,
+       el epígrafe, los encabezados de sección y las definiciones.
+
+   Los encabezados van al margen y no dentro del texto: quien consulta el
+   manual junto a la camilla recorre el margen y encuentra la sección sin
+   leer el cuerpo. Se colocan en su posición de flujo, así que quedan a la
+   altura del párrafo que encabezan y no ocupan alto en la columna de texto.
+
+   La tabla, el procedimiento y el árbol de decisión cruzan las dos franjas:
+   son la materia que se consulta de un vistazo y piden todo el ancho.  */
+
+@page{size:216mm 279mm;margin:0}
+
+.b5{
+  margin:0;
+  --ink:#2C2C2A; --soft:#4A4643; --faint:#888780;
+  --paper:#FFFFFF; --line:#DEDBD2; --hair:#ECEAE1; --card:#F1EFE8;
+  --teal:#0F6E56; --teal-deep:#0B5644; --teal-tint:#E1F5EE; --coral:#D85A30;
+  --serif:"Avenir Next","Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+  --sans:system-ui,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --display:"Avenir Next","Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+  --margen:52mm;      /* ancho de la columna de margen */
+  --canal:8mm;        /* separación entre las dos franjas */
+  --exterior:17mm;    /* margen exterior de la página */
+  --medianil:27mm;    /* medianil interior, para el lomo */
+  color:var(--ink);
+}
+.b5 *{box-sizing:border-box}
+html,body{margin:0;background:#fff}
+.b5 .page{width:216mm;height:279mm;background:var(--paper);position:relative;overflow:hidden;
+  color:var(--ink);font-family:var(--serif);display:flex;flex-direction:column;
+  margin:0 auto;box-shadow:none;page-break-after:always;break-after:page}
+.b5 .page:last-child{page-break-after:auto;break-after:auto}
+.b5 .page.blank{background:#fff}
+
+@media screen{
+  body{background:#e9e8e3;padding:20px 0}
+  .b5 .page{box-shadow:0 8px 30px rgba(0,0,0,.16);margin:0 auto 14px}
+  .b5 .page.blank{border:1px dashed #ccc}
+}
+
+/* ── LA CAJA, EN ESPEJO ─────────────────────────────────────────────────
+   En recto el medianil va a la izquierda y la columna de margen a la derecha.
+   En verso, al revés. */
+.pg-recto.prem{padding-left:var(--medianil);padding-right:var(--exterior)}
+.pg-verso.prem{padding-right:var(--medianil);padding-left:var(--exterior)}
+.pg-recto.indice{padding-left:calc(var(--medianil) + 4mm);padding-right:calc(var(--exterior) + 4mm)}
+.pg-verso.indice{padding-right:calc(var(--medianil) + 4mm);padding-left:calc(var(--exterior) + 4mm)}
+.pg-recto.cover,.pg-recto.parte{padding-left:calc(var(--medianil) + 8mm);padding-right:calc(var(--exterior) + 8mm)}
+.pg-verso.cover,.pg-verso.parte{padding-right:calc(var(--medianil) + 8mm);padding-left:calc(var(--exterior) + 8mm)}
+
+.b5 .prem .body b,.b5 .prem li b,.b5 .prem td b,.b5 .prem th b,
+.b5 .prem .callout p b,.b5 .prem .pull p b{font-weight:400;color:inherit}
+
+/* ── PORTADA / COLOFÓN ── */
+.b5 .cover{padding-top:26mm;padding-bottom:20mm}
+.b5 .cover .wm{position:absolute;right:-34mm;bottom:38mm;width:170mm;height:auto;opacity:.08}
+.b5 .cover .logo{display:flex;align-items:center;gap:4mm}
+.b5 .cover .logo svg{height:10mm}
+.b5 .cover .wordmark{font-size:17px;letter-spacing:.02em;color:var(--ink)}
+.b5 .cover .wordmark b{color:var(--teal);font-weight:400}
+.b5 .cover .gap-t{flex:382 0 0}
+.b5 .cover .gap-b{flex:618 0 0}
+.b5 .cover .kicker{font:600 11.5px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--teal);margin:0 0 7mm}
+.b5 .cover h1{font-family:var(--display);font-weight:600;font-size:47px;line-height:1.05;letter-spacing:-.018em;margin:0 0 6mm;max-width:15ch}
+.b5 .cover .sub{font-size:17px;font-style:italic;color:var(--soft);line-height:1.5;max-width:36ch;margin:0}
+.b5 .cover .meta{border-top:1px solid var(--line);padding-top:5mm;display:flex;justify-content:space-between;align-items:flex-end}
+.b5 .cover .meta .who{font-size:12.5px;line-height:1.5}
+.b5 .cover .meta .who b{color:var(--teal);font-weight:400}
+.b5 .cover .meta .who svg{height:7mm}
+.b5 .cover .meta .ed{font:500 8.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);text-align:right;line-height:1.7}
+.b5 .cover .endfoot{position:absolute;left:0;right:0;bottom:10mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+.b5 .colofon .sub{font-size:13.5px;font-style:normal}
+
+/* ── PORTADILLA DE PARTE ── */
+.b5 .parte{padding-top:28mm;padding-bottom:20mm}
+.b5 .parte .wm{position:absolute;right:-28mm;bottom:42mm;width:150mm;height:auto;opacity:.06}
+.b5 .parte .gap-t{flex:382 0 0}
+.b5 .parte .gap-b{flex:618 0 0}
+.b5 .parte .rom{font-family:var(--display);font-weight:600;font-size:86px;line-height:.86;color:var(--teal);opacity:.22;letter-spacing:-.03em;margin:0 0 3mm}
+.b5 .parte .kicker{font:600 10.5px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--teal);margin:0 0 4mm}
+.b5 .parte h1{font-family:var(--display);font-weight:600;font-size:36px;line-height:1.1;letter-spacing:-.012em;margin:0 0 6mm;max-width:18ch}
+.b5 .parte .sub{font-size:14.5px;font-style:italic;color:var(--soft);line-height:1.55;max-width:40ch;margin:0}
+.b5 .parte .conten{border-top:1px solid var(--line);padding-top:5mm;margin-top:7mm}
+.b5 .parte .conten ul{margin:0;padding:0}
+.b5 .parte .conten li{list-style:none;font:400 10.5px var(--sans);letter-spacing:.03em;color:var(--soft);
+  padding:1.6mm 0;border-bottom:.5px solid var(--hair);display:flex;gap:5mm}
+.b5 .parte .conten li i{font-style:normal;color:var(--teal);font-weight:600;width:24mm;flex:none;
+  font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;padding-top:.6mm}
+.b5 .parte .endfoot{position:absolute;left:0;right:0;bottom:10mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+
+/* ── ÍNDICE, a dos columnas ── */
+.b5 .indice{padding-top:18mm;padding-bottom:16mm}
+.b5 .indice .brand{display:flex;align-items:center;gap:3mm;margin-bottom:6mm;padding-bottom:3mm;border-bottom:1px solid var(--hair)}
+.b5 .indice .brand svg{height:6mm}
+.b5 .indice .wordmark{font-size:11px;color:var(--ink);white-space:nowrap}
+.b5 .indice .wordmark b{color:var(--teal);font-weight:400}
+.b5 .indice .sp{flex:1}
+.b5 .indice .rh{font:400 8px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.b5 .indice .opener{margin:0 0 6mm}
+.b5 .indice .kbar{width:18mm;height:2.4mm;background:var(--teal);border-radius:1px;margin:0 0 3mm}
+.b5 .indice .eyebrow{font:600 10px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:0 0 1.8mm}
+.b5 .indice h1{font-family:var(--display);font-weight:600;font-size:27px;letter-spacing:-.005em;margin:0}
+.b5 .indice .prt{font:700 9px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:6mm 0 2.4mm;
+  break-inside:avoid;break-after:avoid}
+.b5 .indice .prt:first-of-type{margin-top:0}
+.b5 .indice .grp{font:700 9.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+  margin:0 0 1.6mm;padding-bottom:1.6mm;border-bottom:.5px solid var(--line);break-inside:avoid;break-after:avoid}
+.b5 .indice .grp.mt{margin-top:4.5mm}
+.b5 .indice .toc{list-style:none;margin:0;padding:0}
+.b5 .indice .toc li{display:flex;align-items:baseline;gap:3.5mm;padding:1.3mm 0;border-bottom:1px solid var(--hair);break-inside:avoid}
+.b5 .indice .toc li .pg{font:700 10.5px var(--sans);color:var(--teal);width:8mm;flex:none;font-variant-numeric:tabular-nums;text-align:right}
+.b5 .indice .toc li .body{flex:1;min-width:0}
+.b5 .indice .toc li .t{font-family:var(--display);font-weight:600;font-size:11px;color:var(--ink);line-height:1.3}
+.b5 .indice .toc li .t .step{font:700 8px var(--sans);color:#fff;background:var(--teal);border-radius:2px;
+  padding:.4mm 1.5mm;margin-right:2mm;vertical-align:1.5px;font-variant-numeric:tabular-nums}
+.b5 .indice .foot{position:absolute;left:0;right:0;bottom:10mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+
+/* ── PÁGINA DE CONTENIDO ─────────────────────────────────────────────── */
+.b5 .prem{padding-top:19mm;padding-bottom:20mm}
+.b5 .prem .brand{display:flex;align-items:center;gap:3mm;margin-bottom:6mm;padding-bottom:3mm;border-bottom:1px solid var(--hair)}
+.b5 .prem .brand svg{height:6mm}
+.b5 .prem .wm2{font-size:11px;color:var(--ink);white-space:nowrap;flex:none}
+.b5 .prem .wm2 b{color:var(--teal);font-weight:400}
+.b5 .prem .sp{flex:1;min-width:5mm}
+.b5 .prem .rh{font:400 8px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+  line-height:1.25;text-align:right;min-width:0;max-width:80mm}
+.b5 .pg-verso.prem .brand{flex-direction:row-reverse}
+.b5 .pg-verso.prem .rh{text-align:left}
+
+/* la columna de texto se abre dejando libre la franja del margen exterior */
+.b5 .pg-recto.prem .body,.b5 .pg-recto.prem .caphead,.b5 .pg-recto.prem .bloq{
+  padding-right:calc(var(--margen) + var(--canal))}
+.b5 .pg-verso.prem .body,.b5 .pg-verso.prem .caphead,.b5 .pg-verso.prem .bloq{
+  padding-left:calc(var(--margen) + var(--canal))}
+
+/* ── LA COLUMNA DE MARGEN ──
+   Todo lo que va aquí se saca del flujo con position:absolute, así que
+   conserva su altura de flujo y no ocupa alto en la columna de texto. */
+/* Al margen van los encabezados de sección y las definiciones, que son cortos.
+   El epígrafe se queda en la columna de texto: es la entradilla del capítulo,
+   y puesto al margen desbordaba la franja sin ocupar alto en el flujo. */
+.b5 .prem .sub,.b5 .prem .shead,.b5 .prem .callout{
+  position:absolute;width:var(--margen);margin:0}
+.b5 .pg-recto.prem .sub,.b5 .pg-recto.prem .shead,.b5 .pg-recto.prem .callout{right:var(--exterior)}
+.b5 .pg-verso.prem .sub,.b5 .pg-verso.prem .shead,.b5 .pg-verso.prem .callout{left:var(--exterior)}
+
+.b5 .prem .sub{font-family:var(--display);font-size:11px;font-weight:600;line-height:1.28;
+  letter-spacing:0;text-transform:none;color:var(--teal-deep);padding-top:.8mm;
+  border-top:1px solid var(--teal)}
+.b5 .prem .shead{font-family:var(--display);font-size:10px;font-weight:600;line-height:1.28;
+  letter-spacing:0;text-transform:none;color:var(--soft);padding-top:.8mm;border-top:.5px solid var(--line)}
+/* La entradilla del capítulo cruza las dos franjas: es lo que se lee antes de
+   entrar, y a la medida de la columna de texto se levantaría como una torre. */
+.b5 .prem p.epi,.b5 .prem .body p.epi{font-size:13.5px;font-style:italic;color:var(--teal-deep);
+  line-height:1.5;margin:0 0 6.5mm;padding:0 0 4.5mm;max-width:none;
+  border-bottom:.5px solid var(--hair)}
+.b5 .pg-recto.prem .body p.epi{margin-right:calc(-1 * (var(--margen) + var(--canal)))}
+.b5 .pg-verso.prem .body p.epi{margin-left:calc(-1 * (var(--margen) + var(--canal)))}
+/* la primera columna de una tabla de tres no se parte en dos renglones por un guion */
+.b5 .prem table.nodos td:first-child{padding-right:7mm}
+.b5 .prem .callout{padding:0 0 0 3.5mm;border-left:1.5px solid var(--teal)}
+.b5 .prem .callout .w{display:block;font-family:var(--sans);font-size:8px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:1mm}
+.b5 .prem .callout p{font-size:9.5px;line-height:1.42;color:var(--soft);margin:0;max-width:none}
+
+/* ── LA COLUMNA DE TEXTO ── */
+.b5 .prem .body{flex:0 0 auto;min-height:0;position:static}
+.b5 .prem .body p{font-size:12.5px;line-height:1.55;margin:0 0 3mm;text-align:left}
+.b5 .prem .body p.ref{font-size:10px;color:var(--faint);font-style:italic;line-height:1.45;margin:-1.5mm 0 3.5mm}
+.b5 .prem .rot{font-family:var(--display);font-weight:600;font-size:13.5px;color:var(--ink);
+  margin:5mm 0 1.8mm;line-height:1.25}
+.b5 .prem .rot+table,.b5 .prem .rot+ul,.b5 .prem .rot+ol{margin-top:1.4mm}
+
+.b5 .prem ol.proc{margin:0 0 3.5mm;padding:0;list-style:none;counter-reset:p}
+.b5 .prem ol.proc>li{counter-increment:p;position:relative;padding-left:9mm;font-size:12.5px;line-height:1.5;margin-bottom:2.4mm}
+.b5 .prem ol.proc>li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:.4mm;
+  font:700 9px var(--sans);color:var(--teal);font-variant-numeric:tabular-nums}
+.b5 .prem ul.dash{margin:0 0 3.5mm;padding:0;list-style:none}
+.b5 .prem ul.dash>li{position:relative;padding-left:5.5mm;font-size:12.5px;line-height:1.5;margin-bottom:2mm}
+.b5 .prem ul.dash>li::before{content:"";position:absolute;left:0;top:2.4mm;width:3mm;height:.5px;background:var(--teal)}
+
+.b5 .prem .pull{margin:4mm 0;padding:3mm 0;border-top:.5px solid var(--teal);border-bottom:.5px solid var(--teal)}
+.b5 .prem .pull p{font-size:13px;line-height:1.45;color:var(--ink);margin:0}
+.b5 .prem .pull p.cita{font-style:italic;color:var(--soft)}
+.b5 .prem .pull .attr{display:block;font:600 8.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--faint);margin-top:2mm;font-style:normal}
+
+/* ── LO QUE CRUZA LAS DOS FRANJAS ──
+   Tabla, procedimiento y árbol de decisión se consultan de un vistazo y
+   ganan con el ancho completo de la caja. */
+.b5 .pg-recto.prem .body table,.b5 .pg-recto.prem .body pre.tree{
+  margin-right:calc(-1 * (var(--margen) + var(--canal)))}
+.b5 .pg-verso.prem .body table,.b5 .pg-verso.prem .body pre.tree{
+  margin-left:calc(-1 * (var(--margen) + var(--canal)))}
+
+.b5 .prem table{width:auto;min-width:100%;border-collapse:collapse;margin-top:2.4mm;margin-bottom:4mm}
+.b5 .prem th,.b5 .prem td{text-align:left;padding:2mm 4mm 2mm 0;font-size:11px;line-height:1.42;
+  border-bottom:.5px solid var(--hair);vertical-align:top}
+.b5 .prem thead th{font:700 8.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--teal-deep);border-bottom:1px solid var(--teal)}
+.b5 .prem table.spec th{width:44mm;color:var(--teal-deep);font-weight:600;padding-right:6mm}
+.b5 .prem table.spec td{color:var(--soft)}
+.b5 .prem table.nodos td:first-child{color:var(--ink)}
+.b5 .prem table.idx td:first-child{width:9mm;color:var(--teal);font-weight:600;font-variant-numeric:tabular-nums}
+.b5 .prem td:last-child{padding-right:0}
+.b5 .data{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;background:var(--teal-tint);padding:0 3px;border-radius:2px}
+
+.b5 .prem .formula{text-align:center;font-family:var(--display);font-size:16px;color:var(--teal-deep);
+  margin:4mm 0 5mm;letter-spacing:.02em}
+.b5 .prem pre.tree{font-family:ui-monospace,Menlo,monospace;font-size:9.5px;line-height:1.42;color:var(--soft);
+  background:#FCFBF7;border:.5px solid var(--line);border-radius:2mm;padding:4mm 5mm;
+  margin-top:2.4mm;margin-bottom:4mm;white-space:pre;overflow:hidden}
+.b5 .prem pre.tree.sigue{border-top-style:dashed;margin-top:0}
+.b5 .prem pre.tree.sigue::before{content:"continúa";display:block;font:600 7px var(--sans);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:2mm}
+
+/* ── APERTURA DE BLOQUE Y CABEZA DE CAPÍTULO ── */
+.b5 .prem .bloq{margin:0 0 7mm;padding-bottom:4.5mm;border-bottom:1.5px solid var(--teal)}
+.b5 .prem .bloq .kbar{width:18mm;height:2.4mm;background:var(--teal);border-radius:1px;margin:0 0 3mm}
+.b5 .prem .bloq .eyebrow{font:600 10px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin:0 0 2.4mm}
+.b5 .prem .bloq h1{font-family:var(--display);font-weight:600;font-size:29px;line-height:1.1;margin:0 0 3mm;letter-spacing:-.01em}
+.b5 .prem .bloq .sub{position:static;width:auto;font-family:var(--serif);font-size:13px;font-style:italic;
+  font-weight:400;text-transform:none;letter-spacing:0;color:var(--soft);line-height:1.5;
+  margin:0;padding:0;border:0}
+
+/* el número del capítulo vive en la columna de margen, alineado con el título */
+.b5 .prem .caphead{position:relative;margin:0 0 3mm}
+.b5 .prem .caphead .capn{position:absolute;top:.5mm;width:var(--margen);
+  font-family:var(--display);font-weight:600;font-size:30px;line-height:1;color:var(--teal);opacity:.28;
+  font-variant-numeric:tabular-nums;background:none;padding:0;border-radius:0}
+.b5 .pg-recto.prem .caphead .capn{right:calc(-1 * (var(--margen) + var(--canal)));text-align:left}
+.b5 .pg-verso.prem .caphead .capn{left:calc(-1 * (var(--margen) + var(--canal)));text-align:right}
+.b5 .prem .caphead h1{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.14;
+  margin:0;letter-spacing:-.006em}
+
+.b5 .prem .foot{position:absolute;left:0;right:0;bottom:10mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+.b5 .prem .folio{position:absolute;bottom:9mm;font:400 9px var(--sans);color:var(--faint)}
+.b5 .pg-recto.prem .folio{right:var(--exterior)}
+.b5 .pg-verso.prem .folio{left:var(--exterior)}
+
+.b5 p,.b5 li{widows:2;orphans:2}
+.b5 table,.b5 .callout,.b5 .pull,.b5 pre.tree,.b5 .caphead,.b5 .bloq{break-inside:avoid}
+
+</style></head>
+<body class="b5">
+<section class="page pg-recto cover">
+<svg class="wm" viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg>
+<div class="logo"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wordmark">regulación <b>bioeléctrica</b></span></div>
+<div class="gap-t"></div>
+<div><p class="kicker">El Cuerpo Eléctrico · Parte I</p><h1>El fundamento común a todos los ejes</h1>
+<p class="sub">Qué evalúa el método, con qué campo magnético, con qué nomenclatura y procedimiento de medición, con qué regla se rastrea y dentro de qué límite se aplica.</p></div>
+<div class="gap-b"></div>
+<div class="meta"><div class="who"><b>Dr. Miguel Ojeda Rios</b><br>Instituto Centrobioenergetica</div>
+<div class="ed">Parte I del manual<br>Edición 2026</div></div>
+<div class="endfoot">INSTITUTO CENTROBIOENERGETICA</div>
+</section>
+<section class="page blank pg-verso"></section>
+<section class="page pg-recto indice">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wordmark">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Manual del método</span></div>
+<div class="opener"><div class="kbar"></div><p class="eyebrow">Contenido</p><h1>Índice</h1></div>
+<div class="prt">Parte I · El fundamento común a todos los ejes</div><div class="grp">Bloque I · Fundamento bioeléctrico del método</div><ul class="toc"><li><span class="pg">7</span><div class="body"><div class="t"><span class="step">1</span>Definición del método</div></div></li><li><span class="pg">8</span><div class="body"><div class="t"><span class="step">2</span>Antecedentes</div></div></li><li><span class="pg">10</span><div class="body"><div class="t"><span class="step">3</span>El voltaje de membrana</div></div></li><li><span class="pg">13</span><div class="body"><div class="t"><span class="step">4</span>La matriz extracelular</div></div></li><li><span class="pg">15</span><div class="body"><div class="t"><span class="step">5</span>Clases de agente</div></div></li><li><span class="pg">19</span><div class="body"><div class="t"><span class="step">6</span>El sistema que se regula</div></div></li></ul><div class="grp">Bloque II · El campo magnético: mecanismos, intensidad y alcance</div><ul class="toc"><li><span class="pg">25</span><div class="body"><div class="t"><span class="step">7</span>Cómo llega el campo a la célula</div></div></li><li><span class="pg">27</span><div class="body"><div class="t"><span class="step">8</span>Intensidad y alcance</div></div></li><li><span class="pg">29</span><div class="body"><div class="t"><span class="step">9</span>El gradiente</div></div></li><li><span class="pg">30</span><div class="body"><div class="t"><span class="step">10</span>El conjunto magnético</div></div></li></ul><div class="grp">Bloque III · Nomenclatura y procedimiento de medición</div><ul class="toc"><li><span class="pg">32</span><div class="body"><div class="t"><span class="step">11</span>Nodo y dipolo</div></div></li><li><span class="pg">34</span><div class="body"><div class="t"><span class="step">12</span>El reflejo del iliopsoas y el acortamiento de la extremidad</div></div></li><li><span class="pg">35</span><div class="body"><div class="t"><span class="step">13</span>La medición de la simetría</div></div></li><li><span class="pg">37</span><div class="body"><div class="t"><span class="step">14</span>La isla bioeléctrica</div></div></li></ul><div class="grp">Bloque IV · Rastreo, escala del proceso y tiempos de aplicación</div><ul class="toc"><li><span class="pg">39</span><div class="body"><div class="t"><span class="step">15</span>La regla del rastreo</div></div></li><li><span class="pg">42</span><div class="body"><div class="t"><span class="step">16</span>La escala del proceso</div></div></li><li><span class="pg">42</span><div class="body"><div class="t"><span class="step">17</span>La rejilla</div></div></li><li><span class="pg">44</span><div class="body"><div class="t"><span class="step">18</span>Tiempo y retiro</div></div></li></ul><div class="grp">Bloque V · Criterios de seguridad y derivación</div><ul class="toc"><li><span class="pg">46</span><div class="body"><div class="t"><span class="step">19</span>Situaciones que obligan a valorar</div></div></li><li><span class="pg">47</span><div class="body"><div class="t"><span class="step">20</span>Hallazgos que obligan a derivar</div></div></li><li><span class="pg">47</span><div class="body"><div class="t"><span class="step">21</span>Urgencias</div></div></li></ul>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div>
+</section>
+<section class="page pg-verso indice">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wordmark">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Manual del método</span></div>
+
+<div class="grp">Bloque VI · Registro clínico y reglas de conducción del rastreo</div><ul class="toc"><li><span class="pg">49</span><div class="body"><div class="t"><span class="step">22</span>La ficha y el mapa corporal</div></div></li><li><span class="pg">50</span><div class="body"><div class="t"><span class="step">23</span>Reglas de conducción del rastreo</div></div></li></ul><div class="grp">Bloque VII · Alcance y límites de la técnica</div><ul class="toc"><li><span class="pg">52</span><div class="body"><div class="t"><span class="step">24</span>Qué significa un resultado ausente</div></div></li><li><span class="pg">53</span><div class="body"><div class="t"><span class="step">25</span>El efecto del imán y sus tres consecuencias</div></div></li></ul>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">El fundamento común a todos los ejes</span></div>
+<div class="caphead"><span class="capn">·</span><h1>El estado de referencia del tejido es un voltaje de membrana</h1></div><div class="body"><p>El estado en el que un tejido debe funcionar es un voltaje de membrana, y ese voltaje instruye el comportamiento de la célula. Decide si prolifera o se diferencia, qué secreta una glándula, qué deja pasar una unión estrecha y si las células vecinas quedan acopladas entre sí. El mismo voltaje fija el medio en el que el tejido trabaja: abre y cierra los canales iónicos, y el flujo de iones que pasa por ellos determina el pH, la resistividad y el estado de oxidación-reducción, que son las tres variables con las que se describe cualquier medio. Las tres actúan de vuelta sobre el voltaje, y dentro de ese circuito el que organiza es el voltaje de membrana; las tres son lecturas de su estado.</p>
+<p>La enfermedad crónica corresponde a un tejido que conserva una referencia que dejó de ajustarse a la situación presente, con daño estructural o sin él. La inflamación se resuelve con un programa propio, que apaga el proceso y repara el tejido. El macrófago tiene dos modos, el inflamatorio y el reparador, y lo que decide en cuál está es su voltaje de membrana, a través de los canales de potasio. Mientras ese voltaje siga igual, el macrófago permanece en el modo inflamatorio, libera citocinas y recluta más células al sitio, y la inflamación continúa.</p>
+<p>La intervención consiste en modificar ese voltaje con un campo magnético. Un imán no aporta cargas, no aporta energía y no transfiere sustancia. Sobre un ion suelto la fuerza que ejerce queda por debajo de la energía térmica del organismo, y lo que el campo alcanza son estructuras donde miles de moléculas están alineadas: en la membrana ejerce un torque sobre los fosfolípidos, esa reorientación deforma la geometría de los canales iónicos y el voltaje cambia. El canal de calcio tipo T, la magnetita del tejido y el macrófago son las otras tres vías, y las cuatro convergen en el voltaje de membrana.</p>
+<p>El tejido responde dentro de una ventana estrecha de intensidad, de 2 a 80 militeslas. En la superficie de un imán clínico la densidad del campo es de 100 a 500 militeslas, y decae con la distancia hasta entrar en esa ventana a dos o tres centímetros de profundidad. Aumentar la intensidad del imán no aumenta el resultado. Lo determinan la densidad que llega al tejido, el gradiente —qué tan rápido cambia el campo de un punto al siguiente— y el sitio donde se coloca.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">5</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Parte I</span></div>
+<div class="body"><p>El sitio no se deduce del nombre de la enfermedad. Un mismo cansancio, una misma molestia y un mismo diagnóstico corresponden a estados distintos en personas distintas, y el perfil de cada persona cambia de una sesión a otra. Cada sesión empieza rastreando, y el sitio se busca de nuevo cada vez.</p>
+<p>El cambio de voltaje que introduce el imán se propaga por las uniones comunicantes, modifica el tono del iliopsoas y acorta una extremidad, lo que se comprueba comparando los dos talones. El izquierdo es la referencia y el derecho es el que acorta. La extremidad acortada no señala la zona interrogada: lo que se mide es la respuesta del sistema completo a la perturbación. La medición se repite igual en cada colocación, y un nodo verdadero da la misma respuesta cada vez.</p>
+<p>Encontrado el nodo, el segundo imán se prueba primero al lado y después sobre el riñón, la suprarrenal, el hígado y el bulbo raquídeo, en ese orden. El punto de la secuencia donde los dos talones quedan a la misma altura indica hasta dónde llega el proceso: si emparejan con el segundo imán al lado, está acotado a esa zona; si solo emparejan al llegar a uno de esos órganos, ese órgano regulador está comprometido también.</p>
+<p>En una fractura los extremos del hueso quedan separados, y las células del hueso fabrican hueso nuevo con calcio y colágena hasta unirlos. Eso se hace con material. El imán cambia el voltaje de la membrana, y con ese cambio la célula vuelve a ejecutar funciones que había dejado de ejecutar. Ese es su alcance entero.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">6</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">1 · Definición del método</span></div>
+<div class="bloq"><div class="kbar"></div><p class="eyebrow">Bloque I</p><h1>Fundamento bioeléctrico del método</h1><p class="sub">Qué evalúa el método, de dónde procede, cuál es la variable que organiza el tejido, en qué medio ocurre, por qué un campo magnético puede modificarla y de qué partes se compone un sistema que se regula.</p></div>
+<div class="caphead"><span class="capn">1</span><h1>Definición del método</h1></div>
+<p class="epi">El método evalúa el estado bioeléctrico de un tejido y regula su microambiente con campos magnéticos estáticos. El trabajo tiene dos momentos: el rastreo, que produce el perfil bioeléctrico de la persona en esa sesión, y la aplicación, que modifica el voltaje de la zona hallada.</p><div class="body"><div class="sub">Cada sesión tiene un rastreo y una aplicación</div>
+<table class="nodos"><thead><tr><th>Momento</th><th>Qué produce</th></tr></thead><tbody><tr><td><b>Rastreo</b></td><td>El perfil bioeléctrico de la persona en esa sesión</td></tr><tr><td><b>Aplicación</b></td><td>La colocación de imanes que modifica el voltaje de membrana de la zona hallada</td></tr></tbody></table>
+<p>El rastreo sigue un sistema, y por eso no es azaroso. Sin sistema, el operador carece de criterio para decidir dónde colocar el imán y qué significa la respuesta.</p>
+<div class="sub">Del rastreo se anotan tres datos</div>
+<p>Se llama <b>nodo</b> al lugar donde el rastreo produce respuesta: al colocar ahí el imán, una extremidad se acorta.</p>
+<ol class="proc"><li><b>Cuántos nodos hay</b> — uno, dos o varios.</li><li><b>Cómo se reparten en el cuerpo</b> — concentrados en un solo lugar, o en tres o cinco órganos distintos.</li><li><b>Con qué corresponden en la historia clínica</b> — qué molestias de la persona coinciden con esos nodos.</li></ol></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">7</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque I · Fundamento bioeléctrico del método</span></div>
+<div class="body"><p>Dos personas con el mismo diagnóstico dan perfiles bioeléctricos distintos. El perfil corresponde a esa persona y a esa sesión. Cada sesión empieza con el rastreo, y el lugar donde se coloca el imán se busca cada vez.</p>
+<div class="sub">El microambiente del tejido es el primer nivel de organización de la biología</div>
+<p>El método evalúa el estado de ese microambiente. Con el rastreo se identifica el estado bioeléctrico de una zona: el hígado, el ojo, la piel, y estructuras de menor tamaño como la esclera o el iris. Se emplea el término <b>microambiente tisular</b>.</p>
+<div class="sub">Cada nodo se nombra por su localización anatómica</div>
+<p>El nombre de un nodo dice en qué zona del cuerpo se colocó el imán. Un nodo de rodilla se llama así porque el desequilibrio bioeléctrico se registró en la rodilla. Cuando dos nodos se trabajan juntos, el nombre lleva las dos zonas unidas por un guion: rodilla-rodilla si los dos imanes quedaron en las rodillas, hígado-riñón si uno quedó sobre el hígado y el otro sobre el riñón.</p>
+<p>La regla es que el nombre dice la ubicación. Un nombre que atribuyera una función —una emoción, un microorganismo, un órgano responsable— le asignaría al nodo algo que la medición no arrojó. La ubicación es lo único que la medición da, y es lo único que el nombre recoge.</p>
+<p>Los nombres del catálogo heredado se conservan en la ficha como dato histórico, y el nombre de trabajo es el anatómico.</p>
+<div class="sub">El diagnóstico y el tratamiento corresponden al médico</div>
+<p>La evaluación integra datos de laboratorio, síntomas clínicos y manifestaciones conductuales.</p>
+<p><b>El método no sustituye ningún tratamiento médico.</b></p></div><div class="caphead"><span class="capn">2</span><h1>Antecedentes</h1></div>
+<p class="epi">El método hereda de tres trabajos previos: el voltaje del muñón que midió Becker, el acortamiento de la extremidad que describió Broeringmeyer, y el segundo polo y el procedimiento de rastreo que sistematizó Goiz.</p><div class="body"><div class="sub">El voltaje del muñón decide si la extremidad regenera o cicatriza</div>
+<p>Becker midió el potencial eléctrico en el muñón de anfibios amputados, con instrumentos analógicos, y siguió su curso durante los días posteriores al corte.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">8</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">2 · Antecedentes</span></div>
+<div class="body"><table class="nodos"><thead><tr><th>Momento</th><th>Voltaje</th><th>Qué ocurre</th></tr></thead><tbody><tr><td>Extremidad íntegra</td><td>−10 mV</td><td>Estado basal</td></tr><tr><td>Inmediatamente después de la amputación</td><td>+20 mV</td><td>Despolarización. Es la <b>corriente de lesión</b></td></tr><tr><td>Salamandra, en los días siguientes</td><td>−30 mV</td><td>Se forma el blastema y crece una extremidad completa</td></tr><tr><td>Rana, en los días siguientes</td><td>−10 mV</td><td>Cicatriza sin regenerar</td></tr></tbody></table>
+<p>La <b>corriente de lesión</b> es ese salto de −10 a +20 mV que sigue al corte, y aparece igual en las dos especies. Lo que las separa es el descenso posterior: la salamandra llega a −30 mV, la rana se detiene en −10.</p>
+<p>El <b>blastema</b> es la masa de células no diferenciadas que se organiza en el muñón. Las células del sitio revierten a un estado equivalente al de una célula madre, y de ahí se reconstruye la extremidad completa, con su hueso, su músculo y sus vasos.</p>
+<p>Lo que separa a las dos especies es el voltaje que alcanzan. De ese trabajo salen cuatro hallazgos que el método utiliza:</p>
+<ol class="proc"><li><b>El organismo tiene un mapa eléctrico propio</b>, con polaridades definidas: el centro positivo y las extremidades negativas.</li><li><b>El voltaje instruye la regeneración.</b> Sin el patrón de voltaje adecuado no ocurre ni la regeneración ni la cicatrización.</li><li><b>La polaridad influye sobre el desarrollo bacteriano.</b> Con plata y voltaje positivo, más un campo de polo negativo, se frenó el desarrollo de bacterias en cultivo. Es el único dato disponible sobre el efecto de un campo eléctrico o magnético sobre microorganismos. El efecto es indirecto: el campo modifica el voltaje de la zona y a partir de ahí cambia el comportamiento del biofilm.</li><li><b>El hueso es piezoeléctrico.</b> Genera corriente al recibir carga mecánica, y se deforma al aplicarle corriente.</li></ol>
+<p>Becker RO, Selden G. <i>The Body Electric</i>. William Morrow, 1985.</p>
+<div class="sub">El acortamiento de una extremidad es el signo que describió Broeringmeyer</div>
+<p>Broeringmeyer describió que, con un imán colocado sobre la línea media del tórax, una de las extremidades inferiores queda más corta que la otra, y registró las primeras 150 zonas del cuerpo que producen esa respuesta. Su marco era biofísico y electroquímico: relacionaba el campo magnético con la concentración de iones de hidrógeno —el pH— y con la función del órgano. No incluía microorganismos.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">9</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque I · Fundamento bioeléctrico del método</span></div>
+<div class="body"><p>Broeringmeyer R. <i>Principles of Magnetic Therapy</i>. Bio-Health Enterprises, 1991.</p>
+<div class="sub">El segundo polo y el procedimiento de rastreo vienen de Goiz</div>
+<p>Goiz añadió el segundo polo, con lo que la colocación pasó de un imán a dos. Sistematizó el procedimiento de rastreo y estandarizó el reflejo del iliopsoas sobre miles de casos.</p>
+<div class="sub">La Regulación Bioeléctrica cambia la variable, el objeto y la denominación</div>
+<table class="nodos"><thead><tr><th></th><th>El marco heredado</th><th>La Regulación Bioeléctrica</th></tr></thead><tbody><tr><td><b>La variable que se modifica</b></td><td>El pH</td><td>El voltaje de membrana. El pH es una de sus lecturas</td></tr><tr><td><b>Lo que el rastreo identifica</b></td><td>El microorganismo asociado al cuadro clínico</td><td>El estado del microambiente del tejido</td></tr><tr><td><b>Cómo se nombra el hallazgo</b></td><td>Por el microorganismo</td><td>Por la localización anatómica</td></tr><tr><td><b>El fundamento</b></td><td>La relación entre campo, pH y función del órgano</td><td>La matriz extracelular, el voltaje de membrana y la interacción entre campo y tejido</td></tr><tr><td><b>Las zonas que se rastrean</b></td><td>El catálogo heredado</td><td>Las zonas de cada eje, que establece la Parte II</td></tr></tbody></table>
+<p>Lo que se conserva de ese trabajo previo es el procedimiento: el imán, la medición del acortamiento y la disciplina de repetir la medición igual en cada colocación.</p></div><div class="caphead"><span class="capn">3</span><h1>El voltaje de membrana</h1></div>
+<p class="epi">El voltaje de membrana determina el comportamiento del tejido y el estado de su medio. Decide qué canales iónicos se abren, y del flujo de iones que resulta salen el pH, la resistividad y el estado de oxidación-reducción. Determina además si la célula prolifera o se diferencia, qué secreta una glándula y qué deja pasar una unión estrecha.</p><div class="body"><div class="sub">Del voltaje al medio</div>
+<p>Toda célula mantiene una diferencia de carga eléctrica entre su interior y el líquido que la rodea. El interior queda negativo respecto del exterior, y esa diferencia se mide en <b>milivoltios</b>, la milésima parte de un voltio. Esa diferencia es el <b>voltaje de membrana</b>.</p>
+<p>La diferencia se mantiene porque los <b>iones</b> —partículas con carga eléctrica, como el sodio, el potasio, el calcio y el cloro— están repartidos de forma desigual a los dos lados de la membrana. La célula gasta energía en mantener ese reparto desigual, y ese reparto produce el voltaje.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">10</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">3 · El voltaje de membrana</span></div>
+<div class="body"><p>Las cifras están medidas:</p>
+<table class="nodos"><thead><tr><th>Dónde</th><th>Voltaje</th></tr></thead><tbody><tr><td>Una célula en reposo</td><td>Alrededor de −70 mV</td></tr><tr><td>La piel, las fascias y las vísceras</td><td>Alrededor de −50 mV</td></tr></tbody></table>
+<p>Dos palabras describen los movimientos de esa cifra. <b>Despolarizar</b> es que el voltaje suba hacia cero y la célula quede menos negativa. <b>Hiperpolarizar</b> es que baje y quede más negativa.</p>
+<p>En la membrana hay <b>canales iónicos</b>: proteínas que la atraviesan de lado a lado y funcionan como compuertas por donde los iones entran y salen. El voltaje decide cuáles se abren y cuáles se cierran, y por ahí pasa el flujo de iones.</p>
+<pre class="tree">        ┌──────────────────────────────┐
+        │                              ▼
+   VOLTAJE DE MEMBRANA        Qué canales iónicos se abren
+        ▲                              │
+        │                              ▼
+        │                        Flujo de iones
+        │                              │
+        │                              ▼
+        └────── pH · resistividad · estado de oxidación-reducción</pre>
+<p>Ese flujo de iones determina las tres variables con las que se describe cualquier medio:</p>
+<ul class="dash"><li><b>pH</b> — la cantidad de iones hidrógeno, H⁺, frente a su contraparte, los hidroxilos, OH⁻. En el agua pura están por mitades, y ese punto se llama neutro. Más H⁺ deja el medio ácido; más OH⁻ lo deja alcalino.</li><li><b>Resistividad</b> — con qué facilidad se mueven los iones a través del medio, es decir, cómo se transmite una corriente por él.</li><li><b>Estado de oxidación-reducción</b> — si el medio cede electrones o los capta.</li></ul>
+<p>Las tres actúan de vuelta sobre el voltaje, y dentro de ese circuito el voltaje de membrana es el que organiza. Las tres se combinan, y esa combinación describe el medio mejor que cualquiera por separado: en medios ácidos y oxidados proliferan los hongos; en medios ácidos y reducidos, los virus.</p>
+<p>El estado del medio es anterior al microorganismo, y ese estado facilita su proceso. El método mide el estado del microambiente.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">11</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque I · Fundamento bioeléctrico del método</span></div>
+<div class="body"><div class="sub">Qué más gobierna el voltaje</div>
+<p>Además de esas tres variables, el voltaje de membrana determina el comportamiento del tejido:</p>
+<table class="nodos"><thead><tr><th>Función</th><th>Cómo depende del voltaje</th></tr></thead><tbody><tr><td><b>Proliferación o diferenciación</b></td><td>Despolarizada, entre −10 y −30 mV, la célula prolifera. Hiperpolarizada, entre −60 y −90 mV, se diferencia y ejerce su función</td></tr><tr><td><b>Secreción glandular</b></td><td>El voltaje de la glándula regula lo que secreta</td></tr><tr><td><b>Permeabilidad</b></td><td>El voltaje determina qué carga y qué tamaño deja pasar la unión estrecha</td></tr><tr><td><b>Acoplamiento entre células</b></td><td>El voltaje determina si las uniones comunicantes quedan abiertas o cerradas</td></tr><tr><td><b>Motilidad digestiva</b></td><td>El voltaje genera la onda eléctrica que precede a la contracción</td></tr></tbody></table>
+<p>Las dos uniones que aparecen en esa tabla son estructuras distintas:</p>
+<ul class="dash"><li><b>Unión estrecha.</b> El cierre hermético entre dos células vecinas, que ocluye el espacio que queda entre ellas. Determina qué atraviesa un epitelio pasando <i>entre</i> las células en lugar de a través de ellas.</li><li><b>Unión comunicante.</b> El canal que conecta el interior de una célula con el interior de la vecina, y que deja pasar iones y moléculas pequeñas de un citoplasma al otro. Un grupo de células unido así se comporta eléctricamente como un tejido.</li></ul>
+<p>La unión comunicante es la estructura por la que viaja la información en la que se apoya todo el rastreo. Cuando está abierta, el cambio de voltaje que introduce un imán se propaga a las células vecinas. Cuando se cierra, el grupo de células queda desconectado.</p>
+<p>El voltaje instruye por encima del contenido genético. Dos células con idéntico material genético pueden encontrarse en estados bioeléctricos distintos y comportarse de manera distinta, y un patrón bioeléctrico correcto corrige la morfología y la expresión genética incluso en presencia de una mutación.</p>
+<p>Levin midió el voltaje en la cara de un renacuajo y trazó el mapa: la zona del ojo tenía un voltaje distinto del de la nariz. Reprodujo ese mismo patrón de voltaje en otra parte del cuerpo, incluido el intestino, y ahí se formó un ojo con capacidad de ver. Con el mismo procedimiento, una hora de despolarización en el muñón de la cola inicia entre ocho y diez días de regeneración completa, con médula, músculo y vasos; en la extremidad hacen falta veinticuatro horas.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">12</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">4 · La matriz extracelular</span></div>
+<div class="body"><p>Pai VP, et al. <i>Development</i>. 2012;139(2):313-323. · Tseng A, Levin M. <i>Commun Integr Biol</i>. 2013;6(1):e22595. · Levin M. <i>BioEssays</i>. 2024;46(7):e2400043.</p>
+<p>El desplazamiento del pH que se observa al colocar imanes es una consecuencia de ese flujo de iones. El campo modifica el voltaje, el voltaje abre y cierra los canales, y el pH cambia como resultado.</p>
+<div class="sub">El imán actúa sobre el voltaje</div>
+<p>La técnica trabaja sobre el voltaje de membrana, y las tres variables del medio cambian en consecuencia.</p>
+<p>Una analítica de sangre puede permanecer dentro de rango mientras el tejido está desregulado. La sangre promedia el estado de todo el organismo, y el rastreo mide una zona. Son dos mediciones de cosas distintas, y la segunda no se deduce de la primera.</p>
+<div class="sub">Todas las células son bioeléctricas</div>
+<p>Toda célula del organismo mantiene un voltaje de membrana y lo modifica. La neurona lo hace en milisegundos y el resto de las células en minutos o días, y esa es la única diferencia entre ellas.</p>
+<p>Un electrodo introducido en la célula registra valores de −10, −60 o −90 mV según el tejido y su estado. La piel, las fascias y las vísceras, que son los tejidos que el rastreo explora, trabajan alrededor de −50 mV.</p>
+<p>El voltaje depende además del medio que rodea a la célula, y ese medio tiene propiedades eléctricas propias.</p></div><div class="caphead"><span class="capn">4</span><h1>La matriz extracelular</h1></div>
+<p class="epi">La matriz que rodea a las células tiene carga eléctrica propia y una capacidad limitada de acomodar carga ácida. Cuando esa capacidad se agota, el tejido moviliza calcio, magnesio y potasio en ese orden. Con el potasio compromete el ion del que depende su propio voltaje, y ahí empieza la enfermedad crónica.</p><div class="body"><div class="sub">El medio que rodea a las células tiene carga medible</div>
+<p>Las células no flotan en agua. Están embebidas en la <b>matriz extracelular</b>, una red de fibras de colágena, elastina y azúcares complejos que ocupa todo el espacio entre una célula y la siguiente. Alfred Pischinger la describió, junto con las células y los capilares que contiene, como un sistema de regulación que atraviesa todo el organismo.</p>
+<p>Esos azúcares son los <b>glicosaminoglicanos</b>. Llevan grupos carboxilo y sulfato que al pH del cuerpo quedan cargados negativamente, y su suma produce una carga negativa distribuida por todo el tejido. La cantidad total de esa carga se llama <b>densidad de carga fija</b>.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">13</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque I · Fundamento bioeléctrico del método</span></div>
+<div class="body"><p>Está medida, y sus valores se han publicado por tipo de tejido: de −0.19 a −0.35 molar en el cartílago articular, y de 0.4 a 0.5 molar en las estructuras que envuelven a las neuronas del cerebro. El molar es una medida de concentración.</p>
+<p>De esa carga dependen cuatro propiedades del tejido:</p>
+<ul class="dash"><li><b>Retiene el agua</b>, que queda atraída por las cargas y le da al tejido su turgencia. Así el tejido resiste la compresión sin deformarse de manera permanente.</li><li><b>Concentra las partículas de carga positiva</b> —sodio, potasio, calcio— cerca de las células, y mantiene alejadas a las negativas, sin que ninguna célula gaste energía en ello. Esa diferencia de carga entre el interior y el exterior es el <b>potencial de Donnan</b>.</li><li><b>Establece dentro del tejido un pH</b> que puede diferir del de la sangre que lo riega.</li><li><b>Ofrece sitios donde acomodar las cargas positivas que llegan</b>: radicales libres y ácidos, que el metabolismo produce o que entran de fuera.</li></ul>
+<p>Cuando el medio se acidifica, esos grupos captan protones y pierden su carga. La matriz retiene menos agua, amortigua peor los cambios y la distribución de partículas a su alrededor se altera. Esa pérdida de carga se detecta antes de que aparezcan signos por otros métodos.</p>
+<p>Un tejido que conserva su carga conserva su voltaje aunque siga recibiendo carga ácida. Un tejido saturado la desplaza a los iones que siguen, en un orden fijo.</p>
+<p>Lesperance LM, Gray ML, Burstein D. <i>J Orthop Res</i>. 1992;10(1):1–13. · Morawski M, Reinert T, Meyer-Klaucke W, et al. <i>Sci Rep</i>. 2015;5:17383. · Bansal PN, et al. <i>Osteoarthritis Cartilage</i>. 2010;18(2):184–191. · Pischinger A. <i>The Extracellular Matrix and Ground Regulation</i>. North Atlantic Books, 2007.</p>
+<div class="sub">El orden de movilización iónica</div>
+<p>Cuando la carga ácida supera la capacidad de eliminarla, el tejido desplaza sus minerales en un orden fijo, empezando por el de movilización más fácil:</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">14</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">5 · Clases de agente</span></div>
+<div class="body"><table class="nodos"><thead><tr><th>Paso</th><th>Ion</th><th>De dónde sale</th><th>Qué produce</th></tr></thead><tbody><tr><td>1</td><td><b>Calcio</b></td><td>Del hueso, que se vuelve poroso</td><td>Pérdida de densidad ósea sin déficit hormonal que la explique</td></tr><tr><td>2</td><td><b>Magnesio</b></td><td>Del propio tejido</td><td>Sueño de mala calidad, fatiga muscular y agotamiento. El magnesio interviene en la producción de energía</td></tr><tr><td>3</td><td><b>Potasio</b></td><td>Del interior de la célula</td><td>Compromiso del voltaje de membrana</td></tr></tbody></table>
+<p>El potasio ocupa el último lugar porque el voltaje de membrana depende de él de forma directa: su reparto desigual entre el interior y el exterior de la célula produce la mayor parte de esa diferencia de carga. Un tejido que llega a movilizarlo compromete la variable que lo organiza, y la enfermedad crónica cursa con deficiencia de potasio en el tejido.</p>
+<p>Ese potasio puede estar normal en la sangre y agotado en el tejido. Se llama <b>normokaliemia con deficiencia tisular</b>, y es la razón de que un análisis dentro de rango deje el hallazgo en pie.</p>
+<div class="sub">El daño orgánico establecido queda fuera del alcance</div>
+<p>La <b>glicación</b> muestra cómo se pierde la carga del tejido. En la diabetes el azúcar se adhiere a las proteínas de la matriz; la proteína glicada pierde su carga y deja de retener agua, y en su lugar atrae especies reactivas de oxígeno, que inflaman. Ahí están el pie diabético y la neuropatía.</p>
+<p>Cuando esa carga alterada queda fija en el tejido se llama <b>impregnación</b>. De la impregnación viene la <b>inflamación crónica</b>, y de ésta la <b>degeneración orgánica</b>.</p>
+<p>El método alcanza las dos primeras. En la tercera falta estructura, y un campo magnético cambia voltaje.</p></div><div class="caphead"><span class="capn">5</span><h1>Clases de agente</h1></div>
+<p class="epi">Un tejido persigue una meta como red, y esa red se mantiene por vía eléctrica. Los sistemas se ordenan por lo que hay que hacerles para cambiarles la conducta, y el tejido pertenece a la clase que se corrige moviendo su punto de ajuste. El campo magnético llega hasta ahí; a lo que la persona aprende y cree llega lo que el operador dice durante la sesión.</p><div class="body"><p>Un islote del páncreas es un grupo de células que fabrican insulina. Cada una podría trabajar por su cuenta, y no lo hace: están unidas entre sí por <b>conexina 36</b>, una proteína que forma canales de una célula a la siguiente. Por esos canales pasa corriente, y el islote entero se despolariza y se repolariza a la vez.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">15</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque I · Fundamento bioeléctrico del método</span></div>
+<div class="body"><p>De ese acoplamiento sale una propiedad que ninguna célula tiene por separado. La insulina no sale en chorro continuo: sale en <b>pulsos</b>, con silencios entre ellos. Y el hígado responde al pulso, no al promedio: la misma cantidad de insulina, entregada en pulsos cada trece minutos, frena la producción hepática de glucosa más que administrada de forma continua; con pulsos cada veintiséis minutos ese efecto desaparece.</p>
+<p>Bajo estrés e inflamación, la célula beta retira sus uniones de conexina 36. El islote pierde la sincronía. Cada célula queda aislada, deja de responder al conjunto y deja de fabricar insulina, sin morir y sin que le falte nada de lo que necesita para trabajar.</p>
+<p>Las células son las mismas antes y después. Lo que se perdió es la conexión eléctrica entre ellas, y con ella la meta que el islote perseguía como conjunto.</p>
+<p>Un tejido persigue una meta como red, y esa red se mantiene por vía eléctrica. Ahí es donde entra la regulación bioeléctrica: en el acoplamiento.</p>
+<p>Ravier MA, et al. <i>Diabetes</i>. 2005;54(6):1798–1807, sobre el acoplamiento y la sincronía. · Cinti F, et al. <i>J Clin Endocrinol Metab</i>. 2016;101(3):1044–1054, sobre la célula beta que deja de fabricar insulina sin morir.</p>
+<div class="sub">Las tres prioridades de todo agente</div>
+<p>Un sistema que persigue una meta y trabaja por conseguirla es un <b>agente</b>. El islote lo es, y también cada una de sus células: el hígado depura, la mitocondria produce energía, el sistema inmune distingue lo propio de lo ajeno, la piel cicatriza. Todo agente tiene tres cosas.</p>
+<ol class="proc"><li><b>La meta.</b> Lo que ese órgano consigue cuando trabaja bien.</li><li><b>La capacidad de actuar.</b> Depende de sus recursos, de su integridad estructural y de las señales que le llegan del entorno.</li><li><b>El punto de ajuste.</b> El valor de calibración desde el que opera, aquello que para ese agente cuenta como normal.</li></ol>
+<p>El agente mueve su punto de ajuste con la experiencia, y eso es adaptación. El problema aparece cuando ese punto queda en una posición que ya no corresponde a la situación presente: el agente sigue trabajando correctamente, hacia una meta que dejó de ser la correcta.</p>
+<p>De las tres, la técnica trabaja sobre la tercera, y llega a la segunda por la vía de las señales del entorno.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">16</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">5 · Clases de agente</span></div>
+<div class="body"><div class="sub">Cuatro clases, según cómo se les cambia la conducta</div>
+<p><b>TAME</b> son las siglas de <i>Technological Approach to Mind Everywhere</i>, el marco con el que Michael Levin trata a los sistemas biológicos como agentes: todo sistema vivo, desde una célula hasta un organismo completo, persigue metas en algún grado, y el grado lo da el tamaño de las metas que alcanza a perseguir, en espacio y en tiempo. Con ese criterio los sistemas se ordenan por lo que hay que hacerles para cambiarles la conducta.</p>
+<table class="nodos"><thead><tr><th>Clase</th><th>Qué es</th><th>Cómo se le cambia la conducta</th><th>Ejemplo</th></tr></thead><tbody><tr><td><b>A</b></td><td>Estructuras físicas</td><td>Abriéndolas y cambiándoles las piezas</td><td>Un hueso fracturado</td></tr><tr><td><b>B</b></td><td>Sistemas con punto de ajuste</td><td>Reescribiendo ese punto de ajuste, sin intervenir su mecánica</td><td>El islote desacoplado, el tejido con inflamación crónica</td></tr><tr><td><b>C</b></td><td>Animales</td><td>Con recompensa y castigo</td><td>Una respuesta aprendida por repetición</td></tr><tr><td><b>D</b></td><td>Personas</td><td>Con un argumento</td><td>Lo que la persona cree sobre su propia enfermedad</td></tr></tbody></table>
+<p>Los órganos del cuerpo son sistemas de clase B. Nadie interviene sus circuitos moleculares desde fuera, y a un órgano no se le argumenta: se le regula cambiando la información desde la cual calibra.</p>
+<p>Levin M. Technological Approach to Mind Everywhere (TAME). <i>Front Syst Neurosci</i>. 2022;16:768201.</p>
+<div class="sub">Con qué se alcanza cada clase</div>
+<p>La clasificación dice qué admite cada agente. Con qué se le llega es otra cosa, y en una sesión se emplean dos vehículos.</p>
+<table class="nodos"><thead><tr><th>Clase</th><th>Con qué se alcanza</th></tr></thead><tbody><tr><td><b>B</b></td><td><b>El campo magnético.</b> Reescribe el punto de ajuste del tejido sin modificar la estructura</td></tr><tr><td><b>C</b> y <b>D</b></td><td><b>La palabra.</b> Lo que el operador dice durante la sesión, y la formulación con la que le explica a la persona lo que está ocurriendo</td></tr></tbody></table>
+<p>Un imán modifica el voltaje de membrana de un tejido, y ese es su alcance. Lo que la persona aprende por repetición y lo que cree sobre su propia enfermedad se trabajan con la palabra, y ahí el límite es la predicción de amenaza que el sistema mantiene.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">17</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque I · Fundamento bioeléctrico del método</span></div>
+<div class="body"><div class="sub">Dónde el punto de ajuste es un voltaje medible</div>
+<p>En algunos órganos el punto de ajuste corresponde a un voltaje que se ha medido. La mitocondria entre −150 y −180 mV está apagada. El macrófago con el voltaje bajo permanece inflamado. El islote desacoplado pierde la corriente que pasaba entre sus células. En las glándulas la relación es indirecta: el voltaje regula la secreción, y un órgano que perdió su estado bioeléctrico secreta peor.</p>
+<p>En otros órganos no hay ningún voltaje documentado, y ahí se declara la ausencia. Un nodo que aparece en todas las personas por igual, porque el operador leyó que ahí estaba, corresponde a lo que el operador espera encontrar.</p>
+<div class="sub">Regular es devolver la señal de referencia</div>
+<p>El tejido conserva la capacidad de ajustar su propio estado. Lo que perdió es la señal que le indica cuál es ese estado, y la enfermedad crónica corresponde a una adaptación que dejó de actualizarse.</p>
+<p>El macrófago cumple dos funciones sucesivas en la reparación de un tejido. En la fase inicial fagocita restos celulares, libera citocinas y recluta más células al sitio. En la fase tardía cesa esa actividad, retira la señal inflamatoria y participa en la reconstrucción de la matriz. El paso de una fase a la otra depende del voltaje de membrana, a través de sus canales de potasio. Mientras ese voltaje siga igual, el macrófago permanece en la fase inicial y la inflamación continúa.</p>
+<p>Suprimir la inflamación corrige: apaga el resultado y deja el punto de ajuste donde estaba. Favorecer que el macrófago pase a la fase reparadora regula, y eso es lo que hace un campo magnético estático.</p>
+<p>Cada adaptación que el organismo instala ante una perturbación prolongada deja un costo, y esos costos se suman. El rastreo encuentra ese acumulado cuando da hallazgos repartidos por todo el cuerpo.</p>
+<div class="sub">La pregunta de la sesión</div>
+<p>El operador busca qué tejido dejó de ajustar su propio estado, y a qué escala ocurrió esa pérdida. Un tejido que conserva la capacidad de regularse responde al rastreo con un cambio en la medición. Uno que la perdió del todo no responde en ningún nodo, y ese caso corresponde a la degeneración orgánica.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">18</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">6 · El sistema que se regula</span></div>
+<div class="caphead"><span class="capn">6</span><h1>El sistema que se regula</h1></div>
+<p class="epi">Un sistema que se regula se describe con cinco componentes: estados, operadores, restricciones, evaluación y horizonte. Los dos primeros son lo que el tejido tiene, y se reponen construyendo estructura. Los tres últimos son la información con la que decide, y se reescriben sin aportar materia ni energía. Ahí es donde interviene un campo magnético.</p><div class="body"><div class="sub">El punto de ajuste es la referencia contra la que el sistema compara</div>
+<p>Un termostato mide la temperatura, la compara con una referencia y enciende o apaga la calefacción. Esa referencia es el <b>punto de ajuste</b>.</p>
+<p>Con el punto de ajuste en 20 °C y la habitación a 15 °C, el termostato calienta. Si alguien mueve la referencia a 30 °C, el aparato ejecuta exactamente lo que le corresponde y calienta de más. El termostato funciona bien; lo que cambió es el número contra el que compara. Para corregirlo se mueve la referencia, y su mecánica queda intacta.</p>
+<p>Un tejido con inflamación crónica está en esa situación. Ejecuta correctamente lo que su referencia le indica, y esa referencia dejó de corresponder a la situación presente. En el tejido esa referencia es el voltaje de membrana, y un campo magnético la cambia sin modificar la estructura y sin administrar sustancia alguna.</p>
+<p>Un tejido también puede fallar con el punto de ajuste intacto: porque tiene una vía cerrada, porque lo que hacía le cuesta más, o porque perdió el orden con los tejidos vecinos. Cada uno de esos tres casos pide una conducta distinta en la sesión.</p>
+<div class="sub">Un sistema que se regula tiene cinco componentes</div>
+<p>P es el problema que ese sistema tiene que resolver, y las cinco letras son lo que hay que especificar para describirlo:</p>
+<p>P = ⟨ S, O, C, E, H ⟩</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">19</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque I · Fundamento bioeléctrico del método</span></div>
+<div class="body"><table class="nodos"><thead><tr><th>Letra</th><th>Qué designa</th><th>Qué es en el tejido</th></tr></thead><tbody><tr><td><b>S</b> · Estados</td><td>Todas las configuraciones que el sistema puede ocupar</td><td>El rango de voltaje que ese tejido alcanza a tomar. Una célula a −20 mV y otra a −70 mV están en dos estados distintos</td></tr><tr><td><b>O</b> · Operadores</td><td>Todo lo que el sistema puede hacer</td><td>Secretar, captar, movilizar iones, acoplarse con la célula vecina. El islote acoplado ejecuta el operador de secretar en pulsos</td></tr><tr><td><b>C</b> · Restricciones</td><td>Qué acciones quedan bloqueadas</td><td>La unión comunicante cerrada. La célula conserva intacta su capacidad de trabajar, y la vía por la que recibía la señal está cerrada</td></tr><tr><td><b>E</b> · Evaluación</td><td>El criterio con el que el sistema juzga si va bien</td><td>El punto de ajuste, que en el tejido es el voltaje de membrana</td></tr><tr><td><b>H</b> · Horizonte</td><td>Con cuánta anticipación le llega la información</td><td>Los pulsos del islote. Cada trece minutos, el hígado recibe la señal a tiempo y frena la producción de glucosa; cada veintiséis, ya no</td></tr></tbody></table>
+<p>Cada operador cuesta, y ese precio se designa con una <i>w</i> minúscula. En el tejido se paga en la energía que la célula gasta en mantener su reparto desigual de iones, y en el calcio, el magnesio y el potasio que moviliza cuando la carga ácida satura la matriz. El precio va pegado a cada acción del repertorio, y un sistema ejecuta la acción que alcanza a pagar.</p>
+<p>Cada punto de ajuste desplazado que el organismo mantiene se paga de forma permanente, y esos pagos se suman. Es el costo acumulado que el rastreo encuentra cuando da hallazgos repartidos por todo el cuerpo.</p>
+<p>De las cinco letras, el rastreo mide directamente una: el estado bioeléctrico del tejido, que es <b>S</b>. Las otras cuatro se leen por lo que la medición hace al colocar el imán en un sitio o en otro.</p>
+<div class="sub">Lo que el sistema tiene se repone; la información con la que decide se reescribe</div>
+<table class="nodos"><thead><tr><th></th><th>Lo que el sistema tiene</th><th>La información con la que decide</th></tr></thead><tbody><tr><td><b>Componentes</b></td><td>S, O</td><td>C, E, H</td></tr><tr><td><b>Cuando falla</b></td><td>Se repone</td><td>Se reescribe</td></tr><tr><td><b>Costo de corregirlo</b></td><td>Alto</td><td>Bajo</td></tr></tbody></table>
+<p>S y O son lo que el sistema tiene: los estados que puede ocupar y las funciones que puede ejecutar. Reponerlos exige construir estructura o aportar sustancia, como el hueso que se fabrica con calcio y colágena.</p>
+<p>C, E y H son la información con la que el sistema decide: qué tiene bloqueado, contra qué compara su estado, y con cuánta anticipación le llega la señal. Reescribirlos no exige ni estructura ni sustancia.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">20</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">6 · El sistema que se regula</span></div>
+<div class="body"><p>Un campo magnético no aporta materia ni energía, y por eso llega a los tres segundos y no a los dos primeros. Ese es el motivo de que un imán modifique el comportamiento de un tejido sin ponerle nada.</p>
+<p>De los tres, la técnica trabaja sobre todo la <b>C</b>.</p>
+<div class="sub">Retirar un bloqueo abre más rutas que añadir una acción</div>
+<p>Una restricción organiza. Es lo que hace que el problema del tejido sea ese problema y no otro, y un tejido sin restricciones estaría desorganizado.</p>
+<table class="nodos"><thead><tr><th>Situación</th><th>Consecuencia</th></tr></thead><tbody><tr><td><b>Demasiada restricción</b></td><td>El sistema se rigidifica y queda atrapado en un modo</td></tr><tr><td><b>Restricción insuficiente</b></td><td>El sistema se desorganiza</td></tr></tbody></table>
+<p>La unión comunicante cerrada es la restricción que el rastreo encuentra con más frecuencia. Las células conservan su estructura y su capacidad de trabajar, y lo que perdieron es la vía por la que les llegaba la información del tejido. El islote desacoplado es ese caso, y también la zona que responde al imán sin que la persona tenga ahí ninguna molestia.</p>
+<p>El problema aparece cuando una restricción se instala para una situación y permanece después de que esa situación terminó. Una unión que se cerró ante un golpe y siguió cerrada dos años después fue correcta en su momento y ya no corresponde al presente.</p>
+<p>Añadir una acción al repertorio amplía de forma lineal lo que el sistema puede hacer: una acción más. Retirar un bloqueo vuelve alcanzables de golpe todas las rutas que pasaban por ahí. Reabrir las uniones de un grupo de células lo devuelve entero a la red, con todo lo que la red le entrega. La técnica trabaja sobre C por esa diferencia de magnitud.</p>
+<div class="sub">El trinquete se cerró en un solo sentido</div>
+<p>Una restricción ordinaria se retira y la vía vuelve a estar disponible. El <b>trinquete</b> es la restricción que deja pasar en un sentido y queda cerrada en el contrario: retirarla no alcanza, porque el paso de vuelta no existe.</p>
+<p>La glicación es un trinquete químico. El azúcar se une a la proteína de la matriz sin que intervenga ninguna enzima, y ninguna enzima deshace esa unión. La proteína perdió su carga, y esa pérdida avanzó en un solo sentido.</p>
+<p>En el tejido la forma es siempre la misma: el sistema se defiende cerrando una vía, pasa la amenaza, y la vía sigue cerrada.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">21</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque I · Fundamento bioeléctrico del método</span></div>
+<div class="body"><p>El operador lo reconoce por la medición. La zona responde durante la sesión, y entre una sesión y la siguiente vuelve al mismo estado, de forma repetida.</p>
+<div class="sub">El horizonte depende de la vía por la que llega la información</div>
+<p>H es una consecuencia física: depende de qué información le llega al sistema y con cuánto retraso. Cortada esa vía, la anticipación se pierde sin que nada más se haya dañado.</p>
+<p>El islote lo muestra. Con pulsos cada trece minutos el hígado recibe la señal a tiempo y frena la producción de glucosa. Cada veintiséis, la misma cantidad de insulina llega tarde y el hígado deja de frenar. La insulina es la misma; lo que cambió es cuándo llega.</p>
+<p>En el organismo, el horizonte metabólico queda fijado por los tiempos de sus circuitos de retroalimentación. Uno de ellos es el nervio que va del hígado al cerebro. Cuando ese nervio deja de transmitir, el cuerpo deja de anticipar y pasa a reaccionar.</p>
+<p>Para organismos completos esa anticipación se ha calculado. Una ameba alcanza aproximadamente un paso, fijado por lo que tarda una molécula en atravesar por difusión su propio cuerpo. Una planaria alcanza unos 22 000, porque su reloj interno es la división celular. Cuatro órdenes de magnitud de diferencia, derivados de constantes físicas medibles.</p>
+<p>Un campo magnético cambia el voltaje de una membrana, y no construye la vía por la que la información llega. Por eso H queda fuera de su alcance.</p>
+<div class="sub">Los tres modos de falla</div>
+<p>Cuando una función se ejecuta peor, hay tres explicaciones que se parecen en la clínica y piden conductas distintas:</p>
+<table class="nodos"><thead><tr><th>Qué falló</th><th>Cómo se distingue</th><th>Qué conducta pide</th></tr></thead><tbody><tr><td><b><i>w</b></i> · Subió el precio</td><td>La respuesta aparece completa si se aumenta la señal o se baja la demanda</td><td>Más señal, o menos carga</td></tr><tr><td><b>C</b> · Se cerró una vía</td><td>Esa vía no responde y otra del mismo tejido sí</td><td>Editar la restricción, o trabajar por la vía que sigue abierta</td></tr><tr><td><b>Σ</b> · Se perdió el orden entre las partes</td><td>Igualadas la señal y la capacidad, las respuestas dejan de ir en orden</td><td>Devolverles el ritmo</td></tr></tbody></table>
+<p><b>Si lo que falló es C, mover <i>w</i> no lo toca.</b> Aumentar la señal sobre una vía cerrada no la abre. Sobre un sistema que perdió el orden entre sus partes, la empuja sin coordinarla.</p>
+<p>La Σ se mide comparando el conjunto con sus partes, y esa comparación necesita una medida de cuánto resuelve un sistema.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">22</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">6 · El sistema que se regula</span></div>
+<div class="body"><div class="sub">La K mide cuántas veces mejor que el azar resuelve un sistema</div>
+<p>La K compara lo que el sistema tarda en resolver su problema contra lo que tardaría una búsqueda sin información:</p>
+<p>K = log₁₀ ( τ ciego ÷ τ agente )</p>
+<p>τ agente es lo que tarda el sistema. τ ciego es lo que tardaría el azar. El cociente dice cuántas veces más rápido es el sistema, y el logaritmo convierte ese número en órdenes de magnitud, que es la única forma de comparar sistemas que difieren por factores enormes.</p>
+<table class="nodos"><thead><tr><th>K</th><th>Cuántas veces mejor que el azar</th><th>Caso medido</th></tr></thead><tbody><tr><td>0</td><td>Igual que el azar</td><td></td></tr><tr><td>1</td><td>10 veces</td><td></td></tr><tr><td><b>2.2</b></td><td>Unas 158 veces</td><td>La quimiotaxis de una sola célula</td></tr><tr><td><b>21</b></td><td>10²¹ veces</td><td>La adaptación de una planaria a un tóxico nuevo</td></tr></tbody></table>
+<p>Un sistema que supera al azar se comporta como agente, y con ese criterio se juzga si una zona conserva capacidad de regularse.</p>
+<p><b>La K mide eficiencia, y no agencia.</b> Un termostato bien diseñado tiene una K alta y una agencia mínima: resuelve muy bien un problema muy pequeño.</p>
+<div class="sub">La Σ mide cuánto aporta que las partes estén conectadas</div>
+<p>La K se calcula para un conjunto, y también para cada una de sus partes por separado. La diferencia entre las dos es la coordinación:</p>
+<p>Σ = K del conjunto − (la suma de las K de sus partes)</p>
+<p>Con Σ mayor que cero, el conjunto resuelve mejor que la suma de sus partes, y ese excedente existe solo porque están conectadas. Con Σ igual a cero, la conexión no aporta nada. Sesenta músicos excelentes tocando bien no producen una orquesta.</p>
+<p>El islote es el caso. Acoplado por conexina 36, entrega insulina en pulsos, que es algo que ninguna de sus células hace sola: su Σ es mayor que cero. Retiradas las uniones, cada célula queda con su K intacta y el conjunto pierde el pulso: la Σ cae a cero. Las células son las mismas en los dos casos.</p>
+<p>Es el tercer modo de falla de la tabla anterior, y es lo que pierde un tejido cuando se cierran sus uniones comunicantes.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">23</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque I · Fundamento bioeléctrico del método</span></div>
+<div class="body"><p>La forma de medir la Σ es una propuesta del equipo docente y no está publicada. El procedimiento para obtener un valor de K a partir de los hallazgos de una sesión tampoco está descrito. Ninguna de las dos se emplea todavía como medida clínica.</p>
+<div class="sub">Los sistemas vivos reescriben su propio problema</div>
+<p>La formulación clásica, de Newell y Simon en 1972, consideraba solo S y O como partes del problema, y trataba las otras tres como decisiones de estrategia de quien lo resuelve. Chis-Ciure y Levin las elevaron a componentes de pleno derecho, con un argumento: un sistema vivo se mueve dentro de su problema y además lo reescribe. Se edita las restricciones, recalibra lo que evalúa como correcto y ajusta su horizonte. Esa capacidad de reajustar el propio problema distingue a la inteligencia biológica.</p>
+<p>De ahí sale la pregunta que define el objeto de este método:</p>
+<div class="pull"><p class="cita"><b>Qué le ocurre a un sistema que se reescribió el problema, por una buena razón y de forma adaptativa, y después perdió la capacidad de volver a reescribirlo.</b></p></div>
+<p>Es la enfermedad crónica dicha con las cinco letras, y es lo que la técnica intenta devolver.</p>
+<p>Newell A, Simon HA. <i>Human Problem Solving</i>. Prentice-Hall, 1972. · Chis-Ciure R, Levin M. Cognition all the way down 2.0. <i>Synthese</i>. 2025;206:257.</p>
+<div class="sub">Un resultado ausente pasa a ser una pregunta acotada</div>
+<p>Cuando el rastreo no da hallazgos, o los da y el cuadro no cede, las cinco letras convierten eso en dos preguntas con respuesta: qué componente está en conflicto, y si ese componente admite la intervención de la que dispone esta técnica.</p>
+<table class="nodos"><thead><tr><th>Lo que se observa</th><th>Qué componente señala</th></tr></thead><tbody><tr><td>La zona responde y vuelve al mismo estado en cada sesión</td><td>Una <b>C</b> en trinquete</td></tr><tr><td>La respuesta aparece completa al aumentar la señal o bajar la carga</td><td>La <b><i>w</b></i>, el precio de la acción</td></tr><tr><td>Igualadas la señal y la capacidad, las respuestas dejan de ir en orden</td><td>La <b>Σ</b>, la coordinación</td></tr><tr><td>Ningún nodo responde en toda la sesión</td><td>S y O, que quedan fuera del alcance</td></tr></tbody></table></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">24</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">7 · Cómo llega el campo a la célula</span></div>
+<div class="bloq"><div class="kbar"></div><p class="eyebrow">Bloque II</p><h1>El campo magnético: mecanismos, intensidad y alcance</h1><p class="sub">Por qué vías actúa el campo, qué intensidad se necesita, hasta dónde llega y con qué dispositivos se alcanza la profundidad.</p></div>
+<div class="caphead"><span class="capn">7</span><h1>Cómo llega el campo a la célula</h1></div>
+<p class="epi">Un imán produce un campo, y el campo no lleva cargas ni energía. Sobre un ion suelto, la fuerza que ejerce queda por debajo del ruido térmico del organismo; lo que alcanza son estructuras donde miles de moléculas están alineadas. Por cuatro vías documentadas llega al voltaje de membrana.</p><div class="body"><div class="sub">Un imán tiene un campo</div>
+<p>Un imán produce un campo magnético. No contiene cargas eléctricas, no las transfiere al tejido y no aporta energía.</p>
+<p>Un campo no es un estado de la materia: no es sólido, ni líquido, ni gas. Se comporta como el aire que mueve un abanico, que no se ve y se siente, o como la gravedad: invisible, real, y capaz de actuar sobre la materia.</p>
+<p>Los nombres positivo y negativo son una convención posterior. Lo que existe físicamente es el <b>polo norte</b> y el <b>polo sur</b>, por referencia a la aguja de la brújula, que apunta al norte.</p>
+<div class="sub">El campo actúa sobre estructuras donde miles de moléculas están alineadas</div>
+<p>Cuando un ion —una partícula con carga, como el sodio o el calcio— se mueve dentro de un campo magnético, el campo ejerce sobre él una fuerza, que se llama <b>fuerza de Lorentz</b>. A la intensidad de un imán clínico esa fuerza, sobre un ion suelto, queda muy por debajo del movimiento que el propio calor del cuerpo imprime a las moléculas: un cuadro febril mueve los iones más que el imán.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">25</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque II · El campo magnético: mecanismos, intensidad y alcance</span></div>
+<div class="body"><p>Durante décadas ese cálculo llevó a concluir que un imán moderado no alcanzaba a actuar sobre el cuerpo. Lo que ese razonamiento dejaba fuera es que el cuerpo trabaja con <b>estructuras cooperativas</b>: membranas con miles de moléculas alineadas, canales con una geometría sensible a lo que las rodea, cristales con magnetismo propio. En esas estructuras los efectos pequeños se suman, y la suma sí supera al calor.</p>
+<p>Ahí ocurre todo lo que sigue.</p>
+<div class="sub">Las cuatro vías</div>
+<table class="nodos"><thead><tr><th></th><th>Mecanismo</th><th>Qué ocurre</th><th>En cuánto tiempo</th></tr></thead><tbody><tr><td>1</td><td><b>Anisotropía diamagnética</b></td><td>Los fosfolípidos de la membrana responden levemente al campo, que los hace girar: es un <b>torque</b>, una fuerza de giro. Al reorientarse, se deforma la geometría de los canales iónicos que están embebidos en ellos, y cambia la facilidad con que se abren</td><td>Segundos</td></tr><tr><td>2</td><td><b>Canales de calcio tipo T</b></td><td>Este canal traduce el campo en una señal dentro de la célula, y el calcio es uno de sus mensajeros centrales. La prueba es que al bloquear el canal con un fármaco, el efecto del imán desaparece</td><td>De minutos a horas</td></tr><tr><td>3</td><td><b>Magnetita biogénica</b></td><td>El cerebro humano contiene cristales de hierro fabricados por el propio cuerpo, al menos cinco millones por gramo de tejido cerebral. Un cristal magnético gira dentro de un campo, y si está anclado a la membrana o al esqueleto interno, esa tracción abre canales sensibles a la fuerza</td><td>—</td></tr><tr><td>4</td><td><b>Fenotipo del macrófago</b></td><td>El campo desplaza al macrófago del modo inflamatorio al reparador. Actúa sobre él con preferencia porque, por su tamaño, es más sensible al gradiente que las células pequeñas</td><td>—</td></tr></tbody></table>
+<p>El primero se ha comprobado con <b>patch clamp</b>, una técnica que mide la corriente de un solo canal: al colocar el imán, la apertura del canal cambia en segundos.</p>
+<p><b>Los cuatro convergen en el voltaje de membrana.</b> Por cualquiera de esas vías el resultado es el mismo cambio, y con él el flujo de iones, el pH local y el estado de oxidación-reducción. El polo interviene únicamente en el primero, el torque; no hay datos que documenten efectos distintos del polo negativo y del positivo por ninguna otra vía.</p>
+<p>Rosen AD. <i>Cell Biochem Biophys</i>. 2003;39(2):163–173, sobre la anisotropía diamagnética. · Kirschvink JL, et al. <i>Proc Natl Acad Sci USA</i>. 1992;89(16):7683–7687, sobre la magnetita del cerebro humano.</p>
+<p>El efecto ocurre porque el campo deforma la geometría de la membrana. De ahí una consecuencia que gobierna toda la práctica: aumentar la intensidad del imán no aumenta el resultado. Lo que cambia el resultado es el gradiente y el sitio donde se coloca.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">26</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">8 · Intensidad y alcance</span></div>
+<div class="body"><div class="sub">Lo que falta por verificar</div>
+<p>Todo lo anterior está documentado en tejido y en célula. La configuración específica de esta técnica —dos imanes de polaridad opuesta, sobre dos zonas, durante quince a treinta minutos— no se ha medido en laboratorio. Existe el fundamento biofísico y el rango de intensidad es compatible; lo que falta es verificar ese formato concreto. Es la principal línea de investigación abierta del método.</p></div><div class="caphead"><span class="capn">8</span><h1>Intensidad y alcance</h1></div>
+<p class="epi">En la superficie de un imán de neodimio la densidad del campo es de 300 a 500 mT, y a dos centímetros de profundidad ha caído a una fracción de esa cifra. El tejido responde dentro de una ventana estrecha, de 2 a 80 mT, y la densidad que llega al objetivo cae dentro de ella. Aumentar la intensidad del imán no mejora el resultado.</p><div class="body"><div class="sub">La densidad del campo se mide en tesla</div>
+<p>La densidad de un campo magnético se expresa en <b>gauss</b> o en <b>tesla</b>, y <b>1 tesla equivale a 10 000 gauss</b>. El gauss cuenta líneas de fuerza por centímetro cuadrado. La literatura de investigación emplea el tesla, y todas las intensidades de este manual van en militesla, la milésima parte de un tesla.</p>
+<div class="sub">Ferrita y neodimio</div>
+<table class="nodos"><thead><tr><th>Propiedad</th><th>Ferrita</th><th>Neodimio</th></tr></thead><tbody><tr><td><b>Densidad en la superficie</b></td><td>100 a 300 mT</td><td>300 a 500 mT</td></tr><tr><td><b>Comportamiento térmico</b></td><td>Estable</td><td>Pierde magnetismo por encima de 80 °C</td></tr><tr><td><b>Uso</b></td><td>Versátil, costo bajo</td><td>Estándar clínico actual</td></tr></tbody></table>
+<p>Los dos se fracturan al chocar. Los de neodimio se atraen entre sí con fuerza, así que se usan cubiertos y con una lengüeta para retirarlos.</p>
+<div class="sub">La ventana de respuesta del tejido</div>
+<table class="nodos"><thead><tr><th>Fuente</th><th>Densidad</th></tr></thead><tbody><tr><td>Campo magnético terrestre</td><td>0.05 mT</td></tr><tr><td>Imán de refrigerador</td><td>5 mT</td></tr><tr><td><b>Ventana en la que el tejido responde</b></td><td><b>2 a 80 mT</b></td></tr><tr><td>Imanes estáticos de uso clínico</td><td>100 a 500 mT</td></tr><tr><td>Resonancia magnética</td><td>1500 a 3000 mT</td></tr></tbody></table></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">27</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque II · El campo magnético: mecanismos, intensidad y alcance</span></div>
+<div class="body"><p>En la superficie, un imán clínico está muy por encima de esa ventana. Lo que llega al tejido es una fracción, porque la densidad del campo <b>decae aproximadamente con el cubo de la distancia</b>. A dos o tres centímetros, un imán de 300 a 500 mT deja entre 10 y 50 mT, que cae dentro de la ventana. A la profundidad de la fascia, un imán de 10 000 gauss deja alrededor de 1 gauss.</p>
+<p>De ahí que casi todo el efecto ocurra cerca de la superficie. Lo determinante es la densidad que alcanza el tejido, que es una cifra distinta de la que el imán marca en la mano.</p>
+<div class="sub">Un imán de 2.5 cm alcanza unos 2 cm de profundidad</div>
+<p>Un imán de neodimio de 2.5 cm de diámetro alcanza unos <b>2 cm de profundidad</b>. Los órganos profundos rara vez reciben campo suficiente por colocación directa, y para ellos se emplea el conjunto magnético.</p>
+<p><b>Un imán de mayor intensidad no compensa un sitio equivocado.</b> Lo que determina el efecto es la densidad que llega al nodo correcto, y el nodo lo determina el rastreo.</p>
+<div class="sub">El imán se elige del tamaño de la zona</div>
+<p>Un imán mayor que la zona no delimita el hallazgo: si abarca más superficie que la zona que responde, el rastreo pierde el contorno.</p>
+<div class="sub">El tejido del organismo es diamagnético</div>
+<p>Los materiales se comportan de tres maneras dentro de un campo magnético.</p>
+<table class="nodos"><thead><tr><th>Comportamiento</th><th>Qué le hace el campo</th><th>Ejemplos</th></tr></thead><tbody><tr><td><b>Ferromagnético</b></td><td>Lo atrae con fuerza, y el material queda magnetizado</td><td>Hierro, níquel, cobalto</td></tr><tr><td><b>Paramagnético</b></td><td>Lo atrae débilmente, y el material no queda magnetizado</td><td>Aluminio, titanio, el oxígeno</td></tr><tr><td><b>Diamagnético</b></td><td>Lo repele débilmente</td><td>El agua, la madera, la tela, y el tejido del organismo</td></tr></tbody></table>
+<p>El tejido es diamagnético porque está compuesto sobre todo de agua. De ahí el nombre del primer mecanismo del capítulo anterior: la <b>anisotropía diamagnética</b> de la membrana es la respuesta de los fosfolípidos, que son diamagnéticos, a un campo que los hace girar.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">28</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">9 · El gradiente</span></div>
+<div class="caphead"><span class="capn">9</span><h1>El gradiente</h1></div>
+<p class="epi">El gradiente dice qué tan rápido cambia el campo de un punto al siguiente, y alcanza su valor máximo entre dos polos contrarios y adyacentes. Cuando un imán solo deja la medición sin cambio, se coloca el segundo, y el efecto lo produce el gradiente entre ambos. Separarlos lo aplana, y un imán más intenso no sustituye al segundo polo.</p><div class="body"><p>La <b>intensidad</b> dice cuánta fuerza tiene el campo en un punto. El <b>gradiente</b> dice qué tan rápido cambia esa fuerza de un punto al siguiente. Son dos magnitudes distintas, y la que produce el efecto es la segunda.</p>
+<p>Se comprueba en algo cotidiano: dos imanes se atraen porque entre ellos el campo cambia de forma brusca en muy poca distancia. Donde el campo es parejo, no hay atracción.</p>
+<div class="sub">El gradiente alcanza su valor máximo entre dos polos opuestos y adyacentes</div>
+<p>Dos imanes colocados juntos, con los polos contrarios enfrentados, generan lo que se denomina <b>gradiente empinado</b>: en el espacio que queda entre ellos, el campo cambia de forma muy brusca en muy poca distancia.</p>
+<p>Hay tres montajes que lo producen:</p>
+<table class="nodos"><thead><tr><th>Montaje</th><th>Alcance</th></tr></thead><tbody><tr><td>Dos imanes muy próximos, en atracción</td><td>Superficial</td></tr><tr><td>Cuatro imanes en rejilla, con las polaridades alternadas</td><td>Superficial</td></tr><tr><td>El conjunto magnético, con su entrehierro</td><td>Alrededor de 4 cm</td></tr></tbody></table>
+<p>El tercero se describe en el capítulo siguiente; la rejilla, como técnica de aplicación, en el 17.</p>
+<div class="sub">Cuando un imán solo deja la medición sin cambio, se coloca el segundo</div>
+<p>El efecto lo produce el gradiente que se forma entre los dos. <b>Un imán de mayor intensidad no reemplaza al segundo polo.</b></p>
+<p>Los dos se mantienen juntos, en posición de atracción. Al separarlos el gradiente se aplana y el efecto se pierde.</p>
+<div class="sub">El gradiente empinado reduce la transmisión del nervio</div>
+<p>El gradiente empinado modifica el flujo de sodio y de calcio en la fibra nerviosa, y la fibra deja de transmitir por un tiempo. El resultado es analgésico, y esa es la colocación que se emplea para el dolor: el imán sobre la zona y su pareja a un lado, de modo que los dos sigan atrayéndose.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">29</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque II · El campo magnético: mecanismos, intensidad y alcance</span></div>
+<div class="body"><div class="sub">Dos modos de colocación</div>
+<table class="nodos"><thead><tr><th>Modo</th><th>Cómo se coloca</th><th>Para qué</th></tr></thead><tbody><tr><td><b>Sobre el lugar</b></td><td>Los dos polos en la misma zona, en gradiente empinado o focal</td><td>Dolor de la zona, y reorganización local del voltaje</td></tr><tr><td><b>Sobre el sustrato</b></td><td>Un polo en la zona y el otro en un nodo distante</td><td>Cuando el disturbio compromete una escala mayor que la zona</td></tr></tbody></table>
+<p><b>El nodo distante principal es el riñón</b>, que es el único órgano que regula los iones de todo el organismo.</p></div><div class="caphead"><span class="capn">10</span><h1>El conjunto magnético</h1></div>
+<p class="epi">El conjunto magnético lleva los dos polos en la misma cara y genera su propio gradiente, con unos 4 cm de alcance. El gradiente alcanza su valor máximo en el entrehierro, entre la pieza polar del centro y la placa superior que la rodea.</p><div class="body"><p>Un imán simple alcanza unos 2 cm, y la mayoría de los órganos internos queda por debajo de esa profundidad.</p>
+<p>En la parte trasera de una bocina va el <b>conjunto magnético</b>, que en ingeniería de audio se denomina también motor magnético. Es un imán permanente acoplado a piezas de hierro que concentran el flujo en un punto exacto. En la práctica clínica se le llama imán de bocina.</p>
+<table class="nodos"><thead><tr><th>Pieza</th><th>Qué es</th></tr></thead><tbody><tr><td><b>El imán permanente</b></td><td>La pieza circular, de ferrita o de neodimio, que aporta la energía magnética</td></tr><tr><td><b>La pieza polar, o núcleo</b></td><td>El cilindro de hierro del centro</td></tr><tr><td><b>La placa superior</b></td><td>La arandela metálica que rodea al núcleo y concentra el flujo en el espacio que queda entre los dos</td></tr><tr><td><b>La placa posterior</b></td><td>La base metálica trasera, que une el imán con el núcleo central</td></tr></tbody></table>
+<p>De ese montaje sale la propiedad que la técnica aprovecha. La pieza polar lleva una polaridad al centro de la cara, y la placa superior lleva la contraria al anillo que lo rodea. Entre las dos queda el <b>entrehierro</b>, y ahí el campo cambia de forma muy brusca en muy poca distancia: es el gradiente empinado del capítulo anterior, generado dentro de una sola pieza, con unos 4 cm de alcance.</p>
+<p><b>Se usa siempre la cara donde están los dos polos.</b></p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">30</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">10 · El conjunto magnético</span></div>
+<div class="body"><pre class="tree">PRUEBA DE POLARIDAD DEL CONJUNTO MAGNÉTICO
+
+  1 · Se coloca un imán pequeño sobre el CENTRO de la pieza.
+        Se atrae   → el centro es el polo negativo.
+        Se repele  → el centro es el polo positivo.
+
+  2 · Se desplaza el imán pequeño hacia el BORDE.
+        El comportamiento se invierte, lo que confirma
+        que los dos polos están en la misma cara.
+
+  3 · El polo del CENTRO es el que se coloca contra la piel
+        en el nodo que se está rastreando.</pre>
+<p><b>La polaridad que actúa es la de la pieza polar, en el centro.</b> Cuando el procedimiento pide polo negativo sobre la zona, se emplea un conjunto cuyo centro sea el polo negativo, comprobado con la prueba anterior. La placa superior queda con la polaridad contraria y forma el gradiente, sin que haya que colocar nada más.</p>
+<p>En las piezas forradas en dos colores, el negro corresponde al polo negativo y el rojo al positivo. Esas piezas también llevan gradiente propio, y la cara opuesta queda sin función en esta técnica.</p>
+<p>Los conjuntos magnéticos se obtienen de bocinas desarmadas, o se compran ya sueltos.</p>
+<div class="sub">El polo de rastreo quedó fijado por convención</div>
+<p>El rastreo se ejecuta con el <b>polo negativo</b>, que es el polo norte. La convención está fijada en el protocolo y se aplica igual en todos los ejes.</p>
+<p>El polo positivo también produce acortamiento en algunas colocaciones, y el mecanismo por el que el negativo quedó fijado como polo de rastreo no está establecido.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">31</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque III · Nomenclatura y procedimiento de medición</span></div>
+<div class="bloq"><div class="kbar"></div><p class="eyebrow">Bloque III</p><h1>Nomenclatura y procedimiento de medición</h1><p class="sub">Cómo se nombra lo que el rastreo encuentra, por qué el cuerpo responde con un acortamiento, cómo se mide y qué es una isla bioeléctrica.</p></div>
+<div class="caphead"><span class="capn">11</span><h1>Nodo y dipolo</h1></div>
+<p class="epi">El lugar donde el rastreo produce respuesta se llama nodo, y dos nodos de la misma red forman un dipolo. El nodo puede coincidir con la molestia o estar lejos de ella. Que dos zonas distantes se comuniquen por vía eléctrica está medido: al amputar una extremidad aparece una señal en la del lado opuesto en unos treinta segundos.</p><div class="body"><div class="sub">Nodo y dipolo</div>
+<p><b>Se denomina nodo al lugar donde el rastreo produce respuesta.</b> El término sustituye a la denominación anterior de punto.</p>
+<p><b>Dos nodos de la misma red forman un dipolo.</b> El término sustituye a la denominación heredada de par.</p>
+<table class="nodos"><thead><tr><th>Tipo de nodo</th><th>Dónde se localiza</th></tr></thead><tbody><tr><td><b>Nodo local</b></td><td>En el mismo lugar donde está el disturbio</td></tr><tr><td><b>Nodo distante</b></td><td>En una zona que no coincide con el dolor ni con la lesión</td></tr></tbody></table>
+<p>El resultado depende de que el imán quede sobre el nodo de la red a la que ese disturbio pertenece.</p>
+<div class="sub">Dos zonas distantes se comunican por vía eléctrica en segundos</div>
+<p>Busse y Levin lo midieron en 2018: al amputar una extremidad aparece una señal eléctrica en la del lado opuesto en unos <b>treinta segundos</b>. Es demasiado rápido para una molécula que viaje por la sangre.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">32</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">11 · Nodo y dipolo</span></div>
+<div class="body"><p>Ese es el fundamento del dipolo distante. Dos zonas alejadas entre sí están conectadas eléctricamente, y una responde a lo que ocurre en la otra.</p>
+<p>Cuatro continuidades anatómicas explican por dónde viaja esa señal:</p>
+<table class="nodos"><thead><tr><th></th><th>Continuidad</th><th>En qué consiste</th></tr></thead><tbody><tr><td>1</td><td><b>El paquete neurovascular</b></td><td>Todo nervio viaja acompañado de un vaso, y los paquetes convergen en territorios funcionales</td></tr><tr><td>2</td><td><b>La matriz extracelular</b></td><td>Forma una red continua en todo el organismo</td></tr><tr><td>3</td><td><b>El acoplamiento celular</b></td><td>Ninguna célula opera aislada. Las que se aíslan tienen vida corta y función restringida</td></tr><tr><td>4</td><td><b>Los territorios linfoides asociados a mucosas</b></td><td>Agrupan tejido inmune de regiones distantes bajo una misma regulación</td></tr></tbody></table>
+<p>Las cuatro están documentadas por separado. Su uso como explicación de los dipolos distantes es una interpretación de este método.</p>
+<p>Busse SM, McMillen PT, Levin M. <i>Development</i>. 2018;145(20):dev164210.</p>
+<div class="sub">Las tres geometrías del dipolo</div>
+<table class="nodos"><thead><tr><th>Geometría</th><th>Cómo se compone</th><th>Qué interroga</th></tr></thead><tbody><tr><td><b>Dipolo local</b></td><td>Los dos imanes sobre la misma zona, adyacentes</td><td>El lugar</td></tr><tr><td><b>Dipolo distante</b></td><td>El nodo hallado con su regulador: riñón, suprarrenal, hígado o bulbo</td><td>La escala a la que pertenece el disturbio</td></tr><tr><td><b>Dipolo bilateral</b></td><td>El nodo con su homólogo del lado contrario</td><td>El estado del cuerpo</td></tr></tbody></table>
+<p>Un nodo en un solo lado interroga el lugar. Un dipolo bilateral interroga el estado del cuerpo.</p>
+<p>Las tres se distinguen por dónde va el segundo polo, y las tres se confirman de la misma manera: por un cambio en la longitud aparente de una extremidad.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">33</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque III · Nomenclatura y procedimiento de medición</span></div>
+<div class="caphead"><span class="capn">12</span><h1>El reflejo del iliopsoas y el acortamiento de la extremidad</h1></div>
+<p class="epi">El cambio de voltaje que introduce el imán viaja por las uniones comunicantes, modifica el tono del iliopsoas y se observa como acortamiento de una extremidad. Es un cambio de tono muscular. La extremidad izquierda es la referencia en todas las mediciones.</p><div class="body"><div class="sub">El iliopsoas responde al estado autonómico</div>
+<p>El <b>iliopsoas</b> se origina en la segunda vértebra lumbar y se inserta en el fémur. Tiene inervación dual y continuidad anatómica con el diafragma, la fascia toracolumbar y la cadena simpática. Esa inervación y esa continuidad lo hacen sensible al estado autonómico, y por eso el método lo emplea como indicador.</p>
+<p>Cuando el imán produce un cambio de voltaje en una zona, esa información se propaga por el tejido a través de las <b>uniones comunicantes</b>, que enlazan a las células entre sí sin dejar separación, como los vagones de un tren. La respuesta se manifiesta como un cambio de tono en el iliopsoas, que se observa como acortamiento de la extremidad.</p>
+<p><b>El acortamiento es un cambio de tono muscular.</b> Goiz lo atribuía a un acortamiento del hueso y tomó radiografías para comprobarlo: en alrededor del 4 % de los casos encontró una discrepancia real de longitud, y en el resto los huesos medían igual. La resonancia magnética funcional mostró después que lo que cambia es el iliopsoas, cuando cambian los patrones bioeléctricos.</p>
+<p><b>La extremidad no señala la zona explorada.</b> Lo que se mide es la respuesta del sistema completo a la perturbación que introduce el imán.</p>
+<div class="sub">La extremidad izquierda es la referencia</div>
+<p><b>La extremidad izquierda es la referencia y la derecha es la variable</b>, en todas las mediciones de la sesión. Desde la izquierda se juzga si la derecha se acorta o se empareja.</p>
+<p><b>La extremidad que acorta es generalmente la derecha</b>, que es la variable. El reflejo tiene que ocurrir por sí solo: un acortamiento provocado por la tracción de quien mide no corresponde a un hallazgo.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">34</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">13 · La medición de la simetría</span></div>
+<div class="caphead"><span class="capn">13</span><h1>La medición de la simetría</h1></div>
+<p class="epi">Acortamiento es que un talón quede más corto que el otro; isometría es que los dos queden parejos. La medición se repite igual en cada colocación: misma posición, misma elevación de los tobillos, sin traccionar y sin corregir en el momento de medir. Un acortamiento presente antes de colocar el imán obliga a establecer primero la línea base.</p><div class="body"><div class="sub">Acortamiento e isometría</div>
+<p>Son las dos palabras que se usan durante toda la sesión.</p>
+<table class="nodos"><thead><tr><th></th><th>Qué se ve</th><th>Qué significa</th></tr></thead><tbody><tr><td><b>Acortamiento</b></td><td>Un talón queda más corto que el otro</td><td>El microambiente de la zona donde está el imán se encuentra desregulado: ahí hay un nodo</td></tr><tr><td><b>Isometría</b></td><td>Los dos talones quedan parejos</td><td>El microambiente de esa zona está en rango. Al cierre de la aplicación, que el nodo se resolvió</td></tr></tbody></table>
+<p>La extremidad izquierda es la referencia. Desde ella se juzga si la derecha se acorta o se empareja.</p>
+<p>Si la referencia cambia entre una medición y la siguiente, las mediciones dejan de ser comparables y el rastreo pierde su valor. El procedimiento está fijado paso a paso, y cada paso elimina una fuente de variación: la posición del cuerpo, la altura de la elevación, la tracción del operador y la corrección involuntaria en el momento de medir.</p>
+<div class="sub">La preparación evita la principal fuente de error</div>
+<p>La tensión de defensa del músculo es la principal fuente de error de esta prueba. Un cuerpo tenso no da una medición estable, y por eso la preparación no es un trámite.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">35</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque III · Nomenclatura y procedimiento de medición</span></div>
+<div class="body"><pre class="tree">1 · EXPLICAR EL PROCEDIMIENTO
+    Se informa que consiste en una evaluación de simetría y una
+    colocación de imanes, indolora y no invasiva.
+
+2 · RETIRAR OBJETOS
+    Joyas, reloj, cinturón, llaves y dispositivos electrónicos.
+
+3 · POSICIÓN
+    Decúbito supino, cabeza en posición neutra, sin hiperextensión.
+
+4 · LIBERAR EL ILIOPSOAS
+    Ambas extremidades inferiores se traccionan con suavidad para
+    relajar la articulación pélvica, y después se movilizan hacia
+    los lados para relajar el piso pélvico.
+
+5 · CUBRIR
+    Se cubre a la persona con una manta, que relaja el cuerpo y
+    retira los mecanismos de defensa.</pre>
+<div class="sub">La posición de medición se repite igual en cada colocación</div>
+<pre class="tree">POSICIÓN DE MEDICIÓN
+
+    Los pies quedan por fuera del borde distal de la camilla,
+    con los talones libres. De preferencia con calzado.
+
+    Antes de medir, unas respiraciones profundas.
+
+    Ambas extremidades se elevan por los tobillos unos 30 GRADOS,
+    alineadas con el eje del cuerpo.
+
+    Los brazos permanecen relajados. La punta del pie queda
+    alineada con la rodilla; los pies pueden abrirse ligeramente.
+
+    SE LEVANTA Y SE COMPARA. No se tracciona en ese momento
+    y no se corrige nada.</pre>
+<p>La presión sobre los talones es suave y simétrica en los dos, y se sostienen unos segundos en cada colocación. Un nodo verdadero da la misma respuesta cada vez que se vuelve a interrogar.</p>
+<p>La camilla no lleva superficie metálica, y su altura coincide con la cintura del operador, para que la medición se repita sin esfuerzo.</p>
+<div class="sub">Qué decide la medición basal</div>
+<p>La medición que se toma antes de colocar ningún imán fija el cero desde el cual todas las demás tienen sentido.</p>
+<table class="nodos"><thead><tr><th>Hallazgo en la medición basal</th><th>Qué sigue</th></tr></thead><tbody><tr><td><b>Los dos talones parejos</b></td><td>Se pasa directamente al rastreo por zonas</td></tr><tr><td><b>Un talón más corto que el otro</b></td><td>Se establece primero la línea base, con el eje de acidosis</td></tr></tbody></table></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">36</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">14 · La isla bioeléctrica</span></div>
+<div class="body"><p>Dos situaciones producen acortamiento sin imán colocado: una discrepancia real de longitud por traumatismo previo, o el fenómeno bioeléctrico de acidosis.</p>
+<p>Cuando con el imán colocado la extremidad continúa acortada por una discrepancia anatómica propia de la persona, esa longitud se registra como línea base de la sesión, y el resto de las mediciones se juzgan sobre ella.</p></div><div class="caphead"><span class="capn">14</span><h1>La isla bioeléctrica</h1></div>
+<p class="epi">El potasio que sale de las células dañadas eleva su concentración en el espacio extracelular y despolariza a las células vecinas. Esa despolarización cierra las uniones comunicantes y el grupo queda desconectado de la red. Las células conservan su estructura y pierden la información de qué posición ocupan en el tejido.</p><div class="body"><p>Cuando el acoplamiento entre un grupo de células se interrumpe, el rastreo encuentra una zona que responde al imán sin que la persona tenga ahí ninguna molestia declarada. Es la lesión característica del método, y es el mismo fenómeno que pierde el islote del páncreas al retirar sus uniones: las mismas células, sin la red.</p>
+<div class="sub">El potasio que sale de las células dañadas cierra las uniones comunicantes</div>
+<pre class="tree">1 · El traumatismo daña membranas celulares.
+
+2 · El potasio del interior sale al espacio extracelular.
+    La concentración pasa de alrededor de 4 mmol
+    a valores de 20 a 40 mmol en la zona.
+
+3 · Ese exceso de potasio despolariza a las células vecinas.
+
+4 · La despolarización cierra las uniones comunicantes,
+    y el grupo de células queda desconectado de la red.</pre>
+<p><b>La señal viaja por la red y no entra a la isla.</b> Las células conservan su estructura y su capacidad de trabajo, y lo que pierden es la información de qué posición ocupan en el tejido.</p>
+<p>El pH ácido de la zona aparece después del aislamiento y es consecuencia suya.</p>
+<div class="sub">Un golpe, una cirugía o un fármaco pueden originarla</div>
+<p>Un golpe, una herida, una extracción dental, una intervención quirúrgica o un traumatismo. También la exposición a un fármaco o a un agente químico.</p>
+<p><b>El hallazgo se define por la respuesta.</b> Si la medición no cambia, no hay isla bioeléctrica en esa zona, cualquiera que sea el antecedente.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">37</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque III · Nomenclatura y procedimiento de medición</span></div>
+<div class="body"><div class="sub">El contorno se delimita moviendo el imán y midiendo</div>
+<p>Se desplaza el imán por la zona y se mide en cada posición. Donde el acortamiento desaparece, termina la isla. <b>El contorno resultante se marca sobre la piel y se traslada al expediente</b>, en dibujo o en fotografía, para volver a explorar esas mismas zonas en la sesión siguiente.</p>
+<p>Las islas de origen antiguo pueden reaparecer en sesiones posteriores, en función de la edad, el estado nutricional y la carga acumulada.</p>
+<p>Marca el contorno la propia persona siempre que sea posible. Trazar el propio mapa mantiene a la persona como sujeto de la sesión.</p>
+<div class="sub">Tres señales que aparecen con el imán colocado</div>
+<ol class="proc"><li><b>Movimientos oculares rápidos</b>, como los del sueño.</li><li><b>Somnolencia o relajación profunda.</b> La persona se duerme con frecuencia.</li><li><b>Cambios en la voz</b>, que se arrastra o baja de volumen.</li></ol>
+<p>Las tres aparecen con el imán ya colocado y no orientan sobre la zona. Indican que la persona pasó a un estado de relajación profunda, y ninguna de las tres es condición para que la sesión sea válida.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">38</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">15 · La regla del rastreo</span></div>
+<div class="bloq"><div class="kbar"></div><p class="eyebrow">Bloque IV</p><h1>Rastreo, escala del proceso y tiempos de aplicación</h1><p class="sub">La regla única de rastreo, la lectura del nivel en el que se resuelve el hallazgo, la rejilla y los tiempos de aplicación y retiro.</p></div>
+<div class="caphead"><span class="capn">15</span><h1>La regla del rastreo</h1></div>
+<p class="epi">El rastreo se reduce a una sola regla, que se aplica igual en todos los ejes. Se coloca el polo negativo sobre la zona, el acortamiento confirma el nodo, y el polo positivo se coloca al lado para formar el dipolo local. Si con eso los talones no emparejan, el segundo polo se coloca sucesivamente sobre riñón, suprarrenal, hígado y bulbo raquídeo, en ese orden fijo.</p><div class="body"><p><b>Esta regla se aplica igual en todos los ejes de la Parte II.</b> Lo que cambia de un eje a otro son las zonas que se exploran y, en dos casos, el orden del nodo distante.</p>
+<div class="sub">El rastreo se ejecuta en cinco pasos</div>
+<pre class="tree">1 · LA ZONA
+    Se elige la siguiente zona del eje que se está trabajando,
+    en el orden que ese eje establece.
+</pre></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">39</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque IV · Rastreo, escala del proceso y tiempos de aplicación</span></div>
+<div class="body"><pre class="tree sigue">2 · COLOCAR Y MEDIR
+    Polo negativo, cara negativa a la piel, sobre la zona.
+    Con el conjunto magnético, la pieza polar negativa contra
+    la piel. Medir la simetría.
+
+      Acorta            → zona confirmada. El imán queda fijo.
+      Sin cambio        → se desplaza el imán dentro de la zona
+                          y se vuelve a medir.
+      Sin cambio en
+      toda la zona      → se pasa a la zona siguiente.
+
+3 · DIPOLO LOCAL
+    Sin mover el negativo, se prueba el positivo en posiciones
+    adyacentes: a un lado, arriba, abajo. Se mide en cada una.
+
+      Talones parejos   → dipolo local. Se deja colocado.
+      Sigue acortado    → paso 4.
+
+4 · NODO DISTANTE, POR EL ORDEN FIJO
+    El negativo permanece sobre la zona. Se retira el positivo
+    probado al lado y se sigue la secuencia, midiendo en cada paso:
+
+      1. Riñón derecho
+      2. Riñón izquierdo
+      3. Suprarrenal derecha
+      4. Suprarrenal izquierda
+      5. Hígado
+      6. Bulbo raquídeo
+      7. Rastreo del resto del cuerpo
+
+    Se detiene en el primero que empareja los talones.
+
+5 · TIEMPO
+    Veinte minutos de promedio. La medición decide el retiro.</pre>
+<p><b>Una zona que no acorta no se trabaja.</b> La zona la propone el operador a partir del mapa; el nodo lo confirma la medición.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">40</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">15 · La regla del rastreo</span></div>
+<div class="body"><div class="sub">El orden es empírico, del nodo más frecuente al más central</div>
+<table class="nodos"><thead><tr><th>Nodo</th><th>Función que representa</th><th>Estatuto</th></tr></thead><tbody><tr><td><b>Riñón</b></td><td>Efector iónico. Es el único órgano que regula los iones de todo el organismo, y un cambio de 1 mmol produce desequilibrio bioeléctrico en tejidos distantes</td><td>Establecido</td></tr><tr><td><b>Suprarrenal</b></td><td>Efector neuroendocrino</td><td>Propuesto, en investigación</td></tr><tr><td><b>Hígado</b></td><td>Efector metabólico, por vía vagal</td><td>Propuesto, en investigación</td></tr><tr><td><b>Bulbo raquídeo</b></td><td>Control autonómico central</td><td>Propuesto, en investigación</td></tr></tbody></table>
+<p>El riñón encabeza la secuencia porque la movilización iónica es el mecanismo por el que un tejido pierde su voltaje, y el riñón es el único órgano que regula los iones del organismo entero.</p>
+<p>El orden de los tres siguientes es empírico: se fijó por la frecuencia con que cada nodo empareja los talones en la práctica. Qué variable domina en el cuadro clínico no entra en ese orden.</p>
+<p><b>El último nodo de la secuencia es el bulbo raquídeo.</b> Ese límite es provisional.</p>
+<div class="sub">Dónde se coloca cada nodo distante</div>
+<table class="nodos"><thead><tr><th>Nodo</th><th>Referencia sobre la piel</th></tr></thead><tbody><tr><td><b>Zona renal</b>, derecha e izquierda</td><td>Ángulo costovertebral, entre el borde inferior de la duodécima costilla y el borde lateral de los músculos erectores. La zona renal derecha queda un través de dedo más baja que la izquierda</td></tr><tr><td><b>Suprarrenal</b>, derecha e izquierda</td><td>Un través de dedo por encima de la zona renal del mismo lado, en el mismo ángulo costovertebral. Corresponde a la localización de la glándula sobre el polo superior del riñón</td></tr><tr><td><b>Hígado</b></td><td>Hipocondrio derecho, sobre la parrilla costal, de la línea medioclavicular a la axilar media. Se rastrea toda la zona</td></tr><tr><td><b>Bulbo raquídeo</b></td><td>Línea media posterior, en la depresión entre la protuberancia occipital externa y el arco posterior del atlas</td></tr></tbody></table>
+<p><b>Las referencias son de anatomía de superficie</b>, y se comprueban con la mano antes de colocar.</p>
+<p><b>El nodo distante lo determina la medición.</b> El operador sigue el orden y se detiene donde los talones emparejan.</p>
+<div class="sub">Lo que el riñón regula es el voltaje asociado al potasio</div>
+<p>Colocar imanes sobre el riñón no regula el potasio del organismo. <b>El riñón es un nodo regulador del voltaje de membrana asociado a esa variable.</b> El potasio tiene su propio punto de ajuste.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">41</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque IV · Rastreo, escala del proceso y tiempos de aplicación</span></div>
+<div class="body"><div class="sub">Cuando la secuencia completa no empareja los talones</div>
+<p>Agotados los seis nodos distantes y el rastreo del resto del cuerpo, <b>el disturbio no pertenece a la escala que este eje explora</b>. El operador registra el hallazgo, deja el nodo local sin dipolo y pasa al eje siguiente.</p>
+<p><b>Un rastreo sin hallazgos también es información</b>, y se anota como tal.</p></div><div class="caphead"><span class="capn">16</span><h1>La escala del proceso</h1></div>
+<p class="epi">El punto de la secuencia en el que los talones emparejan indica a qué escala pertenece el proceso. Si emparejan con el dipolo local, el proceso está acotado a esa zona. Si emparejan solo al llegar a un nodo distante, en él participa además un órgano regulador.</p><div class="body"><p>El punto donde la secuencia se detiene informa de algo más que la ubicación del nodo: dice hasta dónde llega el proceso.</p>
+<table class="nodos"><thead><tr><th>Dónde emparejan los talones</th><th>Qué indica</th></tr></thead><tbody><tr><td><b>Con el dipolo local</b></td><td>Isla bioeléctrica acotada al lugar donde se encontró, de origen reciente</td></tr><tr><td><b>Riñón</b></td><td>Inflamación de origen externo que elevó el punto de ajuste del órgano; con frecuencia, un proceso infeccioso</td></tr><tr><td><b>Suprarrenal</b></td><td>Carga de estrés prolongada. Corresponde a un conflicto neuroendocrino</td></tr><tr><td><b>Hígado</b></td><td>Punto de ajuste del intestino, y también infección crónica</td></tr><tr><td><b>Bulbo raquídeo</b></td><td>Cambio en la capacidad de anticipación del sistema: el horizonte</td></tr></tbody></table>
+<p>La lectura del riñón se apoya en su función iónica, que está establecida. Las de la suprarrenal, el hígado y el bulbo tienen el mismo estatuto que la tríada del capítulo anterior: son propuestas en investigación.</p></div><div class="caphead"><span class="capn">17</span><h1>La rejilla</h1></div>
+<p class="epi">Cuatro imanes iguales, montados en cuadro con las polaridades alternadas, multiplican las fronteras entre polos opuestos y con ellas los gradientes empinados. Se monta sobre un nodo que el rastreo ya confirmó. Actúa sobre la fibra nerviosa, la circulación local y los macrófagos de la zona.</p><div class="body"><div class="sub">Cuatro imanes alternados, como un tablero de ajedrez</div></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">42</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">16 · La escala del proceso</span></div>
+<div class="body"><pre class="tree">    ┌───────┬───────┐
+    │   −   │   +   │
+    ├───────┼───────┤     Cuatro imanes iguales entre sí,
+    │   +   │   −   │     en cuadro de dos por dos,
+    └───────┴───────┘     con las polaridades alternadas.</pre>
+<p>Cada imán queda opuesto a sus vecinos de lado y de arriba, y los dos de cada diagonal comparten polo. Es la disposición de un tablero de ajedrez: en los imanes de colores, ninguna cara queda junto a otra del mismo color. <b>Si al armarla quedan dos caras iguales juntas, la rejilla está mal montada y se rehace.</b></p>
+<p>Los cuatro se mantienen juntos, todavía atrayéndose entre sí. La rejilla se monta <b>ceñida al nodo que el rastreo ya confirmó</b>, y sin mover el imán que lo confirmó.</p>
+<div class="sub">Cuándo se indica</div>
+<p><b>En la lesión muscular.</b> Contractura, tirón, desgarre, esguince o fractura: el tejido dañado libera calcio y potasio, y en la zona queda un gradiente inflamatorio.</p>
+<p><b>En dolor, inflamación o irritación de la zona</b>, con o sin lesión muscular de por medio.</p>
+<p><b>Con panículo adiposo abundante</b>, porque el espesor del tejido interpuesto reduce la densidad del campo que llega al objetivo.</p>
+<div class="sub">Actúa sobre la fibra nerviosa, la circulación y los macrófagos</div>
+<p>La rejilla multiplica las fronteras entre polos opuestos, y con ellas los gradientes empinados. Actúa sobre tres estructuras de la zona: <b>la fibra nerviosa</b>, que se desinflama, con reducción del dolor agudo por inflamación del nervio; <b>la circulación local</b>; y <b>los macrófagos presentes en el tejido</b>.</p>
+<div class="sub">La variante combinada mantiene el dipolo distante</div>
+<p>Cuando el nodo se confirmó como dipolo distante, <b>la rejilla se monta sobre el polo negativo y ese dipolo se mantiene</b>. Se trabajan así los dos componentes a la vez: el local y el sistémico.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">43</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque IV · Rastreo, escala del proceso y tiempos de aplicación</span></div>
+<div class="caphead"><span class="capn">18</span><h1>Tiempo y retiro</h1></div>
+<p class="epi">Cada zona confirmada permanece unos 20 minutos, que es lo que tarda el tejido en desplazar su voltaje con el gradiente colocado. Al retirar solo el polo positivo, la medición decide si la zona se resolvió o si hay que prolongar. La reparación ocurre después, en las horas y los días siguientes.</p><div class="body"><div class="sub">El promedio es de 20 minutos</div>
+<p>Cada zona confirmada permanece unos <b>20 minutos</b>. Es lo que tarda el tejido en desplazar su voltaje de membrana con el gradiente colocado, y vale igual para cualquier colocación.</p>
+<p>Cumplidos los 20 minutos se ejecuta la verificación de retiro, y el imán se retira según lo que esa verificación dé.</p>
+<div class="sub">La verificación de retiro</div>
+<pre class="tree">VERIFICACIÓN DE RETIRO
+
+    Cumplido el tiempo, se retira ÚNICAMENTE el polo positivo
+    y se mide.
+
+      Talones parejos  → la zona se resolvió. Se retira también
+                         el negativo y la sesión termina.
+      Vuelve a acortar → se recoloca el positivo y se prolonga.
+                         Se repite hasta que, al retirarlo,
+                         los talones queden parejos.</pre>
+<div class="pull"><p class="cita"><b>El tiempo es un promedio. El criterio de cierre son los talones parejos al retirar el positivo.</b></p></div>
+<div class="sub">Qué ocurre después de la sesión</div>
+<p>Lo que la sesión produce es el cambio de estado bioeléctrico. La reparación del tejido es consecuencia de ese cambio, ocurre en las horas y los días siguientes, ya sin el imán colocado, y toma su propio tiempo.</p>
+<p>La mejoría inmediata no confirma el resultado. Lo que se modificó fue un punto de ajuste, y un punto de ajuste se comprueba por su permanencia: por cuánto le dura a la persona, no por cómo se siente al levantarse de la camilla.</p>
+<div class="sub">Frecuencia y serie</div>
+<p>La aplicación puede repetirse a diario, sin exceder los 30 minutos, o cada tercer día. Cuando la persona no puede volver, se le entregan los imanes para aplicación domiciliaria sobre los nodos ya confirmados.</p>
+<p>Si un nodo sigue marcando en la segunda y la tercera sesión, se prolonga la serie.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">44</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">18 · Tiempo y retiro</span></div>
+<div class="body"><p>Una sesión no agota el perfil. Al resolverse los nodos de mayor respuesta, en la sesión siguiente aparecen otros que antes no marcaban. <b>La serie continúa mientras el rastreo siga dando hallazgos.</b></p>
+<p>Por eso el perfil de cada sesión se registra: sin el de la anterior, el operador no distingue un nodo nuevo de uno que ya trabajó.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">45</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque V · Criterios de seguridad y derivación</span></div>
+<div class="bloq"><div class="kbar"></div><p class="eyebrow">Bloque V</p><h1>Criterios de seguridad y derivación</h1><p class="sub">Qué obliga a valorar antes de colocar, qué obliga a derivar sin rastrear y qué corresponde a atención médica inmediata.</p></div>
+<div class="caphead"><span class="capn">19</span><h1>Situaciones que obligan a valorar</h1></div>
+<p class="epi">Seis situaciones se revisan antes de cualquier colocación. Marcapasos, embarazo, implantes, heridas abiertas y alergia al níquel obligan a valorar y a ajustar la colocación, y la sesión se realiza. El tratamiento oncológico en curso la difiere: el procedimiento se retoma una vez finalizado el tratamiento.</p><div class="body"><p>Se revisan antes de cualquier colocación:</p>
+<table class="nodos"><thead><tr><th>Situación</th><th>Conducta</th></tr></thead><tbody><tr><td><b>Marcapasos y otros dispositivos implantados</b></td><td>Valorar. No se colocan imanes en tórax</td></tr><tr><td><b>Embarazo</b></td><td>Se evita el abdomen</td></tr><tr><td><b>Implantes ferromagnéticos y prótesis</b></td><td>Valorar según el material y la localización</td></tr><tr><td><b>Herida abierta</b></td><td>Se cubre con gasa antes de colocar el imán</td></tr><tr><td><b>Alergia al níquel</b></td><td>El imán va cubierto</td></tr><tr><td><b>Tratamiento oncológico</b></td><td>El procedimiento se realiza <b>únicamente una vez finalizado el tratamiento</b>. Durante la quimioterapia y mientras el tratamiento siga en curso, no se rastrea ni se colocan imanes</td></tr></tbody></table>
+<p>Las cinco primeras obligan a valorar y a ajustar la colocación, y con ese ajuste la sesión se realiza. <b>El tratamiento oncológico en curso la difiere</b>, y ese caso corresponde además a derivación.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">46</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">20 · Hallazgos que obligan a derivar</span></div>
+<div class="caphead"><span class="capn">20</span><h1>Hallazgos que obligan a derivar</h1></div>
+<p class="epi">Nueve hallazgos obligan a derivar sin rastrear y sin colocar imanes. Dolor agudo con vómito, dolor que despierta por la noche, alteración de esfínteres, inicio mecánico después de los 50 años, pérdida de peso sin explicación, fiebre con dolor, déficit neurológico progresivo, cáncer en tratamiento y dolor visceral agudo.</p><div class="body"><p>Ante cualquiera de estos hallazgos, <b>el operador deriva al médico sin rastrear</b>:</p>
+<ol class="proc"><li><b>Dolor agudo intenso</b>, en particular acompañado de vómito.</li><li><b>Dolor que despierta por la noche</b> de forma persistente.</li><li><b>Alteración de los esfínteres.</b></li><li><b>Inicio en mayores de 50 años</b> atribuido a una causa mecánica.</li><li><b>Pérdida de peso sin explicación.</b></li><li><b>Fiebre acompañada de dolor.</b></li><li><b>Déficit neurológico progresivo.</b></li><li><b>Cáncer activo o tratamiento oncológico en curso</b>, por posibilidad de compresión.</li><li><b>Dolor visceral agudo.</b></li></ol>
+<p>Los puntos 1 a 7 y el 9 corresponden a signos que pueden encubrir un proceso que requiere estudio médico. El punto 8 es una contraindicación temporal: el procedimiento se retoma una vez finalizado el tratamiento.</p></div><div class="caphead"><span class="capn">21</span><h1>Urgencias</h1></div>
+<p class="epi">Cuatro situaciones en curso interrumpen o impiden la sesión: sangrado activo, dolor agudo masivo, crisis convulsiva e infección aguda con fiebre. El operador deriva al médico. La técnica se aplica con el cuadro ya controlado.</p><div class="body"><p>Estas cuatro situaciones están ocurriendo en el momento en que la persona llega, e impiden empezar la sesión o la interrumpen.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">47</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque V · Criterios de seguridad y derivación</span></div>
+<div class="body"><ol class="proc"><li><b>Sangrado activo.</b></li><li><b>Dolor agudo masivo.</b></li><li><b>Crisis convulsiva en curso.</b></li><li><b>Infección aguda con fiebre.</b></li></ol>
+<p><b>El operador deriva al médico. La técnica se aplica con el cuadro ya controlado.</b></p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">48</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">22 · La ficha y el mapa corporal</span></div>
+<div class="bloq"><div class="kbar"></div><p class="eyebrow">Bloque VI</p><h1>Registro clínico y reglas de conducción del rastreo</h1><p class="sub">Qué se documenta antes y después de la sesión, y con qué disciplina se formulan las preguntas del rastreo.</p></div>
+<div class="caphead"><span class="capn">22</span><h1>La ficha y el mapa corporal</h1></div>
+<p class="epi">La ficha recoge el motivo en el lenguaje de la persona, el cribado de seguridad y un mapa corporal con una calificación de 0 a 10 por zona. El mapa se registra antes del rastreo y se vuelve a revisar al cerrar. La sesión siguiente empieza preguntando cuánto le duró.</p><div class="body"><div class="sub">Los cuatro apartados de la ficha</div>
+<table class="nodos"><thead><tr><th>Apartado</th><th>Contenido</th></tr></thead><tbody><tr><td><b>Subjetivo</b></td><td>Datos de identificación, motivo de consulta y síntomas <b>en el lenguaje de la persona</b>, tratamientos previos, medicación, y el cribado de seguridad</td></tr><tr><td><b>Objetivo</b></td><td>El mapa corporal, anterior y posterior</td></tr><tr><td><b>Valoración</b></td><td>Los nodos hallados en el rastreo</td></tr><tr><td><b>Plan</b></td><td>Las técnicas aplicadas y el seguimiento previsto</td></tr></tbody></table>
+<div class="sub">El mapa corporal se registra antes del rastreo</div>
+<p>Se revisa el cuerpo de arriba abajo —cabeza y cara, mandíbula, cuello, hombros, brazos, manos, tórax, abdomen, columna, cadera, piernas, rodillas, pies— y en cada zona se pide una calificación.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">49</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque VI · Registro clínico y reglas de conducción del rastreo</span></div>
+<div class="body"><pre class="tree">ESCALA DEL MAPA
+
+    0  = no hay sensación
+    10 = molestia máxima
+
+    Se registra el lado, derecho o izquierdo, cuando difieren.</pre>
+<p><b>Entran en el mapa:</b> dolor, tensión, contractura, edema, ardor, molestia inespecífica, y toda zona lesionada en el pasado aunque hoy no produzca molestia.</p>
+<p>Cero significa que no hay sensación, y eso también es información: una zona sin sensación registrada no equivale a una zona en buen estado. Si la persona no da una cifra, esa ausencia también se anota.</p>
+<p>Se completa con los signos observables: boca seca o húmeda, frecuencia del pulso, respiración, y temperatura y color de las manos.</p>
+<div class="sub">Al cerrar se revisa el mismo mapa y se comparan las cifras</div>
+<p>Se formulan las preguntas de integración: <b>qué diferencias nota, cómo se siente, qué ha cambiado.</b></p>
+<p>Esas preguntas forman parte del procedimiento. Un agente mueve su punto de ajuste a partir de las diferencias que registra, y una diferencia que la persona no nota queda fuera de ese ajuste. Se anota aunque sea de un punto.</p>
+<p>Las zonas que no bajaron de calificación se anotan como tales. El proceso que las produce se sitúa por encima del tejido.</p>
+<div class="sub">La sesión siguiente empieza preguntando cuánto le duró</div>
+<p>Un punto de ajuste se comprueba por su permanencia, y esa pregunta la mide. La respuesta clasifica el caso: unas horas indica que el cambio no se sostuvo; varios días, que el tejido conservó la referencia nueva.</p></div><div class="caphead"><span class="capn">23</span><h1>Reglas de conducción del rastreo</h1></div>
+<p class="epi">El rastreo se conduce con cuatro reglas: una variable por pregunta, repreguntar de otra forma cuando la respuesta es dudosa, buscar en otro lugar cuando una zona deja de responder, y registrar la trayectoria completa.</p><div class="body"><p>Cada concepto de este manual es una pregunta que el operador puede formular con un imán. El límite del desempeño está en qué preguntas sabe hacer y en qué orden.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">50</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">23 · Reglas de conducción del rastreo</span></div>
+<div class="body"><p><b>1 · Una variable por pregunta.</b> Si se modifican dos condiciones a la vez, la respuesta no dice cuál de las dos la produjo. Se empieza por un tema definido, y ese tema es la pregunta de esa serie de mediciones.</p>
+<p><b>2 · Repreguntar de otra forma cuando la respuesta es dudosa.</b> La medición tiene variación, y repetir la pregunta de otra manera la compensa.</p>
+<p><b>3 · Cuando una zona deja de dar respuesta, el proceso está en otro lugar.</b> Insistir sobre la misma colocación, o cambiarla por un imán más intenso, es el error más frecuente.</p>
+<p><b>4 · Registrar la trayectoria completa.</b> Se anota cada medición: qué zonas emparejaron los talones, en qué orden, cuáles no dieron respuesta, y en qué momento dejaron de darla. El registro completo es lo que dice qué zonas se descartaron.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">51</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque VII · Alcance y límites de la técnica</span></div>
+<div class="bloq"><div class="kbar"></div><p class="eyebrow">Bloque VII</p><h1>Alcance y límites de la técnica</h1><p class="sub">Qué significa un resultado ausente y qué conducta pide cada caso, y cuál es el efecto del imán y lo que de él se sigue.</p></div>
+<div class="caphead"><span class="capn">24</span><h1>Qué significa un resultado ausente</h1></div>
+<p class="epi">Cuando el rastreo no da hallazgos, o los da y el cuadro no cede, hay cuatro explicaciones, y cada una pide una conducta distinta. Ninguna de las cuatro invalida el hallazgo: reubican la pregunta.</p><div class="body"><p>A la persona le duele, el operador rastrea la zona entera y la medición no cambia. O el nodo empareja los talones, y a la semana siguiente la persona vuelve igual. Cada uno de esos casos tiene una explicación y una salida.</p>
+<div class="sub">El proceso está por encima del tejido</div>
+<p>El nodo empareja los talones y el dolor sigue. Ese dolor puede producirse en la médula espinal o en el sistema nervioso central, que siguen generándolo cuando el tejido de abajo ya se corrigió.</p>
+<p>El componente local se resolvió, y eso se anota como tal. <b>El objetivo de la sesión es el hallazgo y la corrección de lo que el rastreo marca.</b> El dolor puede ceder como consecuencia, y su persistencia no invalida el trabajo realizado sobre los nodos que sí respondieron.</p>
+<div class="sub">La zona responde y vuelve al mismo estado en cada sesión</div>
+<p>Es el trinquete: la vía se cerró en un sentido y el paso de vuelta no existe. La zona responde durante la sesión, y entre una sesión y la siguiente vuelve al punto de partida, de forma repetida.</p>
+<p>Retirar la restricción no alcanza, porque lo que falta es la vía de regreso.</p>
+<div class="sub">Falta estructura</div>
+<p>Un hueso, un ligamento, un tejido que ya se destruyó. Ahí falta material, y un campo magnético cambia voltaje.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">52</div>
+</section>
+<section class="page pg-recto prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">25 · El efecto del imán y sus tres consecuencias</span></div>
+<div class="body"><div class="sub">Falta la vía por la que llega la información</div>
+<p>La anticipación con la que un sistema recibe la señal depende de que exista el circuito que se la trae. Un imán cambia el voltaje de una membrana, y no construye ese circuito.</p>
+<div class="sub">En los términos de las cinco letras</div>
+<p>La técnica edita <b>C</b> y reabre <b>O</b>. Alcanza en parte a <b>E</b>, según cuánto mantenga la persona ese punto de ajuste por otras vías. <b>S</b>, <b>H</b> y el precio <i>w</i> quedan fuera de su alcance.</p>
+<div class="pull"><p class="cita"><i>«Nuestro modelo de regulación bioeléctrica no lo cura todo. Opera en O, opera en C. A veces un poco en E. Y nada más. Todas las demás letras dependen de la persona.»</i><span class="attr">Notas de clase</span></p></div>
+<p>La coordinación, la Σ, ocupa una posición intermedia. La técnica no la restablece de forma directa, y trabaja sobre su sustrato al reabrir las uniones comunicantes de una isla, con lo que ese grupo de células vuelve a formar parte de la red.</p>
+<div class="pull"><p class="cita"><i>«Si tú estás rastreando a alguien para arreglarle el intestino y no se arregla, no es ahí. No es el modelo. Pregúntate qué otra letra puede estar en conflicto.»</i><span class="attr">Notas de clase</span></p></div></div><div class="caphead"><span class="capn">25</span><h1>El efecto del imán y sus tres consecuencias</h1></div>
+<p class="epi">Un imán genera un gradiente que modifica el voltaje de la membrana. De ahí salen las tres afirmaciones que delimitan la práctica: el resultado depende del sitio, lo que ocurre es que el tejido recupera su señal de referencia, y el procedimiento hace contrastable el trabajo de un operador con el de otro.</p><div class="body"><div class="pull"><p class="cita"><b>Un imán genera un gradiente que modifica el voltaje de la membrana. Nada más.</b></p></div>
+<p>De ese efecto se desprenden las tres afirmaciones que delimitan la práctica.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">53</div>
+</section>
+<section class="page pg-verso prem">
+<div class="brand"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg><span class="wm2">regulación <b>bioeléctrica</b></span><span class="sp"></span><span class="rh">Bloque VII · Alcance y límites de la técnica</span></div>
+<div class="body"><div class="sub">El resultado depende del sitio</div>
+<p>El efecto ocurre porque el campo deforma la geometría de la membrana, y el gradiente alcanza su máximo en la frontera entre polos opuestos. Ninguna de las dos cosas mejora con más intensidad. <b>Un imán de mayor gaussaje colocado en el sitio equivocado no produce efecto; un imán moderado en el nodo correcto sí.</b></p>
+<div class="sub">El imán no desinflama ni sustituye a un medicamento</div>
+<p>Modifica el voltaje de membrana, y a partir de ahí el tejido ejecuta lo que ya sabe hacer. Recuperar la señal de referencia es la formulación que el operador emplea al describir la sesión. El resultado se comprueba en los días siguientes, porque la reparación que sigue al cambio de voltaje toma su propio tiempo.</p>
+<div class="sub">El procedimiento hace contrastable el trabajo entre operadores</div>
+<p>La respuesta la produce el cuerpo ante la perturbación del imán. El procedimiento está fijado —el talón izquierdo como referencia, el polo negativo sobre la zona, la misma elevación y la misma presión en cada colocación—, y por eso lo que un operador anota se puede contrastar con lo que anotó otro, en lugar de quedar en interpretaciones sueltas.</p>
+<p>Un nodo verdadero da la misma respuesta cada vez que se vuelve a explorar. Sobre esa base los casos se acumulan comparables entre sí.</p>
+<p>La coincidencia entre dos operadores distintos sobre la misma persona no se ha medido de forma sistemática. Es una de las líneas de verificación abiertas del método.</p></div>
+<div class="foot">INSTITUTO CENTROBIOENERGETICA</div><div class="folio">54</div>
+</section>
+<section class="page pg-recto cover colofon">
+<div class="gap-t"></div>
+<div><p class="kicker">Colofón</p>
+<p class="sub">Manual de Regulación Bioeléctrica del programa El Cuerpo Eléctrico. Se compuso a partir de las cuatro clases impartidas del programa, y recoge únicamente el procedimiento de Regulación Bioeléctrica.</p>
+<p class="sub" style="margin-top:6mm">Redacción y dirección clínica: Dr. Miguel Ojeda Rios.<br>Instituto Centrobioenergetica. Edición 2026.</p></div>
+<div class="gap-b"></div>
+<div class="meta"><div class="who"><svg viewBox="0 0 58 24"><circle cx="8" cy="12" r="6" fill="#0F6E56"/><line x1="16" y1="12" x2="28" y2="12" stroke="#0F6E56" stroke-width="1"/><circle cx="36" cy="12" r="6" fill="#0F6E56" opacity="0.35"/></svg></div><div class="ed">Instituto<br>Centrobioenergetica</div></div>
+<div class="endfoot">INSTITUTO CENTROBIOENERGETICA</div>
+</section>
+</body></html>

@@ -1,0 +1,81 @@
+<script>
+addEventListener('load',function(){
+try{
+  var MM=96/25.4, LIM=(279-20)*MM;
+  var p=document.getElementById('pliego'); p.style.zoom='';
+  var hojas=[].slice.call(document.querySelectorAll('section.hoja.prem'));
+  for(var s=0;s<hojas.length && s<400;s++){
+    var hoja=hojas[s], cuerpo=hoja.querySelector('.cuerpo');
+    if(!cuerpo) continue;
+    var rs=hoja.getBoundingClientRect(), kids=[].slice.call(cuerpo.children), idx=-1;
+    for(var k=0;k<kids.length;k++){
+      if(kids[k].getBoundingClientRect().bottom-rs.top>LIM){idx=k;break;}
+    }
+    if(idx<0) continue;
+    var carry=[], cruce=kids[idx],
+        esLista=/^(UL|OL)$/.test(cruce.tagName)&&cruce.children.length>1;
+    if(esLista){
+      var lis=[].slice.call(cruce.children), li0=-1;
+      for(var j=0;j<lis.length;j++){
+        if(lis[j].getBoundingClientRect().bottom-rs.top>LIM){li0=j;break;}
+      }
+      if(li0===1) li0=0;                                /* un renglón solo arriba: se mueve entera */
+      if(li0>0&&lis.length-li0===1) li0=lis.length-2;   /* un renglón solo abajo: se llevan dos */
+      if(li0>=2){
+        var nu=cruce.cloneNode(false);
+        lis.slice(li0).forEach(function(li){nu.appendChild(li)});
+        carry.push(nu); carry=carry.concat(kids.slice(idx+1));
+      } else if(idx>0){ carry=kids.slice(idx); } else continue;
+    } else {
+      var ini=idx;
+      if(kids[ini].classList.contains('ref')&&ini>1) ini--; /* la referencia va con su bloque */
+      if(ini>0&&kids[ini-1].tagName==='H4') ini--;          /* subtítulo huérfano */
+      if(ini>0&&kids[ini].classList.contains('epi')) continue; /* epígrafe no se separa */
+      if(ini<=0) continue;
+      /* página coja: la continuación carga al menos 35 mm */
+      var top0=kids[ini].getBoundingClientRect().top,
+          fin0=kids[kids.length-1].getBoundingClientRect().bottom;
+      if(fin0-top0<35*MM&&ini>1){
+        ini--;
+        if(ini>0&&kids[ini-1].tagName==='H4') ini--;
+      }
+      if(ini<=0) continue;
+      carry=kids.slice(ini);
+    }
+    if(!carry.length) continue;
+    var ns=document.createElement('section');
+    ns.className='hoja prem';
+    ns.innerHTML=hoja.querySelector('.cornisa').outerHTML+
+                 "<div class='cuerpo'></div><span class='folio'></span>";
+    var nc=ns.querySelector('.cuerpo');
+    carry.forEach(function(x){nc.appendChild(x)});
+    hoja.parentNode.insertBefore(ns,hoja.nextSibling);
+    hojas.splice(s+1,0,ns);
+  }
+  /* renumerar folios en orden */
+  var f=2;
+  [].slice.call(document.querySelectorAll('section.hoja')).forEach(function(h){
+    if(h.classList.contains('cover'))return;
+    var sp=null;
+    for(var i=0;i<h.children.length;i++)
+      if(h.children[i].classList&&h.children[i].classList.contains('folio')) sp=h.children[i];
+    if(sp) sp.textContent=f++;
+  });
+  /* el índice apunta al folio real de cada capítulo */
+  var mapa={};
+  [].slice.call(document.querySelectorAll('section.hoja.prem')).forEach(function(h){
+    var c=h.querySelector('.caphead .capn');
+    if(c&&!(c.textContent.trim() in mapa)){
+      for(var i=0;i<h.children.length;i++)
+        if(h.children[i].classList&&h.children[i].classList.contains('folio'))
+          mapa[c.textContent.trim()]=h.children[i].textContent;
+    }
+  });
+  [].slice.call(document.querySelectorAll('.indice .toc li')).forEach(function(li){
+    var n=li.querySelector('.num'), pg=li.querySelector('.pg');
+    if(n&&pg&&mapa[n.textContent.trim()]) pg.textContent=mapa[n.textContent.trim()];
+  });
+}catch(e){}
+if(window.__fit)window.__fit();
+});
+</script>

@@ -10,6 +10,14 @@ correr:
 python3 _Herramientas/revisa_registro.py <ruta> --nuevos
 ```
 
+**Y en documento nuevo o reescrito completo, además del linter, pasar el agente `editor-estilo`.**
+El linter atrapa listas de palabras; el agente atrapa las construcciones: encabezados que rotulan,
+frases que anuncian, metáforas y términos inventados.
+
+**Cada corrección del Dr. se convierte en regla, no en arreglo puntual.** La palabra o el giro que
+él marca se agrega el mismo día a `_Herramientas/GLOSARIO_RB.md` o a `revisa_registro.py`. Una
+corrección que no queda registrada vuelve a aparecer en el documento siguiente.
+
 ---
 
 ## 1 · La frase dice el hallazgo. No lo anuncia

@@ -1,0 +1,251 @@
+/* ══ MANUAL DE REGULACIÓN BIOELÉCTRICA · HOJA CARTA ══
+   216 × 279 mm · columna de texto con columna de margen exterior
+
+   Esta hoja no es el B5 ampliado. La carta es ancha, y una sola columna de
+   prosa a todo lo ancho deja una medida de línea ilegible o un río de blanco
+   a un costado. La página se organiza en dos franjas:
+
+     · COLUMNA DE TEXTO, 112 mm, con la prosa, a 66 caracteres por línea.
+     · COLUMNA DE MARGEN, 52 mm al canto exterior, con el número de capítulo,
+       el epígrafe, los encabezados de sección y las definiciones.
+
+   Los encabezados van al margen y no dentro del texto: quien consulta el
+   manual junto a la camilla recorre el margen y encuentra la sección sin
+   leer el cuerpo. Se colocan en su posición de flujo, así que quedan a la
+   altura del párrafo que encabezan y no ocupan alto en la columna de texto.
+
+   La tabla, el procedimiento y el árbol de decisión cruzan las dos franjas:
+   son la materia que se consulta de un vistazo y piden todo el ancho.  */
+
+@page{size:216mm 279mm;margin:0}
+
+.b5{
+  margin:0;
+  --ink:#2C2C2A; --soft:#4A4643; --faint:#888780;
+  --paper:#FFFFFF; --line:#DEDBD2; --hair:#ECEAE1; --card:#F1EFE8;
+  --teal:#0F6E56; --teal-deep:#0B5644; --teal-tint:#E1F5EE; --coral:#D85A30;
+  --serif:"Avenir Next","Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+  --sans:system-ui,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --display:"Avenir Next","Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+  --margen:52mm;      /* ancho de la columna de margen */
+  --canal:8mm;        /* separación entre las dos franjas */
+  --exterior:17mm;    /* margen exterior de la página */
+  --medianil:27mm;    /* medianil interior, para el lomo */
+  color:var(--ink);
+}
+.b5 *{box-sizing:border-box}
+html,body{margin:0;background:#fff}
+.b5 .page{width:216mm;height:279mm;background:var(--paper);position:relative;overflow:hidden;
+  color:var(--ink);font-family:var(--serif);display:flex;flex-direction:column;
+  margin:0 auto;box-shadow:none;page-break-after:always;break-after:page}
+.b5 .page:last-child{page-break-after:auto;break-after:auto}
+.b5 .page.blank{background:#fff}
+
+@media screen{
+  body{background:#e9e8e3;padding:20px 0}
+  .b5 .page{box-shadow:0 8px 30px rgba(0,0,0,.16);margin:0 auto 14px}
+  .b5 .page.blank{border:1px dashed #ccc}
+}
+
+/* ── LA CAJA, EN ESPEJO ─────────────────────────────────────────────────
+   En recto el medianil va a la izquierda y la columna de margen a la derecha.
+   En verso, al revés. */
+.pg-recto.prem{padding-left:var(--medianil);padding-right:var(--exterior)}
+.pg-verso.prem{padding-right:var(--medianil);padding-left:var(--exterior)}
+.pg-recto.indice{padding-left:calc(var(--medianil) + 4mm);padding-right:calc(var(--exterior) + 4mm)}
+.pg-verso.indice{padding-right:calc(var(--medianil) + 4mm);padding-left:calc(var(--exterior) + 4mm)}
+.pg-recto.cover,.pg-recto.parte{padding-left:calc(var(--medianil) + 8mm);padding-right:calc(var(--exterior) + 8mm)}
+.pg-verso.cover,.pg-verso.parte{padding-right:calc(var(--medianil) + 8mm);padding-left:calc(var(--exterior) + 8mm)}
+
+.b5 .prem .body b,.b5 .prem li b,.b5 .prem td b,.b5 .prem th b,
+.b5 .prem .callout p b,.b5 .prem .pull p b{font-weight:400;color:inherit}
+
+/* ── PORTADA / COLOFÓN ── */
+.b5 .cover{padding-top:26mm;padding-bottom:20mm}
+.b5 .cover .wm{position:absolute;right:-34mm;bottom:38mm;width:170mm;height:auto;opacity:.08}
+.b5 .cover .logo{display:flex;align-items:center;gap:4mm}
+.b5 .cover .logo svg{height:10mm}
+.b5 .cover .wordmark{font-size:17px;letter-spacing:.02em;color:var(--ink)}
+.b5 .cover .wordmark b{color:var(--teal);font-weight:400}
+.b5 .cover .gap-t{flex:382 0 0}
+.b5 .cover .gap-b{flex:618 0 0}
+.b5 .cover .kicker{font:600 11.5px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--teal);margin:0 0 7mm}
+.b5 .cover h1{font-family:var(--display);font-weight:600;font-size:47px;line-height:1.05;letter-spacing:-.018em;margin:0 0 6mm;max-width:15ch}
+.b5 .cover .sub{font-size:17px;font-style:italic;color:var(--soft);line-height:1.5;max-width:36ch;margin:0}
+.b5 .cover .meta{border-top:1px solid var(--line);padding-top:5mm;display:flex;justify-content:space-between;align-items:flex-end}
+.b5 .cover .meta .who{font-size:12.5px;line-height:1.5}
+.b5 .cover .meta .who b{color:var(--teal);font-weight:400}
+.b5 .cover .meta .who svg{height:7mm}
+.b5 .cover .meta .ed{font:500 8.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);text-align:right;line-height:1.7}
+.b5 .cover .endfoot{position:absolute;left:0;right:0;bottom:10mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+.b5 .colofon .sub{font-size:13.5px;font-style:normal}
+
+/* ── PORTADILLA DE PARTE ── */
+.b5 .parte{padding-top:28mm;padding-bottom:20mm}
+.b5 .parte .wm{position:absolute;right:-28mm;bottom:42mm;width:150mm;height:auto;opacity:.06}
+.b5 .parte .gap-t{flex:382 0 0}
+.b5 .parte .gap-b{flex:618 0 0}
+.b5 .parte .rom{font-family:var(--display);font-weight:600;font-size:86px;line-height:.86;color:var(--teal);opacity:.22;letter-spacing:-.03em;margin:0 0 3mm}
+.b5 .parte .kicker{font:600 10.5px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--teal);margin:0 0 4mm}
+.b5 .parte h1{font-family:var(--display);font-weight:600;font-size:36px;line-height:1.1;letter-spacing:-.012em;margin:0 0 6mm;max-width:18ch}
+.b5 .parte .sub{font-size:14.5px;font-style:italic;color:var(--soft);line-height:1.55;max-width:40ch;margin:0}
+.b5 .parte .conten{border-top:1px solid var(--line);padding-top:5mm;margin-top:7mm}
+.b5 .parte .conten ul{margin:0;padding:0}
+.b5 .parte .conten li{list-style:none;font:400 10.5px var(--sans);letter-spacing:.03em;color:var(--soft);
+  padding:1.6mm 0;border-bottom:.5px solid var(--hair);display:flex;gap:5mm}
+.b5 .parte .conten li i{font-style:normal;color:var(--teal);font-weight:600;width:24mm;flex:none;
+  font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;padding-top:.6mm}
+.b5 .parte .endfoot{position:absolute;left:0;right:0;bottom:10mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+
+/* ── ÍNDICE, a dos columnas ── */
+.b5 .indice{padding-top:18mm;padding-bottom:16mm}
+.b5 .indice .brand{display:flex;align-items:center;gap:3mm;margin-bottom:6mm;padding-bottom:3mm;border-bottom:1px solid var(--hair)}
+.b5 .indice .brand svg{height:6mm}
+.b5 .indice .wordmark{font-size:11px;color:var(--ink);white-space:nowrap}
+.b5 .indice .wordmark b{color:var(--teal);font-weight:400}
+.b5 .indice .sp{flex:1}
+.b5 .indice .rh{font:400 8px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.b5 .indice .opener{margin:0 0 6mm}
+.b5 .indice .kbar{width:18mm;height:2.4mm;background:var(--teal);border-radius:1px;margin:0 0 3mm}
+.b5 .indice .eyebrow{font:600 10px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:0 0 1.8mm}
+.b5 .indice h1{font-family:var(--display);font-weight:600;font-size:27px;letter-spacing:-.005em;margin:0}
+.b5 .indice .prt{font:700 9px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:6mm 0 2.4mm;
+  break-inside:avoid;break-after:avoid}
+.b5 .indice .prt:first-of-type{margin-top:0}
+.b5 .indice .grp{font:700 9.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+  margin:0 0 1.6mm;padding-bottom:1.6mm;border-bottom:.5px solid var(--line);break-inside:avoid;break-after:avoid}
+.b5 .indice .grp.mt{margin-top:4.5mm}
+.b5 .indice .toc{list-style:none;margin:0;padding:0}
+.b5 .indice .toc li{display:flex;align-items:baseline;gap:3.5mm;padding:1.3mm 0;border-bottom:1px solid var(--hair);break-inside:avoid}
+.b5 .indice .toc li .pg{font:700 10.5px var(--sans);color:var(--teal);width:8mm;flex:none;font-variant-numeric:tabular-nums;text-align:right}
+.b5 .indice .toc li .body{flex:1;min-width:0}
+.b5 .indice .toc li .t{font-family:var(--display);font-weight:600;font-size:11px;color:var(--ink);line-height:1.3}
+.b5 .indice .toc li .t .step{font:700 8px var(--sans);color:#fff;background:var(--teal);border-radius:2px;
+  padding:.4mm 1.5mm;margin-right:2mm;vertical-align:1.5px;font-variant-numeric:tabular-nums}
+.b5 .indice .foot{position:absolute;left:0;right:0;bottom:10mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+
+/* ── PÁGINA DE CONTENIDO ─────────────────────────────────────────────── */
+.b5 .prem{padding-top:19mm;padding-bottom:20mm}
+.b5 .prem .brand{display:flex;align-items:center;gap:3mm;margin-bottom:6mm;padding-bottom:3mm;border-bottom:1px solid var(--hair)}
+.b5 .prem .brand svg{height:6mm}
+.b5 .prem .wm2{font-size:11px;color:var(--ink);white-space:nowrap;flex:none}
+.b5 .prem .wm2 b{color:var(--teal);font-weight:400}
+.b5 .prem .sp{flex:1;min-width:5mm}
+.b5 .prem .rh{font:400 8px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+  line-height:1.25;text-align:right;min-width:0;max-width:80mm}
+.b5 .pg-verso.prem .brand{flex-direction:row-reverse}
+.b5 .pg-verso.prem .rh{text-align:left}
+
+/* la columna de texto se abre dejando libre la franja del margen exterior */
+.b5 .pg-recto.prem .body,.b5 .pg-recto.prem .caphead,.b5 .pg-recto.prem .bloq{
+  padding-right:calc(var(--margen) + var(--canal))}
+.b5 .pg-verso.prem .body,.b5 .pg-verso.prem .caphead,.b5 .pg-verso.prem .bloq{
+  padding-left:calc(var(--margen) + var(--canal))}
+
+/* ── LA COLUMNA DE MARGEN ──
+   Todo lo que va aquí se saca del flujo con position:absolute, así que
+   conserva su altura de flujo y no ocupa alto en la columna de texto. */
+/* Al margen van los encabezados de sección y las definiciones, que son cortos.
+   El epígrafe se queda en la columna de texto: es la entradilla del capítulo,
+   y puesto al margen desbordaba la franja sin ocupar alto en el flujo. */
+.b5 .prem .sub,.b5 .prem .shead,.b5 .prem .callout{
+  position:absolute;width:var(--margen);margin:0}
+.b5 .pg-recto.prem .sub,.b5 .pg-recto.prem .shead,.b5 .pg-recto.prem .callout{right:var(--exterior)}
+.b5 .pg-verso.prem .sub,.b5 .pg-verso.prem .shead,.b5 .pg-verso.prem .callout{left:var(--exterior)}
+
+.b5 .prem .sub{font-family:var(--display);font-size:11px;font-weight:600;line-height:1.28;
+  letter-spacing:0;text-transform:none;color:var(--teal-deep);padding-top:.8mm;
+  border-top:1px solid var(--teal)}
+.b5 .prem .shead{font-family:var(--display);font-size:10px;font-weight:600;line-height:1.28;
+  letter-spacing:0;text-transform:none;color:var(--soft);padding-top:.8mm;border-top:.5px solid var(--line)}
+/* La entradilla del capítulo cruza las dos franjas: es lo que se lee antes de
+   entrar, y a la medida de la columna de texto se levantaría como una torre. */
+.b5 .prem p.epi,.b5 .prem .body p.epi{font-size:13.5px;font-style:italic;color:var(--teal-deep);
+  line-height:1.5;margin:0 0 6.5mm;padding:0 0 4.5mm;max-width:none;
+  border-bottom:.5px solid var(--hair)}
+.b5 .pg-recto.prem .body p.epi{margin-right:calc(-1 * (var(--margen) + var(--canal)))}
+.b5 .pg-verso.prem .body p.epi{margin-left:calc(-1 * (var(--margen) + var(--canal)))}
+/* la primera columna de una tabla de tres no se parte en dos renglones por un guion */
+.b5 .prem table.nodos td:first-child{padding-right:7mm}
+.b5 .prem .callout{padding:0 0 0 3.5mm;border-left:1.5px solid var(--teal)}
+.b5 .prem .callout .w{display:block;font-family:var(--sans);font-size:8px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:1mm}
+.b5 .prem .callout p{font-size:9.5px;line-height:1.42;color:var(--soft);margin:0;max-width:none}
+
+/* ── LA COLUMNA DE TEXTO ── */
+.b5 .prem .body{flex:0 0 auto;min-height:0;position:static}
+.b5 .prem .body p{font-size:12.5px;line-height:1.55;margin:0 0 3mm;text-align:left}
+.b5 .prem .body p.ref{font-size:10px;color:var(--faint);font-style:italic;line-height:1.45;margin:-1.5mm 0 3.5mm}
+.b5 .prem .rot{font-family:var(--display);font-weight:600;font-size:13.5px;color:var(--ink);
+  margin:5mm 0 1.8mm;line-height:1.25}
+.b5 .prem .rot+table,.b5 .prem .rot+ul,.b5 .prem .rot+ol{margin-top:1.4mm}
+
+.b5 .prem ol.proc{margin:0 0 3.5mm;padding:0;list-style:none;counter-reset:p}
+.b5 .prem ol.proc>li{counter-increment:p;position:relative;padding-left:9mm;font-size:12.5px;line-height:1.5;margin-bottom:2.4mm}
+.b5 .prem ol.proc>li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:.4mm;
+  font:700 9px var(--sans);color:var(--teal);font-variant-numeric:tabular-nums}
+.b5 .prem ul.dash{margin:0 0 3.5mm;padding:0;list-style:none}
+.b5 .prem ul.dash>li{position:relative;padding-left:5.5mm;font-size:12.5px;line-height:1.5;margin-bottom:2mm}
+.b5 .prem ul.dash>li::before{content:"";position:absolute;left:0;top:2.4mm;width:3mm;height:.5px;background:var(--teal)}
+
+.b5 .prem .pull{margin:4mm 0;padding:3mm 0;border-top:.5px solid var(--teal);border-bottom:.5px solid var(--teal)}
+.b5 .prem .pull p{font-size:13px;line-height:1.45;color:var(--ink);margin:0}
+.b5 .prem .pull p.cita{font-style:italic;color:var(--soft)}
+.b5 .prem .pull .attr{display:block;font:600 8.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--faint);margin-top:2mm;font-style:normal}
+
+/* ── LO QUE CRUZA LAS DOS FRANJAS ──
+   Tabla, procedimiento y árbol de decisión se consultan de un vistazo y
+   ganan con el ancho completo de la caja. */
+.b5 .pg-recto.prem .body table,.b5 .pg-recto.prem .body pre.tree{
+  margin-right:calc(-1 * (var(--margen) + var(--canal)))}
+.b5 .pg-verso.prem .body table,.b5 .pg-verso.prem .body pre.tree{
+  margin-left:calc(-1 * (var(--margen) + var(--canal)))}
+
+.b5 .prem table{width:auto;min-width:100%;border-collapse:collapse;margin-top:2.4mm;margin-bottom:4mm}
+.b5 .prem th,.b5 .prem td{text-align:left;padding:2mm 4mm 2mm 0;font-size:11px;line-height:1.42;
+  border-bottom:.5px solid var(--hair);vertical-align:top}
+.b5 .prem thead th{font:700 8.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--teal-deep);border-bottom:1px solid var(--teal)}
+.b5 .prem table.spec th{width:44mm;color:var(--teal-deep);font-weight:600;padding-right:6mm}
+.b5 .prem table.spec td{color:var(--soft)}
+.b5 .prem table.nodos td:first-child{color:var(--ink)}
+.b5 .prem table.idx td:first-child{width:9mm;color:var(--teal);font-weight:600;font-variant-numeric:tabular-nums}
+.b5 .prem td:last-child{padding-right:0}
+.b5 .data{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;background:var(--teal-tint);padding:0 3px;border-radius:2px}
+
+.b5 .prem .formula{text-align:center;font-family:var(--display);font-size:16px;color:var(--teal-deep);
+  margin:4mm 0 5mm;letter-spacing:.02em}
+.b5 .prem pre.tree{font-family:ui-monospace,Menlo,monospace;font-size:9.5px;line-height:1.42;color:var(--soft);
+  background:#FCFBF7;border:.5px solid var(--line);border-radius:2mm;padding:4mm 5mm;
+  margin-top:2.4mm;margin-bottom:4mm;white-space:pre;overflow:hidden}
+.b5 .prem pre.tree.sigue{border-top-style:dashed;margin-top:0}
+.b5 .prem pre.tree.sigue::before{content:"continúa";display:block;font:600 7px var(--sans);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:2mm}
+
+/* ── APERTURA DE BLOQUE Y CABEZA DE CAPÍTULO ── */
+.b5 .prem .bloq{margin:0 0 7mm;padding-bottom:4.5mm;border-bottom:1.5px solid var(--teal)}
+.b5 .prem .bloq .kbar{width:18mm;height:2.4mm;background:var(--teal);border-radius:1px;margin:0 0 3mm}
+.b5 .prem .bloq .eyebrow{font:600 10px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin:0 0 2.4mm}
+.b5 .prem .bloq h1{font-family:var(--display);font-weight:600;font-size:29px;line-height:1.1;margin:0 0 3mm;letter-spacing:-.01em}
+.b5 .prem .bloq .sub{position:static;width:auto;font-family:var(--serif);font-size:13px;font-style:italic;
+  font-weight:400;text-transform:none;letter-spacing:0;color:var(--soft);line-height:1.5;
+  margin:0;padding:0;border:0}
+
+/* el número del capítulo vive en la columna de margen, alineado con el título */
+.b5 .prem .caphead{position:relative;margin:0 0 3mm}
+.b5 .prem .caphead .capn{position:absolute;top:.5mm;width:var(--margen);
+  font-family:var(--display);font-weight:600;font-size:30px;line-height:1;color:var(--teal);opacity:.28;
+  font-variant-numeric:tabular-nums;background:none;padding:0;border-radius:0}
+.b5 .pg-recto.prem .caphead .capn{right:calc(-1 * (var(--margen) + var(--canal)));text-align:left}
+.b5 .pg-verso.prem .caphead .capn{left:calc(-1 * (var(--margen) + var(--canal)));text-align:right}
+.b5 .prem .caphead h1{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.14;
+  margin:0;letter-spacing:-.006em}
+
+.b5 .prem .foot{position:absolute;left:0;right:0;bottom:10mm;text-align:center;font-size:8px;letter-spacing:.25em;color:var(--faint)}
+.b5 .prem .folio{position:absolute;bottom:9mm;font:400 9px var(--sans);color:var(--faint)}
+.b5 .pg-recto.prem .folio{right:var(--exterior)}
+.b5 .pg-verso.prem .folio{left:var(--exterior)}
+
+.b5 p,.b5 li{widows:2;orphans:2}
+.b5 table,.b5 .callout,.b5 .pull,.b5 pre.tree,.b5 .caphead,.b5 .bloq{break-inside:avoid}

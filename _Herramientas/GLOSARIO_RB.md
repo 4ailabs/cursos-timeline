@@ -36,6 +36,8 @@ Formato: `apodo → nombre completo`. El linter los marca siempre.
 - el principio → la regla, dicha completa
 - la variable, sola → nombrar cuál (controlada, primaria, de comparación)
 - qué se registra → qué se anota, y qué cosa
+- maniobra → la técnica · el procedimiento · la colocación
+- maniobras → las técnicas · los procedimientos
 
 ---
 
@@ -58,6 +60,22 @@ Formato: `verbo → qué escribir en su lugar`.
 
 ---
 
+## Verbos que no dicen qué ocurre · de la corrección de la Parte I
+
+- el voltaje guarda → el estado de referencia es un voltaje de membrana
+- el imán escribe → el imán cambia el voltaje
+- el imán reescribe → el imán cambia el voltaje
+- un imán entrega → la densidad del campo en su superficie es de
+- un imán produce un gradiente → el imán cambia el voltaje de la membrana
+- sostiene una referencia → conserva una referencia
+- se desplazan detrás → son lecturas de su estado
+- la transición no se activa → el macrófago permanece en el modo inflamatorio
+- el campo no lo alcanza → el dolor se produce en la médula espinal
+- la lectura se obtiene → lo que se mide es
+- lo que se lee → lo que se mide
+- durante la permanencia → durante la sesión
+- antes de colocar el primer imán → antes del rastreo
+
 ## Términos permitidos
 
 Los que pueden ir en negritas o encabezado sin explicación previa.
@@ -66,6 +84,7 @@ Los que pueden ir en negritas o encabezado sin explicación previa.
 
 - regulación bioeléctrica
 - cuerpo bioeléctrico
+- El Cuerpo Eléctrico
 - rastreo
 - nodo de lesión
 - isla de despolarización
@@ -117,6 +136,12 @@ Los que pueden ir en negritas o encabezado sin explicación previa.
 - nervio pudendo
 - esplácnicos pélvicos
 - páncreas exocrino
+- páncreas endocrino
+- El Cuerpo Eléctrico
+- cuerpo eléctrico
+- figura
+- figuras
+- tejido adiposo
 - acino
 - conducto
 - hígado
@@ -244,6 +269,16 @@ Los que pueden ir en negritas o encabezado sin explicación previa.
 - rejilla
 - trinquete
 - índice de trinquete
+- atavismo celular
+- genes prohibidos
+- densidad de los disturbios
+- vecindad de los disturbios
+- matriz extracelular
+- paquete neurovascular
+- fibra nerviosa
+- circulación local
+- densidad de carga fija
+- potencial de Donnan
 - unidad funcional
 - escala
 - alcance

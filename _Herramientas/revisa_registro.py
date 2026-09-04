@@ -27,6 +27,36 @@ MULETILLAS = [
      "construcción «no es X, es Y» — afirmar directo"),
     (r"no son [^.,;:]{3,40}[,:] (?:son|sino)\b",
      "construcción «no son X, son Y» — afirmar directo"),
+    # La misma construcción con la negación al final. Es la forma que más
+    # sobrevive, porque la afirmación va primero y el contraste se cuela detrás.
+    (r",\s+y no (?:un |una |unos |unas |el |la |los |las |porque\b|por\b|de |a |en |lo que\b)",
+     "cola contrastiva «X, y no Y» — se afirma X y se suprime la cola"),
+    (r",\s+sino (?:un |una |el |la |los |las |que\b|porque\b)",
+     "construcción «no X, sino Y» — afirmar directo"),
+    # Rodeo que aleja el sujeto de lo que se afirma.
+    # Solo cuando abre la oración: con el sujeto delante la construcción es correcta.
+    (r"(?:^|[.:]\s+)De (?:esta|esa|estas|esas)\s+\w+\s+depende\b",
+     "rodeo — se dice qué depende de qué, con el sujeto delante"),
+]
+
+# ── 2 bis · Reglas de la corrección del Manual RB, 30 de agosto de 2026 ──────
+#    Fuente: Curso_Vigente/Manual_RB/Correcciones/REGLAS.md
+CORRECCION_RB = [
+    # Regla 6 · tres negaciones en la misma oración obligan a reconstruir lo que sí ocurre
+    (r"\bno\b[^.;:]{5,90}\bno\b[^.;:]{5,90}\bno\b",
+     "tres negaciones encadenadas — se dice lo que sí ocurre"),
+    # Regla 8 bis · el vocabulario de este método no se le presta a un trabajo anterior
+    (r"(?:Broeringmeyer|Goiz)[^.]{0,90}\b(?:dipolos?|nodos?|pares?)\b",
+     "vocabulario de hoy atribuido a un trabajo anterior — describir lo que hizo"),
+    # Regla 3 · el cuerpo se mide
+    (r"\blas lecturas dejan de ser\b|\bla lectura se obtiene\b|\blo que se lee\b",
+     "el cuerpo se mide — «medición», no «lectura»"),
+    # Regla 8 quinquies · el momento se nombra por el procedimiento, no por la escena
+    (r"durante la permanencia\b|antes de colocar el primer im[áa]n\b",
+     "el momento se nombra por el paso del procedimiento"),
+    # Regla 2 · el imán cambia el voltaje; no escribe ni entrega ni produce
+    (r"\bim[áa]n (?:escribe|reescribe|entrega|produce un gradiente)\b",
+     "el imán cambia el voltaje de la membrana"),
 ]
 
 # ── 3 · Registro de coaching / promesa de resultado ─────────────────────────
@@ -48,6 +78,43 @@ RELLENO = [
     (r"es importante (?:destacar|mencionar|señalar|notar)\b", "muletilla de IA"),
     (r"en resumen\b|en conclusión\b", "muletilla de IA"),
     (r"merece detenimiento\b|merece la pena\b", "relleno"),
+    (r"\bconviene (?:decir|detenerse|mencionar|se[ñn]alar|destacar|recordar|advertir)\b",
+     "editorializa — dar la instrucción directa"),
+    (r"\bn[óo]tese\b|\bobs[ée]rvese\b", "muletilla de IA"),
+    (r"\ben este sentido\b|\bahora bien\b|\bpor su parte\b", "conector de relleno"),
+    (r"\bdicho de otro modo\b|\ben otras palabras\b", "reformula en vez de afirmar una vez"),
+    (r"\bes (?:clave|fundamental|esencial)\b", "califica en vez de decir qué ocurre"),
+]
+
+# ── 4 bis · Palabras sin referente y metáforas ─────────────────────────────
+# Cada una sustituye a un hecho concreto. El manual dice el hecho.
+VAGO = [
+    (r"\bno cierra\b|\bno cuadra\b", "decir qué ocurre: qué cifra no coincide con cuál"),
+    (r"\bel techo\b", "nombrar el límite: «el último nodo de la secuencia»"),
+    (r"\bescal[óo]n(?:es)?\b", "se escribe «paso»"),
+    (r"\bpor omisi[óo]n\b", "jerga de programación — se escribe «en reposo»"),
+    (r"\bcuando hay ruido\b|\bhay ruido\b", "se escribe «cuando la respuesta es ambigua»"),
+    (r"\bde fondo\b", "nombrar el plazo o el mecanismo"),
+    (r"\brompe(?:r[íi]a)? el marco\b", "decir qué queda mal planteado"),
+    (r"\barroja\b(?! luz)", "se escribe «da» · «produce»"),
+    (r"\bla maquinaria\b", "se escribe «lo que el sistema puede hacer»"),
+    (r"\brecorr(?:e|en|er|ido|idos|emos|i[óo])\b",
+     "en este método se dice «se rastrea» · «rastreo»"),
+    (r"\bsigno de lectura\b", "se escribe «el signo que se mide»"),
+    (r"\bse abre a\b", "nombrar la acción: «se somete a comprobación»"),
+    (r"\bel terreno\b", "se escribe «el microambiente tisular»"),
+    (r"^(?!\s*#).*\bel instrumento del m[ée]todo\b", "nombrar la cosa: el imán, el campo, la medición"),
+    (r"\bviven\b(?=[^.]{0,40}\b(?:polos|puntos|nodos)\b)", "se escribe «están»"),
+    (r"\bcaen donde\b", "se escribe «se localizan donde»"),
+    (r"\bno consigue nada\b", "decir qué no cambia: «deja la medición igual»"),
+    (r"\bhace lo que hace\b", "nombrar qué hace"),
+    (r"\bsiga vivo?a?\b", "se escribe «siga activa»"),
+    (r"\bsost[eé]n\b", "se escribe «apoyo» · «seguridad»"),
+    (r"\bmaniobras?\b", "se escribe «técnica» · «procedimiento» · «colocación»"),
+    (r"\bdevolv\w*\s+la\s+informaci[óo]n\b|\bdevuelve\s+la\s+informaci[óo]n\b",
+     "la información no es un objeto: nombrar qué cambia — el voltaje, la señal de referencia"),
+    (r"\bcasillas?\b(?!\s+de la tabla)", "nombrar los elementos, no el formato de la lista"),
+    (r"\brango de regulaci[óo]n\b", "nombrar la variable: el voltaje de membrana"),
 ]
 
 # ── 5 · Títulos: nombran el concepto clínico, no la escena ──────────────────
@@ -59,6 +126,12 @@ TITULOS = [
     (r"^#+\s*(?:Y )?(?:aqu[íi]|ahora|luego|después)\b", "el título es deíctico"),
     (r"\blo que hay\b|\blo que no hay\b", "rótulo vago"),
     (r"\bel punto de\b.*\bparte\b", "el título ubica en el discurso"),
+    (r"^#{1,2}\s*(?:[\d]+\s*·\s*)?(?:Cu[áa]ndo|Qu[ée]|Por qu[ée]|C[óo]mo|Lo que)\s+no\b",
+     "el título está en negativo — se afirma qué se hace"),
+    (r"^#{1,2}[^\n]*\bno es una?\b|^#{1,2}[^\n]*\bnunca\b",
+     "el título niega en vez de afirmar"),
+    (r"^#+\s*Qu[ée]\s+(?:es|hace|significa)\s+[a-záéíóúñ]+\s*$",
+     "rótulo: decir la respuesta en el propio título"),
 ]
 
 # ── 6 · Lenguaje de contacto: en RB no se toca al paciente ──────────────────
@@ -113,6 +186,14 @@ AULA = [
 # puede editar sin tocar este archivo.
 GLOSARIO = pathlib.Path(__file__).parent / "GLOSARIO_RB.md"
 
+# Archivos que SON la tabla de reglas: contienen las palabras marcadas porque
+# las definen. Revisarlos produce solo ruido.
+EXENTOS = {"GLOSARIO_RB.md", "GUIA_DE_ESTILO.md", "editor-estilo.md", "CLAUDE.md",
+           # Documentos de reglas: citan los defectos para prohibirlos.
+           "REGLAS.md", "BASE_PARA_PARTES_II_Y_III.md", "DECISIONES.md"}
+# Lo compuesto se revisa en su fuente markdown, no en la salida del constructor.
+GENERADOS = (".html", ".htm")
+
 
 def _lee_glosario():
     """Devuelve (apodos, verbos, permitidos) desde GLOSARIO_RB.md."""
@@ -133,7 +214,12 @@ def _lee_glosario():
                 permitidos.add(item.lower())
             elif "→" in item:
                 mal, bien = (p.strip() for p in item.split("→", 1))
-                (apodos if seccion == "apodos" else verbos).append((mal, bien))
+                # El lado izquierdo puede llevar varias formas: «sostiene · sostener
+                # · sostenido». Cada una entra como patrón propio; si no, el linter
+                # busca la cadena entera y no marca ninguna.
+                for forma in (f.strip() for f in mal.split("·")):
+                    if forma:
+                        (apodos if seccion == "apodos" else verbos).append((forma, bien))
     return apodos, verbos, permitidos
 
 
@@ -180,18 +266,49 @@ ANUNCIO = [
 ]
 
 
+# Estas solo se aplican al título de capítulo (# y ##). En el estilo del manual
+# los subtítulos de tercer nivel son navegación y pueden ser sintagma corto.
+TITULO_CAPITULO = [
+    (r"^#{1,2}\s*(?:\d+\s*·\s*)?(?:El|La|Los|Las)\s+[a-záéíóúñ]+(?:\s+[a-záéíóúñ]+)?\s*$",
+     "rótulo: el título de capítulo nombra un tema y no afirma nada"),
+    (r"^#{1,2}\s*(?:Definici[óo]n|Introducci[óo]n|Generalidades|Consideraciones|Conceptos)\s*$",
+     "rótulo de manual escolar — decir qué afirma el capítulo"),
+    (r"^#{1,2}\s*(?:Los|Las)\s+(?:dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\s+[a-záéíóúñ]+\s*$",
+     "el título cuenta elementos y no dice cuáles"),
+]
+
+# ── 12 · El sujeto es una cosa y el verbo le atribuye intención ─────────────
+# Una fractura no pide, un imán no entrega, un capítulo no invita. Cuando el
+# sujeto es una cosa, el verbo dice lo que esa cosa hace físicamente.
+# «Decide» queda fuera: es la formulación del Dr. para el voltaje.
+PERSONIFICA = [
+    (r"\b(?:el|la|un|una|los|las|unos|unas)\s+"
+     r"(?:im[áa]n|imanes|campo|gradiente|fractura|voltaje|m[ée]todo|manual|"
+     r"documento|cap[íi]tulo|t[ée]cnica|rastreo|nodo|dipolo|hueso|sesi[óo]n|"
+     r"protocolo|medici[óo]n|tabla|ficha|rejilla|placa)"
+     r"(?:\s+(?!y\b|o\b|el\b|la\b|los\b|las\b|un\b|una\b|que\b|se\b)\w+){0,2}\s+"
+     r"(?:pide|piden|exige|exigen|quiere|quieren|necesita|necesitan|guarda|"
+     r"guardan|entrega|entregan|ofrece|ofrecen|reclama|reclaman|invita|invitan|"
+     r"pretende|pretenden|devuelve|devuelven|manda|mandan)\b",
+     "el sujeto es una cosa — el verbo dice qué hace físicamente"),
+]
+
 GRUPOS = [
     ("PROHIBIDA", PROHIBIDAS, False),
     ("MULETILLA", MULETILLAS, False),
+    ("REGLA_RB",  CORRECCION_RB, False),
     ("PROMESA", PROMESA, False),
     ("RELLENO", RELLENO, False),
+    ("VAGO", VAGO, False),
     ("CONTACTO", CONTACTO, False),
     ("LEVANTAR", LEVANTAR, False),
     ("APODO", APODOS, False),
     ("AUTORREF", AUTORREFERENCIA, False),
     ("ANUNCIO", ANUNCIO, False),
     ("VERBO", VERBOS_VAGOS, False),
+    ("SUJETO", PERSONIFICA, False),
     ("TÍTULO", TITULOS, True),   # solo se aplica a encabezados
+    ("TÍTULO", TITULO_CAPITULO, "cap"),  # solo a título de capítulo (# y ##)
 ]
 
 EXT = {".md", ".html", ".tsx", ".ts", ".txt"}
@@ -205,7 +322,20 @@ EXCEPCIONES = [
     r"la inflamación no se apaga",          # frase del Bloque 2
     r"variable (bioel[ée]ctrica|controlada|postulada|el[ée]ctrica|primaria|de comparaci[óo]n)",
     r"comunidad microbiana",                # término completo, no apodo
+    r"uni[óo]n estrecha\.\*\*\s*El sello",  # definición: el nombre completo está presente
+    r"columna de la informaci[óo]n",        # el formalismo del capítulo 6
+    r"la informaci[óo]n con la que decide", # el formalismo del capítulo 6
 ]
+
+
+def tiene_epigrafe(lineas, n):
+    """True si tras el encabezado de la línea n viene un epígrafe en cursiva."""
+    for j in range(n, min(n + 3, len(lineas))):
+        s = lineas[j].strip()
+        if not s:
+            continue
+        return bool(re.match(r"^\*[^*].*[^*]\*$", s))
+    return False
 
 
 def revisa(ruta: pathlib.Path):
@@ -214,12 +344,21 @@ def revisa(ruta: pathlib.Path):
         texto = ruta.read_text(encoding="utf-8")
     except Exception:
         return hallazgos
-    for n, linea in enumerate(texto.splitlines(), 1):
+    lineas = texto.splitlines()
+    for n, linea in enumerate(lineas, 1):
         if any(re.search(e, linea, re.I) for e in EXCEPCIONES):
             continue
         es_titulo = bool(re.match(r"^\s*#{1,6}\s", linea)) or "titulo=" in linea or "kicker=" in linea
+        # Un encabezado corto seguido de un epígrafe en cursiva es el patrón del
+        # manual: el título entra al índice y la afirmación va en el epígrafe.
+        # No se marca como rótulo.
+        if es_titulo and tiene_epigrafe(lineas, n):
+            es_titulo = False
+        es_cap = bool(re.match(r"^\s*#{1,2}\s", linea)) and not tiene_epigrafe(lineas, n)
         for etiqueta, reglas, solo_titulo in GRUPOS:
-            if solo_titulo and not es_titulo:
+            if solo_titulo == "cap" and not es_cap:
+                continue
+            if solo_titulo is True and not es_titulo:
                 continue
             for patron, motivo in reglas:
                 if re.search(patron, linea, re.I):
@@ -248,9 +387,18 @@ def encabezados_rotulo(ruta: pathlib.Path):
         texto = ruta.read_text(encoding="utf-8")
     except Exception:
         return marcas
-    for n, linea in enumerate(texto.splitlines(), 1):
-        if re.match(r"^\s*#{1,6}\s", linea) and ROTULO.match(linea):
-            marcas.append((n, re.sub(r"^\s*#{1,6}\s*", "", linea).strip()))
+    lineas = texto.splitlines()
+    for n, linea in enumerate(lineas, 1):
+        if not (re.match(r"^\s*#{1,6}\s", linea) and ROTULO.match(linea)):
+            continue
+        # El patrón del manual: título corto para el índice y afirmación en el
+        # epígrafe en cursiva de abajo. Y en ese patrón los subtítulos de tercer
+        # nivel son navegación, no afirmación.
+        if tiene_epigrafe(lineas, n):
+            continue
+        if re.match(r"^\s*#{3,6}\s", linea):
+            continue
+        marcas.append((n, re.sub(r"^\s*#{1,6}\s*", "", linea).strip()))
     return marcas
 
 
@@ -298,6 +446,8 @@ def main():
 
     total = 0
     for f in sorted(objetivos):
+        if f.name in EXENTOS or f.suffix in GENERADOS:
+            continue
         h = revisa(f)
         if h:
             print(f"\n── {f}")
