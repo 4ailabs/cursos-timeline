@@ -1,0 +1,237 @@
+<meta charset="utf-8">
+<title>Manual de Regulación Bioeléctrica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap">
+<style>
+/* ══ MANUAL DE REGULACIÓN BIOELÉCTRICA · EDICIÓN DE PANTALLA, HOJA CARTA ══
+   216 × 279 mm · columna única · teal único · filetes, nunca cajas rellenas.
+   Escala tipográfica de estilo_letter.css · ritmo vertical en múltiplos de 2.5 mm. */
+
+:root{
+  --ink:#2C2C2A; --soft:#4A4643; --faint:#8A8880;
+  --paper:#FFFFFF; --ground:#E9E8E3;
+  --line:#DEDBD2; --hair:#ECEAE1; --card:#FCFBF7;
+  --teal:#0F6E56; --teal-deep:#0B5644; --teal-tint:#E1F5EE;
+  --sans:"Avenir Next","Hanken Grotesk","Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,Menlo,"SF Mono",Consolas,monospace;
+  --shadow:0 5px 24px rgba(0,0,0,.10);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ink:#E8E6DF; --soft:#B4B0A6; --faint:#83807A;
+    --paper:#1C1D1B; --ground:#121311;
+    --line:#33352F; --hair:#292B26; --card:#212320;
+    --teal:#5FC3A4; --teal-deep:#8AD8BE; --teal-tint:#12352C;
+    --shadow:0 8px 30px rgba(0,0,0,.38);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E8E6DF; --soft:#B4B0A6; --faint:#83807A;
+  --paper:#1C1D1B; --ground:#121311;
+  --line:#33352F; --hair:#292B26; --card:#212320;
+  --teal:#5FC3A4; --teal-deep:#8AD8BE; --teal-tint:#12352C;
+  --shadow:0 8px 30px rgba(0,0,0,.38);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+b{font-weight:600}
+code{font-family:var(--mono);font-size:.9em;color:var(--teal-deep)}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ── EL PLIEGO Y LA HOJA ── */
+.pliego{display:flex;flex-direction:column;align-items:center;gap:10mm;padding:12mm 4mm 26mm}
+.hoja{width:216mm;min-height:279mm;background:var(--paper);position:relative;
+  border:1px solid var(--line);box-shadow:var(--shadow);
+  padding:16mm 32mm 20mm}
+.folio{position:absolute;right:32mm;bottom:9mm;font-size:11.4px;color:var(--faint);
+  font-variant-numeric:tabular-nums}
+
+/* ── CORNISA ── */
+.cornisa{display:flex;align-items:center;gap:3.5mm;margin:0 0 8mm;padding-bottom:3mm;
+  border-bottom:1px solid var(--hair)}
+.mk{display:inline-flex;color:var(--teal)}
+.mk svg{height:5.2mm;width:auto;display:block}
+.cornisa .wm2{font-size:13px;color:var(--ink);white-space:nowrap}
+.cornisa .wm2 b{color:var(--teal);font-weight:400}
+.cornisa .sp{flex:1}
+.cornisa .rh{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);text-align:right;max-width:52%;line-height:1.45}
+
+/* ── CABEZA DE CAPÍTULO ── */
+.caphead{display:flex;gap:5mm;align-items:baseline;margin:0 0 3mm;scroll-margin-top:8mm}
+.caphead .capn{font-size:27px;font-weight:600;color:var(--teal);opacity:.5;flex:none;
+  min-width:11mm;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.caphead h3{font-size:22.4px;font-weight:600;line-height:1.16;margin:0;
+  letter-spacing:-.005em;text-wrap:balance}
+.caphead.solo{margin-bottom:3mm}
+.epi{font-size:16.1px;font-style:italic;color:var(--teal-deep);line-height:1.48;
+  margin:0 0 7mm;padding-left:16mm}
+.caphead.solo+.epi{padding-left:0}
+
+/* ── CUERPO ── */
+.cuerpo>*:first-child{margin-top:0}
+.cuerpo>*:last-child{margin-bottom:0}
+p{font-size:15.5px;line-height:1.58;margin:0 0 2.8mm;hyphens:auto}
+/* negritas del cuerpo neutralizadas: la jerarquía la cargan subtítulos, filetes y tablas */
+.cuerpo p b,.cuerpo li b,.cuerpo td b,.pull p b{font-weight:400;color:inherit}
+h4.rot{font-size:16.1px;font-weight:600;line-height:1.28;margin:7mm 0 2.4mm;text-wrap:balance}
+h4.rot+.tw{margin-top:1.5mm}
+p.ref,ul.refs li{font-size:12.4px;font-style:italic;color:var(--faint);line-height:1.5}
+p.ref{margin:-.5mm 0 5mm}
+
+ol.proc{margin:0 0 4mm;padding:0;list-style:none;counter-reset:p}
+ol.proc>li{counter-increment:p;position:relative;padding-left:9mm;font-size:15.5px;
+  line-height:1.52;margin-bottom:2.4mm}
+ol.proc>li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:.2em;
+  font-size:11.4px;font-weight:700;color:var(--teal);font-variant-numeric:tabular-nums}
+ul.dash{margin:0 0 4mm;padding:0;list-style:none}
+ul.dash>li{position:relative;padding-left:6mm;font-size:15.5px;line-height:1.52;
+  margin-bottom:2mm}
+ul.dash>li::before{content:"";position:absolute;left:0;top:.72em;width:3mm;height:1px;
+  background:var(--teal)}
+ul.refs{margin:0 0 4mm;padding:0;list-style:none;display:flex;flex-direction:column;gap:2.6mm}
+ul.refs li{font-style:normal;color:var(--soft);line-height:1.5}
+ul.refs li b{font-weight:400;color:var(--ink)}
+
+.pull{margin:5mm 0;padding:3.5mm 0;border-top:1px solid var(--teal);
+  border-bottom:1px solid var(--teal)}
+.pull p{font-size:16.1px;line-height:1.5;margin:0 0 2mm}
+.pull p:last-of-type{margin-bottom:0}
+.pull p.cita{font-style:italic;color:var(--soft)}
+.pull .attr{display:block;font-size:10.8px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);margin-top:2mm}
+
+.tw{overflow-x:auto;margin:2.5mm 0 5.5mm;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:2mm 4mm 2mm 0;font-size:14.1px;line-height:1.45;
+  border-bottom:1px solid var(--hair);vertical-align:top;color:var(--soft);hyphens:none}
+table.tlbl td:first-child,table.tlbl th:first-child{min-width:34mm;white-space:nowrap}
+table.tlbl td:nth-child(2):not(:last-child){min-width:38mm}
+table.tnum td:first-child,table.tnum th:first-child{width:9mm}
+table.tnum td:nth-child(2):not(:last-child){min-width:34mm}
+table.ttxt td:first-child{min-width:44mm}
+tbody td:first-child{color:var(--ink);font-weight:500}
+th:last-child,td:last-child{padding-right:0}
+thead th{font-size:11.4px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--teal-deep);border-bottom:1px solid var(--teal)}
+tbody tr:last-child td{border-bottom:none}
+
+figure.fig{margin:4mm 0 5.5mm;padding:0}
+figure.fig svg{max-width:100%;height:auto;display:block}
+.figcap{font-size:12.4px;font-style:italic;color:var(--faint);line-height:1.5;margin:2mm 0 0}
+pre.tree{font-family:var(--mono);font-size:11px;line-height:1.5;color:var(--soft);
+  background:var(--card);border:1px solid var(--line);border-radius:1.5mm;
+  padding:4mm 5mm;margin:2.5mm 0 5.5mm;overflow-x:auto;white-space:pre}
+
+/* ── PORTADA ── */
+.hoja.cover,.hoja.parte{display:flex;flex-direction:column;overflow:hidden;
+  padding-top:22mm;padding-bottom:18mm}
+.wm{position:absolute;right:-26mm;bottom:34mm;width:126mm;color:var(--teal);
+  opacity:.07;pointer-events:none}
+.wm svg{width:100%;height:auto;display:block}
+.cover .logo{display:flex;align-items:center;gap:4mm}
+.cover .logo .mk svg{height:9mm}
+.cover .wordmark{font-size:16px;letter-spacing:.02em}
+.cover .wordmark b{color:var(--teal);font-weight:400}
+.cover .gap-t,.parte .gap-t{flex:382 0 0}
+.cover .gap-b,.parte .gap-b{flex:618 0 0}
+.titular{flex:none}
+.cover .kicker{font-size:12.8px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--teal);margin:0 0 6mm}
+.cover h1{font-size:40px;font-weight:600;line-height:1.06;letter-spacing:-.015em;
+  margin:0 0 5mm;max-width:16ch;text-wrap:balance}
+.cover .sub{font-size:16px;font-style:italic;color:var(--soft);line-height:1.5;
+  max-width:34ch;margin:0}
+.cover .meta{border-top:1px solid var(--line);padding-top:5mm;display:flex;
+  justify-content:space-between;align-items:flex-end;gap:8mm}
+.cover .who{font-size:14.8px;line-height:1.5}
+.cover .who b{color:var(--teal);font-weight:400}
+.cover .ed{font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--faint);text-align:right;line-height:1.8}
+.endfoot{position:absolute;left:0;right:0;bottom:9mm;text-align:center;font-size:10.5px;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--faint)}
+
+/* ── PORTADILLA DE PARTE ── */
+.parte .wm{right:-22mm;bottom:38mm;width:108mm;opacity:.05}
+.parte .rom{font-size:74px;font-weight:600;line-height:.86;color:var(--teal);opacity:.22;
+  letter-spacing:-.03em;margin:0 0 3mm}
+.parte .kicker{font-size:12.8px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--teal);margin:0 0 4mm}
+.parte h1{font-size:31px;font-weight:600;line-height:1.1;letter-spacing:-.012em;
+  margin:0 0 5mm;max-width:18ch;text-wrap:balance}
+.parte .sub{font-size:16.1px;font-style:italic;color:var(--soft);line-height:1.55;
+  max-width:38ch;margin:0}
+.parte .conten{border-top:1px solid var(--line);padding-top:4.5mm;margin-top:7mm}
+.parte .conten ul{margin:0;padding:0;list-style:none}
+.parte .conten li{font-size:13.5px;letter-spacing:.02em;color:var(--soft);padding:1.8mm 0;
+  border-bottom:1px solid var(--hair);display:flex;gap:5mm;align-items:baseline}
+.parte .conten li:last-child{border-bottom:none}
+.parte .conten li i{font-style:normal;color:var(--teal);font-weight:600;width:26mm;flex:none;
+  font-size:10.8px;letter-spacing:.14em;text-transform:uppercase}
+
+/* ── APERTURA DE BLOQUE, hoja propia en el punto áureo ── */
+.hoja.parteb{display:flex;flex-direction:column;padding-top:16mm;padding-bottom:18mm}
+.parteb::before{content:"";flex:382 0 0}
+.parteb::after{content:"";flex:618 0 0}
+.bloq{flex:none;padding-bottom:5mm;border-bottom:1.5px solid var(--teal)}
+.kbar{width:16mm;height:2.2mm;background:var(--teal);border-radius:1px;margin:0 0 3.5mm}
+.bloq .eyebrow{font-size:12.8px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--teal);margin:0 0 3mm}
+.bloq h2{font-size:28.3px;font-weight:600;line-height:1.12;letter-spacing:-.008em;
+  margin:0 0 3.5mm;max-width:24ch;text-wrap:balance}
+.bloq .sub{font-size:16.1px;font-style:italic;color:var(--soft);line-height:1.5;
+  max-width:46ch;margin:0}
+
+/* ── ÍNDICE ── */
+.indice .opener{margin:0 0 7mm}
+.indice .eyebrow{font-size:12.8px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--teal);margin:0 0 2mm}
+.indice h2{font-size:28.3px;font-weight:600;margin:0;letter-spacing:-.005em}
+.indice .prt{font-size:11.4px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--teal);margin:0 0 4mm}
+.indice .grp{font-size:11.8px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);margin:7mm 0 2mm;padding-bottom:1.8mm;border-bottom:1px solid var(--line)}
+.indice .opener+.grp,.indice .prt+.grp,.indice .cornisa+.grp{margin-top:0}
+.indice .toc{list-style:none;margin:0;padding:0}
+.indice .toc li{border-bottom:1px solid var(--hair)}
+.indice .toc a{display:flex;align-items:baseline;gap:4mm;padding:2.2mm 0;
+  color:inherit;text-decoration:none}
+.indice .toc a:hover .t{text-decoration:underline;text-decoration-color:var(--teal);
+  text-underline-offset:3px}
+.indice .toc li:last-child{border-bottom:none}
+
+.indice .toc .t{font-size:14.1px;font-weight:500;line-height:1.3}
+.indice .toc .t{flex:1}
+.indice .toc .pg{font-size:12.8px;font-weight:700;color:var(--teal);flex:none;min-width:8mm;
+  text-align:right;font-variant-numeric:tabular-nums}
+.indice .toc .num{font-size:13px;color:var(--soft);font-weight:600;margin-right:3mm;
+  font-variant-numeric:tabular-nums}
+
+/* ── IMPRESIÓN ── */
+@page{size:216mm 279mm;margin:0}
+@media print{
+  body{background:var(--paper)}
+  .pliego{padding:0;gap:0;zoom:1!important}
+  .hoja{box-shadow:none;border:none;width:216mm;height:279mm;min-height:0;
+    overflow:hidden;page-break-after:always;break-after:page}
+  .hoja:last-child{page-break-after:auto;break-after:auto}
+}
+</style>
+<div class="pliego" id="pliego" lang="es">
+<script>
+(function(){
+  var p=document.getElementById('pliego');
+  function fit(){
+    var w=document.documentElement.clientWidth;
+    var hoja=216*96/25.4+18;               /* hoja carta + aire lateral */
+    var z=Math.min(1,w/hoja);
+    p.style.zoom=z<1?z:'';
+  }
+  addEventListener('resize',fit);fit();window.__fit=fit;
+  addEventListener('beforeprint',function(){p.style.zoom=''});
+  addEventListener('afterprint',fit);
+})();
+</script>

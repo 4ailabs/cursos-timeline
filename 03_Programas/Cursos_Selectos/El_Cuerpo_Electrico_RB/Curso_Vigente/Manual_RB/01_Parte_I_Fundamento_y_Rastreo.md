@@ -10,7 +10,7 @@ El estado en el que un tejido debe funcionar es un voltaje de membrana, y ese vo
 
 La enfermedad crónica corresponde a un tejido que conserva una referencia que dejó de ajustarse a la situación presente, con daño estructural o sin él. La inflamación se resuelve con un programa propio, que apaga el proceso y repara el tejido. El macrófago tiene dos modos, el inflamatorio y el reparador, y lo que decide en cuál está es su voltaje de membrana, a través de los canales de potasio. Mientras ese voltaje siga igual, el macrófago permanece en el modo inflamatorio, libera citocinas y recluta más células al sitio, y la inflamación continúa.
 
-La intervención consiste en modificar ese voltaje con un campo magnético. Un imán no aporta cargas, no aporta energía y no transfiere sustancia. Sobre un ion suelto la fuerza que ejerce queda por debajo de la energía térmica del organismo, y lo que el campo alcanza son estructuras donde miles de moléculas están alineadas: en la membrana ejerce un torque sobre los fosfolípidos, esa reorientación deforma la geometría de los canales iónicos y el voltaje cambia. El canal de calcio tipo T, la magnetita del tejido y el macrófago son las otras tres vías, y las cuatro convergen en el voltaje de membrana.
+La intervención consiste en modificar ese voltaje con un campo magnético. Lo que un imán tiene es un campo, y un campo no lleva cargas ni energía al tejido. Sobre un ion suelto la fuerza que ejerce queda por debajo de la energía térmica del organismo, y lo que el campo alcanza son estructuras donde miles de moléculas están alineadas: en la membrana ejerce un torque sobre los fosfolípidos, esa reorientación deforma la geometría de los canales iónicos y el voltaje cambia. El canal de calcio tipo T, la magnetita del tejido y el macrófago son las otras tres vías, y las cuatro convergen en el voltaje de membrana.
 
 El tejido responde dentro de una ventana estrecha de intensidad, de 2 a 80 militeslas. En la superficie de un imán clínico la densidad del campo es de 100 a 500 militeslas, y decae con la distancia hasta entrar en esa ventana a dos o tres centímetros de profundidad. Aumentar la intensidad del imán no aumenta el resultado. Lo determinan la densidad que llega al tejido, el gradiente —qué tan rápido cambia el campo de un punto al siguiente— y el sitio donde se coloca.
 
@@ -174,7 +174,7 @@ Además de esas tres variables, el voltaje de membrana determina el comportamien
 
 | Función | Cómo depende del voltaje |
 |---|---|
-| **Proliferación o diferenciación** | Despolarizada, entre −10 y −30 mV, la célula prolifera. Hiperpolarizada, entre −60 y −90 mV, se diferencia y ejerce su función |
+| **Proliferación o diferenciación** | Despolarizada, entre −10 y −30 mV, la célula prolifera. Hiperpolarizada, entre −60 y −90 mV, se diferencia y ejerce su función. Cone 1971; Sundelacruz, Levin y Kaplan 2009 |
 | **Secreción glandular** | El voltaje de la glándula regula lo que secreta |
 | **Permeabilidad** | El voltaje determina qué carga y qué tamaño deja pasar la unión estrecha |
 | **Acoplamiento entre células** | El voltaje determina si las uniones comunicantes quedan abiertas o cerradas |
@@ -191,7 +191,7 @@ El voltaje instruye por encima del contenido genético. Dos células con idénti
 
 Levin midió el voltaje en la cara de un renacuajo y trazó el mapa: la zona del ojo tenía un voltaje distinto del de la nariz. Reprodujo ese mismo patrón de voltaje en otra parte del cuerpo, incluido el intestino, y ahí se formó un ojo con capacidad de ver. Con el mismo procedimiento, una hora de despolarización en el muñón de la cola inicia entre ocho y diez días de regeneración completa, con médula, músculo y vasos; en la extremidad hacen falta veinticuatro horas.
 
-Pai VP, et al. *Development*. 2012;139(2):313-323. · Tseng A, Levin M. *Commun Integr Biol*. 2013;6(1):e22595. · Levin M. *BioEssays*. 2024;46(7):e2400043.
+Pai VP, et al. *Development*. 2012;139(2):313-323. · Tseng AS, Beane WS, Lemire JM, et al. *J Neurosci*. 2010;30(39):13192-13200. · Tseng A, Levin M. *Commun Integr Biol*. 2013;6(1):e22595. · Levin M. *BioEssays*. 2024;46(7):e2400043.
 
 El desplazamiento del pH que se observa al colocar imanes es una consecuencia de ese flujo de iones. El campo modifica el voltaje, el voltaje abre y cierra los canales, y el pH cambia como resultado.
 
@@ -226,7 +226,7 @@ Está medida, y sus valores se han publicado por tipo de tejido: de −0.19 a �
 De esa carga dependen cuatro propiedades del tejido:
 
 - **Retiene el agua**, que queda atraída por las cargas y le da al tejido su turgencia. Así el tejido resiste la compresión sin deformarse de manera permanente.
-- **Concentra las partículas de carga positiva** —sodio, potasio, calcio— cerca de las células, y mantiene alejadas a las negativas, sin que ninguna célula gaste energía en ello. Esa diferencia de carga entre el interior y el exterior es el **potencial de Donnan**.
+- **Concentra las partículas de carga positiva** —sodio, potasio, calcio— cerca de las células, y mantiene alejadas a las negativas, sin que ninguna célula gaste energía en ello. Esa diferencia de carga entre el interior y el exterior es el **potencial de Donnan**, y de él dependen la distribución iónica, la hidratación y el pH local del tejido.
 - **Establece dentro del tejido un pH** que puede diferir del de la sangre que lo riega.
 - **Ofrece sitios donde acomodar las cargas positivas que llegan**: radicales libres y ácidos, que el metabolismo produce o que entran de fuera.
 
@@ -234,7 +234,7 @@ Cuando el medio se acidifica, esos grupos captan protones y pierden su carga. La
 
 Un tejido que conserva su carga conserva su voltaje aunque siga recibiendo carga ácida. Un tejido saturado la desplaza a los iones que siguen, en un orden fijo.
 
-Lesperance LM, Gray ML, Burstein D. *J Orthop Res*. 1992;10(1):1–13. · Morawski M, Reinert T, Meyer-Klaucke W, et al. *Sci Rep*. 2015;5:17383. · Bansal PN, et al. *Osteoarthritis Cartilage*. 2010;18(2):184–191. · Pischinger A. *The Extracellular Matrix and Ground Regulation*. North Atlantic Books, 2007.
+Grodzinsky AJ. *Fields, Forces, and Flows in Biological Systems*. Garland Science, 2011, sobre el potencial de Donnan. · Lesperance LM, Gray ML, Burstein D. *J Orthop Res*. 1992;10(1):1–13. · Morawski M, Reinert T, Meyer-Klaucke W, et al. *Sci Rep*. 2015;5:17383. · Bansal PN, et al. *Osteoarthritis Cartilage*. 2010;18(2):184–191. · Pischinger A. *The Extracellular Matrix and Ground Regulation*. North Atlantic Books, 2007.
 
 ### El orden de movilización iónica
 
@@ -507,7 +507,7 @@ Cuando el rastreo no da hallazgos, o los da y el cuadro no cede, las cinco letra
 
 ### Un imán tiene un campo
 
-Un imán produce un campo magnético. No contiene cargas eléctricas, no las transfiere al tejido y no aporta energía.
+Un imán produce un campo magnético, y eso es todo lo que tiene. El campo no lleva cargas eléctricas ni energía al tejido.
 
 Un campo no es un estado de la materia: no es sólido, ni líquido, ni gas. Se comporta como el aire que mueve un abanico, que no se ve y se siente, o como la gravedad: invisible, real, y capaz de actuar sobre la materia.
 
@@ -534,7 +534,7 @@ El primero se ha comprobado con **patch clamp**, una técnica que mide la corrie
 
 **Los cuatro convergen en el voltaje de membrana.** Por cualquiera de esas vías el resultado es el mismo cambio, y con él el flujo de iones, el pH local y el estado de oxidación-reducción. El polo interviene únicamente en el primero, el torque; no hay datos que documenten efectos distintos del polo negativo y del positivo por ninguna otra vía.
 
-Rosen AD. *Cell Biochem Biophys*. 2003;39(2):163–173, sobre la anisotropía diamagnética. · Kirschvink JL, et al. *Proc Natl Acad Sci USA*. 1992;89(16):7683–7687, sobre la magnetita del cerebro humano.
+Rosen AD. *Cell Biochem Biophys*. 2003;39(2):163–173, sobre la anisotropía diamagnética. · Wu H, et al. *Cells*. 2022;11(15):2460, sobre el canal de calcio tipo T y el efecto de su bloqueo. · Kirschvink JL, et al. *Proc Natl Acad Sci USA*. 1992;89(16):7683–7687, y Maher BA, et al. *Proc Natl Acad Sci USA*. 2016;113(39):10797–10801, sobre la magnetita del cerebro humano. · Lei H, et al. *Front Immunol*. 2020;11:582772, y Feng C, et al. *Cells*. 2022;11(3):443, sobre el desplazamiento del macrófago al modo reparador.
 
 El efecto ocurre porque el campo deforma la geometría de la membrana. De ahí una consecuencia que gobierna toda la práctica: aumentar la intensidad del imán no aumenta el resultado. Lo que cambia el resultado es el gradiente y el sitio donde se coloca.
 
@@ -631,6 +631,8 @@ Los dos se mantienen juntos, en posición de atracción. Al separarlos el gradie
 ### El gradiente empinado reduce la transmisión del nervio
 
 El gradiente empinado modifica el flujo de sodio y de calcio en la fibra nerviosa, y la fibra deja de transmitir por un tiempo. El resultado es analgésico, y esa es la colocación que se emplea para el dolor: el imán sobre la zona y su pareja a un lado, de modo que los dos sigan atrayéndose.
+
+McLean MJ, Holcomb RR, Wamil AW, et al. *Bioelectromagnetics*. 1995;16(1):20–32.
 
 ### Dos modos de colocación
 
@@ -875,6 +877,8 @@ Cuando el acoplamiento entre un grupo de células se interrumpe, el rastreo encu
 
 El pH ácido de la zona aparece después del aislamiento y es consecuencia suya.
 
+Goldman DE. *J Gen Physiol*. 1943;27(1):37–60, sobre la relación entre el potasio extracelular y el voltaje de membrana.
+
 ### Un golpe, una cirugía o un fármaco pueden originarla
 
 Un golpe, una herida, una extracción dental, una intervención quirúrgica o un traumatismo. También la exposición a un fármaco o a un agente químico.
@@ -1081,6 +1085,10 @@ VERIFICACIÓN DE RETIRO
 
 Lo que la sesión produce es el cambio de estado bioeléctrico. La reparación del tejido es consecuencia de ese cambio, ocurre en las horas y los días siguientes, ya sin el imán colocado, y toma su propio tiempo.
 
+Que el efecto sobre los canales persista después de retirar el imán está medido, y es coherente con aplicaciones de quince a treinta minutos.
+
+Kaneda E, et al. *Physiol Rep*. 2025;13(6):e70236.
+
 La mejoría inmediata no confirma el resultado. Lo que se modificó fue un punto de ajuste, y un punto de ajuste se comprueba por su permanencia: por cuánto le dura a la persona, no por cómo se siente al levantarse de la camilla.
 
 ### Frecuencia y serie
@@ -1229,7 +1237,7 @@ Cada concepto de este manual es una pregunta que el operador puede formular con 
 
 ---
 
-## 24 · Qué significa un resultado ausente
+## 25 · Qué significa un resultado ausente
 
 *Cuando el rastreo no da hallazgos, o los da y el cuadro no cede, hay cuatro explicaciones, y cada una pide una conducta distinta. Ninguna de las cuatro invalida el hallazgo: reubican la pregunta.*
 
@@ -1271,7 +1279,7 @@ La coordinación, la Σ, ocupa una posición intermedia. La técnica no la resta
 
 ---
 
-## 25 · El efecto del imán y sus tres consecuencias
+## 26 · El efecto del imán y sus tres consecuencias
 
 *Un imán genera un gradiente que modifica el voltaje de la membrana. De ahí salen las tres afirmaciones que delimitan la práctica: el resultado depende del sitio, lo que ocurre es que el tejido recupera su señal de referencia, y el procedimiento hace contrastable el trabajo de un operador con el de otro.*
 
@@ -1294,6 +1302,41 @@ La respuesta la produce el cuerpo ante la perturbación del imán. El procedimie
 Un nodo verdadero da la misma respuesta cada vez que se vuelve a explorar. Sobre esa base los casos se acumulan comparables entre sí.
 
 La coincidencia entre dos operadores distintos sobre la misma persona no se ha medido de forma sistemática. Es una de las líneas de verificación abiertas del método.
+
+---
+
+---
+
+# Referencias
+
+- **Bansal PN, Joshi NS, Entezari V, et al.** Contrast enhanced computed tomography can predict the glycosaminoglycan content. *Osteoarthritis Cartilage*. 2010;18(2):184–191. (4)
+- **Becker RO, Selden G.** *The Body Electric*. William Morrow, 1985. (2)
+- **Broeringmeyer R.** *Principles of Magnetic Therapy*. Bio-Health Enterprises, 1991. (2)
+- **Busse SM, McMillen PT, Levin M.** Cross-limb communication during *Xenopus* hindlimb regenerative response. *Development*. 2018;145(20):dev164210. (11)
+- **Chis-Ciure R, Levin M.** Cognition all the way down 2.0. *Synthese*. 2025;206:257. (6)
+- **Cinti F, Bouchi R, Kim-Muller JY, et al.** Evidence of β-cell dedifferentiation in human type 2 diabetes. *J Clin Endocrinol Metab*. 2016;101(3):1044–1054. (5)
+- **Cone CD.** Unified theory on the basic mechanism of normal mitotic control and oncogenesis. *J Theor Biol*. 1971;30(1):151–181. (3)
+- **Feng C, et al.** Static magnetic fields and macrophage polarization. *Cells*. 2022;11(3):443. (7)
+- **Goldman DE.** Potential, impedance, and rectification in membranes. *J Gen Physiol*. 1943;27(1):37–60. (14)
+- **Grodzinsky AJ.** *Fields, Forces, and Flows in Biological Systems*. Garland Science, 2011. (4)
+- **Kaneda E, et al.** *Physiol Rep*. 2025;13(6):e70236. (18)
+- **Kirschvink JL, Kobayashi-Kirschvink A, Woodford BJ.** Magnetite biomineralization in the human brain. *Proc Natl Acad Sci USA*. 1992;89(16):7683–7687. (7)
+- **Lei H, et al.** Static magnetic field and macrophage polarization. *Front Immunol*. 2020;11:582772. (7)
+- **Lesperance LM, Gray ML, Burstein D.** Determination of fixed charge density in cartilage using nuclear magnetic resonance. *J Orthop Res*. 1992;10(1):1–13. (4)
+- **Levin M.** Endogenous bioelectrical networks store non-genetic patterning information. *BioEssays*. 2024;46(7):e2400043. (3)
+- **Levin M.** Technological Approach to Mind Everywhere (TAME). *Front Syst Neurosci*. 2022;16:768201. (5)
+- **Maher BA, et al.** Magnetite pollution nanoparticles in the human brain. *Proc Natl Acad Sci USA*. 2016;113(39):10797–10801. (7)
+- **McLean MJ, Holcomb RR, Wamil AW, et al.** Blockade of sensory neuron action potentials by a static magnetic field. *Bioelectromagnetics*. 1995;16(1):20–32. (9)
+- **Morawski M, Reinert T, Meyer-Klaucke W, et al.** Ion exchanger in the brain: quantitative analysis of perineuronally fixed anionic binding sites. *Sci Rep*. 2015;5:17383. (4)
+- **Newell A, Simon HA.** *Human Problem Solving*. Prentice-Hall, 1972. (6)
+- **Pai VP, et al.** Transmembrane voltage potential controls embryonic eye patterning. *Development*. 2012;139(2):313–323. (3)
+- **Pischinger A.** *The Extracellular Matrix and Ground Regulation*. North Atlantic Books, 2007. (4)
+- **Ravier MA, Güldenagel M, Charollais A, et al.** Loss of connexin36 channels alters β-cell coupling and islet synchronization. *Diabetes*. 2005;54(6):1798–1807. (5)
+- **Rosen AD.** Mechanism of action of moderate-intensity static magnetic fields on biological systems. *Cell Biochem Biophys*. 2003;39(2):163–173. (7)
+- **Sundelacruz S, Levin M, Kaplan DL.** Role of membrane potential in the regulation of cell proliferation and differentiation. *Stem Cell Rev Rep*. 2009;5(3):231–246. (3)
+- **Tseng AS, Beane WS, Lemire JM, et al.** Induction of vertebrate regeneration by a transient sodium current. *J Neurosci*. 2010;30(39):13192–13200. (3)
+- **Tseng A, Levin M.** Cracking the bioelectric code. *Commun Integr Biol*. 2013;6(1):e22595. (3)
+- **Wu H, et al.** Static magnetic fields regulate T-type calcium ion channels. *Cells*. 2022;11(15):2460. (7)
 
 ---
 
