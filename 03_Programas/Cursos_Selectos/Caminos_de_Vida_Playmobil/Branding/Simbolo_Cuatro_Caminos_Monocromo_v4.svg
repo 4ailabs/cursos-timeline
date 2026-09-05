@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" role="img" aria-labelledby="title desc">
+  <title id="title">Símbolo monocromático de Los Cuatro Caminos</title>
+  <desc id="desc">Cuatro senderos de igual ancho convergen detrás de una figura central.</desc>
+  <!-- Senderos reales: cuatro bandas equivalentes con extremos abiertos. -->
+  <g fill="none" stroke="#111" stroke-width="24" stroke-linecap="round">
+    <path d="M260 175V20M345 260h155M260 345v155M175 260H20"/>
+  </g>
+  <!-- Figura en negativo para separar persona y recorrido en una sola tinta. -->
+  <g transform="translate(151 96) scale(.78)">
+    <path d="M75 96C70 79 71 59 77 43C88 15 111 0 140 0s52 15 63 43c6 16 7 36 2 53l-14 4v-17c-8 0-14-4-18-11-4 7-11 11-20 11s-16-4-20-11c-4 7-11 11-20 11s-16-4-20-11c-4 7-11 11-20 11h-4v17z"/>
+    <path d="M89 82c8 0 15-4 20-11 5 7 12 11 21 11s16-4 21-11c5 7 12 11 21 11 8 0 15-4 19-11v25c0 31-21 51-51 51S89 127 89 96z" fill="#fff"/>
+    <path d="M72 155h136c16 0 25 10 31 30l16 59c3 11 7 19 14 28 8 10 7 20-1 28l-6 6c-6 6-12 3-17-5-6 7-13 7-19 3-10-7-11-15-7-26l7-11-24-57 7 210h-51l-5-65c-1-12-5-18-13-18s-12 6-13 18l-5 65H71l7-210-24 57 7 11c4 11 3 19-7 26-6 4-13 4-19-3-5 8-11 11-17 5l-6-6c-8-8-9-18-1-28 7-9 11-17 14-28l16-59c6-20 15-30 31-30z" fill="#111" stroke="#fff" stroke-width="8" paint-order="stroke"/>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 460" role="img" aria-labelledby="title desc">
+  <title id="title">Los Cuatro Caminos, firma extendida</title>
+  <desc id="desc">Firma horizontal con descriptor para portadas y documentos de gran formato.</desc>
+  <g transform="translate(0 0)">
+    <image href="Logo_Cuatro_Caminos_Horizontal_v4.svg" x="0" y="0" width="1500" height="400"/>
+  </g>
+  <text x="420" y="428" fill="#079BC7" font-family="Inter, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="500" letter-spacing="4">FORMACIÓN EN TERAPIA CON MUÑECOS</text>
+</svg>

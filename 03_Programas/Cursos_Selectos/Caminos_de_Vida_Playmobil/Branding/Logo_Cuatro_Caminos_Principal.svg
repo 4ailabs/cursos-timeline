@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Los Cuatro Caminos</title>
+  <desc id="desc">Emblema circular con cuatro caminos que convergen en una figura humana central.</desc>
+  <defs>
+    <clipPath id="disc"><circle cx="600" cy="385" r="300"/></clipPath>
+  </defs>
+  <rect width="1200" height="1100" fill="#FFF8EC"/>
+  <circle cx="600" cy="385" r="300" fill="#073B4C"/>
+
+  <!-- Cuatro corredores equivalentes: orientación sin jerarquía. -->
+  <g clip-path="url(#disc)" fill="#FFF8EC">
+    <path d="M548 52h104v222c0 58-20 104-52 143-32-39-52-85-52-143z"/>
+    <path d="M933 333v104H711c-58 0-104-20-143-52 39-32 85-52 143-52z"/>
+    <path d="M652 718H548V496c0-58 20-104 52-143 32 39 52 85 52 143z"/>
+    <path d="M267 437V333h222c58 0 104 20 143 52-39 32-85 52-143 52z"/>
+  </g>
+
+  <!-- Acentos cardinales. -->
+  <path d="M548 85h104v90H548z" fill="#5BA3A8" clip-path="url(#disc)"/>
+  <path d="M843 333h90v104h-90z" fill="#F3B56A" clip-path="url(#disc)"/>
+  <path d="M548 595h104v90H548z" fill="#CF5730" clip-path="url(#disc)"/>
+  <path d="M267 333h90v104h-90z" fill="#38BDF8" clip-path="url(#disc)"/>
+
+  <!-- Centro de observación y figura terapéutica neutra. -->
+  <circle cx="600" cy="385" r="126" fill="#FFF8EC"/>
+  <g fill="#073B4C" stroke="#073B4C" stroke-linecap="round">
+    <circle cx="600" cy="337" r="31" stroke="none"/>
+    <rect x="565" y="372" width="70" height="102" rx="30" stroke="none"/>
+    <path d="M574 402l-30 61M626 402l30 61" fill="none" stroke-width="22"/>
+    <path d="M585 457l-6 66M615 457l6 66" fill="none" stroke-width="24"/>
+  </g>
+
+  <!-- Wordmark. -->
+  <g text-anchor="middle" font-family="Inter, Avenir Next, Helvetica Neue, Arial, sans-serif">
+    <text x="600" y="815" fill="#073B4C" font-size="78" font-weight="650" letter-spacing="18">LOS CUATRO</text>
+    <text x="600" y="915" fill="#5BA3A8" font-size="92" font-weight="650" letter-spacing="16">CAMINOS</text>
+    <line x1="390" y1="968" x2="810" y2="968" stroke="#F3B56A" stroke-width="4"/>
+    <text x="600" y="1025" fill="#073B4C" font-size="27" font-weight="600" letter-spacing="9">TERAPIA CON MUÑECOS</text>
+  </g>
+</svg>

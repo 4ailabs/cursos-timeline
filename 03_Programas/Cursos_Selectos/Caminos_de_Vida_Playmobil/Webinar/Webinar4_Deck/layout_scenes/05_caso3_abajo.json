@@ -1,0 +1,7 @@
+{
+  "piezas": [
+    {"tipo":"figura","color":15132390,"escala":1,"nombre":"Consultante","genero":"hombre","colores":{"torso":"#7f9a85","piernas":"#a07a4e","zapatos":"#5b4531"},"mirada":0,"postura":"boca abajo","x":0,"z":0,"rot":0}
+  ],
+  "relaciones": [],
+  "opciones": {"pielPelo":true,"etiquetas":true,"ambiente":"crema","lienzo":"hoja"}
+}

@@ -253,6 +253,15 @@ Los que pueden ir en negritas o encabezado sin explicación previa.
 - polarización
 - macrófago
 
+### Los Cuatro Caminos
+
+- metaprograma
+- camino
+- cuadrante
+- caída
+- movimiento sistémico
+- improntas
+
 ### Marco de análisis
 
 - estados

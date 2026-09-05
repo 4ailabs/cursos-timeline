@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Los Cuatro Caminos, versión monocromática</title>
+  <desc id="desc">Versión horizontal en una tinta del logotipo Los Cuatro Caminos.</desc>
+  <rect width="1200" height="520" fill="#FFF8EC"/>
+  <g transform="translate(45 35) scale(.5625)">
+    <defs><clipPath id="disc"><circle cx="400" cy="400" r="360"/></clipPath></defs>
+    <circle cx="400" cy="400" r="360" fill="#073B4C"/>
+    <g clip-path="url(#disc)" fill="#FFF8EC">
+      <path d="M338 0h124v272c0 66-23 119-62 164-39-45-62-98-62-164z"/>
+      <path d="M800 338v124H528c-66 0-119-23-164-62 45-39 98-62 164-62z"/>
+      <path d="M462 800H338V528c0-66 23-119 62-164 39 45 62 98 62 164z"/>
+      <path d="M0 462V338h272c66 0 119 23 164 62-45 39-98 62-164 62z"/>
+    </g>
+    <circle cx="400" cy="400" r="148" fill="#FFF8EC"/>
+    <g fill="#073B4C" stroke="#073B4C" stroke-linecap="round">
+      <circle cx="400" cy="342" r="36" stroke="none"/>
+      <rect x="360" y="383" width="80" height="116" rx="34" stroke="none"/>
+      <path d="M370 417l-35 70M430 417l35 70" fill="none" stroke-width="26"/>
+      <path d="M383 478l-7 76M417 478l7 76" fill="none" stroke-width="28"/>
+    </g>
+  </g>
+  <g font-family="Inter, Avenir Next, Helvetica Neue, Arial, sans-serif" fill="#073B4C">
+    <text x="570" y="210" font-size="65" font-weight="650" letter-spacing="12">LOS CUATRO</text>
+    <text x="570" y="305" font-size="86" font-weight="650" letter-spacing="10">CAMINOS</text>
+    <text x="575" y="370" font-size="22" font-weight="600" letter-spacing="7">TERAPIA CON MUÑECOS</text>
+  </g>
+</svg>

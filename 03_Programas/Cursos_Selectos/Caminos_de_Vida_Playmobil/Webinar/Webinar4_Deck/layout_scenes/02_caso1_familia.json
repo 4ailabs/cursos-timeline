@@ -1,0 +1,9 @@
+{
+  "piezas": [
+    {"tipo":"figura","color":15132390,"escala":1,"nombre":"Consultante","genero":"mujer","colores":{"torso":"#d96f3d","piernas":"#6d513d","zapatos":"#4c3528"},"mirada":-40,"postura":"de pie","x":0,"z":0,"rot":0},
+    {"tipo":"figura","color":15132390,"escala":1,"nombre":"Padre","genero":"hombre","colores":{"torso":"#263b67","piernas":"#4c4c4c","zapatos":"#252525"},"mirada":25,"postura":"de pie","x":-6,"z":-2,"rot":0.3},
+    {"tipo":"figura","color":15132390,"escala":0.733,"nombre":"Madre","genero":"mujer","colores":{"torso":"#8fa784","piernas":"#82745f","zapatos":"#544b3d"},"mirada":-10,"postura":"doblado","x":-5,"z":3,"rot":-0.2}
+  ],
+  "relaciones": [{"a":0,"b":1,"params":{"tipo":"uni","estilo":"continua","color":"#8a8176"}},{"a":0,"b":2,"params":{"tipo":"uni","estilo":"continua","color":"#8a8176"}}],
+  "opciones": {"pielPelo":true,"etiquetas":true,"ambiente":"crema","lienzo":"hoja"}
+}

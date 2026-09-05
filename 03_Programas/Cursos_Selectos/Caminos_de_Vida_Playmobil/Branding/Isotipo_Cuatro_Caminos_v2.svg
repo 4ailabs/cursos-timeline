@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 650" role="img" aria-labelledby="title desc">
+  <title id="title">Isotipo Los Cuatro Caminos</title>
+  <desc id="desc">Cuatro esquinas abiertas alrededor de una figura terapéutica neutra.</desc>
+  <g fill="none" stroke-width="24" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M270 110H120v150" stroke="#8FA87A"/>
+    <path d="M350 110h150v150" stroke="#B5604A"/>
+    <path d="M500 390v150H350" stroke="#8FA87A"/>
+    <path d="M270 540H120V390" stroke="#362F29"/>
+  </g>
+  <circle cx="310" cy="258" r="38" fill="#FAF6F0"/>
+  <path d="M261 258v-10c0-29 22-50 49-50s49 21 49 50v10h-11v-13q-10 0-15-10-5 10-15 10t-15-10q-5 10-15 10t-15-10q-5 10-12 10v13z" fill="#B5604A"/>
+  <path d="M270 326Q278 300 310 300t40 26l26 79q6 18-8 27t-26-9l-9-29 7 106h-28l-3-68q-1-15-9-15t-9 15l-3 68h-28l7-106-9 29q-12 18-26 9t-8-27z" fill="#362F29"/>
+</svg>

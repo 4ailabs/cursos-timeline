@@ -1,0 +1,8 @@
+{
+  "piezas": [
+    {"tipo":"figura","color":15132390,"escala":1,"nombre":"Consultante","genero":"hombre","colores":{"torso":"#3d6fb4","piernas":"#3d4b5f","zapatos":"#253342"},"mirada":-20,"postura":"de pie","x":-4,"z":3,"rot":-1.0},
+    {"tipo":"figura","color":15132390,"escala":1,"nombre":"Padre","genero":"hombre","colores":{"torso":"#9a9a9a","piernas":"#5e5e5e","zapatos":"#343434"},"mirada":0,"postura":"tumbado","x":8,"z":-3,"rot":1.2}
+  ],
+  "relaciones": [],
+  "opciones": {"pielPelo":true,"etiquetas":true,"ambiente":"crema","lienzo":"hoja"}
+}

@@ -1,0 +1,470 @@
+{"kind":"deck","id":"pr/8puyoj","name":"Deck"}
+{"kind":"layout","layoutId":"dd40dd65-d4e4-474f-8e32-5762cc24ab32","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"62c6aa40-6097-4019-a1c1-716a1719cee8","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/8qgfc8","slide":1,"title":"▶   WEBINAR 4","textShapes":8}
+{"kind":"shape","id":"sh/i9sjul8r","slide":1,"bbox":[0,0,610,720]}
+{"kind":"shape","id":"sh/ja103qpw","slide":1,"bbox":[38,32,250,34]}
+{"kind":"textbox","id":"sh/szu10fqt","slide":1,"text":"▶   WEBINAR 4","textPreview":"▶   WEBINAR 4","textChars":13,"textLines":1,"bbox":[48,34,230,28]}
+{"kind":"textbox","id":"sh/t032907e","slide":1,"text":"TERAPIA CON","textPreview":"TERAPIA CON","textChars":11,"textLines":1,"bbox":[44,124,540,72]}
+{"kind":"textbox","id":"sh/6xsjy58n","slide":1,"text":"MUÑECOS","textPreview":"MUÑECOS","textChars":7,"textLines":1,"bbox":[44,196,540,84]}
+{"kind":"shape","id":"sh/7yl07ap8","slide":1,"bbox":[44,310,450,60]}
+{"kind":"textbox","id":"sh/g3u14fqp","slide":1,"text":"TRES SESIONES REALES","textPreview":"TRES SESIONES REALES","textChars":20,"textLines":1,"bbox":[58,318,422,44]}
+{"kind":"textbox","id":"sh/h432dk7a","slide":1,"text":"LA HOJA REVELA LO QUE LA\nCONVERSACIÓN NO ALCANZA","textPreview":"LA HOJA REVELA LO QUE LA | CONVERSACIÓN NO ALCANZA","textChars":48,"textLines":2,"bbox":[50,399,530,64]}
+{"kind":"shape","id":"sh/lgfyxoza","slide":1,"bbox":[50,486,270,3]}
+{"kind":"textbox","id":"sh/kf6xo3y5","slide":1,"text":"Casos anonimizados · demostración en vivo","textPreview":"Casos anonimizados · demostración en vivo","textChars":41,"textLines":1,"bbox":[50,507,480,26]}
+{"kind":"textbox","id":"sh/zexgvyhk","slide":1,"text":"DR. MIGUEL OJEDA RIOS","textPreview":"DR. MIGUEL OJEDA RIOS","textChars":21,"textLines":1,"bbox":[50,638,350,26]}
+{"kind":"textbox","id":"sh/ydofmtgz","slide":1,"text":"INSTITUTO CENTROBIOENERGÉTICA","textPreview":"INSTITUTO CENTROBIOENERGÉTICA","textChars":29,"textLines":1,"bbox":[50,670,390,22]}
+{"kind":"image","id":"im/k721cnu1","slide":1,"name":"","alt":"Mesa de consulta con figuras y hoja de cuatro caminos","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/8qgfc8","slide":1,"text":"Apertura. Presenta la clase como una demostración observacional: veremos primero la escena, luego la pregunta y por último el puente teórico. La portada usa una imagen editorial generada a partir del estilo visual aprobado."}
+{"kind":"slide","id":"sl/97pcqy","slide":2,"title":"WEBINAR 4  ·  ENCUADRE","textShapes":12}
+{"kind":"textbox","id":"sh/jylc3ux8","slide":2,"text":"WEBINAR 4  ·  ENCUADRE","textPreview":"WEBINAR 4  ·  ENCUADRE","textChars":22,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/kzutwzet","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/l03u54fe","slide":2,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/61cbypwz","slide":2,"text":"Una clase para mirar antes de explicar","textPreview":"Una clase para mirar antes de explicar","textChars":38,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/72lc7uxk","slide":2,"text":"Tres sesiones reales, una misma pregunta: ¿qué aparece cuando la relación ocupa un lugar?","textPreview":"Tres sesiones reales, una misma pregunta: ¿qué aparece cuando la relación ocupa un lugar?","textChars":89,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/83ut0ze5","slide":2,"bbox":[695,107,480,310]}
+{"kind":"textbox","id":"sh/upwb29wv","slide":2,"text":"Escena inicial: una figura en el tablero","textPreview":"Escena inicial: una figura en el tablero","textChars":40,"textLines":1,"bbox":[700,422,470,24]}
+{"kind":"textbox","id":"sh/vq5cbexg","slide":2,"text":"DURACIÓN","textPreview":"DURACIÓN","textChars":8,"textLines":1,"bbox":[70,202,170,26]}
+{"kind":"textbox","id":"sh/fytknq18","slide":2,"text":"70 min + 10 min de preguntas","textPreview":"70 min + 10 min de preguntas","textChars":28,"textLines":1,"bbox":[70,231,430,43]}
+{"kind":"textbox","id":"sh/exk3ulkn","slide":2,"text":"MATERIAL","textPreview":"MATERIAL","textChars":8,"textLines":1,"bbox":[70,316,170,26]}
+{"kind":"textbox","id":"sh/1kb2pgje","slide":2,"text":"Figuras, hoja, ejes y preguntas","textPreview":"Figuras, hoja, ejes y preguntas","textChars":31,"textLines":1,"bbox":[70,345,430,43]}
+{"kind":"textbox","id":"sh/gz2lwv2t","slide":2,"text":"ENCUADRE","textPreview":"ENCUADRE","textChars":8,"textLines":1,"bbox":[70,430,170,26]}
+{"kind":"textbox","id":"sh/rutkj61c","slide":2,"text":"Casos reales anonimizados","textPreview":"Casos reales anonimizados","textChars":25,"textLines":1,"bbox":[70,459,430,43]}
+{"kind":"shape","id":"sh/6t0jq1kr","slide":2,"bbox":[70,570,7,74]}
+{"kind":"textbox","id":"sh/twb2lgj2","slide":2,"text":"“Hoy no vamos a empezar por la teoría. Vamos a empezar por lo que la escena hace visible.”","textPreview":"“Hoy no vamos a empezar por la teoría. Vamos a empezar por lo que la escena hace visible.”","textChars":90,"textLines":1,"bbox":[94,568,956,78]}
+{"kind":"image","id":"im/8reh0zux","slide":2,"name":"","alt":"Escena inicial: una figura en el tablero","bbox":[700,112,470,300]}
+{"kind":"notes","id":"nt/97pcqy","slide":2,"text":"Aclara que los nombres y detalles identificables se han omitido. La clase muestra una forma de observar y preguntar; no convierte una escena en diagnóstico."}
+{"kind":"slide","id":"sl/rjmpbb","slide":3,"title":"WEBINAR 4  ·  MAPA DE LA CLASE","textShapes":14}
+{"kind":"textbox","id":"sh/9cnu54ri","slide":3,"text":"WEBINAR 4  ·  MAPA DE LA CLASE","textPreview":"WEBINAR 4  ·  MAPA DE LA CLASE","textChars":30,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/m9wbu9sr","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/na5c3e9c","slide":3,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/07utsza1","slide":3,"text":"Qué vas a observar","textPreview":"Qué vas a observar","textChars":18,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/18nu14rm","slide":3,"text":"El mismo proceso se despliega en tres mecanismos visibles","textPreview":"El mismo proceso se despliega en tres mecanismos visibles","textChars":57,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/e5cbqpsv","slide":3,"bbox":[76,210,42,42]}
+{"kind":"textbox","id":"sh/z6lczu9g","slide":3,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[84,217,26,23]}
+{"kind":"textbox","id":"sh/cjutozap","slide":3,"text":"Externalización","textPreview":"Externalización","textChars":15,"textLines":1,"bbox":[150,200,370,35]}
+{"kind":"textbox","id":"sh/d43uxkra","slide":3,"text":"La relación sale del cuerpo y ocupa una posición en la hoja","textPreview":"La relación sale del cuerpo y ocupa una posición en la hoja","textChars":59,"textLines":1,"bbox":[150,240,820,40]}
+{"kind":"shape","id":"sh/d4zupsfi","slide":3,"bbox":[150,296,1030,1]}
+{"kind":"shape","id":"sh/s3qdgnex","slide":3,"bbox":[76,342,42,42]}
+{"kind":"textbox","id":"sh/r2hcn2xc","slide":3,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[84,349,26,23]}
+{"kind":"textbox","id":"sh/q18vexwr","slide":3,"text":"Distancia psicológica","textPreview":"Distancia psicológica","textChars":21,"textLines":1,"bbox":[150,332,370,35]}
+{"kind":"textbox","id":"sh/50zulsf6","slide":3,"text":"La separación cambia el acceso a la emoción y a la biografía","textPreview":"La separación cambia el acceso a la emoción y a la biografía","textChars":60,"textLines":1,"bbox":[150,372,820,40]}
+{"kind":"shape","id":"sh/4zqtcnel","slide":3,"bbox":[150,428,1030,1]}
+{"kind":"shape","id":"sh/3yhcjix0","slide":3,"bbox":[76,474,42,42]}
+{"kind":"textbox","id":"sh/ixobadwv","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[84,481,26,23]}
+{"kind":"textbox","id":"sh/hwfuh8fa","slide":3,"text":"Gesto y postura","textPreview":"Gesto y postura","textChars":15,"textLines":1,"bbox":[150,464,370,35]}
+{"kind":"textbox","id":"sh/gv6t83ep","slide":3,"text":"Mover una figura modifica la forma de pensar la decisión","textPreview":"Mover una figura modifica la forma de pensar la decisión","textChars":56,"textLines":1,"bbox":[150,504,820,40]}
+{"kind":"shape","id":"sh/8fadonml","slide":3,"bbox":[150,560,1030,1]}
+{"kind":"textbox","id":"sh/9gjux8n6","slide":3,"text":"La secuencia de lectura se mantiene estable: posición → pregunta → relato → verificación.","textPreview":"La secuencia de lectura se mantiene estable: posición → pregunta → relato → verificación.","textChars":89,"textLines":1,"bbox":[150,620,970,32]}
+{"kind":"notes","id":"nt/rjmpbb","slide":3,"text":"Presenta los tres mecanismos como hipótesis de trabajo que luego se verán en casos concretos. La teoría entra después de la experiencia, no como una explicación que tape la observación."}
+{"kind":"slide","id":"sl/l1mdc7","slide":4,"title":"WEBINAR 4  ·  MAPA DE LA CLASE","textShapes":23}
+{"kind":"textbox","id":"sh/udcrupw7","slide":4,"text":"WEBINAR 4  ·  MAPA DE LA CLASE","textPreview":"WEBINAR 4  ·  MAPA DE LA CLASE","textChars":30,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/h0na54vi","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/gze9wzed","slide":4,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/325s7edo","slide":4,"text":"La ruta de la demostración","textPreview":"La ruta de la demostración","textChars":26,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/21wry9w3","slide":4,"text":"Cada bloque agrega una capa: ver, preguntar, comprender, verificar","textPreview":"Cada bloque agrega una capa: ver, preguntar, comprender, verificar","textChars":66,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/p4na94vu","slide":4,"bbox":[110,330,1050,1]}
+{"kind":"shape","id":"sh/43e90ze9","slide":4,"bbox":[90,305,50,50]}
+{"kind":"textbox","id":"sh/r6psbed0","slide":4,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[99,320,32,20]}
+{"kind":"textbox","id":"sh/q5wr29wf","slide":4,"text":"Ver","textPreview":"Ver","textChars":3,"textLines":1,"bbox":[68,392,95,28]}
+{"kind":"textbox","id":"sh/8nm9g3et","slide":4,"text":"La escena inicial","textPreview":"La escena inicial","textChars":17,"textLines":1,"bbox":[30,430,170,42]}
+{"kind":"shape","id":"sh/tova98fy","slide":4,"bbox":[295,305,50,50]}
+{"kind":"textbox","id":"sh/6lkretwn","slide":4,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[304,320,32,20]}
+{"kind":"textbox","id":"sh/7mts7yx8","slide":4,"text":"Preguntar","textPreview":"Preguntar","textChars":9,"textLines":1,"bbox":[273,392,95,28]}
+{"kind":"textbox","id":"sh/grmtk3ep","slide":4,"text":"Qué llama la atención","textPreview":"Qué llama la atención","textChars":21,"textLines":1,"bbox":[235,430,170,42]}
+{"kind":"shape","id":"sh/hcvad8fa","slide":4,"bbox":[500,305,50,50]}
+{"kind":"textbox","id":"sh/up4ridwj","slide":4,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[509,320,32,20]}
+{"kind":"textbox","id":"sh/vqdsbyx4","slide":4,"text":"Comprender","textPreview":"Comprender","textChars":10,"textLines":1,"bbox":[478,392,95,28]}
+{"kind":"textbox","id":"sh/4f6tone1","slide":4,"text":"Biografía y teoría","textPreview":"Biografía y teoría","textChars":18,"textLines":1,"bbox":[440,430,170,42]}
+{"kind":"shape","id":"sh/pgfahsv6","slide":4,"bbox":[705,305,50,50]}
+{"kind":"textbox","id":"sh/dwba18na","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[714,320,32,20]}
+{"kind":"textbox","id":"sh/cb298n65","slide":4,"text":"Mover","textPreview":"Mover","textChars":5,"textLines":1,"bbox":[683,392,95,28]}
+{"kind":"textbox","id":"sh/batszi5k","slide":4,"text":"Una nueva posición","textPreview":"Una nueva posición","textChars":18,"textLines":1,"bbox":[645,430,170,42]}
+{"kind":"shape","id":"sh/q9kr6doz","slide":4,"bbox":[910,305,50,50]}
+{"kind":"textbox","id":"sh/l0ba5snm","slide":4,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[919,320,32,20]}
+{"kind":"textbox","id":"sh/0z29cn61","slide":4,"text":"Verificar","textPreview":"Verificar","textChars":9,"textLines":1,"bbox":[888,392,95,28]}
+{"kind":"textbox","id":"sh/zyts3i5g","slide":4,"text":"Qué cambia en el cuerpo","textPreview":"Qué cambia en el cuerpo","textChars":23,"textLines":1,"bbox":[850,430,170,42]}
+{"kind":"shape","id":"sh/yxkradov","slide":4,"bbox":[1115,305,50,50]}
+{"kind":"textbox","id":"sh/h4rato7i","slide":4,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1124,320,32,20]}
+{"kind":"textbox","id":"sh/g3i9036x","slide":4,"text":"Cerrar","textPreview":"Cerrar","textChars":6,"textLines":1,"bbox":[1093,392,95,28]}
+{"kind":"textbox","id":"sh/69w7ap4f","slide":4,"text":"Límites y encuadre","textPreview":"Límites y encuadre","textChars":18,"textLines":1,"bbox":[1055,430,170,42]}
+{"kind":"shape","id":"sh/7apo3ul0","slide":4,"bbox":[90,548,280,3]}
+{"kind":"textbox","id":"sh/sbypczml","slide":4,"text":"Primero la imagen. Después la explicación.","textPreview":"Primero la imagen. Después la explicación.","textChars":42,"textLines":1,"bbox":[90,572,700,40]}
+{"kind":"notes","id":"nt/l1mdc7","slide":4,"text":"Introduce el ritmo de la sesión para Zoom. Anticipa que habrá momentos de silencio y preguntas al grupo."}
+{"kind":"slide","id":"sl/gfqi1r","slide":5,"title":"CASO 1","textShapes":4}
+{"kind":"shape","id":"sh/pw76lkbm","slide":5,"bbox":[0,0,620,720]}
+{"kind":"shape","id":"sh/ovy5sfu1","slide":5,"bbox":[50,70,160,34]}
+{"kind":"textbox","id":"sh/fq54fadk","slide":5,"text":"CASO 1","textPreview":"CASO 1","textChars":6,"textLines":1,"bbox":[60,72,140,28]}
+{"kind":"textbox","id":"sh/epwnm5cz","slide":5,"text":"El bloqueo\ndel camino","textPreview":"El bloqueo | del camino","textChars":21,"textLines":2,"bbox":[50,176,520,160]}
+{"kind":"textbox","id":"sh/1sn6h0bq","slide":5,"text":"Responsabilidad heredada, lealtades y permiso para descansar","textPreview":"Responsabilidad heredada, lealtades y permiso para descansar","textChars":60,"textLines":1,"bbox":[54,372,440,82]}
+{"kind":"shape","id":"sh/gre5ovu5","slide":5,"bbox":[54,494,240,3]}
+{"kind":"textbox","id":"sh/rml4bqdo","slide":5,"text":"Una escena que comienza con dolor físico","textPreview":"Una escena que comienza con dolor físico","textChars":40,"textLines":1,"bbox":[54,522,420,34]}
+{"kind":"image","id":"im/re54vy9w","slide":5,"name":"","alt":"Figura ante un límite en la hoja","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/gfqi1r","slide":5,"text":"Presenta el primer caso y pide al grupo que observe el bloqueo sin interpretar todavía."}
+{"kind":"slide","id":"sl/lnkmei","slide":6,"title":"WEBINAR 4  ·  CASO 1 · RESPONSABILIDAD","textShapes":14}
+{"kind":"textbox","id":"sh/294ja907","slide":6,"text":"WEBINAR 4  ·  CASO 1 · RESPONSABILIDAD","textPreview":"WEBINAR 4  ·  CASO 1 · RESPONSABILIDAD","textChars":38,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/9wv2lozy","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/ovm1cjid","slide":6,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/byxknyh4","slide":6,"text":"El contexto de la consultante","textPreview":"El contexto de la consultante","textChars":29,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/ax4jet0j","slide":6,"text":"La escena llega antes que la explicación","textPreview":"La escena llega antes que la explicación","textChars":40,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/x0f2p8zu","slide":6,"bbox":[699,105,482,310]}
+{"kind":"textbox","id":"sh/r2t0bu1k","slide":6,"text":"Una mujer de 45 años, sola en el tablero","textPreview":"Una mujer de 45 años, sola en el tablero","textChars":40,"textLines":1,"bbox":[704,420,472,24]}
+{"kind":"textbox","id":"sh/q1kj2p0z","slide":6,"text":"EDAD","textPreview":"EDAD","textChars":4,"textLines":1,"bbox":[70,190,170,26]}
+{"kind":"textbox","id":"sh/wn6tgjq1","slide":6,"text":"45 años","textPreview":"45 años","textChars":7,"textLines":1,"bbox":[70,219,430,43]}
+{"kind":"textbox","id":"sh/xofapo76","slide":6,"text":"CONTEXTO","textPreview":"CONTEXTO","textChars":8,"textLines":1,"bbox":[70,292,170,26]}
+{"kind":"textbox","id":"sh/alobe98v","slide":6,"text":"Casada · dos hijos adultos","textPreview":"Casada · dos hijos adultos","textChars":26,"textLines":1,"bbox":[70,321,430,43]}
+{"kind":"textbox","id":"sh/bmxsnepg","slide":6,"text":"VIDA DIARIA","textPreview":"VIDA DIARIA","textChars":11,"textLines":1,"bbox":[70,394,170,26]}
+{"kind":"textbox","id":"sh/krqtkjqx","slide":6,"text":"Lleva un negocio de abarrotes","textPreview":"Lleva un negocio de abarrotes","textChars":29,"textLines":1,"bbox":[70,423,430,43]}
+{"kind":"textbox","id":"sh/lszuto7i","slide":6,"text":"MOTIVO","textPreview":"MOTIVO","textChars":6,"textLines":1,"bbox":[70,496,170,26]}
+{"kind":"textbox","id":"sh/ypobit8r","slide":6,"text":"Dolor de tobillo y deuda de la casa","textPreview":"Dolor de tobillo y deuda de la casa","textChars":35,"textLines":1,"bbox":[70,525,430,43]}
+{"kind":"textbox","id":"sh/jqxsrypc","slide":6,"text":"La primera decisión clínica es no llenar el silencio demasiado pronto.","textPreview":"La primera decisión clínica es no llenar el silencio demasiado pronto.","textChars":70,"textLines":1,"bbox":[70,636,1030,30]}
+{"kind":"image","id":"im/d4bmdk3m","slide":6,"name":"","alt":"Una mujer de 45 años, sola en el tablero","bbox":[704,110,472,300]}
+{"kind":"notes","id":"nt/lnkmei","slide":6,"text":"Datos tomados del guion y de la sesión comentada. Mantén el caso anonimizado y evita convertir el dolor de tobillo en una interpretación causal."}
+{"kind":"slide","id":"sl/8xq1ir","slide":7,"title":"WEBINAR 4  ·  CASO 1 · OBSERVACIÓN","textShapes":9}
+{"kind":"textbox","id":"sh/90jqhwra","slide":7,"text":"WEBINAR 4  ·  CASO 1 · OBSERVACIÓN","textPreview":"WEBINAR 4  ·  CASO 1 · OBSERVACIÓN","textChars":34,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/mx87mh8j","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/ny18fm94","slide":7,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/w3a9sbql","slide":7,"text":"Primera escena: el cuerpo en el centro","textPreview":"Primera escena: el cuerpo en el centro","textChars":38,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/x4jqlgr6","slide":7,"text":"La pregunta no busca una respuesta correcta; busca una descripción","textPreview":"La pregunta no busca una respuesta correcta; busca una descripción","textChars":66,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/a1s7q18v","slide":7,"bbox":[65,149,700,440]}
+{"kind":"textbox","id":"sh/c7qpg7qh","slide":7,"text":"Vista cenital exportada desde layout_caminos","textPreview":"Vista cenital exportada desde layout_caminos","textChars":44,"textLines":1,"bbox":[70,594,690,24]}
+{"kind":"shape","id":"sh/d8zq9cr2","slide":7,"bbox":[822,188,330,184]}
+{"kind":"textbox","id":"sh/90nad4zi","slide":7,"text":"PREGUNTA AL GRUPO","textPreview":"PREGUNTA AL GRUPO","textChars":17,"textLines":1,"bbox":[850,210,275,24]}
+{"kind":"shape","id":"sh/8zutkjyx","slide":7,"bbox":[850,252,7,88]}
+{"kind":"textbox","id":"sh/nylsbehc","slide":7,"text":"“¿Qué le llama la atención de esta escena?”","textPreview":"“¿Qué le llama la atención de esta escena?”","textChars":43,"textLines":1,"bbox":[874,250,246,92]}
+{"kind":"shape","id":"sh/mxcbi9g7","slide":7,"bbox":[822,430,7,94]}
+{"kind":"textbox","id":"sh/x4nuhozu","slide":7,"text":"“Que quedaron completamente de frente a mí.”","textPreview":"“Que quedaron completamente de frente a mí.”","textChars":44,"textLines":1,"bbox":[846,428,316,98]}
+{"kind":"textbox","id":"sh/w3etojy9","slide":7,"text":"Observación antes de interpretación","textPreview":"Observación antes de interpretación","textChars":35,"textLines":1,"bbox":[822,590,340,28]}
+{"kind":"image","id":"im/i9sfapoz","slide":7,"name":"","alt":"Vista cenital exportada desde layout_caminos","bbox":[70,154,690,430]}
+{"kind":"notes","id":"nt/8xq1ir","slide":7,"text":"Di la pregunta exacta y deja tiempo para respuestas. En la sesión, la consultante señala la orientación de las figuras hacia ella. Ese dato abre la exploración."}
+{"kind":"slide","id":"sl/l83yuq","slide":8,"title":"WEBINAR 4  ·  CASO 1 · FRASES","textShapes":10}
+{"kind":"textbox","id":"sh/4nutcnu5","slide":8,"text":"WEBINAR 4  ·  CASO 1 · FRASES","textPreview":"WEBINAR 4  ·  CASO 1 · FRASES","textChars":29,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/3mlc3itk","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/2lcbadcz","slide":8,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/dcnu9sbm","slide":8,"text":"La misma escena puede escuchar dos frases","textPreview":"La misma escena puede escuchar dos frases","textChars":41,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/cbedgnu1","slide":8,"text":"El tono relacional cambia lo que la figura representa","textPreview":"El tono relacional cambia lo que la figura representa","textChars":53,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"textbox","id":"sh/ra5c72tg","slide":8,"text":"Cuando una hija dice: “Mamá, me voy a Francia”","textPreview":"Cuando una hija dice: “Mamá, me voy a Francia”","textChars":46,"textLines":1,"bbox":[74,202,1000,36]}
+{"kind":"shape","id":"sh/q9cbexcv","slide":8,"bbox":[74,254,500,238]}
+{"kind":"textbox","id":"sh/tgjux8bi","slide":8,"text":"RESPUESTA QUE ATA","textPreview":"RESPUESTA QUE ATA","textChars":17,"textLines":1,"bbox":[104,280,400,26]}
+{"kind":"shape","id":"sh/sfat43ux","slide":8,"bbox":[104,330,7,110]}
+{"kind":"textbox","id":"sh/6lc7ilcr","slide":8,"text":"“No te preocupes si me enfermo, ¿eh?\nTú ve a disfrutar.”","textPreview":"“No te preocupes si me enfermo, ¿eh? | Tú ve a disfrutar.”","textChars":56,"textLines":2,"bbox":[128,328,396,114]}
+{"kind":"shape","id":"sh/7mlorqdw","slide":8,"bbox":[654,254,500,238]}
+{"kind":"textbox","id":"sh/snupkvuh","slide":8,"text":"RESPUESTA QUE ABRE","textPreview":"RESPUESTA QUE ABRE","textChars":18,"textLines":1,"bbox":[684,280,400,26]}
+{"kind":"shape","id":"sh/to3qt0v2","slide":8,"bbox":[684,330,7,110]}
+{"kind":"textbox","id":"sh/upw7m5cn","slide":8,"text":"“Que te vaya bien.\nSi encuentras algo por ahí, me lo traes.”","textPreview":"“Que te vaya bien. | Si encuentras algo por ahí, me lo traes.”","textChars":60,"textLines":2,"bbox":[708,328,396,114]}
+{"kind":"textbox","id":"sh/fq58vad8","slide":8,"text":"La frase terapéutica no niega el vínculo. Le devuelve a cada quien su lugar.","textPreview":"La frase terapéutica no niega el vínculo. Le devuelve a cada quien su lugar.","textChars":76,"textLines":1,"bbox":[74,576,1060,32]}
+{"kind":"notes","id":"nt/l83yuq","slide":8,"text":"Frases de trabajo del caso. Marca que no se trata de repetir una frase como fórmula, sino de observar qué responsabilidad está asumiendo la consultante y qué permiso necesita construir."}
+{"kind":"slide","id":"sl/zyje5x","slide":9,"title":"WEBINAR 4  ·  CASO 1 · SISTEMA","textShapes":9}
+{"kind":"textbox","id":"sh/ts3uh8f6","slide":9,"text":"WEBINAR 4  ·  CASO 1 · SISTEMA","textPreview":"WEBINAR 4  ·  CASO 1 · SISTEMA","textChars":30,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/6pcbmdwf","slide":9,"text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/7qlcfix0","slide":9,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/gvetcneh","slide":9,"text":"Cuando aparecen los otros","textPreview":"Cuando aparecen los otros","textChars":25,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/hwnulsf2","slide":9,"text":"La escena se amplía y también cambia la pregunta","textPreview":"La escena se amplía y también cambia la pregunta","textChars":48,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/utcbadwr","slide":9,"bbox":[65,137,730,480]}
+{"kind":"textbox","id":"sh/wzatg3ed","slide":9,"text":"Padre, madre y consultante en una primera ampliación","textPreview":"Padre, madre y consultante en una primera ampliación","textChars":52,"textLines":1,"bbox":[70,622,720,24]}
+{"kind":"shape","id":"sh/x0ja9ofy","slide":9,"bbox":[846,166,318,160]}
+{"kind":"textbox","id":"sh/t4zqdsbm","slide":9,"text":"PREGUNTAS DE LECTURA","textPreview":"PREGUNTAS DE LECTURA","textChars":20,"textLines":1,"bbox":[876,190,260,24]}
+{"kind":"textbox","id":"sh/83q9knu1","slide":9,"text":"¿Quién mira a quién?\n¿Quién queda doblado?\n¿Quién ocupa el centro?","textPreview":"¿Quién mira a quién? | ¿Quién queda doblado? | ¿Quién ocupa el centro?","textChars":66,"textLines":3,"bbox":[876,235,260,84]}
+{"kind":"shape","id":"sh/72h8bitg","slide":9,"bbox":[846,390,7,80]}
+{"kind":"textbox","id":"sh/618ridcv","slide":9,"text":"“De ti vino la vida para mí, con lo bueno y con lo malo.”","textPreview":"“De ti vino la vida para mí, con lo bueno y con lo malo.”","textChars":57,"textLines":1,"bbox":[870,388,294,84]}
+{"kind":"shape","id":"sh/h8jahsbi","slide":9,"bbox":[846,514,7,90]}
+{"kind":"textbox","id":"sh/g7a9onud","slide":9,"text":"“Yo soy tu hija y tú eres el papá.”","textPreview":"“Yo soy tu hija y tú eres el papá.”","textChars":35,"textLines":1,"bbox":[870,512,294,94]}
+{"kind":"image","id":"im/axkryhs7","slide":9,"name":"","alt":"Padre, madre y consultante en una primera ampliación","bbox":[70,142,720,470]}
+{"kind":"notes","id":"nt/zyje5x","slide":9,"text":"La escena de familia se exporta del layout y se usa como evidencia visual de la ampliación. Las frases son intervenciones orientativas del guion, no guiones automáticos."}
+{"kind":"slide","id":"sl/xw5k0w","slide":10,"title":"WEBINAR 4  ·  CASO 1 · HALLAZGOS","textShapes":20}
+{"kind":"textbox","id":"sh/mhw7y5on","slide":10,"text":"WEBINAR 4  ·  CASO 1 · HALLAZGOS","textPreview":"WEBINAR 4  ·  CASO 1 · HALLAZGOS","textChars":32,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/9kn69kne","slide":10,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/8jep0f6t","slide":10,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/zelo3a5c","slide":10,"text":"La formulación aparece en sus palabras","textPreview":"La formulación aparece en sus palabras","textChars":38,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/ydc7u5or","slide":10,"text":"Cinco hallazgos que la consultante puede reconocer","textPreview":"Cinco hallazgos que la consultante puede reconocer","textChars":50,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"textbox","id":"sh/lgn65kn2","slide":10,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[80,220,42,28]}
+{"kind":"textbox","id":"sh/kfupwf6x","slide":10,"text":"Mirada familiar","textPreview":"Mirada familiar","textChars":15,"textLines":1,"bbox":[146,217,260,30]}
+{"kind":"textbox","id":"sh/bqlozq50","slide":10,"text":"Sus padres la miran completamente de frente","textPreview":"Sus padres la miran completamente de frente","textChars":43,"textLines":1,"bbox":[450,217,600,32]}
+{"kind":"shape","id":"sh/apcnqlof","slide":10,"bbox":[146,267,954,1]}
+{"kind":"textbox","id":"sh/wbm9wje5","slide":10,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[80,298,42,28]}
+{"kind":"textbox","id":"sh/xcvapovq","slide":10,"text":"Madre","textPreview":"Madre","textChars":5,"textLines":1,"bbox":[146,295,260,30]}
+{"kind":"textbox","id":"sh/a9krutwf","slide":10,"text":"Nombra la diferencia entre dos frases","textPreview":"Nombra la diferencia entre dos frases","textChars":37,"textLines":1,"bbox":[450,295,600,32]}
+{"kind":"shape","id":"sh/batsnyd0","slide":10,"bbox":[146,345,954,1]}
+{"kind":"textbox","id":"sh/o729sje9","slide":10,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[80,376,42,28]}
+{"kind":"textbox","id":"sh/98balovu","slide":10,"text":"Hijo","textPreview":"Hijo","textChars":4,"textLines":1,"bbox":[146,373,260,30]}
+{"kind":"textbox","id":"sh/m5krq9w3","slide":10,"text":"Mira hacia su abuela, no hacia ella","textPreview":"Mira hacia su abuela, no hacia ella","textChars":35,"textLines":1,"bbox":[450,373,600,32]}
+{"kind":"shape","id":"sh/n6t8jedo","slide":10,"bbox":[146,423,954,1]}
+{"kind":"textbox","id":"sh/s36943ed","slide":10,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[80,454,42,28]}
+{"kind":"textbox","id":"sh/t4fax8vy","slide":10,"text":"Responsabilidad","textPreview":"Responsabilidad","textChars":15,"textLines":1,"bbox":[146,451,260,30]}
+{"kind":"textbox","id":"sh/1kbah8n2","slide":10,"text":"Va a la responsabilidad porque así es","textPreview":"Va a la responsabilidad porque así es","textChars":37,"textLines":1,"bbox":[450,451,600,32]}
+{"kind":"shape","id":"sh/gj29o36h","slide":10,"bbox":[146,501,954,1]}
+{"kind":"textbox","id":"sh/fitsfy5c","slide":10,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[80,532,42,28]}
+{"kind":"textbox","id":"sh/exkrmdor","slide":10,"text":"Necesidad","textPreview":"Necesidad","textChars":9,"textLines":1,"bbox":[146,529,260,30]}
+{"kind":"textbox","id":"sh/twrqd8n6","slide":10,"text":"Para sentirse mejor necesita descanso","textPreview":"Para sentirse mejor necesita descanso","textChars":37,"textLines":1,"bbox":[450,529,600,32]}
+{"kind":"shape","id":"sh/svi9k36l","slide":10,"bbox":[146,579,954,1]}
+{"kind":"textbox","id":"sh/ru98by50","slide":10,"text":"La teoría puede ordenar la experiencia. No tiene que hablar por la persona.","textPreview":"La teoría puede ordenar la experiencia. No tiene que hablar por la persona.","textChars":75,"textLines":1,"bbox":[80,610,980,32]}
+{"kind":"notes","id":"nt/xw5k0w","slide":10,"text":"Recorre los cinco hallazgos de la sesión. Enfatiza que la formulación nace del lenguaje de la consultante después de observar la escena."}
+{"kind":"slide","id":"sl/2ygw8g","slide":11,"title":"WEBINAR 4  ·  CASO 1 · SISTEMA COMPLETO","textShapes":5}
+{"kind":"textbox","id":"sh/w7ahcvup","slide":11,"text":"WEBINAR 4  ·  CASO 1 · SISTEMA COMPLETO","textPreview":"WEBINAR 4  ·  CASO 1 · SISTEMA COMPLETO","textChars":39,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/v610jqd4","slide":11,"text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/u5szalcj","slide":11,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/94jihgvy","slide":11,"text":"La escena completa: una red de lealtades","textPreview":"La escena completa: una red de lealtades","textChars":40,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/8jah8bud","slide":11,"text":"El mapa permite ver simultáneamente dirección, distancia y tamaño","textPreview":"El mapa permite ver simultáneamente dirección, distancia y tamaño","textChars":65,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/7ih0fqds","slide":11,"bbox":[51,125,1170,540]}
+{"kind":"textbox","id":"sh/lgzydgv2","slide":11,"text":"Escena completa exportada desde layout_caminos","textPreview":"Escena completa exportada desde layout_caminos","textChars":46,"textLines":1,"bbox":[56,670,1160,24]}
+{"kind":"image","id":"im/329gvuxk","slide":11,"name":"","alt":"Escena completa exportada desde layout_caminos","bbox":[56,130,1160,530]}
+{"kind":"notes","id":"nt/2ygw8g","slide":11,"text":"Muestra la escena completa sin añadir interpretación. Señala la dirección Oeste / Este y la diferencia entre figuras adultas y figura en escala infantil. Nota técnica: el layout exporta la vista cenital con sus ejes visibles."}
+{"kind":"slide","id":"sl/uxtcfo","slide":12,"title":"WEBINAR 4  ·  PUENTE TEÓRICO","textShapes":15}
+{"kind":"textbox","id":"sh/je5gvyp0","slide":12,"text":"WEBINAR 4  ·  PUENTE TEÓRICO","textPreview":"WEBINAR 4  ·  PUENTE TEÓRICO","textChars":28,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/kfexo36l","slide":12,"text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/5gnyx876","slide":12,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/6hwfqdor","slide":12,"text":"Externalizar cambia la unidad de observación","textPreview":"Externalizar cambia la unidad de observación","textChars":44,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/725gzipw","slide":12,"text":"La relación deja de ser solo un relato interno y se vuelve una configuración visible","textPreview":"La relación deja de ser solo un relato interno y se vuelve una configuración visible","textChars":84,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/s3yxsn6h","slide":12,"bbox":[86,218,52,52]}
+{"kind":"textbox","id":"sh/t47y1s72","slide":12,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[98,233,28,22]}
+{"kind":"textbox","id":"sh/mlcfe987","slide":12,"text":"Separar","textPreview":"Separar","textChars":7,"textLines":1,"bbox":[82,314,180,32]}
+{"kind":"textbox","id":"sh/nmlwneps","slide":12,"text":"La figura representa una relación sin ocupar el cuerpo de la consultante","textPreview":"La figura representa una relación sin ocupar el cuerpo de la consultante","textChars":72,"textLines":1,"bbox":[82,362,280,86]}
+{"kind":"shape","id":"sh/bqhw7il0","slide":12,"bbox":[156,244,260,1]}
+{"kind":"shape","id":"sh/ap8vydkv","slide":12,"bbox":[456,218,52,52]}
+{"kind":"textbox","id":"sh/xsze9s36","slide":12,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[468,233,28,22]}
+{"kind":"textbox","id":"sh/wrqd0n2l","slide":12,"text":"Observar","textPreview":"Observar","textChars":8,"textLines":1,"bbox":[452,314,180,32]}
+{"kind":"textbox","id":"sh/nmxw3yl4","slide":12,"text":"La posición, la distancia y la orientación generan lenguaje descriptivo","textPreview":"La posición, la distancia y la orientación generan lenguaje descriptivo","textChars":71,"textLines":1,"bbox":[452,362,280,86]}
+{"kind":"shape","id":"sh/mlovutkj","slide":12,"bbox":[526,244,260,1]}
+{"kind":"shape","id":"sh/9oze583a","slide":12,"bbox":[826,218,52,52]}
+{"kind":"textbox","id":"sh/on6dw32p","slide":12,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[838,233,28,22]}
+{"kind":"textbox","id":"sh/zixwzyl8","slide":12,"text":"Nombrar","textPreview":"Nombrar","textChars":7,"textLines":1,"bbox":[822,314,180,32]}
+{"kind":"textbox","id":"sh/exovqtkn","slide":12,"text":"La persona encuentra una formulación propia y comprobable","textPreview":"La persona encuentra una formulación propia y comprobable","textChars":57,"textLines":1,"bbox":[822,362,280,86]}
+{"kind":"shape","id":"sh/2t4f2tof","slide":12,"bbox":[88,550,7,62]}
+{"kind":"textbox","id":"sh/3udwby50","slide":12,"text":"“Primero se ve. Después se explica.”","textPreview":"“Primero se ve. Después se explica.”","textChars":36,"textLines":1,"bbox":[112,548,836,66]}
+{"kind":"textbox","id":"sh/4vmx43ml","slide":12,"text":"La escena no sustituye la escucha ni la historia clínica.","textPreview":"La escena no sustituye la escucha ni la historia clínica.","textChars":57,"textLines":1,"bbox":[88,632,780,28]}
+{"kind":"notes","id":"nt/uxtcfo","slide":12,"text":"Puente práctico del caso 1. No atribuir eficacia universal. La idea es que la configuración ofrece otra unidad de observación para dialogar con la persona."}
+{"kind":"slide","id":"sl/cibzml","slide":13,"title":"CASO 2","textShapes":4}
+{"kind":"shape","id":"sh/ilkzah8n","slide":13,"bbox":[0,0,620,720]}
+{"kind":"shape","id":"sh/jmt0jm98","slide":13,"bbox":[50,70,160,34]}
+{"kind":"textbox","id":"sh/srmhgrqp","slide":13,"text":"CASO 2","textPreview":"CASO 2","textChars":6,"textLines":1,"bbox":[60,72,140,28]}
+{"kind":"textbox","id":"sh/tsvipw7a","slide":13,"text":"La distancia\nque se puede ver","textPreview":"La distancia | que se puede ver","textChars":29,"textLines":2,"bbox":[50,176,520,160]}
+{"kind":"textbox","id":"sh/6pkze18j","slide":13,"text":"Un padre lejano, una emoción que aparece antes de la explicación","textPreview":"Un padre lejano, una emoción que aparece antes de la explicación","textChars":64,"textLines":1,"bbox":[54,372,450,82]}
+{"kind":"shape","id":"sh/rqt0n6p4","slide":13,"bbox":[54,494,240,3]}
+{"kind":"textbox","id":"sh/gvmhkbq1","slide":13,"text":"Posición, tristeza y biografía","textPreview":"Posición, tristeza y biografía","textChars":30,"textLines":1,"bbox":[54,522,420,34]}
+{"kind":"image","id":"im/gjat8fux","slide":13,"name":"","alt":"Dos figuras separadas en una hoja","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/cibzml","slide":13,"text":"Introduce el segundo caso como una demostración de distancia psicológica."}
+{"kind":"slide","id":"sl/msf9bn","slide":14,"title":"WEBINAR 4  ·  CASO 2 · DISTANCIA","textShapes":9}
+{"kind":"textbox","id":"sh/xcfmhc7e","slide":14,"text":"WEBINAR 4  ·  CASO 2 · DISTANCIA","textPreview":"WEBINAR 4  ·  CASO 2 · DISTANCIA","textChars":32,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/a9o36h83","slide":14,"text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/vax4fmpo","slide":14,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/87ml47qx","slide":14,"text":"Dos figuras y una separación significativa","textPreview":"Dos figuras y una separación significativa","textChars":42,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/98f2dc7i","slide":14,"text":"La consultante observa antes de saber por qué","textPreview":"La consultante observa antes de saber por qué","textChars":45,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/m5432x8r","slide":14,"bbox":[55,143,730,480]}
+{"kind":"textbox","id":"sh/03ml0nq1","slide":14,"text":"Consultante y padre en posiciones alejadas","textPreview":"Consultante y padre en posiciones alejadas","textChars":42,"textLines":1,"bbox":[60,628,720,24]}
+{"kind":"shape","id":"sh/l4v29s7m","slide":14,"bbox":[842,180,7,64]}
+{"kind":"textbox","id":"sh/dcj6h47y","slide":14,"text":"“¿Cómo ves la posición?”","textPreview":"“¿Cómo ves la posición?”","textChars":24,"textLines":1,"bbox":[866,178,276,68]}
+{"kind":"shape","id":"sh/sbapozqd","slide":14,"bbox":[842,278,7,64]}
+{"kind":"textbox","id":"sh/ra1ofup8","slide":14,"text":"“Dolorosa. Como forzada.”","textPreview":"“Dolorosa. Como forzada.”","textChars":25,"textLines":1,"bbox":[866,276,276,68]}
+{"kind":"shape","id":"sh/q9snmp8n","slide":14,"bbox":[842,384,7,64]}
+{"kind":"textbox","id":"sh/58j6dk72","slide":14,"text":"“¿Qué te llama la atención?”","textPreview":"“¿Qué te llama la atención?”","textChars":28,"textLines":1,"bbox":[866,382,276,68]}
+{"kind":"shape","id":"sh/47a5kfqh","slide":14,"bbox":[842,482,7,64]}
+{"kind":"textbox","id":"sh/361obapw","slide":14,"text":"“No lo miro. Está lejos.”","textPreview":"“No lo miro. Está lejos.”","textChars":25,"textLines":1,"bbox":[866,480,276,68]}
+{"kind":"image","id":"im/i50ze5ov","slide":14,"name":"","alt":"Consultante y padre en posiciones alejadas","bbox":[60,148,720,470]}
+{"kind":"notes","id":"nt/msf9bn","slide":14,"text":"Preguntas textuales del guion. No adelantes la biografía del padre. La escena permite que la emoción se formule antes de explicar el motivo."}
+{"kind":"slide","id":"sl/2jw8mh","slide":15,"title":"WEBINAR 4  ·  CASO 2 · SECUENCIA","textShapes":17}
+{"kind":"textbox","id":"sh/crqdove9","slide":15,"text":"WEBINAR 4  ·  CASO 2 · SECUENCIA","textPreview":"WEBINAR 4  ·  CASO 2 · SECUENCIA","textChars":32,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/b6hcvado","slide":15,"text":"15","textPreview":"15","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/q58vm5w3","slide":15,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/lwje1kvq","slide":15,"text":"De la posición a la biografía","textPreview":"De la posición a la biografía","textChars":29,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/0vadsfu5","slide":15,"text":"Cuatro preguntas mantienen el foco en lo que la escena revela","textPreview":"Cuatro preguntas mantienen el foco en lo que la escena revela","textChars":61,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/zu1wzadk","slide":15,"bbox":[88,225,38,38]}
+{"kind":"textbox","id":"sh/yt8vq5cz","slide":15,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[96,234,22,18]}
+{"kind":"textbox","id":"sh/10fupgvm","slide":15,"text":"Posición","textPreview":"Posición","textChars":8,"textLines":1,"bbox":[160,219,170,30]}
+{"kind":"shape","id":"sh/gz6dgbe1","slide":15,"bbox":[360,210,7,54]}
+{"kind":"textbox","id":"sh/25sbepgz","slide":15,"text":"“¿Cómo ves la posición?”","textPreview":"“¿Cómo ves la posición?”","textChars":24,"textLines":1,"bbox":[384,208,626,58]}
+{"kind":"shape","id":"sh/361cnuhk","slide":15,"bbox":[88,330,38,38]}
+{"kind":"textbox","id":"sh/4rutgzy5","slide":15,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[96,339,22,18]}
+{"kind":"textbox","id":"sh/ps3up4zq","slide":15,"text":"Atención","textPreview":"Atención","textChars":8,"textLines":1,"bbox":[160,324,170,30]}
+{"kind":"shape","id":"sh/qtcvipgb","slide":15,"bbox":[360,315,7,54]}
+{"kind":"textbox","id":"sh/rulcruhw","slide":15,"text":"“¿Qué te llama la atención?”","textPreview":"“¿Qué te llama la atención?”","textChars":28,"textLines":1,"bbox":[384,313,626,58]}
+{"kind":"shape","id":"sh/cvudkzyh","slide":15,"bbox":[88,435,38,38]}
+{"kind":"textbox","id":"sh/dw3ut4zm","slide":15,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[96,444,22,18]}
+{"kind":"textbox","id":"sh/excvm9g7","slide":15,"text":"Emoción","textPreview":"Emoción","textChars":7,"textLines":1,"bbox":[160,429,170,30]}
+{"kind":"shape","id":"sh/zy5cvehs","slide":15,"bbox":[360,420,7,54]}
+{"kind":"textbox","id":"sh/b25c3ed0","slide":15,"text":"“¿Qué sientes?”","textPreview":"“¿Qué sientes?”","textChars":15,"textLines":1,"bbox":[384,418,626,58]}
+{"kind":"shape","id":"sh/a1wba9wf","slide":15,"bbox":[88,540,38,38]}
+{"kind":"textbox","id":"sh/x4nu5ov6","slide":15,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[96,549,22,18]}
+{"kind":"textbox","id":"sh/w3etcjel","slide":15,"text":"Origen","textPreview":"Origen","textChars":6,"textLines":1,"bbox":[160,534,170,30]}
+{"kind":"shape","id":"sh/ny5szudo","slide":15,"bbox":[360,525,7,54]}
+{"kind":"textbox","id":"sh/mxcb69wj","slide":15,"text":"“¿De dónde surgirá?”","textPreview":"“¿De dónde surgirá?”","textChars":20,"textLines":1,"bbox":[384,523,626,58]}
+{"kind":"textbox","id":"sh/90na14vu","slide":15,"text":"En el caso: tristeza → distancia → padre ausente por trabajo.","textPreview":"En el caso: tristeza → distancia → padre ausente por trabajo.","textChars":61,"textLines":1,"bbox":[160,610,850,34]}
+{"kind":"notes","id":"nt/2jw8mh","slide":15,"text":"Después de la cadena de preguntas, el caso aporta la razón biográfica: el padre se ausentaba por trabajo. Señala que la posición funciona como puerta de entrada, no como explicación total."}
+{"kind":"slide","id":"sl/i8gwrz","slide":16,"title":"WEBINAR 4  ·  PUENTE TEÓRICO","textShapes":13}
+{"kind":"textbox","id":"sh/nupgr2ps","slide":16,"text":"WEBINAR 4  ·  PUENTE TEÓRICO","textPreview":"WEBINAR 4  ·  PUENTE TEÓRICO","textChars":28,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/ovyh07qd","slide":16,"text":"16","textPreview":"16","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/pw7ytc7y","slide":16,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/axgz2h83","slide":16,"text":"Distancia psicológica y regulación emocional","textPreview":"Distancia psicológica y regulación emocional","textChars":44,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/by9gvmpo","slide":16,"text":"Conexión con el Webinar 3: cambiar la posición cambia el punto de vista","textPreview":"Conexión con el Webinar 3: cambiar la posición cambia el punto de vista","textChars":71,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/czih4rq9","slide":16,"bbox":[76,170,490,288]}
+{"kind":"textbox","id":"sh/x0ryxw7u","slide":16,"text":"HALLAZGO CITADO EN EL GUION","textPreview":"HALLAZGO CITADO EN EL GUION","textChars":27,"textLines":1,"bbox":[110,198,420,25]}
+{"kind":"textbox","id":"sh/y10z6h8f","slide":16,"text":"Moser, Dougherty, Mattson y colaboradores\n(2017, Scientific Reports)","textPreview":"Moser, Dougherty, Mattson y colaboradores | (2017, Scientific Reports)","textChars":68,"textLines":2,"bbox":[110,248,400,66]}
+{"kind":"textbox","id":"sh/z29gzmp0","slide":16,"text":"El diálogo en tercera persona se estudió como una forma de distancia psicológica que facilita la regulación emocional sin exigir un esfuerzo consciente de control.","textPreview":"El diálogo en tercera persona se estudió como una forma de distancia psicológica que facilita la regulación emocional sin exigir un esfue...","textChars":163,"textLines":1,"bbox":[110,344,400,82]}
+{"kind":"textbox","id":"sh/72tcf61o","slide":16,"text":"EN ESTA ESCENA","textPreview":"EN ESTA ESCENA","textChars":14,"textLines":1,"bbox":[662,180,400,25]}
+{"kind":"shape","id":"sh/m1kv6103","slide":16,"bbox":[662,246,360,48]}
+{"kind":"textbox","id":"sh/94buhgju","slide":16,"text":"Cuerpo","textPreview":"Cuerpo","textChars":6,"textLines":1,"bbox":[680,255,320,28]}
+{"kind":"shape","id":"sh/832d8bi9","slide":16,"bbox":[842,294,1,27]}
+{"kind":"shape","id":"sh/zytcbm1s","slide":16,"bbox":[662,330,360,48]}
+{"kind":"textbox","id":"sh/yd0v2h07","slide":16,"text":"Figura del padre","textPreview":"Figura del padre","textChars":16,"textLines":1,"bbox":[680,339,320,28]}
+{"kind":"shape","id":"sh/l0budwji","slide":16,"bbox":[842,378,1,27]}
+{"kind":"shape","id":"sh/kz2d4rid","slide":16,"bbox":[662,414,360,48]}
+{"kind":"textbox","id":"sh/judwnq1w","slide":16,"text":"Relato propio","textPreview":"Relato propio","textChars":13,"textLines":1,"bbox":[680,423,320,28]}
+{"kind":"shape","id":"sh/i94vel0b","slide":16,"bbox":[662,520,7,72]}
+{"kind":"textbox","id":"sh/ep8f6pkj","slide":16,"text":"“La tristeza aparece antes de que la mente tenga tiempo de explicarla.”","textPreview":"“La tristeza aparece antes de que la mente tenga tiempo de explicarla.”","textChars":71,"textLines":1,"bbox":[686,518,426,76]}
+{"kind":"textbox","id":"sh/fqhgful4","slide":16,"text":"Fuente completa en las notas del presentador.","textPreview":"Fuente completa en las notas del presentador.","textChars":45,"textLines":1,"bbox":[662,625,420,22]}
+{"kind":"notes","id":"nt/i8gwrz","slide":16,"text":"Fuente: Moser, J. S. et al. (2017). Third-person self-talk facilitates emotion regulation without engaging cognitive control: Converging evidence from ERP and fMRI. Scientific Reports, 7:4519. El guion conecta este hallazgo con la escena del padre lejano; presentarlo como conexión teórica, no como equivalencia experimental de la técnica con figuras."}
+{"kind":"slide","id":"sl/tjfi7t","slide":17,"title":"CASO 3","textShapes":4}
+{"kind":"shape","id":"sh/p8nmlgva","slide":17,"bbox":[0,0,620,720]}
+{"kind":"shape","id":"sh/o7u5sbep","slide":17,"bbox":[50,70,160,34]}
+{"kind":"textbox","id":"sh/f2l4f6x8","slide":17,"text":"CASO 3","textPreview":"CASO 3","textChars":6,"textLines":1,"bbox":[60,72,140,28]}
+{"kind":"textbox","id":"sh/e1c3m1wn","slide":17,"text":"Cuando la figura\nse levanta","textPreview":"Cuando la figura | se levanta","textChars":27,"textLines":2,"bbox":[50,176,520,160]}
+{"kind":"textbox","id":"sh/143mhwfy","slide":17,"text":"Postura, gesto y una decisión que encuentra autoridad","textPreview":"Postura, gesto y una decisión que encuentra autoridad","textChars":53,"textLines":1,"bbox":[54,372,440,82]}
+{"kind":"shape","id":"sh/03u5obet","slide":17,"bbox":[54,494,240,3]}
+{"kind":"textbox","id":"sh/zy54rqdc","slide":17,"text":"El cambio se comprueba en el cuerpo","textPreview":"El cambio se comprueba en el cuerpo","textChars":35,"textLines":1,"bbox":[54,522,420,34]}
+{"kind":"image","id":"im/ju94rexw","slide":17,"name":"","alt":"Figura tumbada y figura de pie en una hoja","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/tjfi7t","slide":17,"text":"Introduce el tercer caso: la decisión de levantarse aparece primero como movimiento de la figura."}
+{"kind":"slide","id":"sl/j03out","slide":18,"title":"WEBINAR 4  ·  CASO 3 · POSTURA","textShapes":8}
+{"kind":"textbox","id":"sh/18ju5gnu","slide":18,"text":"WEBINAR 4  ·  CASO 3 · POSTURA","textPreview":"WEBINAR 4  ·  CASO 3 · POSTURA","textChars":30,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/elsvu1o3","slide":18,"text":"18","textPreview":"18","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/fm1c365o","slide":18,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/obud0v6l","slide":18,"text":"Antes y después de una sola acción","textPreview":"Antes y después de una sola acción","textChars":34,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/pc3e9gn6","slide":18,"text":"Un hombre de 62 años mueve su propia figura","textPreview":"Un hombre de 62 años mueve su propia figura","textChars":43,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/29svylof","slide":18,"bbox":[65,165,510,370]}
+{"kind":"textbox","id":"sh/cfud4v6h","slide":18,"text":"Antes: boca abajo","textPreview":"Antes: boca abajo","textChars":17,"textLines":1,"bbox":[70,540,500,24]}
+{"kind":"shape","id":"sh/xg3ed0n2","slide":18,"bbox":[685,165,510,370]}
+{"kind":"textbox","id":"sh/kfepo369","slide":18,"text":"Después: de pie","textPreview":"Después: de pie","textChars":15,"textLines":1,"bbox":[690,540,500,24]}
+{"kind":"shape","id":"sh/je58fyp4","slide":18,"bbox":[570,350,115,1]}
+{"kind":"textbox","id":"sh/idw7mtoj","slide":18,"text":"LEVANTAR","textPreview":"LEVANTAR","textChars":8,"textLines":1,"bbox":[582,302,94,26]}
+{"kind":"shape","id":"sh/tk7qls76","slide":18,"bbox":[250,590,7,58]}
+{"kind":"textbox","id":"sh/sjypsn6l","slide":18,"text":"“Ya está listo, ya estoy listo.”","textPreview":"“Ya está listo, ya estoy listo.”","textChars":32,"textLines":1,"bbox":[274,588,736,62]}
+{"kind":"image","id":"im/epovqlwb","slide":18,"name":"","alt":"Antes: boca abajo","bbox":[70,170,500,360]}
+{"kind":"image","id":"im/yxs7u983","slide":18,"name":"","alt":"Después: de pie","bbox":[690,170,500,360]}
+{"kind":"notes","id":"nt/j03out","slide":18,"text":"El guion especifica que el consultante decide levantarse, mueve la figura y comprueba que su propio cuerpo se modifica. La escena es una secuencia antes / después, no una demostración clínica universal."}
+{"kind":"slide","id":"sl/ev559i","slide":19,"title":"WEBINAR 4  ·  PUENTE TEÓRICO","textShapes":12}
+{"kind":"textbox","id":"sh/7mtkreho","slide":19,"text":"WEBINAR 4  ·  PUENTE TEÓRICO","textPreview":"WEBINAR 4  ·  PUENTE TEÓRICO","textChars":28,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/snmlkji9","slide":19,"text":"19","textPreview":"19","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/tov2tozu","slide":19,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/up43mtgf","slide":19,"text":"El gesto también hace trabajo cognitivo","textPreview":"El gesto también hace trabajo cognitivo","textChars":39,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/fqdkvehk","slide":19,"text":"Mover las manos no es solo acompañar una idea: puede ayudar a sostenerla","textPreview":"Mover las manos no es solo acompañar una idea: puede ayudar a sostenerla","textChars":72,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/grmlojy5","slide":19,"bbox":[72,176,430,300]}
+{"kind":"textbox","id":"sh/hsv2xozq","slide":19,"text":"HALLAZGO CITADO EN EL GUION","textPreview":"HALLAZGO CITADO EN EL GUION","textChars":27,"textLines":1,"bbox":[104,204,360,25]}
+{"kind":"textbox","id":"sh/2t43qtgb","slide":19,"text":"Goldin-Meadow, Nusbaum, Kelly y Wagner\n(2001, Psychological Science)","textPreview":"Goldin-Meadow, Nusbaum, Kelly y Wagner | (2001, Psychological Science)","textChars":68,"textLines":2,"bbox":[104,250,350,64]}
+{"kind":"textbox","id":"sh/3uxkzyhw","slide":19,"text":"En tareas de explicación y memoria, el gesto se relacionó con una menor carga de procesamiento. El guion lo usa como puente para comprender el movimiento de la figura.","textPreview":"En tareas de explicación y memoria, el gesto se relacionó con una menor carga de procesamiento. El guion lo usa como puente para comprend...","textChars":167,"textLines":1,"bbox":[104,346,350,90]}
+{"kind":"textbox","id":"sh/vm1gvu10","slide":19,"text":"MOVIMIENTO → ORGANIZACIÓN → DECISIÓN","textPreview":"MOVIMIENTO → ORGANIZACIÓN → DECISIÓN","textChars":36,"textLines":1,"bbox":[630,210,500,30]}
+{"kind":"shape","id":"sh/ulsf29kf","slide":19,"bbox":[660,300,68,68]}
+{"kind":"textbox","id":"sh/ho3yx4j6","slide":19,"text":"La figura cae","textPreview":"La figura cae","textChars":13,"textLines":1,"bbox":[616,320,156,32]}
+{"kind":"shape","id":"sh/gnux4z2l","slide":19,"bbox":[820,390,68,68]}
+{"kind":"textbox","id":"sh/7y1gru14","slide":19,"text":"La mano la levanta","textPreview":"La mano la levanta","textChars":18,"textLines":1,"bbox":[776,410,156,32]}
+{"kind":"shape","id":"sh/6xsfypkj","slide":19,"bbox":[980,300,68,68]}
+{"kind":"textbox","id":"sh/tkjyt4ju","slide":19,"text":"El cuerpo verifica","textPreview":"El cuerpo verifica","textChars":18,"textLines":1,"bbox":[936,320,156,32]}
+{"kind":"shape","id":"sh/8zax0z2p","slide":19,"bbox":[720,342,92,60]}
+{"kind":"shape","id":"sh/ru5g3y18","slide":19,"bbox":[888,342,84,60]}
+{"kind":"shape","id":"sh/qtczatkn","slide":19,"bbox":[610,560,7,62]}
+{"kind":"textbox","id":"sh/mpgj2x4v","slide":19,"text":"“Tú mismo eres la autoridad que puede levantarte.”","textPreview":"“Tú mismo eres la autoridad que puede levantarte.”","textChars":50,"textLines":1,"bbox":[634,558,496,66]}
+{"kind":"notes","id":"nt/ev559i","slide":19,"text":"Fuente: Goldin-Meadow, S. et al. (2001). Explaining Math: Gesturing Lightens the Load. Psychological Science, 12(6). Presentar como un puente de comprensión del papel del movimiento, no como prueba directa de la técnica con muñecos."}
+{"kind":"slide","id":"sl/bfjpnq","slide":20,"title":"WEBINAR 4  ·  CASO 3 · FRASE","textShapes":9}
+{"kind":"textbox","id":"sh/7adkfmt0","slide":20,"text":"WEBINAR 4  ·  CASO 3 · FRASE","textPreview":"WEBINAR 4  ·  CASO 3 · FRASE","textChars":28,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/8bm1oral","slide":20,"text":"20","textPreview":"20","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/9cv2hwb6","slide":20,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/ud4ja1sb","slide":20,"text":"Una frase que devuelve autoridad","textPreview":"Una frase que devuelve autoridad","textChars":32,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/vedkjmtw","slide":20,"text":"La intervención acompaña el movimiento sin apropiarse de la decisión","textPreview":"La intervención acompaña el movimiento sin apropiarse de la decisión","textChars":68,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"textbox","id":"sh/wfm1crah","slide":20,"text":"La figura se levanta porque el consultante la mueve.","textPreview":"La figura se levanta porque el consultante la mueve.","textChars":52,"textLines":1,"bbox":[82,184,980,36]}
+{"kind":"shape","id":"sh/hgf2lwb2","slide":20,"bbox":[100,280,7,118]}
+{"kind":"textbox","id":"sh/qhkjexs7","slide":20,"text":"“Tú mismo eres la autoridad en esto, no soy yo.”","textPreview":"“Tú mismo eres la autoridad en esto, no soy yo.”","textChars":48,"textLines":1,"bbox":[124,278,956,122]}
+{"kind":"shape","id":"sh/bit072ts","slide":20,"bbox":[100,456,260,3]}
+{"kind":"textbox","id":"sh/vq5g76xg","slide":20,"text":"La frase hace tres cosas:","textPreview":"La frase hace tres cosas:","textChars":25,"textLines":1,"bbox":[100,488,400,28]}
+{"kind":"textbox","id":"sh/apwfe1gv","slide":20,"text":"Devuelve agencia a la persona\nNombra lo que ya ocurrió\nDeja la decisión en sus manos","textPreview":"Devuelve agencia a la persona | Nombra lo que ya ocurrió | Deja la decisión en sus manos","textChars":84,"textLines":3,"bbox":[100,532,700,90]}
+{"kind":"textbox","id":"sh/xs7y9gfm","slide":20,"text":"Frase terapéutica fuera del layout: se proyecta como texto, no se fuerza dentro de una escena.","textPreview":"Frase terapéutica fuera del layout: se proyecta como texto, no se fuerza dentro de una escena.","textChars":94,"textLines":1,"bbox":[100,650,980,24]}
+{"kind":"notes","id":"nt/bfjpnq","slide":20,"text":"Esta es una diapositiva de frase terapéutica independiente de la escena. Subraya el criterio: describir lo que la persona hizo, devolverle autoridad y no imponer una lectura."}
+{"kind":"slide","id":"sl/4ue55m","slide":21,"title":"WEBINAR 4  ·  SÍNTESIS","textShapes":11}
+{"kind":"textbox","id":"sh/j21cr2t0","slide":21,"text":"WEBINAR 4  ·  SÍNTESIS","textPreview":"WEBINAR 4  ·  SÍNTESIS","textChars":22,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/k3ut07al","slide":21,"text":"21","textPreview":"21","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/5o3utcb6","slide":21,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/6pcb2hsr","slide":21,"text":"Saber mirar antes de explicar","textPreview":"Saber mirar antes de explicar","textChars":29,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/7qlcv2tc","slide":21,"text":"Los tres casos sostienen la misma disciplina clínica","textPreview":"Los tres casos sostienen la misma disciplina clínica","textChars":52,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"textbox","id":"sh/srut47ax","slide":21,"text":"La imagen","textPreview":"La imagen","textChars":9,"textLines":1,"bbox":[90,206,240,34]}
+{"kind":"shape","id":"sh/ts3uxcbi","slide":21,"bbox":[360,223,110,1]}
+{"kind":"textbox","id":"sh/utcv6hsn","slide":21,"text":"muestra una relación o una postura","textPreview":"muestra una relación o una postura","textChars":34,"textLines":1,"bbox":[500,203,600,42]}
+{"kind":"textbox","id":"sh/fu5czmt8","slide":21,"text":"La pregunta","textPreview":"La pregunta","textChars":11,"textLines":1,"bbox":[90,326,240,34]}
+{"kind":"shape","id":"sh/r21w7qhw","slide":21,"bbox":[360,343,110,1]}
+{"kind":"textbox","id":"sh/qhsfyl0b","slide":21,"text":"deja que la persona describa","textPreview":"deja que la persona describa","textChars":28,"textLines":1,"bbox":[500,323,600,42]}
+{"kind":"textbox","id":"sh/d43e90z2","slide":21,"text":"La teoría","textPreview":"La teoría","textChars":9,"textLines":1,"bbox":[90,446,240,34]}
+{"kind":"shape","id":"sh/s3ux0vih","slide":21,"bbox":[360,463,110,1]}
+{"kind":"textbox","id":"sh/3e1w3qhk","slide":21,"text":"ordena sin reemplazar la experiencia","textPreview":"ordena sin reemplazar la experiencia","textChars":36,"textLines":1,"bbox":[500,443,600,42]}
+{"kind":"shape","id":"sh/idsful0f","slide":21,"bbox":[90,592,1020,58]}
+{"kind":"textbox","id":"sh/5gje50zq","slide":21,"text":"La herramienta abre un diálogo. La historia clínica sigue siendo indispensable.","textPreview":"La herramienta abre un diálogo. La historia clínica sigue siendo indispensable.","textChars":79,"textLines":1,"bbox":[115,605,970,30]}
+{"kind":"notes","id":"nt/4ue55m","slide":21,"text":"Síntesis del bloque central. Evita presentar la escena como una prueba autónoma. La escucha, la evolución y el contexto siguen formando parte de la evaluación."}
+{"kind":"slide","id":"sl/retp2x","slide":22,"title":"WEBINAR 4  ·  SÍNTESIS","textShapes":23}
+{"kind":"textbox","id":"sh/z2d0jad4","slide":22,"text":"WEBINAR 4  ·  SÍNTESIS","textPreview":"WEBINAR 4  ·  SÍNTESIS","textChars":22,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/03m1svep","slide":22,"text":"22","textPreview":"22","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/l4vil0va","slide":22,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/m5oju5wv","slide":22,"text":"La secuencia de intervención","textPreview":"La secuencia de intervención","textChars":28,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/nqx0nad0","slide":22,"text":"Un protocolo visual breve para sostener la conversación","textPreview":"Un protocolo visual breve para sostener la conversación","textChars":55,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/8r61wfel","slide":22,"bbox":[70,180,320,118]}
+{"kind":"textbox","id":"sh/9sf2pkv6","slide":22,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[92,199,48,24]}
+{"kind":"textbox","id":"sh/29kjilwb","slide":22,"text":"Colocar","textPreview":"Colocar","textChars":7,"textLines":1,"bbox":[92,230,260,28]}
+{"kind":"textbox","id":"sh/3at0bqdw","slide":22,"text":"Quién y dónde","textPreview":"Quién y dónde","textChars":13,"textLines":1,"bbox":[92,264,260,22]}
+{"kind":"shape","id":"sh/zu54raxw","slide":22,"bbox":[460,180,320,118]}
+{"kind":"textbox","id":"sh/etw3ipgb","slide":22,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[482,199,48,24]}
+{"kind":"textbox","id":"sh/lwnmtkfm","slide":22,"text":"Observar","textPreview":"Observar","textChars":8,"textLines":1,"bbox":[482,230,260,28]}
+{"kind":"textbox","id":"sh/0velkfyh","slide":22,"text":"Qué destaca","textPreview":"Qué destaca","textChars":11,"textLines":1,"bbox":[482,264,260,22]}
+{"kind":"shape","id":"sh/r6l4naxk","slide":22,"bbox":[850,180,320,118]}
+{"kind":"textbox","id":"sh/q5c3e5gz","slide":22,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[872,199,48,24]}
+{"kind":"textbox","id":"sh/d8nmpkfq","slide":22,"text":"Preguntar","textPreview":"Preguntar","textChars":9,"textLines":1,"bbox":[872,230,260,28]}
+{"kind":"textbox","id":"sh/c7elgfy5","slide":22,"text":"Qué siente","textPreview":"Qué siente","textChars":10,"textLines":1,"bbox":[872,264,260,22]}
+{"kind":"shape","id":"sh/32l4jqxo","slide":22,"bbox":[70,370,320,118]}
+{"kind":"textbox","id":"sh/21c3a5g3","slide":22,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[92,389,48,24]}
+{"kind":"textbox","id":"sh/6xsn2l0v","slide":22,"text":"Profundizar","textPreview":"Profundizar","textChars":11,"textLines":1,"bbox":[92,420,260,28]}
+{"kind":"textbox","id":"sh/7y14vq1g","slide":22,"text":"De dónde surge","textPreview":"De dónde surge","textChars":14,"textLines":1,"bbox":[92,454,260,22]}
+{"kind":"shape","id":"sh/sza54vi1","slide":22,"bbox":[460,370,320,118]}
+{"kind":"textbox","id":"sh/t03mx0jm","slide":22,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[482,389,48,24]}
+{"kind":"textbox","id":"sh/u1cn6507","slide":22,"text":"Mover","textPreview":"Mover","textChars":5,"textLines":1,"bbox":[482,420,260,28]}
+{"kind":"textbox","id":"sh/f2l4za1c","slide":22,"text":"Qué cambia","textPreview":"Qué cambia","textChars":10,"textLines":1,"bbox":[482,454,260,22]}
+{"kind":"shape","id":"sh/g3u58fix","slide":22,"bbox":[850,370,320,118]}
+{"kind":"textbox","id":"sh/h43m1kji","slide":22,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[872,389,48,24]}
+{"kind":"textbox","id":"sh/25cna503","slide":22,"text":"Verificar","textPreview":"Verificar","textChars":9,"textLines":1,"bbox":[872,420,260,28]}
+{"kind":"textbox","id":"sh/36l43a1o","slide":22,"text":"Qué reconoce","textPreview":"Qué reconoce","textChars":12,"textLines":1,"bbox":[872,454,260,22]}
+{"kind":"textbox","id":"sh/d07qt43q","slide":22,"text":"La secuencia es editable y puede convertirse en una diapositiva de apoyo durante Zoom.","textPreview":"La secuencia es editable y puede convertirse en una diapositiva de apoyo durante Zoom.","textChars":86,"textLines":1,"bbox":[70,620,950,26]}
+{"kind":"notes","id":"nt/retp2x","slide":22,"text":"Esta secuencia resume los movimientos observados en los tres casos. Úsala como guía de intervención, no como automatismo."}
+{"kind":"slide","id":"sl/1lyyze","slide":23,"title":"WEBINAR 4  ·  LÍMITES Y ENCUADRE","textShapes":10}
+{"kind":"textbox","id":"sh/c32dobut","slide":23,"text":"WEBINAR 4  ·  LÍMITES Y ENCUADRE","textPreview":"WEBINAR 4  ·  LÍMITES Y ENCUADRE","textChars":32,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/r2tcf6t8","slide":23,"text":"23","textPreview":"23","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/q1kvm1c3","slide":23,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/1svelgbq","slide":23,"text":"Límites de uso y encuadre","textPreview":"Límites de uso y encuadre","textChars":25,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/0rmdsbu5","slide":23,"text":"La herramienta necesita condiciones de seguridad y criterio clínico","textPreview":"La herramienta necesita condiciones de seguridad y criterio clínico","textChars":67,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"textbox","id":"sh/zqdwj6tk","slide":23,"text":"NO ES","textPreview":"NO ES","textChars":5,"textLines":1,"bbox":[80,188,300,28]}
+{"kind":"textbox","id":"sh/e54vqlcz","slide":23,"text":"Un sustituto de la escucha\nUna prueba diagnóstica\nUna interpretación automática","textPreview":"Un sustituto de la escucha | Una prueba diagnóstica | Una interpretación automática","textChars":79,"textLines":3,"bbox":[80,230,440,120]}
+{"kind":"textbox","id":"sh/9wfep0bm","slide":23,"text":"REQUIERE","textPreview":"REQUIERE","textChars":8,"textLines":1,"bbox":[680,188,300,28]}
+{"kind":"textbox","id":"sh/ovmdwva1","slide":23,"text":"Encuadre claro\nHistoria y contexto\nCapacidad de regulación\nCriterio profesional","textPreview":"Encuadre claro | Historia y contexto | Capacidad de regulación | Criterio profesional","textChars":79,"textLines":4,"bbox":[680,230,440,150]}
+{"kind":"shape","id":"sh/yt8j2hwr","slide":23,"bbox":[80,460,1040,116]}
+{"kind":"textbox","id":"sh/zuhkvmdc","slide":23,"text":"No usar como intervención improvisada en psicosis activa o descompensación, duelo agudo reciente, cuadros disociativos o crisis con riesgo.","textPreview":"No usar como intervención improvisada en psicosis activa o descompensación, duelo agudo reciente, cuadros disociativos o crisis con riesgo.","textChars":139,"textLines":1,"bbox":[110,490,980,54]}
+{"kind":"textbox","id":"sh/kvq14rex","slide":23,"text":"Consulta el programa del taller para el encuadre completo.","textPreview":"Consulta el programa del taller para el encuadre completo.","textChars":58,"textLines":1,"bbox":[80,632,700,26]}
+{"kind":"notes","id":"nt/1lyyze","slide":23,"text":"Criterios de exclusión y encuadre tomados del programa del taller citado en el guion. Si alguien pregunta por un caso concreto, devolver la conversación a la evaluación profesional y la seguridad."}
+{"kind":"slide","id":"sl/vbxtb0","slide":24,"title":"WEBINAR 4  ·  CIERRE","textShapes":10}
+{"kind":"textbox","id":"sh/87utg3e5","slide":24,"text":"WEBINAR 4  ·  CIERRE","textPreview":"WEBINAR 4  ·  CIERRE","textChars":20,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/76ls7yd0","slide":24,"text":"24","textPreview":"24","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/65cbetwf","slide":24,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/hwnad8v2","slide":24,"text":"Módulo 1 empieza mañana","textPreview":"Módulo 1 empieza mañana","textChars":23,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/gvetk3eh","slide":24,"text":"La práctica continúa con dos clases intensivas","textPreview":"La práctica continúa con dos clases intensivas","textChars":46,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"shape","id":"sh/vu5sbydw","slide":24,"bbox":[78,178,500,278]}
+{"kind":"textbox","id":"sh/u9wbitwb","slide":24,"text":"MÓDULO 1","textPreview":"MÓDULO 1","textChars":8,"textLines":1,"bbox":[118,214,400,28]}
+{"kind":"textbox","id":"sh/x0ja1ofi","slide":24,"text":"Los cuatro caminos","textPreview":"Los cuatro caminos","textChars":18,"textLines":1,"bbox":[118,266,400,44]}
+{"kind":"textbox","id":"sh/wza98jed","slide":24,"text":"5 y 19 de septiembre\n10:00 a 18:00","textPreview":"5 y 19 de septiembre | 10:00 a 18:00","textChars":34,"textLines":2,"bbox":[118,342,400,64]}
+{"kind":"textbox","id":"sh/uh4fehgf","slide":24,"text":"Para terapeutas y profesionales","textPreview":"Para terapeutas y profesionales","textChars":31,"textLines":1,"bbox":[680,208,430,32]}
+{"kind":"textbox","id":"sh/vidwnmh0","slide":24,"text":"Trabajo práctico con figuras\nLectura de posiciones y relaciones\nPreguntas que abren relato\nCriterio de encuadre","textPreview":"Trabajo práctico con figuras | Lectura de posiciones y relaciones | Preguntas que abren relato | Criterio de encuadre","textChars":111,"textLines":4,"bbox":[680,270,430,150]}
+{"kind":"shape","id":"sh/gjmxgryl","slide":24,"bbox":[680,480,240,3]}
+{"kind":"textbox","id":"sh/hkvepwz6","slide":24,"text":"La imagen puede preceder a la explicación.","textPreview":"La imagen puede preceder a la explicación.","textChars":42,"textLines":1,"bbox":[680,520,470,34]}
+{"kind":"notes","id":"nt/vbxtb0","slide":24,"text":"Cierre promocional basado en el guion. Mantén el tono informativo, sin prometer resultados clínicos."}
+{"kind":"slide","id":"sl/a1bwks","slide":25,"title":"WEBINAR 4  ·  PREGUNTAS","textShapes":10}
+{"kind":"textbox","id":"sh/vad8z6xk","slide":25,"text":"WEBINAR 4  ·  PREGUNTAS","textPreview":"WEBINAR 4  ·  PREGUNTAS","textChars":23,"textLines":1,"bbox":[44,24,430,22]}
+{"kind":"textbox","id":"sh/gb69sry5","slide":25,"text":"25","textPreview":"25","textChars":2,"textLines":1,"bbox":[1190,25,44,22]}
+{"kind":"shape","id":"sh/hcfq1wfq","slide":25,"bbox":[44,58,1192,1]}
+{"kind":"textbox","id":"sh/idoru1gb","slide":25,"text":"Preguntas y fuentes","textPreview":"Preguntas y fuentes","textChars":19,"textLines":1,"bbox":[48,82,760,70]}
+{"kind":"textbox","id":"sh/3ex836xw","slide":25,"text":"Abrimos conversación sobre el método, el encuadre y los casos","textPreview":"Abrimos conversación sobre el método, el encuadre y los casos","textChars":61,"textLines":1,"bbox":[48,158,760,42]}
+{"kind":"textbox","id":"sh/4f69wby1","slide":25,"text":"¿Qué parte de una escena te resultó más difícil de leer?","textPreview":"¿Qué parte de una escena te resultó más difícil de leer?","textChars":56,"textLines":1,"bbox":[76,214,1020,42]}
+{"kind":"textbox","id":"sh/5gfq5gfm","slide":25,"text":"FUENTES DEL GUIÓN","textPreview":"FUENTES DEL GUIÓN","textChars":17,"textLines":1,"bbox":[76,294,300,24]}
+{"kind":"textbox","id":"sh/qhorylg7","slide":25,"text":"• Sesion_Comentada_Responsabilidad_Heredada.md\n• Transcripciones/Terapia_Munecos_Mod1_Cap1.json\n• Transcripciones/Terapia_Munecos_Mod1_Cap3.json\n• Guion_Teleprompter_Webinar3.md, bloque teórico\n• Programa_Taller_Dos_Clases.md","textPreview":"• Sesion_Comentada_Responsabilidad_Heredada.md | • Transcripciones/Terapia_Munecos_Mod1_Cap1.json | • Transcripciones/Terapia_Munecos_Mod...","textChars":225,"textLines":5,"bbox":[76,338,550,178]}
+{"kind":"textbox","id":"sh/rih87qxs","slide":25,"text":"Moser et al. (2017), Scientific Reports 7:4519\nGoldin-Meadow et al. (2001), Psychological Science 12(6)\nMargaret Lowenfeld Trust, “The World Technique”\nhttps://lowenfeld.org/the-world-technique/","textPreview":"Moser et al. (2017), Scientific Reports 7:4519 | Goldin-Meadow et al. (2001), Psychological Science 12(6) | Margaret Lowenfeld Trust, “Th...","textChars":194,"textLines":4,"bbox":[700,338,480,150]}
+{"kind":"shape","id":"sh/ja9cnetk","slide":25,"bbox":[76,566,240,3]}
+{"kind":"textbox","id":"sh/y9gbe9cz","slide":25,"text":"Gracias","textPreview":"Gracias","textChars":7,"textLines":1,"bbox":[76,590,240,40]}
+{"kind":"textbox","id":"sh/lcrup4bq","slide":25,"text":"Dr. Miguel Ojeda Rios · Instituto Centrobioenergética","textPreview":"Dr. Miguel Ojeda Rios · Instituto Centrobioenergética","textChars":53,"textLines":1,"bbox":[76,642,620,24]}
+{"kind":"notes","id":"nt/a1bwks","slide":25,"text":"Fuentes visibles para preguntas. Mantén disponibles los archivos locales y la referencia de Lowenfeld. La bibliografía de los puentes teóricos procede del guion del Webinar 4 y su tabla de fuentes."}

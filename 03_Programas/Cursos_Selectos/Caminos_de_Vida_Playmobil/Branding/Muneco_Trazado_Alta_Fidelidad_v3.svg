@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 350" role="img" aria-labelledby="title desc">
+  <title id="title">Muñeco trazado para Los Cuatro Caminos</title>
+  <desc id="desc">Figura frontal de cabeza grande, cabello ondulado y cuerpo continuo con brazos curvos y manos redondeadas.</desc>
+
+  <!-- Cabello envolvente, trazado desde la referencia original. -->
+  <path d="M47 106C43 91 43 70 49 52C61 18 92 0 130 0s69 18 81 52c6 18 6 39 2 54l-18 3V88c-7 0-14-4-18-11-4 7-12 11-21 11s-17-4-21-11c-4 7-12 11-21 11s-17-4-21-11c-4 7-12 11-21 11-3 0-6 0-8-1v22z" fill="#FF9F1C"/>
+
+  <!-- Rostro sin facciones, con borde superior ondulado y base semicircular. -->
+  <path d="M65 87c9 0 19-4 24-12 5 8 14 12 24 12s19-4 24-12c5 8 14 12 24 12s19-4 24-12c3 7 8 11 10 12v26c0 34-27 55-65 55s-65-21-65-55z" fill="#FFF3DA"/>
+
+  <!-- Cuerpo de una sola pieza: hombros, brazos, manos, torso y piernas. -->
+  <path d="M82 170h96c21 0 31 10 37 31l15 49c3 9 6 15 11 21 7 8 6 16 0 23l-6 6c-5 5-11 3-15-4-6 7-12 7-18 3-8-6-9-13-5-22l7-10-26-49 6 132h-36l-4-66c-1-12-5-18-14-18s-13 6-14 18l-4 66H76l6-132-26 49 7 10c4 9 3 16-5 22-6 4-12 4-18-3-4 7-10 9-15 4l-6-6c-6-7-7-15 0-23 5-6 8-12 11-21l15-49c6-21 16-31 37-31z" fill="#079BC7"/>
+</svg>

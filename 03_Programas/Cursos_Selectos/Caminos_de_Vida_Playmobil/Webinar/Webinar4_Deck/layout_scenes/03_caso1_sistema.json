@@ -1,0 +1,14 @@
+{
+  "piezas": [
+    {"tipo":"figura","color":15132390,"escala":1,"nombre":"Consultante","genero":"mujer","colores":{"torso":"#d96f3d","piernas":"#6d513d","zapatos":"#4c3528"},"mirada":-30,"postura":"de pie","x":0,"z":0,"rot":0},
+    {"tipo":"figura","color":15132390,"escala":1,"nombre":"Padre","genero":"hombre","colores":{"torso":"#263b67","piernas":"#4c4c4c","zapatos":"#252525"},"mirada":25,"postura":"de pie","x":-6,"z":-3,"rot":0.4},
+    {"tipo":"figura","color":15132390,"escala":0.733,"nombre":"Madre","genero":"mujer","colores":{"torso":"#8fa784","piernas":"#82745f","zapatos":"#544b3d"},"mirada":-10,"postura":"doblado","x":-5,"z":3,"rot":-0.2},
+    {"tipo":"figura","color":15132390,"escala":0.733,"nombre":"Hija","genero":"mujer","colores":{"torso":"#d4a642","piernas":"#6f6250","zapatos":"#4b4036"},"mirada":-20,"postura":"de pie","x":6,"z":-2,"rot":-2.6},
+    {"tipo":"figura","color":15132390,"escala":0.733,"nombre":"Hijo","genero":"hombre","colores":{"torso":"#8c8c8c","piernas":"#3f5968","zapatos":"#273b45"},"mirada":20,"postura":"de pie","x":6,"z":3,"rot":2.6},
+    {"tipo":"figura","color":15132390,"escala":1,"nombre":"Abuela materna","genero":"mujer","colores":{"torso":"#9b86a5","piernas":"#65566d","zapatos":"#473e4a"},"mirada":0,"postura":"de pie","x":-10,"z":5,"rot":-0.5},
+    {"tipo":"figura","color":15132390,"escala":1,"nombre":"Abuela paterna","genero":"mujer","colores":{"torso":"#5b3d77","piernas":"#483457","zapatos":"#30243c"},"mirada":0,"postura":"de pie","x":-10,"z":-5,"rot":0.5},
+    {"tipo":"figura","color":15132390,"escala":1,"nombre":"Pareja","genero":"hombre","colores":{"torso":"#4f88a7","piernas":"#4a4a4a","zapatos":"#282828"},"mirada":180,"postura":"de pie","x":4,"z":8,"rot":3.14}
+  ],
+  "relaciones": [{"a":0,"b":1,"params":{"tipo":"uni","estilo":"continua","color":"#8a8176"}},{"a":0,"b":2,"params":{"tipo":"uni","estilo":"continua","color":"#8a8176"}},{"a":0,"b":3,"params":{"tipo":"uni","estilo":"continua","color":"#8a8176"}},{"a":0,"b":4,"params":{"tipo":"uni","estilo":"continua","color":"#8a8176"}},{"a":1,"b":5,"params":{"tipo":"uni","estilo":"discontinua","color":"#b9a894"}},{"a":1,"b":6,"params":{"tipo":"uni","estilo":"discontinua","color":"#b9a894"}},{"a":0,"b":7,"params":{"tipo":"uni","estilo":"continua","color":"#62796a"}}],
+  "opciones": {"pielPelo":true,"etiquetas":true,"ambiente":"crema","lienzo":"hoja"}
+}

@@ -1,0 +1,19 @@
+{"kind":"deck","id":"pr/p5wkpv","name":"Deck"}
+{"kind":"layout","layoutId":"2b023a95-4125-48dc-9d01-47232c7beae8","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"1a684c71-42eb-4de7-85eb-9611d98c0a38","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/qitu8u","slide":1,"title":"▶   WEBINAR 4","textShapes":9}
+{"kind":"shape","id":"sh/3ipwbql4","slide":1,"bbox":[0,0,640,720]}
+{"kind":"shape","id":"sh/ihgv2lkj","slide":1,"bbox":[34,32,250,56]}
+{"kind":"textbox","id":"sh/hw7e9g3y","slide":1,"text":"▶   WEBINAR 4","textPreview":"▶   WEBINAR 4","textChars":13,"textLines":1,"bbox":[58,39,205,42]}
+{"kind":"textbox","id":"sh/gvyd0b2d","slide":1,"text":"TERAPIA CON","textPreview":"TERAPIA CON","textChars":11,"textLines":1,"bbox":[42,126,560,78]}
+{"kind":"textbox","id":"sh/vupw7qls","slide":1,"text":"MUÑECOS","textPreview":"MUÑECOS","textChars":7,"textLines":1,"bbox":[42,201,560,86]}
+{"kind":"shape","id":"sh/utwvylk7","slide":1,"bbox":[42,314,448,62]}
+{"kind":"textbox","id":"sh/tsne5g3m","slide":1,"text":"TRES SESIONES REALES","textPreview":"TRES SESIONES REALES","textChars":20,"textLines":1,"bbox":[58,321,416,47]}
+{"kind":"textbox","id":"sh/8redwb2h","slide":1,"text":"LA HOJA REVELA LO QUE LA\nCONVERSACIÓN NO ALCANZA","textPreview":"LA HOJA REVELA LO QUE LA | CONVERSACIÓN NO ALCANZA","textChars":48,"textLines":2,"bbox":[48,402,530,66]}
+{"kind":"shape","id":"sh/65wjuxsz","slide":1,"bbox":[48,494,275,2]}
+{"kind":"textbox","id":"sh/r650n29k","slide":1,"text":"Casos anonimizados · demostración en vivo","textPreview":"Casos anonimizados · demostración en vivo","textChars":41,"textLines":1,"bbox":[48,516,480,30]}
+{"kind":"textbox","id":"sh/s7e1w7a5","slide":1,"text":"DR. MIGUEL OJEDA RIOS","textPreview":"DR. MIGUEL OJEDA RIOS","textChars":21,"textLines":1,"bbox":[48,642,330,28]}
+{"kind":"textbox","id":"sh/t8nipcrq","slide":1,"text":"INSTITUTO CENTROBIOENERGÉTICA","textPreview":"INSTITUTO CENTROBIOENERGÉTICA","textChars":29,"textLines":1,"bbox":[48,674,390,22]}
+{"kind":"textbox","id":"sh/ihcjqxs3","slide":1,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1162,42,40,24]}
+{"kind":"image","id":"im/90z6h07i","slide":1,"name":"","alt":"Hoja cálida con ejes y tres marcadores de madera","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/qitu8u","slide":1,"text":"Muestra de estilo para Webinar 4 basada en la referencia visual /Users/miguelojedarios/Pictures/12.png. La imagen de fondo fue generada como nueva imagen editorial de apoyo; las escenas clínicas posteriores se exportarán desde /Users/miguelojedarios/layout_caminos/index.html. Texto basado en Guion_Teleprompter_Webinar4.md. No representa una sesión clínica real."}
