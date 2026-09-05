@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Ficha de práctica · Los Cuatro Caminos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,480;9..144,600&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  @page{ size: 210mm 260mm; margin: 0; }
+
+  :root{
+    --tinta:  #000000;
+    --suave:  #000000;
+    --linea:  #000000;
+    --oro:    #000000;
+    --papel:  #FFFFFF;
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; background:#FFFFFF; }
+  body{ font-family:'Archivo', system-ui, sans-serif; color:var(--tinta); }
+
+  .cara{
+    width:210mm; height:260mm; background:var(--papel);
+    padding:13mm 14mm 11mm;
+    display:flex; flex-direction:column;
+    margin:0 auto;
+    page-break-after: always; break-after: page;
+  }
+  .cara:last-child{ page-break-after:auto; break-after:auto; }
+
+  /* ---------- cabecera ---------- */
+
+  .cab{ display:flex; align-items:baseline; justify-content:space-between;
+        padding-bottom:2mm; border-bottom:.5pt solid var(--tinta); }
+  .cab .marca{ font-family:'Space Mono',monospace; font-size:7.4pt;
+               letter-spacing:.16em; text-transform:uppercase; color:var(--oro); }
+  .cab .cual{ font-family:'Space Mono',monospace; font-size:7.4pt;
+              letter-spacing:.12em; text-transform:uppercase; color:var(--suave); }
+
+  h1{ font-family:'Fraunces',Georgia,serif; font-weight:480;
+      font-size:15pt; line-height:1.1; margin:3mm 0 2.5mm; }
+
+  /* ---------- campos ---------- */
+
+  .campos{ display:flex; gap:4mm; margin-bottom:2.5mm; }
+  .campo{ flex:1; }
+  .et{
+    display:block; font-family:'Space Mono',monospace; font-size:6.6pt;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--suave);
+    margin-bottom:1.2mm;
+  }
+  .raya{ border-bottom:.4pt solid var(--linea); height:5.5mm; }
+  .cara:last-child .raya{ height:8mm; }
+  .raya.alta{ height:7mm; }
+
+  .bloque{ margin-bottom:2.5mm; }
+  .bloque .raya + .raya{ margin-top:1.5mm; }
+
+  /* ---------- barra de pasos y casillas ---------- */
+
+  .barra{
+    display:flex; align-items:center; gap:3mm; flex-wrap:wrap;
+    padding:1.6mm 0; border-top:.5pt solid var(--linea); border-bottom:.5pt solid var(--linea);
+    margin-bottom:2.5mm;
+    font-size:8pt; color:var(--tinta);
+  }
+  .cx{ display:inline-flex; align-items:center; gap:1.4mm; }
+  .cx i{ width:2.8mm; height:2.8mm; border:.6pt solid var(--tinta); display:inline-block; }
+  .pasos{ font-family:'Space Mono',monospace; font-size:7.2pt; color:var(--suave);
+          letter-spacing:.04em; }
+  .pasos b{ color:var(--tinta); font-weight:400; }
+
+  /* ---------- las tres hojas ---------- */
+
+  /* El lienzo, en la proporcion real de la hoja: 43 x 28 cm */
+  .lienzo{ margin-bottom:2mm; display:flex; justify-content:center; }
+  .lienzo svg{ height:112mm; width:auto; display:block; }
+  .ejeS{ font-family:'Space Mono',monospace; font-size:5.4px; fill:#000000;
+         letter-spacing:.22em; font-weight:700; }
+  .ejeSm{ font-family:'Space Mono',monospace; font-size:4.2px; fill:#000000; letter-spacing:.1em; }
+
+  .caidas{ display:grid; grid-template-columns:repeat(3,1fr); gap:5mm; margin-bottom:2mm; }
+  .caidas .c{ display:flex; align-items:baseline; gap:1.6mm; }
+  .caidas .num{ font-family:'Fraunces',serif; font-size:10pt; color:var(--oro); flex:none; }
+  .caidas .dir{ border-bottom:.4pt solid var(--linea); height:5mm; flex:1; }
+
+  /* ---------- resultado ---------- */
+
+  .resultado{ margin-top:auto; padding-top:2.5mm; border-top:.5pt solid var(--tinta); }
+  .resultado .fila{ display:flex; gap:4mm; }
+  .resultado .fila > div{ flex:1; }
+
+  /* ---------- cara B ---------- */
+
+  .lista8{ display:grid; grid-template-columns:1fr 1fr; gap:1.6mm 5mm; margin:0 0 3.5mm; padding:0; list-style:none; }
+  .lista8 li{ display:flex; align-items:center; gap:1.6mm; font-size:8.4pt; }
+  .lista8 li i{ width:2.8mm; height:2.8mm; border:.6pt solid var(--tinta); display:inline-block; flex:none; }
+  .lista8 li.clave{ font-weight:600; }
+  .lista8 li.clave i{ border-width:1pt; }
+
+  .preguntas{ margin:0 0 3.5mm; padding:2.5mm 3mm; border-left:1pt solid var(--oro);
+              background:transparent; }
+  .preguntas p{ margin:0 0 1.4mm; font-family:'Fraunces',serif; font-size:9.6pt; line-height:1.28; }
+  .preguntas p:last-child{ margin-bottom:0; }
+  .nunca{ font-family:'Space Mono',monospace; font-size:7.2pt; letter-spacing:.12em;
+          text-transform:uppercase; color:var(--oro); margin-top:2mm; }
+
+  .estado{ display:flex; gap:3mm; margin-bottom:2mm; font-size:8pt; }
+  .estado > div{ flex:1; border:.5pt solid var(--linea); padding:1.8mm 2mm; }
+  .estado .t{ font-family:'Space Mono',monospace; font-size:6.6pt; letter-spacing:.1em;
+              text-transform:uppercase; color:var(--suave); display:block; margin-bottom:1mm; }
+
+  .pie-regla{ margin-top:auto; padding-top:2.5mm; border-top:.5pt solid var(--tinta);
+              font-family:'Fraunces',serif; font-size:9pt; }
+  .pie-regla span{ display:block; font-family:'Archivo',sans-serif; font-size:7.2pt;
+                   color:var(--suave); margin-top:1.2mm; }
+
+  @media print{
+    html,body{ background:#fff; }
+    .cara{ margin:0; box-shadow:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== CARA A ===================== -->
+<section class="cara">
+
+  <div class="cab">
+    <span class="marca">Los Cuatro Caminos · Ficha de práctica</span>
+    <span class="cual">Práctica ____ · ronda ____</span>
+  </div>
+
+  <h1>La caída y la dirección</h1>
+
+  <div class="campos">
+    <div class="campo"><span class="et">Conduce</span><div class="raya"></div></div>
+    <div class="campo"><span class="et">Consultante</span><div class="raya"></div></div>
+    <div class="campo" style="flex:.6;"><span class="et">Fecha</span><div class="raya"></div></div>
+  </div>
+
+  <div class="bloque">
+    <span class="et">Pregunta de trabajo</span>
+    <div class="raya alta"></div>
+    <div class="raya alta"></div>
+  </div>
+
+  <div class="barra">
+    <span class="pasos">Fijado antes de empezar y sin cambio en toda la sesión:</span>
+    <span class="cx"><i></i>altura</span>
+    <span class="cx"><i></i>superficie</span>
+    <span class="cx"><i></i>modo de soltar</span>
+  </div>
+
+  <div class="barra" style="border-top:none;">
+    <span class="pasos"><b>1</b> selección intuitiva &nbsp;·&nbsp; <b>2</b> de pie en el cruce
+      &nbsp;·&nbsp; <b>3</b> se levanta y se suelta &nbsp;·&nbsp; <b>4</b> se lee la dirección de los pies</span>
+  </div>
+
+  <div class="lienzo">
+    <svg viewBox="0 0 430 300" role="img" aria-label="Lienzo de trabajo en la proporcion de la hoja de 43 por 28 centimetros, con los ejes: Este arriba, Norte a la derecha, Sur a la izquierda, Oeste abajo">
+      <defs>
+        <pattern id="cuad" width="21.5" height="21.5" patternUnits="userSpaceOnUse">
+          <path d="M21.5 0 L0 0 0 21.5" fill="none" stroke="#000000" stroke-width=".22"/>
+        </pattern>
+      </defs>
+
+      <rect x="15" y="20" width="400" height="260" fill="url(#cuad)" stroke="#14120E" stroke-width="1.4"/>
+
+      <line x1="215" y1="20"  x2="215" y2="280" stroke="#000000" stroke-width="1"/>
+      <line x1="15"  y1="150" x2="415" y2="150" stroke="#000000" stroke-width="1"/>
+      <circle cx="215" cy="150" r="2.6" fill="#000000"/>
+
+      <text class="ejeS" x="215" y="13"  text-anchor="middle">E S T E</text>
+      <text class="ejeS" x="215" y="294" text-anchor="middle">O E S T E</text>
+      <text class="ejeS" x="424" y="148" text-anchor="middle" transform="rotate(90 424 148)">N O R T E</text>
+      <text class="ejeS" x="6"   y="152" text-anchor="middle" transform="rotate(-90 6 152)">S U R</text>
+
+    </svg>
+  </div>
+
+  <p style="font-size:7.4pt;color:var(--suave);margin:0 0 3mm;">
+    Se dibuja la figura donde quedó y se traza una línea desde sus pies. Si se agregan las figuras
+    de los familiares, cada una se suelta y se traza igual, sobre este mismo lienzo. Los pies quedan
+    dentro de la hoja; si salen, se vuelve a soltar.
+  </p>
+
+  <div class="resultado">
+    <div class="bloque" style="margin-bottom:2.5mm;">
+      <span class="et">Dirección de los pies</span>
+      <div class="raya"></div>
+    </div>
+    <div class="fila">
+      <div><span class="et">Camino</span><div class="raya"></div></div>
+      <div><span class="et">Cuadrante, si quedó entre dos</span><div class="raya"></div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===================== CARA B ===================== -->
+<section class="cara">
+
+  <div class="cab">
+    <span class="marca">Los Cuatro Caminos · Ficha de práctica</span>
+    <span class="cual">Exploración y hallazgos</span>
+  </div>
+
+  <h1>Se describe lo que cualquiera vería, y después se pregunta qué representa</h1>
+
+  <ul class="lista8">
+    <li><i></i>1 · Apertura libre</li>
+    <li><i></i>5 · El color</li>
+    <li><i></i>2 · Hacia dónde va</li>
+    <li class="clave"><i></i>6 · El cuerpo de quien observa</li>
+    <li><i></i>3 · La postura</li>
+    <li><i></i>7 · Los ángulos</li>
+    <li><i></i>4 · El cuadrante</li>
+    <li><i></i>8 · La cara y la mirada</li>
+  </ul>
+
+  <div class="preguntas">
+    <p>«¿Qué es lo que ves?»</p>
+    <p>«¿Qué sientes al verlo? ¿En dónde lo sientes?»</p>
+    <p>«Cuéntame de eso.»</p>
+    <p class="nunca">Nunca «por qué» · qué · cómo · cuándo · cuál · quién</p>
+  </div>
+
+  <span class="et">Verificación de estado</span>
+  <div class="estado">
+    <div><span class="t">Hiperactivación</span><span class="cx"><i></i>ruta A · más distancia</span></div>
+    <div><span class="t">Dentro del rango</span><span class="cx"><i></i>continuar</span></div>
+    <div><span class="t">Hipoactivación</span><span class="cx"><i></i>ruta B · más contacto</span></div>
+  </div>
+  <div class="bloque"><span class="et">En qué momento se aplicó la ruta</span><div class="raya"></div></div>
+
+  <div class="bloque">
+    <span class="et">Lo que se describió de la escena</span>
+    <div class="raya"></div>
+    <div class="raya"></div>
+  </div>
+
+  <div class="bloque">
+    <span class="et">Lo que el consultante atribuyó · sus palabras</span>
+    <div class="raya"></div>
+    <div class="raya"></div>
+  </div>
+
+  <div class="bloque">
+    <span class="et">Evento que reconoció · vital o transgeneracional</span>
+    <div class="raya"></div>
+  </div>
+
+  <div class="bloque" style="margin-bottom:2mm;">
+    <span class="et">Anhelo · hipótesis de quien conduce</span>
+    <div class="raya"></div>
+  </div>
+  <div style="font-size:8pt;">
+    <span class="cx"><i></i>el consultante lo confirmó</span> &nbsp;&nbsp;
+    <span class="cx"><i></i>no lo confirmó</span>
+  </div>
+
+  <div class="bloque" style="margin-top:3mm;">
+    <span class="et">Otras observaciones</span>
+    <div class="raya"></div>
+    <div class="raya"></div>
+  </div>
+
+  <div class="pie-regla">
+    La sesión termina con la figura donde cayó. No se mueve.
+    <span>Quien conduce no interpreta: el consultante atribuye el significado. Ante «¿qué significa?»
+      se responde «¿qué sientes cuando lo ves?».</span>
+  </div>
+
+</section>
+
+</body>
+</html>
